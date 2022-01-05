@@ -32,6 +32,21 @@
     <section class="container--page">
       <transition name="fade">
         <LazyBoiteArticle
+          v-if="
+            tout ||
+            select === 'vjs' ||
+            select === 'webDesign' ||
+            select === 'wp'
+          "
+          id="amc2"
+          titre="AMC2"
+          sous-titre="Amc2"
+          background-url="amc2.png"
+          :chips="['WebDesign', 'VueJs', 'WordPress (headless)']"
+          lien="https://www.amc2.fr"
+      /></transition>
+      <transition name="fade">
+        <LazyBoiteArticle
           v-if="tout || select === 'vjs' || select === 'webDesign'"
           id="site1"
           titre="Guide RSE Banque Populaire"
@@ -156,7 +171,7 @@ h1 {
   margin-top: -1rem;
   margin-bottom: 3rem;
   @media (min-width: $breakpoint-tablet) {
-    margin-top: -3rem;
+    // margin-top: -3rem;
   }
 
   li {

@@ -3,11 +3,14 @@
   <main>
     <section class="container container-1">
       <!-- <Oeuf fill="pink" width="5%" transform="rotate(15)" /> -->
-      <h1 class="title titre2">beAbot</h1>
+      <h1 class="title">beAbot</h1>
       <div id="boite-logo">
         <Oeuf width="40%" class="fixe oeuf-intro" />
       </div>
       <h2 class="links text-gris2 text-normal titre3">Éco-conception web</h2>
+      <p class="lettre-smcp titre-sub h4 text-fin">
+        webdesign - développement - gestion de projet
+      </p>
     </section>
     <section class="container container-2 fond-gris">
       <!-- <OeufImage /> -->
@@ -446,8 +449,11 @@ section {
   }
 }
 
-// .container-1 {
-// }
+.container-1 {
+  h2 {
+    margin-bottom: 0.1rem;
+  }
+}
 .container-2 {
   min-height: 60vh;
   @media (min-width: $breakpoint-tablet) {
@@ -514,6 +520,7 @@ section {
       // height: 100%;
       display: flex;
       align-items: center;
+      width: 100%;
 
       &__bleu {
         border-left: 15px solid $bleu2;
@@ -930,7 +937,7 @@ section {
   position: relative;
   width: 66%;
   height: auto;
-  min-height: 52vh;
+  min-height: 48vh;
   background: url('~assets/img/forme-flou.svg') no-repeat center;
   background-size: 100%;
   // background: url('~assets/img/forme-flou.svg') no-repeat center,
