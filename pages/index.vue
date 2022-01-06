@@ -356,15 +356,10 @@
       </h3>
       <div class="container-blog__box">
         <div class="boite-para__para a">
-          <Petittitre
-            gris
-            couleur="#2561d9"
-            titre="Guide RSE Banque Populaire"
-            stitre="dev"
-          />
+          <Petittitre gris couleur="#2561d9" titre="AMC2" stitre="dev" />
           <p class="text-gris2">
-            Carte interactive pour le guide RSE de la Banque populaire. Réalisée
-            avec VueJs.
+            Vitrine et catalogue d'entreprise. Réalisé avec NuxtJS et WordPress
+            (headless CMS).
           </p>
           <Boutoncta to="/portfolio#site1" bleu>découvrir</Boutoncta>
         </div>
@@ -389,11 +384,11 @@
             gris
             couleur="#2561d9"
             titre="Guide RSE Banque Populaire"
-            stitre="webdesign"
+            stitre="dev"
           />
           <p class="text-gris2">
-            Interface de visualisation de données pour les résultats de la RSE
-            de la Banque Populaire. Faite avec VueJs.
+            Carte interactive pour le guide RSE de la Banque populaire. Réalisée
+            avec VueJs.
           </p>
           <Boutoncta to="/portfolio#site2" bleu>présentation</Boutoncta>
         </div>

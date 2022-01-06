@@ -40,7 +40,7 @@
           "
           id="amc2"
           titre="AMC2"
-          sous-titre="Amc2"
+          sous-titre="Site vitrine et catalogue en ligne"
           background-url="amc2.png"
           :chips="['WebDesign', 'VueJs', 'WordPress (headless)']"
           lien="https://www.amc2.fr"
@@ -63,7 +63,7 @@
           sous-titre="Interface de visualisation de données"
           background-url="guideBleu2.png"
           :chips="['WebDesign', 'VueJs', 'Bootstrap']"
-          lien="https://www.guide-rse.banquepopulaire.fr/resultats-2019"
+          lien="https://www.guide-rse.banquepopulaire.fr/resultats-2020"
       /></transition>
       <transition name="fade">
         <LazyBoiteArticle
