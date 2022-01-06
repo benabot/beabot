@@ -16,14 +16,16 @@
     </svg>
 
     <article class="article-resum">
-      <div class="boite-image">
-        <div class="boite-image__calque"></div>
-        <div class="circle"></div>
-        <div
-          class="boite-image__image lozad"
-          :data-background-image="`${require('~/assets/img/' + backgroundUrl)}`"
-        ></div>
-      </div>
+      <a :href="lien" target="_blank">
+        <div class="boite-image">
+          <div class="boite-image__calque"></div>
+          <div class="circle"></div>
+          <div
+            class="boite-image__image lozad"
+            :data-background-image="`${require('~/assets/img/' +
+              backgroundUrl)}`"
+          ></div></div
+      ></a>
       <h2 class="h4 text-gris1">{{ titre }}</h2>
       <h3 class="text-fin text-gris2">{{ sousTitre }}</h3>
       <div class="boite-chips">
@@ -96,7 +98,7 @@ export default {
   a {
     display: block;
     position: relative;
-    z-index: 2000;
+    // z-index: 2000;
   }
   h2 {
     margin-right: -4rem;
@@ -198,7 +200,7 @@ svg {
 .boite-chips {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.9rem;
 
   .chips {
     display: inline;
@@ -209,6 +211,7 @@ svg {
     padding: 0.158rem 0.61rem;
     font-size: 0.68rem;
     margin-right: 0.33rem;
+    margin-bottom: 0.33rem;
 
     span {
       bottom: 0.06em;
