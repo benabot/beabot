@@ -1,5 +1,10 @@
 # beabot
 
+## My personnal blog and portfolio
+
+Made with [nuxt-content](https://content.nuxtjs.org) and the awesomeness of Markdown 👍.
+
+My website [beabot.fr](https://beabot.fr) where i'm talking mostly about greenIT (in french).
 ## Build Setup
 
 ```bash
