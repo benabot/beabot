@@ -34,6 +34,20 @@
         <LazyBoiteArticle
           v-if="
             tout ||
+            select === 'eco' ||
+            select === 'webDesign' ||
+            select === 'wp'
+          "
+          titre="La petite boucle"
+          sous-titre="Collecte de cartouches d’encre en triporteur électrique"
+          background-url="lpb.png"
+          :chips="['WebDesign', 'WordPress']"
+          lien="https://lapetiteboucle.fr/"
+      /></transition>
+      <transition name="fade">
+        <LazyBoiteArticle
+          v-if="
+            tout ||
             select === 'vjs' ||
             select === 'webDesign' ||
             select === 'wp'
@@ -87,20 +101,6 @@
           background-url="aave.png"
           :chips="['WebDesign', 'WordPress']"
           lien="https://vallee-esches.fr/"
-      /></transition>
-      <transition name="fade">
-        <LazyBoiteArticle
-          v-if="
-            tout ||
-            select === 'eco' ||
-            select === 'webDesign' ||
-            select === 'wp'
-          "
-          titre="La petite boucle"
-          sous-titre="Collecte de cartouches d’encre en triporteur électrique"
-          background-url="petite-boucle.png"
-          :chips="['WebDesign', 'WordPress']"
-          lien="https://lapetiteboucle.fr/"
       /></transition>
     </section>
   </main>
