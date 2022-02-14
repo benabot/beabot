@@ -54,7 +54,6 @@ export default {
     backgroundUrl: {
       type: String,
       default: 'profilFreakOut.jpg',
-      // 'https://www.cdc.gov/healthypets/images/pets/cute-dog-headshot.jpg',
     },
     lien: {
       type: String,
@@ -149,9 +148,7 @@ export default {
     // box-shadow: inset 0px 40% 40% 0 #000, inset 0 40% 40% 0px #ccc,
     //   inset 0 40% 40% 0px #fff;
     // border-radius: 50%;
-    clip-path: path(
-      'M340.41 200.982C320.48 277.953 275.629 344.743 196.169 344.639 116.709 344.408 52.407 279.986 52.512 200.398 52.616 120.81 118.277 69.82 196.752 56.741 348.453 31.464 362.282 115.955 340.41 200.982Z'
-    );
+    clip-path: ellipse(46% 42% at 49% 53%);
     //clip-path: url(#phone-clip);
     // clip-path: path(
     //  'M578.523 302.928C538.663 456.87 448.961 590.45 290.041 590.242 131.121 589.78 2.517 460.936 2.727 301.76 2.935 142.584 134.257 40.604 291.207 14.446 594.609-36.108 622.267 132.874 578.523 302.928Z'

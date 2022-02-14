@@ -41,7 +41,7 @@
           titre="La petite boucle"
           sous-titre="Collecte de cartouches d’encre en triporteur électrique"
           background-url="lpb.png"
-          :chips="['WebDesign', 'WordPress']"
+          :chips="['WebDesign', 'WordPress', 'Éco-conçu']"
           lien="https://lapetiteboucle.fr/"
       /></transition>
       <transition name="fade">
@@ -52,17 +52,17 @@
             select === 'webDesign' ||
             select === 'wp'
           "
-          id="amc2"
+          id="site1"
           titre="AMC2"
           sous-titre="Site vitrine et catalogue en ligne"
           background-url="amc2.png"
-          :chips="['WebDesign', 'VueJs', 'WordPress (headless)']"
+          :chips="['WebDesign', 'VueJs', 'Nuxt', 'WordPress (headless)']"
           lien="https://www.amc2.fr"
       /></transition>
       <transition name="fade">
         <LazyBoiteArticle
           v-if="tout || select === 'vjs' || select === 'webDesign'"
-          id="site1"
+          id="site2"
           titre="Guide RSE Banque Populaire"
           sous-titre="Carte interactive"
           background-url="guideBleu1.png"
@@ -72,7 +72,6 @@
       <transition name="fade">
         <LazyBoiteArticle
           v-if="tout || select === 'vjs' || select === 'webDesign'"
-          id="site2"
           titre="Guide RSE Banque Populaire"
           sous-titre="Interface de visualisation de données"
           background-url="guideBleu2.png"
