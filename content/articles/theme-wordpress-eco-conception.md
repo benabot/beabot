@@ -7,7 +7,7 @@ tag: ['WebDesign', 'WordPress', 'Eco-conception']
 
 
 ## Demande/besoins
-*La petite boucle* est une association qui collecte des cartouches d’encre et de toner usagés à l’aide d’un triporteur électrique.
+*[la petite boucle](https://www.lapetiteboucle.fr)* est une association qui collecte des cartouches d’encre et de toner usagés à l’aide d’un triporteur électrique.
 Cette association, qui s’inscrit dans une démarche écologique forte, souhaitait refaire son site afin de le remettre au gout du jour tout en minimisant son impact environnemental.
  
 ## Ancien site

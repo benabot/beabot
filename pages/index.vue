@@ -299,22 +299,14 @@
         <div class="boite-para__para a">
           <Petittitre
             gris
-            titre="Les impacts du numérique"
+            titre="éco-conception d'un thème WordPress"
             stitre="Éco-conception"
           />
           <p class="text-gris2">
-            On imagine le numérique virtuel, intangible et éthéré. Après tout,
-            nous dématérialisons nos documents et les rangeons dans le cloud… Il
-            est pourtant pleinement matériel. Ordinateurs, TV et téléphones d’un
-            côté, serveurs de l’autre reliés par des câbles, satellites,
-            antennes, etc. constituent l'écosystème du numérique. Tous ces
-            équipements doivent être produits puis alimentés en énergie pour
-            fonctionner. Cela génère des coûts pour l’environnement concrets et
-            mesurables.
+            Eco-conception et WordPress, exemple et cas concret avec un thème
+            WordPress éco-conçu pour le site de la petite boucle.
           </p>
-          <Boutoncta
-            to="/eco-conception/La-consommation-energetique-du-numerique"
-          />
+          <Boutoncta to="/eco-conception/theme-wordpress-eco-conception" />
         </div>
         <div class="oeuf b">
           <NuxtLink to="/eco-conception" aria-label="voir le blog"
