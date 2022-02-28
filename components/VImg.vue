@@ -1,6 +1,6 @@
 <template>
   <picture class="image">
-    <img :src="imgSrc" :alt="alt" draggable="false" />
+    <img :src="imgSrc" :alt="alt" draggable="false" class="lozad" />
   </picture>
 </template>
 
@@ -21,6 +21,9 @@ export default {
     imgSrc() {
       return require(`~/assets/img/${this.src}`)
     },
+  },
+  mounted() {
+    this.$lozad.observe()
   },
 }
 </script>

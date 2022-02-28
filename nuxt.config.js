@@ -164,6 +164,7 @@ export default {
       'auteur',
       'blockquote',
       'lien--vert',
+      'lozad',
     ],
     // whitelistPatternsChildren: [/^token/, /^nuxt-content-highlight/],
     whitelistPatternsChildren: [/token$/, /pre$/],
