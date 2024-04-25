@@ -38,6 +38,19 @@
             select === 'webDesign' ||
             select === 'wp'
           "
+          titre="La Cyclo-Plomberie"
+          sous-titre="Votre plombier à vélo à Amiens et alentours"
+          background-url="cyclop.png"
+          :chips="['WebDesign', 'WordPress', 'Éco-conçu']"
+          lien="https://cycloplomberie-amiens.fr"
+      /></transition>
+        <LazyBoiteArticle
+          v-if="
+            tout ||
+            select === 'eco' ||
+            select === 'webDesign' ||
+            select === 'wp'
+          "
           titre="La petite boucle"
           sous-titre="Collecte de cartouches d’encre en triporteur électrique"
           background-url="lpb.png"
