@@ -15,7 +15,10 @@
     <div class="container-or">
       <div class="item a title title--footer h1">CONTACT :</div>
       <div class="item b h3 text-black">
-        <a href="mailto:hello@beabot.fr">hello@beabot.fr</a>
+       
+           <NuxtLink to="/contact" class="h3 text-black" no-prefetch
+        >Nous écrire</NuxtLink
+      >
       </div>
       <div class="item c">
         <!-- <div> -->

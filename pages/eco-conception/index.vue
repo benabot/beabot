@@ -62,7 +62,7 @@
       <transition-group name="list" tag="div">
         <article v-for="article of articlesFilters" :key="article.slug">
           <!-- <img :src="article.img" /> -->
-          <nuxt-link :to="`/eco-conception/${article.slug}`">
+          <nuxt-link :to="articleLink(article)">
             <Petittitre gris :titre="article.title" :tags="article.tag"
           /></nuxt-link>
           <div class="resum">
@@ -93,7 +93,7 @@
 export default {
   async asyncData({ $content, params }) {
     const articles = await $content('articles', params.slug)
-      .only(['title', 'description', 'img', 'slug', 'tag'])
+      .only(['title', 'description', 'img', 'slug', 'tag', 'path'])
       .sortBy('createdAt', 'desc')
       .fetch();
 
@@ -115,6 +115,12 @@ export default {
     },
   },
   methods: {
+    articleLink(a) {
+      // Prefer @nuxt/content computed path if available
+      const p = a && a.path ? a.path : `/articles/${a.slug}`
+      // Map content directory to the public route namespace
+      return p.replace(/^\/articles\//, '/eco-conception/')
+    },
     updateTag(tag) {
       this.$store.commit('tags/setTag', tag);
     },

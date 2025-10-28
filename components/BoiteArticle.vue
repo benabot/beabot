@@ -22,8 +22,7 @@
           <div class="circle"></div>
           <div
             class="boite-image__image lozad"
-            :data-background-image="`${require('~/assets/img/' +
-              backgroundUrl)}`"
+            :data-background-image="resolvedBackgroundUrl"
           ></div></div
       ></a>
       <h2 class="h4 text-gris1">{{ titre }}</h2>
@@ -66,7 +65,27 @@ export default {
   },
   mounted() {
     this.$lozad.observe()
-  },
+  }
+  ,
+  computed: {
+    resolvedBackgroundUrl() {
+      const src = this.backgroundUrl || ''
+      // Absolute or root-relative URL
+      if (/^https?:\/\//.test(src) || src.startsWith('/')) return src
+
+      // Try to resolve from assets via webpack context
+      try {
+        const ctx = require.context('~/assets/img', false, /\.(png|jpe?g|gif|webp|svg)$/)
+        const key = src.startsWith('./') ? src : `./${src}`
+        if (ctx.keys().includes(key)) return ctx(key)
+      } catch (e) {
+        // fallthrough to /static path
+      }
+
+      // Fallback to static directory convention: /static/img/<file>
+      return `/img/${src}`
+    },
+  }
 }
 </script>
 

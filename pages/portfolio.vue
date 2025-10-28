@@ -44,6 +44,7 @@
           :chips="['WebDesign', 'WordPress', 'Éco-conçu']"
           lien="https://cycloplomberie-amiens.fr"
       /></transition>
+       <transition name="fade">
         <LazyBoiteArticle
           v-if="
             tout ||
@@ -56,7 +57,7 @@
           background-url="lpb.png"
           :chips="['WebDesign', 'WordPress', 'Éco-conçu']"
           lien="https://lapetiteboucle.fr/"
-      /></transition>
+      /> </transition>
       <transition name="fade">
         <LazyBoiteArticle
           v-if="
@@ -101,7 +102,7 @@
           lien="https://app-noel.netlify.app"
       /></transition>
       <transition name="fade">
-        <lazy-BoiteArticle
+        <LazyBoiteArticle
           v-if="
             tout ||
             select === 'eco' ||
@@ -125,7 +126,7 @@ export default {
   data() {
     return {
       select: '',
-      tout: true,
+      tout: true
     }
   },
   head() {

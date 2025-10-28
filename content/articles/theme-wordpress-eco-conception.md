@@ -44,7 +44,7 @@ Les différentes fonctionnalités dans l’admin de WordPress ( formulaire de c
 Le site repose sur un travail typographique soigné. Il n’a cependant pas recours aux web-fonts.
 À la place, il utilise, pour les polices **sans sérif**, un *system font stack* ( on utilise par défaut la police du système d’exploitation ) :
 
-```	css
+```\tcss
 --global--font-primary:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 ```
 
