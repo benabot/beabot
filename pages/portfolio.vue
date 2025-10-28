@@ -144,7 +144,7 @@ export default {
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: 'https://beabot.fr/eco-conception/portfolio',
+          href: 'https://beabot.netlify.app/eco-conception/portfolio',
         },
       ],
     }

@@ -198,7 +198,7 @@ export default {
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: `https://beabot.fr/eco-conception/${this.$route.params.slug}`,
+          href: `https://beabot.netlify.app/eco-conception/${this.$route.params.slug}`,
         },
       ],
       script: [
@@ -219,10 +219,10 @@ export default {
               publisher: {
                 '@type': 'Organization',
                 name: 'BeAbot',
-                url: 'https://beabot.fr',
+                url: 'https://beabot.netlify.app',
                 logo: {
                   '@type': 'ImageObject',
-                  url: 'https://beabot.fr/beabot.png',
+                  url: 'https://beabot.netlify.app/beabot.png',
                 },
               },
             },
@@ -234,13 +234,13 @@ export default {
                   '@type': 'ListItem',
                   position: 1,
                   name: 'BeAbot',
-                  item: 'https://beabot.fr',
+                  item: 'https://beabot.netlify.app',
                 },
                 {
                   '@type': 'ListItem',
                   position: 2,
                   name: 'Eco-conception',
-                  item: `https://beabot.fr/eco-conception/${this.$route.params.slug}`,
+                  item: `https://beabot.netlify.app/eco-conception/${this.$route.params.slug}`,
                 },
                 {
                   '@type': 'ListItem',
@@ -270,10 +270,10 @@ export default {
       //         publisher: {
       //           '@type': 'Organization',
       //           name: 'BeAbot',
-      //           url: 'https://beabot.fr',
+      //           url: 'https://beabot.netlify.app',
       //           logo: {
       //             '@type': 'ImageObject',
-      //             url: 'https://beabot.fr/beabot.png',
+      //             url: 'https://beabot.netlify.app/beabot.png',
       //           },
       //         },
       //       },
@@ -285,13 +285,13 @@ export default {
       //             '@type': 'ListItem',
       //             position: 1,
       //             name: 'BeAbot',
-      //             item: 'https://beabot.fr',
+      //             item: 'https://beabot.netlify.app',
       //           },
       //           {
       //             '@type': 'ListItem',
       //             position: 2,
       //             name: 'Eco-conception',
-      //             item: `https://beabot.fr/eco-conception/${this.$route.params.slug}`,
+      //             item: `https://beabot.netlify.app/eco-conception/${this.$route.params.slug}`,
       //           },
       //           {
       //             '@type': 'ListItem',
@@ -365,7 +365,7 @@ export default {
   //       {
   //         hid: 'canonical',
   //         rel: 'canonical',
-  //         href: `https://beabot.fr/eco-conception/${this.$route.params.slug}`,
+  //         href: `https://beabot.netlify.app/eco-conception/${this.$route.params.slug}`,
   //       },
   //     ],
   //     script: [
@@ -386,10 +386,10 @@ export default {
   //             publisher: {
   //               '@type': 'Organization',
   //               name: 'BeAbot',
-  //               url: 'https://beabot.fr',
+  //               url: 'https://beabot.netlify.app',
   //               logo: {
   //                 '@type': 'ImageObject',
-  //                 url: 'https://beabot.fr/beabot.png',
+  //                 url: 'https://beabot.netlify.app/beabot.png',
   //               },
   //             },
   //           },
@@ -401,13 +401,13 @@ export default {
   //                 '@type': 'ListItem',
   //                 position: 1,
   //                 name: 'BeAbot',
-  //                 item: 'https://beabot.fr',
+  //                 item: 'https://beabot.netlify.app',
   //               },
   //               {
   //                 '@type': 'ListItem',
   //                 position: 2,
   //                 name: 'Eco-conception',
-  //                 item: `https://beabot.fr/eco-conception/${this.$route.params.slug}`,
+  //                 item: `https://beabot.netlify.app/eco-conception/${this.$route.params.slug}`,
   //               },
   //               {
   //                 '@type': 'ListItem',

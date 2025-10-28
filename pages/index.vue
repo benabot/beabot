@@ -406,7 +406,7 @@ export default {
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: 'https://beabot.fr',
+          href: 'https://beabot.netlify.app/',
         },
       ],
       // script: [

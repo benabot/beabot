@@ -1,5 +1,5 @@
 const type = 'website'
-const url = 'https://beabot.fr'
+const url = 'http://https://beabot.netlify.app'
 const title = 'Beabot : éco-conception web'
 const description =
   'L’éco-conception web, c’est concilier respect de l’environnement et technologies numériques de pointe pour un internet durable.'

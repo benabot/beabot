@@ -24,7 +24,7 @@ export default {
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: 'https://beabot.fr/eco-conception/eco-conception',
+          href: '/eco-conception/eco-conception',
         },
       ],
     };
