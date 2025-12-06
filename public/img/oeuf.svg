@@ -1,0 +1,10 @@
+<svg>
+    <defs>
+        <clipPath id="myClip" clipPathUnits="objectBoundingBox">
+            <path d="M0,0 v1 h1 V0 H0 m0.948,0.507 c-0.063,0.25,-0.207,0.466,-0.461,0.466 S0.026,0.765,0.026,0.507 S0.236,0.084,0.487,0.041 c0.486,-0.083,0.531,0.191,0.461,0.466" />
+        </clipPath>
+        <clipPath id="phone-clip" clipPathUnits="objectBoundingBox">
+            <path d="M0.541,0.048 c0.263,0.067,0.492,0.217,0.492,0.486 c0,0.269,-0.22,0.486,-0.492,0.487 S0.095,0.8,0.049,0.535 C-0.038,0.023,0.25,-0.025,0.541,0.048"></path>
+        </clipPath>
+    </defs>
+</svg>
