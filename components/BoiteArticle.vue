@@ -1,6 +1,6 @@
 <template>
   <div class="boite-article">
-    <svg aria-hidden="true" focusable="false">
+    <svg aria-hidden="true" focusable="false" role="presentation">
       <defs>
         <clipPath id="myClip" clipPathUnits="objectBoundingBox">
           <path
