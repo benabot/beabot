@@ -2,7 +2,7 @@
   <div class="clip-svg" :style="{ backgroundImage: fond, width: width }">
     <div class="oeuf">
       <!-- <img src="~/assets/img/profilFreakOut.jpg" alt="ggg" /> -->
-      <svg width="100%" viewBox="0 0 231.3 228.6" :transform="transform">
+      <svg width="100%" viewBox="0 0 231.3 228.6" :transform="transform" aria-hidden="true" focusable="false">
         <defs>
           <clipPath id="myClip">
             <path

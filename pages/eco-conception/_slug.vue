@@ -12,8 +12,8 @@
         <div class="breadcrumb">
           <ul class="selector text-gris1">
             <li class="svg-baseline svg-icon">
-              <NuxtLink to="/">
-                <svg viewBox="0 0 24 24">
+              <NuxtLink to="/" aria-label="Retour à l'accueil">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                   <path
                     fill="currentColor"
                     d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"
@@ -38,7 +38,7 @@
         </div>
         <div class="chapitres text-gris1">
           <div class="svg-baseline svg-icon">
-            <svg viewBox="0 0 24 24">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path
                 fill="currentColor"
                 d="M19 1L14 6V17L19 12.5V1M21 5V18.5C19.9 18.15 18.7 18 17.5 18C15.8 18 13.35 18.65 12 19.5V6C10.55 4.9 8.45 4.5 6.5 4.5C4.55 4.5 2.45 4.9 1 6V20.65C1 20.9 1.25 21.15 1.5 21.15C1.6 21.15 1.65 21.1 1.75 21.1C3.1 20.45 5.05 20 6.5 20C8.45 20 10.55 20.4 12 21.5C13.35 20.65 15.8 20 17.5 20C19.15 20 20.85 20.3 22.25 21.05C22.35 21.1 22.4 21.1 22.5 21.1C22.75 21.1 23 20.85 23 20.6V6C22.4 5.55 21.75 5.25 21 5M10 18.41C8.75 18.09 7.5 18 6.5 18C5.44 18 4.18 18.19 3 18.5V7.13C3.91 6.73 5.14 6.5 6.5 6.5C7.86 6.5 9.09 6.73 10 7.13V18.41Z"
@@ -84,7 +84,7 @@
         </div>
         <div class="prevnext text-gris1">
           <div class="svg-baseline svg-icon">
-            <svg viewBox="0 0 24 24">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path
                 fill="currentColor"
                 d="M22,3H5A2,2 0 0,0 3,5V9H5V5H22V19H5V15H3V19A2,2 0 0,0 5,21H22A2,2 0 0,0 24,19V5A2,2 0 0,0 22,3M7,15V13H0V11H7V9L11,12L7,15M20,13H13V11H20V13M20,9H13V7H20V9M17,17H13V15H17V17Z"
@@ -122,7 +122,7 @@
         class="text-gris2 mt-2"
         :document="article"
       />
-      <svg viewBox="0 0 100 100" width="33%">
+      <svg viewBox="0 0 100 100" width="33%" aria-hidden="true" focusable="false">
         <path
           fill="#04d94f"
           d="M75,97.8c3.7-1.1,7.4-1.6,11.1-2c1.9-0.2,3.7-0.3,5.6-0.4c0.5,0,0.9,0,1.4,0l1.3,0c0.3,0,0.5-0.1,0.6-0.3
