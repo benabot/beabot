@@ -41,9 +41,12 @@
           y="0"
           viewBox="0 0 1111.7 336.6"
           xml:space="preserve"
+          role="img"
+          aria-label="BeAbot - Accueil"
           @mouseover="degrad = 'url(#SVGID1)'"
           @mouseleave="degrad = 'url(#SVGID2)'"
         >
+          <title>BeAbot</title>
           <linearGradient
             id="SVGID1"
             gradientUnits="userSpaceOnUse"

@@ -82,7 +82,7 @@
           >en savoir plus</NuxtLink
         >
         <div class="fleche">
-          <svg x="0" y="0" viewBox="0 0 32.8 27.3" xml:space="preserve">
+          <svg x="0" y="0" viewBox="0 0 32.8 27.3" xml:space="preserve" aria-hidden="true" focusable="false">
             <path
               fill="#04d94f"
               d="M.4 12.7c3.5 1.7 6.5 3.8 9.5 6 1.5 1.1 2.9 2.3 4.4 3.5.4.3.7.6 1 .9l1 .9c.2.2.4.3.6.2.3 0 .5-.1.6-.2l.9-1c.3-.4.6-.7 1-1 1.4-1.3 2.7-2.6 4.1-3.9 2.8-2.5 5.7-4.8 9-6.8l.2.2c-2.4 2.8-4.9 5.5-7.4 8.2L21.6 24l-1.9 2c-.7.8-1.7 1.2-2.7 1.3-1 0-2-.3-2.7-1l-2.1-1.9-4.1-3.8c-2.7-2.5-5.4-5-8.1-7.6l.4-.3z"
@@ -218,7 +218,7 @@
           >en savoir plus</NuxtLink
         >
         <div class="fleche">
-          <svg x="0" y="0" viewBox="0 0 32.8 27.3" xml:space="preserve">
+          <svg x="0" y="0" viewBox="0 0 32.8 27.3" xml:space="preserve" aria-hidden="true" focusable="false">
             <path
               fill="#04d94f"
               d="M.4 12.7c3.5 1.7 6.5 3.8 9.5 6 1.5 1.1 2.9 2.3 4.4 3.5.4.3.7.6 1 .9l1 .9c.2.2.4.3.6.2.3 0 .5-.1.6-.2l.9-1c.3-.4.6-.7 1-1 1.4-1.3 2.7-2.6 4.1-3.9 2.8-2.5 5.7-4.8 9-6.8l.2.2c-2.4 2.8-4.9 5.5-7.4 8.2L21.6 24l-1.9 2c-.7.8-1.7 1.2-2.7 1.3-1 0-2-.3-2.7-1l-2.1-1.9-4.1-3.8c-2.7-2.5-5.4-5-8.1-7.6l.4-.3z"
@@ -310,7 +310,7 @@
         </div>
         <div class="oeuf b">
           <NuxtLink to="/eco-conception" aria-label="voir le blog"
-            ><svg class="lien" viewBox="0 0 24 24">
+            ><svg class="lien" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path
                 fill="currentColor"
                 d="M18.4,13h-4.9c-0.3,0-0.6,0.2-0.6,0.6v4.9c0,0.3-0.2,0.6-0.6,0.6h-0.9c-0.3,0-0.6-0.2-0.6-0.6v-4.9c0-0.3-0.2-0.6-0.6-0.6
@@ -357,7 +357,7 @@
         </div>
         <div class="oeuf b">
           <NuxtLink to="/portfolio" aria-label="voir le portfolio"
-            ><svg class="lien" viewBox="0 0 24 24">
+            ><svg class="lien" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path
                 fill="currentColor"
                 d="M18.4,13h-4.9c-0.3,0-0.6,0.2-0.6,0.6v4.9c0,0.3-0.2,0.6-0.6,0.6h-0.9c-0.3,0-0.6-0.2-0.6-0.6v-4.9c0-0.3-0.2-0.6-0.6-0.6

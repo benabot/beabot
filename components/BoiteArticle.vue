@@ -1,6 +1,6 @@
 <template>
   <div class="boite-article">
-    <svg>
+    <svg aria-hidden="true" focusable="false">
       <defs>
         <clipPath id="myClip" clipPathUnits="objectBoundingBox">
           <path
@@ -20,10 +20,13 @@
         <div class="boite-image">
           <div class="boite-image__calque"></div>
           <div class="circle"></div>
-          <div
+          <img
             class="boite-image__image lozad"
-            :data-background-image="resolvedBackgroundUrl"
-          ></div></div
+            :data-src="resolvedBackgroundUrl"
+            :src="resolvedBackgroundUrl"
+            :alt="titre || 'Image du projet'"
+            loading="lazy"
+          /></div
       ></a>
       <h2 class="h4 text-gris1">{{ titre }}</h2>
       <h3 class="text-fin text-gris2">{{ sousTitre }}</h3>
@@ -156,22 +159,11 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    // background-image: url('https://www.cdc.gov/healthypets/images/pets/cute-dog-headshot.jpg');
-    background-position: center;
-    background-size: 220%;
-    background-repeat: no-repeat;
-    // transform: scale(1.2);
+    object-fit: cover;
+    object-position: center;
     transition: all 0.3s;
     z-index: 10;
-    // filter: drop-shadow(0px 10px 5px rgba(0, 0, 0, 0.5));
-    // box-shadow: inset 0px 40% 40% 0 #000, inset 0 40% 40% 0px #ccc,
-    //   inset 0 40% 40% 0px #fff;
-    // border-radius: 50%;
     clip-path: ellipse(46% 42% at 49% 53%);
-    //clip-path: url(#phone-clip);
-    // clip-path: path(
-    //  'M578.523 302.928C538.663 456.87 448.961 590.45 290.041 590.242 131.121 589.78 2.517 460.936 2.727 301.76 2.935 142.584 134.257 40.604 291.207 14.446 594.609-36.108 622.267 132.874 578.523 302.928Z'
-    //);
 
     @media (min-width: $breakpoint-tablet) {
       clip-path: none;

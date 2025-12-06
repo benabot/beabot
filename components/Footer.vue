@@ -6,7 +6,7 @@
         style="stroke: none; fill: #f2f2f2"
       ></path>
     </svg> -->
-    <svg viewBox="0 0 1366 144.3">
+    <svg viewBox="0 0 1366 144.3" aria-hidden="true" focusable="false">
       <path
         d="M0 0h1366v81c-84.4 17.6-217.1 39.2-380.5 38.5-228.3-1-329.2-44.6-547-48C336.3 69.9 185.6 76.8 0 121V0z"
         fill="#f2f2f2"

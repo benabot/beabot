@@ -13,6 +13,8 @@
     viewBox="0 0 243.9 241.2"
     xml:space="preserve"
     :transform="transform"
+    aria-hidden="true"
+    focusable="false"
   >
     <!-- <defs>
       <linearGradient id="Gradient2">
