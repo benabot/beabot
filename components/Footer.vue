@@ -73,6 +73,32 @@ footer {
   z-index: 1;
   // box-shadow: inset 0 2.5vw 10vw 0 white;
   /*SVG ICON SYSTEM*/
+
+  // .title--footer {
+  //   position: relative;
+  //   overflow: hidden;
+
+  //   &:hover {
+  //     cursor: pointer;
+  //   }
+
+  //   &::before {
+  //     content: 'text';
+  //     position: absolute;
+  //     top: 0;
+  //     left: 0;
+  //     width: 0%;
+      
+  //     color: green;
+  //      transition: width 0.5s ease-in-out;
+
+  //   }
+  //   &:hover::before {
+  //     width: 100%;
+     
+      
+  //   }
+  // }
   .icon {
     display: inline-flex;
     align-self: center;
