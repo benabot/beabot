@@ -21,8 +21,7 @@
           <div class="boite-image__calque"></div>
           <div class="circle"></div>
           <img
-            class="boite-image__image lozad"
-            :data-src="resolvedBackgroundUrl"
+            class="boite-image__image"
             :src="resolvedBackgroundUrl"
             :alt="titre || 'Image du projet'"
             loading="lazy"
@@ -42,54 +41,40 @@
     </article>
   </div>
 </template>
-<script>
-export default {
-  props: {
-    titre: {
-      type: String,
-      default: 'titre',
-    },
-    sousTitre: {
-      type: String,
-      default: 'sous titre',
-    },
-    backgroundUrl: {
-      type: String,
-      default: 'profilFreakOut.jpg',
-    },
-    lien: {
-      type: String,
-      default: '',
-    },
-    chips: {
-      type: Array,
-      default: () => [],
-    },
+<script setup>
+import { computed } from 'vue'
+
+const props = defineProps({
+  titre: {
+    type: String,
+    default: 'titre',
   },
-  mounted() {
-    this.$lozad.observe()
-  }
-  ,
-  computed: {
-    resolvedBackgroundUrl() {
-      const src = this.backgroundUrl || ''
-      // Absolute or root-relative URL
-      if (/^https?:\/\//.test(src) || src.startsWith('/')) return src
+  sousTitre: {
+    type: String,
+    default: 'sous titre',
+  },
+  backgroundUrl: {
+    type: String,
+    default: 'profilFreakOut.jpg',
+  },
+  lien: {
+    type: String,
+    default: '',
+  },
+  chips: {
+    type: Array,
+    default: () => [],
+  },
+})
 
-      // Try to resolve from assets via webpack context
-      try {
-        const ctx = require.context('~/assets/img', false, /\.(png|jpe?g|gif|webp|svg)$/)
-        const key = src.startsWith('./') ? src : `./${src}`
-        if (ctx.keys().includes(key)) return ctx(key)
-      } catch (e) {
-        // fallthrough to /static path
-      }
+const resolvedBackgroundUrl = computed(() => {
+  const src = props.backgroundUrl || ''
+  // Absolute or root-relative URL
+  if (/^https?:\/\//.test(src) || src.startsWith('/')) return src
 
-      // Fallback to static directory convention: /static/img/<file>
-      return `/img/${src}`
-    },
-  }
-}
+  // Fallback to public directory convention: /public/img/<file>
+  return `/img/${src}`
+})
 </script>
 
 <style lang="scss" scoped>
