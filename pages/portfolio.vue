@@ -24,7 +24,7 @@
       <li
         v-show="!tout"
         class="text-gris4"
-        @click=";(tout = true), (select = '')"
+        @click="tout = true; select = ''"
       >
         Tout voir
       </li>
@@ -119,46 +119,35 @@
   </main>
 </template>
 
-<script>
-export default {
-  scrollToTop: true,
+<script setup>
+import { ref } from 'vue'
 
-  data() {
-    return {
-      select: '',
-      tout: true
-    }
-  },
-  head() {
-    return {
-      title: 'portfolio',
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content:
-            'Différentes créations web dont certaines sont éco-conçues et toutes bâties à partir d’un wedesign soigné.',
-        },
-      ],
-      link: [
-        {
-          hid: 'canonical',
-          rel: 'canonical',
-          href: 'https://beabot.netlify.app/eco-conception/portfolio',
-        },
-      ],
-    }
-  },
-  created() {
-    // this.$store.commit('page/sethome', false)
-  },
-  methods: {
-    change(valeur) {
-      this.select = valeur
-      this.tout = false
-    },
-  },
+const select = ref('')
+const tout = ref(true)
+
+const change = (valeur) => {
+  select.value = valeur
+  tout.value = false
 }
+
+useHead({
+  title: 'portfolio',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content:
+        'Différentes créations web dont certaines sont éco-conçues et toutes bâties à partir d'un wedesign soigné.',
+    },
+  ],
+  link: [
+    {
+      hid: 'canonical',
+      rel: 'canonical',
+      href: 'https://beabot.netlify.app/eco-conception/portfolio',
+    },
+  ],
+})
 </script>
 
 <style lang="scss" scoped>
