@@ -64,7 +64,13 @@ export default defineNuxtConfig({
   },
 
   // Global CSS
-  css: ['~/assets/css/main.scss'],
+  css: [
+    '@fontsource/work-sans/300.css', // Light
+    '@fontsource/work-sans/500.css', // Normal
+    '@fontsource/work-sans/700.css', // Bold
+    '@fontsource/work-sans/900.css', // Black
+    '~/assets/css/main.scss',
+  ],
 
   // Vite configuration for SCSS
   vite: {
@@ -90,7 +96,6 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxt/image',
     '@nuxtjs/sitemap',
-    '@nuxtjs/google-fonts',
   ],
 
   // Content module configuration
@@ -128,15 +133,8 @@ export default defineNuxtConfig({
     },
   },
 
-  // Google Fonts configuration (self-hosted)
-  googleFonts: {
-    families: {
-      // Remplacer Typekit par Google Fonts auto-hébergées
-      // À définir selon les fonts utilisées
-    },
-    download: true,
-    inject: true,
-  },
+  // Fonts configuration - removed for now
+  // Will use local @fontsource instead
 
   // Nitro configuration for RSS feed
   nitro: {
