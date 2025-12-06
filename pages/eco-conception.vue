@@ -1,35 +1,29 @@
 <template>
   <main>
     <h3 class="text-black h2 text-black">Éco-conception</h3>
-    <nuxt-child />
+    <NuxtPage />
   </main>
 </template>
 
-<script>
-export default {
-  scrollToTop: true,
-
-  head() {
-    return {
-      title: 'éco-conception web',
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content:
-            'Blog de l’éco-conception numérique, produire un site web performant tout en réduisant son empreinte carbone c’est possible.',
-        },
-      ],
-      link: [
-        {
-          hid: 'canonical',
-          rel: 'canonical',
-          href: '/eco-conception/eco-conception',
-        },
-      ],
-    };
-  },
-};
+<script setup>
+useHead({
+  title: 'éco-conception web',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content:
+        'Blog de l'éco-conception numérique, produire un site web performant tout en réduisant son empreinte carbone c'est possible.',
+    },
+  ],
+  link: [
+    {
+      hid: 'canonical',
+      rel: 'canonical',
+      href: '/eco-conception/eco-conception',
+    },
+  ],
+})
 </script>
 <style lang="scss" scoped>
 h3 {

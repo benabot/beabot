@@ -726,7 +726,7 @@ section {
         display: inline-block;
         width: 65%;
         min-height: 66%;
-        background-image: url('~assets/img/oeuf-vert.svg');
+        background-image: url('/img/oeuf-vert.svg');
         background-repeat: no-repeat;
         position: absolute;
         left: -15%;
@@ -740,7 +740,7 @@ section {
         display: inline-block;
         width: 65%;
         min-height: 66%;
-        background-image: url('~assets/img/oeuf-bleu.svg');
+        background-image: url('/img/oeuf-bleu.svg');
         background-repeat: no-repeat;
         position: absolute;
         right: -15%;
@@ -925,10 +925,10 @@ section {
   width: 66%;
   height: auto;
   min-height: 48vh;
-  background: url('~assets/img/forme-flou.svg') no-repeat center;
+  background: url('/img/forme-flou.svg') no-repeat center;
   background-size: 100%;
-  // background: url('~assets/img/forme-flou.svg') no-repeat center,
-  //   url('~assets/img/forme.svg') no-repeat center;
+  // background: url('/img/forme-flou.svg') no-repeat center,
+  //   url('/img/forme.svg') no-repeat center;
   // background-size: 90%, 100%;
   // filter: drop-shadow(14px);
   // filter: blur(14.187px);
@@ -947,7 +947,7 @@ section {
     width: 100%;
     height: 100px;
     background-color: blue;
-    background: url('~assets/img/forme.svg') no-repeat center;
+    background: url('/img/forme.svg') no-repeat center;
     background-size: 100%;
   }
   @keyframes hideshow {
