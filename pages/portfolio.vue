@@ -137,7 +137,7 @@ useHead({
       hid: 'description',
       name: 'description',
       content:
-        'Différentes créations web dont certaines sont éco-conçues et toutes bâties à partir d'un wedesign soigné.',
+        'Différentes créations web dont certaines sont éco-conçues et toutes bâties à partir d\'un wedesign soigné.',
     },
   ],
   link: [
