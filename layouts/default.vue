@@ -209,6 +209,8 @@ onUnmounted(() => {
 })
 </script>
 <style lang="scss">
+@use 'sass:color';
+
 a.nuxt-link-active {
   font-weight: bold;
 }
@@ -347,7 +349,7 @@ a.nuxt-link-active {
     &-3 {
       bottom: 6px;
       left: 10px;
-      background: linear-gradient(lighten($bleu2, 10%), lighten($bleu2, 10%))
+      background: linear-gradient(color.adjust($bleu2, $lightness: 10%), color.adjust($bleu2, $lightness: 10%))
         left bottom / 0 0.1em no-repeat;
     }
     &-4 {
