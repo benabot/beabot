@@ -55,6 +55,19 @@
     # Don't cache service worker
     Cache-Control = "public, max-age=0, must-revalidate"
 
+# CV PDF - Non-indexable
+[[headers]]
+  for = "/cv.pdf"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "private, max-age=3600"
+
+[[headers]]
+  for = "/CV-*.pdf"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "private, max-age=3600"
+
 # Redirects and rewrites
 [[redirects]]
   from = "https://beabot.netlify.com/*"
