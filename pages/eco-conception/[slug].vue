@@ -64,7 +64,7 @@
                 role="button"
                 class=""
                 :href="`#${link.id}`"
-                >{{ link.text }}</a
+                >{{ link.text === 'Footnotes' ? 'Références' : link.text }}</a
               >
             </li>
           </ul>
@@ -438,10 +438,35 @@ section {
 
     ::v-deep .nuxt-content,
     :deep(.prose) {
-      p,
-      ul {
+      p {
         max-width: 66ch;
-        margin-bottom: 0.45rem;
+        margin-bottom: $space-s;
+      }
+
+      ul, ol {
+        max-width: 66ch;
+        margin-bottom: $space-s;
+        padding-left: 1.5em;
+
+        li {
+          margin-bottom: $space-2xs;
+          line-height: 1.6;
+          list-style-position: outside;
+
+          // Ensure bold text in lists doesn't look like headings
+          strong {
+            font-weight: $bold;
+            font-size: inherit; // Same size as parent
+          }
+        }
+      }
+
+      ul {
+        list-style-type: disc;
+      }
+
+      ol {
+        list-style-type: decimal;
       }
       a {
         background: linear-gradient($gris3, $gris3) right bottom / 100% 0.15em
@@ -461,20 +486,21 @@ section {
       }
       h2 {
         line-height: calc(2px + 2ex + 2px);
-        margin-top: 0.65em;
-        margin-bottom: 0.65rem;
+        margin-top: $space-l;      // Beaucoup d'espace AVANT (40px -> 64px)
+        margin-bottom: $space-xs;   // Peu d'espace APRÈS (12px -> 16px)
         font-size: min(max(1.929409988rem, 4.950306412vw), 2.8797164rem);
       }
       h3 {
         font-size: 1.7798rem;
         line-height: calc(2px + 2ex + 2px);
-        margin-bottom: 0.25rem;
-        margin-top: 0.89em;
+        margin-top: $space-m-l;     // Espace moyen-grand AVANT (24px -> 64px)
+        margin-bottom: $space-2xs;  // Très peu d'espace APRÈS (8px -> 10px)
         font-size: min(max(1.192466rem, 4.587334vw), 1.7798rem);
       }
       h4 {
         font-weight: normal;
-        margin-bottom: 0.25rem;
+        margin-top: $space-s;       // Espace standard AVANT (16px -> 24px)
+        margin-bottom: $space-3xs;  // Minimal APRÈS (4px -> 6px)
       }
       blockquote {
         background: $gris6;

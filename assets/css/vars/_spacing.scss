@@ -1,0 +1,101 @@
+// Fluid Space System
+// Inspired by https://utopia.fyi/space/calculator/
+// Using the same golden ratio (1.618) as typography for harmony
+
+@use 'sass:math';
+
+// Base space unit
+$space-base: 1rem; // 16px
+
+// Golden ratio for spacing scale (matches typography)
+$space-ratio: 1.618;
+
+// Viewport widths for fluid scaling
+$space-min-width: 320px;
+$space-max-width: 1240px;
+
+// Function to create fluid space with clamp()
+// Formula: clamp(MIN, MIN + (MAX - MIN) * ((100vw - MIN_WIDTH) / (MAX_WIDTH - MIN_WIDTH)), MAX)
+@function fluid-space($min-size, $max-size) {
+  $min-width-rem: math.div($space-min-width, 16);
+  $max-width-rem: math.div($space-max-width, 16);
+
+  // Calculate the slope
+  $slope: math.div(($max-size - $min-size), ($max-width-rem - $min-width-rem));
+
+  // Calculate the y-intercept
+  $y-intercept: $min-size - ($slope * $min-width-rem);
+
+  @return clamp(#{$min-size}rem, #{$y-intercept}rem + #{$slope * 100}vw, #{$max-size}rem);
+}
+
+// Fluid space scale
+// Each step follows golden ratio for harmonious spacing
+// Format: space-{name}: fluid-space(min-rem, max-rem)
+
+// 3XS: Tiny gaps (e.g., inline elements)
+$space-3xs: fluid-space(0.25, 0.375);    // 4px -> 6px
+
+// 2XS: Very small gaps
+$space-2xs: fluid-space(0.5, 0.625);     // 8px -> 10px
+
+// XS: Small gaps (e.g., between form label and input)
+$space-xs: fluid-space(0.75, 1);         // 12px -> 16px
+
+// S: Default small spacing
+$space-s: fluid-space(1, 1.5);           // 16px -> 24px
+
+// M: Medium spacing (default paragraph/section gap)
+$space-m: fluid-space(1.5, 2.5);         // 24px -> 40px
+
+// L: Large spacing (between major sections)
+$space-l: fluid-space(2.5, 4);           // 40px -> 64px
+
+// XL: Extra large spacing
+$space-xl: fluid-space(4, 6.5);          // 64px -> 104px
+
+// 2XL: Very large spacing
+$space-2xl: fluid-space(6.5, 10.5);      // 104px -> 168px
+
+// 3XL: Huge spacing (major page sections)
+$space-3xl: fluid-space(10.5, 17);       // 168px -> 272px
+
+// Composite spaces (One-up pairs)
+// These combine adjacent sizes for flexibility
+$space-3xs-2xs: fluid-space(0.25, 0.625);   // 4px -> 10px
+$space-2xs-xs: fluid-space(0.5, 1);         // 8px -> 16px
+$space-xs-s: fluid-space(0.75, 1.5);        // 12px -> 24px
+$space-s-m: fluid-space(1, 2.5);            // 16px -> 40px
+$space-m-l: fluid-space(1.5, 4);            // 24px -> 64px
+$space-l-xl: fluid-space(2.5, 6.5);         // 40px -> 104px
+$space-xl-2xl: fluid-space(4, 10.5);        // 64px -> 168px
+$space-2xl-3xl: fluid-space(6.5, 17);       // 104px -> 272px
+
+// Utility classes for spacing
+// These can be used directly in HTML or extended in SCSS
+.space-3xs { margin-bottom: $space-3xs; }
+.space-2xs { margin-bottom: $space-2xs; }
+.space-xs { margin-bottom: $space-xs; }
+.space-s { margin-bottom: $space-s; }
+.space-m { margin-bottom: $space-m; }
+.space-l { margin-bottom: $space-l; }
+.space-xl { margin-bottom: $space-xl; }
+.space-2xl { margin-bottom: $space-2xl; }
+.space-3xl { margin-bottom: $space-3xl; }
+
+// Stack utility - for vertical rhythm in prose
+.stack > * + * {
+  margin-top: $space-s;
+}
+
+.stack-s > * + * {
+  margin-top: $space-s;
+}
+
+.stack-m > * + * {
+  margin-top: $space-m;
+}
+
+.stack-l > * + * {
+  margin-top: $space-l;
+}
