@@ -418,11 +418,20 @@ section {
       z-index: 2;
     }
 
+    ::v-deep .nuxt-content {
+      z-index: 3;
+    }
+
+    :deep(.prose) {
+      z-index: 3;
+    }
+
+    :deep(.prose-container) {
+      z-index: 3;
+    }
+
     ::v-deep .nuxt-content,
     :deep(.prose) {
-      &-container {
-        z-index: 3;
-      }
       p,
       ul {
         max-width: 66ch;
