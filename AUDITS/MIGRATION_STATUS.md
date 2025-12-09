@@ -2,10 +2,10 @@
 
 > **Document de statut pour reprendre facilement la migration après pause**
 
-**Date de sauvegarde** : 9 décembre 2025 - 20h20
+**Date de sauvegarde** : 9 décembre 2025 - 20h30
 **Branche active** : `feat/nuxt3-phase1-deps`
-**Statut** : 🎉 PHASE 1 COMPLÈTE + Design System Fluide Implémenté !
-**Dernière action** : Système d'espacement fluide + Amélioration typographie articles
+**Statut** : 🎉 PHASE 1 COMPLÈTE + Nettoyage terminé !
+**Dernière action** : Suppression Vuex store + fichiers backup + code debug
 
 ---
 
@@ -15,13 +15,15 @@
 ```bash
 Branche active : feat/nuxt3-phase1-deps
 Base : master
-Commits d'avance : 28 commits
-Statut : Prêt à push (design system fluide implémenté)
+Commits d'avance : 30 commits
+Statut : ✅ Clean & Ready (nettoyage complet terminé)
 ```
 
-### Résumé des 28 commits de migration (5 sessions)
+### Résumé des 30 commits de migration (5 sessions)
 ```
 Session 5 (9 déc 2025 après-midi + soir):
+879003f chore: Clean up unused code and files
+149830f docs: Update MIGRATION_STATUS with fluid design system
 3c63045 fix(scss): Correct fluid-space() function unit handling
 c4d4773 feat(design): Implement fluid spacing system and improve article typography
 9c6c437 fix(pages): Fix tag filters and table of contents display
@@ -134,6 +136,19 @@ Tous les changements ont été committés et sont prêts à être pushés.
   - Moins d'espace APRÈS (cohésion avec contenu)
 - [x] **Listes dans articles** : Styles corrigés avec espacement fluide ✅
 - [x] **Table des matières** : "Footnotes" → "Références" ✅
+
+### Nettoyage Code (100%) ✅ TERMINÉ !
+- [x] **Store Vuex supprimé** : Plus aucune dépendance Vuex ✅
+  - ❌ store/page.js (inutilisé)
+  - ❌ store/tags.js (remplacé par composables/useTags.ts)
+  - ❌ store/README.md
+- [x] **Fichiers backup Nuxt 2 supprimés** ✅
+  - ❌ nuxt.config.js.nuxt2-backup
+  - ❌ package.json.nuxt2-backup
+- [x] **Code debug nettoyé** ✅
+  - Suppression console.log dans [slug].vue
+  - Suppression hook created() vide dans index.vue
+- ✅ **Codebase 100% clean** : Aucune référence à Vuex ou Nuxt 2
 
 ---
 
