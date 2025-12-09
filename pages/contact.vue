@@ -34,53 +34,65 @@
   </section>
 </template>
 
-<script>
+<script setup>
+import { ref, reactive } from 'vue'
+
+// Helper function to encode form data
 function encode(data) {
   return Object.keys(data)
     .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]))
     .join('&')
 }
 
-export default {
-  head: { title: 'Contact' },
-  data() {
-    return {
-      loading: false,
-      sent: false,
-      error: null,
-      form: { name: '', email: '', message: '', botField: '' }
+// Head metadata
+useHead({ title: 'Contact' })
+
+// Reactive state
+const loading = ref(false)
+const sent = ref(false)
+const error = ref(null)
+const form = reactive({
+  name: '',
+  email: '',
+  message: '',
+  botField: ''
+})
+
+// Submit handler
+async function onSubmit() {
+  error.value = null
+  if (loading.value) return
+  loading.value = true
+
+  try {
+    const body = encode({
+      'form-name': 'contact',
+      name: form.name,
+      email: form.email,
+      message: form.message,
+      'bot-field': form.botField
+    })
+
+    const res = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body
+    })
+
+    if (res.ok) {
+      sent.value = true
+      // Reset form
+      form.name = ''
+      form.email = ''
+      form.message = ''
+      form.botField = ''
+    } else {
+      error.value = 'Erreur lors de l\'envoi. Réessayez plus tard.'
     }
-  },
-  methods: {
-    async onSubmit() {
-      this.error = null
-      if (this.loading) return
-      this.loading = true
-      try {
-        const body = encode({
-          'form-name': 'contact',
-          name: this.form.name,
-          email: this.form.email,
-          message: this.form.message,
-          'bot-field': this.form.botField
-        })
-        const res = await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body
-        })
-        if (res.ok) {
-          this.sent = true
-          this.form = { name: '', email: '', message: '', botField: '' }
-        } else {
-          this.error = 'Erreur lors de l\'envoi. Réessayez plus tard.'
-        }
-      } catch (e) {
-        this.error = 'Réseau indisponible. Vérifiez votre connexion.'
-      } finally {
-        this.loading = false
-      }
-    }
+  } catch (e) {
+    error.value = 'Réseau indisponible. Vérifiez votre connexion.'
+  } finally {
+    loading.value = false
   }
 }
 </script>
@@ -96,7 +108,7 @@ button {
   background-color: #0DC763;
   color: white;
   border: 1px solid transparent;
-  border-radius: 25px; 
+  border-radius: 25px;
   padding: 0.6rem 1.2rem;
   cursor: pointer;
   transition: all 0.2s ease;
