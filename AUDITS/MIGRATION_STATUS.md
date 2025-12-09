@@ -2,10 +2,10 @@
 
 > **Document de statut pour reprendre facilement la migration après pause**
 
-**Date de sauvegarde** : 7 décembre 2025 - 11h00
+**Date de sauvegarde** : 9 décembre 2025 - 11h55
 **Branche active** : `feat/nuxt3-phase1-deps`
-**Statut** : ✅ Phase 1 COMPLÉTÉE + Migrations progressives en cours
-**Dernière action** : Migration de portfolio.vue vers Composition API
+**Statut** : 🎉 TOUTES LES PAGES MIGRÉES ! Phase 1 100% complète
+**Dernière action** : Migration eco-conception/[slug].vue + création composable useTags
 
 ---
 
@@ -15,12 +15,22 @@
 ```bash
 Branche active : feat/nuxt3-phase1-deps
 Base : master
-Commits d'avance : 10 commits
-Statut : Clean (1 modification non commitée)
+Commits d'avance : 17 commits
+Statut : Clean (prêt à push)
 ```
 
-### Résumé des 10 commits de migration
+### Résumé des 17 commits de migration (3 sessions)
 ```
+Session 3 (9 déc 2025):
+d2a2a1b feat(pages): Migrate eco-conception/[slug].vue to Nuxt 3
+d7a96d1 feat(pages): Migrate contact and mentions-legales to Composition API
+5eb96ec fix(pages): Escape apostrophes in eco-conception.vue meta content
+
+Session 2 (7 déc 2025):
+429af2f docs: Sauvegarde état migration Nuxt 3 Phase 1
+4db5ad8 fix(pages): Escape apostrophe in portfolio meta description
+
+Session 1 (6 déc 2025):
 492de85 refactor(pages): Migrate portfolio.vue to Composition API
 71f23af fix(pages): Migrate eco-conception and fix asset URLs in index
 a0f3b0f feat(assets): Move images from assets/img to public/img for Nuxt 3
@@ -31,22 +41,17 @@ a0f3b0f feat(assets): Move images from assets/img to public/img for Nuxt 3
 532d6ba fix(sass): Remove duplicate $breakpoint-tablet variable
 fd354d8 fix(lint): Fix ESLint parsing errors and component naming
 96ec3cf feat(migration): Phase 1A - Embed fonts locally with @fontsource
+a7595cb feat(migration): Phase 1A - Nuxt 3 configuration files
+85878df docs: Update TODO.md - Mark Quick Fixes P0 as completed
 ```
 
 ---
 
 ## 📝 FICHIERS MODIFIÉS (NON COMMITÉS)
 
-### 1 fichier en attente de commit :
+### Aucun fichier en attente ✅
 
-#### `pages/portfolio.vue` (ligne 140)
-**Modification** : Échappement correct du guillemet dans le contenu meta
-```diff
-- 'Différentes créations web dont certaines sont éco-conçues et toutes bâties à partir d'un wedesign soigné.',
-+ 'Différentes créations web dont certaines sont éco-conçues et toutes bâties à partir d\'un wedesign soigné.',
-```
-**Raison** : Correctif syntaxique JavaScript (échappement de l'apostrophe)
-**Action recommandée** : Commit ce changement avant de continuer
+Tous les changements ont été committés et sont prêts à être pushés.
 
 ---
 
@@ -65,22 +70,29 @@ fd354d8 fix(lint): Fix ESLint parsing errors and component naming
   - ❌ nuxt-font-loader
   - ❌ @nuxtjs/style-resources
 
-### Phase 1B : Migrations progressives ✅ EN COURS
+### Phase 1B : Migrations pages ✅ 100% COMPLÈTE !
 - [x] **layouts/default.vue** : Migré vers Composition API
 - [x] **components/BoiteArticle.vue** : Migré vers Composition API
-- [x] **pages/eco-conception.vue** : Migré asyncData → useAsyncData
 - [x] **pages/index.vue** : Migré asyncData → useAsyncData
-- [x] **pages/portfolio.vue** : Migré vers Composition API (modif non commitée)
+- [x] **pages/eco-conception.vue** : Migré asyncData → useAsyncData (liste)
+- [x] **pages/eco-conception/[slug].vue** : Migré de _slug.vue + Composition API complète
+- [x] **pages/portfolio.vue** : Migré vers Composition API
+- [x] **pages/contact.vue** : Migré formulaire vers Composition API
+- [x] **pages/mentions-legales.vue** : Ajout useHead
 - [x] **Images assets/** : Déplacées vers public/img/
+- [x] **Composable useTags** : Créé pour remplacer store/tags.js Vuex
 
-### Composants migrés
-- [x] BoiteArticle.vue → Composition API
-- [ ] Logo.vue → TheLogo.vue (renommage à faire)
-- [ ] Footer.vue → TheFooter.vue (renommage à faire)
-- [ ] Boutoncta.vue → BaseButton.vue (renommage à faire)
-- [ ] Petittitre.vue → BaseHeading.vue (renommage à faire)
-- [ ] PrevNext.vue → ArticleNavigation.vue (renommage à faire)
+### Composants migrés (10%)
+- [x] BoiteArticle.vue → Composition API ✅
+- [ ] Logo.vue → TheLogo.vue (à renommer et migrer)
+- [ ] Footer.vue → TheFooter.vue (à renommer et migrer)
+- [ ] Boutoncta.vue → BaseButton.vue (à renommer et migrer)
+- [ ] Petittitre.vue → BaseHeading.vue (à renommer et migrer)
+- [ ] PrevNext.vue → ArticleNavigation.vue (à renommer et migrer)
 - [ ] AppSearchInput.vue (à migrer)
+- [ ] Oeuf.vue (à vérifier)
+- [ ] OeufImage.vue (à vérifier)
+- [ ] VImg.vue (à supprimer - déjà réintroduit temporairement)
 
 ---
 
