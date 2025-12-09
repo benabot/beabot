@@ -150,6 +150,18 @@ Tous les changements ont été committés et sont prêts à être pushés.
   - Suppression hook created() vide dans index.vue
 - ✅ **Codebase 100% clean** : Aucune référence à Vuex ou Nuxt 2
 
+### Tests & Validation (100%) ✅ NOUVEAU !
+- [x] **Script de validation pré-build** : Nouveau fichier `scripts/pre-build-check.js` ✅
+  - 45 checks de validation (configuration, pages, composants, contenu)
+  - Vérifie présence Nuxt 3 et absence modules obsolètes
+  - Valide structure fichiers et conventions de nommage
+  - Auto-exécution avant `yarn build` et `yarn generate`
+- [x] **Intégration package.json** : Scripts de test configurés ✅
+  - `yarn test` : Lance la validation complète
+  - `prebuild` : Auto-test avant build
+  - `pregenerate` : Auto-test avant génération
+- ✅ **Validation complète** : 45/45 checks passed!
+
 ---
 
 ## 📦 DÉPENDANCES INSTALLÉES
