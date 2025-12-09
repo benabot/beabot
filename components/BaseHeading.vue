@@ -20,48 +20,34 @@
     <h3 class="h3 text-black">{{ titre }}</h3>
   </div>
 </template>
-<script>
-export default {
-  name: 'Petittitre',
-  props: {
-    // numero: {
-    //   type: String,
-    //   default: null, // green, green--outline, white
-    //   required: false,
-    // },
-
-    titre: {
-      type: String,
-      default: 'titre long',
-      required: false,
-    },
-    stitre: {
-      type: String,
-      default: null,
-      required: false,
-    },
-    couleur: {
-      type: String,
-      default: '#04d94f',
-      required: false,
-    },
-    gris: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    tags: {
-      type: Array,
-      default: null,
-      required: false,
-    },
+<script setup>
+defineProps({
+  titre: {
+    type: String,
+    default: 'titre long',
+    required: false,
   },
-  //   data() {
-  //     return {
-  //       isgris: this.gris,
-  //     }
-  //   },
-};
+  stitre: {
+    type: String,
+    default: null,
+    required: false,
+  },
+  couleur: {
+    type: String,
+    default: '#04d94f',
+    required: false,
+  },
+  gris: {
+    type: Boolean,
+    default: false,
+    required: false,
+  },
+  tags: {
+    type: Array,
+    default: null,
+    required: false,
+  },
+})
 </script>
 <style lang="scss" scoped>
 .h3,

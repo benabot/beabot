@@ -133,7 +133,7 @@
       <a href="#footer" :class="couleurBas">Contact</a>
     </nav>
     <slot :class="{ 'main-flou': showMobileMenu }" />
-    <Footer />
+    <TheFooter />
   </div>
 </template>
 <script setup>

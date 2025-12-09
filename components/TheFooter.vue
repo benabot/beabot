@@ -47,15 +47,10 @@
     </div>
   </footer>
 </template>
-<script>
-export default {
-  name: 'Footer',
-  data() {
-    return {
-      annee: new Date().getFullYear(), // 2020
-    }
-  },
-}
+<script setup>
+import { ref } from 'vue'
+
+const annee = ref(new Date().getFullYear())
 </script>
 <style lang="scss" scoped>
 $width: 100vw;

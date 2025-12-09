@@ -129,7 +129,7 @@
       </div>
       <div class="boite-para">
         <div class="boite-para__para">
-          <!-- <Petittitre gris numero="1" titre="Durabilité" /> -->
+          <!-- <BaseHeading gris numero="1" titre="Durabilité" /> -->
           <div class="pt-titre h3 text-black chiffre-onum text-gris2">
             1<span class="text-vert">.</span>
           </div>
@@ -142,7 +142,7 @@
           </p>
         </div>
         <div class="boite-para__para mt-2">
-          <!-- <Petittitre gris numero="2" titre="Efficience" /> -->
+          <!-- <BaseHeading gris numero="2" titre="Efficience" /> -->
           <div class="pt-titre h3 text-black chiffre-onum text-gris2">
             2<span class="text-vert">.</span>
           </div>
@@ -182,7 +182,7 @@
       />
       <div class="container-4__boite-para">
         <div class="container-4__boite-para--para">
-          <!-- <Petittitre couleur="white" numero="3" titre="Sobriété" /> -->
+          <!-- <BaseHeading couleur="white" numero="3" titre="Sobriété" /> -->
           <div class="pt-titre h3 text-black chiffre-onum text-gris5">
             3<span class="text-blanc">.</span>
           </div>
@@ -197,7 +197,7 @@
           </p>
         </div>
         <div class="container-4__boite-para--para">
-          <!-- <Petittitre couleur="white" numero="4" titre="Transversalité" /> -->
+          <!-- <BaseHeading couleur="white" numero="4" titre="Transversalité" /> -->
           <div class="pt-titre h3 text-black chiffre-onum text-gris5">
             4<span class="text-blanc">.</span>
           </div>
@@ -297,7 +297,7 @@
       </h3>
       <div class="container-blog__box">
         <div class="boite-para__para a">
-          <Petittitre
+          <BaseHeading
             gris
             titre="éco-conception d'un thème WordPress"
             stitre="Éco-conception"
@@ -306,7 +306,7 @@
             Eco-conception et WordPress, exemple et cas concret avec un thème
             WordPress éco-conçu pour le site de la petite boucle.
           </p>
-          <Boutoncta to="/eco-conception/theme-wordpress-eco-conception" />
+          <BaseButton to="/eco-conception/theme-wordpress-eco-conception" />
         </div>
         <div class="oeuf b">
           <NuxtLink to="/eco-conception" aria-label="voir le blog"
@@ -325,7 +325,7 @@
           />
         </div>
         <div class="boite-para__para c">
-          <Petittitre
+          <BaseHeading
             gris
             titre="Qu’est-ce que l’éco-conception web?"
             stitre="Éco-conception"
@@ -335,7 +335,7 @@
             sujet d’une vague de greenwashing. Par delà les malentendus, tentons
             de clarifier le sujet.
           </p>
-          <Boutoncta to="/eco-conception/L-eco-conception-web" />
+          <BaseButton to="/eco-conception/L-eco-conception-web" />
         </div>
       </div>
     </section>
@@ -348,12 +348,12 @@
       </h3>
       <div class="container-blog__box">
         <div class="boite-para__para a">
-          <Petittitre gris couleur="#2561d9" titre="AMC2" stitre="dev" />
+          <BaseHeading gris couleur="#2561d9" titre="AMC2" stitre="dev" />
           <p class="text-gris2">
             Vitrine et catalogue d'entreprise. Réalisé avec NuxtJS et WordPress
             (headless CMS).
           </p>
-          <Boutoncta to="/portfolio#site1" bleu>découvrir</Boutoncta>
+          <BaseButton to="/portfolio#site1" bleu>découvrir</BaseButton>
         </div>
         <div class="oeuf b">
           <NuxtLink to="/portfolio" aria-label="voir le portfolio"
@@ -372,7 +372,7 @@
           />
         </div>
         <div class="boite-para__para c">
-          <Petittitre
+          <BaseHeading
             gris
             couleur="#2561d9"
             titre="Guide RSE Banque Populaire"
@@ -382,7 +382,7 @@
             Carte interactive pour le guide RSE de la Banque populaire. Réalisée
             avec VueJs.
           </p>
-          <Boutoncta to="/portfolio#site2" bleu>présentation</Boutoncta>
+          <BaseButton to="/portfolio#site2" bleu>présentation</BaseButton>
         </div>
       </div>
     </section>
