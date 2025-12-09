@@ -2,10 +2,10 @@
 
 > **Document de statut pour reprendre facilement la migration après pause**
 
-**Date de sauvegarde** : 9 décembre 2025 - 11h55
+**Date de sauvegarde** : 9 décembre 2025 - 15h20
 **Branche active** : `feat/nuxt3-phase1-deps`
-**Statut** : 🎉 TOUTES LES PAGES MIGRÉES ! Phase 1 100% complète
-**Dernière action** : Migration eco-conception/[slug].vue + création composable useTags
+**Statut** : 🎉 PHASE 1 COMPLÈTE À 100% ! Toutes les pages ET composants migrés !
+**Dernière action** : Migration complète des 8 composants restants vers Composition API
 
 ---
 
@@ -15,13 +15,17 @@
 ```bash
 Branche active : feat/nuxt3-phase1-deps
 Base : master
-Commits d'avance : 17 commits
+Commits d'avance : 20 commits
 Statut : Clean (prêt à push)
 ```
 
-### Résumé des 17 commits de migration (3 sessions)
+### Résumé des 20 commits de migration (4 sessions)
 ```
-Session 3 (9 déc 2025):
+Session 4 (9 déc 2025 après-midi):
+e9cd141 refactor(components): Migrate all components to Composition API
+61d182b docs: Update migration status - All pages migrated
+
+Session 3 (9 déc 2025 matin):
 d2a2a1b feat(pages): Migrate eco-conception/[slug].vue to Nuxt 3
 d7a96d1 feat(pages): Migrate contact and mentions-legales to Composition API
 5eb96ec fix(pages): Escape apostrophes in eco-conception.vue meta content
@@ -82,17 +86,17 @@ Tous les changements ont été committés et sont prêts à être pushés.
 - [x] **Images assets/** : Déplacées vers public/img/
 - [x] **Composable useTags** : Créé pour remplacer store/tags.js Vuex
 
-### Composants migrés (10%)
+### Composants migrés (100%) ✅ TERMINÉ !
 - [x] BoiteArticle.vue → Composition API ✅
-- [ ] Logo.vue → TheLogo.vue (à renommer et migrer)
-- [ ] Footer.vue → TheFooter.vue (à renommer et migrer)
-- [ ] Boutoncta.vue → BaseButton.vue (à renommer et migrer)
-- [ ] Petittitre.vue → BaseHeading.vue (à renommer et migrer)
-- [ ] PrevNext.vue → ArticleNavigation.vue (à renommer et migrer)
-- [ ] AppSearchInput.vue (à migrer)
-- [ ] Oeuf.vue (à vérifier)
-- [ ] OeufImage.vue (à vérifier)
-- [ ] VImg.vue (à supprimer - déjà réintroduit temporairement)
+- [x] TheLogo.vue → Existe déjà (migré)
+- [x] Footer.vue → TheFooter.vue ✅
+- [x] Boutoncta.vue → BaseButton.vue ✅
+- [x] Petittitre.vue → BaseHeading.vue ✅
+- [x] PrevNext.vue → ArticleNavigation.vue ✅
+- [x] AppSearchInput.vue → Composition API ✅
+- [x] Oeuf.vue → Composition API ✅
+- [x] OeufImage.vue → Composition API ✅
+- [ ] VImg.vue (à supprimer dans Phase 2)
 
 ---
 
