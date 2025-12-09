@@ -3,8 +3,8 @@
     <section>
       <h1 class="h3 text-fin">divers aspects de l'éco-conception web</h1>
       <ul class="selector text-gris3">
-        <li :class="{ 'text-vert': name === 'Vue' }" @click="updateTag('Vue')">
-          JS
+        <li :class="{ 'text-vert': name === 'WebDesign' }" @click="updateTag('WebDesign')">
+          WebDesign
         </li>
         /
         <li
@@ -15,10 +15,10 @@
         </li>
         /
         <li
-          :class="{ 'text-vert': name === 'WebDesign' }"
-          @click="updateTag('WebDesign')"
+          :class="{ 'text-vert': name === 'Eco-conception' }"
+          @click="updateTag('Eco-conception')"
         >
-          WebDesign
+          Éco-conception
         </li>
         /
         <li

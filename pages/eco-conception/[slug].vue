@@ -49,7 +49,7 @@
           <hr />
           <ul class="text-fin petit-text2">
             <li
-              v-for="link of article?.toc"
+              v-for="link of article?.body?.toc?.links"
               :key="link.id"
               :class="{
                 'text-normal ml-1': link.depth === 2,
@@ -130,6 +130,12 @@ const tagsStore = useTags()
 const { data: article } = await useAsyncData(`article-${route.params.slug}`, () =>
   queryContent('articles', route.params.slug).findOne()
 )
+
+// Log article structure for debugging (to check TOC structure)
+if (import.meta.client && article.value) {
+  console.log('Article data:', article.value)
+  console.log('TOC:', article.value.body?.toc)
+}
 
 // Fetch prev/next articles
 const { data: surroundArticles } = await useAsyncData(`surround-${route.params.slug}`, () =>
