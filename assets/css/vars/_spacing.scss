@@ -17,10 +17,11 @@ $space-max-width: 1240px;
 // Function to create fluid space with clamp()
 // Formula: clamp(MIN, MIN + (MAX - MIN) * ((100vw - MIN_WIDTH) / (MAX_WIDTH - MIN_WIDTH)), MAX)
 @function fluid-space($min-size, $max-size) {
-  $min-width-rem: math.div($space-min-width, 16);
-  $max-width-rem: math.div($space-max-width, 16);
+  // Convert px to rem (unitless for calculations)
+  $min-width-rem: math.div($space-min-width, 16px);
+  $max-width-rem: math.div($space-max-width, 16px);
 
-  // Calculate the slope
+  // Calculate the slope (unitless)
   $slope: math.div(($max-size - $min-size), ($max-width-rem - $min-width-rem));
 
   // Calculate the y-intercept
