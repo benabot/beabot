@@ -2,10 +2,10 @@
 
 > **Document de statut pour reprendre facilement la migration après pause**
 
-**Date de sauvegarde** : 9 décembre 2025 - 16h15
+**Date de sauvegarde** : 9 décembre 2025 - 20h20
 **Branche active** : `feat/nuxt3-phase1-deps`
-**Statut** : 🎉 PHASE 1 COMPLÈTE À 100% + SCSS modernisé + Navigation OK !
-**Dernière action** : Correction URLs articles (Nuxt Content _path) + Navigation links fixés
+**Statut** : 🎉 PHASE 1 COMPLÈTE + Design System Fluide Implémenté !
+**Dernière action** : Système d'espacement fluide + Amélioration typographie articles
 
 ---
 
@@ -15,16 +15,18 @@
 ```bash
 Branche active : feat/nuxt3-phase1-deps
 Base : master
-Commits d'avance : 25+ commits
-Statut : Modifications en cours (URLs articles + navigation)
+Commits d'avance : 28 commits
+Statut : Prêt à push (design system fluide implémenté)
 ```
 
-### Résumé des 25+ commits de migration (5 sessions)
+### Résumé des 28 commits de migration (5 sessions)
 ```
-Session 5 (9 déc 2025 après-midi suite):
-[En cours] fix(pages): Fix article URLs using Nuxt Content _path
-[En cours] fix(layouts): Remove deprecated NuxtLink exact and no-prefetch props
-[En cours] refactor(pages): Migrate eco-conception/index.vue to Composition API
+Session 5 (9 déc 2025 après-midi + soir):
+3c63045 fix(scss): Correct fluid-space() function unit handling
+c4d4773 feat(design): Implement fluid spacing system and improve article typography
+9c6c437 fix(pages): Fix tag filters and table of contents display
+dc52168 fix(pages): Fix article URLs and complete eco-conception migration
+c94cb71 fix: Migrate eco-conception/index to Composition API and fix navigation
 
 Session 4 (9 déc 2025 après-midi):
 7847f49 refactor(scss): Modernize SCSS to Dart Sass 3.0 modules
@@ -120,6 +122,18 @@ Tous les changements ont été committés et sont prêts à être pushés.
 - [x] **URLs articles "undefined"** : Fix fonction `articleLink()` pour utiliser `_path` Nuxt Content v2 ✅
 - [x] **Navigation links non-fonctionnels** : Suppression props `exact` et `no-prefetch` (Nuxt 3) ✅
 - [x] **Erreur 500 /eco-conception** : Migration page vers Composition API + useTags ✅
+
+### Design System Fluide (100%) ✅ NOUVEAU !
+- [x] **Système d'espacement fluide** : Nouveau fichier `_spacing.scss` avec clamp() ✅
+  - Échelle complète : 3xs → 3xl (4px→6px jusqu'à 168px→272px)
+  - Paires composites pour flexibilité (s-m, m-l, etc.)
+  - Basé sur golden ratio (1.618) pour harmonie avec typographie
+  - Responsive : 320px (mobile) → 1240px (desktop)
+- [x] **Typographie articles améliorée** : Marges h2/h3/h4 optimisées ✅
+  - Plus d'espace AVANT les titres (séparation sections)
+  - Moins d'espace APRÈS (cohésion avec contenu)
+- [x] **Listes dans articles** : Styles corrigés avec espacement fluide ✅
+- [x] **Table des matières** : "Footnotes" → "Références" ✅
 
 ---
 
