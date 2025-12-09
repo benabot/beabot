@@ -8,8 +8,8 @@
   # Output directory (Nuxt 3 default)
   publish = ".output/public"
 
-  # Node.js version
-  environment = { NODE_VERSION = "18" }
+  # Environment variables
+  environment = { NODE_VERSION = "18", NUXT_PUBLIC_SITE_URL = "https://beabot.netlify.app" }
 
 # Build optimizations
 [build.processing]

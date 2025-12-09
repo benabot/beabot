@@ -134,7 +134,7 @@ const { data: article } = await useAsyncData(`article-${route.params.slug}`, () 
 // Fetch prev/next articles
 const { data: surroundArticles } = await useAsyncData(`surround-${route.params.slug}`, () =>
   queryContent('articles')
-    .only(['title', 'slug', '_path'])
+    .only(['title', '_path'])
     .sort({ createdAt: 1 })
     .findSurround(route.path)
 )
@@ -418,7 +418,7 @@ section {
       z-index: 2;
     }
 
-    ::v-deep .nuxt-content {
+    :deep(.nuxt-content) {
       z-index: 3;
     }
 
@@ -430,7 +430,7 @@ section {
       z-index: 3;
     }
 
-    ::v-deep .nuxt-content,
+    :deep(.nuxt-content),
     :deep(.prose) {
       p {
         max-width: 66ch;
@@ -541,7 +541,7 @@ section {
   }
 }
 .icon.icon-link {
-  background-image: url('~assets/img/icon-hashtag.svg');
+  background-image: url('/img/icon-hashtag.svg');
   display: inline-block;
   width: 20px;
   height: 20px;
