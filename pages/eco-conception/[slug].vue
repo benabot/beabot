@@ -131,12 +131,6 @@ const { data: article } = await useAsyncData(`article-${route.params.slug}`, () 
   queryContent('articles', route.params.slug).findOne()
 )
 
-// Log article structure for debugging (to check TOC structure)
-if (import.meta.client && article.value) {
-  console.log('Article data:', article.value)
-  console.log('TOC:', article.value.body?.toc)
-}
-
 // Fetch prev/next articles
 const { data: surroundArticles } = await useAsyncData(`surround-${route.params.slug}`, () =>
   queryContent('articles')

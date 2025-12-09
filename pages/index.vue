@@ -421,9 +421,6 @@ export default {
       // ],
     }
   },
-  created() {
-    // this.$store.commit('page/sethome', true)
-  },
 }
 </script>
 
