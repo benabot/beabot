@@ -95,7 +95,7 @@ import { computed } from 'vue'
 // Fetch articles with Nuxt Content v2
 const { data: articles } = await useAsyncData('eco-articles', () =>
   queryContent('articles')
-    .only(['title', 'description', 'img', 'slug', 'tag', '_path'])
+    .only(['title', 'description', 'img', 'tag', '_path'])
     .sort({ createdAt: -1 })
     .find()
 )
@@ -114,10 +114,12 @@ const articlesFilters = computed(() => {
 
 // Generate article link
 function articleLink(a) {
-  // Prefer @nuxt/content computed path if available
-  const p = a && a._path ? a._path : `/articles/${a.slug}`
+  // Nuxt Content v2 generates _path automatically from file location
+  // content/articles/foo.md → _path: '/articles/foo'
+  if (!a || !a._path) return '/eco-conception'
+
   // Map content directory to the public route namespace
-  return p.replace(/^\/articles\//, '/eco-conception/')
+  return a._path.replace(/^\/articles\//, '/eco-conception/')
 }
 
 // Update tag filter

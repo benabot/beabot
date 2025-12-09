@@ -2,10 +2,10 @@
 
 > **Document de statut pour reprendre facilement la migration après pause**
 
-**Date de sauvegarde** : 9 décembre 2025 - 15h42
+**Date de sauvegarde** : 9 décembre 2025 - 16h15
 **Branche active** : `feat/nuxt3-phase1-deps`
-**Statut** : 🎉 PHASE 1 COMPLÈTE À 100% + SCSS modernisé ! Aucun warning !
-**Dernière action** : Correction de toutes les dépréciations SCSS (Dart Sass 3.0 ready)
+**Statut** : 🎉 PHASE 1 COMPLÈTE À 100% + SCSS modernisé + Navigation OK !
+**Dernière action** : Correction URLs articles (Nuxt Content _path) + Navigation links fixés
 
 ---
 
@@ -15,12 +15,17 @@
 ```bash
 Branche active : feat/nuxt3-phase1-deps
 Base : master
-Commits d'avance : 23 commits
-Statut : Clean (prêt à push)
+Commits d'avance : 25+ commits
+Statut : Modifications en cours (URLs articles + navigation)
 ```
 
-### Résumé des 23 commits de migration (4 sessions)
+### Résumé des 25+ commits de migration (5 sessions)
 ```
+Session 5 (9 déc 2025 après-midi suite):
+[En cours] fix(pages): Fix article URLs using Nuxt Content _path
+[En cours] fix(layouts): Remove deprecated NuxtLink exact and no-prefetch props
+[En cours] refactor(pages): Migrate eco-conception/index.vue to Composition API
+
 Session 4 (9 déc 2025 après-midi):
 7847f49 refactor(scss): Modernize SCSS to Dart Sass 3.0 modules
 40e9961 fix(pages): Correct :deep() SCSS syntax in [slug].vue
@@ -78,10 +83,10 @@ Tous les changements ont été committés et sont prêts à être pushés.
   - ❌ @nuxtjs/style-resources
 
 ### Phase 1B : Migrations pages ✅ 100% COMPLÈTE !
-- [x] **layouts/default.vue** : Migré vers Composition API
+- [x] **layouts/default.vue** : Migré vers Composition API + Navigation links fixés
 - [x] **components/BoiteArticle.vue** : Migré vers Composition API
 - [x] **pages/index.vue** : Migré asyncData → useAsyncData
-- [x] **pages/eco-conception.vue** : Migré asyncData → useAsyncData (liste)
+- [x] **pages/eco-conception/index.vue** : Migré asyncData → useAsyncData + useTags composable
 - [x] **pages/eco-conception/[slug].vue** : Migré de _slug.vue + Composition API complète
 - [x] **pages/portfolio.vue** : Migré vers Composition API
 - [x] **pages/contact.vue** : Migré formulaire vers Composition API
@@ -111,11 +116,16 @@ Tous les changements ont été committés et sont prêts à être pushés.
 - [x] pages/eco-conception/[slug].vue → Syntaxe `:deep()` corrigée ✅
 - ✅ **Aucun warning SCSS** : 100% compatible Dart Sass 3.0 !
 
+### Corrections runtime (100%) ✅ TERMINÉ !
+- [x] **URLs articles "undefined"** : Fix fonction `articleLink()` pour utiliser `_path` Nuxt Content v2 ✅
+- [x] **Navigation links non-fonctionnels** : Suppression props `exact` et `no-prefetch` (Nuxt 3) ✅
+- [x] **Erreur 500 /eco-conception** : Migration page vers Composition API + useTags ✅
+
 ---
 
 ## 📦 DÉPENDANCES INSTALLÉES
 
-### Stack Nuxt 3 actuelle
+### Stack Nuxt 3 actuelle (✅ Aucun module obsolète !)
 ```json
 {
   "nuxt": "^3.14.1592",
@@ -127,6 +137,12 @@ Tous les changements ont été committés et sont prêts à être pushés.
   "@fontsource/work-sans": "^5.1.0"
 }
 ```
+
+**Note** : Tous les modules obsolètes listés dans AUDIT_BEABOT.md ont été supprimés :
+- ❌ nuxt-precompress (supprimé - Netlify compression native)
+- ❌ nuxt-purgecss (supprimé - Vite gère le CSS)
+- ❌ @ax2/lozad-module (supprimé - @nuxt/image)
+- ❌ @nuxtjs/axios (supprimé - $fetch natif Nuxt 3)
 
 ### DevDependencies
 ```json
@@ -146,14 +162,14 @@ Tous les changements ont été committés et sont prêts à être pushés.
 
 ## 🔴 PROBLÈMES / BLOCAGES RENCONTRÉS
 
-### Aucun blocage critique identifié ✅
+### Aucun blocage critique ✅
 
-**Statut global** : La migration se passe bien, aucune erreur bloquante
+**Statut global** : La migration est COMPLÈTE ! Toutes les erreurs runtime ont été corrigées.
 
-### Avertissements mineurs
-1. **Renommage des composants** : Pas encore fait (Logo, Footer, etc.)
-2. **Plugin vimg.js** : Réintroduit temporairement pour compatibilité
-3. **VImg.vue** : Réintroduit temporairement (à supprimer à terme)
+### Problèmes résolus (Session 5)
+1. ✅ **URLs articles "undefined"** : Le frontmatter Markdown ne contient pas de champ `slug`, seulement `title`, `description`, `temps`, `tag`. Fix : utiliser uniquement `_path` généré par Nuxt Content v2.
+2. ✅ **Navigation non-fonctionnelle** : Props `exact` et `no-prefetch` obsolètes dans Nuxt 3. Fix : suppression complète.
+3. ✅ **Erreur 500 /eco-conception** : Page utilisait `$store` (Vuex) avec Options API. Fix : migration complète vers Composition API + composable `useTags()`.
 
 ---
 
