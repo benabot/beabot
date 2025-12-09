@@ -2,10 +2,10 @@
 
 > **Document de statut pour reprendre facilement la migration après pause**
 
-**Date de sauvegarde** : 9 décembre 2025 - 15h20
+**Date de sauvegarde** : 9 décembre 2025 - 15h42
 **Branche active** : `feat/nuxt3-phase1-deps`
-**Statut** : 🎉 PHASE 1 COMPLÈTE À 100% ! Toutes les pages ET composants migrés !
-**Dernière action** : Migration complète des 8 composants restants vers Composition API
+**Statut** : 🎉 PHASE 1 COMPLÈTE À 100% + SCSS modernisé ! Aucun warning !
+**Dernière action** : Correction de toutes les dépréciations SCSS (Dart Sass 3.0 ready)
 
 ---
 
@@ -15,13 +15,16 @@
 ```bash
 Branche active : feat/nuxt3-phase1-deps
 Base : master
-Commits d'avance : 20 commits
+Commits d'avance : 23 commits
 Statut : Clean (prêt à push)
 ```
 
-### Résumé des 20 commits de migration (4 sessions)
+### Résumé des 23 commits de migration (4 sessions)
 ```
 Session 4 (9 déc 2025 après-midi):
+7847f49 refactor(scss): Modernize SCSS to Dart Sass 3.0 modules
+40e9961 fix(pages): Correct :deep() SCSS syntax in [slug].vue
+bcf0528 docs: Update MIGRATION_STATUS - Phase 1 100% complete
 e9cd141 refactor(components): Migrate all components to Composition API
 61d182b docs: Update migration status - All pages migrated
 
@@ -97,6 +100,16 @@ Tous les changements ont été committés et sont prêts à être pushés.
 - [x] Oeuf.vue → Composition API ✅
 - [x] OeufImage.vue → Composition API ✅
 - [ ] VImg.vue (à supprimer dans Phase 2)
+
+### SCSS modernisé (100%) ✅ TERMINÉ !
+- [x] assets/css/vars/_typo.scss → Modules Dart Sass 3.0 ✅
+  - `map-get()` → `map.get()`
+  - `map-merge()` → `map.merge()`
+  - Division `/` → `math.div()`
+- [x] components/BaseButton.vue → `color.adjust()` ✅
+- [x] layouts/default.vue → `color.adjust()` ✅
+- [x] pages/eco-conception/[slug].vue → Syntaxe `:deep()` corrigée ✅
+- ✅ **Aucun warning SCSS** : 100% compatible Dart Sass 3.0 !
 
 ---
 
