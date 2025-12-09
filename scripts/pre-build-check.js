@@ -153,9 +153,21 @@ check(fileExists('assets/css/vars/_spacing.scss'), '❌ assets/css/vars/_spacing
 console.log('🌐 Checking public files...')
 check(fileExists('public/favicon.svg'), '❌ public/favicon.svg is missing')
 check(fileExists('public/beabot.svg'), '❌ public/beabot.svg is missing')
+check(fileExists('public/contact-form.html'), '❌ public/contact-form.html is missing (required for Netlify Forms)')
 
 // ================================
-// 10. RESULTS
+// 10. NETLIFY CONFIGURATION
+// ================================
+console.log('☁️  Checking Netlify configuration...')
+check(fileExists('netlify.toml'), '❌ netlify.toml is missing')
+if (fileExists('netlify.toml')) {
+  const netlifyConfig = readFileSync(join(rootDir, 'netlify.toml'), 'utf-8')
+  check(netlifyConfig.includes('yarn generate'), '❌ netlify.toml should use "yarn generate" as build command')
+  check(netlifyConfig.includes('.output/public'), '❌ netlify.toml should publish ".output/public" directory')
+}
+
+// ================================
+// 11. RESULTS
 // ================================
 console.log('\n' + '='.repeat(50))
 console.log('📊 RESULTS')
