@@ -5,7 +5,7 @@ temps: 15
 tag: ['WebDesign', 'WordPress', 'Eco-conception']
 ---
 
-L’urgence climatique nous impose de penser notre modèle de développement. Le numérique en tant qu’émetteur de gaz à effet de serre tout autant que vecteur d’une transformation de nos modes de vie est au cœur des changements contemporains. S’interroger sur la finalité du numérique, ses enjeux et ses <a  href="/eco-conception/La-consommation-energetique-du-numerique" class="lien--vert">impacts sur l’environnement</a> c’est aussi comprendre notre monde et se donner les moyens d’agir.
+L'urgence climatique nous impose de penser notre modèle de développement. Le numérique en tant qu'émetteur de gaz à effet de serre tout autant que vecteur d'une transformation de nos modes de vie est au cœur des changements contemporains. S'interroger sur la finalité du numérique, ses enjeux et ses <a  href="/eco-conception/la-consommation-energetique-du-numerique" class="lien--vert">impacts sur l'environnement</a> c'est aussi comprendre notre monde et se donner les moyens d'agir.
 Plusieurs possibilités s’offrent à nous pour dépeindre l’éco-conception numérique, des plus techniques aux plus superficielles. J’ai choisi ici une approche ouverte et généraliste, accessible sans connaissance en programmation.
 Pour ceux qui veulent du code, rassurez-vous, des articles plus techniques émailleront ce blog au fil du temps. Néanmoins, théoriser nos pratiques, réfléchir à nos choix technologiques ne peut qu’élargir l’horizon des développeurs.
   

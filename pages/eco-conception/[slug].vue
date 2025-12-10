@@ -144,8 +144,17 @@ const { data: surroundArticles } = await useAsyncData(
   }
 )
 
-const prev = computed(() => surroundArticles.value?.[0])
-const next = computed(() => surroundArticles.value?.[1])
+// Transform article links from /articles/* to /eco-conception/*
+const transformArticleLink = (article) => {
+  if (!article || !article._path) return null
+  return {
+    ...article,
+    _path: article._path.replace(/^\/articles\//, '/eco-conception/')
+  }
+}
+
+const prev = computed(() => transformArticleLink(surroundArticles.value?.[0]))
+const next = computed(() => transformArticleLink(surroundArticles.value?.[1]))
 
 // Reactive state for TOC
 const currentlyActiveToc = ref('')

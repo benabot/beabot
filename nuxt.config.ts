@@ -140,6 +140,8 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       routes: ['/rss.xml', '/feed.json', '/sitemap.xml'],
+      // Ignore 404 errors on API content query routes (cache/surround queries)
+      failOnError: false,
     },
   },
 
