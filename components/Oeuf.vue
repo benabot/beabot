@@ -45,28 +45,24 @@
     />
   </svg>
 </template>
-<script>
-export default {
-  name: 'Oeuf',
-  props: {
-    fill: {
-      type: String,
-      default: '#F1F1F1', // green, green--outline, white
-      required: false,
-    },
-
-    width: {
-      type: String,
-      default: '50%',
-      required: false,
-    },
-    transform: {
-      type: String,
-      default: 'rotate(0)',
-      required: false,
-    },
+<script setup>
+defineProps({
+  fill: {
+    type: String,
+    default: '#F1F1F1',
+    required: false,
   },
-};
+  width: {
+    type: String,
+    default: '50%',
+    required: false,
+  },
+  transform: {
+    type: String,
+    default: 'rotate(0)',
+    required: false,
+  },
+})
 </script>
 <style lang="scss" scoped>
 .stop-jaune {

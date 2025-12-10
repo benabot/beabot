@@ -1,0 +1,10 @@
+# robots.txt for BeAbot
+User-agent: *
+Allow: /
+
+# Prevent indexing of CV
+Disallow: /cv.pdf
+Disallow: /CV-*.pdf
+
+# Sitemap
+Sitemap: https://beabot.netlify.app/sitemap.xml

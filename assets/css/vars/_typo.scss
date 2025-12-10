@@ -8,6 +8,10 @@
 // $h3: $h4 * $ratio;
 // $h2: $h3 * $ratio;
 // $h1: $h2 * $ratio;
+
+@use 'sass:map';
+@use 'sass:math';
+
 $breakpoint-tablet: 768px;
 
 $light: 300;
@@ -30,7 +34,7 @@ $type-ratios: ( // "minorSecond": 1.067,
   "goldenRatio": 1.618);
 
 @function type-ratio($key) {
-  @return map-get($type-ratios, $key);
+  @return map.get($type-ratios, $key);
 }
 
 // Recommended
@@ -53,7 +57,7 @@ $level-size: $type-base-size;
 
 @each $level in $type-levels {
   $level-size: $level-size * $type-size-ratio;
-  $type-styles: map-merge($type-styles, (#{"h"}$level: $level-size));
+  $type-styles: map.merge($type-styles, (#{"h"}$level: $level-size));
 
   // Output heading styles
   // Assign to element and create utility class
@@ -75,7 +79,7 @@ $level-size: $type-base-size;
       // Fluid type styles
 
       // Remove unit for calculations
-      $level-unitless: $level-size / ($level-size * 0 + 1);
+      $level-unitless: math.div($level-size, ($level-size * 0 + 1));
 
       // Set minimum size to a percentage less than $level-size
       // Reduction is greater for large font sizes (> 4rem) to help
@@ -99,7 +103,7 @@ $level-size: $type-base-size;
 }
 
 @function type-style($key) {
-  @return map-get($type-styles, $key);
+  @return map.get($type-styles, $key);
 }
 
 // Test retrieving heading style value from the map

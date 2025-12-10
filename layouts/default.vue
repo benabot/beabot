@@ -11,7 +11,7 @@
       <transition name="slide-right">
         <ul v-if="showMobileMenu" class="menu-mobile">
           <li @click="showMobileMenu = !showMobileMenu">
-            <NuxtLink to="/" exact class="title title--menu h2" no-prefetch
+            <NuxtLink to="/" class="title title--menu h2"
               >Accueil</NuxtLink
             >
           </li>
@@ -19,12 +19,11 @@
             <NuxtLink
               to="/eco-conception"
               class="title title--menu h2"
-              no-prefetch
               >Éco-conception</NuxtLink
             >
           </li>
           <li @click="showMobileMenu = !showMobileMenu">
-            <NuxtLink to="/portfolio" class="title title--menu h2" no-prefetch
+            <NuxtLink to="/portfolio" class="title title--menu h2"
               >Portfolio</NuxtLink
             >
           </li>
@@ -120,138 +119,97 @@
       </NuxtLink>
     </nav>
     <nav role="navigation" class="nav-desktop nav-2 h4">
-      <NuxtLink to="/eco-conception" :class="couleurHaut" no-prefetch
+      <NuxtLink to="/eco-conception" :class="couleurHaut"
         >Éco-conception</NuxtLink
       >
     </nav>
     <nav role="navigation" class="nav-desktop nav-3 h4">
-      <NuxtLink to="/portfolio" :class="couleurBas" no-prefetch
+      <NuxtLink to="/portfolio" :class="couleurBas"
         >Portfolio</NuxtLink
       >
     </nav>
     <nav role="navigation" class="nav-desktop nav-4 h4">
       <a href="#footer" :class="couleurBas">Contact</a>
     </nav>
-    <Nuxt :class="{ 'main-flou': showMobileMenu }" />
-    <Footer />
+    <slot :class="{ 'main-flou': showMobileMenu }" />
+    <TheFooter />
   </div>
 </template>
-<script>
+<script setup>
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useRoute } from 'vue-router'
+
 // import { gsap } from 'gsap'
 // import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
 // gsap.registerPlugin(ScrollTrigger)
 
-export default {
-  data() {
-    return {
-      windowHeight: null,
-      // lastScrollPosition: null,
-      // gris: false,
-      scrollPos: null,
-      scrollPosition: null,
-      degrad: 'url(#SVGID2)',
-      showMobileMenu: false,
-    };
-  },
-  computed: {
-    acc() {
-      return this.$nuxt.$route.path;
-    },
-    couleurHaut() {
-      let clr = 'couleur-gris';
-      if (this.acc === '/') {
-        if (this.scrollPosition < this.windowHeight) {
-          return (clr = 'couleur-none');
-        }
-        if (
-          (this.scrollPosition > this.windowHeight &&
-            this.scrollPosition < this.windowHeight * 3) ||
-          (this.scrollPosition > this.windowHeight * 4 &&
-            this.scrollPosition < this.windowHeight * 5)
-        ) {
-          return (clr = 'couleur-blanc');
-        }
-      }
-      return clr;
-    },
-    couleurBas() {
-      let clr = 'couleur-gris';
-      if (this.acc === '/') {
-        if (this.scrollPosition < 66) {
-          return (clr = 'couleur-none');
-        }
-        if (
-          (this.scrollPosition > 66 &&
-            this.scrollPosition < this.windowHeight * 2) ||
-          (this.scrollPosition > this.windowHeight * 3 &&
-            this.scrollPosition < this.windowHeight * 4)
-        ) {
-          return (clr = 'couleur-blanc');
-        }
-      }
+const route = useRoute()
 
-      return clr;
-    },
-  },
-  mounted() {
-    window.addEventListener('scroll', this.updateScroll);
-    // window.addEventListener('scroll', this.onScroll)
-    this.windowHeight = window.innerHeight;
-    // ScrollTrigger.defaults({
-    //   toggleActions: 'restart pause resume pause',
-    // })
-    // const tl = gsap.timeline({
-    //   scrollTrigger: {
-    //     trigger: '.container-3',
-    //     start: 'top top', // when the top of the trigger hits the top of the viewport
-    //     end: '+=50%', // end after scrolling 500px beyond the start
-    //   },
-    // })
-    // tl.to('.nav-2', { scale: 0.3, rotation: 45, autoAlpha: 0 })
-    //   gsap.from('.nav-2, .nav-1', {
-    //     scrollTrigger: {
-    //       trigger: '.container-3',
-    //       markers: true,
-    //       start: 'center center',
-    //     },
-    //     autoAlpha: 0,
-    //   })
-    //   gsap.from('.nav-3, .nav-4', {
-    //     scrollTrigger: {
-    //       trigger: '.container-3',
-    //     },
-    //     autoAlpha: 0,
-    //   })
-    // },
-    // beforeDestroy() {
-    //   window.removeEventListener('scroll', this.onScroll)
-  },
+const windowHeight = ref(null)
+const scrollPos = ref(null)
+const scrollPosition = ref(null)
+const degrad = ref('url(#SVGID2)')
+const showMobileMenu = ref(false)
 
-  methods: {
-    updateScroll() {
-      this.scrollPosition = window.scrollY;
-    },
-    handleScroll(e) {
-      this.scrollPos = e.target.scrollTop;
-    },
-    // onScroll() {
-    //   const lastScrollPosition = window.scrollY
-    //   const positionAnim = this.windowHeight * 2
-    //   console.log(positionAnim)
-    //   if (lastScrollPosition > positionAnim) {
-    //     this.gris = true
-    //   } else {
-    //     this.gris = false
-    //   }
-    // },
-  },
-  destroy() {
-    window.removeEventListener('scroll', this.updateScroll);
-  },
-};
+const acc = computed(() => route.path)
+
+const couleurHaut = computed(() => {
+  let clr = 'couleur-gris'
+  if (acc.value === '/') {
+    if (scrollPosition.value < windowHeight.value) {
+      return 'couleur-none'
+    }
+    if (
+      (scrollPosition.value > windowHeight.value &&
+        scrollPosition.value < windowHeight.value * 3) ||
+      (scrollPosition.value > windowHeight.value * 4 &&
+        scrollPosition.value < windowHeight.value * 5)
+    ) {
+      return 'couleur-blanc'
+    }
+  }
+  return clr
+})
+
+const couleurBas = computed(() => {
+  let clr = 'couleur-gris'
+  if (acc.value === '/') {
+    if (scrollPosition.value < 66) {
+      return 'couleur-none'
+    }
+    if (
+      (scrollPosition.value > 66 &&
+        scrollPosition.value < windowHeight.value * 2) ||
+      (scrollPosition.value > windowHeight.value * 3 &&
+        scrollPosition.value < windowHeight.value * 4)
+    ) {
+      return 'couleur-blanc'
+    }
+  }
+  return clr
+})
+
+const updateScroll = () => {
+  scrollPosition.value = window.scrollY
+}
+
+const handleScroll = (e) => {
+  scrollPos.value = e.target.scrollTop
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', updateScroll)
+  windowHeight.value = window.innerHeight
+  // ScrollTrigger setup would go here if needed
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', updateScroll)
+})
 </script>
 <style lang="scss">
+@use 'sass:color';
+
 a.nuxt-link-active {
   font-weight: bold;
 }
@@ -390,7 +348,7 @@ a.nuxt-link-active {
     &-3 {
       bottom: 6px;
       left: 10px;
-      background: linear-gradient(lighten($bleu2, 10%), lighten($bleu2, 10%))
+      background: linear-gradient(color.adjust($bleu2, $lightness: 10%), color.adjust($bleu2, $lightness: 10%))
         left bottom / 0 0.1em no-repeat;
     }
     &-4 {

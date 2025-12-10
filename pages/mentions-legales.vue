@@ -34,7 +34,7 @@
       l’acceptation pleine et entière des conditions générales d’utilisation
       ci-après décrites. Ces conditions d’utilisation sont susceptibles d’être
       modifiées ou complétées à tout moment, les utilisateurs du site
-      <a href=https://beabot.netlify.app">https://beabot.netlify.app</a> sont donc
+      <a href="https://beabot.netlify.app">https://beabot.netlify.app</a> sont donc
       invités à les consulter de manière régulière.
     </p>
     <p>
@@ -44,7 +44,7 @@
       préalablement aux utilisateurs les dates et heures de l’intervention.
     </p>
     <p>
-      Le site <a href=https://beabot.netlify.app">https://beabot.netlify.app</a> est mis
+      Le site <a href="https://beabot.netlify.app">https://beabot.netlify.app</a> est mis
       à jour régulièrement par Abot Benoît. De la même façon, les mentions
       légales peuvent être modifiées à tout moment : elles s’imposent néanmoins
       à l’utilisateur qui est invité à s’y référer le plus souvent possible afin
@@ -52,13 +52,13 @@
     </p>
     <h3>3. Description des services fournis.</h3>
     <p>
-      Le site <a href=https://beabot.netlify.app">https://beabot.netlify.app</a> a pour
-      objet de fournir une information concernant l’ensemble des activités de la
+      Le site <a href="https://beabot.netlify.app">https://beabot.netlify.app</a> a pour
+      objet de fournir une information concernant l'ensemble des activités de la
       société.
     </p>
     <p>
-      Benoît Abot s’efforce de fournir sur le site
-      <a href=https://beabot.netlify.app">https://beabot.netlify.app</a> des informations
+      Benoît Abot s'efforce de fournir sur le site
+      <a href="https://beabot.netlify.app">https://beabot.netlify.app</a> des informations
       aussi précises que possible. Toutefois, il ne pourra être tenue
       responsable des omissions, des inexactitudes et des carences dans la mise
       à jour, qu’elles soient de son fait ou du fait des tiers partenaires qui
@@ -66,10 +66,10 @@
     </p>
     <p>
       Tous les informations indiquées sur le site
-      <a href=https://beabot.netlify.app">https://beabot.netlify.app</a> sont données à
-      titre indicatif, et sont susceptibles d’évoluer. Par ailleurs, les
+      <a href="https://beabot.netlify.app">https://beabot.netlify.app</a> sont données à
+      titre indicatif, et sont susceptibles d'évoluer. Par ailleurs, les
       renseignements figurant sur le site
-      <a href=https://beabot.netlify.app">https://beabot.netlify.app</a> ne sont pas
+      <a href="https://beabot.netlify.app">https://beabot.netlify.app</a> ne sont pas
       exhaustifs. Ils sont donnés sous réserve de modifications ayant été
       apportées depuis leur mise en ligne.
     </p>
@@ -109,9 +109,9 @@
     </p>
     <p>
       Benoît Abot ne pourra également être tenue responsable des dommages
-      indirects (tels par exemple qu’une perte de marché ou perte d’une chance)
-      consécutifs à l’utilisation du site
-      <a href=https://beabot.netlify.app">https://beabot.netlify.app</a>.
+      indirects (tels par exemple qu'une perte de marché ou perte d'une chance)
+      consécutifs à l'utilisation du site
+      <a href="https://beabot.netlify.app">https://beabot.netlify.app</a>.
     </p>
     <p>
       Des espaces interactifs (possibilité de poser des questions dans l’espace
@@ -132,9 +132,9 @@
     </p>
     <p>
       A l'occasion de l'utilisation du site
-      <a href=https://beabot.netlify.app">https://beabot.netlify.app</a>, peuvent êtres
+      <a href="https://beabot.netlify.app">https://beabot.netlify.app</a>, peuvent êtres
       recueillies : l'URL des liens par l'intermédiaire desquels l'utilisateur a
-      accédé au site <a href=https://beabot.netlify.app">https://beabot.netlify.app</a>,
+      accédé au site <a href="https://beabot.netlify.app">https://beabot.netlify.app</a>,
       le fournisseur d'accès de l'utilisateur, l'adresse de protocole Internet
       (IP) de l'utilisateur.
     </p>
@@ -142,11 +142,11 @@
       En tout état de cause Benoît Abot ne collecte des informations
       personnelles relatives à l'utilisateur que pour le besoin de certains
       services proposés par le site
-      <a href=https://beabot.netlify.app">https://beabot.netlify.app</a>. L'utilisateur
+      <a href="https://beabot.netlify.app">https://beabot.netlify.app</a>. L'utilisateur
       fournit ces informations en toute connaissance de cause, notamment
       lorsqu'il procède par lui-même à leur saisie. Il est alors précisé à
       l'utilisateur du site
-      <a href=https://beabot.netlify.app">https://beabot.netlify.app</a> l’obligation ou
+      <a href="https://beabot.netlify.app">https://beabot.netlify.app</a> l'obligation ou
       non de fournir ces informations.
     </p>
     <p>
@@ -160,13 +160,13 @@
     </p>
     <p>
       Aucune information personnelle de l'utilisateur du site
-      <a href=https://beabot.netlify.app">https://beabot.netlify.app</a> n'est publiée à
+      <a href="https://beabot.netlify.app">https://beabot.netlify.app</a> n'est publiée à
       l'insu de l'utilisateur, échangée, transférée, cédée ou vendue sur un
       support quelconque à des tiers. Seule l'hypothèse du rachat de Benoît Abot
       et de ses droits permettrait la transmission des dites informations à
       l'éventuel acquéreur qui serait à son tour tenu de la même obligation de
       conservation et de modification des données vis à vis de l'utilisateur du
-      site <a href=https://beabot.netlify.app">https://beabot.netlify.app</a>.
+      site <a href="https://beabot.netlify.app">https://beabot.netlify.app</a>.
     </p>
     <p>
       Les bases de données sont protégées par les dispositions de la loi du 1er
@@ -175,15 +175,15 @@
     </p>
     <h3>8. Liens hypertextes et cookies.</h3>
     <p>
-      Le site <a href=https://beabot.netlify.app">https://beabot.netlify.app</a> contient
-      un certain nombre de liens hypertextes vers d’autres sites, mis en place
-      avec l’autorisation de Benoît Abot. Cependant, Benoît Abot n’a pas la
-      possibilité de vérifier le contenu des sites ainsi visités, et n’assumera
+      Le site <a href="https://beabot.netlify.app">https://beabot.netlify.app</a> contient
+      un certain nombre de liens hypertextes vers d'autres sites, mis en place
+      avec l'autorisation de Benoît Abot. Cependant, Benoît Abot n'a pas la
+      possibilité de vérifier le contenu des sites ainsi visités, et n'assumera
       en conséquence aucune responsabilité de ce fait.
     </p>
     <p>
       La navigation sur le site
-      <a href=https://beabot.netlify.app">https://beabot.netlify.app</a> ne requiert pas
+      <a href="https://beabot.netlify.app">https://beabot.netlify.app</a> ne requiert pas
       l'installation de cookies.
     </p>
     <!-- <p>
@@ -221,8 +221,8 @@
 
     <h3>9. Droit applicable et attribution de juridiction.</h3>
     <p>
-      Tout litige en relation avec l’utilisation du site
-      <a href=https://beabot.netlify.app">https://beabot.netlify.app</a> est soumis au
+      Tout litige en relation avec l'utilisation du site
+      <a href="https://beabot.netlify.app">https://beabot.netlify.app</a> est soumis au
       droit français. Il est fait attribution exclusive de juridiction aux
       tribunaux compétents de Paris.
     </p>
@@ -245,6 +245,11 @@
     </p>
   </section>
 </template>
+
+<script setup>
+useHead({ title: 'Mentions légales' })
+</script>
+
 <style scoped lang="scss">
 p {
   margin-bottom: 0.68rem;

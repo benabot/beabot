@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Form - BeAbot</title>
+</head>
+<body>
+  <!--
+    This static HTML file is used by Netlify to detect the form structure.
+    The actual form is in pages/contact.vue and works via JavaScript.
+    Do not delete this file - it's required for Netlify Forms to work.
+  -->
+  <form
+    name="contact"
+    method="POST"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+    action="/"
+    hidden
+  >
+    <input type="hidden" name="form-name" value="contact" />
+
+    <!-- Honeypot field for spam protection -->
+    <label>Ne pas remplir : <input name="bot-field" /></label>
+
+    <!-- Form fields -->
+    <label>Nom <input type="text" name="name" /></label>
+    <label>Email <input type="email" name="email" /></label>
+    <label>Message <textarea name="message"></textarea></label>
+
+    <button type="submit">Envoyer</button>
+  </form>
+</body>
+</html>

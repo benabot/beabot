@@ -1,0 +1,126 @@
+# Netlify Configuration for Nuxt 3
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  # Build command for Nuxt 3 static generation
+  command = "yarn generate"
+
+  # Output directory (Nuxt 3 default)
+  publish = ".output/public"
+
+  # Environment variables
+  environment = { NODE_VERSION = "18", NUXT_PUBLIC_SITE_URL = "https://beabot.netlify.app" }
+
+# Build optimizations
+[build.processing]
+  # Skip Netlify's processing (Nuxt already optimizes)
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.images]
+  compress = true
+
+# Headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Security headers
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+    # Performance - Cache static assets for 1 year
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    # Don't cache HTML files
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    # Don't cache service worker
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# CV PDF - Non-indexable
+[[headers]]
+  for = "/cv.pdf"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "private, max-age=3600"
+
+[[headers]]
+  for = "/CV-*.pdf"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "private, max-age=3600"
+
+# Redirects and rewrites
+[[redirects]]
+  from = "https://beabot.netlify.com/*"
+  to = "https://beabot.netlify.app/:splat"
+  status = 301
+  force = true
+
+# SPA fallback for client-side routing (if needed)
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
+
+# Netlify Forms configuration (for contact form)
+# No additional config needed - handled by data-netlify="true" in HTML
+
+# Plugin configuration
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+
+  [plugins.inputs]
+    # Run Lighthouse audits on deploy
+    output_path = "reports/lighthouse.html"
+
+[[plugins]]
+  package = "netlify-plugin-submit-sitemap"
+
+  [plugins.inputs]
+    # Submit sitemap to search engines
+    baseUrl = "https://beabot.netlify.app"
+    sitemapPath = "/sitemap.xml"
+    providers = [
+      "google",
+      "bing"
+    ]
+
+# Environment variables (example - set in Netlify UI for security)
+# [build.environment]
+#   NUXT_PUBLIC_SITE_URL = "https://beabot.netlify.app"
+
+# Context-specific builds
+[context.production]
+  command = "yarn generate"
+
+[context.deploy-preview]
+  command = "yarn generate"
+
+[context.branch-deploy]
+  command = "yarn generate"
+
+# Dev environment (Netlify Dev)
+[dev]
+  command = "yarn dev"
+  port = 3000
+  targetPort = 3000
+  publish = ".output/public"
