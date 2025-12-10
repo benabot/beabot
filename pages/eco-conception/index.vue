@@ -60,7 +60,7 @@
     <div class="border"></div>
     <section>
       <transition-group name="list" tag="div">
-        <article v-for="article of articlesFilters" :key="article.slug">
+        <article v-for="article of articlesFilters" :key="article._path">
           <!-- <img :src="article.img" /> -->
           <nuxt-link :to="articleLink(article)">
             <BaseHeading gris :titre="article.title" :tags="article.tag"
@@ -68,18 +68,9 @@
           <div class="resum">
             <p class="text-gris3 text-fin">{{ article.description }}</p>
             <div class="boite-bouton">
-              <!-- <NuxtLink
-              :to="{
-                name: 'eco-conception-slug',
-                params: { slug: article.slug },
-              }"
-              ><button class="seepost seepost--vert">
-                poursuivre la lecture
-              </button>
-            </NuxtLink> -->
               <BaseButton
                 text="lire la suite"
-                :to="`/eco-conception/${article.slug}`"
+                :to="articleLink(article)"
               />
             </div>
           </div>
@@ -95,7 +86,7 @@ import { computed } from 'vue'
 // Fetch articles with Nuxt Content v2
 const { data: articles } = await useAsyncData('eco-articles', () =>
   queryContent('articles')
-    .only(['title', 'description', 'img', 'tag', '_path'])
+    .only(['title', 'description', 'img', 'tag', '_path', 'slug'])
     .sort({ createdAt: -1 })
     .find()
 )
