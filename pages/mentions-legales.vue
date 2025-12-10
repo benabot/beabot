@@ -245,6 +245,11 @@
     </p>
   </section>
 </template>
+
+<script setup>
+useHead({ title: 'Mentions légales' })
+</script>
+
 <style scoped lang="scss">
 p {
   margin-bottom: 0.68rem;

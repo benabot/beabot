@@ -20,6 +20,8 @@ defineProps({
 </script>
 
 <style lang="scss" scoped>
+@use 'sass:color';
+
 .button_cont {
   text-align: right;
   margin-top: 0.4rem;
@@ -45,7 +47,7 @@ defineProps({
 }
 .bleu {
   color: $bleu2;
-  background: linear-gradient(lighten($bleu2, 25%), lighten($bleu2, 25%)) right
+  background: linear-gradient(color.adjust($bleu2, $lightness: 25%), color.adjust($bleu2, $lightness: 25%)) right
     bottom / 0 0.1em no-repeat;
   transition: background-size 0.4s;
   &:hover {

@@ -11,7 +11,7 @@
       <transition name="slide-right">
         <ul v-if="showMobileMenu" class="menu-mobile">
           <li @click="showMobileMenu = !showMobileMenu">
-            <NuxtLink to="/" exact class="title title--menu h2" no-prefetch
+            <NuxtLink to="/" class="title title--menu h2"
               >Accueil</NuxtLink
             >
           </li>
@@ -19,12 +19,11 @@
             <NuxtLink
               to="/eco-conception"
               class="title title--menu h2"
-              no-prefetch
               >Éco-conception</NuxtLink
             >
           </li>
           <li @click="showMobileMenu = !showMobileMenu">
-            <NuxtLink to="/portfolio" class="title title--menu h2" no-prefetch
+            <NuxtLink to="/portfolio" class="title title--menu h2"
               >Portfolio</NuxtLink
             >
           </li>
@@ -120,12 +119,12 @@
       </NuxtLink>
     </nav>
     <nav role="navigation" class="nav-desktop nav-2 h4">
-      <NuxtLink to="/eco-conception" :class="couleurHaut" no-prefetch
+      <NuxtLink to="/eco-conception" :class="couleurHaut"
         >Éco-conception</NuxtLink
       >
     </nav>
     <nav role="navigation" class="nav-desktop nav-3 h4">
-      <NuxtLink to="/portfolio" :class="couleurBas" no-prefetch
+      <NuxtLink to="/portfolio" :class="couleurBas"
         >Portfolio</NuxtLink
       >
     </nav>
@@ -209,6 +208,8 @@ onUnmounted(() => {
 })
 </script>
 <style lang="scss">
+@use 'sass:color';
+
 a.nuxt-link-active {
   font-weight: bold;
 }
@@ -347,7 +348,7 @@ a.nuxt-link-active {
     &-3 {
       bottom: 6px;
       left: 10px;
-      background: linear-gradient(lighten($bleu2, 10%), lighten($bleu2, 10%))
+      background: linear-gradient(color.adjust($bleu2, $lightness: 10%), color.adjust($bleu2, $lightness: 10%))
         left bottom / 0 0.1em no-repeat;
     }
     &-4 {

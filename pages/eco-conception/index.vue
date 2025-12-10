@@ -3,8 +3,8 @@
     <section>
       <h1 class="h3 text-fin">divers aspects de l'éco-conception web</h1>
       <ul class="selector text-gris3">
-        <li :class="{ 'text-vert': name === 'Vue' }" @click="updateTag('Vue')">
-          JS
+        <li :class="{ 'text-vert': name === 'WebDesign' }" @click="updateTag('WebDesign')">
+          WebDesign
         </li>
         /
         <li
@@ -15,10 +15,10 @@
         </li>
         /
         <li
-          :class="{ 'text-vert': name === 'WebDesign' }"
-          @click="updateTag('WebDesign')"
+          :class="{ 'text-vert': name === 'Eco-conception' }"
+          @click="updateTag('Eco-conception')"
         >
-          WebDesign
+          Éco-conception
         </li>
         /
         <li
@@ -89,46 +89,43 @@
   </div>
 </template>
 
-<script>
-export default {
-  async asyncData({ $content, params }) {
-    const articles = await $content('articles', params.slug)
-      .only(['title', 'description', 'img', 'slug', 'tag', 'path'])
-      .sortBy('createdAt', 'desc')
-      .fetch();
+<script setup>
+import { computed } from 'vue'
 
-    return {
-      articles,
-      selectedTag: null,
-    };
-  },
-  computed: {
-    name() {
-      return this.$store.state.tags.tag;
-    },
-    articlesFilters() {
-      if (!this.name) {
-        return this.articles;
-      } else {
-        return this.articles.filter((el) => el.tag.includes(this.name));
-      }
-    },
-  },
-  methods: {
-    articleLink(a) {
-      // Prefer @nuxt/content computed path if available
-      const p = a && a.path ? a.path : `/articles/${a.slug}`
-      // Map content directory to the public route namespace
-      return p.replace(/^\/articles\//, '/eco-conception/')
-    },
-    updateTag(tag) {
-      this.$store.commit('tags/setTag', tag);
-    },
-    // updateTag(tag) {
-    //   this.selectedTag = tag
-    // },
-  },
-};
+// Fetch articles with Nuxt Content v2
+const { data: articles } = await useAsyncData('eco-articles', () =>
+  queryContent('articles')
+    .only(['title', 'description', 'img', 'tag', '_path'])
+    .sort({ createdAt: -1 })
+    .find()
+)
+
+// Use tags composable
+const tagsStore = useTags()
+const name = computed(() => tagsStore.tag.value)
+
+// Filter articles by selected tag
+const articlesFilters = computed(() => {
+  if (!name.value) {
+    return articles.value || []
+  }
+  return (articles.value || []).filter((el) => el.tag?.includes(name.value))
+})
+
+// Generate article link
+function articleLink(a) {
+  // Nuxt Content v2 generates _path automatically from file location
+  // content/articles/foo.md → _path: '/articles/foo'
+  if (!a || !a._path) return '/eco-conception'
+
+  // Map content directory to the public route namespace
+  return a._path.replace(/^\/articles\//, '/eco-conception/')
+}
+
+// Update tag filter
+function updateTag(tag) {
+  tagsStore.setTag(tag)
+}
 </script>
 <style lang="scss" scoped>
 h1 {

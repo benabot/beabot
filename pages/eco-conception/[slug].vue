@@ -21,7 +21,7 @@
               ></NuxtLink>
             </li>
             |
-            <li><NuxtLink to="/eco-conception" exact>Blog</NuxtLink></li>
+            <li><NuxtLink to="/eco-conception">Blog</NuxtLink></li>
             |
             <li class="text-gris3">{{ article?.title }}</li>
           </ul>
@@ -31,7 +31,7 @@
             :key="tag"
             class="petit-text lettre-smcp"
             @click="updateTag(tag)"
-            ><NuxtLink to="/eco-conception" exact
+            ><NuxtLink to="/eco-conception"
               ><span class="text-vert"> #</span>{{ tag }}</NuxtLink
             ></span
           >
@@ -64,7 +64,7 @@
                 role="button"
                 class=""
                 :href="`#${link.id}`"
-                >{{ link.text }}</a
+                >{{ link.text === 'Footnotes' ? 'Références' : link.text }}</a
               >
             </li>
           </ul>
@@ -104,7 +104,7 @@
 
       <ContentRenderer
         v-if="article"
-        ref="nuxtContent"
+        ref="contentEl"
         class="text-gris2 mt-2"
         :value="article"
       />
@@ -121,7 +121,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
 
 const route = useRoute()
 const tagsStore = useTags()
@@ -131,58 +131,58 @@ const { data: article } = await useAsyncData(`article-${route.params.slug}`, () 
   queryContent('articles', route.params.slug).findOne()
 )
 
-// Fetch surrounding articles (prev/next)
-const { data: surrounding } = await useAsyncData(
-  `surrounding-${route.params.slug}`,
-  () =>
-    queryContent('articles')
-      .only(['title', 'slug', '_path'])
-      .sort({ createdAt: 1 })
-      .findSurround(route.params.slug)
+// Fetch prev/next articles
+const { data: surroundArticles } = await useAsyncData(`surround-${route.params.slug}`, () =>
+  queryContent('articles')
+    .only(['title', '_path'])
+    .sort({ createdAt: 1 })
+    .findSurround(route.path)
 )
 
-const prev = computed(() => surrounding.value?.[0])
-const next = computed(() => surrounding.value?.[1])
+const prev = computed(() => surroundArticles.value?.[0])
+const next = computed(() => surroundArticles.value?.[1])
 
-// Reactive state
+// Reactive state for TOC
 const currentlyActiveToc = ref('')
-const nuxtContent = ref(null)
+const contentEl = ref(null)
 let observer = null
 
-// Methods
-const formatDate = (date) => {
+// Format date helper
+function formatDate(date) {
   if (!date) return ''
   const options = { day: 'numeric', month: 'long', year: 'numeric' }
   return new Date(date).toLocaleDateString('fr', options)
 }
 
-const updateTag = (tag) => {
+// Update tag in store
+function updateTag(tag) {
   tagsStore.setTag(tag)
 }
 
-// Intersection Observer for TOC
+// Setup IntersectionObserver for TOC
 onMounted(() => {
-  observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        const id = entry.target.getAttribute('id')
-        if (entry.isIntersecting) {
-          currentlyActiveToc.value = id
-        }
-      })
-    },
-    {
-      root: nuxtContent.value?.$el,
-      threshold: 0,
-    }
-  )
+  const observerOptions = {
+    root: null,
+    threshold: 0,
+  }
+
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const id = entry.target.getAttribute('id')
+      if (entry.isIntersecting) {
+        currentlyActiveToc.value = id
+      }
+    })
+  }, observerOptions)
 
   // Track all sections that have an `id` applied
-  document
-    .querySelectorAll('.text-gris2 h2[id], .text-gris2 h3[id]')
-    .forEach((section) => {
-      observer.observe(section)
-    })
+  setTimeout(() => {
+    document
+      .querySelectorAll('article h2[id], article h3[id]')
+      .forEach((section) => {
+        observer.observe(section)
+      })
+  }, 100)
 })
 
 onBeforeUnmount(() => {
@@ -191,36 +191,36 @@ onBeforeUnmount(() => {
   }
 })
 
-// SEO and meta tags
+// Head metadata with structured data
 useHead({
-  title: article.value?.title || '',
+  title: article.value?.title,
   meta: [
     {
       hid: 'description',
       name: 'description',
-      content: article.value?.description || '',
+      content: article.value?.description,
     },
     // Open Graph
     {
       hid: 'og:title',
       property: 'og:title',
-      content: article.value?.title || '',
+      content: article.value?.title,
     },
     {
       hid: 'og:description',
       property: 'og:description',
-      content: article.value?.description || '',
+      content: article.value?.description,
     },
     // Twitter Card
     {
       hid: 'twitter:title',
       name: 'twitter:title',
-      content: article.value?.title || '',
+      content: article.value?.title,
     },
     {
       hid: 'twitter:description',
       name: 'twitter:description',
-      content: article.value?.description || '',
+      content: article.value?.description,
     },
   ],
   link: [
@@ -237,7 +237,7 @@ useHead({
         {
           '@context': 'https://schema.org',
           '@type': 'BlogPosting',
-          headline: article.value?.title || '',
+          headline: article.value?.title,
           datePublished: article.value?.createdAt,
           dateModified: article.value?.updatedAt,
           author: {
@@ -273,7 +273,7 @@ useHead({
             {
               '@type': 'ListItem',
               position: 3,
-              name: article.value?.title || '',
+              name: article.value?.title,
             },
           ],
         },
@@ -418,14 +418,49 @@ section {
       z-index: 2;
     }
 
-    ::v-deep .text-gris2 {
-      &-container {
-        z-index: 3;
-      }
-      p,
-      ul {
+    :deep(.nuxt-content) {
+      z-index: 3;
+    }
+
+    :deep(.prose) {
+      z-index: 3;
+    }
+
+    :deep(.prose-container) {
+      z-index: 3;
+    }
+
+    :deep(.nuxt-content),
+    :deep(.prose) {
+      p {
         max-width: 66ch;
-        margin-bottom: 0.45rem;
+        margin-bottom: $space-s;
+      }
+
+      ul, ol {
+        max-width: 66ch;
+        margin-bottom: $space-s;
+        padding-left: 1.5em;
+
+        li {
+          margin-bottom: $space-2xs;
+          line-height: 1.6;
+          list-style-position: outside;
+
+          // Ensure bold text in lists doesn't look like headings
+          strong {
+            font-weight: $bold;
+            font-size: inherit; // Same size as parent
+          }
+        }
+      }
+
+      ul {
+        list-style-type: disc;
+      }
+
+      ol {
+        list-style-type: decimal;
       }
       a {
         background: linear-gradient($gris3, $gris3) right bottom / 100% 0.15em
@@ -445,20 +480,21 @@ section {
       }
       h2 {
         line-height: calc(2px + 2ex + 2px);
-        margin-top: 0.65em;
-        margin-bottom: 0.65rem;
+        margin-top: $space-l;      // Beaucoup d'espace AVANT (40px -> 64px)
+        margin-bottom: $space-xs;   // Peu d'espace APRÈS (12px -> 16px)
         font-size: min(max(1.929409988rem, 4.950306412vw), 2.8797164rem);
       }
       h3 {
         font-size: 1.7798rem;
         line-height: calc(2px + 2ex + 2px);
-        margin-bottom: 0.25rem;
-        margin-top: 0.89em;
+        margin-top: $space-m-l;     // Espace moyen-grand AVANT (24px -> 64px)
+        margin-bottom: $space-2xs;  // Très peu d'espace APRÈS (8px -> 10px)
         font-size: min(max(1.192466rem, 4.587334vw), 1.7798rem);
       }
       h4 {
         font-weight: normal;
-        margin-bottom: 0.25rem;
+        margin-top: $space-s;       // Espace standard AVANT (16px -> 24px)
+        margin-bottom: $space-3xs;  // Minimal APRÈS (4px -> 6px)
       }
       blockquote {
         background: $gris6;
@@ -505,7 +541,7 @@ section {
   }
 }
 .icon.icon-link {
-  background-image: url('~/public/img/icon-hashtag.svg');
+  background-image: url('/img/icon-hashtag.svg');
   display: inline-block;
   width: 20px;
   height: 20px;

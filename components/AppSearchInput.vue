@@ -33,8 +33,8 @@ watch(searchQuery, async (newQuery) => {
     return
   }
 
-  // @nuxt/content v2: queryContent avec where pour recherche
-  const result = await queryContent('articles')
+  // Nuxt Content v2: queryContent + where pour search
+  const results = await queryContent('articles')
     .where({
       $or: [
         { title: { $contains: newQuery } },
@@ -44,7 +44,7 @@ watch(searchQuery, async (newQuery) => {
     .limit(6)
     .find()
 
-  articles.value = result
+  articles.value = results
 })
 </script>
 <style lang="scss" scoped>

@@ -35,41 +35,59 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 
+// Helper function to encode form data
 function encode(data) {
   return Object.keys(data)
     .map((k) => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]))
     .join('&')
 }
 
+// Head metadata
+useHead({ title: 'Contact' })
+
+// Reactive state
 const loading = ref(false)
 const sent = ref(false)
 const error = ref(null)
-const form = ref({ name: '', email: '', message: '', botField: '' })
+const form = reactive({
+  name: '',
+  email: '',
+  message: '',
+  botField: ''
+})
 
-const onSubmit = async () => {
+// Submit handler
+async function onSubmit() {
   error.value = null
   if (loading.value) return
   loading.value = true
+
   try {
     const body = encode({
       'form-name': 'contact',
-      name: form.value.name,
-      email: form.value.email,
-      message: form.value.message,
-      'bot-field': form.value.botField,
+      name: form.name,
+      email: form.email,
+      message: form.message,
+      'bot-field': form.botField
     })
+
     const res = await fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body,
+      body
     })
+
     if (res.ok) {
       sent.value = true
-      form.value = { name: '', email: '', message: '', botField: '' }
+      // Reset form
+      form.name = ''
+      form.email = ''
+      form.message = ''
+      form.botField = ''
     } else {
-      error.value = "Erreur lors de l'envoi. Réessayez plus tard."
+      error.value = 'Erreur lors de l\'envoi. Réessayez plus tard.'
     }
   } catch (e) {
     error.value = 'Réseau indisponible. Vérifiez votre connexion.'
@@ -77,10 +95,6 @@ const onSubmit = async () => {
     loading.value = false
   }
 }
-
-useHead({
-  title: 'Contact',
-})
 </script>
 
 <style scoped>
@@ -94,7 +108,7 @@ button {
   background-color: #0DC763;
   color: white;
   border: 1px solid transparent;
-  border-radius: 25px; 
+  border-radius: 25px;
   padding: 0.6rem 1.2rem;
   cursor: pointer;
   transition: all 0.2s ease;

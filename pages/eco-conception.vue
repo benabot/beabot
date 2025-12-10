@@ -13,7 +13,7 @@ useHead({
       hid: 'description',
       name: 'description',
       content:
-        'Blog de l'éco-conception numérique, produire un site web performant tout en réduisant son empreinte carbone c'est possible.',
+        'Blog de l\'éco-conception numérique, produire un site web performant tout en réduisant son empreinte carbone c\'est possible.',
     },
   ],
   link: [

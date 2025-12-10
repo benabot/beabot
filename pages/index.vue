@@ -129,7 +129,7 @@
       </div>
       <div class="boite-para">
         <div class="boite-para__para">
-          <!-- <Petittitre gris numero="1" titre="Durabilité" /> -->
+          <!-- <BaseHeading gris numero="1" titre="Durabilité" /> -->
           <div class="pt-titre h3 text-black chiffre-onum text-gris2">
             1<span class="text-vert">.</span>
           </div>
@@ -142,7 +142,7 @@
           </p>
         </div>
         <div class="boite-para__para mt-2">
-          <!-- <Petittitre gris numero="2" titre="Efficience" /> -->
+          <!-- <BaseHeading gris numero="2" titre="Efficience" /> -->
           <div class="pt-titre h3 text-black chiffre-onum text-gris2">
             2<span class="text-vert">.</span>
           </div>
@@ -182,7 +182,7 @@
       />
       <div class="container-4__boite-para">
         <div class="container-4__boite-para--para">
-          <!-- <Petittitre couleur="white" numero="3" titre="Sobriété" /> -->
+          <!-- <BaseHeading couleur="white" numero="3" titre="Sobriété" /> -->
           <div class="pt-titre h3 text-black chiffre-onum text-gris5">
             3<span class="text-blanc">.</span>
           </div>
@@ -197,7 +197,7 @@
           </p>
         </div>
         <div class="container-4__boite-para--para">
-          <!-- <Petittitre couleur="white" numero="4" titre="Transversalité" /> -->
+          <!-- <BaseHeading couleur="white" numero="4" titre="Transversalité" /> -->
           <div class="pt-titre h3 text-black chiffre-onum text-gris5">
             4<span class="text-blanc">.</span>
           </div>
@@ -420,9 +420,6 @@ export default {
       //   },
       // ],
     }
-  },
-  created() {
-    // this.$store.commit('page/sethome', true)
   },
 }
 </script>
