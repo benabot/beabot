@@ -80,7 +80,7 @@
             &ensp;À voir également
           </div>
           <hr />
-          <prev-next class="petit-text2" :prev="prev" :next="next" />
+          <ArticleNavigation class="petit-text2" :prev="prev" :next="next" />
         </div>
       </div>
     </aside>

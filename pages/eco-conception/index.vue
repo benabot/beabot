@@ -63,7 +63,7 @@
         <article v-for="article of articlesFilters" :key="article.slug">
           <!-- <img :src="article.img" /> -->
           <nuxt-link :to="articleLink(article)">
-            <Petittitre gris :titre="article.title" :tags="article.tag"
+            <BaseHeading gris :titre="article.title" :tags="article.tag"
           /></nuxt-link>
           <div class="resum">
             <p class="text-gris3 text-fin">{{ article.description }}</p>
@@ -77,7 +77,7 @@
                 poursuivre la lecture
               </button>
             </NuxtLink> -->
-              <Boutoncta
+              <BaseButton
                 text="lire la suite"
                 :to="`/eco-conception/${article.slug}`"
               />
