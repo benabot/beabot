@@ -132,11 +132,16 @@ const { data: article } = await useAsyncData(`article-${route.params.slug}`, () 
 )
 
 // Fetch prev/next articles
-const { data: surroundArticles } = await useAsyncData(`surround-${route.params.slug}`, () =>
-  queryContent('articles')
-    .only(['title', '_path'])
-    .sort({ createdAt: 1 })
-    .findSurround(route.path)
+const { data: surroundArticles } = await useAsyncData(
+  `surround-${route.params.slug}`,
+  () => {
+    if (!article.value?._path) return Promise.resolve([null, null])
+
+    return queryContent('articles')
+      .only(['title', '_path'])
+      .sort({ createdAt: 1 })
+      .findSurround(article.value._path)
+  }
 )
 
 const prev = computed(() => surroundArticles.value?.[0])

@@ -10,12 +10,12 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "test": "node scripts/pre-build-check.js",
-    "prebuild": "yarn test",
-    "pregenerate": "yarn test",
+    "prebuild": "npm run test",
+    "pregenerate": "npm run test",
     "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
-    "lint": "yarn lint:js && yarn lint:prettier",
-    "lintfix": "prettier --write --list-different . && yarn lint:js --fix"
+    "lint": "npm run lint:js && npm run lint:prettier",
+    "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix"
   },
   "dependencies": {
     "@fontsource/work-sans": "^5.1.0",
