@@ -2,10 +2,10 @@
 
 > **Document de statut pour reprendre facilement la migration après pause**
 
-**Date de sauvegarde** : 10 décembre 2025 - Merge zen-raman + feat/nuxt3-phase1-deps
-**Branche active** : `zen-raman`
-**Statut** : 🎉 MIGRATION COMPLÈTE - Branch consolidée prête pour tests et déploiement !
-**Dernière action** : Merge feat/nuxt3-phase1-deps dans zen-raman - Consolidation complète
+**Date de sauvegarde** : 10 décembre 2025 - Phase finale terminée
+**Branche active** : `feat/nuxt3-phase1-deps`
+**Statut** : 🎉 MIGRATION COMPLÈTE - Generate fonctionne, prêt pour merge !
+**Dernière action** : Corrections finales liens et prerender - Generate réussit avec 36 routes
 
 ---
 
@@ -165,6 +165,24 @@ Statut : Merge completed, ready to commit
   - icon-hashtag.svg copié dans public/img/
   - URL changée: `~/assets/img/` → `/img/`
 - [x] **.gitignore mis à jour** : Exclut `.output/` ✅
+
+### Corrections finales Generate (100%) ✅ NOUVEAU !
+- [x] **Liens markdown corrigés** : Tous les liens internes utilisent minuscules ✅
+  - /eco-conception/l-eco-conception-web (au lieu de L-eco)
+  - /eco-conception/la-consommation-energetique-du-numerique (au lieu de La-cons)
+- [x] **Fichiers markdown renommés** : Cohérence des slugs ✅
+  - L-eco-conception-web.md → l-eco-conception-web.md
+  - La-consommation-energetique-du-numerique.md → la-consommation-energetique-du-numerique.md
+- [x] **Navigation prev/next transformée** : Routes /articles/ → /eco-conception/ ✅
+  - Fonction transformArticleLink() dans pages/eco-conception/[slug].vue
+- [x] **Feeds RSS/JSON corrigés** : Slugs en minuscules ✅
+  - Ajout .toLowerCase() dans server/routes/rss.xml.ts
+  - Ajout .toLowerCase() dans server/routes/feed.json.ts
+- [x] **Champ slug retiré** : Non présent dans frontmatter ✅
+  - Supprimé de pages/eco-conception/index.vue queryContent()
+- [x] **Nitro failOnError** : Ignore 404 bénins sur API content ✅
+  - Configuration nuxt.config.ts prerender.failOnError: false
+- [x] **Generate réussit** : 36 routes prérendues en 2.8s ✅
 
 ---
 
