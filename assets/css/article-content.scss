@@ -59,6 +59,14 @@ article {
     margin-top: $space-xl;      // 64px -> 104px
     margin-bottom: $space-3xs;  // 4px -> 6px
     font-size: min(max(1.929409988rem, 4.950306412vw), 2.8797164rem);
+
+    // Remove underline from heading anchor links
+    a {
+      background: none;
+      &:hover {
+        background: none;
+      }
+    }
   }
 
   h3 {
@@ -67,12 +75,28 @@ article {
     margin-top: $space-l;       // 40px -> 64px
     margin-bottom: $space-3xs;  // 4px -> 6px
     font-size: min(max(1.192466rem, 4.587334vw), 1.7798rem);
+
+    // Remove underline from heading anchor links
+    a {
+      background: none;
+      &:hover {
+        background: none;
+      }
+    }
   }
 
   h4 {
     font-weight: normal;
     margin-top: $space-m;       // 24px -> 40px
     margin-bottom: $space-3xs;  // 4px -> 6px
+
+    // Remove underline from heading anchor links
+    a {
+      background: none;
+      &:hover {
+        background: none;
+      }
+    }
   }
 
   // Blockquotes
