@@ -444,8 +444,8 @@ section {
       z-index: 3;
     }
 
-    :deep(.nuxt-content),
-    :deep(.prose) {
+    // Target article content directly (ContentRenderer outputs without wrapper class)
+    article {
       p {
         max-width: 66ch;
         margin-bottom: $space-s;
@@ -494,20 +494,20 @@ section {
       }
       h2 {
         line-height: calc(2px + 2ex + 2px);
-        margin-top: $space-l;      // Beaucoup d'espace AVANT (40px -> 64px)
-        margin-bottom: $space-xs;   // Peu d'espace APRÈS (12px -> 16px)
+        margin-top: $space-xl;      // Très grand espace AVANT (64px -> 104px)
+        margin-bottom: $space-3xs;  // Minimal APRÈS (4px -> 6px)
         font-size: min(max(1.929409988rem, 4.950306412vw), 2.8797164rem);
       }
       h3 {
         font-size: 1.7798rem;
         line-height: calc(2px + 2ex + 2px);
-        margin-top: $space-m-l;     // Espace moyen-grand AVANT (24px -> 64px)
-        margin-bottom: $space-2xs;  // Très peu d'espace APRÈS (8px -> 10px)
+        margin-top: $space-l;       // Grand espace AVANT (40px -> 64px)
+        margin-bottom: $space-3xs;  // Minimal APRÈS (4px -> 6px)
         font-size: min(max(1.192466rem, 4.587334vw), 1.7798rem);
       }
       h4 {
         font-weight: normal;
-        margin-top: $space-s;       // Espace standard AVANT (16px -> 24px)
+        margin-top: $space-m;       // Espace moyen AVANT (24px -> 40px)
         margin-bottom: $space-3xs;  // Minimal APRÈS (4px -> 6px)
       }
       blockquote {
