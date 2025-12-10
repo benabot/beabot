@@ -445,7 +445,8 @@ section {
     }
 
     // Target article content directly (ContentRenderer outputs without wrapper class)
-    article {
+    // Use :deep() to penetrate into ContentRenderer output
+    article :deep() {
       p {
         max-width: 66ch;
         margin-bottom: $space-s;
