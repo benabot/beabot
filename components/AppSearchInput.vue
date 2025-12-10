@@ -21,27 +21,31 @@
     </ul>
   </div>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      searchQuery: '',
-      articles: [],
-    };
-  },
-  watch: {
-    async searchQuery(searchQuery) {
-      if (!searchQuery) {
-        this.articles = [];
-        return;
-      }
-      this.articles = await this.$content('articles')
-        .limit(6)
-        .search(searchQuery)
-        .fetch();
-    },
-  },
-};
+<script setup>
+import { ref, watch } from 'vue'
+
+const searchQuery = ref('')
+const articles = ref([])
+
+watch(searchQuery, async (newQuery) => {
+  if (!newQuery) {
+    articles.value = []
+    return
+  }
+
+  // @nuxt/content v2: queryContent avec where pour recherche
+  const result = await queryContent('articles')
+    .where({
+      $or: [
+        { title: { $contains: newQuery } },
+        { description: { $contains: newQuery } },
+      ],
+    })
+    .limit(6)
+    .find()
+
+  articles.value = result
+})
 </script>
 <style lang="scss" scoped>
 #search {

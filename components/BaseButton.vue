@@ -5,20 +5,20 @@
     >
   </div>
 </template>
-<script>
-export default {
-  props: {
-    to: {
-      type: String,
-      default: '/',
-    },
-    bleu: {
-      type: Boolean,
-      default: false,
-    },
+
+<script setup>
+defineProps({
+  to: {
+    type: String,
+    default: '/',
   },
-};
+  bleu: {
+    type: Boolean,
+    default: false,
+  },
+})
 </script>
+
 <style lang="scss" scoped>
 .button_cont {
   text-align: right;

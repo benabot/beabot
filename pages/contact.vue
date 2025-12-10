@@ -34,55 +34,53 @@
   </section>
 </template>
 
-<script>
+<script setup>
+import { ref } from 'vue'
+
 function encode(data) {
   return Object.keys(data)
-    .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]))
+    .map((k) => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]))
     .join('&')
 }
 
-export default {
-  head: { title: 'Contact' },
-  data() {
-    return {
-      loading: false,
-      sent: false,
-      error: null,
-      form: { name: '', email: '', message: '', botField: '' }
+const loading = ref(false)
+const sent = ref(false)
+const error = ref(null)
+const form = ref({ name: '', email: '', message: '', botField: '' })
+
+const onSubmit = async () => {
+  error.value = null
+  if (loading.value) return
+  loading.value = true
+  try {
+    const body = encode({
+      'form-name': 'contact',
+      name: form.value.name,
+      email: form.value.email,
+      message: form.value.message,
+      'bot-field': form.value.botField,
+    })
+    const res = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body,
+    })
+    if (res.ok) {
+      sent.value = true
+      form.value = { name: '', email: '', message: '', botField: '' }
+    } else {
+      error.value = "Erreur lors de l'envoi. Réessayez plus tard."
     }
-  },
-  methods: {
-    async onSubmit() {
-      this.error = null
-      if (this.loading) return
-      this.loading = true
-      try {
-        const body = encode({
-          'form-name': 'contact',
-          name: this.form.name,
-          email: this.form.email,
-          message: this.form.message,
-          'bot-field': this.form.botField
-        })
-        const res = await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body
-        })
-        if (res.ok) {
-          this.sent = true
-          this.form = { name: '', email: '', message: '', botField: '' }
-        } else {
-          this.error = 'Erreur lors de l\'envoi. Réessayez plus tard.'
-        }
-      } catch (e) {
-        this.error = 'Réseau indisponible. Vérifiez votre connexion.'
-      } finally {
-        this.loading = false
-      }
-    }
+  } catch (e) {
+    error.value = 'Réseau indisponible. Vérifiez votre connexion.'
+  } finally {
+    loading.value = false
   }
 }
+
+useHead({
+  title: 'Contact',
+})
 </script>
 
 <style scoped>

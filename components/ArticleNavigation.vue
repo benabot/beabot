@@ -2,7 +2,7 @@
   <div class="boite-prev text-fin text-gris2">
     <NuxtLink
       v-if="prev"
-      :to="{ name: 'eco-conception-slug', params: { slug: prev.slug } }"
+      :to="`/eco-conception/${prev.slug}`"
       class="bloc"
     >
       &larr; {{ prev.title }}
@@ -10,7 +10,7 @@
     <span v-else>&nbsp;</span>
     <NuxtLink
       v-if="next"
-      :to="{ name: 'eco-conception-slug', params: { slug: next.slug } }"
+      :to="`/eco-conception/${next.slug}`"
       class="bloc"
     >
       {{ next.title }} &rarr;
@@ -18,20 +18,20 @@
     <span v-else>&nbsp;</span>
   </div>
 </template>
-<script>
-export default {
-  props: {
-    prev: {
-      type: Object,
-      default: () => null,
-    },
-    next: {
-      type: Object,
-      default: () => null,
-    },
+
+<script setup>
+defineProps({
+  prev: {
+    type: Object,
+    default: () => null,
   },
-};
+  next: {
+    type: Object,
+    default: () => null,
+  },
+})
 </script>
+
 <style lang="scss" scoped>
 .boite-prev {
   display: flex;
