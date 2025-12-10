@@ -70,6 +70,7 @@ export default defineNuxtConfig({
     '@fontsource/work-sans/700.css', // Bold
     '@fontsource/work-sans/900.css', // Black
     '~/assets/css/main.scss',
+    '~/assets/css/article-content.scss', // Article typography styles
   ],
 
   // Vite configuration for SCSS

@@ -1,0 +1,125 @@
+// Article content styles (ContentRenderer output)
+// These styles target the markdown content rendered in article pages
+
+article {
+  // Paragraphs
+  p {
+    max-width: 66ch;
+    margin-bottom: $space-s;
+  }
+
+  // Lists
+  ul, ol {
+    max-width: 66ch;
+    margin-bottom: $space-s;
+    padding-left: 1.5em;
+
+    li {
+      margin-bottom: $space-2xs;
+      line-height: 1.6;
+      list-style-position: outside;
+
+      strong {
+        font-weight: $bold;
+        font-size: inherit;
+      }
+    }
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  // Links
+  a {
+    background: linear-gradient($gris3, $gris3) right bottom / 100% 0.15em no-repeat;
+    transition: background-size 0.4s;
+
+    &:hover {
+      background-size: 100% 0.26em;
+    }
+  }
+
+  .lien--vert {
+    background: linear-gradient($vert, $vert) right bottom / 100% 0.25em no-repeat;
+    transition: background-size 0.4s;
+
+    &:hover {
+      background-size: 100% 0.56em;
+    }
+  }
+
+  // Headings with proper spacing hierarchy
+  h2 {
+    line-height: calc(2px + 2ex + 2px);
+    margin-top: $space-xl;      // 64px -> 104px
+    margin-bottom: $space-3xs;  // 4px -> 6px
+    font-size: min(max(1.929409988rem, 4.950306412vw), 2.8797164rem);
+  }
+
+  h3 {
+    font-size: 1.7798rem;
+    line-height: calc(2px + 2ex + 2px);
+    margin-top: $space-l;       // 40px -> 64px
+    margin-bottom: $space-3xs;  // 4px -> 6px
+    font-size: min(max(1.192466rem, 4.587334vw), 1.7798rem);
+  }
+
+  h4 {
+    font-weight: normal;
+    margin-top: $space-m;       // 24px -> 40px
+    margin-bottom: $space-3xs;  // 4px -> 6px
+  }
+
+  // Blockquotes
+  blockquote {
+    background: $gris6;
+    border-left: 10px solid $gris4;
+    color: $gris1;
+    margin: 1.5em 10px;
+    padding: 1em 10px;
+    border-radius: 0.5rem;
+    quotes: '\201C''\201D''\2018''\2019';
+  }
+
+  // Citation blocks (custom HTML in markdown)
+  .citation {
+    background: $gris6;
+    color: $gris1;
+    margin: 1.5em 10px;
+    padding: 1em 10px 1em 4rem;
+    border-radius: 0.5rem;
+    position: relative;
+    max-width: 66ch;
+
+    &::before {
+      content: '\201F';
+      font-size: 7rem;
+      position: absolute;
+      top: -18%;
+      left: 10px;
+      z-index: 1;
+      font-family: sans-serif, serif;
+      color: $vert;
+      opacity: 0.9;
+    }
+
+    .auteur {
+      font-size: 0.8rem;
+    }
+  }
+
+  // Footnotes
+  .footnote-ref {
+    font-variant-numeric: oldstyle-nums;
+    -moz-font-feature-settings: 'onum';
+    -webkit-font-feature-settings: 'onum';
+    font-feature-settings: 'onum';
+    font-size: 0.86em;
+    color: $gris1;
+  }
+}
