@@ -54,6 +54,7 @@ $type-levels: 4,
 // and computed font-size as value
 $type-styles: ();
 $level-size: $type-base-size;
+$base-unitless: math.div($type-base-size, ($type-base-size * 0 + 1));
 
 @each $level in $type-levels {
   $level-size: $level-size * $type-size-ratio;
@@ -88,7 +89,7 @@ $level-size: $type-base-size;
       $fluid-min: $level-unitless - ($fluid-reduction * $level-unitless);
 
       // Prevent dropping lower than 1rem (body font-size)
-      $fluid-min: if($fluid-min > $type-base-size, $fluid-min, 1);
+      $fluid-min: if($fluid-min > $base-unitless, $fluid-min, $base-unitless);
 
       // Adjust max modifier slightly per level to prevent "same" size
       // or lower levels appaering larger than higher levels
