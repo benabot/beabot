@@ -192,7 +192,7 @@ h1 {
   transition: opacity 0.25s ease-out;
 }
 
-.fade-enter,
+.fade-enter-from,
 .fade-leave-to {
   opacity: 0;
 }
