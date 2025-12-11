@@ -9,7 +9,7 @@
   publish = ".output/public"
 
   # Environment variables
-  environment = { NODE_VERSION = "18", NUXT_PUBLIC_SITE_URL = "https://beabot.netlify.app", NETLIFY_USE_YARN = "false" }
+  environment = { NODE_VERSION = "18", NUXT_PUBLIC_SITE_URL = "https://beabot.netlify.app", NETLIFY_USE_YARN = "false", NITRO_PRESET = "static" }
 
 # Build optimizations
 [build.processing]
