@@ -108,12 +108,14 @@ const resolvedBackgroundUrl = computed(() => {
   }
   h2 {
     margin-right: -4rem;
+    margin-top: 0.5rem;
     margin-bottom: 0;
     position: relative;
     z-index: 111;
   }
   h3 {
     font-size: 1.18rem;
+    margin-top: 0.25rem;
     margin-bottom: 0.25rem;
   }
   &:hover .clip-svg {
@@ -126,11 +128,10 @@ const resolvedBackgroundUrl = computed(() => {
   position: relative;
   width: 100%;
   padding-top: 100%; /* 1:1 Aspect Ratio */
-  // overflow: hidden;
+  overflow: hidden;
   &:hover .boite-image__image {
     @media (min-width: $breakpoint-tablet) {
-      // transform: scale(1);
-      background-size: 190%;
+      transform: scale(1.1);
     }
   }
   &:hover .circle {

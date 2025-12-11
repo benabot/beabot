@@ -38,6 +38,7 @@
             select === 'webDesign' ||
             select === 'wp'
           "
+          key="cycloplomberie"
           titre="La Cyclo-Plomberie"
           sous-titre="Votre plombier à vélo à Amiens et alentours"
           background-url="cyclop.png"
@@ -52,8 +53,9 @@
             select === 'webDesign' ||
             select === 'wp'
           "
+          key="petiteboucle"
           titre="La petite boucle"
-          sous-titre="Collecte de cartouches d’encre en triporteur électrique"
+          sous-titre="Collecte de cartouches d'encre en triporteur électrique"
           background-url="lpb.png"
           :chips="['WebDesign', 'WordPress', 'Éco-conçu']"
           lien="https://lapetiteboucle.fr/"
@@ -66,6 +68,7 @@
             select === 'webDesign' ||
             select === 'wp'
           "
+          key="amc2"
           id="site1"
           titre="AMC2"
           sous-titre="Site vitrine et catalogue en ligne"
@@ -76,6 +79,7 @@
       <transition name="fade">
         <LazyBoiteArticle
           v-if="tout || select === 'vjs' || select === 'webDesign'"
+          key="guidersebanque1"
           id="site2"
           titre="Guide RSE Banque Populaire"
           sous-titre="Carte interactive"
@@ -86,6 +90,7 @@
       <transition name="fade">
         <LazyBoiteArticle
           v-if="tout || select === 'vjs' || select === 'webDesign'"
+          key="guidersebanque2"
           titre="Guide RSE Banque Populaire"
           sous-titre="Interface de visualisation de données"
           background-url="guideBleu2.png"
@@ -95,6 +100,7 @@
       <transition name="fade">
         <LazyBoiteArticle
           v-if="tout || select === 'vjs' || select === 'webDesign'"
+          key="appnoel"
           titre="App noël"
           sous-titre="Application d'apprentissage à l'interface d'un ordinateur"
           background-url="appNoel.png"
@@ -109,6 +115,7 @@
             select === 'webDesign' ||
             select === 'wp'
           "
+          key="aave"
           titre="AAVE"
           sous-titre="Association pour l'aménagement de la vallée de l'Esches"
           background-url="aave.png"
@@ -192,7 +199,7 @@ h1 {
   transition: opacity 0.25s ease-out;
 }
 
-.fade-enter,
+.fade-enter-from,
 .fade-leave-to {
   opacity: 0;
 }

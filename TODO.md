@@ -4,9 +4,9 @@
 
 **Projet** : BeAbot
 **Date création** : 6 décembre 2025
-**Dernière MAJ** : 10 décembre 2025 - 16h30
+**Dernière MAJ** : 11 décembre 2025 - Travaux design en cours
 **Statut global** : 🎉 Migration Nuxt 3 100% COMPLÈTE - Generate réussit !
-**Branche active** : `feat/nuxt3-phase1-deps` (16 commits - prêt pour merge dev)
+**Branche active** : `feat/nuxt3-phase2-design` (7 commits - optimisations design)
 
 ---
 
@@ -41,6 +41,76 @@
   - ✅ Feeds RSS/JSON corrigés
   - ✅ Prerender 404 bénins ignorés
 - ⏳ Déploiement production : 0% (prêt à merger)
+- ✅ Phase 2 - Design & Typography : 70% ✅ EN COURS
+  - ✅ Police remplacée: Work Sans → Montserrat (éco-conçu)
+  - ✅ Style titre simplifié (texte solide vs outline)
+  - ✅ Blockquotes corrigés (style subtil)
+  - ✅ Animations portfolio réparées (hover zoom)
+  - ✅ Espacement portfolio réduit (h2/h3)
+  - ✅ Transitions filtres portfolio corrigées (Vue 3)
+
+---
+
+## 🎨 PHASE 2 - DESIGN & TYPOGRAPHY (11 décembre 2025)
+
+### ✅ Changements effectués
+
+#### ✅ Remplacement de la police (commit 3b42e14)
+- **Avant**: @fontsource/work-sans
+- **Après**: @fontsource/montserrat
+- **Raison**: Police géométrique mieux adaptée au design, ~70KB total (4 poids)
+- **Impact éco-conception**: Auto-hébergée, WOFF2 optimisé, 0 requête externe
+- **Fichiers modifiés**:
+  - `nuxt.config.ts` - Import des poids Montserrat
+  - `assets/css/main.scss` - Font-family globale
+  - `package.json` - Dépendance @fontsource/montserrat
+
+#### ✅ Simplification du titre "beAbot"
+- **Problème**: Text-stroke avec `color: transparent` créait des artéfacts visuels
+- **Solution**: Texte solide avec `color: $gris2` (meilleure accessibilité)
+- **Tentatives**:
+  - ❌ Text-stroke avec font-weight: 900 → artéfacts
+  - ❌ Text-stroke avec font-weight: 700 → rendu incorrect avec Montserrat
+  - ✅ Texte solide → rendu propre et accessible
+- **Fichier modifié**: `assets/css/main.scss` (lignes 291-306)
+
+#### ✅ Correction des blockquotes
+- **Problème**: Blockquotes markdown apparaissaient comme des citations (fond gris)
+- **Solution**: Style subtil (bordure gauche, italique, fond transparent)
+- **Fichier modifié**: `assets/css/article-content.scss`
+- **Conservation**: Classe `.citation` pour vraies citations HTML
+
+### ✅ Problèmes résolus
+
+#### ✅ Animations portfolio au survol (commit 0a03651)
+- **Page**: `/portfolio`
+- **Problème**: Transform scale était commenté, overflow hidden aussi
+- **Solution**:
+  - Décommenté `transform: scale(1.1)` pour zoom 10% au survol
+  - Décommenté `overflow: hidden` pour contenir le zoom
+  - Supprimé `background-size` (ne fonctionne pas sur `<img>`)
+- **Fichier modifié**: `components/BoiteArticle.vue` (lignes 129-133)
+- **Impact**: Animation smooth restaurée avec transition 0.3s
+
+#### ✅ Espacement portfolio réduit
+- **Page**: `/portfolio`
+- **Problème**: Trop d'espace entre images et titres dans les cartes
+- **Solution**:
+  - Ajout `margin-top: 0.5rem` sur h2 (vs héritage global)
+  - Ajout `margin-top: 0.25rem` sur h3 (vs héritage global)
+  - Styles scoped au composant uniquement
+- **Fichier modifié**: `components/BoiteArticle.vue` (lignes 109-120)
+- **Impact**: Cartes portfolio plus compactes et lisibles
+
+#### ✅ Transitions filtres portfolio (commit 70b3b81)
+- **Page**: `/portfolio`
+- **Problème**: Images disparaissaient lors de l'utilisation des filtres (syntaxe Vue 2)
+- **Solution**:
+  - Changé `.fade-enter` (Vue 2) → `.fade-enter-from` (Vue 3)
+  - `.fade-leave-to` reste identique
+  - Transitions fade maintenant fonctionnelles
+- **Fichier modifié**: `pages/portfolio.vue` (lignes 195-198)
+- **Impact**: Filtrage smooth avec transitions d'opacité 0.25s
 
 ---
 

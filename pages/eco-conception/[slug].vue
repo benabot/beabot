@@ -444,14 +444,15 @@ section {
       z-index: 3;
     }
 
-    :deep(.nuxt-content),
-    :deep(.prose) {
-      p {
+    // Target article content directly (ContentRenderer outputs without wrapper class)
+    // ContentRenderer renders content directly inside <article>, so we need :deep() for each selector
+    article {
+      :deep(p) {
         max-width: 66ch;
         margin-bottom: $space-s;
       }
 
-      ul, ol {
+      :deep(ul), :deep(ol) {
         max-width: 66ch;
         margin-bottom: $space-s;
         padding-left: 1.5em;
@@ -469,14 +470,15 @@ section {
         }
       }
 
-      ul {
+      :deep(ul) {
         list-style-type: disc;
       }
 
-      ol {
+      :deep(ol) {
         list-style-type: decimal;
       }
-      a {
+
+      :deep(a) {
         background: linear-gradient($gris3, $gris3) right bottom / 100% 0.15em
           no-repeat;
         transition: background-size 0.4s;
@@ -484,7 +486,8 @@ section {
           background-size: 100% 0.26em;
         }
       }
-      .lien--vert {
+
+      :deep(.lien--vert) {
         background: linear-gradient($vert, $vert) right bottom / 100% 0.25em
           no-repeat;
         transition: background-size 0.4s;
@@ -492,25 +495,29 @@ section {
           background-size: 100% 0.56em;
         }
       }
-      h2 {
+
+      :deep(h2) {
         line-height: calc(2px + 2ex + 2px);
-        margin-top: $space-l;      // Beaucoup d'espace AVANT (40px -> 64px)
-        margin-bottom: $space-xs;   // Peu d'espace APRÈS (12px -> 16px)
+        margin-top: $space-xl;      // Très grand espace AVANT (64px -> 104px)
+        margin-bottom: $space-3xs;  // Minimal APRÈS (4px -> 6px)
         font-size: min(max(1.929409988rem, 4.950306412vw), 2.8797164rem);
       }
-      h3 {
+
+      :deep(h3) {
         font-size: 1.7798rem;
         line-height: calc(2px + 2ex + 2px);
-        margin-top: $space-m-l;     // Espace moyen-grand AVANT (24px -> 64px)
-        margin-bottom: $space-2xs;  // Très peu d'espace APRÈS (8px -> 10px)
+        margin-top: $space-l;       // Grand espace AVANT (40px -> 64px)
+        margin-bottom: $space-3xs;  // Minimal APRÈS (4px -> 6px)
         font-size: min(max(1.192466rem, 4.587334vw), 1.7798rem);
       }
-      h4 {
+
+      :deep(h4) {
         font-weight: normal;
-        margin-top: $space-s;       // Espace standard AVANT (16px -> 24px)
+        margin-top: $space-m;       // Espace moyen AVANT (24px -> 40px)
         margin-bottom: $space-3xs;  // Minimal APRÈS (4px -> 6px)
       }
-      blockquote {
+
+      :deep(blockquote) {
         background: $gris6;
         border-left: 10px solid $gris4;
         color: $gris1;
@@ -519,7 +526,8 @@ section {
         border-radius: 0.5rem;
         quotes: '\201C''\201D''\2018''\2019';
       }
-      .citation {
+
+      :deep(.citation) {
         background: $gris6;
         color: $gris1;
         margin: 1.5em 10px;

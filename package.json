@@ -18,6 +18,7 @@
     "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix"
   },
   "dependencies": {
+    "@fontsource/montserrat": "^5.2.8",
     "@fontsource/work-sans": "^5.1.0",
     "@nuxt/content": "^2.13.2",
     "@nuxt/image": "^1.8.1",

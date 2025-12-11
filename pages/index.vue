@@ -78,7 +78,7 @@
       <div class="sct-footer mt-n10">
         <NuxtLink
           class="sct-footer--btn"
-          to="/eco-conception/La-consommation-energetique-du-numerique"
+          to="/eco-conception/la-consommation-energetique-du-numerique"
           >en savoir plus</NuxtLink
         >
         <div class="fleche">
@@ -214,7 +214,7 @@
         <!-- <button class="sct-footer--btn">en savoir plus</button> -->
         <NuxtLink
           class="sct-footer--btn"
-          to="/eco-conception/L-eco-conception-web"
+          to="/eco-conception/l-eco-conception-web"
           >en savoir plus</NuxtLink
         >
         <div class="fleche">
@@ -331,11 +331,11 @@
             stitre="Éco-conception"
           />
           <p class="text-gris2">
-            Sujet en vogue, l’éco-conception web, victime de son succès, est
-            sujet d’une vague de greenwashing. Par delà les malentendus, tentons
+            Sujet en vogue, l'éco-conception web, victime de son succès, est
+            sujet d'une vague de greenwashing. Par delà les malentendus, tentons
             de clarifier le sujet.
           </p>
-          <BaseButton to="/eco-conception/L-eco-conception-web" />
+          <BaseButton to="/eco-conception/l-eco-conception-web" />
         </div>
       </div>
     </section>
