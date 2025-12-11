@@ -2,14 +2,14 @@
 # https://docs.netlify.com/configure-builds/file-based-configuration/
 
 [build]
-  # Build command for Nuxt 3 static generation
-  command = "yarn generate"
+  # Build command for Nuxt 3 static generation (force npm to avoid yarn/npm mix)
+  command = "npm run generate"
 
   # Output directory (Nuxt 3 default)
   publish = ".output/public"
 
   # Environment variables
-  environment = { NODE_VERSION = "18", NUXT_PUBLIC_SITE_URL = "https://beabot.netlify.app" }
+  environment = { NODE_VERSION = "18", NUXT_PUBLIC_SITE_URL = "https://beabot.netlify.app", NETLIFY_USE_YARN = "false" }
 
 # Build optimizations
 [build.processing]
@@ -110,17 +110,17 @@
 
 # Context-specific builds
 [context.production]
-  command = "yarn generate"
+  command = "npm run generate"
 
 [context.deploy-preview]
-  command = "yarn generate"
+  command = "npm run generate"
 
 [context.branch-deploy]
-  command = "yarn generate"
+  command = "npm run generate"
 
 # Dev environment (Netlify Dev)
 [dev]
-  command = "yarn dev"
+  command = "npm run dev"
   port = 3000
   targetPort = 3000
   publish = ".output/public"
