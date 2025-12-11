@@ -62,7 +62,7 @@
       <transition-group name="list" tag="div">
         <article v-for="article of articlesFilters" :key="article._path">
           <!-- <img :src="article.img" /> -->
-          <nuxt-link :to="articleLink(article)">
+          <nuxt-link :to="articleLink(article)" class="article-link">
             <BaseHeading gris :titre="article.title" :tags="article.tag"
           /></nuxt-link>
           <div class="resum">
@@ -127,6 +127,24 @@ a {
   display: block;
   position: relative;
   z-index: 200;
+}
+.article-link {
+  text-decoration: none !important;
+  color: inherit;
+  background: none !important;
+
+  &:hover,
+  &:focus,
+  &:visited {
+    text-decoration: none !important;
+    color: inherit;
+    background: none !important;
+  }
+}
+:deep(.article-link *),
+:deep(.article-link h3) {
+  text-decoration: none !important;
+  background: none !important;
 }
 .selector {
   text-align: center;
