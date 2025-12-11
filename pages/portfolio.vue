@@ -39,6 +39,7 @@
             select === 'wp'
           "
           key="cycloplomberie"
+          id="cycloplomberie"
           titre="La Cyclo-Plomberie"
           sous-titre="Votre plombier à vélo à Amiens et alentours"
           background-url="cyclop.png"
@@ -54,6 +55,7 @@
             select === 'wp'
           "
           key="petiteboucle"
+          id="petite-boucle"
           titre="La petite boucle"
           sous-titre="Collecte de cartouches d'encre en triporteur électrique"
           background-url="lpb.png"
@@ -91,6 +93,7 @@
         <LazyBoiteArticle
           v-if="tout || select === 'vjs' || select === 'webDesign'"
           key="guidersebanque2"
+          id="guide-rse-dataviz"
           titre="Guide RSE Banque Populaire"
           sous-titre="Interface de visualisation de données"
           background-url="guideBleu2.png"
@@ -101,6 +104,7 @@
         <LazyBoiteArticle
           v-if="tout || select === 'vjs' || select === 'webDesign'"
           key="appnoel"
+          id="app-noel"
           titre="App noël"
           sous-titre="Application d'apprentissage à l'interface d'un ordinateur"
           background-url="appNoel.png"
@@ -116,6 +120,7 @@
             select === 'wp'
           "
           key="aave"
+          id="aave"
           titre="AAVE"
           sous-titre="Association pour l'aménagement de la vallée de l'Esches"
           background-url="aave.png"
