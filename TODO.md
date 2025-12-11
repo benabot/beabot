@@ -41,13 +41,13 @@
   - ✅ Feeds RSS/JSON corrigés
   - ✅ Prerender 404 bénins ignorés
 - ⏳ Déploiement production : 0% (prêt à merger)
-- ✅ Phase 2 - Design & Typography : 60% ✅ EN COURS
+- ✅ Phase 2 - Design & Typography : 70% ✅ EN COURS
   - ✅ Police remplacée: Work Sans → Montserrat (éco-conçu)
   - ✅ Style titre simplifié (texte solide vs outline)
   - ✅ Blockquotes corrigés (style subtil)
   - ✅ Animations portfolio réparées (hover zoom)
   - ✅ Espacement portfolio réduit (h2/h3)
-  - ⏳ Images portfolio disparaissent avec filtres
+  - ✅ Transitions filtres portfolio corrigées (Vue 3)
 
 ---
 
@@ -102,13 +102,15 @@
 - **Fichier modifié**: `components/BoiteArticle.vue` (lignes 109-120)
 - **Impact**: Cartes portfolio plus compactes et lisibles
 
-### ⏳ Problèmes en cours
-
-#### ⏳ Images disparaissent avec filtres portfolio
+#### ✅ Transitions filtres portfolio (commit 70b3b81)
 - **Page**: `/portfolio`
-- **Problème**: Images disparaissent parfois lors de l'utilisation des filtres (VueJs/WordPress/etc.)
-- **À investiguer**: Transitions fade, v-if, timing
-- **Priorité**: P1 (impact UX majeur)
+- **Problème**: Images disparaissaient lors de l'utilisation des filtres (syntaxe Vue 2)
+- **Solution**:
+  - Changé `.fade-enter` (Vue 2) → `.fade-enter-from` (Vue 3)
+  - `.fade-leave-to` reste identique
+  - Transitions fade maintenant fonctionnelles
+- **Fichier modifié**: `pages/portfolio.vue` (lignes 195-198)
+- **Impact**: Filtrage smooth avec transitions d'opacité 0.25s
 
 ---
 
