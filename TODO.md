@@ -41,11 +41,11 @@
   - ✅ Feeds RSS/JSON corrigés
   - ✅ Prerender 404 bénins ignorés
 - ⏳ Déploiement production : 0% (prêt à merger)
-- ✅ Phase 2 - Design & Typography : 30% ✅ EN COURS
+- ✅ Phase 2 - Design & Typography : 50% ✅ EN COURS
   - ✅ Police remplacée: Work Sans → Montserrat (éco-conçu)
   - ✅ Style titre simplifié (texte solide vs outline)
   - ✅ Blockquotes corrigés (style subtil)
-  - ⏳ Animations portfolio à réparer (hover zoom)
+  - ✅ Animations portfolio réparées (hover zoom)
 
 ---
 
@@ -78,13 +78,17 @@
 - **Fichier modifié**: `assets/css/article-content.scss`
 - **Conservation**: Classe `.citation` pour vraies citations HTML
 
-### ⏳ Problèmes identifiés
+### ✅ Problèmes résolus
 
-#### ⏳ Animations portfolio au survol
+#### ✅ Animations portfolio au survol (commit 0a03651)
 - **Page**: `/portfolio`
-- **Problème**: Effet zoom/dezoom au survol ne fonctionne plus
-- **À investiguer**: Styles CSS hover, transitions
-- **Priorité**: P1 (impact UX)
+- **Problème**: Transform scale était commenté, overflow hidden aussi
+- **Solution**:
+  - Décommenté `transform: scale(1.1)` pour zoom 10% au survol
+  - Décommenté `overflow: hidden` pour contenir le zoom
+  - Supprimé `background-size` (ne fonctionne pas sur `<img>`)
+- **Fichier modifié**: `components/BoiteArticle.vue` (lignes 129-133)
+- **Impact**: Animation smooth restaurée avec transition 0.3s
 
 ---
 
