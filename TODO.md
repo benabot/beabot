@@ -4,9 +4,9 @@
 
 **Projet** : BeAbot
 **Date création** : 6 décembre 2025
-**Dernière MAJ** : 10 décembre 2025 - 16h30
+**Dernière MAJ** : 11 décembre 2025 - Travaux design en cours
 **Statut global** : 🎉 Migration Nuxt 3 100% COMPLÈTE - Generate réussit !
-**Branche active** : `feat/nuxt3-phase1-deps` (16 commits - prêt pour merge dev)
+**Branche active** : `feat/nuxt3-phase2-design` (7 commits - optimisations design)
 
 ---
 
@@ -41,6 +41,50 @@
   - ✅ Feeds RSS/JSON corrigés
   - ✅ Prerender 404 bénins ignorés
 - ⏳ Déploiement production : 0% (prêt à merger)
+- ✅ Phase 2 - Design & Typography : 30% ✅ EN COURS
+  - ✅ Police remplacée: Work Sans → Montserrat (éco-conçu)
+  - ✅ Style titre simplifié (texte solide vs outline)
+  - ✅ Blockquotes corrigés (style subtil)
+  - ⏳ Animations portfolio à réparer (hover zoom)
+
+---
+
+## 🎨 PHASE 2 - DESIGN & TYPOGRAPHY (11 décembre 2025)
+
+### ✅ Changements effectués
+
+#### ✅ Remplacement de la police (commit 3b42e14)
+- **Avant**: @fontsource/work-sans
+- **Après**: @fontsource/montserrat
+- **Raison**: Police géométrique mieux adaptée au design, ~70KB total (4 poids)
+- **Impact éco-conception**: Auto-hébergée, WOFF2 optimisé, 0 requête externe
+- **Fichiers modifiés**:
+  - `nuxt.config.ts` - Import des poids Montserrat
+  - `assets/css/main.scss` - Font-family globale
+  - `package.json` - Dépendance @fontsource/montserrat
+
+#### ✅ Simplification du titre "beAbot"
+- **Problème**: Text-stroke avec `color: transparent` créait des artéfacts visuels
+- **Solution**: Texte solide avec `color: $gris2` (meilleure accessibilité)
+- **Tentatives**:
+  - ❌ Text-stroke avec font-weight: 900 → artéfacts
+  - ❌ Text-stroke avec font-weight: 700 → rendu incorrect avec Montserrat
+  - ✅ Texte solide → rendu propre et accessible
+- **Fichier modifié**: `assets/css/main.scss` (lignes 291-306)
+
+#### ✅ Correction des blockquotes
+- **Problème**: Blockquotes markdown apparaissaient comme des citations (fond gris)
+- **Solution**: Style subtil (bordure gauche, italique, fond transparent)
+- **Fichier modifié**: `assets/css/article-content.scss`
+- **Conservation**: Classe `.citation` pour vraies citations HTML
+
+### ⏳ Problèmes identifiés
+
+#### ⏳ Animations portfolio au survol
+- **Page**: `/portfolio`
+- **Problème**: Effet zoom/dezoom au survol ne fonctionne plus
+- **À investiguer**: Styles CSS hover, transitions
+- **Priorité**: P1 (impact UX)
 
 ---
 
