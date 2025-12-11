@@ -41,11 +41,13 @@
   - ✅ Feeds RSS/JSON corrigés
   - ✅ Prerender 404 bénins ignorés
 - ⏳ Déploiement production : 0% (prêt à merger)
-- ✅ Phase 2 - Design & Typography : 50% ✅ EN COURS
+- ✅ Phase 2 - Design & Typography : 60% ✅ EN COURS
   - ✅ Police remplacée: Work Sans → Montserrat (éco-conçu)
   - ✅ Style titre simplifié (texte solide vs outline)
   - ✅ Blockquotes corrigés (style subtil)
   - ✅ Animations portfolio réparées (hover zoom)
+  - ✅ Espacement portfolio réduit (h2/h3)
+  - ⏳ Images portfolio disparaissent avec filtres
 
 ---
 
@@ -89,6 +91,24 @@
   - Supprimé `background-size` (ne fonctionne pas sur `<img>`)
 - **Fichier modifié**: `components/BoiteArticle.vue` (lignes 129-133)
 - **Impact**: Animation smooth restaurée avec transition 0.3s
+
+#### ✅ Espacement portfolio réduit
+- **Page**: `/portfolio`
+- **Problème**: Trop d'espace entre images et titres dans les cartes
+- **Solution**:
+  - Ajout `margin-top: 0.5rem` sur h2 (vs héritage global)
+  - Ajout `margin-top: 0.25rem` sur h3 (vs héritage global)
+  - Styles scoped au composant uniquement
+- **Fichier modifié**: `components/BoiteArticle.vue` (lignes 109-120)
+- **Impact**: Cartes portfolio plus compactes et lisibles
+
+### ⏳ Problèmes en cours
+
+#### ⏳ Images disparaissent avec filtres portfolio
+- **Page**: `/portfolio`
+- **Problème**: Images disparaissent parfois lors de l'utilisation des filtres (VueJs/WordPress/etc.)
+- **À investiguer**: Transitions fade, v-if, timing
+- **Priorité**: P1 (impact UX majeur)
 
 ---
 
