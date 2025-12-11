@@ -126,8 +126,9 @@ check(fileExists('content/articles'), '❌ content/articles/ directory is missin
 
 // Check for article files
 const articles = [
-  'L-eco-conception-web.md',
-  'La-consommation-energetique-du-numerique.md',
+  // Filenames as stored in content/articles
+  'l-eco-conception-web.md',
+  'la-consommation-energetique-du-numerique.md',
   'theme-wordpress-eco-conception.md',
 ]
 
@@ -162,7 +163,9 @@ console.log('☁️  Checking Netlify configuration...')
 check(fileExists('netlify.toml'), '❌ netlify.toml is missing')
 if (fileExists('netlify.toml')) {
   const netlifyConfig = readFileSync(join(rootDir, 'netlify.toml'), 'utf-8')
-  check(netlifyConfig.includes('yarn generate'), '❌ netlify.toml should use "yarn generate" as build command')
+  const hasGenerate =
+    netlifyConfig.includes('yarn generate') || netlifyConfig.includes('npm run generate')
+  check(hasGenerate, '❌ netlify.toml should use "npm run generate" (or yarn generate) as build command')
   check(netlifyConfig.includes('.output/public'), '❌ netlify.toml should publish ".output/public" directory')
 }
 
