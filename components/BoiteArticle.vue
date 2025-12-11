@@ -126,11 +126,10 @@ const resolvedBackgroundUrl = computed(() => {
   position: relative;
   width: 100%;
   padding-top: 100%; /* 1:1 Aspect Ratio */
-  // overflow: hidden;
+  overflow: hidden;
   &:hover .boite-image__image {
     @media (min-width: $breakpoint-tablet) {
-      // transform: scale(1);
-      background-size: 190%;
+      transform: scale(1.1);
     }
   }
   &:hover .circle {
