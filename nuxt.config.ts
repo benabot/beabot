@@ -64,10 +64,7 @@ export default defineNuxtConfig({
 
   // Global CSS
   css: [
-    // Montserrat full variants (tous poids principaux)
-    '@fontsource/montserrat/300.css', // Light
-    '@fontsource/montserrat/500.css', // Normal
-    '@fontsource/montserrat/700.css', // Bold
+    // System font stack only (retire Montserrat webfonts)
     '~/assets/css/main.scss',
     '~/assets/css/article-content.scss', // Article typography styles
   ],
@@ -84,7 +81,7 @@ export default defineNuxtConfig({
     resolve: {
       alias: {
         // Prevent rare dev errors resolving internal Nuxt paths
-        '#internal/nuxt/paths': 'nuxt/dist/app/paths',
+        '#internal/nuxt/paths': 'nuxt/dist/app/paths.mjs',
       },
     },
     css: {
