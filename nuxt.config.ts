@@ -65,10 +65,10 @@ export default defineNuxtConfig({
 
   // Global CSS
   css: [
-    '@fontsource/work-sans/300.css', // Light
-    '@fontsource/work-sans/500.css', // Normal
-    '@fontsource/work-sans/700.css', // Bold
-    '@fontsource/work-sans/900.css', // Black
+    '@fontsource/montserrat/300.css', // Light
+    '@fontsource/montserrat/500.css', // Normal
+    '@fontsource/montserrat/700.css', // Bold
+    '@fontsource/montserrat/900.css', // Black
     '~/assets/css/main.scss',
     '~/assets/css/article-content.scss', // Article typography styles
   ],

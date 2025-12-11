@@ -99,15 +99,15 @@ article {
     }
   }
 
-  // Blockquotes
+  // Blockquotes (markdown > syntax)
+  // These should be subtle, not styled like citations
   blockquote {
-    background: $gris6;
-    border-left: 10px solid $gris4;
-    color: $gris1;
-    margin: 1.5em 10px;
-    padding: 1em 10px;
-    border-radius: 0.5rem;
-    quotes: '\201C''\201D''\2018''\2019';
+    border-left: 3px solid $gris4;
+    color: $gris2;
+    margin: 1.5em 0;
+    padding: 0.5em 1em;
+    font-style: italic;
+    background: transparent;
   }
 
   // Citation blocks (custom HTML in markdown)
