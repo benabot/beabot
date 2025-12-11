@@ -288,57 +288,7 @@
         </div>
       </div>
     </section>
-    <section class="container container-blog">
-      <hr />
-      <h3 class="h2 text-gris2 text-black">
-        éco-conception&nbsp;<span>:</span>
-        <br />
-        <span class="text-fin">derniers articles</span>
-      </h3>
-      <div class="container-blog__box">
-        <div class="boite-para__para a">
-          <BaseHeading
-            gris
-            titre="éco-conception d'un thème WordPress"
-            stitre="Éco-conception"
-          />
-          <p class="text-gris2">
-            Eco-conception et WordPress, exemple et cas concret avec un thème
-            WordPress éco-conçu pour le site de la petite boucle.
-          </p>
-          <BaseButton to="/eco-conception/theme-wordpress-eco-conception" />
-        </div>
-        <div class="oeuf b">
-          <NuxtLink to="/eco-conception" aria-label="voir le blog"
-            ><svg class="lien" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path
-                fill="currentColor"
-                d="M18.4,13h-4.9c-0.3,0-0.6,0.2-0.6,0.6v4.9c0,0.3-0.2,0.6-0.6,0.6h-0.9c-0.3,0-0.6-0.2-0.6-0.6v-4.9c0-0.3-0.2-0.6-0.6-0.6
-	H5.6C5.2,13,5,12.8,5,12.4v-0.9C5,11.2,5.2,11,5.6,11h4.9c0.3,0,0.6-0.2,0.6-0.6V5.6C11,5.2,11.2,5,11.6,5h0.9C12.8,5,13,5.2,13,5.6
-	v4.9c0,0.3,0.2,0.6,0.6,0.6h4.9c0.3,0,0.6,0.2,0.6,0.6v0.9C19,12.8,18.8,13,18.4,13z"
-              /></svg></NuxtLink
-          ><Oeuf
-            class="fond"
-            width="80%"
-            transform="rotate(-95)"
-            fill="#04d94f"
-          />
-        </div>
-        <div class="boite-para__para c">
-          <BaseHeading
-            gris
-            titre="Qu'est-ce que l'éco-conception web?"
-            stitre="Éco-conception"
-          />
-          <p class="text-gris2">
-            Sujet en vogue, l'éco-conception web, victime de son succès, est
-            sujet d'une vague de greenwashing. Par delà les malentendus, tentons
-            de clarifier le sujet.
-          </p>
-          <BaseButton to="/eco-conception/l-eco-conception-web" />
-        </div>
-      </div>
-    </section>
+    <HomeEcoArticles />
     <section class="container container-blog container-blog--bleu">
       <hr />
       <h3 class="h2 text-gris2 text-black">
@@ -748,7 +698,7 @@ section {
     }
   }
 }
-.container-blog {
+:deep(.container-blog) {
   hr {
     // color: $vert;
     width: 66%;
@@ -783,88 +733,88 @@ section {
       margin-top: 0;
     }
   }
-  &--bleu {
-    h3 {
-      span {
-        color: $bleu1;
-      }
-    }
-    hr {
-      border: 0.6px solid $bleu1;
+}
+:deep(.container-blog--bleu) {
+  h3 {
+    span {
+      color: $bleu1;
     }
   }
+  hr {
+    border: 0.6px solid $bleu1;
+  }
+}
 
-  &__box {
-    display: flex;
-    align-items: stretch;
-    flex-direction: column;
+:deep(.container-blog__box) {
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  @media (min-width: $breakpoint-tablet) {
+    flex-direction: row;
+  }
+  .oeuf {
+    position: relative;
+    z-index: 12;
+    height: 25vh;
+    width: 33%;
+    margin-left: 33%;
     @media (min-width: $breakpoint-tablet) {
-      flex-direction: row;
+      align-self: center;
+      position: sticky;
+      top: 200px;
+      margin-left: 0;
     }
-    .oeuf {
-      position: relative;
-      z-index: 12;
-      height: 25vh;
+    a,
+    .fond {
+      position: absolute;
+      height: 90px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    a {
+      z-index: +1;
+      color: $fondClair;
+      height: auto;
+      opacity: 0.8;
+      width: 60%;
+      transition: all 500ms ease;
+      &:hover {
+        opacity: 1;
+        width: 70%;
+      }
+    }
+    .fond {
+      height: auto;
+    }
+    // &::before {
+    //   content: '+';
+    //   font-size: 8rem;
+    //   height: 82px;
+    //   line-height: 0.58;
+    //   position: absolute;
+    //   top: 50%;
+    //   left: 50%;
+    //   transform: translate(-50%, -50%);
+    //   z-index: 1;
+    //   color: $fondClair;
+    //   font-weight: $bold;
+    //   opacity: 0.9;
+    //   transition: ease-in 0.1s;
+    // }
+    // &:hover::before {
+    //   font-size: 8.4rem;
+    //   opacity: 1;
+    // }
+  }
+  & > div {
+    width: 100%;
+    @media (min-width: $breakpoint-tablet) {
       width: 33%;
-      margin-left: 33%;
-      @media (min-width: $breakpoint-tablet) {
-        align-self: center;
-        position: sticky;
-        top: 200px;
-        margin-left: 0;
-      }
-      a,
-      .fond {
-        position: absolute;
-        height: 90px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-      a {
-        z-index: +1;
-        color: $fondClair;
-        height: auto;
-        opacity: 0.8;
-        width: 60%;
-        transition: all 500ms ease;
-        &:hover {
-          opacity: 1;
-          width: 70%;
-        }
-      }
-      .fond {
-        height: auto;
-      }
-      // &::before {
-      //   content: '+';
-      //   font-size: 8rem;
-      //   height: 82px;
-      //   line-height: 0.58;
-      //   position: absolute;
-      //   top: 50%;
-      //   left: 50%;
-      //   transform: translate(-50%, -50%);
-      //   z-index: 1;
-      //   color: $fondClair;
-      //   font-weight: $bold;
-      //   opacity: 0.9;
-      //   transition: ease-in 0.1s;
-      // }
-      // &:hover::before {
-      //   font-size: 8.4rem;
-      //   opacity: 1;
-      // }
-    }
-    & > div {
-      width: 100%;
-      @media (min-width: $breakpoint-tablet) {
-        width: 33%;
-      }
     }
   }
 }
-.boite-para {
+:deep(.boite-para) {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -872,50 +822,26 @@ section {
     width: 66%;
     flex-direction: row;
   }
-  &__para {
-    width: 100%;
+}
+:deep(.boite-para__para) {
+  width: 100%;
+  @media (min-width: $breakpoint-tablet) {
+    width: 50%;
+  }
+  p {
+    text-align: justify;
+  }
+  &:first-of-type {
+    margin-right: 1.4rem;
     @media (min-width: $breakpoint-tablet) {
-      width: 50%;
-    }
-    & p {
-      text-align: justify;
-    }
-    &:first-of-type {
-      margin-right: 1.4rem;
-      @media (min-width: $breakpoint-tablet) {
-        margin-right: 2rem;
-      }
+      margin-right: 2rem;
     }
   }
-  &__titre {
-    text-align: left;
-    word-break: keep-all;
-    margin-bottom: 0;
-  }
-  // &--titre {
-  //   position: relative;
-  //   display: flex;
-  //   align-items: center;
-  //   width: 100%;
-  //   min-height: 5rem;
-  //   margin-top: 2.5rem;
-  //   @media (min-width: $breakpoint-tablet) {
-  //     margin-top: 0;
-  //   }
-  //   .superpo {
-  //     position: absolute;
-  //     top: 0;
-  //     left: 0;
-  //     &:first-child {
-  //       z-index: -1;
-  //       left: 10%;
-  //       top: -40%;
-  //       @media (min-width: $breakpoint-tablet) {
-  //         // left: -40%;
-  //       }
-  //     }
-  //   }
-  // }
+}
+:deep(.boite-para__titre) {
+  text-align: left;
+  word-break: keep-all;
+  margin-bottom: 0;
 }
 #boite-logo {
   position: relative;
