@@ -614,39 +614,39 @@ section {
       }
     }
   }
-  .fond-oeuf {
-    background-repeat: no-repeat;
-    background-size: 80%;
-    overflow: visible;
-    position: relative;
-    &__vert {
-      // background: url('~assets/img/oeuf-vert.svg');
-      // background-position: -25% 75%;
-      &::before {
-        content: '';
-        display: inline-block;
-        width: 65%;
-        min-height: 66%;
-        background-image: url('/img/oeuf-vert.svg');
-        background-repeat: no-repeat;
-        position: absolute;
-        left: -15%;
-        z-index: -1;
-        opacity: 0.8;
+    .fond-oeuf {
+      background-repeat: no-repeat;
+      background-size: 80%;
+      overflow: visible;
+      position: relative;
+      &__vert {
+        // background: url('~assets/img/oeuf-vert.svg');
+        // background-position: -25% 75%;
+        &::before {
+          content: '';
+          display: inline-block;
+          width: 65%;
+          min-height: 66%;
+          background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20243.9%20241.2%22%3E%3Cpath%20d%3D%22M121%20229.9C60.7%20215%208.1%20180.4%207.6%20118.3S57.1%205.4%20119.3%204.9s102.5%2050.4%20113.4%20111.6c20.8%20118.4-45.1%20129.9-111.7%20113.4z%22%20fill%3D%22%2304d94f%22/%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          position: absolute;
+          left: -15%;
+          z-index: -1;
+          opacity: 0.8;
+        }
       }
-    }
-    &__bleu {
-      &::after {
-        content: '';
-        display: inline-block;
-        width: 65%;
-        min-height: 66%;
-        background-image: url('/img/oeuf-bleu.svg');
-        background-repeat: no-repeat;
-        position: absolute;
-        right: -15%;
-        bottom: 0;
-        z-index: -1;
+      &__bleu {
+        &::after {
+          content: '';
+          display: inline-block;
+          width: 65%;
+          min-height: 66%;
+          background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20243.9%20241.2%22%3E%3Cpath%20d%3D%22M123.7%2011.2c60.2%2015.4%20112.5%2050.3%20112.6%20112.4%200%2062.1-50.2%20112.5-112.4%20112.6S21.7%20185.1%2011.3%20123.8C-8.8%205.3%2057.2-5.7%20123.7%2011.2z%22%20fill%3D%22%232561d9%22/%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          position: absolute;
+          right: -15%;
+          bottom: 0;
+          z-index: -1;
         opacity: 0.6;
       }
     }

@@ -20,11 +20,15 @@
         <div class="boite-image">
           <div class="boite-image__calque"></div>
           <div class="circle"></div>
-          <img
+          <NuxtImg
             class="boite-image__image"
             :src="resolvedBackgroundUrl"
             :alt="titre || 'Image du projet'"
             loading="lazy"
+            format="webp"
+            sizes="(max-width: 768px) 90vw, 40vw"
+            :placeholder="20"
+            preset="card"
           /></div
       ></a>
       <h2 class="h4 text-gris1">{{ titre }}</h2>

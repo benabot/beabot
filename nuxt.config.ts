@@ -56,25 +56,37 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
         { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
-        { rel: 'icon', type: 'image/png', sizes: '96x96', href: '/favicon-96x96.png' },
-        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
       ],
     },
-    pageTransition: { name: 'page', mode: 'out-in' },
+    // Désactive la transition globale pour éviter CSS/JS supplémentaires
+    pageTransition: false,
   },
 
   // Global CSS
   css: [
+    // Montserrat full variants (tous poids principaux)
     '@fontsource/montserrat/300.css', // Light
     '@fontsource/montserrat/500.css', // Normal
     '@fontsource/montserrat/700.css', // Bold
-    '@fontsource/montserrat/900.css', // Black
     '~/assets/css/main.scss',
     '~/assets/css/article-content.scss', // Article typography styles
   ],
 
   // Vite configuration for SCSS
   vite: {
+    server: {
+      // Avoid HMR port conflicts in dev (fixes "Port 24678 is already in use")
+      hmr: {
+        port: 24679,
+        clientPort: 24679,
+      },
+    },
+    resolve: {
+      alias: {
+        // Prevent rare dev errors resolving internal Nuxt paths
+        '#internal/nuxt/paths': 'nuxt/dist/app/paths',
+      },
+    },
     css: {
       preprocessorOptions: {
         scss: {
@@ -89,6 +101,8 @@ export default defineNuxtConfig({
   router: {
     options: {
       linkPrefetchedClass: 'nuxt-link-prefetched',
+      // Réduit les requêtes inutiles en désactivant le prefetch automatique des liens
+      prefetchLinks: false,
     },
   },
 
@@ -121,6 +135,22 @@ export default defineNuxtConfig({
     // Default image optimization
     quality: 80,
     format: ['webp', 'avif'],
+    screens: {
+      xs: 320,
+      sm: 480,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+    },
+    presets: {
+      card: {
+        modifiers: {
+          format: 'webp',
+          fit: 'cover',
+          quality: 80,
+        },
+      },
+    },
   },
 
   // Sitemap configuration
