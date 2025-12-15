@@ -313,10 +313,44 @@ chore: maintenance
 
 ---
 
-## 🎯 PHASE 7 : Tests et Production (À venir)
+## 🔧 PHASE 7 : Netlify Build Image Fix (En cours)
 
 ### Objectifs Phase 7
-- [ ] Merger optim/eco-phase-6 → dev
+
+- [x] Merger optim/eco-phase-6 → dev ✅
+- [x] Identifier la cause du warning Netlify
+- [x] Créer documentation NETLIFY_BUILD_IMAGE_UPDATE.md
+- [ ] ⚠️ **ACTION REQUISE** : Mettre à jour build image dans l'interface Netlify
+- [ ] Vérifier disparition du warning après déploiement
+
+### Problème
+
+Malgré `netlify.toml` configuré avec `image = "ubuntu-24.04"`, le warning persiste car **l'interface Netlify override le fichier**.
+
+### Solution
+
+**Procédure manuelle requise** :
+
+1. Se connecter à https://app.netlify.com
+2. Site **dev-beabot** → Site configuration → Build & deploy
+3. Build image selection → Choisir **Ubuntu Noble 24.04**
+4. Save et redéployer
+5. Répéter pour site **beabot** (production)
+
+**Documentation complète** : `AUDITS/NETLIFY_BUILD_IMAGE_UPDATE.md`
+
+### Branche
+
+- **Branche de travail** : `optim/eco-phase-7`
+- **À merger** : `optim/eco-phase-7` → `dev` (après vérification)
+
+---
+
+## 🎯 PHASE 8 : Tests et Production (À venir)
+
+### Objectifs Phase 8
+
+- [ ] Merger optim/eco-phase-7 → dev
 - [ ] Tests EcoIndex sur https://dev-beabot.netlify.app
 - [ ] Tests Lighthouse Performance (objectif > 95)
 - [ ] Audit accessibilité WAVE (objectif 0 erreurs)
@@ -329,4 +363,4 @@ chore: maintenance
 
 **📝 Document maintenu par** : Claude Code
 **📅 Dernière MAJ** : 15 décembre 2025
-**🔄 Phase actuelle** : Phase 6 ✅ → Phase 7 ⏳
+**🔄 Phase actuelle** : Phase 7 ⏳ (ACTION REQUISE)
