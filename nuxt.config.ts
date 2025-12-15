@@ -92,6 +92,17 @@ export default defineNuxtConfig({
         },
       },
     },
+    build: {
+      cssCodeSplit: true, // Split CSS by route for better caching
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            // Group Vue core together to reduce chunk count
+            vendor: ['vue', 'vue-router'],
+          },
+        },
+      },
+    },
   },
 
   // Router configuration
@@ -171,6 +182,7 @@ export default defineNuxtConfig({
       // Ignore 404 errors on API content query routes (cache/surround queries)
       failOnError: false,
     },
+    compressPublicAssets: true, // Enable Brotli/Gzip compression for better performance
   },
 
   // Development configuration
@@ -178,7 +190,8 @@ export default defineNuxtConfig({
 
   // Experimental features
   experimental: {
-    payloadExtraction: true,
-    componentIslands: true,
+    // payloadExtraction: true, // Disabled - causes #app-manifest errors in dev mode
+    // componentIslands: true, // Disabled - causes #app-manifest errors in current version
+    inlineSSRStyles: false, // Disable inline CSS for better caching and smaller HTML
   },
 })

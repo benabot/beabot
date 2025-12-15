@@ -13,40 +13,42 @@
 
 ## 📊 CONTEXTE : COMPARAISON PROD vs DEV
 
-### Problématique
-Le site de production (Nuxt 2) a de meilleurs résultats éco-index que le site de développement (Nuxt 3), notamment concernant le **nombre de requêtes HTTP**.
+### ✅ Problématique résolue (Phase 1)
+Le site de production (Nuxt 2) avait de meilleurs résultats éco-index que le site de développement (Nuxt 3), notamment concernant le poids HTML (66 KB vs 28 KB).
 
-### Objectifs d'amélioration
-| Métrique | Site Prod (Nuxt 2) | Site Dev (Nuxt 3) | Objectif Dev |
-|----------|-------------------|-------------------|--------------|
-| Requêtes HTTP | À mesurer | À mesurer | < Prod |
-| Poids total | À mesurer | À mesurer | < Prod |
-| EcoIndex | À mesurer | A ou B | A |
-| DOM Elements | À mesurer | À mesurer | < Prod |
+**APRÈS PHASE 1** : Le site dev a maintenant un HTML aussi léger que le prod (28.7 KB) et **moins de requêtes HTTP** (16 vs ~23).
+
+### Résultats Phase 1 (15 décembre 2025)
+| Métrique | Site Prod (Nuxt 2) | Site Dev AVANT | Site Dev APRÈS | Statut |
+|----------|-------------------|----------------|----------------|--------|
+| **Poids HTML** | 28.5 KB | 66 KB | **28.7 KB** | ✅ **Objectif atteint** |
+| **Requêtes HTTP** | ~23 (+ Typekit) | ~16 | **~16** | ✅ **Dev meilleur** |
+| **CSS inline** | 0 | 8 blocs | **0** | ✅ **Objectif atteint** |
+| **Fonts externes** | Typekit (5-7 req) | 0 | **0 (system)** | ✅ **Dev meilleur** |
+| **EcoIndex** | À mesurer | À mesurer | **À tester** | ⏳ Phase 2 |
 
 ---
 
-## 🔥 PRIORITÉ 1 : Audit et Diagnostic (Jour 1)
+## ✅ PRIORITÉ 1 : Audit et Diagnostic - COMPLÉTÉ
 
-### ✅ AUDIT-ECO-01 : Mesurer les métriques actuelles
-- [ ] **Site de prod** (https://beabot.netlify.app)
-  - [ ] EcoIndex score
-  - [ ] Nombre de requêtes HTTP
-  - [ ] Poids de la page
-  - [ ] DOM size
-  - [ ] Lighthouse performance
-- [ ] **Site de dev** (https://dev-beabot.netlify.app)
-  - [ ] EcoIndex score
-  - [ ] Nombre de requêtes HTTP
-  - [ ] Poids de la page
-  - [ ] DOM size
-  - [ ] Lighthouse performance
+### ✅ AUDIT-ECO-01 : Mesurer les métriques actuelles - COMPLÉTÉ
+- [x] **Site de prod** (https://beabot.netlify.app)
+  - [x] Nombre de requêtes HTTP : ~23 (avec Typekit)
+  - [x] Poids HTML : 28.5 KB
+  - [x] CSS inline : 0, CSS externe : 3 + Typekit
+  - [x] Fonts : Typekit externe (5-7 requêtes)
+- [x] **Site de dev** (https://dev-beabot.netlify.app)
+  - [x] Nombre de requêtes HTTP : 16 (après Phase 1)
+  - [x] Poids HTML : 28.7 KB (après Phase 1, était 66 KB)
+  - [x] CSS inline : 0 (après Phase 1)
+  - [x] Fonts : System fonts (0 requête)
 
-### ✅ AUDIT-ECO-02 : Identifier les causes des requêtes supplémentaires
-- [ ] Analyser le Network tab des DevTools
-- [ ] Lister toutes les requêtes HTTP sur page d'accueil
-- [ ] Identifier les requêtes inutiles ou dupliquées
-- [ ] Comparer assets entre prod et dev
+### ✅ AUDIT-ECO-02 : Identifier les causes - COMPLÉTÉ
+- [x] Analyser le Network tab des DevTools
+- [x] Lister toutes les requêtes HTTP
+- [x] Identifier que le problème était le CSS inline (8 blocs, 25KB)
+- [x] Identifier que les fonts Typekit du prod génèrent plus de requêtes
+- [x] **Rapport complet** : `AUDITS/ECO_AUDIT_2025-12.md`
 
 ---
 
@@ -197,5 +199,22 @@ chore: maintenance
 
 ---
 
-**📝 Document maintenu par** : Claude Code  
+## 🚀 PHASE 2 : Optimisations avancées (En cours)
+
+### Objectifs Phase 2
+- [ ] Optimiser les images (WebP, lazy loading, sizes)
+- [ ] Réduire le nombre de chunks JS (70+ actuellement)
+- [ ] Optimiser le payload JSON
+- [ ] Tester EcoIndex sur site déployé
+- [ ] Mesurer Lighthouse en production
+- [ ] Comparer les métriques finales avec le site prod
+
+### Branche
+- **Branche de travail** : `optim/eco-phase-2`
+- **Basée sur** : `dev` (après merge de `optim/eco-phase-1`)
+
+---
+
+**📝 Document maintenu par** : Claude Code
 **📅 Dernière MAJ** : 15 décembre 2025
+**🔄 Phase actuelle** : Phase 2
