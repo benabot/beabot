@@ -537,13 +537,68 @@ feab30f optim: Implement Phase 2 - JS chunking optimization (-75% chunks)
 - ✅ HTML size maintained : 28 KB
 - ✅ Total build size : 5.9 MB
 
-### Prochaine étape : Phase 3
+### Prochaine étape : Phase 4
 
-**Objectifs Phase 3** :
+**Objectifs Phase 4** :
 - Compression manuelle images PNG (cyclop.png 649KB → ~300KB)
-- Optimisation prefetching et preloading
 - Tests EcoIndex et Lighthouse sur site déployé
 - Documentation finale et recommandations
+
+---
+
+## ✅ PHASE 3 IMPLÉMENTÉE (15 décembre 2025)
+
+### Modifications effectuées
+
+**Branche** : `optim/eco-phase-3`
+
+#### 1. Resource Hints ✅
+- ✅ `preconnect` vers https://beabot.fr (connexion TCP anticipée)
+- ✅ `dns-prefetch` vers https://beabot.fr (résolution DNS anticipée)
+- **Impact** : Réduit la latence lors du chargement des ressources
+
+#### 2. Theme Color ✅
+- ✅ `theme-color` meta tag (#ffffff)
+- **Impact** : Meilleure intégration mobile (barre d'adresse personnalisée)
+
+#### 3. HTML Minification ✅
+- ✅ `nitro.minify: true` dans nuxt.config.ts
+- **Impact** : HTML compressé (suppression espaces, commentaires)
+
+### Résultats mesurés
+
+| Métrique | Configuration | Impact |
+|----------|---------------|--------|
+| **Build Time** | 4.83s | Rapide ✅ |
+| **Routes générées** | 47 routes | Succès ✅ |
+| **Resource Hints** | 2 (preconnect, dns-prefetch) | Optimisé ✅ |
+| **HTML Minification** | Activée | Plus léger ✅ |
+
+### Comparaison globale Prod vs Dev (Après Phases 1+2+3)
+
+| Métrique | Prod (Nuxt 2) | Dev (Après Phases 1+2+3) | Résultat |
+|----------|---------------|--------------------------|----------|
+| HTML | 28.5 KB | ~27 KB (minifié) | **Dev gagne** 🏆 |
+| CSS inline | 0 | 0 | **Égal** ✅ |
+| JS chunks | ~9 fichiers | 16 fichiers | Plus mais cacheable ✅ |
+| Fonts | Typekit (5-7 req) | System (0 req) | **Dev gagne** 🏆 |
+| Resource hints | 0 | 2 (preconnect, dns-prefetch) | **Dev gagne** 🏆 |
+| Total requêtes | ~23 | ~16 | **Dev gagne** 🏆 |
+
+### Tests réalisés
+
+- ✅ `npm run generate` : Build réussi en 4.83s
+- ✅ 47 routes générées sans erreurs
+- ✅ HTML minification active
+- ✅ Resource hints configurés
+
+### Prochaine étape : Phase 4
+
+**Objectifs Phase 4** :
+- Tests et validation finale
+- Compression images PNG lourdes
+- EcoIndex et Lighthouse sur site déployé
+- Documentation recommandations finales
 
 ---
 
@@ -551,5 +606,6 @@ feab30f optim: Implement Phase 2 - JS chunking optimization (-75% chunks)
 **📅 Date audit initial** : 15 décembre 2025
 **📅 Date Phase 1** : 15 décembre 2025
 **📅 Date Phase 2** : 15 décembre 2025
-**🔄 Branche** : dev (Phases 1+2 mergées)
+**📅 Date Phase 3** : 15 décembre 2025
+**🔄 Branche** : optim/eco-phase-3 (à merger sur dev)
 **🎯 Objectif** : Améliorer l'EcoIndex du site dev pour dépasser le site prod
