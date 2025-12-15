@@ -47,8 +47,8 @@ import { computed } from 'vue'
 
 const { data: articles } = await useAsyncData('home-latest-eco-articles', () =>
   queryContent('articles')
-    .only(['title', 'description', 'tag', '_path', 'createdAt'])
-    .sort({ createdAt: -1 })
+    .only(['title', 'description', 'tag', '_path', 'date'])
+    .sort({ date: -1 })
     .limit(2)
     .find()
 )
