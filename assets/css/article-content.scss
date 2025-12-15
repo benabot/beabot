@@ -161,8 +161,8 @@ article {
 
   // Code blocks
   pre {
-    background: #fafafa; // Very light gray for better code visibility
-    border: 1px solid $gris5;
+    background: #1e1e1e; // VS Code Dark+ background
+    border: 1px solid #333;
     border-radius: 6px;
     padding: 1rem;
     overflow-x: auto;
@@ -175,16 +175,16 @@ article {
     }
 
     &::-webkit-scrollbar-track {
-      background: $gris6;
+      background: #2d2d2d;
       border-radius: 4px;
     }
 
     &::-webkit-scrollbar-thumb {
-      background: $gris4;
+      background: #555;
       border-radius: 4px;
 
       &:hover {
-        background: $gris3;
+        background: #666;
       }
     }
 

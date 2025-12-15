@@ -150,11 +150,8 @@ export default defineNuxtConfig({
   // Content module configuration
   content: {
     highlight: {
-      // Use a lighter theme for better readability and eco-design
-      theme: {
-        default: 'github-light',
-        dark: 'github-dark',
-      },
+      // Use VS Code Dark+ theme for better code readability
+      theme: 'dark-plus',
       // Preload common languages for blog articles
       preload: ['javascript', 'js', 'typescript', 'ts', 'css', 'scss', 'html', 'vue', 'bash', 'shell', 'json', 'yaml', 'markdown', 'md'],
     },
