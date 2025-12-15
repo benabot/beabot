@@ -26,14 +26,15 @@ Le site de **production (Nuxt 2)** a de meilleurs résultats sur l'**EcoIndex** 
 Phase 1 - Configuration     [████████████████████] 100% ✅
 Phase 2 - Composants        [████████████████████] 100% ✅
 Phase 3 - Design            [████████████████████] 100% ✅
-Phase 4 - Éco-conception    [███████████████░░░░░]  75% 🚀
+Phase 4 - Éco-conception    [████████████████████]  90% 🚀
   └─ Phase 4.1 (HTML/CSS)   [████████████████████] 100% ✅
   └─ Phase 4.2 (JS/Images)  [████████████████████] 100% ✅
-  └─ Phase 4.3 (Perf/Test)  [░░░░░░░░░░░░░░░░░░░░]   0% ⏳
+  └─ Phase 4.3 (Performance)[████████████████████] 100% ✅
+  └─ Phase 4.4 (Tests)      [░░░░░░░░░░░░░░░░░░░░]   0% ⏳
 Phase 5 - Mise en prod      [░░░░░░░░░░░░░░░░░░░░]   0% ⏳
 ```
 
-**Global** : 80% → Phases 1+2 éco terminées (-60% HTML, -75% JS chunks), Phase 3 en cours
+**Global** : 90% → Phases 1+2+3 éco terminées (-60% HTML, -75% JS chunks, resource hints), Tests à faire
 
 ---
 
@@ -83,6 +84,12 @@ Phase 5 - Mise en prod      [░░░░░░░░░░░░░░░░░
 - ✅ Image quality optimisée : 80 → 75 (-6.25%)
 - ✅ Format WebP uniquement (meilleure compatibilité)
 - ✅ Total JS : ~408 KB, largest chunk : 118 KB
+
+#### Optimisations Éco-conception Phase 3 (15 décembre 2025)
+- ✅ Resource hints : preconnect et dns-prefetch vers beabot.fr
+- ✅ Theme color meta tag pour mobile (#ffffff)
+- ✅ HTML minification via Nitro
+- ✅ Build optimisé : 4.83s pour 47 routes
 
 ---
 
@@ -167,13 +174,19 @@ d8e1b88 feature home 2 : portfolio
 3. ✅ Minification Terser
 4. ✅ Manual chunking intelligent
 
-### 🚀 Priorité 4 : Phase 3 - EN COURS
-1. ⏳ Compression manuelle images PNG lourdes
-2. ⏳ Optimisation prefetching/preloading
-3. ⏳ Tests EcoIndex sur site déployé
-4. ⏳ Tests Lighthouse complets
+### ✅ Priorité 4 : Phase 3 - COMPLÉTÉ
+1. ✅ Resource hints (preconnect, dns-prefetch)
+2. ✅ Theme color meta tag
+3. ✅ HTML minification Nitro
+4. ✅ Build optimisé et validé
+
+### 🚀 Priorité 5 : Phase 4 - EN COURS
+1. ⏳ Compression manuelle images PNG lourdes (cyclop.png 649KB)
+2. ⏳ Tests EcoIndex sur site déployé
+3. ⏳ Tests Lighthouse complets
+4. ⏳ Audit accessibilité WAVE
 5. ⏳ Documentation finale
-6. ⏳ Validation finale avant merge sur master
+6. ⏳ Merge optim/eco-phase-3 → dev
 
 ---
 
