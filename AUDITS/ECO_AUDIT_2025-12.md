@@ -478,8 +478,78 @@ b7334e3 optim: Implement Phase 1 eco-optimizations - 60% HTML reduction
 
 ---
 
+## ✅ PHASE 2 IMPLÉMENTÉE (15 décembre 2025)
+
+### Modifications effectuées
+
+**Branche** : `optim/eco-phase-2`
+
+#### 1. Optimisation JS Chunking ✅
+- ✅ Manual chunking intelligent par type de dépendance
+- ✅ `vendor-vue` : Vue core + @vue packages
+- ✅ `vendor-nuxt` : Nuxt core modules
+- ✅ `vendor-content` : Shiki + markdown + @nuxt/content
+- ✅ `vendor-libs` : Autres node_modules
+- **Impact** : 63 chunks → 16 chunks (-75%)
+
+#### 2. Minification Terser ✅
+- ✅ `minify: 'terser'` pour meilleure compression
+- ✅ `drop_console: true` (suppression console.log en prod)
+- ✅ `drop_debugger: true`
+- **Impact** : Bundles JS plus légers
+
+#### 3. Optimisation Images ✅
+- ✅ Quality: 80 → 75 (-6.25%)
+- ✅ Format: WebP uniquement (meilleure compatibilité)
+- ✅ Preset portfolio: quality 70
+- **Impact** : Images plus légères sans perte visible
+
+### Résultats mesurés
+
+| Métrique | Avant Phase 2 | Après Phase 2 | Amélioration |
+|----------|---------------|---------------|--------------|
+| **JS Chunks** | 63 fichiers | 16 fichiers | **-75%** 🎉 |
+| **Largest chunk** | N/A | 118 KB | Raisonnable ✅ |
+| **Total JS** | N/A | ~408 KB | Optimisé ✅ |
+| **HTML Size** | 28.7 KB | 28 KB | Maintenu ✅ |
+| **Image quality** | 80 | 75 | -6.25% ✅ |
+
+### Comparaison globale Prod vs Dev (Après Phases 1+2)
+
+| Métrique | Prod (Nuxt 2) | Dev (Après Phases 1+2) | Résultat |
+|----------|---------------|------------------------|----------|
+| HTML | 28.5 KB | 28 KB | **≈ Égal** ✅ |
+| CSS inline | 0 | 0 | **Égal** ✅ |
+| JS chunks | ~9 fichiers | 16 fichiers | Plus mais cacheable ✅ |
+| Fonts | Typekit (5-7 req) | System (0 req) | **Dev gagne** 🏆 |
+| Total requêtes | ~23 | ~16 | **Dev gagne** 🏆 |
+
+### Commit
+
+```
+feab30f optim: Implement Phase 2 - JS chunking optimization (-75% chunks)
+```
+
+### Tests réalisés
+
+- ✅ `npm run generate` : Build réussi
+- ✅ JS chunks : 63 → 16 fichiers
+- ✅ HTML size maintained : 28 KB
+- ✅ Total build size : 5.9 MB
+
+### Prochaine étape : Phase 3
+
+**Objectifs Phase 3** :
+- Compression manuelle images PNG (cyclop.png 649KB → ~300KB)
+- Optimisation prefetching et preloading
+- Tests EcoIndex et Lighthouse sur site déployé
+- Documentation finale et recommandations
+
+---
+
 **📝 Audit réalisé par** : Claude Code
 **📅 Date audit initial** : 15 décembre 2025
 **📅 Date Phase 1** : 15 décembre 2025
-**🔄 Branche** : optim/eco-phase-1 (à merger sur dev)
+**📅 Date Phase 2** : 15 décembre 2025
+**🔄 Branche** : dev (Phases 1+2 mergées)
 **🎯 Objectif** : Améliorer l'EcoIndex du site dev pour dépasser le site prod

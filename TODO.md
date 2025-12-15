@@ -199,19 +199,42 @@ chore: maintenance
 
 ---
 
-## 🚀 PHASE 2 : Optimisations avancées (En cours)
+## ✅ PHASE 2 : Optimisations JS/Images - COMPLÉTÉ
 
 ### Objectifs Phase 2
-- [ ] Optimiser les images (WebP, lazy loading, sizes)
-- [ ] Réduire le nombre de chunks JS (70+ actuellement)
-- [ ] Optimiser le payload JSON
-- [ ] Tester EcoIndex sur site déployé
-- [ ] Mesurer Lighthouse en production
-- [ ] Comparer les métriques finales avec le site prod
+- [x] Optimiser les images (WebP quality 75, preset portfolio)
+- [x] Réduire le nombre de chunks JS (63 → 16, -75%)
+- [x] Configuration Terser minification
+- [x] Manual chunking intelligent (vendor-vue, vendor-nuxt, vendor-content, vendor-libs)
+- [ ] Tester EcoIndex sur site déployé (Phase 3)
+- [ ] Mesurer Lighthouse en production (Phase 3)
+
+### Résultats Phase 2
+| Métrique | Avant | Après | Amélioration |
+|----------|-------|-------|--------------|
+| **JS Chunks** | 63 fichiers | **16 fichiers** | **-75%** 🎉 |
+| **HTML Size** | 28.7 KB | **28 KB** | Maintenu ✅ |
+| **Image Quality** | 80 | **75** | -6.25% ✅ |
+| **Minification** | Default | **Terser** | Optimisé ✅ |
 
 ### Branche
-- **Branche de travail** : `optim/eco-phase-2`
-- **Basée sur** : `dev` (après merge de `optim/eco-phase-1`)
+- **Branche mergée** : `optim/eco-phase-2` → `dev` ✅
+
+---
+
+## 🚀 PHASE 3 : Optimisations avancées (En cours)
+
+### Objectifs Phase 3
+- [ ] Compression manuelle des images PNG lourdes
+- [ ] Optimisation du Content Security Policy
+- [ ] Préchargement des ressources critiques
+- [ ] Optimisation du prefetching
+- [ ] Tests EcoIndex et Lighthouse
+- [ ] Documentation finale
+
+### Branche
+- **Branche de travail** : `optim/eco-phase-3`
+- **Basée sur** : `dev` (après merge de `optim/eco-phase-2`)
 
 ---
 

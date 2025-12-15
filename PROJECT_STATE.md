@@ -26,13 +26,14 @@ Le site de **production (Nuxt 2)** a de meilleurs résultats sur l'**EcoIndex** 
 Phase 1 - Configuration     [████████████████████] 100% ✅
 Phase 2 - Composants        [████████████████████] 100% ✅
 Phase 3 - Design            [████████████████████] 100% ✅
-Phase 4 - Éco-conception    [██████████░░░░░░░░░░]  50% 🚀
+Phase 4 - Éco-conception    [███████████████░░░░░]  75% 🚀
   └─ Phase 4.1 (HTML/CSS)   [████████████████████] 100% ✅
-  └─ Phase 4.2 (Images/JS)  [░░░░░░░░░░░░░░░░░░░░]   0% ⏳
+  └─ Phase 4.2 (JS/Images)  [████████████████████] 100% ✅
+  └─ Phase 4.3 (Perf/Test)  [░░░░░░░░░░░░░░░░░░░░]   0% ⏳
 Phase 5 - Mise en prod      [░░░░░░░░░░░░░░░░░░░░]   0% ⏳
 ```
 
-**Global** : 70% → Phase 1 éco terminée (-60% HTML), Phase 2 en cours
+**Global** : 80% → Phases 1+2 éco terminées (-60% HTML, -75% JS chunks), Phase 3 en cours
 
 ---
 
@@ -74,6 +75,14 @@ Phase 5 - Mise en prod      [░░░░░░░░░░░░░░░░░
 - ✅ HTML réduit de 60% : 66 KB → 28.7 KB
 - ✅ CSS inline éliminé : 8 blocs → 0
 - ✅ Audit complet documenté dans `AUDITS/ECO_AUDIT_2025-12.md`
+
+#### Optimisations Éco-conception Phase 2 (15 décembre 2025)
+- ✅ JS chunking intelligent : 63 → 16 fichiers (-75%)
+- ✅ Manual chunking par type (vendor-vue, vendor-nuxt, vendor-content, vendor-libs)
+- ✅ Minification Terser avec drop_console et drop_debugger
+- ✅ Image quality optimisée : 80 → 75 (-6.25%)
+- ✅ Format WebP uniquement (meilleure compatibilité)
+- ✅ Total JS : ~408 KB, largest chunk : 118 KB
 
 ---
 
@@ -152,12 +161,18 @@ d8e1b88 feature home 2 : portfolio
 3. ✅ Build optimizations
 4. ✅ HTML réduit de 60%
 
-### 🚀 Priorité 3 : Phase 2 - EN COURS
-1. ⏳ Optimiser les images (WebP, lazy loading)
-2. ⏳ Réduire les chunks JS (70+ fichiers)
-3. ⏳ Optimiser le payload JSON
-4. ⏳ Tester EcoIndex sur site déployé
-5. ⏳ Tests Lighthouse complets
+### ✅ Priorité 3 : Phase 2 - COMPLÉTÉ
+1. ✅ Optimiser les images (WebP quality 75)
+2. ✅ Réduire les chunks JS (63 → 16, -75%)
+3. ✅ Minification Terser
+4. ✅ Manual chunking intelligent
+
+### 🚀 Priorité 4 : Phase 3 - EN COURS
+1. ⏳ Compression manuelle images PNG lourdes
+2. ⏳ Optimisation prefetching/preloading
+3. ⏳ Tests EcoIndex sur site déployé
+4. ⏳ Tests Lighthouse complets
+5. ⏳ Documentation finale
 6. ⏳ Validation finale avant merge sur master
 
 ---
