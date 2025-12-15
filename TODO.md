@@ -57,12 +57,12 @@ Le site de production (Nuxt 2) avait de meilleurs résultats éco-index que le s
 ### ✅ OPTIM-ECO-01 : Réduire les requêtes HTTP
 - [ ] **Audit des fonts**
   - [ ] Vérifier le nombre de fichiers font chargés
-  - [ ] Limiter aux poids essentiels (400, 700)
+  ~~- [ ] Limiter aux poids essentiels (400, 700)~~
   - [ ] Font-display: swap configuré
-- [ ] **Audit des images**
-  - [ ] Formats modernes (WebP/AVIF) utilisés
-  - [ ] Lazy loading sur toutes les images
-  - [ ] Pas d'images dupliquées
+- [x] **Audit des images**
+  - [x] Formats modernes (WebP/AVIF) utilisés
+  - [x] Lazy loading sur toutes les images
+  - [x] Pas d'images dupliquées
 - [ ] **Audit du JavaScript**
   - [ ] Code splitting efficace
   - [ ] Tree shaking fonctionnel

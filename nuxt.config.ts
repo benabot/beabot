@@ -26,6 +26,8 @@ export default defineNuxtConfig({
           name: 'description',
           content: "L'éco-conception web, c'est concilier respect de l'environnement et technologies numériques de pointe pour un internet durable.",
         },
+        // Performance hints
+        { name: 'theme-color', content: '#ffffff' },
         // Open Graph
         {
           property: 'og:title',
@@ -56,6 +58,9 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
         { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+        // Preconnect to own domain for faster resource loading
+        { rel: 'preconnect', href: 'https://beabot.fr' },
+        { rel: 'dns-prefetch', href: 'https://beabot.fr' },
       ],
     },
     // Désactive la transition globale pour éviter CSS/JS supplémentaires
@@ -211,6 +216,7 @@ export default defineNuxtConfig({
       failOnError: false,
     },
     compressPublicAssets: true, // Enable Brotli/Gzip compression for better performance
+    minify: true, // Minify HTML output
   },
 
   // Development configuration
