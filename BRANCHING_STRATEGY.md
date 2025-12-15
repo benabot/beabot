@@ -73,15 +73,15 @@ git push origin feature/nom-de-la-feature
 
 ```bash
 # Vérifier le build
-yarn build
-yarn generate
+npm run build
+npm run generate
 
 # Tester localement
-yarn preview
+npm run preview
 # Vérifier sur http://localhost:3000
 
 # Lint
-yarn lint
+npm run lint
 ```
 
 ### 4. Merger dans dev (après tests OK)
@@ -253,7 +253,7 @@ Le merge de `dev` vers `master` (mise en production Nuxt 3) se fera quand :
 ```bash
 # 1. S'assurer que dev est stable
 git checkout dev
-yarn build && yarn generate && yarn preview
+npm run build && npm run generate && npm run preview
 
 # 2. Créer une branche de release
 git checkout -b release/v3.0.0

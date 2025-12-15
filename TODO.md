@@ -96,7 +96,7 @@ Le site de production (Nuxt 2) a de meilleurs résultats éco-index que le site 
 - [ ] Configurer edge functions si nécessaire
 
 ### ✅ BUILD-03 : Tests de build
-- [ ] `yarn generate` sans erreurs
+- [ ] `npm run generate` sans erreurs
 - [ ] Vérifier taille du dossier `.output`
 - [ ] Preview local avant deploy
 

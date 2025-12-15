@@ -225,23 +225,23 @@ chore: maintenance
 cd /Users/benoitabot/Sites/beabot
 
 # Installer dépendances
-yarn install
+npm install
 
 # Dev server
-yarn dev
+npm run dev
 # http://localhost:3000
 
 # Build
-yarn build
+npm run build
 
 # Generate static
-yarn generate
+npm run generate
 
 # Preview
-yarn preview
+npm run preview
 
 # Lint
-yarn lint
+npm run lint
 ```
 
 ### Tests éco-conception
@@ -305,7 +305,7 @@ npx lighthouse https://dev-beabot.netlify.app --output html
 
 ### ✅ TOUJOURS FAIRE
 - Créer une branche dédiée pour chaque travail
-- Tester avec `yarn dev` et `yarn generate`
+- Tester avec `npm run dev` et `npm run generate`
 - Utiliser des commits conventionnels
 - Mettre à jour la documentation
 - Vérifier les métriques éco après modifications
