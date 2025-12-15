@@ -7,7 +7,9 @@
       />
     </svg>
     <div class="container-or">
-      <div class="item a title title--footer h1">CONTACT :</div>
+      <div class="item a title title--footer h1" aria-label="beAbot - Contact">
+        Contact :
+      </div>
       <div class="item b h3 text-black">
         <NuxtLink to="/contact" class="h3 text-black" no-prefetch
           >Nous écrire</NuxtLink
@@ -59,7 +61,12 @@ footer {
   display: flex;
   position: relative;
   z-index: 1;
-
+.title--footer {
+-webkit-font-smoothing: antialiased;
+color: rgba(0, 0, 0, 0);
+-webkit-text-stroke-color: rgb(139, 138, 137);
+-webkit-text-stroke-width: 2px;
+}
   .icon {
     display: inline-flex;
     align-self: center;
@@ -121,12 +128,15 @@ footer {
   height: 100%;
   width: 100%;
   color: $gris4;
-  &:first-child {
-    color: transparent;
-  }
 
   &.a {
     grid-area: A;
+    font-size: clamp(3rem, 10vw, 6rem);
+    opacity: 0.85;
+    font-weight: $bold;
+    //color: $gris4;
+    user-select: none;
+    pointer-events: none;
   }
   &.b {
     grid-area: B;

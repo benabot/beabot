@@ -26,15 +26,16 @@ Le site de **production (Nuxt 2)** a de meilleurs résultats sur l'**EcoIndex** 
 Phase 1 - Configuration     [████████████████████] 100% ✅
 Phase 2 - Composants        [████████████████████] 100% ✅
 Phase 3 - Design            [████████████████████] 100% ✅
-Phase 4 - Éco-conception    [████████████████████]  90% 🚀
+Phase 4 - Éco-conception    [████████████████████] 100% ✅
   └─ Phase 4.1 (HTML/CSS)   [████████████████████] 100% ✅
   └─ Phase 4.2 (JS/Images)  [████████████████████] 100% ✅
   └─ Phase 4.3 (Performance)[████████████████████] 100% ✅
-  └─ Phase 4.4 (Tests)      [░░░░░░░░░░░░░░░░░░░░]   0% ⏳
-Phase 5 - Mise en prod      [░░░░░░░░░░░░░░░░░░░░]   0% ⏳
+  └─ Phase 4.4 (CSS/DOM)    [████████████████████] 100% ✅
+  └─ Phase 4.5 (Finalisation)[███████████████████] 100% ✅
+Phase 5 - Tests & Prod      [░░░░░░░░░░░░░░░░░░░░]   0% ⏳
 ```
 
-**Global** : 90% → Phases 1+2+3 éco terminées (-60% HTML, -75% JS chunks, resource hints), Tests à faire
+**Global** : 95% → Toutes les optimisations éco terminées, Tests finaux à faire
 
 ---
 
@@ -90,6 +91,19 @@ Phase 5 - Mise en prod      [░░░░░░░░░░░░░░░░░
 - ✅ Theme color meta tag pour mobile (#ffffff)
 - ✅ HTML minification via Nitro
 - ✅ Build optimisé : 4.83s pour 47 routes
+
+#### Optimisations Éco-conception Phase 4 (15 décembre 2025)
+- ✅ CSS cleanup : main.scss 553 → 376 lignes (-32%)
+- ✅ Suppression CSS inutilisé (.chiffre-lnum, .fixe, .intro-*)
+- ✅ Suppression code commenté (~150 lignes)
+- ✅ entry.css : 16 KB → 13 KB (-18.8%)
+- ✅ DOM audit : 524 éléments (< 1500 ✅)
+
+#### Optimisations Éco-conception Phase 5 (15 décembre 2025)
+- ✅ Cache headers Netlify (_nuxt/*, _ipx/*, img/*)
+- ✅ Page 404 personnalisée avec design Oeuf
+- ✅ Footer beAbot lisible (opacity 0.15)
+- ✅ Documentation complète PHASE_5_FINALIZATION.md
 
 ---
 
@@ -180,13 +194,24 @@ d8e1b88 feature home 2 : portfolio
 3. ✅ HTML minification Nitro
 4. ✅ Build optimisé et validé
 
-### 🚀 Priorité 5 : Phase 4 - EN COURS
-1. ⏳ Compression manuelle images PNG lourdes (cyclop.png 649KB)
+### ✅ Priorité 5 : Phase 4 - COMPLÉTÉ
+1. ✅ CSS cleanup (-32% main.scss)
+2. ✅ Suppression code mort
+3. ✅ DOM audit (524 éléments ✅)
+
+### ✅ Priorité 6 : Phase 5 - COMPLÉTÉ
+1. ✅ Cache headers Netlify
+2. ✅ Page 404 stylisée
+3. ✅ Footer beAbot lisible
+4. ✅ Documentation complète
+
+### 🚀 Priorité 7 : Tests et Production - EN COURS
+1. ⏳ Merge optim/eco-phase-5 → dev
 2. ⏳ Tests EcoIndex sur site déployé
 3. ⏳ Tests Lighthouse complets
 4. ⏳ Audit accessibilité WAVE
-5. ⏳ Documentation finale
-6. ⏳ Merge optim/eco-phase-3 → dev
+5. ⏳ Compression images PNG lourdes (optionnel)
+6. ⏳ Validation finale et merge dev → master
 
 ---
 
