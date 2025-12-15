@@ -161,13 +161,13 @@ article {
 
   // Code blocks
   pre {
-    background: $fondGris;
+    background: #fafafa; // Very light gray for better code visibility
     border: 1px solid $gris5;
     border-radius: 6px;
     padding: 1rem;
     overflow-x: auto;
     margin: 1.5rem 0;
-    max-width: 100%;
+    max-width: 66ch; // Same as paragraphs for consistency
 
     // Scrollbar styling for better UX
     &::-webkit-scrollbar {
