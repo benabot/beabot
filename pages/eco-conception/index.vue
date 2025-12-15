@@ -86,8 +86,8 @@ import { computed } from 'vue'
 // Fetch articles with Nuxt Content v2
 const { data: articles } = await useAsyncData('eco-articles', () =>
   queryContent('articles')
-    .only(['title', 'description', 'img', 'tag', '_path'])
-    .sort({ createdAt: -1 })
+    .only(['title', 'description', 'img', 'tag', 'date', '_path'])
+    .sort({ date: -1 })
     .find()
 )
 

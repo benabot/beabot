@@ -91,11 +91,7 @@
 
       <p class="text-gris1 text-normal">{{ article?.description }}</p>
       <p class="petit-text text-gris3 infos">
-        Publié le : {{ formatDate(article?.createdAt) }}
-        <span v-if="article?.createdAt != article?.updatedAt">
-          - Modifié le : {{ formatDate(article?.updatedAt) }}
-        </span>
-        - Par : Benoît Abot
+        Publié le : {{ formatDate(article?.date) }} - Par : Benoît Abot
         <span v-if="article?.temps">
           - Temps de lecture : {{ article.temps }}mn</span
         >
@@ -139,7 +135,7 @@ const { data: surroundArticles } = await useAsyncData(
 
     return queryContent('articles')
       .only(['title', '_path'])
-      .sort({ createdAt: 1 })
+      .sort({ date: 1 })
       .findSurround(article.value._path)
   }
 )
@@ -252,8 +248,7 @@ useHead({
           '@context': 'https://schema.org',
           '@type': 'BlogPosting',
           headline: article.value?.title,
-          datePublished: article.value?.createdAt,
-          dateModified: article.value?.updatedAt,
+          datePublished: article.value?.date,
           author: {
             '@type': 'Person',
             name: 'Benoît Abot',

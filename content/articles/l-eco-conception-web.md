@@ -1,6 +1,7 @@
 ---
-title: Qu’est-ce que l’éco-conception web
-description: Sujet en vogue, l’éco-conception web, victime de son succès, est sujet d’une vague de greenwashing. Par delà les malentendus, tentons de clarifier le sujet.
+title: Qu'est-ce que l'éco-conception web
+description: Sujet en vogue, l'éco-conception web, victime de son succès, est sujet d'une vague de greenwashing. Par delà les malentendus, tentons de clarifier le sujet.
+date: 2021-12-17
 temps: 15
 tag: ['WebDesign', 'WordPress', 'Eco-conception']
 ---

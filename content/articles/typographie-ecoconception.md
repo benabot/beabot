@@ -1,6 +1,7 @@
 ---
 title: Typographie et éco-conception
 description: Dans ce billet j'aborde la question de la typographie dans le cadre d'une pratique d'éco-conception web. Étant le composant de base du graphisme, mais également un élément consommant beaucoup de ressources, la typographie est au doublement cœur d'un design web éco-responsable.
+date: 2025-12-15
 temps: 10
 tag: ['WebDesign', 'Typographie', 'Eco-conception']
 ---
