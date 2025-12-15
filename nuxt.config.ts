@@ -190,13 +190,8 @@ export default defineNuxtConfig({
 
   // Experimental features
   experimental: {
-    payloadExtraction: true,
-    componentIslands: true,
+    // payloadExtraction: true, // Disabled - causes #app-manifest errors in dev mode
+    // componentIslands: true, // Disabled - causes #app-manifest errors in current version
     inlineSSRStyles: false, // Disable inline CSS for better caching and smaller HTML
-  },
-
-  // Performance optimizations
-  features: {
-    inlineStyles: false, // Extract CSS to external files
   },
 })
