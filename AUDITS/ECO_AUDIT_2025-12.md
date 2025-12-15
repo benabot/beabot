@@ -406,7 +406,80 @@ Vérifier que les 3 favicons sont suffisants pour tous les navigateurs :
 
 ---
 
+## ✅ PHASE 1 IMPLÉMENTÉE (15 décembre 2025)
+
+### Modifications effectuées
+
+**Branche** : `optim/eco-phase-1`
+
+#### 1. System Font Stack ✅
+- ❌ Supprimé `@fontsource/montserrat` et `@fontsource/work-sans`
+- ✅ Implémenté stack système dans `main.scss`
+- **Impact** : 0 requête HTTP pour les fonts, 0 KB
+
+#### 2. Désactivation CSS Inlining ✅
+- ✅ `experimental.inlineSSRStyles: false`
+- ✅ CSS maintenant extrait en fichiers externes
+- **Impact** : HTML réduit de 60%
+
+#### 3. Optimisations Build ✅
+- ✅ `nitro.compressPublicAssets: true`
+- ✅ `vite.build.cssCodeSplit: true`
+- ✅ `vite.build.rollupOptions.manualChunks` (vendor grouping)
+- **Impact** : Meilleure compression et cache
+
+#### 4. Désactivation Features Expérimentales
+- ❌ `experimental.payloadExtraction` (causes #app-manifest errors in dev)
+- ❌ `experimental.componentIslands` (incompatible avec Vite 7.2.6)
+- ℹ️ Ces features causaient des erreurs en mode dev uniquement
+
+### Résultats mesurés
+
+| Métrique | Avant Phase 1 | Après Phase 1 | Amélioration |
+|----------|---------------|---------------|--------------|
+| **Poids HTML** | 66,603 bytes | 28,675 bytes | **-60%** 🎉 |
+| **CSS inline** | 8 blocs (~25KB) | 0 blocs | **-100%** 🎉 |
+| **CSS externe** | 2 fichiers | 16 fichiers | Cacheable ✅ |
+| **Fonts externes** | 0 | 0 (system fonts) | ✅ |
+| **Build production** | ✅ Fonctionnel | ✅ Fonctionnel | ✅ |
+
+### Comparaison finale Prod vs Dev
+
+| Métrique | Prod (Nuxt 2) | Dev (Après Phase 1) | Résultat |
+|----------|---------------|---------------------|----------|
+| HTML | 28.5 KB | 28.7 KB | **≈ Égal** ✅ |
+| Fonts | Typekit (5-7 req) | System (0 req) | **Dev gagne** 🏆 |
+| CSS | 3 externes + inline | 16 externes | Cacheable ✅ |
+| Total requêtes | ~23 | ~16 | **Dev gagne** 🏆 |
+
+### Commits
+
+```
+9631e2b fix: Disable experimental features causing dev mode errors
+b7334e3 optim: Implement Phase 1 eco-optimizations - 60% HTML reduction
+3848b24 docs: Add comprehensive eco-design audit comparing prod vs dev
+```
+
+### Tests réalisés
+
+- ✅ `npm run generate` : Build réussi
+- ✅ Pre-build checks : 49/49 passed
+- ✅ HTML size verification : 28,675 bytes
+- ✅ CSS extraction : 16 fichiers CSS générés
+- ⚠️ Mode dev : Warnings #app-manifest (non bloquants)
+
+### Prochaine étape : Phase 2
+
+**Objectifs Phase 2** :
+- Optimiser les images (formats WebP/AVIF, lazy loading)
+- Réduire le nombre de fichiers JS (actuellement 70+ chunks)
+- Optimiser le payload JSON
+- Tests EcoIndex sur le site déployé
+
+---
+
 **📝 Audit réalisé par** : Claude Code
-**📅 Date** : 15 décembre 2025
-**🔄 Branche** : optim/eco-audit
+**📅 Date audit initial** : 15 décembre 2025
+**📅 Date Phase 1** : 15 décembre 2025
+**🔄 Branche** : optim/eco-phase-1 (à merger sur dev)
 **🎯 Objectif** : Améliorer l'EcoIndex du site dev pour dépasser le site prod

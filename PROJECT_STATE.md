@@ -26,11 +26,13 @@ Le site de **production (Nuxt 2)** a de meilleurs résultats sur l'**EcoIndex** 
 Phase 1 - Configuration     [████████████████████] 100% ✅
 Phase 2 - Composants        [████████████████████] 100% ✅
 Phase 3 - Design            [████████████████████] 100% ✅
-Phase 4 - Éco-conception    [░░░░░░░░░░░░░░░░░░░░]   0% ⏳
+Phase 4 - Éco-conception    [██████████░░░░░░░░░░]  50% 🚀
+  └─ Phase 4.1 (HTML/CSS)   [████████████████████] 100% ✅
+  └─ Phase 4.2 (Images/JS)  [░░░░░░░░░░░░░░░░░░░░]   0% ⏳
 Phase 5 - Mise en prod      [░░░░░░░░░░░░░░░░░░░░]   0% ⏳
 ```
 
-**Global** : 60% → Fonctionnel, optimisation éco en cours
+**Global** : 70% → Phase 1 éco terminée (-60% HTML), Phase 2 en cours
 
 ---
 
@@ -64,6 +66,14 @@ Phase 5 - Mise en prod      [░░░░░░░░░░░░░░░░░
 - ✅ Contrastes WCAG AA conformes
 - ✅ Attributs alt sur images
 - ✅ ARIA sur SVG
+
+#### Optimisations Éco-conception Phase 1 (15 décembre 2025)
+- ✅ System font stack (suppression @fontsource packages)
+- ✅ Désactivation CSS inlining (`inlineSSRStyles: false`)
+- ✅ Build optimizations (Brotli, CSS splitting, vendor chunking)
+- ✅ HTML réduit de 60% : 66 KB → 28.7 KB
+- ✅ CSS inline éliminé : 8 blocs → 0
+- ✅ Audit complet documenté dans `AUDITS/ECO_AUDIT_2025-12.md`
 
 ---
 
@@ -130,23 +140,25 @@ d8e1b88 feature home 2 : portfolio
 
 ## 🎯 PROCHAINES ÉTAPES
 
-### Priorité 1 : Audit éco-conception
-1. Mesurer EcoIndex sur prod et dev
-2. Comparer le nombre de requêtes HTTP
-3. Identifier les causes des différences
-4. Documenter les résultats
+### ✅ Priorité 1 : Audit éco-conception - COMPLÉTÉ
+1. ✅ Mesurer métriques sur prod et dev
+2. ✅ Comparer le nombre de requêtes HTTP
+3. ✅ Identifier les causes (CSS inline, Typekit)
+4. ✅ Documenter dans `AUDITS/ECO_AUDIT_2025-12.md`
 
-### Priorité 2 : Optimisations
-1. Réduire les requêtes HTTP sur dev
-2. Optimiser les fonts (limiter les poids)
-3. Vérifier le code splitting
-4. Optimiser les images
+### ✅ Priorité 2 : Optimisations Phase 1 - COMPLÉTÉ
+1. ✅ System fonts (0 requête)
+2. ✅ CSS extraction (0 inline)
+3. ✅ Build optimizations
+4. ✅ HTML réduit de 60%
 
-### Priorité 3 : Tests et validation
-1. Tests Lighthouse complets
-2. Tests WAVE accessibilité
-3. Validation build et generate
-4. Preview avant deploy
+### 🚀 Priorité 3 : Phase 2 - EN COURS
+1. ⏳ Optimiser les images (WebP, lazy loading)
+2. ⏳ Réduire les chunks JS (70+ fichiers)
+3. ⏳ Optimiser le payload JSON
+4. ⏳ Tester EcoIndex sur site déployé
+5. ⏳ Tests Lighthouse complets
+6. ⏳ Validation finale avant merge sur master
 
 ---
 
