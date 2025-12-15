@@ -94,11 +94,32 @@ export default defineNuxtConfig({
     },
     build: {
       cssCodeSplit: true, // Split CSS by route for better caching
+      minify: 'terser', // Use terser for better minification
+      terserOptions: {
+        compress: {
+          drop_console: true, // Remove console.logs in production
+          drop_debugger: true,
+        },
+      },
       rollupOptions: {
         output: {
-          manualChunks: {
-            // Group Vue core together to reduce chunk count
-            vendor: ['vue', 'vue-router'],
+          manualChunks: (id) => {
+            // Group Vue core together
+            if (id.includes('node_modules/vue') || id.includes('node_modules/@vue')) {
+              return 'vendor-vue'
+            }
+            // Group Nuxt core modules
+            if (id.includes('node_modules/@nuxt') || id.includes('node_modules/nuxt')) {
+              return 'vendor-nuxt'
+            }
+            // Group content/markdown related
+            if (id.includes('shiki') || id.includes('markdown') || id.includes('@nuxt/content')) {
+              return 'vendor-content'
+            }
+            // Group all other node_modules into vendor
+            if (id.includes('node_modules')) {
+              return 'vendor-libs'
+            }
           },
         },
       },
@@ -141,8 +162,8 @@ export default defineNuxtConfig({
   // Image module configuration
   image: {
     // Default image optimization
-    quality: 80,
-    format: ['webp', 'avif'],
+    quality: 75, // Reduced from 80 for smaller file sizes
+    format: ['webp'], // WebP only for better compression (AVIF has compatibility issues)
     screens: {
       xs: 320,
       sm: 480,
@@ -155,7 +176,14 @@ export default defineNuxtConfig({
         modifiers: {
           format: 'webp',
           fit: 'cover',
-          quality: 80,
+          quality: 75,
+        },
+      },
+      portfolio: {
+        modifiers: {
+          format: 'webp',
+          fit: 'cover',
+          quality: 70, // Lower quality for portfolio thumbnails
         },
       },
     },
