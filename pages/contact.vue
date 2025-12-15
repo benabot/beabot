@@ -9,7 +9,7 @@
       method="POST"
       data-netlify="true"
       netlify-honeypot="bot-field"
-      action="/"
+      action="/contact"
       @submit.prevent="onSubmit"
     >
       <input type="hidden" name="form-name" value="contact" />
@@ -73,7 +73,7 @@ async function onSubmit() {
       'bot-field': form.botField
     })
 
-    const res = await fetch('/', {
+    const res = await fetch('/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body

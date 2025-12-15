@@ -205,8 +205,15 @@ d8e1b88 feature home 2 : portfolio
 3. ✅ Footer beAbot lisible
 4. ✅ Documentation complète
 
-### 🚀 Priorité 7 : Tests et Production - EN COURS
-1. ⏳ Merge optim/eco-phase-5 → dev
+### ✅ Priorité 7 : Phase 6 (Bug Fixes) - COMPLÉTÉ
+
+1. ✅ Merge optim/eco-phase-5 → dev
+2. ✅ Fix page 404 custom (error.vue)
+3. ✅ Fix formulaire contact (endpoint /contact)
+4. ✅ Update Netlify build image (ubuntu-24.04)
+
+### 🚀 Priorité 8 : Tests et Production - EN COURS
+1. ⏳ Merge optim/eco-phase-6 → dev
 2. ⏳ Tests EcoIndex sur site déployé
 3. ⏳ Tests Lighthouse complets
 4. ⏳ Audit accessibilité WAVE

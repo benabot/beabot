@@ -290,14 +290,37 @@ chore: maintenance
 
 ---
 
-## 🎯 PHASE 6 : Tests et Production (À venir)
+## ✅ PHASE 6 : Bug Fixes Production - COMPLÉTÉ
 
 ### Objectifs Phase 6
-- [ ] Merger optim/eco-phase-5 → dev
+
+- [x] Merger optim/eco-phase-5 → dev ✅
+- [x] Fix page 404 custom non affichée (moved to error.vue)
+- [x] Fix formulaire contact erreur 404 (endpoint /contact)
+- [x] Update Netlify build image ubuntu-24.04
+
+### Résultats Phase 6
+
+| Problème | Solution | Statut |
+|----------|----------|--------|
+| **Page 404** | Déplacé pages/404.vue → error.vue (Nuxt 3) | ✅ Corrigé |
+| **Form contact** | Endpoint / → /contact + action /contact | ✅ Corrigé |
+| **Build image** | ubuntu-22.04 → ubuntu-24.04 (Noble LTS) | ✅ Mis à jour |
+
+### Branche
+- **Branche de travail** : `optim/eco-phase-6`
+- **À merger** : `optim/eco-phase-6` → `dev`
+
+---
+
+## 🎯 PHASE 7 : Tests et Production (À venir)
+
+### Objectifs Phase 7
+- [ ] Merger optim/eco-phase-6 → dev
 - [ ] Tests EcoIndex sur https://dev-beabot.netlify.app
 - [ ] Tests Lighthouse Performance (objectif > 95)
 - [ ] Audit accessibilité WAVE (objectif 0 erreurs)
-- [ ] Compression images PNG lourdes (cyclop.png 649KB → ~300KB)
+- [ ] Compression images PNG lourdes (cyclop.png 649KB → ~300KB optionnel)
 - [ ] Validation finale
 - [ ] Merge dev → master
 - [ ] Déploiement production
@@ -306,4 +329,4 @@ chore: maintenance
 
 **📝 Document maintenu par** : Claude Code
 **📅 Dernière MAJ** : 15 décembre 2025
-**🔄 Phase actuelle** : Phase 5 ✅ → Phase 6 ⏳
+**🔄 Phase actuelle** : Phase 6 ✅ → Phase 7 ⏳

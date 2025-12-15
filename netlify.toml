@@ -2,8 +2,8 @@
 # https://docs.netlify.com/configure-builds/file-based-configuration/
 
 [build]
-  # Use supported build image (Focal deprecated in 2026)
-  image = "ubuntu-22.04"
+  # Use supported build image (Noble LTS until 2029)
+  image = "ubuntu-24.04"
   # Build command for Nuxt 3 static generation (force npm to avoid yarn/npm mix)
   command = "npm run generate"
 
