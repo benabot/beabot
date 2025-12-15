@@ -150,17 +150,22 @@ export default defineNuxtConfig({
   // Content module configuration
   content: {
     highlight: {
+      // Use a lighter theme for better readability and eco-design
       theme: {
-        default: 'github-dark',
+        default: 'github-light',
         dark: 'github-dark',
       },
-      preload: ['javascript', 'css', 'vue', 'bash', 'json'],
+      // Preload common languages for blog articles
+      preload: ['javascript', 'js', 'typescript', 'ts', 'css', 'scss', 'html', 'vue', 'bash', 'shell', 'json', 'yaml', 'markdown', 'md'],
     },
     markdown: {
       toc: {
         depth: 3,
         searchDepth: 3,
       },
+      // Enable code block meta (for filename, line numbers, etc.)
+      remarkPlugins: [],
+      rehypePlugins: [],
     },
   },
 
