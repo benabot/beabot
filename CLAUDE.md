@@ -10,8 +10,8 @@
 - **Nom** : BeAbot
 - **Type** : Blog statique + Portfolio
 - **Thématique** : Éco-conception web
-- **URL Production** : https://beabot.netlify.app
-- **URL Cible** : https://beabot.netlify.app
+- **URL Production** : https://beabot.netlify.app (Nuxt 2, branch master)
+- **URL Développement** : https://dev-beabot.netlify.app (Nuxt 3, branch dev)
 - **Repository** : https://github.com/benabot/beabot
 - **Repo Local** : `/Users/benoitabot/Sites/beabot`
 
@@ -22,65 +22,33 @@
 - **GitHub** : benabot
 - **LinkedIn** : benoit-abot
 
-### Stack Technique Actuelle (Avant Migration)
+---
+
+## 🔧 STACK TECHNIQUE
+
+### Site de Production (master - Nuxt 2)
 ```json
 {
   "framework": "Nuxt 2.15.8",
   "vue": "2.6.14",
-  "bundler": "Webpack 4.46.0",
-  "package-manager": "Yarn 1.22+",
-  "hosting": "Netlify",
-  "cms": "@nuxt/content v1.15.1",
-  "node": "≥ 14"
+  "bundler": "Webpack 4",
+  "status": "Stable, non maintenu"
 }
 ```
 
-### Stack Cible (Après Migration)
+### Site de Développement (dev - Nuxt 3) ✅ ACTIF
 ```json
 {
   "framework": "Nuxt 3.14+",
   "vue": "3.5+",
   "bundler": "Vite",
-  "package-manager": "Yarn",
-  "hosting": "Netlify",
   "cms": "@nuxt/content v2.13+",
-  "node": "≥ 18"
+  "image": "@nuxt/image",
+  "fonts": "@fontsource/montserrat",
+  "node": "≥ 18",
+  "package-manager": "Yarn"
 }
 ```
-
----
-
-## 🎯 OBJECTIFS DU PROJET
-
-### 1. Migration Technique
-- ✅ Migrer Nuxt 2 → Nuxt 3
-- ✅ Vue 2 → Vue 3 (Options API → Composition API)
-- ✅ Webpack → Vite
-- ✅ Remplacer modules obsolètes
-
-### 2. Amélioration Qualité Code
-- ✅ Score bonnes pratiques Vue.js : **65 → 95/100**
-- ✅ Conventions de nommage cohérentes
-- ✅ TypeScript (optionnel mais recommandé)
-- ✅ ESLint + Prettier configurés
-
-### 3. Performance & Éco-conception
-- ✅ Lighthouse Performance : **90+**
-- ✅ EcoIndex : **A ou B**
-- ✅ Réduction bundle : **-40%**
-- ✅ Build time : **-50%**
-
-### 4. Accessibilité
-- ✅ WCAG 2.1 niveau AA
-- ✅ Images avec `alt`
-- ✅ Contraste couleurs conforme
-- ✅ Navigation clavier
-
-### 5. SEO
-- ✅ Meta tags corrects (encodage UTF-8)
-- ✅ Sitemap.xml généré
-- ✅ RSS/JSON Feed
-- ✅ Structured data
 
 ---
 
@@ -88,239 +56,164 @@
 
 ```
 beabot/
-├── .git/
 ├── .nuxt/                    # Cache Nuxt (généré)
+├── .output/                  # Build output (généré)
 ├── node_modules/             # Dépendances (généré)
-├── dist/                     # Build production (généré)
+│
+├── AUDITS/                   # Documentation d'audit
+│   ├── AUDIT-04-CONTRAST-FIXES.md
+│   ├── MIGRATION_STATUS.md
+│   ├── MIGRATION_STATUS_UPDATED.md
+│   ├── NETLIFY_CONFIG.md
+│   └── SESSION_RECAP.md
 │
 ├── assets/
 │   ├── css/
 │   │   ├── main.scss         # Styles principaux
-│   │   ├── vars/
-│   │   │   ├── _colors.scss  # Variables couleurs (à migrer → CSS vars)
-│   │   │   └── _typo.scss    # Variables typo (à migrer → CSS vars)
-│   │   └── mixins/
-│   └── img/                  # Images assets (require())
+│   │   ├── article-content.scss  # Styles articles
+│   │   └── vars/             # Variables SCSS
+│   └── img/                  # Images (déplacées vers public/)
 │
-├── components/               # 10 composants Vue
-│   ├── AppSearchInput.vue
-│   ├── BoiteArticle.vue     # À renommer → ArticleCard.vue
-│   ├── Boutoncta.vue        # À renommer → BaseButton.vue
-│   ├── Footer.vue           # À renommer → TheFooter.vue
-│   ├── Logo.vue             # À renommer → TheLogo.vue
-│   ├── Oeuf.vue
-│   ├── OeufImage.vue
-│   ├── Petittitre.vue       # À renommer → BaseHeading.vue
-│   ├── PrevNext.vue         # À renommer → ArticleNavigation.vue
-│   └── VImg.vue             # À SUPPRIMER (remplacer par NuxtImg)
+├── components/               # 10 composants Vue 3
+│   ├── AppSearchInput.vue    # Recherche articles
+│   ├── ArticleNavigation.vue # Navigation prev/next (ex-PrevNext)
+│   ├── BaseButton.vue        # Bouton réutilisable (ex-Boutoncta)
+│   ├── BaseHeading.vue       # Titre réutilisable (ex-Petittitre)
+│   ├── BoiteArticle.vue      # Carte article/portfolio
+│   ├── HomeEcoArticles.vue   # Section articles accueil
+│   ├── HomePortfolioLatest.vue # Section portfolio accueil
+│   ├── Oeuf.vue              # Élément décoratif
+│   ├── OeufImage.vue         # Élément décoratif avec image
+│   ├── TheFooter.vue         # Footer (ex-Footer)
+│   └── TheLogo.vue           # Logo (ex-Logo)
+│
+├── composables/
+│   └── useTags.ts            # Gestion des tags (remplace Vuex)
 │
 ├── content/
-│   └── articles/            # 3 articles Markdown
-│       ├── L-eco-conception-web.md
-│       ├── La-consommation-energetique-du-numerique.md
+│   └── articles/             # Articles Markdown
+│       ├── l-eco-conception-web.md
+│       ├── la-consommation-energetique-du-numerique.md
 │       └── theme-wordpress-eco-conception.md
 │
 ├── layouts/
-│   ├── default.vue
-│   └── error.vue
+│   ├── default.vue           # Layout principal
+│   └── error.vue             # Page d'erreur
 │
-├── pages/                   # 5 pages
-│   ├── index.vue            # Page d'accueil
-│   ├── contact.vue
-│   ├── portfolio.vue
-│   ├── mentions-legales.vue
-│   ├── eco-conception.vue   # Liste articles
+├── pages/
+│   ├── index.vue             # Page d'accueil
+│   ├── contact.vue           # Formulaire contact
+│   ├── portfolio.vue         # Portfolio
+│   ├── mentions-legales.vue  # Mentions légales
+│   ├── eco-conception.vue    # Liste articles
 │   └── eco-conception/
-│       └── _slug.vue        # À renommer → [slug].vue (Nuxt 3)
+│       └── [slug].vue        # Article détail
 │
-├── plugins/
-│   └── vimg.js              # À SUPPRIMER (auto-import Nuxt 3)
-│
-├── static/                  # Fichiers publics
+├── public/
+│   ├── img/                  # Images publiques
+│   ├── feed/                 # Feeds générés
+│   ├── cv.pdf                # CV (non-indexable)
 │   ├── favicon.svg
-│   ├── favicon-*.png
-│   ├── beabot.svg
-│   └── logoOrdi*.svg
+│   └── robots.txt
 │
-├── store/                   # Vuex (à migrer → Pinia optionnel)
-│   ├── page.js
-│   └── tags.js
+├── server/
+│   └── routes/
+│       ├── rss.xml.ts        # Feed RSS
+│       └── feed.json.ts      # Feed JSON
+│
+├── scripts/
+│   └── pre-build-check.js    # Validation pré-build
 │
 ├── utils/
 │   ├── getRoutes.js
-│   └── getSiteMeta.js
+│   ├── getSiteMeta.js
+│   └── portfolioItems.ts     # Données portfolio
 │
-├── .editorconfig
-├── .eslintrc.js
-├── .gitignore
-├── .prettierrc
-├── nuxt.config.js           # À renommer → nuxt.config.ts
-├── package.json             # À mettre à jour (Nuxt 3)
-├── yarn.lock
-├── README.md
-│
-└── AUDITS/                  # Documents générés par Claude
-    ├── AUDIT_BEABOT.md
-    ├── VUE_BEST_PRACTICES_AUDIT.md
-    ├── MIGRATION_PLAN_NUXT3.md
-    ├── CLAUDE.md            # Ce fichier
-    └── TODO.md              # Liste des tâches
+├── nuxt.config.ts            # Configuration Nuxt 3
+├── package.json
+├── netlify.toml              # Configuration Netlify
+├── CLAUDE.md                 # Ce fichier
+├── TODO.md                   # Tâches à faire
+├── BRANCHING_STRATEGY.md     # Stratégie Git
+└── README.md
 ```
 
 ---
 
-## 🔴 PROBLÈMES CRITIQUES IDENTIFIÉS
+## 🎯 OBJECTIF ACTUEL
 
-### 1. Encodage UTF-8 Cassé
-**Fichier** : `nuxt.config.js`  
-**Lignes** : 30, 36, 42, 58, 256, etc.
-```js
-// ❌ PROBLÈME
-content: 'Lâ€™Ã©co-conception web...'
+### Problématique
+Le site de **production** (Nuxt 2) a de meilleurs résultats éco-index que le site de **développement** (Nuxt 3), notamment concernant le **nombre de requêtes HTTP**.
 
-// ✅ SOLUTION
-content: "L'éco-conception web..."
-```
-**Action** : Réenregistrer le fichier en UTF-8
-
-### 2. v-for sans :key
-**Fichiers** : `BoiteArticle.vue`, `Footer.vue`, `pages/index.vue`
-```vue
-<!-- ❌ PROBLÈME -->
-<div v-for="chip in chips">{{ chip }}</div>
-
-<!-- ✅ SOLUTION -->
-<div v-for="(chip, index) in chips" :key="`chip-${index}`">
-  {{ chip }}
-</div>
-```
-**Action** : Ajouter `:key` partout
-
-### 3. Images sans alt
-**Fichiers** : `BoiteArticle.vue`, `Logo.vue`
-```vue
-<!-- ❌ PROBLÈME -->
-<div class="boite-image__image lozad" :data-background-image="url"></div>
-
-<!-- ✅ SOLUTION -->
-<NuxtImg :src="url" :alt="titre" loading="lazy" />
-```
-**Action** : Attributs `alt` partout
-
-### 4. Modules Obsolètes
-```json
-{
-  "❌": [
-    "@ax2/lozad-module",
-    "nuxt-precompress",
-    "nuxt-purgecss",
-    "@nuxtjs/axios",
-    "nuxt-font-loader",
-    "@nuxtjs/style-resources"
-  ],
-  "✅": [
-    "@nuxt/image",
-    "Compression Netlify native",
-    "UnoCSS ou Tailwind",
-    "$fetch natif",
-    "@nuxtjs/google-fonts",
-    "Vite preprocessorOptions"
-  ]
-}
-```
-
-### 5. Font Externe (Anti-éco-conception)
-```js
-// ❌ PROBLÈME
-fontLoader: {
-  url: 'https://use.typekit.net/akf4akv.css'
-}
-
-// ✅ SOLUTION
-// Utiliser @fontsource ou Google Fonts auto-hébergées
-```
+### Objectifs
+1. **Améliorer les performances éco-conception** du site dev
+2. **Réduire le nombre de requêtes HTTP**
+3. **Atteindre un EcoIndex A** sur le site dev
+4. Préparer la mise en production de Nuxt 3
 
 ---
 
-## 🎨 CONVENTIONS & STANDARDS
+## 🔄 ÉTAT DE LA MIGRATION NUXT 3
 
-### Nommage Composants
-```
-✅ TheHeader.vue          # Unique par page
-✅ TheFooter.vue          # Unique par page
-✅ TheLogo.vue            # Unique par page
+### ✅ Phases complétées
 
-✅ BaseButton.vue         # Composant de base réutilisable
-✅ BaseHeading.vue        # Composant de base réutilisable
-✅ BaseImage.vue          # Composant de base réutilisable
+#### Phase 1 - Configuration (100%)
+- [x] Nuxt 3.14 + Vue 3.5 + Vite
+- [x] @nuxt/content v2
+- [x] @nuxt/image
+- [x] Fonts locales (Montserrat via @fontsource)
+- [x] Configuration Netlify complète
+- [x] RSS/JSON feeds
 
-✅ ArticleCard.vue        # Composant feature
-✅ ArticleNavigation.vue  # Composant feature
-✅ AppSearchInput.vue     # Composant app-level
+#### Phase 2 - Composants (100%)
+- [x] Migration vers Composition API (`<script setup>`)
+- [x] Renommage selon conventions Vue.js
+- [x] Suppression modules obsolètes (lozad, axios, etc.)
+- [x] Composable useTags créé
 
-❌ VImg.vue               # Mauvais (pas multi-word)
-❌ Boutoncta.vue          # Mauvais (pas PascalCase)
-❌ Petittitre.vue         # Mauvais (pas PascalCase)
-```
+#### Phase 3 - Design (100%)
+- [x] Police Montserrat
+- [x] Animations portfolio restaurées
+- [x] Transitions Vue 3 corrigées
+- [x] Styles articles optimisés
 
-### Variables CSS
-```scss
-/* ❌ AVANT (SCSS variables) */
-$gris4: #A6A5A4;
-$vert: #04d94f;
+### ⏳ Phase 4 - Optimisation éco-conception (En cours)
+- [ ] Audit comparatif prod vs dev
+- [ ] Réduction des requêtes HTTP
+- [ ] Optimisation des assets
+- [ ] Tests de performance
 
-.text-gris4 { color: $gris4; }
-```
+---
 
-```css
-/* ✅ APRÈS (CSS variables) */
-:root {
-  --color-gray-400: #A6A5A4;
-  --color-green: #04d94f;
-}
+## 🌿 WORKFLOW GIT
 
-.text-gray-400 { color: var(--color-gray-400); }
-```
+### Branches principales
+- `master` : Production (Nuxt 2) - **NE PAS TOUCHER**
+- `dev` : Développement (Nuxt 3) - Base de travail
 
-### Composition API (Nuxt 3)
-```vue
-<!-- ❌ AVANT (Options API) -->
-<script>
-export default {
-  name: 'Footer',
-  data() {
-    return {
-      annee: new Date().getFullYear()
-    }
-  }
-}
-</script>
+### Règle importante
+**Toujours créer une branche de travail depuis `dev`**, ne jamais travailler directement sur `dev` ou `master`.
 
-<!-- ✅ APRÈS (Composition API) -->
-<script setup>
-const annee = ref(new Date().getFullYear())
-</script>
+```bash
+# Créer une branche de travail
+git checkout dev
+git checkout -b feature/ma-feature
+
+# Après travail terminé et tests OK
+git checkout dev
+git merge feature/ma-feature
+git push origin dev
 ```
 
-### @nuxt/content v2
-```vue
-<!-- ❌ AVANT (v1) -->
-<script>
-export default {
-  async asyncData({ $content, params }) {
-    const article = await $content('articles', params.slug).fetch()
-    return { article }
-  }
-}
-</script>
-
-<!-- ✅ APRÈS (v2) -->
-<script setup>
-const route = useRoute()
-const { data: article } = await useAsyncData('article', () =>
-  queryContent('articles', route.params.slug).findOne()
-)
-</script>
+### Convention de commits
+```
+feat: nouvelle fonctionnalité
+fix: correction de bug
+optim: optimisation performance/éco
+docs: documentation
+style: formatage
+refactor: refactoring
+chore: maintenance
 ```
 
 ---
@@ -334,11 +227,7 @@ cd /Users/benoitabot/Sites/beabot
 # Installer dépendances
 yarn install
 
-# Dev server (Nuxt 2)
-yarn dev
-# http://localhost:3000
-
-# Dev server (Nuxt 3 après migration)
+# Dev server
 yarn dev
 # http://localhost:3000
 
@@ -348,256 +237,96 @@ yarn build
 # Generate static
 yarn generate
 
-# Preview build
+# Preview
 yarn preview
-```
 
-### Linting
-```bash
-# Lint JS/Vue
-yarn lint:js
-
-# Lint format
-yarn lint:prettier
-
-# Tout linter
+# Lint
 yarn lint
-
-# Fix auto
-yarn lintfix
 ```
 
-### Tests Performance
+### Tests éco-conception
 ```bash
 # Lighthouse
-npx lighthouse http://localhost:3000 \
-  --output html \
-  --output-path ./lighthouse-report.html
+npx lighthouse https://dev-beabot.netlify.app --output html
 
 # EcoIndex
-# Aller sur https://www.ecoindex.fr/
+# https://www.ecoindex.fr/
 
-# Accessibilité WAVE
-# Installer extension Chrome/Firefox
-```
-
-### Git Workflow
-```bash
-# Créer branche migration
-git checkout -b feature/nuxt3-migration
-
-# Créer sous-branches par phase
-git checkout -b feature/nuxt3-phase1-deps
-git checkout -b feature/nuxt3-phase2-components
-
-# Commit conventionnel
-git commit -m "feat(migration): Phase 1 - Update dependencies"
-git commit -m "fix(a11y): Add alt attributes to all images"
-git commit -m "refactor(components): Rename to Base* conventions"
+# Website Carbon
+# https://www.websitecarbon.com/
 ```
 
 ---
 
 ## 📊 MÉTRIQUES CIBLES
 
-### Performance
-- **Lighthouse Performance** : ≥ 90
-- **First Contentful Paint** : < 1s
-- **Largest Contentful Paint** : < 2s
-- **Time to Interactive** : < 3s
-- **Total Blocking Time** : < 200ms
-
 ### Éco-conception
-- **EcoIndex** : A ou B
-- **CO2 par page** : < 1g
+- **EcoIndex** : Score A
+- **Requêtes HTTP** : < 15
 - **Poids page** : < 500KB
-- **Requêtes HTTP** : < 20
+- **CO2/page** : < 0.5g
+
+### Performance
+- **Lighthouse Performance** : > 95
+- **LCP** : < 1.5s
+- **FID** : < 100ms
+- **CLS** : < 0.1
 
 ### Accessibilité
-- **Lighthouse Accessibility** : ≥ 90
-- **Contraste minimum** : 4.5:1 (WCAG AA)
-- **Erreurs WAVE** : 0
+- **Lighthouse Accessibility** : > 95
+- **WCAG** : AA minimum
+- **Contrastes** : 4.5:1 minimum
 
-### SEO
-- **Lighthouse SEO** : ≥ 95
-- **Meta tags** : Tous présents
-- **Sitemap** : Généré
-- **Structured data** : Optionnel
+---
 
-### Code Quality
-- **Score Vue.js Best Practices** : ≥ 90/100
-- **ESLint errors** : 0
-- **TypeScript errors** : 0 (si activé)
+## 📚 FICHIERS DE DOCUMENTATION
+
+| Fichier | Description |
+|---------|-------------|
+| `CLAUDE.md` | Ce fichier - contexte projet |
+| `TODO.md` | Liste des tâches à faire |
+| `BRANCHING_STRATEGY.md` | Stratégie Git |
+| `AUDITS/MIGRATION_STATUS.md` | État de la migration |
+| `AUDITS/NETLIFY_CONFIG.md` | Configuration Netlify |
+| `AUDIT_BEABOT.md` | Audit technique initial |
+| `MIGRATION_PLAN_NUXT3.md` | Plan de migration |
+| `VUE_BEST_PRACTICES_AUDIT.md` | Audit bonnes pratiques |
 
 ---
 
 ## 🚨 GARDE-FOUS
 
-### À NE JAMAIS FAIRE
-- ❌ Supprimer `.git/` ou `node_modules/` sans backup
-- ❌ Push directement sur `main` sans PR
-- ❌ Modifier `yarn.lock` manuellement
-- ❌ Ignorer les erreurs TypeScript
-- ❌ Deploy sans tester localement
-- ❌ Oublier les `alt` sur images
-- ❌ Hard-coder des URLs
+### ❌ NE JAMAIS FAIRE
+- Travailler directement sur `master`
+- Travailler directement sur `dev` (créer une branche)
+- Force push sur branches protégées
+- Merger sans tester localement
+- Supprimer `.git/`
 
-### À TOUJOURS FAIRE
-- ✅ Backup avant changements majeurs
-- ✅ Tester après chaque modification
-- ✅ Commit fréquemment avec messages clairs
-- ✅ Vérifier Lighthouse après chaque phase
-- ✅ Tester accessibilité (WAVE)
-- ✅ Lire la doc officielle Nuxt 3
-- ✅ Demander confirmation avant actions destructives
+### ✅ TOUJOURS FAIRE
+- Créer une branche dédiée pour chaque travail
+- Tester avec `yarn dev` et `yarn generate`
+- Utiliser des commits conventionnels
+- Mettre à jour la documentation
+- Vérifier les métriques éco après modifications
 
 ---
 
-## 📚 RESSOURCES ESSENTIELLES
+## 🔗 LIENS UTILES
+
+### Sites
+- Production : https://beabot.netlify.app
+- Développement : https://dev-beabot.netlify.app
 
 ### Documentation
-- [Nuxt 3 Docs](https://nuxt.com/docs)
-- [Nuxt 3 Migration Guide](https://nuxt.com/docs/migration/overview)
-- [Vue 3 Docs](https://vuejs.org/)
-- [Vue 3 Migration Guide](https://v3-migration.vuejs.org/)
-- [@nuxt/content v2](https://content.nuxt.com/)
-- [@nuxt/image](https://image.nuxt.com/)
-- [Vite Docs](https://vitejs.dev/)
-
-### Outils
-- [Lighthouse](https://pagespeed.web.dev/)
+- [Nuxt 3](https://nuxt.com/docs)
+- [Vue 3](https://vuejs.org/)
+- [@nuxt/content](https://content.nuxt.com/)
 - [EcoIndex](https://www.ecoindex.fr/)
-- [WAVE](https://wave.webaim.org/)
-- [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
-- [Can I Use](https://caniuse.com/)
-
-### Communauté
-- [Nuxt Discord](https://discord.com/invite/nuxt)
-- [Vue Land Discord](https://discord.com/invite/vue)
-- [GitHub Issues](https://github.com/nuxt/nuxt/issues)
-
----
-
-## 🤝 WORKFLOW AVEC CLAUDE CODE
-
-### Session Type 1 : Quick Fix
-```markdown
-"Claude, corrige le problème X dans le fichier Y"
-
-Exemple :
-"Claude, ajoute les attributs alt manquants sur toutes les images du projet"
-```
-
-### Session Type 2 : Feature
-```markdown
-"Claude, implémente la fonctionnalité X en suivant les conventions du projet"
-
-Exemple :
-"Claude, crée un composant ArticleCard avec les props définies dans VUE_BEST_PRACTICES_AUDIT.md"
-```
-
-### Session Type 3 : Migration Phase
-```markdown
-"Claude, exécute la Phase X du MIGRATION_PLAN_NUXT3.md"
-
-Exemple :
-"Claude, exécute la Phase 1 du plan de migration (dépendances & configuration)"
-```
-
-### Session Type 4 : Review
-```markdown
-"Claude, analyse le fichier X et suggère des améliorations selon les standards du projet"
-
-Exemple :
-"Claude, review components/BoiteArticle.vue et applique les bonnes pratiques Vue.js"
-```
-
----
-
-## 💡 NOTES IMPORTANTES
-
-### Préférences Benoît
-- **OS** : macOS + Debian
-- **Shell** : ZSH
-- **Éditeur** : VS Code (probable)
-- **Stack** : Frontend JS/PHP, DevOps Docker
-- **Apprentissage** : C, Swift
-
-### Particularités Projet
-1. **Thème éco-conception** : Chaque décision doit être cohérente avec cette valeur
-2. **Site vitrine + blog** : Pas de fonctionnalités complexes
-3. **Génération statique** : Pas de backend, tout en JAMstack
-4. **Netlify** : Deploy automatique sur push main
-5. **Yarn** : Ne PAS utiliser npm
-
-### Priorités
-1. 🔴 **Accessibilité** : WCAG AA minimum
-2. 🔴 **Performance** : Lighthouse 90+
-3. 🟡 **Éco-conception** : EcoIndex A/B
-4. 🟡 **SEO** : Meta tags corrects
-5. 🟢 **Esthétique** : Important mais secondaire
-
----
-
-## 📞 CONTACT & SUPPORT
-
-### En cas de blocage
-1. Lire la documentation officielle Nuxt 3
-2. Chercher dans les Issues GitHub Nuxt
-3. Demander sur Discord Nuxt
-4. Contacter Benoît : hello@beabot.fr
-
-### Reporting Bugs
-```markdown
-**Titre** : [BUG] Description courte
-
-**Environnement** :
-- OS : macOS
-- Node : 18.x
-- Yarn : 1.22.x
-- Nuxt : 2.15.8 ou 3.14.0
-
-**Étapes pour reproduire** :
-1. ...
-2. ...
-
-**Comportement attendu** :
-...
-
-**Comportement actuel** :
-...
-
-**Screenshots** :
-...
-```
-
----
-
-## ✅ STATUT ACTUEL (6 décembre 2025)
-
-### Audits Complétés
-- ✅ AUDIT_BEABOT.md (audit technique complet)
-- ✅ VUE_BEST_PRACTICES_AUDIT.md (score 65/100)
-- ✅ MIGRATION_PLAN_NUXT3.md (plan 5 phases)
-- ✅ CLAUDE.md (ce fichier)
-- ⏳ TODO.md (en cours de création)
-
-### Prochaines Actions
-1. Lire TODO.md
-2. Décider : Quick fixes OU Migration complète
-3. Exécuter selon priorités
-4. Tester à chaque étape
-5. Commit + Push
-
-### Rappels
-- 🔴 Backup fait avant modifications majeures
-- 🔴 Git branch `feature/nuxt3-migration` à créer
-- 🔴 Tester localement AVANT deploy
-- 🟢 Documentation à jour après chaque phase
+- [RGESN](https://ecoresponsable.numerique.gouv.fr/publications/referentiel-general-ecoconception/)
 
 ---
 
 **📝 Document maintenu par** : Claude Code  
-**📅 Dernière mise à jour** : 6 décembre 2025  
-**📌 Version** : 1.0.0  
-**🎯 Projet** : BeAbot - Migration Nuxt 2→3
+**📅 Dernière MAJ** : 15 décembre 2025  
+**🎯 Projet** : BeAbot - Optimisation éco-conception
