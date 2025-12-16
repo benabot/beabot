@@ -2,7 +2,8 @@
 
 > **Stratégie Git pour le projet BeAbot**
 
-**Date** : 15 décembre 2025  
+**Date création** : 15 décembre 2025  
+**Dernière MAJ** : 16 décembre 2025  
 **Projet** : BeAbot - Blog éco-conception web
 
 ---
@@ -12,326 +13,209 @@
 ### Branches principales
 
 ```
-master (protected)     ← Site de production (Nuxt 2)
+master (protected)     ← Site de production (Nuxt 3)
    │                    https://beabot.netlify.app
+   │                    (futur: https://beabot.fr)
    │
 dev (protected)        ← Site de développement (Nuxt 3)
    │                    https://dev-beabot.netlify.app
    │
+   ├── optim/eco-9-*   ← Optimisations Phase 9 (ACTUEL)
+   ├── chore/domain-*  ← Migration domaine beabot.fr
    ├── feature/*       ← Nouvelles fonctionnalités
    ├── fix/*           ← Corrections de bugs
-   ├── optim/*         ← Optimisations performance/éco
    └── docs/*          ← Documentation
 ```
 
-### Règles importantes
-
-| Branche | Protection | Qui peut merger | Deploy |
-|---------|------------|-----------------|--------|
-| `master` | 🔒 Protégée | Merge local uniquement | Auto → beabot.netlify.app |
-| `dev` | ⚠️ Semi-protégée | Après tests | Auto → dev-beabot.netlify.app |
-| `feature/*` | Non protégée | Libre | Non |
-| `fix/*` | Non protégée | Libre | Non |
-| `optim/*` | Non protégée | Libre | Non |
-
 ---
 
-## 🔄 WORKFLOW DE TRAVAIL
+## 🎯 PHASE 9 : Optimisations Éco-conception (ACTUEL)
 
-### 1. Créer une branche de travail
+### Branches prévues
 
 ```bash
-# À partir de dev (toujours à jour)
-git checkout dev
-git pull origin dev
-
-# Créer la branche de travail
-git checkout -b feature/nom-de-la-feature
-# OU
-git checkout -b fix/description-du-bug
-# OU
-git checkout -b optim/type-optimisation
-# OU
-git checkout -b docs/description
+dev
+ ├── optim/eco-9-01-ecoindex-badge    # Retirer script externe
+ ├── optim/eco-9-02-image-optim       # Optimiser images lourdes
+ ├── optim/eco-9-03-css-print         # Ajouter CSS print
+ ├── optim/eco-9-04-svg-optim         # Optimiser SVG inline
+ ├── optim/eco-9-05-css-vars          # Variables CSS natives
+ ├── optim/eco-9-06-reduced-motion    # prefers-reduced-motion
+ ├── optim/eco-9-07-image-dimensions  # width/height images
+ ├── optim/eco-9-08-eco-declaration   # Page déclaration RGESN
+ ├── optim/eco-9-09-focus-visible     # Accessibilité focus
+ ├── optim/eco-9-10-css-selectors     # Simplifier sélecteurs
+ ├── optim/eco-9-11-pwa               # Service Worker (optionnel)
+ └── optim/eco-9-12-preload           # Preload pages (optionnel)
 ```
 
-### 2. Travailler sur la branche
+### Workflow Phase 9
 
 ```bash
-# Faire les modifications
-# ...
-
-# Commit régulièrement avec messages conventionnels
+# 1. Claude Code crée la branche et implémente
+git checkout dev
+git checkout -b optim/eco-9-01-ecoindex-badge
+# ... modifications ...
 git add .
-git commit -m "feat: description de la modification"
+git commit -m "optim: remove external ecoindex badge script
 
-# Pousser la branche
-git push origin feature/nom-de-la-feature
-```
+- Remove jsdelivr external script from nuxt.config.ts
+- Create static EcoIndexBadge.vue component
+- Reduces HTTP requests by 1, removes 1 third-party domain
 
-### 3. Tester avant de merger
+Ref: GreenIT #46, #58"
 
-```bash
-# Vérifier le build
-npm run build
-npm run generate
-
-# Tester localement
-npm run preview
-# Vérifier sur http://localhost:3000
-
-# Lint
-npm run lint
-```
-
-### 4. Merger dans dev (après tests OK)
-
-```bash
-# Se mettre sur dev
+# 2. Benoît review, merge et push
 git checkout dev
-git pull origin dev
-
-# Merger la branche de travail
-git merge feature/nom-de-la-feature
-
-# Pousser
+git merge optim/eco-9-01-ecoindex-badge
 git push origin dev
-```
-
-### 5. Nettoyer
-
-```bash
-# Supprimer la branche locale
-git branch -d feature/nom-de-la-feature
-
-# Supprimer la branche remote (optionnel)
-git push origin --delete feature/nom-de-la-feature
+git branch -d optim/eco-9-01-ecoindex-badge
 ```
 
 ---
 
-## 📌 CONVENTIONS DE NOMMAGE
+## 🌐 PHASE 10 : Migration domaine beabot.fr
 
-### Format des branches
+### Prérequis
+- [ ] Domaine beabot.fr acheté et DNS configuré
+- [ ] Domaine ajouté dans Netlify (Site settings > Domain management)
+- [ ] Certificat SSL actif
 
+### Branche de migration
+
+```bash
+git checkout dev
+git checkout -b chore/domain-beabot-fr
 ```
-<type>/<description-en-kebab-case>
+
+### Fichiers à modifier
+
+| Fichier | Ligne | Modification |
+|---------|-------|--------------|
+| `netlify.toml` | 14 | `NUXT_PUBLIC_SITE_URL = "https://beabot.fr"` |
+| `pages/index.vue` | 294 | `href: 'https://beabot.fr/'` |
+| `server/routes/rss.xml.ts` | ~5 | `siteUrl: 'https://beabot.fr'` |
+| `server/routes/feed.json.ts` | ~5 | `siteUrl: 'https://beabot.fr'` |
+| `nuxt.config.ts` | sitemap.hostname | Déjà `https://beabot.fr` ✅ |
+| `nuxt.config.ts` | og:image | Déjà `https://beabot.fr` ✅ |
+
+### Redirect à ajouter dans netlify.toml
+
+```toml
+# Redirect ancien domaine vers nouveau
+[[redirects]]
+  from = "https://beabot.netlify.app/*"
+  to = "https://beabot.fr/:splat"
+  status = 301
+  force = true
+
+# Redirect www vers apex
+[[redirects]]
+  from = "https://www.beabot.fr/*"
+  to = "https://beabot.fr/:splat"
+  status = 301
+  force = true
+```
+
+### Procédure complète
+
+```bash
+# 1. Créer la branche
+git checkout dev
+git checkout -b chore/domain-beabot-fr
+
+# 2. Modifier les fichiers (voir tableau ci-dessus)
+
+# 3. Commit
+git commit -am "chore: migrate domain to beabot.fr
+
+- Update NUXT_PUBLIC_SITE_URL in netlify.toml
+- Update canonical URL in index.vue
+- Update siteUrl in RSS and JSON feeds
+- Add 301 redirects from netlify.app to beabot.fr
+- Add www to apex redirect"
+
+# 4. Push pour preview deploy
+git push origin chore/domain-beabot-fr
+
+# 5. Tester le preview deploy Netlify
+# Vérifier que tout fonctionne
+
+# 6. Benoît merge dans dev puis master
+git checkout dev
+git merge chore/domain-beabot-fr
+git push origin dev
+
+git checkout master
+git merge dev
+git push origin master
+
+# 7. Vérifier les redirects en production
+curl -I https://beabot.netlify.app
+# Doit retourner 301 → https://beabot.fr
+```
+
+---
+
+## 🔄 WORKFLOW STANDARD
+
+### Créer une branche de travail
+
+```bash
+git checkout dev
+git pull origin dev
+git checkout -b <type>/<description>
 ```
 
 ### Types de branches
 
 | Type | Usage | Exemple |
 |------|-------|---------|
+| `optim/` | Optimisation éco/perf | `optim/eco-9-01-ecoindex-badge` |
 | `feature/` | Nouvelle fonctionnalité | `feature/dark-mode` |
 | `fix/` | Correction de bug | `fix/portfolio-animation` |
-| `optim/` | Optimisation perf/éco | `optim/reduce-http-requests` |
 | `docs/` | Documentation | `docs/update-readme` |
-| `refactor/` | Refactoring code | `refactor/component-structure` |
-| `style/` | Changements de style | `style/typography-update` |
-| `chore/` | Maintenance | `chore/update-dependencies` |
+| `chore/` | Maintenance | `chore/domain-beabot-fr` |
 
-### Exemples concrets
+### Convention de commits
 
-```bash
-# Fonctionnalités
-feature/home-redesign
-feature/search-articles
-feature/rss-feed
-feature/contact-form-validation
-
-# Corrections
-fix/broken-links
-fix/image-loading
-fix/mobile-menu
-
-# Optimisations
-optim/bundle-size
-optim/image-compression
-optim/lazy-loading
-optim/reduce-dom-elements
-
-# Documentation
-docs/project-state-update
-docs/api-documentation
-docs/deployment-guide
 ```
+<type>: <description>
+
+[body optionnel avec détails]
+
+[Ref: GreenIT #XX, RGESN X.X]
+```
+
+Types : `feat`, `fix`, `optim`, `docs`, `style`, `refactor`, `chore`
 
 ---
 
-## 📋 CONVENTIONS DE COMMITS
-
-### Format
-
-```
-<type>(<scope>): <description>
-
-[body optionnel]
-
-[footer optionnel]
-```
-
-### Types de commits
-
-| Type | Description |
-|------|-------------|
-| `feat` | Nouvelle fonctionnalité |
-| `fix` | Correction de bug |
-| `docs` | Documentation |
-| `style` | Formatage (sans impact code) |
-| `refactor` | Refactoring |
-| `perf` | Amélioration performance |
-| `test` | Ajout/modification tests |
-| `chore` | Maintenance |
-| `optim` | Optimisation éco-conception |
-
-### Exemples
-
-```bash
-feat(home): add article carousel
-fix(portfolio): restore hover animation
-docs: update README with deployment info
-style(css): improve heading spacing
-refactor(components): migrate to Composition API
-perf(images): add lazy loading
-optim(fonts): reduce font weights
-chore: update dependencies
-```
-
----
-
-## ⚠️ RÈGLES IMPORTANTES
+## ⚠️ RÈGLES
 
 ### ❌ NE JAMAIS FAIRE
-
-1. **Ne jamais travailler directement sur `master`**
-   ```bash
-   # INTERDIT
-   git checkout master
-   git commit -m "..."
-   ```
-
-2. **Ne jamais travailler directement sur `dev`** (sauf urgence)
-   ```bash
-   # ÉVITER
-   git checkout dev
-   git commit -m "..."
-   ```
-
-3. **Ne jamais force push sur branches protégées**
-   ```bash
-   # INTERDIT
-   git push --force origin master
-   git push --force origin dev
-   ```
-
-4. **Ne jamais merger dev → master sans tests complets**
+- Travailler directement sur `master` ou `dev`
+- Force push sur branches protégées
+- Merger sans tester (`npm run generate`)
 
 ### ✅ TOUJOURS FAIRE
-
-1. **Créer une branche dédiée pour chaque travail**
-2. **Pull dev avant de créer une branche**
-3. **Tester localement avant de merger**
-4. **Utiliser des messages de commit conventionnels**
-5. **Supprimer les branches après merge**
+- Créer une branche dédiée
+- Tester localement avant commit
+- Messages de commit conventionnels
+- Benoît s'occupe des merge/push
 
 ---
 
-## 🚀 WORKFLOW DE RELEASE
+## 📊 ÉTAT ACTUEL
 
-### Quand merger dev → master ?
-
-Le merge de `dev` vers `master` (mise en production Nuxt 3) se fera quand :
-
-1. ✅ Toutes les fonctionnalités critiques sont testées
-2. ✅ EcoIndex égal ou meilleur que prod actuelle
-3. ✅ Lighthouse Performance ≥ 90
-4. ✅ Pas de régression fonctionnelle
-5. ✅ Documentation à jour
-
-### Procédure de release
-
-```bash
-# 1. S'assurer que dev est stable
-git checkout dev
-npm run build && npm run generate && npm run preview
-
-# 2. Créer une branche de release
-git checkout -b release/v3.0.0
-
-# 3. Derniers ajustements si nécessaire
-# ...
-
-# 4. Merger dans master
-git checkout master
-git merge release/v3.0.0 --no-ff -m "Release v3.0.0 - Migration Nuxt 3"
-
-# 5. Tag de version
-git tag -a v3.0.0 -m "Version 3.0.0 - Migration Nuxt 3"
-
-# 6. Push
-git push origin master
-git push origin --tags
-
-# 7. Cleanup
-git branch -d release/v3.0.0
-```
+| Branche | État | Description |
+|---------|------|-------------|
+| `master` | ✅ Stable | Production Nuxt 3 |
+| `dev` | ✅ Stable | Développement, sync avec master |
+| Phase 9 | 🔄 En cours | Optimisations éco-conception |
+| Phase 10 | ⏳ En attente | Migration beabot.fr |
 
 ---
 
-## 📊 ÉTAT ACTUEL DES BRANCHES
-
-### Branches actives (15 décembre 2025)
-
-| Branche | État | Dernière activité |
-|---------|------|-------------------|
-| `master` | ✅ Stable (Nuxt 2) | - |
-| `dev` | ✅ Stable (Nuxt 3) | 15 déc 2025 |
-| `feat/nuxt3-phase1-deps` | ✅ Mergée | 10 déc 2025 |
-| `feat/nuxt3-phase2-design` | ✅ Mergée | 11 déc 2025 |
-| `docs/project-state-update` | 🔄 En cours | 15 déc 2025 |
-
-### Branches à supprimer (après review)
-
-```bash
-# Branches mergées qui peuvent être supprimées
-elegant-kirch
-jolly-pike
-upbeat-archimedes
-zen-raman
-feature/home
-feature/typo
-fix/audit-04-contrast
-fix/quick-fixes-p0
-optim/req
-optim/req-2
-```
-
-### Commande de nettoyage
-
-```bash
-# Supprimer les branches locales mergées
-git branch --merged dev | grep -v "dev\|master" | xargs -n 1 git branch -d
-
-# Supprimer les branches remote obsolètes
-git remote prune origin
-```
-
----
-
-## 🔗 LIENS UTILES
-
-### Déploiements
-- **Production** : https://beabot.netlify.app (master)
-- **Développement** : https://dev-beabot.netlify.app (dev)
-
-### Netlify Dashboard
-- https://app.netlify.com/sites/beabot
-- https://app.netlify.com/sites/dev-beabot
-
-### GitHub
-- https://github.com/benabot/beabot
-
----
-
-**📝 Document maintenu par** : Claude Code  
-**📅 Dernière MAJ** : 15 décembre 2025
+**📝 Maintenu par** : Claude Code  
+**📅 Dernière MAJ** : 16 décembre 2025
