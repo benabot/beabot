@@ -1,1 +1,0 @@
-export { default } from "/Users/benoitabot/Sites/beabot/node_modules/@nuxt/image/dist/runtime/components/NuxtImg.vue"

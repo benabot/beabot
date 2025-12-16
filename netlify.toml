@@ -86,11 +86,12 @@
     Cache-Control = "private, max-age=3600"
 
 # Redirects and rewrites
-[[redirects]]
-  from = "https://beabot.netlify.com/*"
-  to = "https://beabot.netlify.app/:splat"
-  status = 301
-  force = true
+# Temporarily disabled - investigating redirect loop
+# [[redirects]]
+#   from = "https://beabot.netlify.com/*"
+#   to = "https://beabot.netlify.app/:splat"
+#   status = 301
+#   force = true
 
 # SPA fallback for client-side routing (if needed)
 # [[redirects]]
