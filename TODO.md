@@ -1,6 +1,6 @@
 # ✅ TODO - BeAbot Nuxt 3 Optimisation Éco-conception
 
-> **Objectif** : Améliorer les performances éco-conception du site de dev pour dépasser le site de prod
+> **Objectif** : Améliorer les performances éco-conception et préparer la migration vers beabot.fr
 
 **Projet** : BeAbot - Blog éco-conception web
 **Date création** : 15 décembre 2025
@@ -13,381 +13,242 @@
 
 ---
 
-## 📊 CONTEXTE : COMPARAISON PROD vs DEV
+## 📊 CONTEXTE ACTUEL
 
-### ✅ Statut actuel (16 décembre 2025)
+### Statut (16 décembre 2025)
 
-**Production et Dev sont maintenant tous deux sur Nuxt 3** - La migration est terminée !
+**Migration Nuxt 3 terminée** - Les deux environnements sont synchronisés sur Nuxt 3.
 
-Le site est maintenant déployé en production avec :
-
-- ✅ Nuxt 3 avec SSG
-- ✅ System fonts (Montserrat local)
-- ✅ Coloration syntaxique VS Code Dark+
-- ✅ Système de dates de publication
-- ✅ Badge EcoIndex dans le footer
-
-### Travaux récents (Session du 16 décembre 2025)
-
-#### ✅ Contenu
-
-- [x] Article "Typographie et éco-conception" ajouté
-- [x] Système de dates de publication complet
-- [x] Tri chronologique des articles (plus récent en haut)
-- [x] Correction affichage articles récents page d'accueil
-
-#### ✅ Design
-
-- [x] Coloration syntaxique Shiki avec thème VS Code Dark+
-- [x] Blocs de code avec fond sombre (#1e1e1e)
-- [x] Largeur des blocs de code alignée (66ch)
-- [x] Badge EcoIndex ajouté au footer
-- [x] Numéro de téléphone retiré du footer
-
-### Résultats Phase 1 (15 décembre 2025)
-
-| Métrique | Site Prod (Nuxt 2) | Site Dev AVANT | Site Dev APRÈS | Statut |
-|----------|-------------------|----------------|----------------|--------|
-| **Poids HTML** | 28.5 KB | 66 KB | **28.7 KB** | ✅ **Objectif atteint** |
-| **Requêtes HTTP** | ~23 (+ Typekit) | ~16 | **~16** | ✅ **Dev meilleur** |
-| **CSS inline** | 0 | 8 blocs | **0** | ✅ **Objectif atteint** |
-| **Fonts externes** | Typekit (5-7 req) | 0 | **0 (system)** | ✅ **Dev meilleur** |
-| **EcoIndex** | À mesurer | À mesurer | **Badge ajouté** | ✅ **Suivi actif** |
+| Métrique | Site Prod | Site Dev | Statut |
+|----------|-----------|----------|--------|
+| **Framework** | Nuxt 3.14 | Nuxt 3.14 | ✅ Sync |
+| **Poids HTML** | ~28 KB | ~28 KB | ✅ |
+| **Requêtes HTTP** | ~16 | ~16 | 🔶 À optimiser |
+| **Fonts** | System stack | System stack | ✅ |
+| **EcoIndex** | B-C | B-C | 🔶 Objectif A |
 
 ---
 
-## ✅ PRIORITÉ 1 : Audit et Diagnostic - COMPLÉTÉ
+## 🎯 PHASE 9 : Optimisations Éco-conception Avancées
 
-### ✅ AUDIT-ECO-01 : Mesurer les métriques actuelles - COMPLÉTÉ
-- [x] **Site de prod** (https://beabot.netlify.app)
-  - [x] Nombre de requêtes HTTP : ~23 (avec Typekit)
-  - [x] Poids HTML : 28.5 KB
-  - [x] CSS inline : 0, CSS externe : 3 + Typekit
-  - [x] Fonts : Typekit externe (5-7 requêtes)
-- [x] **Site de dev** (https://dev-beabot.netlify.app)
-  - [x] Nombre de requêtes HTTP : 16 (après Phase 1)
-  - [x] Poids HTML : 28.7 KB (après Phase 1, était 66 KB)
-  - [x] CSS inline : 0 (après Phase 1)
-  - [x] Fonts : System fonts (0 requête)
+> **Audit complet** : `AUDITS/ECO_AUDIT_PHASE_9.md`
+> **Stratégie branches** : `optim/eco-9-XX` où XX = numéro de la tâche
 
-### ✅ AUDIT-ECO-02 : Identifier les causes - COMPLÉTÉ
-- [x] Analyser le Network tab des DevTools
-- [x] Lister toutes les requêtes HTTP
-- [x] Identifier que le problème était le CSS inline (8 blocs, 25KB)
-- [x] Identifier que les fonts Typekit du prod génèrent plus de requêtes
-- [x] **Rapport complet** : `AUDITS/ECO_AUDIT_2025-12.md`
+### PRIORITÉ 1 - Impact élevé ⚡
 
----
+#### ECO-9-01 : Supprimer script EcoIndex externe
+- [ ] Créer branche `optim/eco-9-01-ecoindex-badge`
+- [ ] Retirer le script jsdelivr de nuxt.config.ts
+- [ ] Créer un composant `EcoIndexBadge.vue` avec SVG statique
+- [ ] Tester et committer
+- **Impact** : -1 requête HTTP, -1 domaine tiers
+- **Référence** : GreenIT #46, #58
 
-## 🟡 PRIORITÉ 2 : Optimisations Éco-conception (Jour 2-3)
+#### ECO-9-02 : Optimiser images lourdes
+- [ ] Créer branche `optim/eco-9-02-image-optim`
+- [ ] Convertir cyclop.png (332KB) → WebP (~80KB)
+- [ ] Convertir lpb.png (191KB) → WebP (~50KB)
+- [ ] Convertir guideBleu1/2.png → WebP
+- [ ] Supprimer fichiers PNG obsolètes
+- **Impact** : -400KB sur les assets
+- **Référence** : GreenIT #48, #99
 
-### ✅ OPTIM-ECO-01 : Réduire les requêtes HTTP
-- [ ] **Audit des fonts**
-  - [ ] Vérifier le nombre de fichiers font chargés
-  ~~- [ ] Limiter aux poids essentiels (400, 700)~~
-  - [ ] Font-display: swap configuré
-- [x] **Audit des images**
-  - [x] Formats modernes (WebP/AVIF) utilisés
-  - [x] Lazy loading sur toutes les images
-  - [x] Pas d'images dupliquées
-- [ ] **Audit du JavaScript**
-  - [ ] Code splitting efficace
-  - [ ] Tree shaking fonctionnel
-  - [ ] Pas de modules inutiles chargés
-- [ ] **Audit du CSS**
-  - [ ] CSS critique inliné
-  - [ ] CSS non critique déféré
-  - [ ] Pas de CSS inutilisé
+#### ECO-9-03 : Ajouter CSS print
+- [ ] Créer branche `optim/eco-9-03-css-print`
+- [ ] Ajouter `assets/css/print.scss`
+- [ ] Masquer nav, footer, éléments décoratifs à l'impression
+- [ ] Optimiser typographie pour papier
+- **Référence** : GreenIT #31
 
-### ✅ OPTIM-ECO-02 : Réduire le poids des pages
-- [ ] Compresser les images existantes
-- [ ] Minifier HTML/CSS/JS (vérifier config Nitro)
-- [ ] Supprimer les dépendances inutilisées
-- [ ] Vérifier la taille du bundle JS
+#### ECO-9-04 : Optimiser SVG inline
+- [ ] Créer branche `optim/eco-9-04-svg-optim`
+- [ ] Externaliser le logo SVG de layouts/default.vue
+- [ ] Optimiser avec SVGO
+- [ ] Réduire les gradients complexes
+- **Référence** : GreenIT #99
 
-### ✅ OPTIM-ECO-03 : Optimiser le DOM
-- [ ] Réduire le nombre d'éléments DOM
-- [ ] Simplifier la structure HTML
-- [ ] Supprimer les wrappers inutiles
+### PRIORITÉ 2 - Impact moyen 🔶
 
----
+#### ECO-9-05 : Variables CSS natives
+- [ ] Créer branche `optim/eco-9-05-css-vars`
+- [ ] Migrer couleurs SCSS → CSS custom properties
+- [ ] Migrer spacing → CSS custom properties
+- [ ] Conserver SCSS uniquement pour mixins/fonctions
+- **Référence** : Standards modernes CSS
 
-## 🟢 PRIORITÉ 3 : Améliorations Build/Deploy (Jour 3-4)
+#### ECO-9-06 : Respect prefers-reduced-motion
+- [ ] Créer branche `optim/eco-9-06-reduced-motion`
+- [ ] Ajouter media query `@media (prefers-reduced-motion: reduce)`
+- [ ] Désactiver animations pour utilisateurs sensibles
+- **Référence** : GreenIT #9, WCAG
 
-### ✅ BUILD-01 : Optimiser la configuration Nuxt
-- [ ] Vérifier `nuxt.config.ts` pour optimisations
-- [ ] Configurer Nitro pour génération statique optimale
-- [ ] Vérifier les presets de compression
+#### ECO-9-07 : Attributs width/height images
+- [ ] Créer branche `optim/eco-9-07-image-dimensions`
+- [ ] Auditer toutes les balises `<img>` et `<NuxtImg>`
+- [ ] Ajouter width/height manquants
+- [ ] Réduire CLS (Cumulative Layout Shift)
+- **Référence** : Opquast #10, #11
 
-### ✅ BUILD-02 : Optimiser Netlify
-- [ ] Vérifier les headers de cache
-- [ ] Activer Brotli compression
-- [ ] Configurer edge functions si nécessaire
+#### ECO-9-08 : Déclaration d'éco-conception RGESN
+- [ ] Créer branche `optim/eco-9-08-eco-declaration`
+- [ ] Créer page `/eco-declaration.vue`
+- [ ] Documenter méthodologie et scores
+- [ ] Lier depuis footer
+- **Référence** : RGESN 1.1, 1.2
 
-### ✅ BUILD-03 : Tests de build
-- [ ] `npm run generate` sans erreurs
-- [ ] Vérifier taille du dossier `.output`
-- [ ] Preview local avant deploy
+### PRIORITÉ 3 - Améliorations continues 🟢
 
----
+#### ECO-9-09 : Fix focus outline accessibility
+- [ ] Créer branche `optim/eco-9-09-focus-visible`
+- [ ] Remplacer `*:focus { outline: none }` par `:focus-visible`
+- [ ] Ajouter style focus personnalisé accessible
+- **Référence** : WCAG 2.4.7
 
-## 📋 HISTORIQUE DES TRAVAUX EFFECTUÉS
+#### ECO-9-10 : Simplifier sélecteurs CSS
+- [ ] Créer branche `optim/eco-9-10-css-selectors`
+- [ ] Réduire profondeur nesting (<3 niveaux)
+- [ ] Optimiser sélecteurs `:deep()`
+- **Référence** : Opquast #7, #40
 
-### Commits récents sur dev (15 décembre 2025)
+#### ECO-9-11 : Service Worker (optionnel)
+- [ ] Créer branche `optim/eco-9-11-pwa`
+- [ ] Évaluer @vite-pwa/nuxt
+- [ ] Implémenter cache offline si pertinent
+- **Référence** : GreenIT #59
 
-| Commit | Description | Impact |
-|--------|-------------|--------|
-| eb75287 | update netlify deployment fix-5 | Déploiement |
-| f7fb230 | chore: optimize assets and restore home visuals | Optimisation assets |
-| d6b13d9 | optim img | Optimisation images |
-| 66244fb | update netlify deployment fix-4 | Déploiement |
-| 084e5c2 | update netlify deployment 3 | Déploiement |
-| 49a7b26 | update netlify deployment 2 | Déploiement |
-| 69e23e6 | update netlify deployment | Déploiement |
-| dcb8edb | feature typo 1 : blog | Typographie blog |
-| d8e1b88 | feature home 2 : portfolio | Home portfolio |
-| 30d6578 | feature home 1 : blog | Home blog |
-
-### Migration Nuxt 3 (Novembre-Décembre 2025)
-
-#### Phase 1 - Configuration ✅ 100%
-- Nuxt 3.14 + Vue 3.5 + Vite
-- @nuxt/content v2
-- @nuxt/image
-- Fonts locales (Montserrat)
-- Configuration Netlify
-
-#### Phase 2 - Composants ✅ 100%
-- Tous composants migrés vers Composition API
-- Renommage selon conventions Vue.js
-- Suppression modules obsolètes (lozad, etc.)
-
-#### Phase 3 - Design ✅ 100%
-- Police Montserrat
-- Animations portfolio
-- Transitions Vue 3
-- Styles articles
+#### ECO-9-12 : Preload pages fréquentes (optionnel)
+- [ ] Créer branche `optim/eco-9-12-preload`
+- [ ] Identifier pages les plus visitées
+- [ ] Ajouter preload dynamique
+- **Référence** : Smashing #10
 
 ---
 
-## 🔄 WORKFLOW GIT
+## 🌐 PHASE 10 : Migration domaine beabot.fr
 
-### Branches
-- `master` : Production (Nuxt 2) - NE PAS TOUCHER
-- `dev` : Développement (Nuxt 3) - Base de travail
-- `docs/project-state-update` : Documentation actuelle
-- Créer des branches de feature depuis `dev`
+> **À effectuer quand le domaine sera acheté/configuré**
+
+### Fichiers à modifier pour beabot.fr
+
+| Fichier | Modification |
+|---------|--------------|
+| `netlify.toml` | NUXT_PUBLIC_SITE_URL → beabot.fr |
+| `pages/index.vue` | canonical → beabot.fr |
+| `server/routes/rss.xml.ts` | siteUrl → beabot.fr |
+| `server/routes/feed.json.ts` | siteUrl → beabot.fr |
+
+### Étapes
+
+1. [ ] Acheter/configurer DNS beabot.fr
+2. [ ] Créer branche `chore/domain-beabot-fr`
+3. [ ] Configurer domaine dans Netlify
+4. [ ] Modifier fichiers listés ci-dessus
+5. [ ] Ajouter redirect netlify.toml :
+```toml
+[[redirects]]
+  from = "https://beabot.netlify.app/*"
+  to = "https://beabot.fr/:splat"
+  status = 301
+  force = true
+```
+6. [ ] Tester en preview
+7. [ ] Merger et déployer
+
+---
+
+## 🔄 WORKFLOW GIT - Stratégie de branches
+
+### Branches principales
+- `master` : Production
+- `dev` : Développement (base de travail)
+
+### Branches de travail (Phase 9)
+```
+dev
+ └── optim/eco-9-01-ecoindex-badge
+ └── optim/eco-9-02-image-optim
+ └── optim/eco-9-03-css-print
+ └── optim/eco-9-04-svg-optim
+ └── optim/eco-9-05-css-vars
+ └── optim/eco-9-06-reduced-motion
+ └── optim/eco-9-07-image-dimensions
+ └── optim/eco-9-08-eco-declaration
+ └── optim/eco-9-09-focus-visible
+ └── optim/eco-9-10-css-selectors
+ └── optim/eco-9-11-pwa (optionnel)
+ └── optim/eco-9-12-preload (optionnel)
+```
 
 ### Convention de commits
 ```
 feat: nouvelle fonctionnalité
 fix: correction de bug
-optim: optimisation performance/éco
+optim: optimisation éco/performance
 docs: documentation
-style: formatage (sans changement de code)
+style: formatage
 refactor: refactoring
 chore: maintenance
 ```
+
+### Processus
+1. Créer branche depuis `dev`
+2. Implémenter la modification
+3. Tester localement (`npm run dev` + `npm run generate`)
+4. Committer avec message conventionnel
+5. Benoît merge dans `dev` et push
+6. Quand Phase 9 terminée : merge `dev` → `master`
+
+---
+
+## 📈 MÉTRIQUES CIBLES
+
+### Éco-conception
+- [ ] EcoIndex : Score **A**
+- [ ] Requêtes HTTP : **< 12**
+- [ ] Poids page : **< 150KB**
+- [ ] CO2/page : **< 0.3g**
+
+### Performance
+- [ ] Lighthouse Performance : **> 95**
+- [ ] LCP : **< 1.5s**
+- [ ] FID : **< 100ms**
+- [ ] CLS : **< 0.05**
+
+### Accessibilité
+- [ ] Lighthouse Accessibility : **> 95**
+- [ ] WAVE : **0 erreurs**
 
 ---
 
 ## 📚 RESSOURCES
 
+### Référentiels
+- [GreenIT 115 bonnes pratiques v5](https://rweb.greenit.fr)
+- [RGESN 78 critères](https://ecoresponsable.numerique.gouv.fr/publications/referentiel-general-ecoconception/)
+- [Opquast Webperf](https://www.opquast.com)
+
 ### Outils d'audit
 - [EcoIndex](https://www.ecoindex.fr/)
-- [Website Carbon Calculator](https://www.websitecarbon.com/)
-- [GreenFrame](https://greenframe.io/)
+- [Website Carbon](https://www.websitecarbon.com/)
 - [Lighthouse](https://pagespeed.web.dev/)
-
-### Documentation
-- [Nuxt 3 Performance](https://nuxt.com/docs/guide/best-practices/performance)
-- [RGESN](https://ecoresponsable.numerique.gouv.fr/publications/referentiel-general-ecoconception/)
-- [115 bonnes pratiques éco-conception](https://collectif.greenit.fr/ecoconception-web/115-bonnes-pratiques-eco-conception_web.html)
+- [WAVE](https://wave.webaim.org/)
 
 ---
 
-## 🎯 CRITÈRES DE SUCCÈS
+## 📋 HISTORIQUE DES PHASES
 
-### Éco-conception
-- [ ] EcoIndex : Score A
-- [ ] Requêtes HTTP : < site de prod
-- [ ] Poids page < 500KB
-- [ ] CO2/page < 0.5g
-
-### Performance
-- [ ] Lighthouse Performance > 95
-- [ ] LCP < 1.5s
-- [ ] FID < 100ms
-- [ ] CLS < 0.1
-
-### Accessibilité
-- [ ] Lighthouse Accessibility > 95
-- [ ] WAVE : 0 erreurs
+| Phase | Description | Statut |
+|-------|-------------|--------|
+| 1-4 | Migration Nuxt 3 | ✅ Complété |
+| 5 | Finalisation (cache, 404, footer) | ✅ Complété |
+| 6 | Bug fixes production | ✅ Complété |
+| 7 | Netlify build image | ✅ Complété |
+| 8 | Tests et validation | ✅ Complété |
+| **9** | **Optimisations éco-conception** | 🔄 **En cours** |
+| 10 | Migration domaine beabot.fr | ⏳ En attente |
 
 ---
 
-## ✅ PHASE 2 : Optimisations JS/Images - COMPLÉTÉ
-
-### Objectifs Phase 2
-- [x] Optimiser les images (WebP quality 75, preset portfolio)
-- [x] Réduire le nombre de chunks JS (63 → 16, -75%)
-- [x] Configuration Terser minification
-- [x] Manual chunking intelligent (vendor-vue, vendor-nuxt, vendor-content, vendor-libs)
-- [ ] Tester EcoIndex sur site déployé (Phase 3)
-- [ ] Mesurer Lighthouse en production (Phase 3)
-
-### Résultats Phase 2
-| Métrique | Avant | Après | Amélioration |
-|----------|-------|-------|--------------|
-| **JS Chunks** | 63 fichiers | **16 fichiers** | **-75%** 🎉 |
-| **HTML Size** | 28.7 KB | **28 KB** | Maintenu ✅ |
-| **Image Quality** | 80 | **75** | -6.25% ✅ |
-| **Minification** | Default | **Terser** | Optimisé ✅ |
-
-### Branche
-- **Branche mergée** : `optim/eco-phase-2` → `dev` ✅
-
----
-
-## ✅ PHASE 3 : Optimisations Performance - COMPLÉTÉ
-
-### Objectifs Phase 3
-- [x] Resource hints (preconnect, dns-prefetch)
-- [x] Theme color meta tag
-- [x] HTML minification (nitro.minify)
-- [ ] Compression manuelle des images PNG lourdes (cyclop.png 649KB)
-- [ ] Tests EcoIndex sur site déployé
-- [ ] Tests Lighthouse complets
-- [ ] Documentation finale
-
-### Résultats Phase 3
-| Métrique | Configuration | Statut |
-|----------|---------------|--------|
-| **Preconnect** | https://beabot.fr | ✅ Configuré |
-| **DNS Prefetch** | https://beabot.fr | ✅ Configuré |
-| **Theme Color** | #ffffff | ✅ Configuré |
-| **HTML Minify** | Nitro minification | ✅ Activé |
-| **Build Time** | 4.83s (47 routes) | ✅ Rapide |
-
-### Branche
-- **Branche de travail** : `optim/eco-phase-3`
-- **Basée sur** : `dev` (après merge de `optim/eco-phase-2`)
-
----
-
-## ✅ PHASE 4 : CSS & DOM Optimization - COMPLÉTÉ
-
-### Objectifs Phase 4
-- [x] Audit CSS inutilisé avec Coverage
-- [x] Suppression CSS mort (.chiffre-lnum, .fixe, .intro-*)
-- [x] Suppression code commenté (~150 lignes)
-- [x] Audit DOM (524 éléments < 1500 ✅)
-
-### Résultats Phase 4
-| Métrique | Avant | Après | Amélioration |
-|----------|-------|-------|--------------|
-| **main.scss** | 553 lignes | **376 lignes** | **-32%** 🎉 |
-| **entry.css** | 16 KB | **13 KB** | **-18.8%** 🎉 |
-| **Code quality** | Base | **+32% maintenabilité** | ✅ |
-
-### Branche
-- **Branche mergée** : `optim/eco-phase-4` → `dev` ✅
-
----
-
-## ✅ PHASE 5 : Finalisation - COMPLÉTÉ
-
-### Objectifs Phase 5
-- [x] Cache headers Netlify (assets 1 an)
-- [x] Page 404 stylisée avec Oeuf
-- [x] Footer beAbot lisible (opacity 0.15)
-- [x] Documentation complète
-
-### Résultats Phase 5
-| Fonctionnalité | Statut |
-|----------------|--------|
-| **Cache headers** | ✅ Configuré (_nuxt/*, _ipx/*, img/*) |
-| **Page 404** | ✅ Design cohérent avec animations |
-| **Footer** | ✅ beAbot visible |
-| **Docs** | ✅ PHASE_5_FINALIZATION.md |
-
-### Branche
-- **Branche de travail** : `optim/eco-phase-5`
-- **À merger** : `optim/eco-phase-5` → `dev`
-
----
-
-## ✅ PHASE 6 : Bug Fixes Production - COMPLÉTÉ
-
-### Objectifs Phase 6
-
-- [x] Merger optim/eco-phase-5 → dev ✅
-- [x] Fix page 404 custom non affichée (moved to error.vue)
-- [x] Fix formulaire contact erreur 404 (endpoint /contact)
-- [x] Update Netlify build image ubuntu-24.04
-
-### Résultats Phase 6
-
-| Problème | Solution | Statut |
-|----------|----------|--------|
-| **Page 404** | Déplacé pages/404.vue → error.vue (Nuxt 3) | ✅ Corrigé |
-| **Form contact** | Endpoint / → /contact + action /contact | ✅ Corrigé |
-| **Build image** | ubuntu-22.04 → ubuntu-24.04 (Noble LTS) | ✅ Mis à jour |
-
-### Branche
-- **Branche de travail** : `optim/eco-phase-6`
-- **À merger** : `optim/eco-phase-6` → `dev`
-
----
-
-## 🔧 PHASE 7 : Netlify Build Image Fix (En cours)
-
-### Objectifs Phase 7
-
-- [x] Merger optim/eco-phase-6 → dev ✅
-- [x] Identifier la cause du warning Netlify
-- [x] Créer documentation NETLIFY_BUILD_IMAGE_UPDATE.md
-- [ ] ⚠️ **ACTION REQUISE** : Mettre à jour build image dans l'interface Netlify
-- [ ] Vérifier disparition du warning après déploiement
-
-### Problème
-
-Malgré `netlify.toml` configuré avec `image = "ubuntu-24.04"`, le warning persiste car **l'interface Netlify override le fichier**.
-
-### Solution
-
-**Procédure manuelle requise** :
-
-1. Se connecter à https://app.netlify.com
-2. Site **dev-beabot** → Site configuration → Build & deploy
-3. Build image selection → Choisir **Ubuntu Noble 24.04**
-4. Save et redéployer
-5. Répéter pour site **beabot** (production)
-
-**Documentation complète** : `AUDITS/NETLIFY_BUILD_IMAGE_UPDATE.md`
-
-### Branche
-
-- **Branche de travail** : `optim/eco-phase-7`
-- **À merger** : `optim/eco-phase-7` → `dev` (après vérification)
-
----
-
-## 🎯 PHASE 8 : Tests et Production (À venir)
-
-### Objectifs Phase 8
-
-- [ ] Merger optim/eco-phase-7 → dev
-- [ ] Tests EcoIndex sur https://dev-beabot.netlify.app
-- [ ] Tests Lighthouse Performance (objectif > 95)
-- [ ] Audit accessibilité WAVE (objectif 0 erreurs)
-- [ ] Compression images PNG lourdes (cyclop.png 649KB → ~300KB optionnel)
-- [ ] Validation finale
-- [ ] Merge dev → master
-- [ ] Déploiement production
-
----
-
-**📝 Document maintenu par** : Claude Code
-**📅 Dernière MAJ** : 15 décembre 2025
-**🔄 Phase actuelle** : Phase 7 ⏳ (ACTION REQUISE)
+**📝 Maintenu par** : Claude Code
+**📅 Dernière MAJ** : 16 décembre 2025
+**🎯 Phase actuelle** : Phase 9 - Optimisations éco-conception

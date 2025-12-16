@@ -10,8 +10,9 @@
 - **Nom** : BeAbot
 - **Type** : Blog statique + Portfolio
 - **Thématique** : Éco-conception web
-- **URL Production** : https://beabot.netlify.app (Nuxt 2, branch master)
+- **URL Production** : https://beabot.netlify.app (Nuxt 3, branch master)
 - **URL Développement** : https://dev-beabot.netlify.app (Nuxt 3, branch dev)
+- **Domaine futur** : beabot.fr (en attente de configuration)
 - **Repository** : https://github.com/benabot/beabot
 - **Repo Local** : `/Users/benoitabot/Sites/beabot`
 
@@ -26,29 +27,31 @@
 
 ## 🔧 STACK TECHNIQUE
 
-### Site de Production (master - Nuxt 2)
-```json
-{
-  "framework": "Nuxt 2.15.8",
-  "vue": "2.6.14",
-  "bundler": "Webpack 4",
-  "status": "Stable, non maintenu"
-}
-```
-
-### Site de Développement (dev - Nuxt 3) ✅ ACTIF
+### Configuration actuelle (Nuxt 3)
 ```json
 {
   "framework": "Nuxt 3.14+",
   "vue": "3.5+",
-  "bundler": "Vite",
+  "bundler": "Vite 6",
   "cms": "@nuxt/content v2.13+",
   "image": "@nuxt/image",
-  "fonts": "@fontsource/montserrat",
+  "sitemap": "@nuxtjs/sitemap",
+  "fonts": "System font stack",
   "node": "≥ 18",
-  "package-manager": "Yarn"
+  "package-manager": "npm"
 }
 ```
+
+### Optimisations éco-conception actives
+- **SSG** : Génération statique complète
+- **System fonts** : Pas de web fonts externes
+- **Lazy loading** : Images chargées à la demande
+- **WebP** : Format d'image optimisé
+- **Manual chunking** : vendor-vue, vendor-nuxt, vendor-content, vendor-libs
+- **CSS externe** : Pas de CSS inline (meilleur cache)
+- **Cache headers** : 1 an pour assets statiques
+- **Compression** : Brotli/Gzip via Netlify
+- **Prefetch désactivé** : Économie de bande passante
 
 ---
 
@@ -56,150 +59,76 @@
 
 ```
 beabot/
-├── .nuxt/                    # Cache Nuxt (généré)
-├── .output/                  # Build output (généré)
-├── node_modules/             # Dépendances (généré)
-│
 ├── AUDITS/                   # Documentation d'audit
-│   ├── AUDIT-04-CONTRAST-FIXES.md
-│   ├── MIGRATION_STATUS.md
-│   ├── MIGRATION_STATUS_UPDATED.md
-│   ├── NETLIFY_CONFIG.md
-│   └── SESSION_RECAP.md
-│
+│   ├── ECO_AUDIT_PHASE_9.md  # ⭐ Audit actuel
+│   └── ...
 ├── assets/
 │   ├── css/
-│   │   ├── main.scss         # Styles principaux
-│   │   ├── article-content.scss  # Styles articles
+│   │   ├── main.scss
+│   │   ├── article-content.scss
 │   │   └── vars/             # Variables SCSS
-│   └── img/                  # Images (déplacées vers public/)
-│
-├── components/               # 10 composants Vue 3
-│   ├── AppSearchInput.vue    # Recherche articles
-│   ├── ArticleNavigation.vue # Navigation prev/next (ex-PrevNext)
-│   ├── BaseButton.vue        # Bouton réutilisable (ex-Boutoncta)
-│   ├── BaseHeading.vue       # Titre réutilisable (ex-Petittitre)
-│   ├── BoiteArticle.vue      # Carte article/portfolio
-│   ├── HomeEcoArticles.vue   # Section articles accueil
-│   ├── HomePortfolioLatest.vue # Section portfolio accueil
-│   ├── Oeuf.vue              # Élément décoratif
-│   ├── OeufImage.vue         # Élément décoratif avec image
-│   ├── TheFooter.vue         # Footer (ex-Footer)
-│   └── TheLogo.vue           # Logo (ex-Logo)
-│
+│   └── img/
+├── components/               # 11 composants Vue 3
 ├── composables/
-│   └── useTags.ts            # Gestion des tags (remplace Vuex)
-│
+│   └── useTags.ts
 ├── content/
 │   └── articles/             # Articles Markdown
-│       ├── l-eco-conception-web.md
-│       ├── la-consommation-energetique-du-numerique.md
-│       └── theme-wordpress-eco-conception.md
-│
 ├── layouts/
-│   ├── default.vue           # Layout principal
-│   └── error.vue             # Page d'erreur
-│
+│   ├── default.vue
+│   └── error.vue
 ├── pages/
-│   ├── index.vue             # Page d'accueil
-│   ├── contact.vue           # Formulaire contact
-│   ├── portfolio.vue         # Portfolio
-│   ├── mentions-legales.vue  # Mentions légales
-│   ├── eco-conception.vue    # Liste articles
-│   └── eco-conception/
-│       └── [slug].vue        # Article détail
-│
+│   ├── index.vue
+│   ├── eco-conception.vue
+│   ├── eco-conception/[slug].vue
+│   ├── portfolio.vue
+│   ├── contact.vue
+│   └── mentions-legales.vue
 ├── public/
 │   ├── img/                  # Images publiques
-│   ├── feed/                 # Feeds générés
-│   ├── cv.pdf                # CV (non-indexable)
-│   ├── favicon.svg
-│   └── robots.txt
-│
+│   └── feed/
 ├── server/
 │   └── routes/
-│       ├── rss.xml.ts        # Feed RSS
-│       └── feed.json.ts      # Feed JSON
-│
-├── scripts/
-│   └── pre-build-check.js    # Validation pré-build
-│
-├── utils/
-│   ├── getRoutes.js
-│   ├── getSiteMeta.js
-│   └── portfolioItems.ts     # Données portfolio
-│
-├── nuxt.config.ts            # Configuration Nuxt 3
-├── package.json
-├── netlify.toml              # Configuration Netlify
+│       ├── rss.xml.ts
+│       └── feed.json.ts
+├── nuxt.config.ts
+├── netlify.toml
 ├── CLAUDE.md                 # Ce fichier
-├── TODO.md                   # Tâches à faire
-├── BRANCHING_STRATEGY.md     # Stratégie Git
-└── README.md
+├── TODO.md                   # Tâches Phase 9
+└── BRANCHING_STRATEGY.md
 ```
 
 ---
 
-## 🎯 OBJECTIF ACTUEL
-
-### Problématique
-Le site de **production** (Nuxt 2) a de meilleurs résultats éco-index que le site de **développement** (Nuxt 3), notamment concernant le **nombre de requêtes HTTP**.
+## 🎯 PHASE ACTUELLE : Phase 9 - Optimisations Éco-conception
 
 ### Objectifs
-1. **Améliorer les performances éco-conception** du site dev
-2. **Réduire le nombre de requêtes HTTP**
-3. **Atteindre un EcoIndex A** sur le site dev
-4. Préparer la mise en production de Nuxt 3
+1. Atteindre **EcoIndex A**
+2. Réduire requêtes HTTP **< 12**
+3. Réduire poids page **< 150KB**
+4. Préparer migration vers **beabot.fr**
 
----
+### Tâches prioritaires
+| ID | Tâche | Branche |
+|----|-------|---------|
+| ECO-9-01 | Retirer script EcoIndex externe | `optim/eco-9-01-ecoindex-badge` |
+| ECO-9-02 | Optimiser images lourdes | `optim/eco-9-02-image-optim` |
+| ECO-9-03 | Ajouter CSS print | `optim/eco-9-03-css-print` |
+| ECO-9-04 | Optimiser SVG inline | `optim/eco-9-04-svg-optim` |
 
-## 🔄 ÉTAT DE LA MIGRATION NUXT 3
-
-### ✅ Phases complétées
-
-#### Phase 1 - Configuration (100%)
-- [x] Nuxt 3.14 + Vue 3.5 + Vite
-- [x] @nuxt/content v2
-- [x] @nuxt/image
-- [x] Fonts locales (Montserrat via @fontsource)
-- [x] Configuration Netlify complète
-- [x] RSS/JSON feeds
-
-#### Phase 2 - Composants (100%)
-- [x] Migration vers Composition API (`<script setup>`)
-- [x] Renommage selon conventions Vue.js
-- [x] Suppression modules obsolètes (lozad, axios, etc.)
-- [x] Composable useTags créé
-
-#### Phase 3 - Design (100%)
-
-- [x] Police Montserrat
-- [x] Animations portfolio restaurées
-- [x] Transitions Vue 3 corrigées
-- [x] Styles articles optimisés
-
-#### Phase 4 - Contenu et fonctionnalités (100%)
-
-- [x] Article "Typographie et éco-conception" ajouté
-- [x] Coloration syntaxique Shiki (VS Code Dark+)
-- [x] Système de dates de publication
-- [x] Tri chronologique des articles
-- [x] Badge EcoIndex dans le footer
-
-### ⏳ Phase 5 - Optimisation éco-conception (En cours)
-
-- [ ] Audit comparatif prod vs dev
-- [ ] Réduction des requêtes HTTP
-- [ ] Optimisation des assets
-- [ ] Tests de performance
+### Référentiels utilisés
+- **GreenIT 115 bonnes pratiques v5** (2025)
+- **RGESN 78 critères**
+- **Opquast Webperf**
+- **Smashing Performance Checklist 2021**
 
 ---
 
 ## 🌿 WORKFLOW GIT
 
-### Branches principales
-- `master` : Production (Nuxt 2) - **NE PAS TOUCHER**
-- `dev` : Développement (Nuxt 3) - Base de travail
+### Branches
+- `master` : Production
+- `dev` : Développement (base de travail)
+- `optim/eco-9-XX-*` : Branches d'optimisation Phase 9
 
 ### Règle importante
 **Toujours créer une branche de travail depuis `dev`**, ne jamais travailler directement sur `dev` ou `master`.
@@ -207,19 +136,17 @@ Le site de **production** (Nuxt 2) a de meilleurs résultats éco-index que le s
 ```bash
 # Créer une branche de travail
 git checkout dev
-git checkout -b feature/ma-feature
+git checkout -b optim/eco-9-01-ecoindex-badge
 
-# Après travail terminé et tests OK
-git checkout dev
-git merge feature/ma-feature
-git push origin dev
+# Après travail terminé
+# Benoît s'occupe du merge et push
 ```
 
 ### Convention de commits
 ```
 feat: nouvelle fonctionnalité
 fix: correction de bug
-optim: optimisation performance/éco
+optim: optimisation éco/performance
 docs: documentation
 style: formatage
 refactor: refactoring
@@ -230,91 +157,66 @@ chore: maintenance
 
 ## 🛠️ COMMANDES UTILES
 
-### Développement
 ```bash
 cd /Users/benoitabot/Sites/beabot
 
-# Installer dépendances
-npm install
-
-# Dev server
-npm run dev
-# http://localhost:3000
+# Développement
+npm run dev          # http://localhost:3000
 
 # Build
-npm run build
+npm run generate     # Génération statique
 
-# Generate static
-npm run generate
+# Tests
+npm run lint         # ESLint + Prettier
 
-# Preview
-npm run preview
-
-# Lint
-npm run lint
-```
-
-### Tests éco-conception
-```bash
 # Lighthouse
 npx lighthouse https://dev-beabot.netlify.app --output html
-
-# EcoIndex
-# https://www.ecoindex.fr/
-
-# Website Carbon
-# https://www.websitecarbon.com/
 ```
 
 ---
 
 ## 📊 MÉTRIQUES CIBLES
 
-### Éco-conception
-- **EcoIndex** : Score A
-- **Requêtes HTTP** : < 15
-- **Poids page** : < 500KB
-- **CO2/page** : < 0.5g
-
-### Performance
-- **Lighthouse Performance** : > 95
-- **LCP** : < 1.5s
-- **FID** : < 100ms
-- **CLS** : < 0.1
-
-### Accessibilité
-- **Lighthouse Accessibility** : > 95
-- **WCAG** : AA minimum
-- **Contrastes** : 4.5:1 minimum
+| Métrique | Actuel | Cible |
+|----------|--------|-------|
+| EcoIndex | B-C | **A** |
+| Requêtes HTTP | ~16 | **<12** |
+| Poids page | ~200KB | **<150KB** |
+| Lighthouse Perf | 85-90 | **>95** |
+| LCP | ~2s | **<1.5s** |
+| CLS | ~0.1 | **<0.05** |
 
 ---
 
-## 📚 FICHIERS DE DOCUMENTATION
+## 📋 Préparation beabot.fr
 
-| Fichier | Description |
-|---------|-------------|
-| `CLAUDE.md` | Ce fichier - contexte projet |
-| `TODO.md` | Liste des tâches à faire |
-| `BRANCHING_STRATEGY.md` | Stratégie Git |
-| `AUDITS/MIGRATION_STATUS.md` | État de la migration |
-| `AUDITS/NETLIFY_CONFIG.md` | Configuration Netlify |
-| `AUDIT_BEABOT.md` | Audit technique initial |
-| `MIGRATION_PLAN_NUXT3.md` | Plan de migration |
-| `VUE_BEST_PRACTICES_AUDIT.md` | Audit bonnes pratiques |
+### Fichiers à modifier (quand domaine prêt)
+1. `netlify.toml` → NUXT_PUBLIC_SITE_URL
+2. `pages/index.vue` → canonical URL
+3. `server/routes/rss.xml.ts` → siteUrl
+4. `server/routes/feed.json.ts` → siteUrl
+
+### Redirect à ajouter
+```toml
+[[redirects]]
+  from = "https://beabot.netlify.app/*"
+  to = "https://beabot.fr/:splat"
+  status = 301
+  force = true
+```
 
 ---
 
 ## 🚨 GARDE-FOUS
 
 ### ❌ NE JAMAIS FAIRE
-- Travailler directement sur `master`
-- Travailler directement sur `dev` (créer une branche)
+- Travailler directement sur `master` ou `dev`
 - Force push sur branches protégées
 - Merger sans tester localement
-- Supprimer `.git/`
+- Ignorer les audits éco-conception
 
 ### ✅ TOUJOURS FAIRE
-- Créer une branche dédiée pour chaque travail
+- Créer une branche dédiée (format `optim/eco-9-XX-*`)
 - Tester avec `npm run dev` et `npm run generate`
 - Utiliser des commits conventionnels
 - Mettre à jour la documentation
@@ -322,21 +224,17 @@ npx lighthouse https://dev-beabot.netlify.app --output html
 
 ---
 
-## 🔗 LIENS UTILES
+## 📚 DOCUMENTATION
 
-### Sites
-- Production : https://beabot.netlify.app
-- Développement : https://dev-beabot.netlify.app
-
-### Documentation
-- [Nuxt 3](https://nuxt.com/docs)
-- [Vue 3](https://vuejs.org/)
-- [@nuxt/content](https://content.nuxt.com/)
-- [EcoIndex](https://www.ecoindex.fr/)
-- [RGESN](https://ecoresponsable.numerique.gouv.fr/publications/referentiel-general-ecoconception/)
+| Fichier | Contenu |
+|---------|---------|
+| `CLAUDE.md` | Ce fichier |
+| `TODO.md` | Tâches Phase 9 |
+| `AUDITS/ECO_AUDIT_PHASE_9.md` | Audit éco-conception actuel |
+| `BRANCHING_STRATEGY.md` | Stratégie Git |
 
 ---
 
-**📝 Document maintenu par** : Claude Code
+**📝 Maintenu par** : Claude Code
 **📅 Dernière MAJ** : 16 décembre 2025
-**🎯 Projet** : BeAbot - Optimisation éco-conception
+**🎯 Phase** : 9 - Optimisations éco-conception
