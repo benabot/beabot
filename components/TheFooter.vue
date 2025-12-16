@@ -33,7 +33,7 @@
       <div class="item d">
         <a href="/mentions-legales">Mentions légales </a>
         - beAbot {{ annee }}
-        <span style="margin-left: 0.5rem; display: inline-flex; gap: 0.5rem; align-items: center;">
+        <span class="badges-container">
           <div id="ecoindex-badge" data-theme="dark"></div>
           <div id="wcb" class="carbonbadge wcb-d"></div>
         </span>
@@ -200,6 +200,20 @@ color: rgba(0, 0, 0, 0);
     justify-content: flex-start;
     overflow: visible;
     font-size: 0.75em;
+
+    .badges-container {
+      margin-left: 0.75rem;
+      display: inline-flex;
+      gap: 0.5rem;
+      align-items: center;
+      vertical-align: middle;
+
+      // Reduce size of badges
+      #ecoindex-badge, #wcb {
+        transform: scale(0.85);
+        transform-origin: left center;
+      }
+    }
   }
   &.e {
     grid-area: B;
