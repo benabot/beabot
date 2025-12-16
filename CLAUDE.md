@@ -172,12 +172,22 @@ Le site de **production** (Nuxt 2) a de meilleurs résultats éco-index que le s
 - [x] Composable useTags créé
 
 #### Phase 3 - Design (100%)
+
 - [x] Police Montserrat
 - [x] Animations portfolio restaurées
 - [x] Transitions Vue 3 corrigées
 - [x] Styles articles optimisés
 
-### ⏳ Phase 4 - Optimisation éco-conception (En cours)
+#### Phase 4 - Contenu et fonctionnalités (100%)
+
+- [x] Article "Typographie et éco-conception" ajouté
+- [x] Coloration syntaxique Shiki (VS Code Dark+)
+- [x] Système de dates de publication
+- [x] Tri chronologique des articles
+- [x] Badge EcoIndex dans le footer
+
+### ⏳ Phase 5 - Optimisation éco-conception (En cours)
+
 - [ ] Audit comparatif prod vs dev
 - [ ] Réduction des requêtes HTTP
 - [ ] Optimisation des assets
@@ -327,6 +337,6 @@ npx lighthouse https://dev-beabot.netlify.app --output html
 
 ---
 
-**📝 Document maintenu par** : Claude Code  
-**📅 Dernière MAJ** : 15 décembre 2025  
+**📝 Document maintenu par** : Claude Code
+**📅 Dernière MAJ** : 16 décembre 2025
 **🎯 Projet** : BeAbot - Optimisation éco-conception

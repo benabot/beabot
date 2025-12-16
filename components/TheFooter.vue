@@ -33,10 +33,9 @@
       <div class="item d">
         <a href="/mentions-legales">Mentions légales </a>
         - beAbot {{ annee }}
-        <div id="ecoindex-badge" data-theme="dark"></div>
-      </div>
-      <div class="item e chiffre-onum">
-        <a href="tel:+33768214853">07 68 21 48 53</a>
+        <span style="margin-left: 0.5rem;">
+          <div id="ecoindex-badge" data-theme="dark"></div>
+        </span>
       </div>
     </div>
   </footer>

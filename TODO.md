@@ -2,30 +2,57 @@
 
 > **Objectif** : Améliorer les performances éco-conception du site de dev pour dépasser le site de prod
 
-**Projet** : BeAbot - Blog éco-conception web  
-**Date création** : 15 décembre 2025  
-**Branche active** : `dev` (Nuxt 3)  
+**Projet** : BeAbot - Blog éco-conception web
+**Date création** : 15 décembre 2025
+**Dernière MAJ** : 16 décembre 2025
+**Branche active** : `dev` (Nuxt 3)
 **Sites** :
-- 🟢 **Production** (Nuxt 2, master) : https://beabot.netlify.app
+
+- 🟢 **Production** (Nuxt 3, master) : https://beabot.netlify.app
 - 🔵 **Développement** (Nuxt 3, dev) : https://dev-beabot.netlify.app
 
 ---
 
 ## 📊 CONTEXTE : COMPARAISON PROD vs DEV
 
-### ✅ Problématique résolue (Phase 1)
-Le site de production (Nuxt 2) avait de meilleurs résultats éco-index que le site de développement (Nuxt 3), notamment concernant le poids HTML (66 KB vs 28 KB).
+### ✅ Statut actuel (16 décembre 2025)
 
-**APRÈS PHASE 1** : Le site dev a maintenant un HTML aussi léger que le prod (28.7 KB) et **moins de requêtes HTTP** (16 vs ~23).
+**Production et Dev sont maintenant tous deux sur Nuxt 3** - La migration est terminée !
+
+Le site est maintenant déployé en production avec :
+
+- ✅ Nuxt 3 avec SSG
+- ✅ System fonts (Montserrat local)
+- ✅ Coloration syntaxique VS Code Dark+
+- ✅ Système de dates de publication
+- ✅ Badge EcoIndex dans le footer
+
+### Travaux récents (Session du 16 décembre 2025)
+
+#### ✅ Contenu
+
+- [x] Article "Typographie et éco-conception" ajouté
+- [x] Système de dates de publication complet
+- [x] Tri chronologique des articles (plus récent en haut)
+- [x] Correction affichage articles récents page d'accueil
+
+#### ✅ Design
+
+- [x] Coloration syntaxique Shiki avec thème VS Code Dark+
+- [x] Blocs de code avec fond sombre (#1e1e1e)
+- [x] Largeur des blocs de code alignée (66ch)
+- [x] Badge EcoIndex ajouté au footer
+- [x] Numéro de téléphone retiré du footer
 
 ### Résultats Phase 1 (15 décembre 2025)
+
 | Métrique | Site Prod (Nuxt 2) | Site Dev AVANT | Site Dev APRÈS | Statut |
 |----------|-------------------|----------------|----------------|--------|
 | **Poids HTML** | 28.5 KB | 66 KB | **28.7 KB** | ✅ **Objectif atteint** |
 | **Requêtes HTTP** | ~23 (+ Typekit) | ~16 | **~16** | ✅ **Dev meilleur** |
 | **CSS inline** | 0 | 8 blocs | **0** | ✅ **Objectif atteint** |
 | **Fonts externes** | Typekit (5-7 req) | 0 | **0 (system)** | ✅ **Dev meilleur** |
-| **EcoIndex** | À mesurer | À mesurer | **À tester** | ⏳ Phase 2 |
+| **EcoIndex** | À mesurer | À mesurer | **Badge ajouté** | ✅ **Suivi actif** |
 
 ---
 
