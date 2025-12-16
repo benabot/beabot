@@ -31,12 +31,16 @@
         <a href="/rss.xml" class="rss">RSS</a>
       </div>
       <div class="item d">
-        <a href="/mentions-legales">Mentions légales </a>
-        - beAbot {{ annee }}
-        <span class="badges-container">
-          <div id="ecoindex-badge" data-theme="dark"></div>
-          <div id="wcb" class="carbonbadge wcb-d"></div>
-        </span>
+        <div class="footer-content">
+          <div class="footer-text">
+            <a href="/mentions-legales">Mentions légales</a>
+            - beAbot {{ annee }}
+          </div>
+          <div class="badges-container">
+            <div id="ecoindex-badge" data-theme="dark"></div>
+            <div id="wcb" class="carbonbadge wcb-d"></div>
+          </div>
+        </div>
       </div>
     </div>
   </footer>
@@ -201,12 +205,30 @@ color: rgba(0, 0, 0, 0);
     overflow: visible;
     font-size: 0.75em;
 
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: flex-start;
+
+      @media (min-width: $breakpoint-tablet) {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    .footer-text {
+      white-space: nowrap;
+    }
+
     .badges-container {
-      margin-left: 0.75rem;
-      display: inline-flex;
+      display: flex;
       gap: 0.5rem;
       align-items: center;
-      vertical-align: middle;
+
+      @media (min-width: $breakpoint-tablet) {
+        margin-left: 0.75rem;
+      }
 
       // Reduce size of badges
       #ecoindex-badge, #wcb {
