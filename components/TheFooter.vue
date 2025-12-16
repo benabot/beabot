@@ -36,7 +36,7 @@
         <span style="margin-left: 0.5rem; display: inline-flex; gap: 0.5rem; align-items: center;">
           <div id="ecoindex-badge" data-theme="dark"></div>
           <ClientOnly>
-            <CarbonBadge :dark="true" />
+            <WebsiteCarbonBadge />
           </ClientOnly>
         </span>
       </div>
@@ -46,7 +46,6 @@
 
 <script setup>
 import { ref } from 'vue'
-import CarbonBadge from 'vue-carbonbadge'
 
 const annee = ref(new Date().getFullYear())
 </script>
