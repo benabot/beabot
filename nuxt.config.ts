@@ -67,10 +67,6 @@ export default defineNuxtConfig({
           src: 'https://cdn.jsdelivr.net/gh/cnumr/ecoindex_badge@3/assets/js/ecoindex-badge.js',
           defer: true,
         },
-        {
-          src: 'https://unpkg.com/website-carbon-badges@1.1.3/b.min.js',
-          defer: true,
-        },
       ],
     },
     // Désactive la transition globale pour éviter CSS/JS supplémentaires
