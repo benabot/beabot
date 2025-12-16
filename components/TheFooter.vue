@@ -35,9 +35,7 @@
         - beAbot {{ annee }}
         <span style="margin-left: 0.5rem; display: inline-flex; gap: 0.5rem; align-items: center;">
           <div id="ecoindex-badge" data-theme="dark"></div>
-          <ClientOnly>
-            <WebsiteCarbonBadge />
-          </ClientOnly>
+          <div id="wcb" class="carbonbadge wcb-d"></div>
         </span>
       </div>
     </div>
