@@ -33,8 +33,11 @@
       <div class="item d">
         <a href="/mentions-legales">Mentions légales </a>
         - beAbot {{ annee }}
-        <span style="margin-left: 0.5rem;">
+        <span style="margin-left: 0.5rem; display: inline-flex; gap: 0.5rem; align-items: center;">
           <div id="ecoindex-badge" data-theme="dark"></div>
+          <ClientOnly>
+            <CarbonBadge :dark="true" />
+          </ClientOnly>
         </span>
       </div>
     </div>
@@ -43,6 +46,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import CarbonBadge from 'vue-carbonbadge'
 
 const annee = ref(new Date().getFullYear())
 </script>
