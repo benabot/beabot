@@ -62,12 +62,6 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://beabot.fr' },
         { rel: 'dns-prefetch', href: 'https://beabot.fr' },
       ],
-      script: [
-        {
-          src: 'https://cdn.jsdelivr.net/gh/cnumr/ecoindex_badge@3/assets/js/ecoindex-badge.js',
-          defer: true,
-        },
-      ],
     },
     // Désactive la transition globale pour éviter CSS/JS supplémentaires
     pageTransition: false,

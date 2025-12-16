@@ -33,7 +33,7 @@
       <div class="item d">
         <a href="/mentions-legales">Mentions légales</a>
         - beAbot {{ annee }}
-        <span id="ecoindex-badge" data-theme="dark"></span>
+        <EcoIndexBadge />
       </div>
     </div>
   </footer>
@@ -197,13 +197,6 @@ color: rgba(0, 0, 0, 0);
     justify-content: flex-start;
     overflow: visible;
     font-size: 0.75em;
-
-    #ecoindex-badge {
-      margin-left: 0.75rem;
-      display: inline-block;
-      transform: scale(0.85);
-      transform-origin: left center;
-    }
   }
   &.e {
     grid-area: B;
