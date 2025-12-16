@@ -7,7 +7,7 @@
     title="Voir le score EcoIndex de ce site"
   >
     <span class="ecoindex-badge__label">EcoIndex</span>
-    <span class="ecoindex-badge__score">B</span>
+    <span class="ecoindex-badge__score">A</span>
   </a>
 </template>
 

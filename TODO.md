@@ -37,10 +37,10 @@
 ### PRIORITÉ 1 - Impact élevé ⚡
 
 #### ECO-9-01 : Supprimer script EcoIndex externe
-- [ ] Créer branche `optim/eco-9-01-ecoindex-badge`
-- [ ] Retirer le script jsdelivr de nuxt.config.ts
-- [ ] Créer un composant `EcoIndexBadge.vue` avec SVG statique
-- [ ] Tester et committer
+- [x] Créer branche `optim/eco-9-01-ecoindex-badge`
+- [x] Retirer le script jsdelivr de nuxt.config.ts
+- [x] Créer un composant `EcoIndexBadge.vue` avec SVG statique
+- [x] Tester et committer
 - **Impact** : -1 requête HTTP, -1 domaine tiers
 - **Référence** : GreenIT #46, #58
 
