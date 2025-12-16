@@ -3,36 +3,47 @@
     ref="badgeContainer"
     id="wcb"
     class="carbonbadge wcb-d"
-  ></div>
+  >
+    <div v-if="loading" id="wcb_g">
+      <span id="wcb_2">Loading...</span>
+    </div>
+    <div v-else-if="error" id="wcb_g">
+      <span id="wcb_2" style="font-size: 0.8em;">Carbon Badge</span>
+    </div>
+    <template v-else-if="carbonData">
+      <div id="wcb_g">
+        <span id="wcb_2">Website Carbon</span>
+      </div>
+      <div id="wcb_a">
+        {{ carbonData }}g of CO<sub>2</sub>/view
+      </div>
+    </template>
+  </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
 
 const badgeContainer = ref(null)
+const loading = ref(true)
+const error = ref(false)
+const carbonData = ref(null)
 
 onMounted(async () => {
-  if (!badgeContainer.value) return
-
   try {
     // Fetch carbon data from Website Carbon API
     const url = 'https://beabot.netlify.app'
     const response = await fetch(`https://api.websitecarbon.com/b?url=${encodeURIComponent(url)}`)
+
+    if (!response.ok) {
+      throw new Error('API request failed')
+    }
+
     const data = await response.json()
 
     if (data && data.c) {
-      const carbon = data.c.toFixed(2)
-      const percentage = data.p.toFixed(0)
-
-      // Create badge HTML
-      badgeContainer.value.innerHTML = `
-        <div id="wcb_g">
-          <span id="wcb_2">Website Carbon</span>
-        </div>
-        <div id="wcb_a">
-          ${carbon}g of CO<sub>2</sub>/view
-        </div>
-      `
+      carbonData.value = data.c.toFixed(2)
+      loading.value = false
 
       // Add styles
       const style = document.createElement('style')
@@ -94,9 +105,13 @@ onMounted(async () => {
         style.id = 'wcb-badge-styles'
         document.head.appendChild(style)
       }
+    } else {
+      throw new Error('Invalid API response')
     }
-  } catch (error) {
-    console.error('Failed to load Website Carbon badge:', error)
+  } catch (err) {
+    console.error('Failed to load Website Carbon badge:', err)
+    error.value = true
+    loading.value = false
   }
 })
 </script>
