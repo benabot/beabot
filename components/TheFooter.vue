@@ -33,7 +33,6 @@
       <div class="item d">
         <a href="/mentions-legales">Mentions légales</a>
         - beAbot {{ annee }}
-        <EcoIndexBadge />
       </div>
     </div>
   </footer>
