@@ -7,6 +7,8 @@ export interface PortfolioItem {
   description?: string
   stitre?: string
   backgroundUrl: string
+  imageWidth?: number
+  imageHeight?: number
   chips: string[]
   lien: string
   categories: PortfolioCategory[]
@@ -22,6 +24,8 @@ export const portfolioItems: PortfolioItem[] = [
     sousTitre: 'Votre plombier à vélo à Amiens et alentours',
     description: 'Site vitrine WordPress pour un plombier à vélo, design sobre et éco-conçu.',
     backgroundUrl: 'cyclop.png',
+    imageWidth: 644,
+    imageHeight: 374,
     chips: ['WebDesign', 'WordPress', 'Éco-conçu'],
     lien: 'https://cycloplomberie-amiens.fr',
     categories: ['eco', 'webDesign', 'wp'],
@@ -35,6 +39,8 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Refonte WordPress éco-conçue pour une collecte locale en triporteur, axée sur la sobriété.",
     backgroundUrl: 'lpb.png',
+    imageWidth: 650,
+    imageHeight: 367,
     chips: ['WebDesign', 'WordPress', 'Éco-conçu'],
     lien: 'https://lapetiteboucle.fr/',
     categories: ['eco', 'webDesign', 'wp'],
@@ -48,6 +54,8 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Vitrine et catalogue d'entreprise. Réalisé avec NuxtJS et WordPress (headless CMS).",
     backgroundUrl: 'amc2.png',
+    imageWidth: 612,
+    imageHeight: 340,
     chips: ['WebDesign', 'VueJs', 'Nuxt', 'WordPress (headless)'],
     lien: 'https://www.amc2.fr',
     categories: ['vjs', 'webDesign', 'wp'],
@@ -60,6 +68,8 @@ export const portfolioItems: PortfolioItem[] = [
     sousTitre: 'Carte interactive',
     description: 'Carte interactive pour le guide RSE de la Banque populaire. Réalisée avec VueJs.',
     backgroundUrl: 'guideBleu1.png',
+    imageWidth: 2556,
+    imageHeight: 1332,
     chips: ['WebDesign', 'VueJs', 'Bootstrap'],
     lien: 'https://www.guide-rse.banquepopulaire.fr/actions-rse',
     categories: ['vjs', 'webDesign'],
@@ -72,6 +82,8 @@ export const portfolioItems: PortfolioItem[] = [
     sousTitre: 'Interface de visualisation de données',
     description: 'Interface de visualisation de données pour le guide RSE Banque Populaire.',
     backgroundUrl: 'guideBleu2.png',
+    imageWidth: 2556,
+    imageHeight: 1332,
     chips: ['WebDesign', 'VueJs', 'Bootstrap'],
     lien: 'https://www.guide-rse.banquepopulaire.fr/resultats-2020',
     categories: ['vjs', 'webDesign'],
@@ -84,6 +96,8 @@ export const portfolioItems: PortfolioItem[] = [
     sousTitre: "Application d'apprentissage à l'interface d'un ordinateur",
     description: "Application ludique d'initiation à l'interface d'un ordinateur, en VueJs.",
     backgroundUrl: 'appNoel.png',
+    imageWidth: 2556,
+    imageHeight: 1332,
     chips: ['WebDesign', 'VueJs'],
     lien: 'https://app-noel.netlify.app',
     categories: ['vjs', 'webDesign'],
@@ -96,6 +110,8 @@ export const portfolioItems: PortfolioItem[] = [
     sousTitre: "Association pour l'aménagement de la vallée de l'Esches",
     description: "Site WordPress pour une association, avec design léger et éco-conception.",
     backgroundUrl: 'aave.png',
+    imageWidth: 510,
+    imageHeight: 540,
     chips: ['WebDesign', 'WordPress'],
     lien: 'https://vallee-esches.fr/',
     categories: ['eco', 'webDesign', 'wp'],

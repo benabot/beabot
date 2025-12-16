@@ -5,6 +5,8 @@
       <img
         src="/beabot.svg"
         alt="beabot"
+        width="1112"
+        height="337"
         :class="{ 'logo-gris': showMobileMenu }"
         @click="showMobileMenu = !showMobileMenu"
       />

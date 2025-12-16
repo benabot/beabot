@@ -24,6 +24,8 @@
             class="boite-image__image"
             :src="resolvedBackgroundUrl"
             :alt="titre || 'Image du projet'"
+            :width="imageWidth"
+            :height="imageHeight"
             loading="lazy"
             format="webp"
             sizes="(max-width: 768px) 90vw, 40vw"
@@ -60,6 +62,14 @@ const props = defineProps({
   backgroundUrl: {
     type: String,
     default: 'profilFreakOut.jpg',
+  },
+  imageWidth: {
+    type: Number,
+    default: undefined,
+  },
+  imageHeight: {
+    type: Number,
+    default: undefined,
   },
   lien: {
     type: String,
