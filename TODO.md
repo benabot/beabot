@@ -35,6 +35,7 @@
 
 - [x] **ECO-9-01** : Supprimer script EcoIndex externe
 - [x] **ECO-9-07** : Attributs width/height images
+- [x] **ECO-9-13** : Lazy Loading composants décoratifs (-2 à -4 requêtes HTTP)
 - [x] **ECO-9-19** : Simplifier structure HTML (-6 éléments DOM sur homepage)
 
 ---
@@ -45,13 +46,15 @@
 
 ### PRIORITÉ 1 - Réduire les requêtes HTTP ⚡
 
-#### ECO-9-13 : Lazy Loading des composants décoratifs
-- [ ] Créer branche `optim/eco-9-13-lazy-components`
-- [ ] Préfixer `<Oeuf>` par `<LazyOeuf>` dans index.vue (économise les chunks non visibles)
-- [ ] Préfixer `<HomeEcoArticles>` et `<HomePortfolioLatest>` par `Lazy`
-- [ ] Vérifier que les composants sont bien code-splittés
+#### ✅ ECO-9-13 : Lazy Loading des composants décoratifs
+
+- [x] Créer branche `optim/eco-9-13-lazy-components`
+- [x] Préfixer `<Oeuf>` par `<LazyOeuf>` dans index.vue (économise les chunks non visibles)
+- [x] Préfixer `<HomeEcoArticles>` et `<HomePortfolioLatest>` par `Lazy`
+- [x] Vérifier que les composants sont bien code-splittés
 - **Impact** : -2 à -4 requêtes HTTP initiales
 - **Référence** : [Nuxt Lazy Components](https://nuxt.com/docs/guide/directory-structure/components#dynamic-imports)
+- **Commit** : `bc1175d`
 
 #### ECO-9-14 : Server Components pour éléments statiques
 - [ ] Créer branche `optim/eco-9-14-server-components`
