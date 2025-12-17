@@ -35,6 +35,7 @@
 
 - [x] **ECO-9-01** : Supprimer script EcoIndex externe
 - [x] **ECO-9-07** : Attributs width/height images
+- [x] **ECO-9-19** : Simplifier structure HTML (-6 éléments DOM sur homepage)
 
 ---
 
@@ -92,13 +93,15 @@
 - **Impact** : -10 à -20 éléments DOM sur homepage
 - **Référence** : GreenIT #5 (limiter le DOM)
 
-#### ECO-9-19 : Simplifier la structure HTML
-- [ ] Créer branche `optim/eco-9-19-html-cleanup`
-- [ ] Auditer les div wrappers inutiles
-- [ ] Utiliser `<template>` fragments Vue 3 pour éviter les wrappers
-- [ ] Fusionner les sections quand possible
-- **Impact** : DOM plus léger, CSS plus simple
+#### ✅ ECO-9-19 : Simplifier la structure HTML
+
+- [x] Créer branche `optim/eco-9-19-html-cleanup`
+- [x] Auditer les div wrappers inutiles
+- [x] Fusionner divs imbriquées (4 divs impact-chiffre)
+- [x] Supprimer wrappers SVG inutiles (2 divs fleche)
+- **Impact** : -6 éléments DOM sur homepage
 - **Référence** : Vue 3 multi-root components
+- **Commit** : `6c9d54c`
 
 #### ECO-9-20 : Optimiser le composant Oeuf
 - [ ] Créer branche `optim/eco-9-20-oeuf-optim`
