@@ -2,10 +2,10 @@
 <template>
   <main>
     <section class="container container-1">
-      <!-- <LazyOeuf fill="pink" width="5%" transform="rotate(15)" /> -->
+      <!-- <Oeuf fill="pink" width="5%" transform="rotate(15)" /> -->
       <h1 class="title">beAbot</h1>
       <div id="boite-logo">
-        <LazyOeuf width="40%" class="fixe oeuf-intro" />
+        <Oeuf width="40%" class="fixe oeuf-intro" />
       </div>
       <h2 class="links text-gris2 text-normal titre3">Éco-conception web</h2>
       <p class="links lettre-smcp titre-sub h4 text-fin">
