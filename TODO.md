@@ -4,7 +4,7 @@
 
 **Projet** : BeAbot - Blog éco-conception web
 **Date création** : 15 décembre 2025
-**Dernière MAJ** : 16 décembre 2025
+**Dernière MAJ** : 17 décembre 2025
 **Branche active** : `dev` (Nuxt 3)
 **Sites** :
 
@@ -15,7 +15,7 @@
 
 ## 📊 CONTEXTE ACTUEL
 
-### Statut (16 décembre 2025)
+### Statut (17 décembre 2025)
 
 **Migration Nuxt 3 terminée** - Les deux environnements sont synchronisés sur Nuxt 3.
 
@@ -29,98 +29,100 @@
 
 ---
 
-## 🎯 PHASE 9 : Optimisations Éco-conception Avancées
+## 🎯 PHASE 9 : Optimisations Éco-conception
 
-> **Audit complet** : `AUDITS/ECO_AUDIT_PHASE_9.md`
-> **Stratégie branches** : `optim/eco-9-XX` où XX = numéro de la tâche
+### ✅ TÂCHES TERMINÉES
 
-### PRIORITÉ 1 - Impact élevé ⚡
+- [x] **ECO-9-01** : Supprimer script EcoIndex externe
+- [x] **ECO-9-07** : Attributs width/height images
 
-#### ECO-9-01 : Supprimer script EcoIndex externe
-- [x] Créer branche `optim/eco-9-01-ecoindex-badge`
-- [x] Retirer le script jsdelivr de nuxt.config.ts
-- [x] Créer un composant `EcoIndexBadge.vue` avec SVG statique
-- [x] Tester et committer
-- **Impact** : -1 requête HTTP, -1 domaine tiers
-- **Référence** : GreenIT #46, #58
+---
 
-#### ECO-9-02 : Optimiser images lourdes
-- [ ] Créer branche `optim/eco-9-02-image-optim`
-- [ ] Convertir cyclop.png (332KB) → WebP (~80KB)
-- [ ] Convertir lpb.png (191KB) → WebP (~50KB)
-- [ ] Convertir guideBleu1/2.png → WebP
-- [ ] Supprimer fichiers PNG obsolètes
-- **Impact** : -400KB sur les assets
-- **Référence** : GreenIT #48, #99
+## 🚀 NOUVELLES PRIORITÉS : Réduction Requêtes HTTP & DOM
 
-#### ECO-9-03 : Ajouter CSS print
-- [ ] Créer branche `optim/eco-9-03-css-print`
-- [ ] Ajouter `assets/css/print.scss`
-- [ ] Masquer nav, footer, éléments décoratifs à l'impression
-- [ ] Optimiser typographie pour papier
-- **Référence** : GreenIT #31
+> **Objectifs** : Requêtes < 12, DOM plus léger, EcoIndex A
 
-#### ECO-9-04 : Optimiser SVG inline
-- [ ] Créer branche `optim/eco-9-04-svg-optim`
-- [ ] Externaliser le logo SVG de layouts/default.vue
-- [ ] Optimiser avec SVGO
-- [ ] Réduire les gradients complexes
-- **Référence** : GreenIT #99
+### PRIORITÉ 1 - Réduire les requêtes HTTP ⚡
 
-### PRIORITÉ 2 - Impact moyen 🔶
+#### ECO-9-13 : Lazy Loading des composants décoratifs
+- [ ] Créer branche `optim/eco-9-13-lazy-components`
+- [ ] Préfixer `<Oeuf>` par `<LazyOeuf>` dans index.vue (économise les chunks non visibles)
+- [ ] Préfixer `<HomeEcoArticles>` et `<HomePortfolioLatest>` par `Lazy`
+- [ ] Vérifier que les composants sont bien code-splittés
+- **Impact** : -2 à -4 requêtes HTTP initiales
+- **Référence** : [Nuxt Lazy Components](https://nuxt.com/docs/guide/directory-structure/components#dynamic-imports)
 
-#### ECO-9-05 : Variables CSS natives
-- [ ] Créer branche `optim/eco-9-05-css-vars`
-- [ ] Migrer couleurs SCSS → CSS custom properties
-- [ ] Migrer spacing → CSS custom properties
-- [ ] Conserver SCSS uniquement pour mixins/fonctions
-- **Référence** : Standards modernes CSS
+#### ECO-9-14 : Server Components pour éléments statiques
+- [ ] Créer branche `optim/eco-9-14-server-components`
+- [ ] Créer `components/server/` pour les composants sans interactivité
+- [ ] Migrer `Oeuf.vue` → `server/Oeuf.server.vue` (SVG décoratif pur)
+- [ ] Migrer `TheLogo.vue` → `server/TheLogo.server.vue`
+- **Impact** : -JS hydratation, DOM plus léger côté client
+- **Référence** : [Nuxt Server Components](https://nuxt.com/docs/guide/directory-structure/components#server-components)
 
-#### ECO-9-06 : Respect prefers-reduced-motion
-- [ ] Créer branche `optim/eco-9-06-reduced-motion`
-- [ ] Ajouter media query `@media (prefers-reduced-motion: reduce)`
-- [ ] Désactiver animations pour utilisateurs sensibles
-- **Référence** : GreenIT #9, WCAG
+#### ECO-9-15 : NuxtIsland pour zones non-interactives
+- [ ] Créer branche `optim/eco-9-15-nuxt-island`
+- [ ] Wrapper les sections décoratives avec `<NuxtIsland>`
+- [ ] Identifier les zones sans événements JS
+- **Impact** : Skip hydratation = moins de JS exécuté
+- **Référence** : [Nuxt Islands](https://nuxt.com/docs/api/components/nuxt-island)
 
-#### ECO-9-07 : Attributs width/height images
-- [ ] Créer branche `optim/eco-9-07-image-dimensions`
-- [ ] Auditer toutes les balises `<img>` et `<NuxtImg>`
-- [ ] Ajouter width/height manquants
-- [ ] Réduire CLS (Cumulative Layout Shift)
-- **Référence** : Opquast #10, #11
+#### ECO-9-16 : Regrouper les CSS en un seul fichier
+- [ ] Créer branche `optim/eco-9-16-css-bundle`
+- [ ] Ajouter `extractCSS: true` dans nuxt.config.ts si pas déjà fait
+- [ ] Vérifier `cssCodeSplit: false` pour fusionner les CSS
+- [ ] Tester l'impact sur le cache
+- **Impact** : -1 à -3 requêtes CSS
+- **Note** : Trade-off cache vs requêtes
 
-#### ECO-9-08 : Déclaration d'éco-conception RGESN
-- [ ] Créer branche `optim/eco-9-08-eco-declaration`
-- [ ] Créer page `/eco-declaration.vue`
-- [ ] Documenter méthodologie et scores
-- [ ] Lier depuis footer
-- **Référence** : RGESN 1.1, 1.2
+#### ECO-9-17 : Inliner le CSS critique
+- [ ] Créer branche `optim/eco-9-17-critical-css`
+- [ ] Tester `experimental.inlineSSRStyles: true` dans nuxt.config.ts
+- [ ] Évaluer l'impact sur le poids HTML vs requêtes
+- **Impact** : -1 requête CSS (mais HTML plus lourd)
+- **Référence** : Nuxt experimental features
 
-### PRIORITÉ 3 - Améliorations continues 🟢
+### PRIORITÉ 2 - Réduire la taille du DOM 🔶
 
-#### ECO-9-09 : Fix focus outline accessibility
-- [ ] Créer branche `optim/eco-9-09-focus-visible`
-- [ ] Remplacer `*:focus { outline: none }` par `:focus-visible`
-- [ ] Ajouter style focus personnalisé accessible
-- **Référence** : WCAG 2.4.7
+#### ECO-9-18 : Remplacer SVG décoratifs par CSS
+- [ ] Créer branche `optim/eco-9-18-css-decorations`
+- [ ] Remplacer les `<Oeuf>` décoratifs par des `::before`/`::after` avec `background-image`
+- [ ] Utiliser des data URI SVG pour les formes simples dans le CSS
+- [ ] Conserver uniquement les SVG interactifs comme éléments DOM
+- **Impact** : -10 à -20 éléments DOM sur homepage
+- **Référence** : GreenIT #5 (limiter le DOM)
 
-#### ECO-9-10 : Simplifier sélecteurs CSS
-- [ ] Créer branche `optim/eco-9-10-css-selectors`
-- [ ] Réduire profondeur nesting (<3 niveaux)
-- [ ] Optimiser sélecteurs `:deep()`
-- **Référence** : Opquast #7, #40
+#### ECO-9-19 : Simplifier la structure HTML
+- [ ] Créer branche `optim/eco-9-19-html-cleanup`
+- [ ] Auditer les div wrappers inutiles
+- [ ] Utiliser `<template>` fragments Vue 3 pour éviter les wrappers
+- [ ] Fusionner les sections quand possible
+- **Impact** : DOM plus léger, CSS plus simple
+- **Référence** : Vue 3 multi-root components
 
-#### ECO-9-11 : Service Worker (optionnel)
-- [ ] Créer branche `optim/eco-9-11-pwa`
-- [ ] Évaluer @vite-pwa/nuxt
-- [ ] Implémenter cache offline si pertinent
-- **Référence** : GreenIT #59
+#### ECO-9-20 : Optimiser le composant Oeuf
+- [ ] Créer branche `optim/eco-9-20-oeuf-optim`
+- [ ] Créer une version CSS-only pour les décorations (classe `.oeuf-deco`)
+- [ ] Garder le composant Vue uniquement pour les cas interactifs
+- [ ] Réduire le SVG path si possible (SVGO)
+- **Impact** : Moins de composants Vue instanciés
+- **Référence** : Vue.js Performance Best Practices
 
-#### ECO-9-12 : Preload pages fréquentes (optionnel)
-- [ ] Créer branche `optim/eco-9-12-preload`
-- [ ] Identifier pages les plus visitées
-- [ ] Ajouter preload dynamique
-- **Référence** : Smashing #10
+### PRIORITÉ 3 - Optimisations avancées 🟢
+
+#### ECO-9-21 : Delay Hydration
+- [ ] Créer branche `optim/eco-9-21-delay-hydration`
+- [ ] Installer `nuxt-delay-hydration`
+- [ ] Configurer le mode `init` ou `mount`
+- [ ] Tester le Time to Interactive
+- **Impact** : TTI amélioré, moins de JS bloquant
+- **Référence** : [nuxt-delay-hydration](https://github.com/harlan-zw/nuxt-delay-hydration)
+
+#### ECO-9-22 : Virtualisation si listes longues
+- [ ] Évaluer si nécessaire (articles, portfolio)
+- [ ] Si oui, implémenter vue-virtual-scroller
+- **Impact** : DOM constant quelle que soit la liste
+- **Note** : Probablement pas nécessaire pour ce projet
 
 ---
 
@@ -156,47 +158,17 @@
 
 ---
 
-## 🔄 WORKFLOW GIT - Stratégie de branches
+## 🎨 PHASE 11 : Homepage - Graphisme & Contenu
 
-### Branches principales
-- `master` : Production
-- `dev` : Développement (base de travail)
+> **À travailler après optimisations**
 
-### Branches de travail (Phase 9)
-```
-dev
- └── optim/eco-9-01-ecoindex-badge
- └── optim/eco-9-02-image-optim
- └── optim/eco-9-03-css-print
- └── optim/eco-9-04-svg-optim
- └── optim/eco-9-05-css-vars
- └── optim/eco-9-06-reduced-motion
- └── optim/eco-9-07-image-dimensions
- └── optim/eco-9-08-eco-declaration
- └── optim/eco-9-09-focus-visible
- └── optim/eco-9-10-css-selectors
- └── optim/eco-9-11-pwa (optionnel)
- └── optim/eco-9-12-preload (optionnel)
-```
+### Tâches prévues
 
-### Convention de commits
-```
-feat: nouvelle fonctionnalité
-fix: correction de bug
-optim: optimisation éco/performance
-docs: documentation
-style: formatage
-refactor: refactoring
-chore: maintenance
-```
-
-### Processus
-1. Créer branche depuis `dev`
-2. Implémenter la modification
-3. Tester localement (`npm run dev` + `npm run generate`)
-4. Committer avec message conventionnel
-5. Benoît merge dans `dev` et push
-6. Quand Phase 9 terminée : merge `dev` → `master`
+- [ ] Revoir la hiérarchie visuelle
+- [ ] Optimiser les textes pour le SEO
+- [ ] Améliorer les CTAs
+- [ ] Ajouter du contenu rédactionnel
+- [ ] Créer branche `feature/homepage-redesign`
 
 ---
 
@@ -207,6 +179,7 @@ chore: maintenance
 - [ ] Requêtes HTTP : **< 12**
 - [ ] Poids page : **< 150KB**
 - [ ] CO2/page : **< 0.3g**
+- [ ] Éléments DOM : **< 800**
 
 ### Performance
 - [ ] Lighthouse Performance : **> 95**
@@ -220,18 +193,26 @@ chore: maintenance
 
 ---
 
-## 📚 RESSOURCES
+## 📚 RESSOURCES TECHNIQUES
+
+### Solutions Nuxt 3 pour réduire les requêtes
+1. **Lazy Components** : Préfixe `Lazy` pour charger à la demande
+2. **Server Components** : Suffixe `.server.vue` pour skip hydratation
+3. **NuxtIsland** : Composant wrapper pour zones statiques
+4. **Manual Chunks** : Regrouper vendor intelligemment
+5. **CSS extraction** : `extractCSS: true` ou `cssCodeSplit: false`
+
+### Solutions pour réduire le DOM
+1. **CSS pseudo-elements** : `::before`/`::after` au lieu de vraies balises
+2. **Vue 3 fragments** : `<template>` sans wrapper
+3. **Server Components** : Pas d'hydratation = DOM client léger
+4. **Conditional rendering** : `v-if` plutôt que `v-show` pour éléments lourds
 
 ### Référentiels
 - [GreenIT 115 bonnes pratiques v5](https://rweb.greenit.fr)
 - [RGESN 78 critères](https://ecoresponsable.numerique.gouv.fr/publications/referentiel-general-ecoconception/)
-- [Opquast Webperf](https://www.opquast.com)
-
-### Outils d'audit
-- [EcoIndex](https://www.ecoindex.fr/)
-- [Website Carbon](https://www.websitecarbon.com/)
-- [Lighthouse](https://pagespeed.web.dev/)
-- [WAVE](https://wave.webaim.org/)
+- [Nuxt Performance](https://nuxt.com/docs/getting-started/deployment#optimizing-performance)
+- [Vue Performance](https://vuejs.org/guide/best-practices/performance.html)
 
 ---
 
@@ -246,9 +227,10 @@ chore: maintenance
 | 8 | Tests et validation | ✅ Complété |
 | **9** | **Optimisations éco-conception** | 🔄 **En cours** |
 | 10 | Migration domaine beabot.fr | ⏳ En attente |
+| 11 | Homepage redesign | ⏳ En attente |
 
 ---
 
 **📝 Maintenu par** : Claude Code
-**📅 Dernière MAJ** : 16 décembre 2025
-**🎯 Phase actuelle** : Phase 9 - Optimisations éco-conception
+**📅 Dernière MAJ** : 17 décembre 2025
+**🎯 Phase actuelle** : Phase 9 - Réduction requêtes HTTP & DOM

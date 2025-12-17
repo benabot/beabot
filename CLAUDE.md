@@ -19,9 +19,7 @@
 ### Propriétaire
 - **Nom** : Benoît Abot
 - **Email** : hello@beabot.fr
-- **Twitter** : @BenoitAbot
 - **GitHub** : benabot
-- **LinkedIn** : benoit-abot
 
 ---
 
@@ -51,7 +49,113 @@
 - **CSS externe** : Pas de CSS inline (meilleur cache)
 - **Cache headers** : 1 an pour assets statiques
 - **Compression** : Brotli/Gzip via Netlify
-- **Prefetch désactivé** : Économie de bande passante
+- **Prefetch désactivé** : `prefetchLinks: false` (économie bande passante)
+
+---
+
+## 🚀 SOLUTIONS NUXT 3 : RÉDUCTION REQUÊTES HTTP
+
+### 1. Lazy Components (préfixe `Lazy`)
+```vue
+<!-- AVANT : chargé immédiatement -->
+<Oeuf />
+<HomeEcoArticles />
+
+<!-- APRÈS : chargé à la demande -->
+<LazyOeuf />
+<LazyHomeEcoArticles />
+```
+**Impact** : Code-splitting automatique, -2 à -4 requêtes initiales
+
+### 2. Server Components (suffixe `.server.vue`)
+```
+components/
+├── Oeuf.vue           # Version interactive (si besoin)
+└── server/
+    └── Oeuf.server.vue # Version statique (pas d'hydratation)
+```
+**Usage** :
+```vue
+<OeufServer fill="#04d94f" /> <!-- Pas de JS côté client -->
+```
+**Impact** : Aucun JS d'hydratation pour ces composants
+
+### 3. NuxtIsland (wrapper pour zones statiques)
+```vue
+<NuxtIsland name="decorative-section">
+  <!-- Contenu non-interactif -->
+  <Oeuf />
+  <Oeuf />
+</NuxtIsland>
+```
+**Impact** : Skip complet de l'hydratation Vue
+
+### 4. CSS bundling
+```ts
+// nuxt.config.ts
+vite: {
+  build: {
+    cssCodeSplit: false, // Un seul fichier CSS
+  }
+}
+```
+**Impact** : -1 à -3 requêtes CSS (trade-off cache)
+
+### 5. Inline CSS critique (optionnel)
+```ts
+// nuxt.config.ts
+experimental: {
+  inlineSSRStyles: true, // CSS dans le HTML
+}
+```
+**Impact** : -1 requête CSS (HTML plus lourd)
+
+---
+
+## 🏗️ SOLUTIONS NUXT 3 : RÉDUCTION TAILLE DOM
+
+### 1. Remplacer SVG décoratifs par CSS
+```scss
+// AVANT : élément DOM
+<Oeuf class="decoration" />
+
+// APRÈS : pseudo-élément CSS
+.section::before {
+  content: '';
+  background-image: url('/img/oeuf-vert.svg');
+  // Pas d'élément DOM supplémentaire
+}
+```
+
+### 2. Vue 3 fragments (multi-root)
+```vue
+<!-- AVANT : wrapper obligatoire -->
+<template>
+  <div class="wrapper">
+    <h1>Titre</h1>
+    <p>Contenu</p>
+  </div>
+</template>
+
+<!-- APRÈS : pas de wrapper -->
+<template>
+  <h1>Titre</h1>
+  <p>Contenu</p>
+</template>
+```
+
+### 3. Conditional rendering intelligent
+```vue
+<!-- v-if : supprime du DOM si false -->
+<HeavyComponent v-if="isVisible" />
+
+<!-- v-show : garde dans le DOM (display: none) -->
+<HeavyComponent v-show="isVisible" />
+```
+**Règle** : Utiliser `v-if` pour les gros composants rarement affichés
+
+### 4. Server Components pour décorations
+Les composants `.server.vue` ne génèrent pas de Virtual DOM côté client.
 
 ---
 
@@ -59,8 +163,9 @@
 
 ```
 beabot/
+├── ARCHIVES/                 # Ancienne documentation
 ├── AUDITS/                   # Documentation d'audit
-│   ├── ECO_AUDIT_PHASE_9.md  # ⭐ Audit actuel
+│   ├── ECO_AUDIT_PHASE_9.md  # Audit actuel
 │   └── ...
 ├── assets/
 │   ├── css/
@@ -69,6 +174,7 @@ beabot/
 │   │   └── vars/             # Variables SCSS
 │   └── img/
 ├── components/               # 11 composants Vue 3
+│   └── server/               # [À créer] Server components
 ├── composables/
 │   └── useTags.ts
 ├── content/
@@ -77,19 +183,14 @@ beabot/
 │   ├── default.vue
 │   └── error.vue
 ├── pages/
-│   ├── index.vue
+│   ├── index.vue             # Homepage (cible optim DOM)
 │   ├── eco-conception.vue
-│   ├── eco-conception/[slug].vue
 │   ├── portfolio.vue
-│   ├── contact.vue
-│   └── mentions-legales.vue
+│   └── ...
 ├── public/
-│   ├── img/                  # Images publiques
-│   └── feed/
+│   └── img/
 ├── server/
 │   └── routes/
-│       ├── rss.xml.ts
-│       └── feed.json.ts
 ├── nuxt.config.ts
 ├── netlify.toml
 ├── CLAUDE.md                 # Ce fichier
@@ -99,27 +200,24 @@ beabot/
 
 ---
 
-## 🎯 PHASE ACTUELLE : Phase 9 - Optimisations Éco-conception
+## 🎯 PHASE ACTUELLE : Phase 9 - Réduction Requêtes & DOM
 
-### Objectifs
-1. Atteindre **EcoIndex A**
-2. Réduire requêtes HTTP **< 12**
-3. Réduire poids page **< 150KB**
-4. Préparer migration vers **beabot.fr**
+### Objectifs prioritaires
+1. **Requêtes HTTP** : Passer de ~16 à **< 12**
+2. **Taille DOM** : Réduire les éléments à **< 800**
+3. **EcoIndex** : Atteindre **Score A**
 
-### Tâches prioritaires
-| ID | Tâche | Branche |
-|----|-------|---------|
-| ECO-9-01 | Retirer script EcoIndex externe | `optim/eco-9-01-ecoindex-badge` |
-| ECO-9-02 | Optimiser images lourdes | `optim/eco-9-02-image-optim` |
-| ECO-9-03 | Ajouter CSS print | `optim/eco-9-03-css-print` |
-| ECO-9-04 | Optimiser SVG inline | `optim/eco-9-04-svg-optim` |
+### Tâches principales
+| ID | Tâche | Impact |
+|----|-------|--------|
+| ECO-9-13 | Lazy loading composants | -2 à -4 requêtes |
+| ECO-9-14 | Server Components | -JS hydratation |
+| ECO-9-18 | SVG → CSS pseudo-elements | -10 à -20 DOM |
+| ECO-9-19 | Simplifier structure HTML | DOM allégé |
 
-### Référentiels utilisés
-- **GreenIT 115 bonnes pratiques v5** (2025)
-- **RGESN 78 critères**
-- **Opquast Webperf**
-- **Smashing Performance Checklist 2021**
+### Phases suivantes
+- **Phase 10** : Migration domaine beabot.fr
+- **Phase 11** : Homepage redesign (graphisme, contenu)
 
 ---
 
@@ -129,6 +227,7 @@ beabot/
 - `master` : Production
 - `dev` : Développement (base de travail)
 - `optim/eco-9-XX-*` : Branches d'optimisation Phase 9
+- `docs/*` : Branches documentation
 
 ### Règle importante
 **Toujours créer une branche de travail depuis `dev`**, ne jamais travailler directement sur `dev` ou `master`.
@@ -136,7 +235,7 @@ beabot/
 ```bash
 # Créer une branche de travail
 git checkout dev
-git checkout -b optim/eco-9-01-ecoindex-badge
+git checkout -b optim/eco-9-13-lazy-components
 
 # Après travail terminé
 # Benoît s'occupe du merge et push
@@ -163,14 +262,15 @@ cd /Users/benoitabot/Sites/beabot
 # Développement
 npm run dev          # http://localhost:3000
 
-# Build
+# Build & Preview
 npm run generate     # Génération statique
+npm run preview      # Preview du build
 
 # Tests
 npm run lint         # ESLint + Prettier
 
-# Lighthouse
-npx lighthouse https://dev-beabot.netlify.app --output html
+# Analyse bundle
+npx nuxi analyze     # Voir la taille des chunks
 ```
 
 ---
@@ -181,29 +281,9 @@ npx lighthouse https://dev-beabot.netlify.app --output html
 |----------|--------|-------|
 | EcoIndex | B-C | **A** |
 | Requêtes HTTP | ~16 | **<12** |
+| Éléments DOM | ~900+ | **<800** |
 | Poids page | ~200KB | **<150KB** |
 | Lighthouse Perf | 85-90 | **>95** |
-| LCP | ~2s | **<1.5s** |
-| CLS | ~0.1 | **<0.05** |
-
----
-
-## 📋 Préparation beabot.fr
-
-### Fichiers à modifier (quand domaine prêt)
-1. `netlify.toml` → NUXT_PUBLIC_SITE_URL
-2. `pages/index.vue` → canonical URL
-3. `server/routes/rss.xml.ts` → siteUrl
-4. `server/routes/feed.json.ts` → siteUrl
-
-### Redirect à ajouter
-```toml
-[[redirects]]
-  from = "https://beabot.netlify.app/*"
-  to = "https://beabot.fr/:splat"
-  status = 301
-  force = true
-```
 
 ---
 
@@ -212,15 +292,15 @@ npx lighthouse https://dev-beabot.netlify.app --output html
 ### ❌ NE JAMAIS FAIRE
 - Travailler directement sur `master` ou `dev`
 - Force push sur branches protégées
-- Merger sans tester localement
-- Ignorer les audits éco-conception
+- Merger sans tester (`npm run dev` + `npm run generate`)
+- Ajouter des scripts externes (CDN tiers)
 
 ### ✅ TOUJOURS FAIRE
-- Créer une branche dédiée (format `optim/eco-9-XX-*`)
-- Tester avec `npm run dev` et `npm run generate`
+- Créer une branche dédiée depuis `dev`
+- Tester localement avant de proposer un merge
 - Utiliser des commits conventionnels
 - Mettre à jour la documentation
-- Vérifier les métriques éco après modifications
+- Privilégier CSS natif aux éléments DOM
 
 ---
 
@@ -228,13 +308,13 @@ npx lighthouse https://dev-beabot.netlify.app --output html
 
 | Fichier | Contenu |
 |---------|---------|
-| `CLAUDE.md` | Ce fichier |
-| `TODO.md` | Tâches Phase 9 |
-| `AUDITS/ECO_AUDIT_PHASE_9.md` | Audit éco-conception actuel |
-| `BRANCHING_STRATEGY.md` | Stratégie Git |
+| `CLAUDE.md` | Ce fichier (contexte technique) |
+| `TODO.md` | Tâches Phase 9 avec solutions |
+| `BRANCHING_STRATEGY.md` | Stratégie Git détaillée |
+| `AUDITS/ECO_AUDIT_PHASE_9.md` | Audit éco-conception |
 
 ---
 
 **📝 Maintenu par** : Claude Code
-**📅 Dernière MAJ** : 16 décembre 2025
-**🎯 Phase** : 9 - Optimisations éco-conception
+**📅 Dernière MAJ** : 17 décembre 2025
+**🎯 Phase** : 9 - Réduction requêtes HTTP & DOM
