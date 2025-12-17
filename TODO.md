@@ -72,10 +72,10 @@
 - **Référence** : [Nuxt Islands](https://nuxt.com/docs/api/components/nuxt-island)
 
 #### ECO-9-16 : Regrouper les CSS en un seul fichier
-- [ ] Créer branche `optim/eco-9-16-css-bundle`
-- [ ] Ajouter `extractCSS: true` dans nuxt.config.ts si pas déjà fait
-- [ ] Vérifier `cssCodeSplit: false` pour fusionner les CSS
-- [ ] Tester l'impact sur le cache
+- [x] Créer branche `optim/eco-9-16-css-bundle`
+- [x] Ajouter `extractCSS: true` dans nuxt.config.ts si pas déjà fait
+- [x] Vérifier `cssCodeSplit: false` pour fusionner les CSS
+- [x] Tester l'impact sur le cache
 - **Impact** : -1 à -3 requêtes CSS
 - **Note** : Trade-off cache vs requêtes
 
