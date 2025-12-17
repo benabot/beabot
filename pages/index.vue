@@ -837,6 +837,8 @@ section {
     filter: blur(1px);
     z-index: 2;
     animation: hideshow 1.5s ease;
+    position: sticky;
+    top: 0;
   }
 }
 
