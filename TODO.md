@@ -57,10 +57,10 @@
 - **Commit** : `bc1175d`
 
 #### ECO-9-14 : Server Components pour éléments statiques
-- [ ] Créer branche `optim/eco-9-14-server-components`
-- [ ] Créer `components/server/` pour les composants sans interactivité
-- [ ] Migrer `Oeuf.vue` → `server/Oeuf.server.vue` (SVG décoratif pur)
-- [ ] Migrer `TheLogo.vue` → `server/TheLogo.server.vue`
+- [x] Créer branche `optim/eco-9-14-server-components`
+- [x] Créer `components/server/` pour les composants sans interactivité
+- [x] Migrer `Oeuf.vue` → `server/Oeuf.server.vue` (SVG décoratif pur)
+- [x] Migrer `TheLogo.vue` → `server/TheLogo.server.vue`
 - **Impact** : -JS hydratation, DOM plus léger côté client
 - **Référence** : [Nuxt Server Components](https://nuxt.com/docs/guide/directory-structure/components#server-components)
 
