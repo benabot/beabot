@@ -40,29 +40,37 @@
           </div>
         </div>
         <div class="impact--col impact--col__1">
-          <div class="impact--chiffre bg-gris bg-gris__bleu">
-            <p class="para-gros">
-              1 Des impacts sur l'émission de CO<sub>2</sub>, la consommation
-              d'énergie et de ressources…
-            </p>
+          <div class="impact--chiffre">
+            <div class="bg-gris bg-gris__bleu">
+              <p class="para-gros">
+                1 Des impacts sur l'émission de CO<sub>2</sub>, la consommation
+                d'énergie et de ressources…
+              </p>
+            </div>
           </div>
-          <div class="impact--chiffre bg-gris bg-gris__vert">
-            <p class="para-gros">
-              2 …réparties entre les serveurs, le réseau et les utilisateurs.
-            </p>
+          <div class="impact--chiffre">
+            <div class="bg-gris bg-gris__vert">
+              <p class="para-gros">
+                2 …réparties entre les serveurs, le réseau et les utilisateurs.
+              </p>
+            </div>
           </div>
         </div>
 
         <div class="impact--col impact--col__2">
-          <div class="impact--chiffre bg-gris bg-gris__jaune">
-            <p class="para-gros">
-              3 Les utilisateurs ont le plus fort impact sur l'environnement…
-            </p>
+          <div class="impact--chiffre">
+            <div class="bg-gris bg-gris__jaune">
+              <p class="para-gros">
+                3 Les utilisateurs ont le plus fort impact sur l'environnement…
+              </p>
+            </div>
           </div>
-          <div class="impact--chiffre bg-gris bg-gris__gris">
-            <p class="para-gros">
-              4 …dés l'achat de leur appareil, avant même son utilisation.
-            </p>
+          <div class="impact--chiffre">
+            <div class="bg-gris bg-gris__gris">
+              <p class="para-gros">
+                4 …dés l'achat de leur appareil, avant même son utilisation.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -73,16 +81,18 @@
           to="/eco-conception/la-consommation-energetique-du-numerique"
           >en savoir plus</NuxtLink
         >
-        <svg class="fleche" x="0" y="0" viewBox="0 0 32.8 27.3" xml:space="preserve" aria-hidden="true" focusable="false">
-          <path
-            fill="#04d94f"
-            d="M.4 12.7c3.5 1.7 6.5 3.8 9.5 6 1.5 1.1 2.9 2.3 4.4 3.5.4.3.7.6 1 .9l1 .9c.2.2.4.3.6.2.3 0 .5-.1.6-.2l.9-1c.3-.4.6-.7 1-1 1.4-1.3 2.7-2.6 4.1-3.9 2.8-2.5 5.7-4.8 9-6.8l.2.2c-2.4 2.8-4.9 5.5-7.4 8.2L21.6 24l-1.9 2c-.7.8-1.7 1.2-2.7 1.3-1 0-2-.3-2.7-1l-2.1-1.9-4.1-3.8c-2.7-2.5-5.4-5-8.1-7.6l.4-.3z"
-          />
-          <path
-            fill="#04d94f"
-            d="M.4 1.3c3.5 1.7 6.5 3.8 9.5 6 1.5 1.1 2.9 2.3 4.4 3.5.4.3.7.6 1 .9l1 .9c.2.2.4.3.6.2.3 0 .5-.1.6-.2l.9-1c.3-.4.6-.7 1-1 1.4-1.3 2.7-2.6 4.1-3.9 2.8-2.5 5.7-4.8 9-6.8l.2.2c-2.4 2.8-4.9 5.5-7.4 8.2l-3.8 4.1-1.9 2.1c-.6.9-1.6 1.3-2.6 1.4-1 0-2-.3-2.7-1L12.2 13 8.1 9.2C5.4 6.7 2.7 4.2 0 1.6l.4-.3z"
-          />
-        </svg>
+        <div class="fleche">
+          <svg x="0" y="0" viewBox="0 0 32.8 27.3" xml:space="preserve" aria-hidden="true" focusable="false">
+            <path
+              fill="#04d94f"
+              d="M.4 12.7c3.5 1.7 6.5 3.8 9.5 6 1.5 1.1 2.9 2.3 4.4 3.5.4.3.7.6 1 .9l1 .9c.2.2.4.3.6.2.3 0 .5-.1.6-.2l.9-1c.3-.4.6-.7 1-1 1.4-1.3 2.7-2.6 4.1-3.9 2.8-2.5 5.7-4.8 9-6.8l.2.2c-2.4 2.8-4.9 5.5-7.4 8.2L21.6 24l-1.9 2c-.7.8-1.7 1.2-2.7 1.3-1 0-2-.3-2.7-1l-2.1-1.9-4.1-3.8c-2.7-2.5-5.4-5-8.1-7.6l.4-.3z"
+            />
+            <path
+              fill="#04d94f"
+              d="M.4 1.3c3.5 1.7 6.5 3.8 9.5 6 1.5 1.1 2.9 2.3 4.4 3.5.4.3.7.6 1 .9l1 .9c.2.2.4.3.6.2.3 0 .5-.1.6-.2l.9-1c.3-.4.6-.7 1-1 1.4-1.3 2.7-2.6 4.1-3.9 2.8-2.5 5.7-4.8 9-6.8l.2.2c-2.4 2.8-4.9 5.5-7.4 8.2l-3.8 4.1-1.9 2.1c-.6.9-1.6 1.3-2.6 1.4-1 0-2-.3-2.7-1L12.2 13 8.1 9.2C5.4 6.7 2.7 4.2 0 1.6l.4-.3z"
+            />
+          </svg>
+        </div>
       </div>
     </section>
 
@@ -207,16 +217,18 @@
           to="/eco-conception/l-eco-conception-web"
           >en savoir plus</NuxtLink
         >
-        <svg class="fleche" x="0" y="0" viewBox="0 0 32.8 27.3" xml:space="preserve" aria-hidden="true" focusable="false">
-          <path
-            fill="#04d94f"
-            d="M.4 12.7c3.5 1.7 6.5 3.8 9.5 6 1.5 1.1 2.9 2.3 4.4 3.5.4.3.7.6 1 .9l1 .9c.2.2.4.3.6.2.3 0 .5-.1.6-.2l.9-1c.3-.4.6-.7 1-1 1.4-1.3 2.7-2.6 4.1-3.9 2.8-2.5 5.7-4.8 9-6.8l.2.2c-2.4 2.8-4.9 5.5-7.4 8.2L21.6 24l-1.9 2c-.7.8-1.7 1.2-2.7 1.3-1 0-2-.3-2.7-1l-2.1-1.9-4.1-3.8c-2.7-2.5-5.4-5-8.1-7.6l.4-.3z"
-          />
-          <path
-            fill="#04d94f"
-            d="M.4 1.3c3.5 1.7 6.5 3.8 9.5 6 1.5 1.1 2.9 2.3 4.4 3.5.4.3.7.6 1 .9l1 .9c.2.2.4.3.6.2.3 0 .5-.1.6-.2l.9-1c.3-.4.6-.7 1-1 1.4-1.3 2.7-2.6 4.1-3.9 2.8-2.5 5.7-4.8 9-6.8l.2.2c-2.4 2.8-4.9 5.5-7.4 8.2l-3.8 4.1-1.9 2.1c-.6.9-1.6 1.3-2.6 1.4-1 0-2-.3-2.7-1L12.2 13 8.1 9.2C5.4 6.7 2.7 4.2 0 1.6l.4-.3z"
-          />
-        </svg>
+        <div class="fleche">
+          <svg x="0" y="0" viewBox="0 0 32.8 27.3" xml:space="preserve" aria-hidden="true" focusable="false">
+            <path
+              fill="#04d94f"
+              d="M.4 12.7c3.5 1.7 6.5 3.8 9.5 6 1.5 1.1 2.9 2.3 4.4 3.5.4.3.7.6 1 .9l1 .9c.2.2.4.3.6.2.3 0 .5-.1.6-.2l.9-1c.3-.4.6-.7 1-1 1.4-1.3 2.7-2.6 4.1-3.9 2.8-2.5 5.7-4.8 9-6.8l.2.2c-2.4 2.8-4.9 5.5-7.4 8.2L21.6 24l-1.9 2c-.7.8-1.7 1.2-2.7 1.3-1 0-2-.3-2.7-1l-2.1-1.9-4.1-3.8c-2.7-2.5-5.4-5-8.1-7.6l.4-.3z"
+            />
+            <path
+              fill="#04d94f"
+              d="M.4 1.3c3.5 1.7 6.5 3.8 9.5 6 1.5 1.1 2.9 2.3 4.4 3.5.4.3.7.6 1 .9l1 .9c.2.2.4.3.6.2.3 0 .5-.1.6-.2l.9-1c.3-.4.6-.7 1-1 1.4-1.3 2.7-2.6 4.1-3.9 2.8-2.5 5.7-4.8 9-6.8l.2.2c-2.4 2.8-4.9 5.5-7.4 8.2l-3.8 4.1-1.9 2.1c-.6.9-1.6 1.3-2.6 1.4-1 0-2-.3-2.7-1L12.2 13 8.1 9.2C5.4 6.7 2.7 4.2 0 1.6l.4-.3z"
+            />
+          </svg>
+        </div>
       </div>
     </section>
     <section class="container container-5">
@@ -390,10 +402,10 @@ section {
     min-height: 31.8%;
     display: flex;
     align-items: stretch;
-
-    &.bg-gris {
+    .bg-gris {
       background: $gris6;
       padding: 0.5rem 1rem;
+      display: flex;
       align-items: center;
       width: 100%;
 
