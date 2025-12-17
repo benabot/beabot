@@ -98,7 +98,7 @@ export default defineNuxtConfig({
       },
     },
     build: {
-      cssCodeSplit: true, // Split CSS by route for better caching
+      cssCodeSplit: false, // Bundle all CSS in one file to reduce HTTP requests
       minify: 'terser', // Use terser for better minification
       terserOptions: {
         compress: {
