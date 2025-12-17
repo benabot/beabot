@@ -2,10 +2,10 @@
 <template>
   <main>
     <section class="container container-1">
-      <!-- <Oeuf fill="pink" width="5%" transform="rotate(15)" /> -->
+      <!-- <LazyOeuf fill="pink" width="5%" transform="rotate(15)" /> -->
       <h1 class="title">beAbot</h1>
       <div id="boite-logo">
-        <Oeuf width="40%" class="fixe oeuf-intro" />
+        <LazyOeuf width="40%" class="fixe oeuf-intro" />
       </div>
       <h2 class="links text-gris2 text-normal titre3">Éco-conception web</h2>
       <p class="links lettre-smcp titre-sub h4 text-fin">
@@ -13,7 +13,7 @@
       </p>
     </section>
     <section class="container container-2 fond-gris">
-      <!-- <OeufImage /> -->
+      <!-- <LazyOeufImage /> -->
       <p class="text-gris5 h4">
         Vous avez sans doute entendu dire que le
         <span class="text-black"
@@ -88,25 +88,25 @@
 
     <section class="container container-3">
       <div class="container-3__titre">
-        <Oeuf
+        <LazyOeuf
           class="container-3__titre__oeuf-1"
           width="40%"
           transform="rotate(-115)"
           fill="#04d94f"
         />
-        <Oeuf
+        <LazyOeuf
           class="container-3__titre__oeuf-2"
           width="40%"
           transform="rotate(45)"
           fill=" #0439d9"
         />
-        <Oeuf
+        <LazyOeuf
           class="container-3__titre__oeuf-3"
           width="40%"
           transform="rotate(-65)"
           fill=" #0439d9"
         />
-        <Oeuf
+        <LazyOeuf
           class="container-3__titre__oeuf-4"
           width="40%"
           transform=""
@@ -146,25 +146,25 @@
       </div>
     </section>
     <section class="container container-4 fond-gris">
-      <Oeuf
+      <LazyOeuf
         class="oeuf container-4__oeuf-1"
         width="30%"
         transform=""
         fill="#0439d9"
       />
-      <Oeuf
+      <LazyOeuf
         class="oeuf container-4__oeuf-2"
         width="24%"
         transform="rotate(-45)"
         fill="#04d94f"
       />
-      <Oeuf
+      <LazyOeuf
         class="oeuf container-4__oeuf-3"
         width="27%"
         transform="rotate(-85)"
         fill="#04d94f"
       />
-      <Oeuf
+      <LazyOeuf
         class="oeuf container-4__oeuf-4"
         width="21%"
         transform="rotate(-95)"
@@ -226,13 +226,13 @@
         </h3>
 
         <div class="container-5__boite-titre__oeuf">
-          <Oeuf class="oeuf" width="60%" transform="rotate(5)" fill="#f2a81d" />
+          <LazyOeuf class="oeuf" width="60%" transform="rotate(5)" fill="#f2a81d" />
         </div>
       </div>
       <div class="boite-para">
         <div class="boite-para__para fond-oeuf fond-oeuf__vert">
           <!--  <div class="boite-para--titre">
-            <Oeuf
+            <LazyOeuf
               class="oeuf superpo"
               width="60%"
               transform="rotate(5)"
@@ -255,7 +255,7 @@
         </div>
         <div class="boite-para__para fond-oeuf fond-oeuf__bleu">
           <!-- <div class="boite-para--titre">
-            <Oeuf
+            <LazyOeuf
               class="oeuf superpo"
               width="30%"
               transform="rotate(-95)"
@@ -276,8 +276,8 @@
         </div>
       </div>
     </section>
-    <HomeEcoArticles />
-    <HomePortfolioLatest />
+    <LazyHomeEcoArticles />
+    <LazyHomePortfolioLatest />
   </main>
 </template>
 
