@@ -838,7 +838,7 @@ section {
     z-index: 2;
     animation: hideshow 1.5s ease;
     position: sticky;
-    top: 0;
+    top: 10vh;
   }
 }
 
