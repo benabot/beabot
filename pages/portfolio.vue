@@ -156,7 +156,7 @@ useHead({
     {
       hid: 'canonical',
       rel: 'canonical',
-      href: 'https://beabot.netlify.app/eco-conception/portfolio',
+      href: 'https://beabot.fr/eco-conception/portfolio',
     },
   ],
 })

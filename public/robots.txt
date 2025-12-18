@@ -7,4 +7,4 @@ Disallow: /cv.pdf
 Disallow: /CV-*.pdf
 
 # Sitemap
-Sitemap: https://beabot.netlify.app/sitemap.xml
+Sitemap: https://beabot.fr/sitemap.xml

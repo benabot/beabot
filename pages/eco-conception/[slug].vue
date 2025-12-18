@@ -237,7 +237,7 @@ useHead({
     {
       hid: 'canonical',
       rel: 'canonical',
-      href: `https://beabot.netlify.app/eco-conception/${route.params.slug}`,
+      href: `https://beabot.fr/eco-conception/${route.params.slug}`,
     },
   ],
   script: [
@@ -256,10 +256,10 @@ useHead({
           publisher: {
             '@type': 'Organization',
             name: 'BeAbot',
-            url: 'https://beabot.netlify.app',
+            url: 'https://beabot.fr',
             logo: {
               '@type': 'ImageObject',
-              url: 'https://beabot.netlify.app/beabot.png',
+              url: 'https://beabot.fr/beabot.png',
             },
           },
         },
@@ -271,13 +271,13 @@ useHead({
               '@type': 'ListItem',
               position: 1,
               name: 'BeAbot',
-              item: 'https://beabot.netlify.app',
+              item: 'https://beabot.fr',
             },
             {
               '@type': 'ListItem',
               position: 2,
               name: 'Eco-conception',
-              item: `https://beabot.netlify.app/eco-conception/${route.params.slug}`,
+              item: `https://beabot.fr/eco-conception/${route.params.slug}`,
             },
             {
               '@type': 'ListItem',
