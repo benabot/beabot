@@ -293,40 +293,27 @@
   </main>
 </template>
 
-<script>
-export default {
-  head() {
-    const config = useRuntimeConfig()
-    return {
-      title: 'Accueil - éco-conception web',
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content:
-            "L'éco-conception web, c'est concilier respect de l'environnement et technologies numériques de pointe pour un internet durable.",
-        },
-      ],
-      link: [
-        {
-          hid: 'canonical',
-          rel: 'canonical',
-          href: `${config.public.siteUrl}/`,
-        },
-      ],
-      // script: [
-      //   {
-      //     type: 'application/ld+json',
-      //     json: {
-      //       '@context': 'http://schema.org',
-      //       '@type': 'Organization',
-      //       name: 'NuxtJS',
-      //     },
-      //   },
-      // ],
-    }
-  },
-}
+<script setup>
+const config = useRuntimeConfig()
+
+useHead({
+  title: 'Accueil - éco-conception web',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content:
+        "L'éco-conception web, c'est concilier respect de l'environnement et technologies numériques de pointe pour un internet durable.",
+    },
+  ],
+  link: [
+    {
+      hid: 'canonical',
+      rel: 'canonical',
+      href: `${config.public.siteUrl}/`,
+    },
+  ],
+})
 </script>
 
 <style lang="scss" scoped>
