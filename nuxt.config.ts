@@ -65,9 +65,9 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
         { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
-        // Preconnect to own domain for faster resource loading
-        { rel: 'preconnect', href: 'https://beabot.fr' },
-        { rel: 'dns-prefetch', href: 'https://beabot.fr' },
+        // Preconnect to own domain for faster resource loading (uses runtime config)
+        { rel: 'preconnect', href: process.env.NUXT_PUBLIC_SITE_URL || 'https://beabot.fr' },
+        { rel: 'dns-prefetch', href: process.env.NUXT_PUBLIC_SITE_URL || 'https://beabot.fr' },
       ],
     },
     // Désactive la transition globale pour éviter CSS/JS supplémentaires
@@ -205,7 +205,7 @@ export default defineNuxtConfig({
 
   // Sitemap configuration
   sitemap: {
-    hostname: 'https://beabot.fr',
+    hostname: process.env.NUXT_PUBLIC_SITE_URL || 'https://beabot.fr',
     gzip: true,
     routes: async () => {
       const { serverQueryContent } = await import('#content/server')
@@ -220,7 +220,7 @@ export default defineNuxtConfig({
   // Nitro configuration for RSS feed
   nitro: {
     prerender: {
-      routes: ['/rss.xml', '/feed.json', '/sitemap.xml'],
+      routes: ['/rss.xml', '/feed.json', '/sitemap.xml', '/robots.txt'],
       // Ignore 404 errors on API content query routes (cache/surround queries)
       failOnError: false,
     },
