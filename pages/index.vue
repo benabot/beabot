@@ -9,7 +9,7 @@
       </div>
       <h2 class="links text-gris2 text-normal titre3">Éco-conception web</h2>
       <p class="links lettre-smcp titre-sub h4 text-fin">
-        webdesign - développement - gestion de projet
+        Performance, accessibilité, sobriété : un web durable et beau
       </p>
     </section>
     <section class="container container-2 fond-gris">

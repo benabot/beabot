@@ -79,17 +79,18 @@ Audit complet UX/UI desktop et mobile réalisé sur :
 #### PRIORITÉ 1 - Quick wins textuels
 
 ##### HP-11-01 : Nouveau tagline Hero
-- [ ] Créer branche `feature/hp-11-01-hero-tagline`
-- [ ] Remplacer "webdesign - développement - gestion de projet"
+- [x] Créer branche `feature/hp-11-01-hero-tagline`
+- [x] Remplacer "webdesign - développement - gestion de projet"
 - **Proposition** :
   > "Des sites web qui respectent la planète sans sacrifier l'expérience"
   > 
   > ou
   > 
   > "Performance, accessibilité, sobriété : un web durable et beau"
-- [ ] Garder le Oeuf animé
-- [ ] Ajouter 2 CTAs visibles : [Découvrir →] [Me contacter]
-- **Fichier** : `pages/index.vue` (section container-1)
+- [x] Garder le Oeuf animé
+- [ ] Ajouter 2 CTAs visibles : [Découvrir →] (qui permet de descendre à la section suivante) [Me contacter]
+- [ ] Ou ajouter une flèche centré en bas du container pour inviter au scroll (cf. les autres flèches sur la page)
+  - **Fichier** : `pages/index.vue` (section container-1)
 
 ##### HP-11-02 : Reformuler l'accroche en positif
 - [ ] Créer branche `feature/hp-11-02-accroche`
