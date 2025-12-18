@@ -12,7 +12,7 @@
 - **Thématique** : Éco-conception web
 - **URL Production** : https://beabot.netlify.app (Nuxt 3, branch master)
 - **URL Développement** : https://dev-beabot.netlify.app (Nuxt 3, branch dev)
-- **Domaine futur** : beabot.fr (en attente de configuration)
+- **URL Live** : https://beabot.fr (domaine principal)
 - **Repository** : https://github.com/benabot/beabot
 - **Repo Local** : `/Users/benoitabot/Sites/beabot`
 
@@ -43,7 +43,7 @@
 ### Optimisations éco-conception actives
 - **SSG** : Génération statique complète
 - **System fonts** : Pas de web fonts externes
-- **Lazy loading** : Images chargées à la demande
+- **Lazy loading** : Images et composants chargés à la demande
 - **WebP** : Format d'image optimisé
 - **Manual chunking** : vendor-vue, vendor-nuxt, vendor-content, vendor-libs
 - **CSS externe** : Pas de CSS inline (meilleur cache)
@@ -53,128 +53,25 @@
 
 ---
 
-## 🚀 SOLUTIONS NUXT 3 : RÉDUCTION REQUÊTES HTTP
-
-### 1. Lazy Components (préfixe `Lazy`)
-```vue
-<!-- AVANT : chargé immédiatement -->
-<Oeuf />
-<HomeEcoArticles />
-
-<!-- APRÈS : chargé à la demande -->
-<LazyOeuf />
-<LazyHomeEcoArticles />
-```
-**Impact** : Code-splitting automatique, -2 à -4 requêtes initiales
-
-### 2. Server Components (suffixe `.server.vue`)
-```
-components/
-├── Oeuf.vue           # Version interactive (si besoin)
-└── server/
-    └── Oeuf.server.vue # Version statique (pas d'hydratation)
-```
-**Usage** :
-```vue
-<OeufServer fill="#04d94f" /> <!-- Pas de JS côté client -->
-```
-**Impact** : Aucun JS d'hydratation pour ces composants
-
-### 3. NuxtIsland (wrapper pour zones statiques)
-```vue
-<NuxtIsland name="decorative-section">
-  <!-- Contenu non-interactif -->
-  <Oeuf />
-  <Oeuf />
-</NuxtIsland>
-```
-**Impact** : Skip complet de l'hydratation Vue
-
-### 4. CSS bundling
-```ts
-// nuxt.config.ts
-vite: {
-  build: {
-    cssCodeSplit: false, // Un seul fichier CSS
-  }
-}
-```
-**Impact** : -1 à -3 requêtes CSS (trade-off cache)
-
-### 5. Inline CSS critique (optionnel)
-```ts
-// nuxt.config.ts
-experimental: {
-  inlineSSRStyles: true, // CSS dans le HTML
-}
-```
-**Impact** : -1 requête CSS (HTML plus lourd)
-
----
-
-## 🏗️ SOLUTIONS NUXT 3 : RÉDUCTION TAILLE DOM
-
-### 1. Remplacer SVG décoratifs par CSS
-```scss
-// AVANT : élément DOM
-<Oeuf class="decoration" />
-
-// APRÈS : pseudo-élément CSS
-.section::before {
-  content: '';
-  background-image: url('/img/oeuf-vert.svg');
-  // Pas d'élément DOM supplémentaire
-}
-```
-
-### 2. Vue 3 fragments (multi-root)
-```vue
-<!-- AVANT : wrapper obligatoire -->
-<template>
-  <div class="wrapper">
-    <h1>Titre</h1>
-    <p>Contenu</p>
-  </div>
-</template>
-
-<!-- APRÈS : pas de wrapper -->
-<template>
-  <h1>Titre</h1>
-  <p>Contenu</p>
-</template>
-```
-
-### 3. Conditional rendering intelligent
-```vue
-<!-- v-if : supprime du DOM si false -->
-<HeavyComponent v-if="isVisible" />
-
-<!-- v-show : garde dans le DOM (display: none) -->
-<HeavyComponent v-show="isVisible" />
-```
-**Règle** : Utiliser `v-if` pour les gros composants rarement affichés
-
-### 4. Server Components pour décorations
-Les composants `.server.vue` ne génèrent pas de Virtual DOM côté client.
-
----
-
 ## 📂 STRUCTURE DU PROJET
 
 ```
 beabot/
 ├── ARCHIVES/                 # Ancienne documentation
 ├── AUDITS/                   # Documentation d'audit
-│   ├── ECO_AUDIT_PHASE_9.md  # Audit actuel
+│   ├── ECO_AUDIT_PHASE_9.md  # Audit éco-conception
 │   └── ...
 ├── assets/
 │   ├── css/
 │   │   ├── main.scss
 │   │   ├── article-content.scss
 │   │   └── vars/             # Variables SCSS
+│   │       ├── _colors.scss
+│   │       ├── _typo.scss
+│   │       └── _spacing.scss
 │   └── img/
-├── components/               # 11 composants Vue 3
-│   └── server/               # [À créer] Server components
+├── components/               # Composants Vue 3
+│   └── server/               # Server components (pas d'hydratation)
 ├── composables/
 │   └── useTags.ts
 ├── content/
@@ -183,7 +80,8 @@ beabot/
 │   ├── default.vue
 │   └── error.vue
 ├── pages/
-│   ├── index.vue             # Homepage (cible optim DOM)
+│   ├── index.vue             # Homepage (Phase 11)
+│   ├── contact.vue           # Contact (Phase 11)
 │   ├── eco-conception.vue
 │   ├── portfolio.vue
 │   └── ...
@@ -194,30 +92,71 @@ beabot/
 ├── nuxt.config.ts
 ├── netlify.toml
 ├── CLAUDE.md                 # Ce fichier
-├── TODO.md                   # Tâches Phase 9
+├── TODO.md                   # Tâches actives
 └── BRANCHING_STRATEGY.md
 ```
 
 ---
 
-## 🎯 PHASE ACTUELLE : Phase 9 - Réduction Requêtes & DOM
+## 🎯 PHASES ACTIVES
 
-### Objectifs prioritaires
-1. **Requêtes HTTP** : Passer de ~16 à **< 12**
-2. **Taille DOM** : Réduire les éléments à **< 800**
-3. **EcoIndex** : Atteindre **Score A**
+### Phase 11 - Homepage & Contact Redesign (ACTIVE)
+**Objectif** : Améliorer UX, parcours utilisateur et conversions
 
-### Tâches principales
-| ID | Tâche | Impact |
-|----|-------|--------|
-| ECO-9-13 | Lazy loading composants | -2 à -4 requêtes |
-| ECO-9-14 | Server Components | -JS hydratation |
-| ECO-9-18 | SVG → CSS pseudo-elements | -10 à -20 DOM |
-| ECO-9-19 | Simplifier structure HTML | DOM allégé |
+#### Homepage - Priorités
+| Priorité | Tâches |
+|----------|--------|
+| **P1** | HP-11-01 Tagline hero, HP-11-02 Accroche positive, HP-11-03 Chiffres impacts, HP-11-04 Piliers concrets |
+| **P2** | HP-11-05 Hero mobile, HP-11-06 Grid impacts 2x2, HP-11-07 Scroll indicator |
+| **P3** | HP-11-08 Oeuf → CSS, HP-11-09 Accordéon mobile |
 
-### Phases suivantes
-- **Phase 10** : Migration domaine beabot.fr
-- **Phase 11** : Homepage redesign (graphisme, contenu)
+#### Contact - Priorités
+| Priorité | Tâches |
+|----------|--------|
+| **P1** | CT-11-01 Titre engageant, CT-11-02 Labels humanisés |
+| **P2** | CT-11-03 Layout 2 colonnes, CT-11-04 Focus states, CT-11-05 Email alternatif |
+
+### Phase 9 - Optimisations Éco-conception (en pause)
+**Objectif** : Requêtes HTTP < 12, DOM < 800 éléments, EcoIndex A
+
+Tâches restantes à reprendre :
+- ECO-9-15 : NuxtIsland pour zones non-interactives
+- ECO-9-17 : CSS critique inline
+- ECO-9-18 : SVG décoratifs → CSS
+- ECO-9-20 : Optimiser composant Oeuf
+- ECO-9-21 : Delay Hydration
+
+---
+
+## 🚀 SOLUTIONS TECHNIQUES NUXT 3
+
+### Réduction des requêtes HTTP
+```vue
+<!-- Lazy Components (préfixe Lazy) -->
+<LazyOeuf />
+<LazyHomeEcoArticles />
+
+<!-- Server Components (suffixe .server.vue) -->
+<OeufServer fill="#04d94f" />
+```
+
+### Réduction du DOM
+```scss
+// Remplacer SVG par pseudo-éléments CSS
+.decoration::before {
+  content: '';
+  background-image: url('/img/oeuf-vert.svg');
+  background-repeat: no-repeat;
+}
+```
+
+```vue
+<!-- Vue 3 fragments (pas de wrapper) -->
+<template>
+  <h1>Titre</h1>
+  <p>Contenu</p>
+</template>
+```
 
 ---
 
@@ -226,8 +165,10 @@ beabot/
 ### Branches
 - `master` : Production
 - `dev` : Développement (base de travail)
-- `optim/eco-9-XX-*` : Branches d'optimisation Phase 9
-- `docs/*` : Branches documentation
+- `optim/eco-9-XX-*` : Branches Phase 9
+- `feature/hp-11-XX-*` : Branches Phase 11 Homepage
+- `feature/ct-11-XX-*` : Branches Phase 11 Contact
+- `docs/*` : Documentation
 
 ### Règle importante
 **Toujours créer une branche de travail depuis `dev`**, ne jamais travailler directement sur `dev` ou `master`.
@@ -235,9 +176,12 @@ beabot/
 ```bash
 # Créer une branche de travail
 git checkout dev
-git checkout -b optim/eco-9-13-lazy-components
+git pull origin dev
+git checkout -b feature/hp-11-01-hero-tagline
 
 # Après travail terminé
+git add .
+git commit -m "feat: nouveau tagline hero avec CTAs"
 # Benoît s'occupe du merge et push
 ```
 
@@ -247,8 +191,8 @@ feat: nouvelle fonctionnalité
 fix: correction de bug
 optim: optimisation éco/performance
 docs: documentation
-style: formatage
-refactor: refactoring
+style: formatage CSS/design
+refactor: refactoring code
 chore: maintenance
 ```
 
@@ -284,6 +228,7 @@ npx nuxi analyze     # Voir la taille des chunks
 | Éléments DOM | ~900+ | **<800** |
 | Poids page | ~200KB | **<150KB** |
 | Lighthouse Perf | 85-90 | **>95** |
+| Lighthouse A11y | ~90 | **>95** |
 
 ---
 
@@ -294,13 +239,15 @@ npx nuxi analyze     # Voir la taille des chunks
 - Force push sur branches protégées
 - Merger sans tester (`npm run dev` + `npm run generate`)
 - Ajouter des scripts externes (CDN tiers)
+- Ajouter des web fonts (garder system stack)
 
 ### ✅ TOUJOURS FAIRE
 - Créer une branche dédiée depuis `dev`
 - Tester localement avant de proposer un merge
 - Utiliser des commits conventionnels
-- Mettre à jour la documentation
+- Mettre à jour TODO.md après chaque tâche
 - Privilégier CSS natif aux éléments DOM
+- Vérifier l'accessibilité (focus, contraste, aria)
 
 ---
 
@@ -309,12 +256,27 @@ npx nuxi analyze     # Voir la taille des chunks
 | Fichier | Contenu |
 |---------|---------|
 | `CLAUDE.md` | Ce fichier (contexte technique) |
-| `TODO.md` | Tâches Phase 9 avec solutions |
+| `TODO.md` | Tâches Phases 9, 10, 11 avec détails |
 | `BRANCHING_STRATEGY.md` | Stratégie Git détaillée |
 | `AUDITS/ECO_AUDIT_PHASE_9.md` | Audit éco-conception |
 
 ---
 
+## 📋 HISTORIQUE DES PHASES
+
+| Phase | Description | Statut |
+|-------|-------------|--------|
+| 1-4 | Migration Nuxt 3 | ✅ |
+| 5 | Finalisation | ✅ |
+| 6 | Bug fixes production | ✅ |
+| 7 | Netlify build image | ✅ |
+| 8 | Tests et validation | ✅ |
+| 9 | Optimisations éco-conception | ⏸️ En pause |
+| 10 | Migration domaine beabot.fr | ✅ |
+| **11** | **Homepage & Contact redesign** | 🔄 **Active** |
+
+---
+
 **📝 Maintenu par** : Claude Code
-**📅 Dernière MAJ** : 17 décembre 2025
-**🎯 Phase** : 9 - Réduction requêtes HTTP & DOM
+**📅 Dernière MAJ** : 18 décembre 2025
+**🎯 Phase active** : 11 - Homepage & Contact redesign

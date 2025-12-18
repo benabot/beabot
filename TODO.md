@@ -4,7 +4,7 @@
 
 **Projet** : BeAbot - Blog éco-conception web
 **Date création** : 15 décembre 2025
-**Dernière MAJ** : 17 décembre 2025
+**Dernière MAJ** : 18 décembre 2025
 **Branche active** : `dev` (Nuxt 3)
 **Sites** :
 
@@ -15,9 +15,9 @@
 
 ## 📊 CONTEXTE ACTUEL
 
-### Statut (17 décembre 2025)
+### Statut (18 décembre 2025)
 
-**Migration Nuxt 3 terminée** - Les deux environnements sont synchronisés sur Nuxt 3.
+**Migration Nuxt 3 terminée** - Phase 9 en cours, Phase 11 planifiée.
 
 | Métrique | Site Prod | Site Dev | Statut |
 |----------|-----------|----------|--------|
@@ -29,152 +29,256 @@
 
 ---
 
-## 🎯 PHASE 9 : Optimisations Éco-conception
+## ✅ PHASE 10 : Migration domaine beabot.fr
 
-### ✅ TÂCHES TERMINÉES
+> **Terminée le 18 décembre 2025**
+
+- [x] DNS beabot.fr configuré
+- [x] Domaine configuré dans Netlify
+- [x] URLs mises à jour (netlify.toml, canonical, RSS, feeds)
+- [x] Redirects en place
+- [x] Testé et déployé
+
+---
+
+## ⏸️ PHASE 9 : Optimisations Éco-conception (en pause)
+
+> **Reprise prévue après Phase 11**
+
+### ✅ Tâches terminées
 
 - [x] **ECO-9-01** : Supprimer script EcoIndex externe
 - [x] **ECO-9-07** : Attributs width/height images
 - [x] **ECO-9-13** : Lazy Loading composants décoratifs (-2 à -4 requêtes HTTP)
 - [x] **ECO-9-19** : Simplifier structure HTML (-6 éléments DOM sur homepage)
 
----
+### 📋 Tâches restantes (à reprendre)
 
-## 🚀 NOUVELLES PRIORITÉS : Réduction Requêtes HTTP & DOM
-
-> **Objectifs** : Requêtes < 12, DOM plus léger, EcoIndex A
-
-### PRIORITÉ 1 - Réduire les requêtes HTTP ⚡
-
-#### ✅ ECO-9-13 : Lazy Loading des composants décoratifs
-
-- [x] Créer branche `optim/eco-9-13-lazy-components`
-- [x] Préfixer `<Oeuf>` par `<LazyOeuf>` dans index.vue (économise les chunks non visibles)
-- [x] Préfixer `<HomeEcoArticles>` et `<HomePortfolioLatest>` par `Lazy`
-- [x] Vérifier que les composants sont bien code-splittés
-- **Impact** : -2 à -4 requêtes HTTP initiales
-- **Référence** : [Nuxt Lazy Components](https://nuxt.com/docs/guide/directory-structure/components#dynamic-imports)
-- **Commit** : `bc1175d`
-
-#### ECO-9-14 : Server Components pour éléments statiques
-- [x] Créer branche `optim/eco-9-14-server-components`
-- [x] Créer `components/server/` pour les composants sans interactivité
-- [x] Migrer `Oeuf.vue` → `server/Oeuf.server.vue` (SVG décoratif pur)
-- [x] Migrer `TheLogo.vue` → `server/TheLogo.server.vue`
-- **Impact** : -JS hydratation, DOM plus léger côté client
-- **Référence** : [Nuxt Server Components](https://nuxt.com/docs/guide/directory-structure/components#server-components)
-
-#### ECO-9-15 : NuxtIsland pour zones non-interactives
-- [ ] Créer branche `optim/eco-9-15-nuxt-island`
-- [ ] Wrapper les sections décoratives avec `<NuxtIsland>`
-- [ ] Identifier les zones sans événements JS
-- **Impact** : Skip hydratation = moins de JS exécuté
-- **Référence** : [Nuxt Islands](https://nuxt.com/docs/api/components/nuxt-island)
-
-#### ECO-9-16 : Regrouper les CSS en un seul fichier
-- [x] Créer branche `optim/eco-9-16-css-bundle`
-- [x] Ajouter `extractCSS: true` dans nuxt.config.ts si pas déjà fait
-- [x] Vérifier `cssCodeSplit: false` pour fusionner les CSS
-- [x] Tester l'impact sur le cache
-- **Impact** : -1 à -3 requêtes CSS
-- **Note** : Trade-off cache vs requêtes
-
-#### ECO-9-17 : Inliner le CSS critique
-- [ ] Créer branche `optim/eco-9-17-critical-css`
-- [ ] Tester `experimental.inlineSSRStyles: true` dans nuxt.config.ts
-- [ ] Évaluer l'impact sur le poids HTML vs requêtes
-- **Impact** : -1 requête CSS (mais HTML plus lourd)
-- **Référence** : Nuxt experimental features
-
-### PRIORITÉ 2 - Réduire la taille du DOM 🔶
-
-#### ECO-9-18 : Remplacer SVG décoratifs par CSS
-- [ ] Créer branche `optim/eco-9-18-css-decorations`
-- [ ] Remplacer les `<Oeuf>` décoratifs par des `::before`/`::after` avec `background-image`
-- [ ] Utiliser des data URI SVG pour les formes simples dans le CSS
-- [ ] Conserver uniquement les SVG interactifs comme éléments DOM
-- **Impact** : -10 à -20 éléments DOM sur homepage
-- **Référence** : GreenIT #5 (limiter le DOM)
-
-#### ✅ ECO-9-19 : Simplifier la structure HTML
-
-- [x] Créer branche `optim/eco-9-19-html-cleanup`
-- [x] Auditer les div wrappers inutiles
-- [x] Fusionner divs imbriquées (4 divs impact-chiffre)
-- [x] Supprimer wrappers SVG inutiles (2 divs fleche)
-- **Impact** : -6 éléments DOM sur homepage
-- **Référence** : Vue 3 multi-root components
-- **Commit** : `6c9d54c`
-
-#### ECO-9-20 : Optimiser le composant Oeuf
-- [ ] Créer branche `optim/eco-9-20-oeuf-optim`
-- [ ] Créer une version CSS-only pour les décorations (classe `.oeuf-deco`)
-- [ ] Garder le composant Vue uniquement pour les cas interactifs
-- [ ] Réduire le SVG path si possible (SVGO)
-- **Impact** : Moins de composants Vue instanciés
-- **Référence** : Vue.js Performance Best Practices
-
-### PRIORITÉ 3 - Optimisations avancées 🟢
-
-#### ECO-9-21 : Delay Hydration
-- [ ] Créer branche `optim/eco-9-21-delay-hydration`
-- [ ] Installer `nuxt-delay-hydration`
-- [ ] Configurer le mode `init` ou `mount`
-- [ ] Tester le Time to Interactive
-- **Impact** : TTI amélioré, moins de JS bloquant
-- **Référence** : [nuxt-delay-hydration](https://github.com/harlan-zw/nuxt-delay-hydration)
-
-#### ECO-9-22 : Virtualisation si listes longues
-- [ ] Évaluer si nécessaire (articles, portfolio)
-- [ ] Si oui, implémenter vue-virtual-scroller
-- **Impact** : DOM constant quelle que soit la liste
-- **Note** : Probablement pas nécessaire pour ce projet
+- [ ] ECO-9-15 : NuxtIsland pour zones non-interactives
+- [ ] ECO-9-17 : Inliner le CSS critique
+- [ ] ECO-9-18 : Remplacer SVG décoratifs par CSS
+- [ ] ECO-9-20 : Optimiser le composant Oeuf
+- [ ] ECO-9-21 : Delay Hydration
 
 ---
 
-## 🌐 PHASE 10 : Migration domaine beabot.fr
+## 🎨 PHASE 11 : Homepage & Contact - Graphisme & Contenu (ACTIVE)
 
-> **À effectuer quand le domaine sera acheté/configuré**
+> **Objectif** : Améliorer l'UX, le parcours utilisateur et les conversions tout en respectant l'éco-conception
 
-### Fichiers à modifier pour beabot.fr
+### 📋 AUDIT RÉALISÉ (18 décembre 2025)
 
-| Fichier | Modification |
-|---------|--------------|
-| `netlify.toml` | NUXT_PUBLIC_SITE_URL → beabot.fr |
-| `pages/index.vue` | canonical → beabot.fr |
-| `server/routes/rss.xml.ts` | siteUrl → beabot.fr |
-| `server/routes/feed.json.ts` | siteUrl → beabot.fr |
+Audit complet UX/UI desktop et mobile réalisé sur :
+- Page d'accueil (beabot.fr)
+- Page contact (beabot.fr/contact)
 
-### Étapes
+---
 
-1. [ ] Acheter/configurer DNS beabot.fr
-2. [ ] Créer branche `chore/domain-beabot-fr`
-3. [ ] Configurer domaine dans Netlify
-4. [ ] Modifier fichiers listés ci-dessus
-5. [ ] Ajouter redirect netlify.toml :
-```toml
-[[redirects]]
-  from = "https://beabot.netlify.app/*"
-  to = "https://beabot.fr/:splat"
-  status = 301
-  force = true
+### 🏠 HOMEPAGE - Tâches
+
+#### PRIORITÉ 1 - Quick wins textuels
+
+##### HP-11-01 : Nouveau tagline Hero
+- [ ] Créer branche `feature/hp-11-01-hero-tagline`
+- [ ] Remplacer "webdesign - développement - gestion de projet"
+- **Proposition** :
+  > "Des sites web qui respectent la planète sans sacrifier l'expérience"
+  > 
+  > ou
+  > 
+  > "Performance, accessibilité, sobriété : un web durable et beau"
+- [ ] Garder le Oeuf animé
+- [ ] Ajouter 2 CTAs visibles : [Découvrir →] [Me contacter]
+- **Fichier** : `pages/index.vue` (section container-1)
+
+##### HP-11-02 : Reformuler l'accroche en positif
+- [ ] Créer branche `feature/hp-11-02-accroche`
+- [ ] Remplacer le texte interrogatif/négatif
+- **Texte actuel** :
+  > "Vous avez sans doute entendu dire que le numérique émettrait plus de CO2 que le transport aérien ? C'est vrai. Peut-être pensez-vous que les data centers sont la source principale de cette pollution ? Pas tout à fait..."
+- **Proposition** :
+  > "**Le numérique pèse plus lourd que l'aviation** dans nos émissions de CO2. La bonne nouvelle ? **Chaque site peut faire partie de la solution**. Un site éco-conçu consomme moins, charge plus vite, et reste beau : c'est possible, et c'est ce que je fais."
+- **Fichier** : `pages/index.vue` (section container-2)
+
+##### HP-11-03 : Chiffres marquants section Impacts
+- [ ] Créer branche `feature/hp-11-03-impacts-chiffres`
+- [ ] Remplacer les textes génériques par des données concrètes
+- **Propositions** :
+
+| # | Actuel | Proposé |
+|---|--------|---------|
+| 1 | "Des impacts sur l'émission de CO2, la consommation d'énergie et de ressources…" | "**4% des émissions mondiales de CO2** viennent du numérique – autant que l'aviation" |
+| 2 | "…réparties entre les serveurs, le réseau et les utilisateurs." | "**2/3 de l'impact** vient de nos appareils, pas des serveurs" |
+| 3 | "Les utilisateurs ont le plus fort impact sur l'environnement…" | "Un site lourd **accélère l'obsolescence** de vos visiteurs" |
+| 4 | "…dés l'achat de leur appareil, avant même son utilisation." | "**Moins de ressources = plus de durabilité** pour tous" |
+
+- **Fichier** : `pages/index.vue` (section impact)
+
+##### HP-11-04 : Exemples concrets pour les 4 piliers
+- [ ] Créer branche `feature/hp-11-04-piliers-concrets`
+- [ ] Ajouter des exemples tangibles à chaque pilier
+- **Propositions** :
+
+| Pilier | Proposition |
+|--------|-------------|
+| **Durabilité** | "Un site de 500 Ko au lieu de 5 Mo permet à un smartphone de 5 ans de l'afficher sans lag" |
+| **Efficience** | "Objectif : **-70% de poids** par rapport à un site classique, même résultat" |
+| **Sobriété** | "Pas de carousel qui tourne dans le vide, pas de vidéo autoplay : **chaque élément a sa raison d'être**" |
+| **Transversalité** | "Du brief au déploiement, **l'éco-conception guide chaque décision**" |
+
+- **Fichiers** : `pages/index.vue` (sections container-3 et container-4)
+
+---
+
+#### PRIORITÉ 2 - Améliorations graphiques
+
+##### HP-11-05 : Réduire hauteur Hero mobile
+- [ ] Créer branche `feature/hp-11-05-hero-mobile`
+- [ ] Passer de `min-height: 100vh` à `max-height: 70vh` sur mobile
+- [ ] Réduire la taille du logo/forme décorative
+- [ ] S'assurer que le contenu important est visible sans scroll
+- **Impact éco** : Moins de scroll = moins d'énergie
+- **Fichier** : `pages/index.vue` (styles container-1, #boite-logo)
+
+##### HP-11-06 : Refonte layout section Impacts (2x2 grid)
+- [ ] Créer branche `feature/hp-11-06-impacts-grid`
+- [ ] Remplacer le layout 3 colonnes par une grille 2x2
+- [ ] Mettre les chiffres en typographie hero (grand)
+- [ ] Supprimer la colonne centrale titre (intégrer au-dessus)
+- **Impact éco** : -6 éléments DOM, structure simplifiée
+- **Fichier** : `pages/index.vue` (section impact, styles)
+
+##### HP-11-07 : Indicateur de progression scroll
+- [ ] Créer branche `feature/hp-11-07-scroll-indicator`
+- [ ] Ajouter une barre de progression fixe en haut
+- [ ] Implémenter en CSS pur si possible (performance)
+- **Code suggéré** :
+```css
+.scroll-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--vert);
+  width: var(--scroll-progress);
+  z-index: 100;
+}
 ```
-6. [ ] Tester en preview
-7. [ ] Merger et déployer
+- **Impact éco** : ~100 bytes CSS, aucune requête supplémentaire
+- **Fichiers** : `layouts/default.vue` ou `app.vue`
 
 ---
 
-## 🎨 PHASE 11 : Homepage - Graphisme & Contenu
+#### PRIORITÉ 3 - Évolutions structurelles
 
-> **À travailler après optimisations**
+##### HP-11-08 : Remplacer SVG Oeuf décoratifs par CSS
+- [ ] Créer branche `feature/hp-11-08-oeuf-css`
+- [ ] Identifier les Oeuf purement décoratifs (non interactifs)
+- [ ] Les remplacer par des pseudo-éléments CSS avec `background-image`
+- [ ] Conserver le composant Vue uniquement pour le hero animé
+- **Impact éco** : -10 à -15 éléments DOM
+- **Note** : Complémentaire à ECO-9-18 et ECO-9-20
+- **Fichiers** : `pages/index.vue`, `assets/css/`
 
-### Tâches prévues
+##### HP-11-09 : Accordéon piliers sur mobile (optionnel)
+- [ ] Créer branche `feature/hp-11-09-piliers-accordion`
+- [ ] Transformer les 4 piliers en accordéon sur mobile
+- [ ] Un seul ouvert à la fois pour économiser l'espace
+- [ ] Animation CSS (pas de JS si possible)
+- **Impact éco** : Moins de scroll, meilleure UX mobile
+- **Fichier** : `pages/index.vue`
 
-- [ ] Revoir la hiérarchie visuelle
-- [ ] Optimiser les textes pour le SEO
-- [ ] Améliorer les CTAs
-- [ ] Ajouter du contenu rédactionnel
-- [ ] Créer branche `feature/homepage-redesign`
+---
+
+### 📬 CONTACT - Tâches
+
+#### PRIORITÉ 1 - Quick wins textuels
+
+##### CT-11-01 : Titre et accroche engageants
+- [ ] Créer branche `feature/ct-11-01-contact-intro`
+- [ ] Remplacer le titre "Contact" seul
+- **Proposition** :
+  > # Parlons de votre projet
+  > Une question sur l'éco-conception ? Un site à créer ou optimiser ? Écrivez-moi, **je réponds personnellement sous 48h**.
+- **Fichier** : `pages/contact.vue`
+
+##### CT-11-02 : Labels humanisés
+- [ ] Créer branche `feature/ct-11-02-contact-labels`
+- [ ] Modifier les labels du formulaire
+- **Propositions** :
+  - "Nom" → "Votre nom"
+  - "Email" → "Votre email"
+  - "Message" → "Votre message (décrivez votre projet ou posez votre question)"
+- [ ] Modifier le bouton : "Envoyer" → "Envoyer mon message →"
+- [ ] Améliorer le message de confirmation :
+  > ✓ Message envoyé ! Je vous recontacte très vite.
+- **Fichier** : `pages/contact.vue`
+
+---
+
+#### PRIORITÉ 2 - Layout et UX
+
+##### CT-11-03 : Layout 2 colonnes desktop
+- [ ] Créer branche `feature/ct-11-03-contact-layout`
+- [ ] Implémenter le layout 2 colonnes :
+  - Colonne gauche : Titre, accroche, infos contact (email, LinkedIn)
+  - Colonne droite : Formulaire
+- [ ] Garder empilé sur mobile
+- **Structure** :
+```
+Desktop :
+┌────────────────────────────────────────────────┐
+│  Parlons de votre    │  ┌──────────────────┐  │
+│  projet              │  │ Formulaire       │  │
+│                      │  │                  │  │
+│  [Texte intro]       │  │                  │  │
+│                      │  │                  │  │
+│  📧 hello@beabot.fr  │  │ [Envoyer →]      │  │
+│  🔗 LinkedIn         │  └──────────────────┘  │
+└────────────────────────────────────────────────┘
+```
+- **Fichier** : `pages/contact.vue`
+
+##### CT-11-04 : Focus states accessibles
+- [ ] Créer branche `feature/ct-11-04-contact-focus`
+- [ ] Améliorer le focus visible sur les inputs
+- **Code suggéré** :
+```css
+input:focus,
+textarea:focus {
+  outline: 2px solid var(--vert);
+  outline-offset: 2px;
+}
+```
+- [ ] Tester avec navigation clavier
+- **Fichier** : `pages/contact.vue` ou `assets/css/main.scss`
+
+##### CT-11-05 : Email cliquable en alternative
+- [ ] Créer branche `feature/ct-11-05-contact-email`
+- [ ] Ajouter un lien mailto: visible comme alternative au formulaire
+- [ ] Ajouter le lien LinkedIn
+- **Fichier** : `pages/contact.vue`
+
+---
+
+### 📊 RÉCAPITULATIF PHASE 11
+
+| ID | Tâche | Page | Priorité | Impact UX | Impact Eco |
+|----|-------|------|----------|-----------|------------|
+| HP-11-01 | Tagline Hero | Home | P1 | ⭐⭐⭐⭐⭐ | - |
+| HP-11-02 | Accroche positive | Home | P1 | ⭐⭐⭐⭐ | - |
+| HP-11-03 | Chiffres impacts | Home | P1 | ⭐⭐⭐⭐ | - |
+| HP-11-04 | Piliers concrets | Home | P1 | ⭐⭐⭐⭐ | - |
+| HP-11-05 | Hero mobile | Home | P2 | ⭐⭐⭐⭐ | ✅ |
+| HP-11-06 | Grid impacts | Home | P2 | ⭐⭐⭐⭐ | ✅ -6 DOM |
+| HP-11-07 | Scroll indicator | Home | P2 | ⭐⭐⭐ | ✅ |
+| HP-11-08 | Oeuf → CSS | Home | P3 | ⭐⭐⭐ | ✅✅ -15 DOM |
+| HP-11-09 | Accordéon mobile | Home | P3 | ⭐⭐⭐ | ✅ |
+| CT-11-01 | Titre contact | Contact | P1 | ⭐⭐⭐⭐ | - |
+| CT-11-02 | Labels humanisés | Contact | P1 | ⭐⭐⭐ | - |
+| CT-11-03 | Layout 2 colonnes | Contact | P2 | ⭐⭐⭐⭐ | - |
+| CT-11-04 | Focus states | Contact | P2 | ⭐⭐⭐ | - |
+| CT-11-05 | Email alternatif | Contact | P2 | ⭐⭐⭐ | - |
 
 ---
 
@@ -196,6 +300,11 @@
 ### Accessibilité
 - [ ] Lighthouse Accessibility : **> 95**
 - [ ] WAVE : **0 erreurs**
+
+### Conversion (Phase 11)
+- [ ] Temps sur page augmenté
+- [ ] Taux de rebond diminué
+- [ ] Formulaire contact soumis
 
 ---
 
@@ -231,12 +340,12 @@
 | 6 | Bug fixes production | ✅ Complété |
 | 7 | Netlify build image | ✅ Complété |
 | 8 | Tests et validation | ✅ Complété |
-| **9** | **Optimisations éco-conception** | 🔄 **En cours** |
-| 10 | Migration domaine beabot.fr | ⏳ En attente |
-| 11 | Homepage redesign | ⏳ En attente |
+| 9 | Optimisations éco-conception | ⏸️ En pause |
+| 10 | Migration domaine beabot.fr | ✅ Complété |
+| **11** | **Homepage & Contact redesign** | 🔄 **Active** |
 
 ---
 
 **📝 Maintenu par** : Claude Code
-**📅 Dernière MAJ** : 17 décembre 2025
-**🎯 Phase actuelle** : Phase 9 - Réduction requêtes HTTP & DOM
+**📅 Dernière MAJ** : 18 décembre 2025
+**🎯 Phase actuelle** : Phase 11 - Homepage & Contact redesign
