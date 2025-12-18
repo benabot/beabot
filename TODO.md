@@ -8,8 +8,8 @@
 **Branche active** : `dev` (Nuxt 3)
 **Sites** :
 
-- 🟢 **Production** (Nuxt 3, master) : https://beabot.netlify.app
-- 🔵 **Développement** (Nuxt 3, dev) : https://dev-beabot.netlify.app
+- 🟢 **Production** (Nuxt 3, master) : <https://beabot.netlify.app>
+- 🔵 **Développement** (Nuxt 3, dev) : <https://dev-beabot.netlify.app>
 
 ---
 
@@ -69,6 +69,7 @@
 ### 📋 AUDIT RÉALISÉ (18 décembre 2025)
 
 Audit complet UX/UI desktop et mobile réalisé sur :
+
 - Page d'accueil (beabot.fr)
 - Page contact (beabot.fr/contact)
 
@@ -79,13 +80,14 @@ Audit complet UX/UI desktop et mobile réalisé sur :
 #### PRIORITÉ 1 - Quick wins textuels
 
 ##### HP-11-01 : Nouveau tagline Hero
+
 - [x] Créer branche `feature/hp-11-01-hero-tagline`
 - [x] Remplacer "webdesign - développement - gestion de projet"
 - **Proposition** :
   > "Des sites web qui respectent la planète sans sacrifier l'expérience"
-  > 
+  >
   > ou
-  > 
+  >
   > "Performance, accessibilité, sobriété : un web durable et beau"
 - [x] Garder le Oeuf animé
 - [ ] Ajouter 2 CTAs visibles : [Découvrir →] (qui permet de descendre à la section suivante) [Me contacter]
@@ -93,8 +95,10 @@ Audit complet UX/UI desktop et mobile réalisé sur :
   - **Fichier** : `pages/index.vue` (section container-1)
 
 ##### HP-11-02 : Reformuler l'accroche en positif
-- [ ] Créer branche `feature/hp-11-02-accroche`
-- [ ] Remplacer le texte interrogatif/négatif
+
+~~- [X] Créer branche `feature/hp-11-02-accroche`~~
+
+- [X] Remplacer le texte interrogatif/négatif
 - **Texte actuel** :
   > "Vous avez sans doute entendu dire que le numérique émettrait plus de CO2 que le transport aérien ? C'est vrai. Peut-être pensez-vous que les data centers sont la source principale de cette pollution ? Pas tout à fait..."
 - **Proposition** :
@@ -102,21 +106,24 @@ Audit complet UX/UI desktop et mobile réalisé sur :
 - **Fichier** : `pages/index.vue` (section container-2)
 
 ##### HP-11-03 : Chiffres marquants section Impacts
-- [ ] Créer branche `feature/hp-11-03-impacts-chiffres`
-- [ ] Remplacer les textes génériques par des données concrètes
+
+~~- [x] Créer branche `feature/hp-11-03-impacts-chiffres~~
+
+- [x] Remplacer les textes génériques par des données concrètes
 - **Propositions** :
 
 | # | Actuel | Proposé |
 |---|--------|---------|
 | 1 | "Des impacts sur l'émission de CO2, la consommation d'énergie et de ressources…" | "**4% des émissions mondiales de CO2** viennent du numérique – autant que l'aviation" |
 | 2 | "…réparties entre les serveurs, le réseau et les utilisateurs." | "**2/3 de l'impact** vient de nos appareils, pas des serveurs" |
-| 3 | "Les utilisateurs ont le plus fort impact sur l'environnement…" | "Un site lourd **accélère l'obsolescence** de vos visiteurs" |
+| 3 | "Les utilisateurs ont le plus fort impact sur l'environnement…" | "Un site lourd **accélère l'obsolescence** de vos appareils" |
 | 4 | "…dés l'achat de leur appareil, avant même son utilisation." | "**Moins de ressources = plus de durabilité** pour tous" |
 
 - **Fichier** : `pages/index.vue` (section impact)
 
 ##### HP-11-04 : Exemples concrets pour les 4 piliers
-- [ ] Créer branche `feature/hp-11-04-piliers-concrets`
+
+~~- [x] Créer branche `feature/hp-11-04-piliers-concrets`~~
 - [ ] Ajouter des exemples tangibles à chaque pilier
 - **Propositions** :
 
@@ -134,6 +141,7 @@ Audit complet UX/UI desktop et mobile réalisé sur :
 #### PRIORITÉ 2 - Améliorations graphiques
 
 ##### HP-11-05 : Réduire hauteur Hero mobile
+
 - [ ] Créer branche `feature/hp-11-05-hero-mobile`
 - [ ] Passer de `min-height: 100vh` à `max-height: 70vh` sur mobile
 - [ ] Réduire la taille du logo/forme décorative
@@ -142,6 +150,7 @@ Audit complet UX/UI desktop et mobile réalisé sur :
 - **Fichier** : `pages/index.vue` (styles container-1, #boite-logo)
 
 ##### HP-11-06 : Refonte layout section Impacts (2x2 grid)
+
 - [ ] Créer branche `feature/hp-11-06-impacts-grid`
 - [ ] Remplacer le layout 3 colonnes par une grille 2x2
 - [ ] Mettre les chiffres en typographie hero (grand)
@@ -150,10 +159,12 @@ Audit complet UX/UI desktop et mobile réalisé sur :
 - **Fichier** : `pages/index.vue` (section impact, styles)
 
 ##### HP-11-07 : Indicateur de progression scroll
+
 - [ ] Créer branche `feature/hp-11-07-scroll-indicator`
 - [ ] Ajouter une barre de progression fixe en haut
 - [ ] Implémenter en CSS pur si possible (performance)
 - **Code suggéré** :
+
 ```css
 .scroll-indicator {
   position: fixed;
@@ -165,6 +176,7 @@ Audit complet UX/UI desktop et mobile réalisé sur :
   z-index: 100;
 }
 ```
+
 - **Impact éco** : ~100 bytes CSS, aucune requête supplémentaire
 - **Fichiers** : `layouts/default.vue` ou `app.vue`
 
@@ -173,6 +185,7 @@ Audit complet UX/UI desktop et mobile réalisé sur :
 #### PRIORITÉ 3 - Évolutions structurelles
 
 ##### HP-11-08 : Remplacer SVG Oeuf décoratifs par CSS
+
 - [ ] Créer branche `feature/hp-11-08-oeuf-css`
 - [ ] Identifier les Oeuf purement décoratifs (non interactifs)
 - [ ] Les remplacer par des pseudo-éléments CSS avec `background-image`
@@ -182,6 +195,7 @@ Audit complet UX/UI desktop et mobile réalisé sur :
 - **Fichiers** : `pages/index.vue`, `assets/css/`
 
 ##### HP-11-09 : Accordéon piliers sur mobile (optionnel)
+
 - [ ] Créer branche `feature/hp-11-09-piliers-accordion`
 - [ ] Transformer les 4 piliers en accordéon sur mobile
 - [ ] Un seul ouvert à la fois pour économiser l'espace
@@ -196,16 +210,20 @@ Audit complet UX/UI desktop et mobile réalisé sur :
 #### PRIORITÉ 1 - Quick wins textuels
 
 ##### CT-11-01 : Titre et accroche engageants
+
 - [ ] Créer branche `feature/ct-11-01-contact-intro`
 - [ ] Remplacer le titre "Contact" seul
 - **Proposition** :
+
   > # Parlons de votre projet
+>
   > Une question sur l'éco-conception ? Un site à créer ou optimiser ? Écrivez-moi, **je réponds personnellement sous 48h**.
 - **Fichier** : `pages/contact.vue`
 
 ##### CT-11-02 : Labels humanisés
+
 - [ ] Créer branche `feature/ct-11-02-contact-labels`
-- [ ] Modifier les labels du formulaire
+- [ ] Modifier les labels du formulaire et activer l'auto-complétion avec les balises html
 - **Propositions** :
   - "Nom" → "Votre nom"
   - "Email" → "Votre email"
@@ -220,12 +238,14 @@ Audit complet UX/UI desktop et mobile réalisé sur :
 #### PRIORITÉ 2 - Layout et UX
 
 ##### CT-11-03 : Layout 2 colonnes desktop
+
 - [ ] Créer branche `feature/ct-11-03-contact-layout`
 - [ ] Implémenter le layout 2 colonnes :
   - Colonne gauche : Titre, accroche, infos contact (email, LinkedIn)
   - Colonne droite : Formulaire
 - [ ] Garder empilé sur mobile
 - **Structure** :
+
 ```
 Desktop :
 ┌────────────────────────────────────────────────┐
@@ -238,12 +258,15 @@ Desktop :
 │  🔗 LinkedIn         │  └──────────────────┘  │
 └────────────────────────────────────────────────┘
 ```
+
 - **Fichier** : `pages/contact.vue`
 
 ##### CT-11-04 : Focus states accessibles
+
 - [ ] Créer branche `feature/ct-11-04-contact-focus`
 - [ ] Améliorer le focus visible sur les inputs
 - **Code suggéré** :
+
 ```css
 input:focus,
 textarea:focus {
@@ -251,10 +274,12 @@ textarea:focus {
   outline-offset: 2px;
 }
 ```
+
 - [ ] Tester avec navigation clavier
 - **Fichier** : `pages/contact.vue` ou `assets/css/main.scss`
 
 ##### CT-11-05 : Email cliquable en alternative
+
 - [ ] Créer branche `feature/ct-11-05-contact-email`
 - [ ] Ajouter un lien mailto: visible comme alternative au formulaire
 - [ ] Ajouter le lien LinkedIn
@@ -286,6 +311,7 @@ textarea:focus {
 ## 📈 MÉTRIQUES CIBLES
 
 ### Éco-conception
+
 - [ ] EcoIndex : Score **A**
 - [ ] Requêtes HTTP : **< 12**
 - [ ] Poids page : **< 150KB**
@@ -293,16 +319,19 @@ textarea:focus {
 - [ ] Éléments DOM : **< 800**
 
 ### Performance
+
 - [ ] Lighthouse Performance : **> 95**
 - [ ] LCP : **< 1.5s**
 - [ ] FID : **< 100ms**
 - [ ] CLS : **< 0.05**
 
 ### Accessibilité
+
 - [ ] Lighthouse Accessibility : **> 95**
 - [ ] WAVE : **0 erreurs**
 
 ### Conversion (Phase 11)
+
 - [ ] Temps sur page augmenté
 - [ ] Taux de rebond diminué
 - [ ] Formulaire contact soumis
@@ -312,6 +341,7 @@ textarea:focus {
 ## 📚 RESSOURCES TECHNIQUES
 
 ### Solutions Nuxt 3 pour réduire les requêtes
+
 1. **Lazy Components** : Préfixe `Lazy` pour charger à la demande
 2. **Server Components** : Suffixe `.server.vue` pour skip hydratation
 3. **NuxtIsland** : Composant wrapper pour zones statiques
@@ -319,12 +349,14 @@ textarea:focus {
 5. **CSS extraction** : `extractCSS: true` ou `cssCodeSplit: false`
 
 ### Solutions pour réduire le DOM
+
 1. **CSS pseudo-elements** : `::before`/`::after` au lieu de vraies balises
 2. **Vue 3 fragments** : `<template>` sans wrapper
 3. **Server Components** : Pas d'hydratation = DOM client léger
 4. **Conditional rendering** : `v-if` plutôt que `v-show` pour éléments lourds
 
 ### Référentiels
+
 - [GreenIT 115 bonnes pratiques v5](https://rweb.greenit.fr)
 - [RGESN 78 critères](https://ecoresponsable.numerique.gouv.fr/publications/referentiel-general-ecoconception/)
 - [Nuxt Performance](https://nuxt.com/docs/getting-started/deployment#optimizing-performance)

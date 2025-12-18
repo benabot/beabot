@@ -49,15 +49,14 @@
           <div class="impact--chiffre">
             <div class="bg-gris bg-gris__bleu">
               <p class="para-gros">
-                1 Des impacts sur l'émission de CO<sub>2</sub>, la consommation
-                d'énergie et de ressources…
+                1 Le numérique génère des effets environnementaux mesurables : émissions de CO₂, consommation d’énergie et extraction de ressources.
               </p>
             </div>
           </div>
           <div class="impact--chiffre">
             <div class="bg-gris bg-gris__vert">
               <p class="para-gros">
-                2 …réparties entre les serveurs, le réseau et les utilisateurs.
+                2 Ces effets se répartissent entre les centres de données, les réseaux et surtout les équipements des utilisateurs.
               </p>
             </div>
           </div>
@@ -67,14 +66,14 @@
           <div class="impact--chiffre">
             <div class="bg-gris bg-gris__jaune">
               <p class="para-gros">
-                3 Les utilisateurs ont le plus fort impact sur l'environnement…
+                3 La fabrication et l’usage des terminaux concentrent l’essentiel de l’empreinte environnementale.
               </p>
             </div>
           </div>
           <div class="impact--chiffre">
             <div class="bg-gris bg-gris__gris">
               <p class="para-gros">
-                4 …dés l'achat de leur appareil, avant même son utilisation.
+                4 Cette empreinte débute dès la production des appareils, bien avant leur première utilisation.
               </p>
             </div>
           </div>
