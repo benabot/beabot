@@ -10,14 +10,31 @@
       <h2 class="links text-gris2 text-normal titre3">Éco-conception web</h2>
       <p class="links lettre-smcp titre-sub h4 text-fin">
         Performance, accessibilité, sobriété : un web durable et beau
+        
       </p>
+      
     </section>
     <section class="container container-2 fond-gris">
       <!-- <LazyOeufImage /> -->
       <p class="text-gris5 h4">
-        <span class="text-black">Les émissions de gaz à effet de serre liées à la technologie numérique dépassent celles de l'aviation</span>. Cependant, il y a une bonne nouvelle<span class="insec">&thinsp;</span>: <span class="text-black">chaque site web a le pouvoir de contribuer à la solution</span>. 
-        Un site web conçu de manière écoresponsable nécessite <span class="text-black">moins de ressources, se charge plus rapidement, sollicite moins les téléphones et reste beau</span><span class="insec">&thinsp;</span>: c'est non seulement possible, et c'est aussi ce que je fais...
-        
+        <span class="text-black"
+          >Les émissions de gaz à effet de serre liées à la technologie
+          numérique dépassent celles de l'aviation</span
+        >. <br />Cependant, il y a une bonne nouvelle<span class="insec"
+          >&thinsp;</span
+        >:
+        <span class="text-black"
+          >votre site web a le pouvoir de contribuer à la solution</span
+        >. 
+        <br />
+        <br />
+        Un site web conçu de manière écoresponsable nécessite
+        <span class="text-black"
+          >moins de ressources, se charge plus rapidement, sollicite moins les
+          téléphones sans renoncer à l’esthétique</span
+        ><span class="insec">&thinsp;</span>: c'est non seulement possible, et
+        c'est aussi ce que je fais...
+
         <!-- <span class="text-black">Le numérique pèse plus lourd que l'aviation</span> dans nos émissions de CO2. La bonne nouvelle<span class="insec">&thinsp;</span>? <span class="text-black">Chaque site peut faire partie de la solution</span>. Un site éco-conçu consomme moins de ressources, charge plus vite, use moins les téléphones et reste beau : c'est possible, et c'est ce que je fais... -->
       </p>
       <!-- <p class="text-gris5 h4">
@@ -49,14 +66,17 @@
           <div class="impact--chiffre">
             <div class="bg-gris bg-gris__bleu">
               <p class="para-gros">
-                1 Le numérique génère des effets environnementaux mesurables : émissions de CO₂, consommation d’énergie et extraction de ressources.
+                1 Le numérique génère des effets environnementaux mesurables :
+                émissions de CO₂, consommation d’énergie et extraction de
+                ressources.
               </p>
             </div>
           </div>
           <div class="impact--chiffre">
             <div class="bg-gris bg-gris__vert">
               <p class="para-gros">
-                2 Ces effets se répartissent entre les centres de données, les réseaux et surtout les équipements des utilisateurs.
+                2 Ces effets se répartissent entre les centres de données, les
+                réseaux et surtout les équipements des utilisateurs.
               </p>
             </div>
           </div>
@@ -66,20 +86,24 @@
           <div class="impact--chiffre">
             <div class="bg-gris bg-gris__jaune">
               <p class="para-gros">
-                3 La fabrication et l’usage des terminaux concentrent l’essentiel de l’empreinte environnementale.
+                3 La fabrication et l’usage des terminaux concentrent
+                l’essentiel de l’empreinte environnementale.
               </p>
             </div>
           </div>
           <div class="impact--chiffre">
             <div class="bg-gris bg-gris__gris">
               <p class="para-gros">
-                4 Cette empreinte débute dès la production des appareils, bien avant leur première utilisation.
+                4 Cette empreinte débute dès la production des appareils, bien
+                avant leur première utilisation.
               </p>
             </div>
           </div>
         </div>
       </div>
-
+      <p class="text-gris5 h4 mt-n10">
+        Comprendre ces impacts permet de concevoir autrement.
+      </p>
       <div class="sct-footer mt-n10">
         <NuxtLink
           class="sct-footer--btn"
@@ -87,7 +111,14 @@
           >en savoir plus</NuxtLink
         >
         <div class="fleche">
-          <svg x="0" y="0" viewBox="0 0 32.8 27.3" xml:space="preserve" aria-hidden="true" focusable="false">
+          <svg
+            x="0"
+            y="0"
+            viewBox="0 0 32.8 27.3"
+            xml:space="preserve"
+            aria-hidden="true"
+            focusable="false"
+          >
             <path
               fill="#04d94f"
               d="M.4 12.7c3.5 1.7 6.5 3.8 9.5 6 1.5 1.1 2.9 2.3 4.4 3.5.4.3.7.6 1 .9l1 .9c.2.2.4.3.6.2.3 0 .5-.1.6-.2l.9-1c.3-.4.6-.7 1-1 1.4-1.3 2.7-2.6 4.1-3.9 2.8-2.5 5.7-4.8 9-6.8l.2.2c-2.4 2.8-4.9 5.5-7.4 8.2L21.6 24l-1.9 2c-.7.8-1.7 1.2-2.7 1.3-1 0-2-.3-2.7-1l-2.1-1.9-4.1-3.8c-2.7-2.5-5.4-5-8.1-7.6l.4-.3z"
@@ -139,11 +170,16 @@
             1<span class="text-vert">.</span>
           </div>
           <div class="ligne ligne__verte"></div>
+          <p class="text-gris3 text-black lettre-smcp">
+            Allonger la durée de vie
+          </p>
           <h3 class="pt-titre text-black text-gris2">Durabilité</h3>
+          
+
           <p class="text-gris2">
-            2/3 des impacts environnementaux du numérique proviennent de la
-            fabrication des équipements. Un site éco-conçu les sollicitera
-            moins, évitant leur renouvellement prématuré.
+            Un site allégé (≈ 500 Ko au lieu de plusieurs mégaoctets) reste
+            utilisable sur des smartphones anciens, limitant leur renouvellement
+            prématuré.
           </p>
         </div>
         <div class="boite-para__para mt-2">
@@ -152,10 +188,15 @@
             2<span class="text-vert">.</span>
           </div>
           <div class="ligne ligne__verte"></div>
+           <p class="text-gris3 text-black lettre-smcp">
+            Faire mieux avec moins
+          </p>
           <h3 class="pt-titre text-black text-gris2">Efficience</h3>
+         
+
           <p class="text-gris2">
-            Utiliser le minimum de ressources pour obtenir un résultat similaire
-            à un produit conçu de manière conventionnelle.
+            Réduire de 60 à 70 % le poids d’un site à fonctionnalités
+            équivalentes, sans dégrader l’expérience utilisateur.
           </p>
         </div>
       </div>
@@ -192,13 +233,17 @@
             3<span class="text-blanc">.</span>
           </div>
           <div class="ligne"></div>
+            <p class="text-gris4 text-black lettre-smcp">
+            Répondre à l’essentiel
+          </p>
           <h3 class="pt-titre text-black text-gris5">Sobriété</h3>
+        
+
           <p class="text-gris5">
-            Proposer un service correspondant à un besoin avéré et aux
-            fonctionnalités simples.
-            <br />
-            Faire des choix technologiques afin de réduire l’empreinte carbone
-            du site tout en fournissant un service optimal.
+            Proposer un service répondant à un besoin avéré, avec des
+            fonctionnalités ciblées et pertinentes. Faire des choix
+            technologiques sobres afin de réduire l’empreinte carbone du site,
+            sans compromettre la qualité du service rendu.
           </p>
         </div>
         <div class="container-4__boite-para--para">
@@ -207,14 +252,21 @@
             4<span class="text-blanc">.</span>
           </div>
           <div class="ligne"></div>
+          <p class="text-gris4 text-black lettre-smcp">
+            Une démarche continue
+          </p>
           <h3 class="pt-titre text-black text-gris5">Transversalité</h3>
+          
+
           <p class="text-gris5">
-            À chacune des étapes de la conception du site web et jusqu’à
-            l’accompagnement des usagers la préoccupation environnementale est
-            au cœur du projet.
+            Du recueil des besoins au développement du site, jusqu’à
+            l’accompagnement des usagers, la préoccupation environnementale est
+            au cœur du projet et guide chaque choix.
           </p>
         </div>
       </div>
+            <p class="text-gris5  lettre-smcp para-trans">Cette approche permet de concevoir des sites à la fois plus légers, plus rapides et plus durables, sans renoncer à la qualité graphique ni à l’expérience utilisateur.</p>
+
       <div class="sct-footer">
         <!-- <button class="sct-footer--btn">en savoir plus</button> -->
         <NuxtLink
@@ -223,7 +275,14 @@
           >en savoir plus</NuxtLink
         >
         <div class="fleche">
-          <svg x="0" y="0" viewBox="0 0 32.8 27.3" xml:space="preserve" aria-hidden="true" focusable="false">
+          <svg
+            x="0"
+            y="0"
+            viewBox="0 0 32.8 27.3"
+            xml:space="preserve"
+            aria-hidden="true"
+            focusable="false"
+          >
             <path
               fill="#04d94f"
               d="M.4 12.7c3.5 1.7 6.5 3.8 9.5 6 1.5 1.1 2.9 2.3 4.4 3.5.4.3.7.6 1 .9l1 .9c.2.2.4.3.6.2.3 0 .5-.1.6-.2l.9-1c.3-.4.6-.7 1-1 1.4-1.3 2.7-2.6 4.1-3.9 2.8-2.5 5.7-4.8 9-6.8l.2.2c-2.4 2.8-4.9 5.5-7.4 8.2L21.6 24l-1.9 2c-.7.8-1.7 1.2-2.7 1.3-1 0-2-.3-2.7-1l-2.1-1.9-4.1-3.8c-2.7-2.5-5.4-5-8.1-7.6l.4-.3z"
@@ -243,7 +302,12 @@
         </h3>
 
         <div class="container-5__boite-titre__oeuf">
-          <LazyOeuf class="oeuf" width="60%" transform="rotate(5)" fill="#f2a81d" />
+          <LazyOeuf
+            class="oeuf"
+            width="60%"
+            transform="rotate(5)"
+            fill="#f2a81d"
+          />
         </div>
       </div>
       <div class="boite-para">
@@ -392,9 +456,9 @@ section {
     width: 100%;
     margin: 0 auto;
     text-align: left;
-     @media (min-width: $breakpoint-tablet) {
+    @media (min-width: $breakpoint-tablet) {
       width: 80%;
-  }
+    }
   }
   &--chiffre {
     border: 5px solid $gris1;
@@ -537,6 +601,12 @@ section {
       }
     }
   }
+  .para-trans {
+    position: relative;
+    z-index: 10;
+    width: 55%;
+    margin: 3rem auto 0 auto;
+  }
   .oeuf {
     position: absolute;
     z-index: 2;
@@ -611,11 +681,11 @@ section {
       }
     }
   }
-    .fond-oeuf {
-      background-repeat: no-repeat;
-      background-size: 80%;
-      overflow: visible;
-      position: relative;
+  .fond-oeuf {
+    background-repeat: no-repeat;
+    background-size: 80%;
+    overflow: visible;
+    position: relative;
     // retrait des inline data URI décoratives
     &__vert {
       &::before {

@@ -124,7 +124,7 @@ Audit complet UX/UI desktop et mobile réalisé sur :
 ##### HP-11-04 : Exemples concrets pour les 4 piliers
 
 ~~- [x] Créer branche `feature/hp-11-04-piliers-concrets`~~
-- [ ] Ajouter des exemples tangibles à chaque pilier
+- [x] Ajouter des exemples tangibles à chaque pilier
 - **Propositions** :
 
 | Pilier | Proposition |
