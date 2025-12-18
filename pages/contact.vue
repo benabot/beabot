@@ -45,7 +45,18 @@ function encode(data) {
 }
 
 // Head metadata
-useHead({ title: 'Contact' })
+const config = useRuntimeConfig()
+
+useHead({
+  title: 'Contact',
+  link: [
+    {
+      hid: 'canonical',
+      rel: 'canonical',
+      href: `${config.public.siteUrl}/contact`,
+    },
+  ],
+})
 
 // Reactive state
 const loading = ref(false)

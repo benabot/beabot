@@ -6,6 +6,8 @@
 </template>
 
 <script setup>
+const config = useRuntimeConfig()
+
 useHead({
   title: 'éco-conception web',
   meta: [
@@ -20,7 +22,7 @@ useHead({
     {
       hid: 'canonical',
       rel: 'canonical',
-      href: '/eco-conception/eco-conception',
+      href: `${config.public.siteUrl}/eco-conception/eco-conception`,
     },
   ],
 })

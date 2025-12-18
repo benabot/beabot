@@ -83,6 +83,27 @@
 <script setup>
 import { computed } from 'vue'
 
+// Head metadata
+const config = useRuntimeConfig()
+
+useHead({
+  title: 'Éco-conception web - Articles',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Découvrez tous les articles sur l\'éco-conception web, le webdesign éco-responsable et le numérique durable.',
+    },
+  ],
+  link: [
+    {
+      hid: 'canonical',
+      rel: 'canonical',
+      href: `${config.public.siteUrl}/eco-conception`,
+    },
+  ],
+})
+
 // Fetch articles with Nuxt Content v2
 const { data: articles } = await useAsyncData('eco-articles', () =>
   queryContent('articles')

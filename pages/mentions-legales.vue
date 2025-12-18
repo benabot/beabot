@@ -247,7 +247,18 @@
 </template>
 
 <script setup>
-useHead({ title: 'Mentions légales' })
+const config = useRuntimeConfig()
+
+useHead({
+  title: 'Mentions légales',
+  link: [
+    {
+      hid: 'canonical',
+      rel: 'canonical',
+      href: `${config.public.siteUrl}/mentions-legales`,
+    },
+  ],
+})
 </script>
 
 <style scoped lang="scss">
