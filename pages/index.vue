@@ -5,7 +5,7 @@
       <!-- <Oeuf fill="pink" width="5%" transform="rotate(15)" /> -->
       <h1 class="title">beAbot</h1>
       <div id="boite-logo">
-        <Oeuf width="40%" class="fixe oeuf-intro" />
+        <Oeuf width="35%" class="fixe oeuf-intro" />
       </div>
       <h2 class="links text-gris2 text-normal titre3">Éco-conception web</h2>
       <p class="links lettre-smcp titre-sub h4 text-fin">
@@ -347,6 +347,9 @@ section {
   @media (min-width: $breakpoint-tablet) {
     min-height: 100vh;
   }
+  @media (max-width: $breakpoint-tablet) {
+    padding: 2rem 0;
+  }
   p {
     width: 90vw;
     line-height: 1.618;
@@ -393,9 +396,12 @@ section {
     }
   }
   &--titre {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     text-align: left;
+     @media (min-width: $breakpoint-tablet) {
+      width: 80%;
+  }
   }
   &--chiffre {
     border: 5px solid $gris1;
@@ -837,8 +843,8 @@ section {
     filter: blur(1px);
     z-index: 2;
     animation: hideshow 1.5s ease;
-    position: sticky;
-    top: 5vh;
+    position: fixed;
+    //top: 33%;
   }
 }
 
