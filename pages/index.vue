@@ -15,6 +15,12 @@
     <section class="container container-2 fond-gris">
       <!-- <LazyOeufImage /> -->
       <p class="text-gris5 h4">
+        <span class="text-black">Les émissions de gaz à effet de serre liées à la technologie numérique dépassent celles de l'aviation</span>. Cependant, il y a une bonne nouvelle<span class="insec">&thinsp;</span>: <span class="text-black">chaque site web a le pouvoir de contribuer à la solution</span>. 
+        Un site web conçu de manière écoresponsable nécessite <span class="text-black">moins de ressources, se charge plus rapidement, sollicite moins les téléphones et reste beau</span><span class="insec">&thinsp;</span>: c'est non seulement possible, et c'est aussi ce que je fais...
+        
+        <!-- <span class="text-black">Le numérique pèse plus lourd que l'aviation</span> dans nos émissions de CO2. La bonne nouvelle<span class="insec">&thinsp;</span>? <span class="text-black">Chaque site peut faire partie de la solution</span>. Un site éco-conçu consomme moins de ressources, charge plus vite, use moins les téléphones et reste beau : c'est possible, et c'est ce que je fais... -->
+      </p>
+      <!-- <p class="text-gris5 h4">
         Vous avez sans doute entendu dire que le
         <span class="text-black"
           >numérique émettrait plus de CO2 que le transport aérien</span
@@ -27,7 +33,7 @@
         <span class="text-black"
           >Pas du tout<span class="insec">&thinsp;</span>!</span
         >
-      </p>
+      </p> -->
     </section>
     <section class="container--space-between fond-gris">
       <div class="impact">
