@@ -45,7 +45,8 @@ export default defineEventHandler(async (event) => {
     setResponseHeader(event, 'Content-Type', 'application/json; charset=utf-8')
     setResponseHeader(event, 'Cache-Control', 'public, max-age=3600, s-maxage=3600')
 
-    return feed
+    // Retourner une string JSON pour garantir l'encodage UTF-8
+    return JSON.stringify(feed)
   } catch (error) {
     console.error('Error generating JSON feed:', error)
     throw createError({
