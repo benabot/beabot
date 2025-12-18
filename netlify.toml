@@ -11,7 +11,7 @@
   publish = ".output/public"
 
   # Environment variables
-  environment = { NODE_VERSION = "18", NUXT_PUBLIC_SITE_URL = "https://beabot.netlify.app", NETLIFY_USE_YARN = "false", NITRO_PRESET = "static", PYTHON_VERSION = "3.11.8" }
+  environment = { NODE_VERSION = "18", NUXT_PUBLIC_SITE_URL = "https://beabot.fr", NETLIFY_USE_YARN = "false", NITRO_PRESET = "static", PYTHON_VERSION = "3.11.8" }
 
 # Build optimizations
 [build.processing]
@@ -86,6 +86,13 @@
     Cache-Control = "private, max-age=3600"
 
 # Redirects and rewrites
+# Redirect from Netlify subdomain to custom domain
+[[redirects]]
+  from = "https://beabot.netlify.app/*"
+  to = "https://beabot.fr/:splat"
+  status = 301
+  force = true
+
 # Temporarily disabled - investigating redirect loop
 # [[redirects]]
 #   from = "https://beabot.netlify.com/*"
@@ -115,7 +122,7 @@
 
   [plugins.inputs]
     # Submit sitemap to search engines
-    baseUrl = "https://beabot.netlify.app"
+    baseUrl = "https://beabot.fr"
     sitemapPath = "/sitemap.xml"
     providers = [
       "google",
