@@ -6,6 +6,13 @@ export default defineNuxtConfig({
   // Compatibility date for Nuxt 3
   compatibilityDate: '2024-12-06',
 
+  // Runtime configuration (accessible via useRuntimeConfig())
+  runtimeConfig: {
+    public: {
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://beabot.netlify.app',
+    },
+  },
+
   // TypeScript configuration
   typescript: {
     strict: false,

@@ -8,7 +8,8 @@ export default defineEventHandler(async (event) => {
       .sort({ $numeric: true })
       .find()
 
-    const baseUrl = 'https://beabot.fr'
+    const config = useRuntimeConfig()
+    const baseUrl = config.public.siteUrl
 
     // Échapper les caractères spéciaux pour XML
     const escapeXml = (unsafe: string) => {

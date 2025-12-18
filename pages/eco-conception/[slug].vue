@@ -202,6 +202,8 @@ onBeforeUnmount(() => {
 })
 
 // Head metadata with structured data
+const config = useRuntimeConfig()
+
 useHead({
   title: article.value?.title,
   meta: [
@@ -237,7 +239,7 @@ useHead({
     {
       hid: 'canonical',
       rel: 'canonical',
-      href: `https://beabot.netlify.app/eco-conception/${route.params.slug}`,
+      href: `${config.public.siteUrl}/eco-conception/${route.params.slug}`,
     },
   ],
   script: [
@@ -256,10 +258,10 @@ useHead({
           publisher: {
             '@type': 'Organization',
             name: 'BeAbot',
-            url: 'https://beabot.netlify.app',
+            url: config.public.siteUrl,
             logo: {
               '@type': 'ImageObject',
-              url: 'https://beabot.netlify.app/beabot.png',
+              url: `${config.public.siteUrl}/beabot.png`,
             },
           },
         },
@@ -271,13 +273,13 @@ useHead({
               '@type': 'ListItem',
               position: 1,
               name: 'BeAbot',
-              item: 'https://beabot.netlify.app',
+              item: config.public.siteUrl,
             },
             {
               '@type': 'ListItem',
               position: 2,
               name: 'Eco-conception',
-              item: `https://beabot.netlify.app/eco-conception/${route.params.slug}`,
+              item: `${config.public.siteUrl}/eco-conception/${route.params.slug}`,
             },
             {
               '@type': 'ListItem',

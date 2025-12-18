@@ -7,7 +7,8 @@ export default defineEventHandler(async (event) => {
       .sort({ $numeric: true })
       .find()
 
-    const baseUrl = 'https://beabot.fr'
+    const config = useRuntimeConfig()
+    const baseUrl = config.public.siteUrl
 
     // Générer le JSON Feed version 1.1
     const feed = {

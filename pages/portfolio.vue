@@ -142,6 +142,8 @@ const change = (valeur) => {
   tout.value = false
 }
 
+const config = useRuntimeConfig()
+
 useHead({
   title: 'portfolio',
   meta: [
@@ -156,7 +158,7 @@ useHead({
     {
       hid: 'canonical',
       rel: 'canonical',
-      href: 'https://beabot.netlify.app/eco-conception/portfolio',
+      href: `${config.public.siteUrl}/eco-conception/portfolio`,
     },
   ],
 })
