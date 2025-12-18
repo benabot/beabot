@@ -10,9 +10,38 @@
       <h2 class="links text-gris2 text-normal titre3">Éco-conception web</h2>
       <p class="links lettre-smcp titre-sub h4 text-fin">
         Performance, accessibilité, sobriété : un web durable et beau
-        
       </p>
-      
+
+      <!-- CTAs Hero -->
+      <div class="hero-ctas">
+        <button
+          @click="scrollToNext"
+          class="hero-cta hero-cta--primary"
+          aria-label="Découvrir la suite du contenu"
+        >
+          <span>Découvrir</span>
+        </button>
+        <NuxtLink
+          to="/contact"
+          class="hero-cta hero-cta--secondary"
+        >
+          <span>Me contacter</span>
+        </NuxtLink>
+      </div>
+
+      <!-- Flèche de scroll -->
+      <div class="scroll-indicator" aria-hidden="true">
+        <svg viewBox="0 0 32.8 27.3" xmlns="http://www.w3.org/2000/svg">
+          <path
+            fill="#04d94f"
+            d="M.4 12.7c3.5 1.7 6.5 3.8 9.5 6 1.5 1.1 2.9 2.3 4.4 3.5.4.3.7.6 1 .9l1 .9c.2.2.4.3.6.2.3 0 .5-.1.6-.2l.9-1c.3-.4.6-.7 1-1 1.4-1.3 2.7-2.6 4.1-3.9 2.8-2.5 5.7-4.8 9-6.8l.2.2c-2.4 2.8-4.9 5.5-7.4 8.2L21.6 24l-1.9 2c-.7.8-1.7 1.2-2.7 1.3-1 0-2-.3-2.7-1l-2.1-1.9-4.1-3.8c-2.7-2.5-5.4-5-8.1-7.6l.4-.3z"
+          />
+          <path
+            fill="#04d94f"
+            d="M.4 1.3c3.5 1.7 6.5 3.8 9.5 6 1.5 1.1 2.9 2.3 4.4 3.5.4.3.7.6 1 .9l1 .9c.2.2.4.3.6.2.3 0 .5-.1.6-.2l.9-1c.3-.4.6-.7 1-1 1.4-1.3 2.7-2.6 4.1-3.9 2.8-2.5 5.7-4.8 9-6.8l.2.2c-2.4 2.8-4.9 5.5-7.4 8.2l-3.8 4.1-1.9 2.1c-.6.9-1.6 1.3-2.6 1.4-1 0-2-.3-2.7-1L12.2 13 8.1 9.2C5.4 6.7 2.7 4.2 0 1.6l.4-.3z"
+          />
+        </svg>
+      </div>
     </section>
     <section class="container container-2 fond-gris">
       <!-- <LazyOeufImage /> -->
@@ -364,6 +393,17 @@
 
 <script setup>
 const config = useRuntimeConfig()
+
+// Fonction de scroll smooth vers la section suivante
+const scrollToNext = () => {
+  const container2 = document.querySelector('.container-2')
+  if (container2) {
+    container2.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    })
+  }
+}
 
 useHead({
   title: 'Accueil - éco-conception web',
@@ -969,6 +1009,123 @@ section {
     width: 33px;
     margin: 0 auto;
     padding: 1rem 0;
+  }
+}
+
+// CTAs Hero
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 3;
+
+  @media (max-width: $breakpoint-tablet) {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+}
+
+.hero-cta {
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.75rem 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  display: inline-block;
+
+  span {
+    position: relative;
+    z-index: 1;
+    transition: 0.3s;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+  }
+
+  &--primary {
+    color: $vert;
+    background: transparent;
+
+    &::before {
+      background: $vert;
+    }
+
+    &:hover {
+      color: darken($vert, 10%);
+
+      &::before {
+        width: 80%;
+      }
+
+      span::after {
+        content: ' →';
+        margin-left: 0.3rem;
+      }
+    }
+  }
+
+  &--secondary {
+    color: $bleu2;
+    background: transparent;
+
+    &::before {
+      background: $bleu2;
+    }
+
+    &:hover {
+      color: darken($bleu2, 10%);
+
+      &::before {
+        width: 80%;
+      }
+    }
+  }
+}
+
+.scroll-indicator {
+  width: 40px;
+  margin: 2.5rem auto 0;
+  animation: bounce 2s infinite;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
   }
 }
 </style>
