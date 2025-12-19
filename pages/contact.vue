@@ -137,4 +137,33 @@ button:hover {
   color: #0DC763;
   border: 1px solid #0DC763;
 }
+/* input:focus,
+textarea:focus {
+  outline: 2px solid #0dc763;
+  outline-offset: 2px;
+} */
+ input,
+textarea {
+  outline: none;
+}
+
+input:focus,
+textarea:focus,
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  box-shadow: none;
+  border: 2px solid #04d94f;
+  box-shadow: 0 0 0 2px rgba(4, 217, 79, 0.25);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+  box-shadow: 0 0 0px 1000px #fff inset;
+  -webkit-text-fill-color: #000;
+}
+
 </style>

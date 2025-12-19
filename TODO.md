@@ -241,6 +241,7 @@ Audit complet UX/UI desktop et mobile réalisé sur :
 ##### CT-11-03 : Layout 2 colonnes desktop
 
 - [ ] Créer branche `feature/ct-11-03-contact-layout`
+- [ ] styliser les champs du formulaire et le bouton en accord avec le design system du site
 - [ ] Implémenter le layout 2 colonnes :
   - Colonne gauche : Titre, accroche, infos contact (email, LinkedIn)
   - Colonne droite : Formulaire
@@ -264,8 +265,8 @@ Desktop :
 
 ##### CT-11-04 : Focus states accessibles
 
-- [ ] Travailler sur la branche `feature/ct-11-01-contact-form`
-- [ ] Améliorer le focus visible sur les inputs
+- [x] Travailler sur la branche `feature/ct-11-01-contact-form`
+- [x] Améliorer le focus visible sur les inputs
 - **Code suggéré** :
 
 ```css
