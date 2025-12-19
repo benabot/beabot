@@ -1,8 +1,11 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <section class="container">
-    <h1>Contact</h1>
-    <p v-if="sent" class="notice" aria-live="polite">Message envoyé. Merci.</p>
+    <h1>Parlons de votre projet</h1>
+    <p>
+      Une question sur l'éco-conception ? <br/>Un site à créer ou optimiser ?  <br/>Écrivez-moi, <strong>je réponds personnellement sous 48h</strong>.
+    </p>
+    <p v-if="sent" class="notice" aria-live="polite">✓ Message envoyé ! Je vous recontacte très vite.</p>
     <p v-if="error" class="error" aria-live="assertive">{{ error }}</p>
     <form
       name="contact"
@@ -17,19 +20,19 @@
         <label>Ne pas remplir : <input name="bot-field" v-model="form.botField" /></label>
       </p>
 
-      <label>Nom
+      <label>Votre nom
         <input name="name" v-model="form.name" required />
       </label>
 
-      <label>Email
+      <label>Votre Email
         <input type="email" name="email" v-model="form.email" required />
       </label>
 
-      <label>Message
+      <label>Votre message (décrivez votre projet ou posez votre question)
         <textarea name="message" v-model="form.message" required rows="6"></textarea>
       </label>
 
-      <button type="submit" :disabled="loading">{{ loading ? 'Envoi…' : 'Envoyer' }}</button>
+      <button type="submit" :disabled="loading">{{ loading ? 'Envoi…' : 'Envoyer mon message →' }}</button>
     </form>
   </section>
 </template>
@@ -109,7 +112,11 @@ async function onSubmit() {
 </script>
 
 <style scoped>
-.container { max-width: 720px; margin: 2rem auto; }
+.container {
+  width: clamp(90vw, 80vw, 720px);
+  margin: 2rem auto;
+}
+
 .hidden { display: none; }
 label { display:block; margin: .75rem 0; }
 input, textarea { width:100%; }

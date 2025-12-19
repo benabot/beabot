@@ -211,8 +211,8 @@ Audit complet UX/UI desktop et mobile réalisé sur :
 
 ##### CT-11-01 : Titre et accroche engageants
 
-- [ ] Créer branche `feature/ct-11-01-contact-intro`
-- [ ] Remplacer le titre "Contact" seul
+- [x] Créer branche `feature/ct-11-01-contact-form`
+- [x] Remplacer le titre "Contact" seul
 - **Proposition** :
 
   > # Parlons de votre projet
@@ -222,15 +222,16 @@ Audit complet UX/UI desktop et mobile réalisé sur :
 
 ##### CT-11-02 : Labels humanisés
 
-- [ ] Créer branche `feature/ct-11-02-contact-labels`
-- [ ] Modifier les labels du formulaire et activer l'auto-complétion avec les balises html
+- [x] Travailler sur la branche `feature/ct-11-01-contact-form`
+- [x] Modifier les labels du formulaire et activer l'auto-complétion avec les balises html
 - **Propositions** :
   - "Nom" → "Votre nom"
   - "Email" → "Votre email"
   - "Message" → "Votre message (décrivez votre projet ou posez votre question)"
-- [ ] Modifier le bouton : "Envoyer" → "Envoyer mon message →"
-- [ ] Améliorer le message de confirmation :
+- [x] Modifier le bouton : "Envoyer" → "Envoyer mon message →"
+- [x] Améliorer le message de confirmation :
   > ✓ Message envoyé ! Je vous recontacte très vite.
+- [ ] Opt-in obligatoire à cocher avec texte en lien vers la page http://localhost:3000/mentions-legales
 - **Fichier** : `pages/contact.vue`
 
 ---
@@ -263,7 +264,7 @@ Desktop :
 
 ##### CT-11-04 : Focus states accessibles
 
-- [ ] Créer branche `feature/ct-11-04-contact-focus`
+- [ ] Travailler sur la branche `feature/ct-11-01-contact-form`
 - [ ] Améliorer le focus visible sur les inputs
 - **Code suggéré** :
 
@@ -282,6 +283,7 @@ textarea:focus {
 
 - [ ] Créer branche `feature/ct-11-05-contact-email`
 - [ ] Ajouter un lien mailto: visible comme alternative au formulaire
+- [ ] protéger ce mail du spam
 - [ ] Ajouter le lien LinkedIn
 - **Fichier** : `pages/contact.vue`
 
