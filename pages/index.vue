@@ -12,25 +12,12 @@
         Performance, accessibilité, sobriété : un web durable et beau
       </p>
 
-      <!-- CTAs Hero -->
-      <!-- <div class="hero-ctas">
-        <button
-          @click="scrollToNext"
-          class="hero-cta hero-cta--primary"
-          aria-label="Aller à la section suivante : impacts du numérique"
-        >
-          <span>Découvrir <br/>la démarche</span>
-        </button>
-        <NuxtLink
-          to="/contact"
-          class="hero-cta hero-cta--secondary"
-        >
-          <span>Me contacter</span>
-        </NuxtLink>
-      </div> -->
-
       <!-- Flèche de scroll -->
-      <div class="scroll-indicator" aria-hidden="true">
+      <button
+        @click="scrollToNext"
+        class="scroll-indicator"
+        aria-label="Aller à la section suivante : impacts du numérique"
+      >
         <svg viewBox="0 0 32.8 27.3" xmlns="http://www.w3.org/2000/svg">
           <path
             fill="#04d94f"
@@ -41,7 +28,7 @@
             d="M.4 1.3c3.5 1.7 6.5 3.8 9.5 6 1.5 1.1 2.9 2.3 4.4 3.5.4.3.7.6 1 .9l1 .9c.2.2.4.3.6.2.3 0 .5-.1.6-.2l.9-1c.3-.4.6-.7 1-1 1.4-1.3 2.7-2.6 4.1-3.9 2.8-2.5 5.7-4.8 9-6.8l.2.2c-2.4 2.8-4.9 5.5-7.4 8.2l-3.8 4.1-1.9 2.1c-.6.9-1.6 1.3-2.6 1.4-1 0-2-.3-2.7-1L12.2 13 8.1 9.2C5.4 6.7 2.7 4.2 0 1.6l.4-.3z"
           />
         </svg>
-      </div>
+      </button>
     </section>
     <section class="container container-2 fond-gris">
       <!-- <LazyOeufImage /> -->
@@ -1106,6 +1093,8 @@ section {
   cursor: pointer;
   opacity: 0.7;
   transition: opacity 0.3s;
+  border: none;
+  background: transparent;
 
   &:hover {
     opacity: 1;
