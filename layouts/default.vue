@@ -275,7 +275,7 @@ a.nuxt-link-active {
     .menu-mobile {
       position: absolute;
       padding-top: 3rem;
-      width: 86vw;
+      width: 114vw;
       height: 60vh;
       background: $vert;
       clip-path: ellipse(87% 91% at 0% 8%);
