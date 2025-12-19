@@ -32,6 +32,14 @@
         <textarea name="message" v-model="form.message" required rows="6"></textarea>
       </label>
 
+      <label class="optin">
+        <input type="checkbox" name="optin" v-model="form.optin" required />
+        <span>
+          J'accepte les
+          <NuxtLink to="/mentions-legales" target="_blank" rel="noopener noreferrer">mentions légales</NuxtLink>.
+        </span>
+      </label>
+
       <button type="submit" :disabled="loading">{{ loading ? 'Envoi…' : 'Envoyer mon message →' }}</button>
     </form>
   </section>
@@ -69,7 +77,8 @@ const form = reactive({
   name: '',
   email: '',
   message: '',
-  botField: ''
+  botField: '',
+  optin: false
 })
 
 // Submit handler
@@ -84,7 +93,8 @@ async function onSubmit() {
       name: form.name,
       email: form.email,
       message: form.message,
-      'bot-field': form.botField
+      'bot-field': form.botField,
+      optin: form.optin ? 'yes' : 'no'
     })
 
     const res = await fetch('/contact', {
@@ -100,6 +110,7 @@ async function onSubmit() {
       form.email = ''
       form.message = ''
       form.botField = ''
+      form.optin = false
     } else {
       error.value = 'Erreur lors de l\'envoi. Réessayez plus tard.'
     }
@@ -120,6 +131,15 @@ async function onSubmit() {
 .hidden { display: none; }
 label { display:block; margin: .75rem 0; }
 input, textarea { width:100%; }
+input[type='checkbox'] { width: auto; margin-top: 0.2rem; }
+.optin { display: flex; align-items: flex-start; gap: 0.5rem; }
+.optin a {
+  background: linear-gradient(currentColor, currentColor) right bottom / 100% 0.12em no-repeat;
+  transition: background-size 0.4s;
+}
+.optin a:hover {
+  background-size: 100% 0.22em;
+}
 .notice { background: #f0fff4; border: 1px solid #b7f5c6; padding: .75rem; margin-bottom: 1rem; }
 
 button {

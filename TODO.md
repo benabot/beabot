@@ -231,7 +231,7 @@ Audit complet UX/UI desktop et mobile réalisé sur :
 - [x] Modifier le bouton : "Envoyer" → "Envoyer mon message →"
 - [x] Améliorer le message de confirmation :
   > ✓ Message envoyé ! Je vous recontacte très vite.
-- [ ] Opt-in obligatoire à cocher avec texte en lien vers la page http://localhost:3000/mentions-legales
+- [x] Opt-in obligatoire à cocher avec texte en lien vers la page http://localhost:3000/mentions-legales
 - **Fichier** : `pages/contact.vue`
 
 ---
