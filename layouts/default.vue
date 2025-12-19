@@ -30,7 +30,8 @@
             >
           </li>
           <li @click="showMobileMenu = !showMobileMenu">
-            <a href="#footer" class="title title--menu h2">Contact</a>
+            <NuxtLink to="/contact" class="title title--menu h2">Contact</NuxtLink>
+            
           </li>
         </ul>
       </transition>
@@ -131,7 +132,9 @@
       >
     </nav>
     <nav role="navigation" class="nav-desktop nav-4 h4">
-      <a href="#footer" :class="couleurBas">Contact</a>
+     
+                  <NuxtLink to="/contact" :class="couleurBas">Contact</NuxtLink>
+
     </nav>
     <slot :class="{ 'main-flou': showMobileMenu }" />
     <TheFooter />
@@ -214,6 +217,11 @@ onUnmounted(() => {
 
 a.nuxt-link-active {
   font-weight: bold;
+}
+
+.nav-desktop a.router-link-active,
+.nav-desktop a.router-link-exact-active {
+font-weight: bold;
 }
 // .fade-enter {
 //   color: red;
