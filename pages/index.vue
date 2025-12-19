@@ -13,13 +13,13 @@
       </p>
 
       <!-- CTAs Hero -->
-      <div class="hero-ctas">
+      <!-- <div class="hero-ctas">
         <button
           @click="scrollToNext"
           class="hero-cta hero-cta--primary"
-          aria-label="Découvrir la suite du contenu"
+          aria-label="Aller à la section suivante : impacts du numérique"
         >
-          <span>Découvrir</span>
+          <span>Découvrir <br/>la démarche</span>
         </button>
         <NuxtLink
           to="/contact"
@@ -27,7 +27,7 @@
         >
           <span>Me contacter</span>
         </NuxtLink>
-      </div>
+      </div> -->
 
       <!-- Flèche de scroll -->
       <div class="scroll-indicator" aria-hidden="true">
