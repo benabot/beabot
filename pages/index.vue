@@ -79,7 +79,7 @@
           </div>
         </div>
         <div class="impact--col impact--col__1">
-          <div class="impact--chiffre">
+          <div class="impact--chiffre impact-card">
             <div class="bg-gris bg-gris__bleu">
               <p class="para-gros">
                 1 Le numérique génère des effets environnementaux mesurables :
@@ -88,7 +88,7 @@
               </p>
             </div>
           </div>
-          <div class="impact--chiffre">
+          <div class="impact--chiffre impact-card">
             <div class="bg-gris bg-gris__vert">
               <p class="para-gros">
                 2 Ces effets se répartissent entre les centres de données, les
@@ -99,7 +99,7 @@
         </div>
 
         <div class="impact--col impact--col__2">
-          <div class="impact--chiffre">
+          <div class="impact--chiffre impact-card">
             <div class="bg-gris bg-gris__jaune">
               <p class="para-gros">
                 3 La fabrication et l’usage des terminaux concentrent
@@ -107,7 +107,7 @@
               </p>
             </div>
           </div>
-          <div class="impact--chiffre">
+          <div class="impact--chiffre impact-card">
             <div class="bg-gris bg-gris__gris">
               <p class="para-gros">
                 4 Cette empreinte débute dès la production des appareils, bien
@@ -450,6 +450,15 @@ section {
   flex-direction: column;
   justify-content: space-evenly;
   hyphens: none;
+  @media (max-width: 1200px) {
+    height: auto;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+  @media (max-width: $breakpoint-tablet) {
+    gap: 1rem;
+  }
   @media (min-width: $breakpoint-tablet) {
     flex-direction: row;
   }
@@ -459,6 +468,13 @@ section {
     flex-direction: column;
     justify-content: space-evenly;
     height: 33vh;
+    @media (max-width: 1200px) {
+      height: auto;
+      gap: 1rem;
+    }
+    @media (max-width: $breakpoint-tablet) {
+      gap: 1rem;
+    }
     @media (min-width: $breakpoint-tablet) {
       height: auto;
       &__1 {
@@ -492,6 +508,12 @@ section {
     min-height: 31.8%;
     display: flex;
     align-items: stretch;
+    @media (max-width: 1200px) {
+      min-height: auto;
+    }
+    @media (max-width: $breakpoint-tablet) {
+      min-height: auto;
+    }
     .bg-gris {
       background: $gris6;
       padding: 0.5rem 1rem;
@@ -521,6 +543,70 @@ section {
     border-top: 2px solid $gris4;
   }
 }
+
+// .impact-card {
+//   display: flex;
+//   width: 100%;
+//   min-height: auto;
+//   aspect-ratio: 1 / 1;
+//   box-sizing: border-box;
+//   max-width: 100%;
+//   @media (max-width: 1200px) {
+//     aspect-ratio: auto;
+//     min-height: 220px;
+//   }
+//   @media (max-width: $breakpoint-tablet) {
+//     min-height: 180px;
+//   }
+// }
+/* 1) Stopper les césures moches dans les cartes (nu-mé-rique / environnemen-tale)
+   Tu as hyphens: none sur .impact (conteneur), mais ça ne suffit pas toujours si d’autres règles s’appliquent aux <p>.
+   On force sur le texte des cartes. */
+.impact .impact--chiffre .para-gros {
+  hyphens: none;
+  -webkit-hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+/* 2) Rendre les cartes moins “lourdes” visuellement : padding responsive + confort de lecture
+   (sans changer le layout, ça améliore immédiatement desktop + mobile). */
+.impact .impact--chiffre .bg-gris {
+  padding: clamp(10px, 1.2vw, 18px) clamp(12px, 1.6vw, 22px);
+}
+
+.impact .impact--chiffre .para-gros {
+  line-height: 1.35;
+}
+
+/* 3) Stabiliser les hauteurs : éviter l’aspect-ratio 1/1 sur desktop (trop rigide) et réduire les min-height mobiles
+   → On garde le “carré” uniquement sur très grand écran si tu y tiens, sinon on privilégie une hauteur souple.
+   Impact : meilleure homogénéité des 4 blocs + moins de vide inutile. */
+/* Base : comportement fluide par défaut (mobile + tablette + laptop) */
+.impact-card {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  aspect-ratio: auto;
+  min-height: 180px;
+
+  @media (min-width: $breakpoint-tablet) {
+    min-height: 220px;
+  }
+
+  @media (min-width: 1200px) {
+    aspect-ratio: 1 / 1;
+    min-height: 0;
+  }
+}
+.impact--titre {
+   @media (max-width: $breakpoint-tablet) {
+    padding-top: 3rem;
+  }
+}
+
+
+
 .container-3 {
   display: flex;
   overflow: hidden;
@@ -971,6 +1057,9 @@ section {
 
 .mt-n10 {
   margin-top: -10%;
+  @media (max-width: $breakpoint-tablet) {
+    margin-top: 0;
+  }
 }
 .sct-footer {
   &--btn {

@@ -90,8 +90,8 @@ Audit complet UX/UI desktop et mobile réalisé sur :
   >
   > "Performance, accessibilité, sobriété : un web durable et beau"
 - [x] Garder le Oeuf animé
-- [ ] Ajouter 2 CTAs visibles : [Découvrir →] (qui permet de descendre à la section suivante) [Me contacter]
-- [ ] Ou ajouter une flèche centré en bas du container pour inviter au scroll (cf. les autres flèches sur la page)
+- [x] Ajouter 2 CTAs visibles : [Découvrir →] (qui permet de descendre à la section suivante) [Me contacter]
+- [x] Ou ajouter une flèche centré en bas du container pour inviter au scroll (cf. les autres flèches sur la page)
   - **Fichier** : `pages/index.vue` (section container-1)
 
 ##### HP-11-02 : Reformuler l'accroche en positif
@@ -151,10 +151,10 @@ Audit complet UX/UI desktop et mobile réalisé sur :
 
 ##### HP-11-06 : Refonte layout section Impacts (2x2 grid)
 
-- [ ] Créer branche `feature/hp-11-06-impacts-grid`
-- [ ] Remplacer le layout 3 colonnes par une grille 2x2
-- [ ] Mettre les chiffres en typographie hero (grand)
-- [ ] Supprimer la colonne centrale titre (intégrer au-dessus)
+- [x] Créer branche `feature/hp-11-06-impacts-grid`
+- [x] Remplacer le layout 3 colonnes par css grid
+- [x] Mettre les chiffres en typographie hero (grand)
+- [x] Les blocs impacts doivent être des carrés responsives de la même taille
 - **Impact éco** : -6 éléments DOM, structure simplifiée
 - **Fichier** : `pages/index.vue` (section impact, styles)
 
