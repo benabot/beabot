@@ -7,11 +7,8 @@
       />
     </svg>
     <div class="container-or">
-      <div class="item a " >
-        <!-- <div class="title title--footer h1">  beAbot :</div> -->
-         <div class="title title--footer h1">
-  <span class="brand-word">beAbot</span><span class="brand-mark">:</span>
-</div>
+      <div class="item a">
+        <div class="title title--footer h1 beabot">beAbot</div>
 
         
         <nav id="footer--nav">
@@ -74,12 +71,14 @@ footer {
   display: flex;
   position: relative;
   z-index: 1;
-.title--footer {
--webkit-font-smoothing: antialiased;
-color: rgba(0, 0, 0, 0);
--webkit-text-stroke-color: rgb(139, 138, 137);
--webkit-text-stroke-width: 2px;
-}
+  .title--footer {
+    color: rgba(235, 235, 235, 0.82);
+    -webkit-text-stroke-width: 0;
+    text-shadow:
+      0 1px 0 rgba(0, 0, 0, 0.25),
+      0 12px 30px rgba(0, 0, 0, 0.28);
+    letter-spacing: -0.02em;
+  }
   .icon {
     display: inline-flex;
     align-self: center;
@@ -105,8 +104,10 @@ color: rgba(0, 0, 0, 0);
   a {
     text-decoration: none;
     color: $gris4;
+    background: linear-gradient(currentColor, currentColor) left bottom / 0% 0.12em no-repeat;
+    transition: background-size 0.3s ease;
     &:hover {
-      text-decoration: underline;
+      background-size: 100% 0.12em;
     }
   }
 }
@@ -153,46 +154,7 @@ color: rgba(0, 0, 0, 0);
     
     .title--footer { 
       font-size: clamp(3rem, 10vw, 6rem);
-    opacity: 0.85;
-    font-weight: $bold;
-    /* garde ton stroke existant mais le rend plus "studio" */
-  letter-spacing: -0.02em;
-  line-height: 0.9;
-  text-transform: none;
-
-  /* texture subtile */
-  -webkit-text-stroke-width: 2px; /* tu as déjà 2px, ok */
-  -webkit-text-stroke-color: rgba(166,165,164, 0.75);
-
-  /* légère "présence" sans remplir vraiment */
-  text-shadow:
-    0 0 0.01px rgba(166,165,164,0.35),
-    0 0 24px rgba(0,0,0,0.20);
-
-  /* micro lissage */
-  font-kerning: normal;
-  text-rendering: geometricPrecision;
     }
-    .title--footer .brand-word {
-  display: inline-block;
-}
-
-.title--footer .brand-mark {
-  display: inline-block;
-  margin-left: 0.06em;
-  transform: translateY(-0.06em);
-  -webkit-text-stroke-color: rgba(166,165,164, 0.55);
-  opacity: 0.85;
-}
-
-/* interaction discrète : le mot "respire" au survol du footer */
-footer:hover .title--footer {
-  -webkit-text-stroke-color: rgba(166,165,164, 0.95);
-  text-shadow:
-    0 0 0.01px rgba(166,165,164,0.45),
-    0 0 28px rgba(0,0,0,0.28);
-}
-
   }
   &.b {
     grid-area: B;
@@ -275,18 +237,10 @@ footer:hover .title--footer {
 
 #footer--nav ul {
   margin: 0;
-  padding-left: 1.15rem;
-  list-style: disc;
-    //margin: 0;
-  //padding: 0;
-  //list-style: none;
+  padding: 0;
+  list-style: none;
   display: grid;
-  gap: 0.75rem; /* rythme lisible */
-}
-
-#footer--nav li::marker {
-  color: rgba(166,165,164, 0.45);
-  font-size: 0.85em;
+  gap: 0.65rem; /* rythme lisible */
 }
 
 #footer--nav a {
@@ -295,12 +249,12 @@ footer:hover .title--footer {
   text-decoration: none;
   color: rgba(166,165,164, 0.85);
   letter-spacing: 0.01em;
+  background: linear-gradient(currentColor, currentColor) left bottom / 0% 0.12em no-repeat;
+  transition: background-size 0.3s ease;
 }
 
 #footer--nav a:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.22em;
-  text-decoration-thickness: 1px;
+  background-size: 100% 0.12em;
 }
 
 #footer--nav a:focus-visible {
@@ -331,16 +285,17 @@ footer:hover .title--footer {
 #footer--nav li {
   display: flex;
   align-items: baseline;
-  gap: 0.75rem; /* espace puce/texte */
+  gap: 0.6rem; /* espace puce/texte */
   line-height: 1.15;
   font-size: clamp(1rem, 1.2vw, 1.25rem);
 }
 
 /* puce “typographique” (pas une grosse pastille) */
 #footer--nav li::before {
-  content: "•";
-  opacity: 0.65;
-  transform: translateY(-0.04em);
+  content: '•';
+  font-size: 0.9em;
+  opacity: 0.5;
+  transform: translateY(-0.05em);
 }
 
 /* liens : même logique que tes autres liens (underline “propre”) */
@@ -368,6 +323,22 @@ footer:hover .title--footer {
 #footer--nav a.router-link-exact-active {
   opacity: 1;
   background-size: 100% 0.12em;
+}
+
+.beabot {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.beabot::after {
+  content: '';
+  width: 0.45em;
+  height: 0.45em;
+  margin-left: 0.25em;
+  border-radius: 50%;
+  background-color: #04d94f;
+  transform: translateY(0.05em);
 }
 
 </style>
