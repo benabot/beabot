@@ -7,15 +7,31 @@
       />
     </svg>
     <div class="container-or">
-      <div class="item a title title--footer h1" aria-label="beAbot - Contact">
-        Contact :
+      <div class="item a " >
+        <!-- <div class="title title--footer h1">  beAbot :</div> -->
+         <div class="title title--footer h1">
+  <span class="brand-word">beAbot</span><span class="brand-mark">:</span>
+</div>
+
+        
+        <nav id="footer--nav">
+          <ul>
+              <li><NuxtLink to="/" no-prefetch>Accueil</NuxtLink></li>
+              <li><NuxtLink to="/eco-conception" no-prefetch>Éco-conception</NuxtLink></li>
+              <li><NuxtLink to="/portfolio" no-prefetch>Portfolio</NuxtLink></li>
+            </ul>
+        </nav>
+      
       </div>
       <div class="item b h3 text-black">
-        <NuxtLink to="/contact" class="h3 text-black" no-prefetch
-          >Nous écrire</NuxtLink
+        <p class="h3 text-black" 
+          >Échangeons</p
         >
       </div>
       <div class="item c">
+         <NuxtLink to="/contact"  no-prefetch aria-label="beAbot - Contact"
+          >Formulaire de contact</NuxtLink
+        >
         <a href="https://twitter.com/AbotBenoit" target="_blank" class="twit"
           >@BenoitAbot</a
         >
@@ -128,12 +144,55 @@ color: rgba(0, 0, 0, 0);
 
   &.a {
     grid-area: A;
-    font-size: clamp(3rem, 10vw, 6rem);
+   
+    //color: $gris4;
+    //user-select: none;
+    //pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    
+    .title--footer { 
+      font-size: clamp(3rem, 10vw, 6rem);
     opacity: 0.85;
     font-weight: $bold;
-    //color: $gris4;
-    user-select: none;
-    pointer-events: none;
+    /* garde ton stroke existant mais le rend plus "studio" */
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  text-transform: none;
+
+  /* texture subtile */
+  -webkit-text-stroke-width: 2px; /* tu as déjà 2px, ok */
+  -webkit-text-stroke-color: rgba(166,165,164, 0.75);
+
+  /* légère "présence" sans remplir vraiment */
+  text-shadow:
+    0 0 0.01px rgba(166,165,164,0.35),
+    0 0 24px rgba(0,0,0,0.20);
+
+  /* micro lissage */
+  font-kerning: normal;
+  text-rendering: geometricPrecision;
+    }
+    .title--footer .brand-word {
+  display: inline-block;
+}
+
+.title--footer .brand-mark {
+  display: inline-block;
+  margin-left: 0.06em;
+  transform: translateY(-0.06em);
+  -webkit-text-stroke-color: rgba(166,165,164, 0.55);
+  opacity: 0.85;
+}
+
+/* interaction discrète : le mot "respire" au survol du footer */
+footer:hover .title--footer {
+  -webkit-text-stroke-color: rgba(166,165,164, 0.95);
+  text-shadow:
+    0 0 0.01px rgba(166,165,164,0.45),
+    0 0 28px rgba(0,0,0,0.28);
+}
+
   }
   &.b {
     grid-area: B;
@@ -213,4 +272,102 @@ color: rgba(0, 0, 0, 0);
     }
   }
 }
+
+#footer--nav ul {
+  margin: 0;
+  padding-left: 1.15rem;
+  list-style: disc;
+    //margin: 0;
+  //padding: 0;
+  //list-style: none;
+  display: grid;
+  gap: 0.75rem; /* rythme lisible */
+}
+
+#footer--nav li::marker {
+  color: rgba(166,165,164, 0.45);
+  font-size: 0.85em;
+}
+
+#footer--nav a {
+  display: inline-block;
+  padding: 0.15rem 0;
+  text-decoration: none;
+  color: rgba(166,165,164, 0.85);
+  letter-spacing: 0.01em;
+}
+
+#footer--nav a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+}
+
+#footer--nav a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(166,165,164, 0.18);
+  border-radius: 6px;
+}
+
+
+
+
+#footer--nav {
+  position: relative;
+  width: 100%;
+  max-width: 26ch; /* limite “graphique” : évite que ça parte trop large */
+}
+
+/* reset liste + rythme */
+// #footer--nav ul {
+//   margin: 0;
+//   padding: 0;
+//   list-style: none;
+//   display: grid;
+//   gap: 0.75rem; /* rythme lisible */
+// }
+
+/* ligne cliquable + puce sobre */
+#footer--nav li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem; /* espace puce/texte */
+  line-height: 1.15;
+  font-size: clamp(1rem, 1.2vw, 1.25rem);
+}
+
+/* puce “typographique” (pas une grosse pastille) */
+#footer--nav li::before {
+  content: "•";
+  opacity: 0.65;
+  transform: translateY(-0.04em);
+}
+
+/* liens : même logique que tes autres liens (underline “propre”) */
+// #footer--nav a {
+//   color: $gris4;
+//   text-decoration: none;
+//   background: linear-gradient(currentColor, currentColor) left bottom / 0% 0.12em no-repeat;
+//   transition: background-size 200ms ease, opacity 200ms ease;
+//   opacity: 0.95;
+// }
+
+// #footer--nav a:hover {
+//   background-size: 100% 0.12em;
+//   opacity: 1;
+// }
+
+// #footer--nav a:focus-visible {
+//   outline: none;
+//   box-shadow: 0 0 0 3px rgba(4, 217, 79, 0.22);
+//   border-radius: 6px;
+// }
+
+/* état “actif” Nuxt */
+#footer--nav a.router-link-active,
+#footer--nav a.router-link-exact-active {
+  opacity: 1;
+  background-size: 100% 0.12em;
+}
+
 </style>
