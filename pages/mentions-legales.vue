@@ -11,18 +11,21 @@
       suivi :
     </p>
     <p>
-      <strong>Propriétaire</strong> : Benoît Abot – 90 rue de Tillarue 60320 -
-      St Sauveur<br />
+      <strong>Propriétaire</strong> : Benoît Abot – 60320 Saint-Sauveur (France)<br />
       <strong>SIRET</strong> : 82332050200029<br />
       <strong>Créateur</strong> : <a href="https://beabot.fr/">Benoît Abot</a
       ><br />
       <strong>Responsable publication</strong> : Abot Benoît –
-      contact@beabot.fr<br />
+      hello@beabot.fr<br />
       Le responsable publication est une personne physique ou une personne
       morale.<br />
-      <strong>Webmaster</strong> : Abot Benoît – contact@beabot.fr<br />
-      <strong>Hébergeur</strong> : OVH – 2 rue Kellermann - 59100 Roubaix -
-      France<br />
+      <strong>Webmaster</strong> : Abot Benoît – hello@beabot.fr<br />
+
+
+      <strong>Hébergeur</strong> : Netlify, Inc. -
+2325 3rd Street, Suite 296 - 
+San Francisco, California 94107 - 
+USA<br />
     </p>
 
     <h3>
@@ -141,8 +144,14 @@
     <p>
       En tout état de cause Benoît Abot ne collecte des informations
       personnelles relatives à l'utilisateur que pour le besoin de certains
-      services proposés par le site
-      <a href="https://beabot.fr">https://beabot.fr</a>. L'utilisateur
+      services proposés par le site.
+      <a href="https://beabot.fr">https://beabot.fr</a>. 
+      <br/>
+      Les données transmises via le formulaire de contact (nom, adresse email, message) sont utilisées exclusivement pour répondre à la demande de l’utilisateur. Elles ne sont ni stockées à des fins commerciales, ni transmises à des tiers, ni utilisées pour de la prospection.
+      <br/>
+Les données sont conservées uniquement le temps nécessaire au traitement de la demande.
+<br/>
+      L'utilisateur
       fournit ces informations en toute connaissance de cause, notamment
       lorsqu'il procède par lui-même à leur saisie. Il est alors précisé à
       l'utilisateur du site
@@ -182,9 +191,7 @@
       en conséquence aucune responsabilité de ce fait.
     </p>
     <p>
-      La navigation sur le site
-      <a href="https://beabot.fr">https://beabot.fr</a> ne requiert pas
-      l'installation de cookies.
+      Le site <a href="https://beabot.fr">https://beabot.fr</a> n’utilise pas de cookies de suivi ou de mesure d’audience. Des cookies strictement techniques peuvent être utilisés par l’hébergeur pour assurer le bon fonctionnement du service.
     </p>
     <!-- <p>
       Le refus d’installation d’un cookie peut entraîner l’impossibilité
@@ -277,5 +284,6 @@ h2 {
 }
 h3 {
   margin-top: 2rem;
+  text-align: left;
 }
 </style>
