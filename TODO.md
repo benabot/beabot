@@ -238,14 +238,102 @@ Audit complet UX/UI desktop et mobile réalisé sur :
 
 #### PRIORITÉ 2 - Layout et UX
 
-##### CT-11-03 : Layout 2 colonnes desktop
 
-- [ ] Créer branche `feature/ct-11-03-contact-layout`
-- [ ] styliser les champs du formulaire et le bouton en accord avec le design system du site
-- [ ] Implémenter le layout 2 colonnes :
-  - Colonne gauche : Titre, accroche, infos contact (email, LinkedIn)
-  - Colonne droite : Formulaire
-- [ ] Garder empilé sur mobile
+
+## CT-11-03 : Page Contact — Layout 2 colonnes desktop
+
+### 1. Setup
+- [ ] Créer la branche `feature/ct-11-03-contact-layout`
+- [ ] Vérifier le fichier cible : `pages/contact.vue`
+- [ ] Identifier / ajouter un wrapper racine `.contact-page`
+
+---
+
+### 2. Structure HTML (contact.vue)
+- [ ] Créer un wrapper `.contact-layout`
+- [ ] Créer une grille 2 colonnes (desktop)
+  - [ ] Colonne gauche : `.contact-aside`
+  - [ ] Colonne droite : `.contact-form-panel`
+
+#### Colonne gauche — contenu
+- [ ] Déplacer le titre `<h1>` dans `.contact-aside`
+- [ ] Ajouter un bloc intro `.contact-intro`
+- [ ] Ajouter une promesse explicite (ex. réponse sous 48h)
+- [ ] Ajouter un bloc `.contact-infos`
+  - [ ] Email (mailto)
+  - [ ] Lien LinkedIn
+
+#### Colonne droite — formulaire
+- [ ] Encapsuler le formulaire dans `.contact-form-panel`
+- [ ] Ajouter un wrapper `.contact-form`
+
+---
+
+### 3. Layout CSS (Grid / Responsive)
+- [ ] Implémenter un layout Grid desktop
+  - [ ] 2 colonnes (ex. 40% / 60% ou 1fr / 1.2fr)
+  - [ ] Gap horizontal cohérent avec le design system
+- [ ] Mobile
+  - [ ] Layout empilé
+  - [ ] Ordre logique : colonne gauche → formulaire
+- [ ] Définir une largeur max pour le formulaire (ex. 520–640px)
+
+---
+
+### 4. Panel formulaire (design)
+- [ ] Définir un fond distinct pour `.contact-form-panel`
+- [ ] Ajouter padding interne généreux
+- [ ] Ajouter bordure ou séparation visuelle
+- [ ] Définir un radius cohérent avec le site
+- [ ] Vérifier contraste fond / texte
+
+---
+
+### 5. Stylisation des champs
+- [ ] Styliser inputs text / email
+- [ ] Styliser textarea
+  - [ ] Hauteur confortable
+  - [ ] Resize vertical uniquement
+- [ ] Styliser labels
+  - [ ] Typographie (taille, graisse)
+  - [ ] Espacement label → champ
+- [ ] Harmoniser les espacements verticaux entre champs
+
+---
+
+### 6. États et interactions
+- [ ] Focus
+  - [ ] Supprimer styles natifs (outline / box-shadow)
+  - [ ] Implémenter `:focus-visible` accessible
+- [ ] Hover (léger)
+- [ ] Disabled (si applicable)
+- [ ] Error (prévoir classe `.is-error`)
+
+---
+
+### 7. Bouton d’envoi
+- [ ] Vérifier cohérence avec design system
+- [ ] États hover / focus / disabled
+- [ ] Zone cliquable confortable (mobile)
+
+---
+
+### 8. Accessibilité (a11y)
+- [ ] Associer chaque `label` à son champ (`for` / `id`)
+- [ ] Focus clavier visible et cohérent
+- [ ] Checkbox mentions légales accessible
+- [ ] Vérifier contrastes (WCAG AA minimum)
+
+---
+
+### 9. Validation finale
+- [ ] Test desktop (≥1200px)
+- [ ] Test tablette
+- [ ] Test mobile
+- [ ] Vérifier lisibilité globale
+- [ ] Vérifier absence de styles natifs résiduels
+
+
 - **Structure** :
 
 ```
