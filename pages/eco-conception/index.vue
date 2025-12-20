@@ -1,7 +1,7 @@
 <template>
   <div class="container__page">
     <section>
-      <h1 class="h3 text-fin">divers aspects de l'éco-conception web</h1>
+      <h2 class="h3 text-fin">divers aspects d'un numérique éco-responsable</h2>
       <ul class="selector text-gris3">
         <li :class="{ 'text-vert': name === 'WebDesign' }" @click="updateTag('WebDesign')">
           WebDesign
@@ -34,28 +34,78 @@
       </ul>
       <AppSearchInput />
     </section>
+    <!-- <section class="intro text-gris2" aria-labelledby="intro-eco">
+  <div class="intro__img" aria-hidden="true"></div>
+
+  <div class="intro__col">
+    <h2 id="intro-eco" class="">À propos de ce blog sur l’éco-conception web</h2>
+
+    <p class="text-fin">
+      Au travers de ce blog, je propose des réflexions sur les
+      <strong>impacts environnementaux du numérique</strong> et sur des moyens concrets
+      de les réduire grâce à l’<strong>éco-conception de sites web</strong>.
+    </p>
+
+    <p class="text-fin">
+      Le contenu se veut volontairement <strong>généraliste</strong> et lisible par quiconque
+      comprend, dans les grandes lignes, le fonctionnement du web.
+      Certains articles abordent toutefois des <strong>aspects techniques</strong> et sont
+      signalés comme tels.
+    </p>
+  </div>
+
+  <div class="intro__col">
+    <p class="text-fin">
+      <strong>Designer web et développeur</strong>, je suis convaincu du rôle central du
+      <strong>design d’interface</strong> et de l’<strong>expérience utilisateur</strong> pour limiter
+      l’empreinte environnementale des sites web. Il sera donc largement question ici
+      de <strong>webdesign</strong>, de <strong>typographie</strong> et de <strong>conception graphique</strong>.
+    </p>
+
+    <p class="text-fin">
+      Concernant les aspects techniques, j’ai fait le choix de traiter les
+      <strong>outils de développement les plus répandus</strong>. D’un point de vue stratégique,
+      il me semble plus pertinent d’agir sur la multitude — imparfaite mais largement utilisée —
+      plutôt qu’à la marge.
+    </p>
+  </div>
+</section> -->
+
     <section class="intro text-gris2">
-      <div class="intro__img"></div>
+      <!-- <div class="intro__img"></div> -->
+      <div>
       <p class="text-fin">
-        Au travers de ce blog, je vous propose de découvrir mes réflexions
-        concernant les impacts environnementaux du numérique et comment les
-        réduire en éco-concevant des sites web. Ce blog a pour vocation d’être
-        généraliste et lisible par quiconque connaît, dans les grandes lignes,
-        le fonctionnement d’internet. Toutefois, afin de sensibiliser
-        concrètement les acteurs du web aux thématiques de la sobriété et de
-        l’efficience numérique, certains articles pourront nécessiter des
-        connaissances en développement web et aborderont des questions
-        techniques. Ils seront signalés en tant que tels.
-      </p>
-      <p class="text-fin">
-        Webdesigner de formation, je suis convaincu du rôle central du design
-        d’interface et d’expérience utilisateur pour limiter l’empreinte
-        environnementale de nos sites. Il sera beaucoup question, ici, de
-        webdesign. Enfin, concernant les aspects plus techniques et les outils
-        de développement utilisés, j’ai choisi de traiter les plus répandus.
-        C’est, d’après moi, stratégiquement plus efficace d’agir sur la
-        multitude — toute perfectible soit-elle — plutôt qu’à la marge.
-      </p>
+  Ce blog propose des réflexions sur les
+  <strong>impacts environnementaux du numérique</strong> et sur des moyens concrets
+  de les réduire grâce à l’<strong>éco-conception de sites web</strong>.
+  J’aborde l’éco-conception comme une démarche de qualité&nbsp;: limiter le superflu,
+  renforcer l’essentiel et produire des sites plus sobres et plus durables.
+</p>
+
+<p class="text-fin">
+  Le contenu se veut volontairement <strong>généraliste</strong> et lisible par quiconque
+  comprend, dans les grandes lignes, le fonctionnement du web.
+  Certains articles abordent des <strong>aspects techniques</strong> et sont signalés
+  comme tels, afin de proposer des pistes concrètes et applicables.
+</p>
+
+        </div>
+
+      <div>
+        <p class="text-fin">
+      <strong>Designer web et développeur</strong>, je suis convaincu du rôle central du
+      <strong>design d’interface</strong> et de l’<strong>expérience utilisateur</strong> pour limiter
+      l’empreinte environnementale des sites web. Il sera donc largement question ici
+      de <strong>webdesign</strong>, de <strong>typographie</strong> et de <strong>conception graphique</strong>.
+    </p>
+
+    <p class="text-fin">
+      Concernant les aspects techniques, j’ai fait le choix de traiter les
+      <strong>outils de développement les plus répandus</strong>. D’un point de vue stratégique,
+      il me semble plus pertinent d’agir sur la multitude — imparfaite mais largement utilisée —
+      plutôt qu’à la marge.
+    </p>
+      </div>
     </section>
     <div class="border"></div>
     <section>
@@ -86,23 +136,23 @@ import { computed } from 'vue'
 // Head metadata
 const config = useRuntimeConfig()
 
-useHead({
-  title: 'Éco-conception web - Articles',
-  meta: [
-    {
-      hid: 'description',
-      name: 'description',
-      content: 'Découvrez tous les articles sur l\'éco-conception web, le webdesign éco-responsable et le numérique durable.',
-    },
-  ],
-  link: [
-    {
-      hid: 'canonical',
-      rel: 'canonical',
-      href: `${config.public.siteUrl}/eco-conception`,
-    },
-  ],
-})
+// useHead({
+//   title: 'Éco-conception web - Articles',
+//   meta: [
+//     {
+//       hid: 'description',
+//       name: 'description',
+//       content: 'Découvrez tous les articles sur l\'éco-conception web, le webdesign éco-responsable et le numérique durable.',
+//     },
+//   ],
+//   link: [
+//     {
+//       hid: 'canonical',
+//       rel: 'canonical',
+//       href: `${config.public.siteUrl}/eco-conception/`,
+//     },
+//   ],
+// })
 
 // Fetch articles with Nuxt Content v2
 const { data: articles } = await useAsyncData('eco-articles', () =>
@@ -140,7 +190,7 @@ function updateTag(tag) {
 }
 </script>
 <style lang="scss" scoped>
-h1 {
+h2 {
   text-align: center;
 }
 a {
@@ -193,7 +243,7 @@ a {
   @media (min-width: $breakpoint-tablet) {
     flex-direction: row;
   }
-  p {
+  div {
     text-align: justify;
     // margin-left: 0;
     @media (min-width: $breakpoint-tablet) {
@@ -262,4 +312,5 @@ article {
   opacity: 0;
   transform: scale(0.99);
 }
+
 </style>
