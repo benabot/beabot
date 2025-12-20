@@ -104,7 +104,12 @@
         class="text-gris2 mt-2"
         :value="article"
       />
-      <svg viewBox="0 0 100 100" width="33%" aria-hidden="true" focusable="false">
+      <svg
+        viewBox="0 0 100 100"
+        width="33%"
+        aria-hidden="true"
+        focusable="false"
+      >
         <path
           fill="#04d94f"
           d="M75,97.8c3.7-1.1,7.4-1.6,11.1-2c1.9-0.2,3.7-0.3,5.6-0.4c0.5,0,0.9,0,1.4,0l1.3,0c0.3,0,0.5-0.1,0.6-0.3
@@ -123,8 +128,9 @@ const route = useRoute()
 const tagsStore = useTags()
 
 // Fetch article data
-const { data: article } = await useAsyncData(`article-${route.params.slug}`, () =>
-  queryContent('articles', route.params.slug).findOne()
+const { data: article } = await useAsyncData(
+  `article-${route.params.slug}`,
+  () => queryContent('articles', route.params.slug).findOne(),
 )
 
 // Fetch prev/next articles
@@ -137,7 +143,7 @@ const { data: surroundArticles } = await useAsyncData(
       .only(['title', '_path'])
       .sort({ date: 1 })
       .findSurround(article.value._path)
-  }
+  },
 )
 
 // Transform article links from /articles/* to /eco-conception/*
@@ -145,7 +151,7 @@ const transformArticleLink = (article) => {
   if (!article || !article._path) return null
   return {
     ...article,
-    _path: article._path.replace(/^\/articles\//, '/eco-conception/')
+    _path: article._path.replace(/^\/articles\//, '/eco-conception/'),
   }
 }
 
@@ -203,95 +209,101 @@ onBeforeUnmount(() => {
 
 // Head metadata with structured data
 const config = useRuntimeConfig()
+const canonicalUrl = `${config.public.siteUrl}/eco-conception/${route.params.slug}`
+const metaDesc =
+  article.value?.description ||
+  `Article sur l’éco-conception web : ${article.value?.title || ''}`.trim()
+
+const ogImage = article.value?.img
+  ? `${config.public.siteUrl}${article.value.img}`
+  : `${config.public.siteUrl}/beabot.png`
 
 useHead({
   title: article.value?.title,
+
   meta: [
-    {
-      hid: 'description',
-      name: 'description',
-      content: article.value?.description,
-    },
+    { hid: 'description', name: 'description', content: metaDesc },
+
     // Open Graph
-    {
-      hid: 'og:title',
-      property: 'og:title',
-      content: article.value?.title,
-    },
-    {
-      hid: 'og:description',
-      property: 'og:description',
-      content: article.value?.description,
-    },
-    // Twitter Card
-    {
-      hid: 'twitter:title',
-      name: 'twitter:title',
-      content: article.value?.title,
-    },
-    {
-      hid: 'twitter:description',
-      name: 'twitter:description',
-      content: article.value?.description,
-    },
+    { hid: 'og:type', property: 'og:type', content: 'article' },
+    { hid: 'og:site_name', property: 'og:site_name', content: 'BeAbot' },
+    { hid: 'og:title', property: 'og:title', content: article.value?.title },
+    { hid: 'og:description', property: 'og:description', content: metaDesc },
+    { hid: 'og:url', property: 'og:url', content: canonicalUrl },
+    { hid: 'og:image', property: 'og:image', content: ogImage },
+
+    // Twitter
+    { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
+    { hid: 'twitter:title', name: 'twitter:title', content: article.value?.title },
+    { hid: 'twitter:description', name: 'twitter:description', content: metaDesc },
+    { hid: 'twitter:image', name: 'twitter:image', content: ogImage },
   ],
+
   link: [
-    {
-      hid: 'canonical',
-      rel: 'canonical',
-      href: `${config.public.siteUrl}/eco-conception/${route.params.slug}`,
-    },
+    { hid: 'canonical', rel: 'canonical', href: canonicalUrl },
   ],
+
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify([
-        {
-          '@context': 'https://schema.org',
-          '@type': 'BlogPosting',
-          headline: article.value?.title,
-          datePublished: article.value?.date,
-          author: {
-            '@type': 'Person',
-            name: 'Benoît Abot',
-          },
-          publisher: {
-            '@type': 'Organization',
-            name: 'BeAbot',
-            url: config.public.siteUrl,
-            logo: {
-              '@type': 'ImageObject',
-              url: `${config.public.siteUrl}/beabot.png`,
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'BlogPosting',
+            mainEntityOfPage: {
+              '@type': 'WebPage',
+              '@id': canonicalUrl,
             },
-          },
-        },
-        {
-          '@context': 'https://schema.org',
-          '@type': 'BreadcrumbList',
-          itemListElement: [
-            {
-              '@type': 'ListItem',
-              position: 1,
+            inLanguage: 'fr-FR',
+            headline: article.value?.title,
+            description: metaDesc,
+            datePublished: article.value?.date,
+            dateModified: article.value?.updatedAt || article.value?.date,
+            author: {
+              '@type': 'Person',
+              name: 'Benoît Abot',
+            },
+            publisher: {
+              '@type': 'Organization',
               name: 'BeAbot',
-              item: config.public.siteUrl,
+              url: config.public.siteUrl,
+              logo: {
+                '@type': 'ImageObject',
+                url: `${config.public.siteUrl}/beabot.png`,
+              },
             },
-            {
-              '@type': 'ListItem',
-              position: 2,
-              name: 'Eco-conception',
-              item: `${config.public.siteUrl}/eco-conception/${route.params.slug}`,
-            },
-            {
-              '@type': 'ListItem',
-              position: 3,
-              name: article.value?.title,
-            },
-          ],
-        },
-      ]),
+            image: [ogImage],
+          },
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'BeAbot',
+                item: config.public.siteUrl,
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Éco-conception',
+                item: `${config.public.siteUrl}/eco-conception`,
+              },
+              {
+                '@type': 'ListItem',
+                position: 3,
+                name: article.value?.title,
+                item: canonicalUrl,
+              },
+            ],
+          },
+        ],
+      }),
     },
   ],
 })
+
 </script>
 
 <style lang="scss" scoped>
@@ -449,7 +461,8 @@ section {
         margin-bottom: $space-s;
       }
 
-      :deep(ul), :deep(ol) {
+      :deep(ul),
+      :deep(ol) {
         max-width: 66ch;
         margin-bottom: $space-s;
         padding-left: 1.5em;
@@ -495,23 +508,23 @@ section {
 
       :deep(h2) {
         line-height: calc(2px + 2ex + 2px);
-        margin-top: $space-xl;      // Très grand espace AVANT (64px -> 104px)
-        margin-bottom: $space-3xs;  // Minimal APRÈS (4px -> 6px)
+        margin-top: $space-xl; // Très grand espace AVANT (64px -> 104px)
+        margin-bottom: $space-3xs; // Minimal APRÈS (4px -> 6px)
         font-size: min(max(1.929409988rem, 4.950306412vw), 2.8797164rem);
       }
 
       :deep(h3) {
         font-size: 1.7798rem;
         line-height: calc(2px + 2ex + 2px);
-        margin-top: $space-l;       // Grand espace AVANT (40px -> 64px)
-        margin-bottom: $space-3xs;  // Minimal APRÈS (4px -> 6px)
+        margin-top: $space-l; // Grand espace AVANT (40px -> 64px)
+        margin-bottom: $space-3xs; // Minimal APRÈS (4px -> 6px)
         font-size: min(max(1.192466rem, 4.587334vw), 1.7798rem);
       }
 
       :deep(h4) {
         font-weight: normal;
-        margin-top: $space-m;       // Espace moyen AVANT (24px -> 40px)
-        margin-bottom: $space-3xs;  // Minimal APRÈS (4px -> 6px)
+        margin-top: $space-m; // Espace moyen AVANT (24px -> 40px)
+        margin-bottom: $space-3xs; // Minimal APRÈS (4px -> 6px)
       }
 
       :deep(blockquote) {
@@ -521,7 +534,7 @@ section {
         margin: 1.5em 10px;
         padding: 1em 10px;
         border-radius: 0.5rem;
-        quotes: '\201C''\201D''\2018''\2019';
+        quotes: '\201C' '\201D' '\2018' '\2019';
       }
 
       :deep(.citation) {

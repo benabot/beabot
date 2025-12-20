@@ -1,6 +1,6 @@
 ---
 title: Qu'est-ce que l'éco-conception web
-description: Sujet en vogue, l'éco-conception web, victime de son succès, est sujet d'une vague de greenwashing. Par delà les malentendus, tentons de clarifier le sujet.
+description: L’éco-conception web est un sujet largement repris, souvent au prix de nombreux raccourcis et approximations. Cet article propose une définition claire du concept et en précise les limites, loin des discours simplificateurs.
 date: 2021-12-17
 temps: 15
 tag: ['WebDesign', 'WordPress', 'Eco-conception']

@@ -1,6 +1,6 @@
 ---
 title: La petite boucle, éco-conception d'un thème WordPress
-description: Eco-conception et WordPress, cas concret avec un thème WordPress éco-conçu pour le site de la petite boucle.
+description: Retour d’expérience sur la conception d’un thème WordPress éco-conçu pour un site réel. L’article détaille les choix techniques et graphiques effectués pour réduire l’impact environnemental sans sacrifier l’usage.
 date: 2022-02-28
 temps: 3
 tag: ['WebDesign', 'WordPress', 'Eco-conception']

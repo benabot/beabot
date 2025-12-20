@@ -1,6 +1,6 @@
 ---
 title: Les impacts environnementaux du numérique
-description: On imagine le numérique virtuel, intangible et éthéré. Après tout, nous dématérialisons nos documents et les rangeons dans le cloud… Il est pourtant pleinement matériel. Ordinateurs, TV et téléphones d'un côté, serveurs de l'autre reliés par des câbles, satellites, antennes, etc. constituent l'écosystème du numérique. Tous ces équipements doivent être produits puis alimentés en énergie pour fonctionner. Cela génère des coûts pour l'environnement concrets et mesurables.
+description: Le numérique est souvent perçu comme immatériel, alors qu’il repose sur des infrastructures lourdes et énergivores. Cet article revient sur les impacts environnementaux concrets du numérique et sur les ordres de grandeur à connaître.
 date: 2022-02-28
 tag: ['WebDesign', 'WordPress']
 temps: 4
