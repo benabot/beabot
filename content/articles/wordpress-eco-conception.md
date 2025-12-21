@@ -1,11 +1,14 @@
 ---
 title: Éco-concevoir un site WordPress
 description: Guide pratique pour concevoir un site WordPress sobre, performant et durable. Méthode, choix techniques et bonnes pratiques.
+seo:
+  title: Éco-concevoir un site WordPress
+  description: Guide pratique pour concevoir un site WordPress sobre, performant et durable. Méthode, choix techniques et bonnes pratiques.
 tag: ['WordPress', 'Éco-conception', 'WebDesign', 'Performance']
 date: 2025-10-28
+updatedAt: 2025-10-28
 temps: 5
 ---
-
 
 WordPress alimente près de 40 % du web. Sa réputation de lourdeur vient rarement de l'outil lui-même, mais de ses usages : thèmes surchargés, extensions empilées, fonctionnalités jamais utilisées.
 

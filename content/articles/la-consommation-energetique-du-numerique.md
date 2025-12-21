@@ -1,10 +1,15 @@
 ---
 title: Les impacts environnementaux du numérique
 description: Le numérique est souvent perçu comme immatériel, alors qu’il repose sur des infrastructures lourdes et énergivores. Cet article revient sur les impacts environnementaux concrets du numérique et sur les ordres de grandeur à connaître.
+seo:
+  title: Les impacts environnementaux du numérique
+  description: Le numérique est souvent perçu comme immatériel, alors qu’il repose sur des infrastructures lourdes et énergivores. Cet article revient sur les impacts environnementaux concrets du numérique et sur les ordres de grandeur à connaître.
 date: 2022-02-28
+updatedAt: 2022-02-28
 tag: ['WebDesign', 'WordPress']
 temps: 4
 ---
+
 Rapide tour d'horizon des retombés environnementales d'internet et du numérique, préalable à une <a  href="/eco-conception/l-eco-conception-web/" class="lien--vert">éco-conception de sites web</a> efficace, car agissant sur les principales sources d'impacts.
 Les chiffres que j’utilise ici proviennent de [GreenIt.fr](https://www.greenit.fr/), c’est la communauté des acteurs du numérique responsable en France. 
 

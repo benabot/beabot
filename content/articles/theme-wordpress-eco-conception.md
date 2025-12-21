@@ -1,11 +1,14 @@
 ---
 title: La petite boucle, éco-conception d'un thème WordPress
 description: Retour d’expérience sur la conception d’un thème WordPress éco-conçu pour un site réel. L’article détaille les choix techniques et graphiques effectués pour réduire l’impact environnemental sans sacrifier l’usage.
+seo:
+  title: La petite boucle, éco-conception d'un thème WordPress
+  description: Retour d’expérience sur la conception d’un thème WordPress éco-conçu pour un site réel. L’article détaille les choix techniques et graphiques effectués pour réduire l’impact environnemental sans sacrifier l’usage.
 date: 2022-02-28
+updatedAt: 2022-02-28
 temps: 3
 tag: ['WebDesign', 'WordPress', 'Eco-conception']
 ---
-
 
 ## Demande/besoins
 *[la petite boucle](https://www.lapetiteboucle.fr)* est une association qui collecte des cartouches d’encre et de toner usagés à l’aide d’un triporteur électrique.

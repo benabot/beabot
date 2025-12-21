@@ -1,7 +1,11 @@
 ---
 title: Typographie et éco-conception
 description: La typographie joue un rôle central dans l’éco-conception web, à la fois comme composant graphique et comme source de consommation de ressources. Cet article analyse ses impacts réels et propose des choix typographiques plus sobres et plus pertinents.
+seo:
+  title: Typographie et éco-conception
+  description: La typographie joue un rôle central dans l’éco-conception web, à la fois comme composant graphique et comme source de consommation de ressources. Cet article analyse ses impacts réels et propose des choix typographiques plus sobres et plus pertinents.
 date: 2025-12-15
+updatedAt: 2025-12-15
 temps: 10
 tag: ['WebDesign', 'Typographie', 'Eco-conception']
 ---
