@@ -126,9 +126,19 @@
       </div>
     </section>
     <div class="border"></div>
+    <section v-if="faqArticle" class="featured">
+      <span class="featured__label">À lire en premier</span>
+      <AppLink :to="articleLink(faqArticle)" class="article-link">
+        <BaseHeading gris :titre="faqArticle.title" :tags="faqArticle.tag" />
+      </AppLink>
+      <p class="text-gris3 text-fin featured__desc">
+        {{ faqArticle.description }}
+      </p>
+      <BaseButton text="Lire la FAQ" :to="articleLink(faqArticle)" />
+    </section>
     <section>
       <transition-group name="list" tag="div">
-        <article v-for="article of articlesFilters" :key="article._path">
+        <article v-for="article of articlesWithoutFaq" :key="article._path">
           <!-- <img :src="article.img" /> -->
           <AppLink :to="articleLink(article)" class="article-link">
             <BaseHeading gris :titre="article.title" :tags="article.tag"
@@ -192,6 +202,23 @@ const articlesFilters = computed(() => {
   }
   return (articles.value || []).filter((el) => el.tag?.includes(name.value))
 })
+
+function isFaqArticle(article) {
+  if (!article) return false
+  const title = article.title || ''
+  const path = article._path || ''
+  return path.includes('faq-eco-conception') || title.startsWith('FAQ')
+}
+
+// FAQ is pinned only when it matches the current tag filter.
+const faqArticle = computed(() => {
+  const list = articlesFilters.value || []
+  return list.find((article) => isFaqArticle(article)) || null
+})
+
+const articlesWithoutFaq = computed(() =>
+  (articlesFilters.value || []).filter((article) => !isFaqArticle(article))
+)
 
 // Generate article link
 function articleLink(a) {
@@ -282,6 +309,34 @@ a {
   margin-bottom: 2.8rem;
   // margin-bottom: 0.25rem;
   border-radius: 0.25rem;
+}
+.featured {
+  border: 2px solid $vert;
+  background: rgba($vert, 0.05);
+  border-radius: 0.6rem;
+  padding: 1.6rem 1.4rem;
+  margin-bottom: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  @media (min-width: $breakpoint-tablet) {
+    padding: 2rem 2.2rem;
+  }
+}
+.featured__label {
+  display: inline-block;
+  align-self: flex-start;
+  color: $vert;
+  border: 1px solid $vert;
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.68rem;
+}
+.featured__desc {
+  margin: 0;
 }
 article {
   display: flex;
