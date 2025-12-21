@@ -91,9 +91,13 @@
 
       <p class="text-gris1 text-normal">{{ article?.description }}</p>
       <p class="petit-text text-gris3 infos">
-        Publié le : {{ formatDate(article?.date) }} - Par : Benoît Abot
+        Publié le : {{ formatDate(article?.date) }}
+        <span v-if="showUpdatedAt">
+          — Mis à jour le : {{ formatDate(article?.updatedAt) }}
+        </span>
+        — Par : Benoît Abot
         <span v-if="article?.temps">
-          - Temps de lecture : {{ article.temps }}mn</span
+          — Temps de lecture : {{ article.temps }}mn</span
         >
       </p>
       <hr />
@@ -167,6 +171,13 @@ const currentlyActiveToc = ref('')
 const contentEl = ref(null)
 let observer = null
 
+const showUpdatedAt = computed(() => {
+  const publishedAt = article.value?.date
+  const updatedAt = article.value?.updatedAt
+  if (!publishedAt || !updatedAt) return false
+  return new Date(updatedAt) > new Date(publishedAt)
+})
+
 // Format date helper
 function formatDate(date) {
   if (!date) return ''
@@ -219,33 +230,46 @@ const articleCanonicalUrl = canonicalUrl(
 )
 const hubCanonicalUrl = canonicalUrl(config.public.siteUrl, '/eco-conception')
 const homeCanonicalUrl = canonicalUrl(config.public.siteUrl, '/')
-const metaDesc =
-  article.value?.description ||
-  `Article sur l’éco-conception web : ${article.value?.title || ''}`.trim()
-
-const ogImage = article.value?.img
-  ? `${config.public.siteUrl}${article.value.img}`
-  : `${config.public.siteUrl}/beabot.png`
+const seoTitle = computed(
+  () => article.value?.seo?.title || article.value?.title || ''
+)
+const seoDesc = computed(
+  () =>
+    article.value?.seo?.description ||
+    article.value?.description ||
+    `Article sur l’éco-conception web : ${article.value?.title || ''}`.trim()
+)
+const ogImage = computed(() => {
+  const image = article.value?.seo?.ogImage || article.value?.img
+  if (!image) {
+    return `${config.public.siteUrl}/beabot.png`
+  }
+  return image.startsWith('http')
+    ? image
+    : `${config.public.siteUrl}${image}`
+})
+const robots = computed(() => article.value?.seo?.robots || 'index,follow')
 
 useHead({
-  title: article.value?.title,
+  title: seoTitle.value,
 
   meta: [
-    { hid: 'description', name: 'description', content: metaDesc },
+    { hid: 'description', name: 'description', content: seoDesc.value },
+    { hid: 'robots', name: 'robots', content: robots.value },
 
     // Open Graph
     { hid: 'og:type', property: 'og:type', content: 'article' },
     { hid: 'og:site_name', property: 'og:site_name', content: 'BeAbot' },
-    { hid: 'og:title', property: 'og:title', content: article.value?.title },
-    { hid: 'og:description', property: 'og:description', content: metaDesc },
+    { hid: 'og:title', property: 'og:title', content: seoTitle.value },
+    { hid: 'og:description', property: 'og:description', content: seoDesc.value },
     { hid: 'og:url', property: 'og:url', content: articleCanonicalUrl },
-    { hid: 'og:image', property: 'og:image', content: ogImage },
+    { hid: 'og:image', property: 'og:image', content: ogImage.value },
 
     // Twitter
     { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
-    { hid: 'twitter:title', name: 'twitter:title', content: article.value?.title },
-    { hid: 'twitter:description', name: 'twitter:description', content: metaDesc },
-    { hid: 'twitter:image', name: 'twitter:image', content: ogImage },
+    { hid: 'twitter:title', name: 'twitter:title', content: seoTitle.value },
+    { hid: 'twitter:description', name: 'twitter:description', content: seoDesc.value },
+    { hid: 'twitter:image', name: 'twitter:image', content: ogImage.value },
   ],
 
   link: [
@@ -265,8 +289,8 @@ useHead({
               '@id': articleCanonicalUrl,
             },
             inLanguage: 'fr-FR',
-            headline: article.value?.title,
-            description: metaDesc,
+            headline: seoTitle.value,
+            description: seoDesc.value,
             datePublished: article.value?.date,
             dateModified: article.value?.updatedAt || article.value?.date,
             author: {
@@ -282,7 +306,7 @@ useHead({
                 url: `${config.public.siteUrl}/beabot.png`,
               },
             },
-            image: [ogImage],
+            image: [ogImage.value],
           },
           {
             '@type': 'BreadcrumbList',
