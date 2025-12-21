@@ -6,7 +6,10 @@
 </template>
 
 <script setup>
+import { canonicalUrl } from '~/utils/seo-url'
+
 const config = useRuntimeConfig()
+const hubCanonicalUrl = canonicalUrl(config.public.siteUrl, '/eco-conception')
 
 useHead({
   title: 'Éco-conception web : sobriété, webdesign et performance',
@@ -36,7 +39,7 @@ useHead({
     {
       hid: 'og:url',
       property: 'og:url',
-      content: `${config.public.siteUrl}/eco-conception`,
+      content: hubCanonicalUrl,
     },
     {
       hid: 'og:image',
@@ -71,7 +74,7 @@ useHead({
     {
       hid: 'canonical',
       rel: 'canonical',
-      href: `${config.public.siteUrl}/eco-conception/`,
+      href: hubCanonicalUrl,
     },
   ],
 })

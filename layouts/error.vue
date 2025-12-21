@@ -4,9 +4,9 @@
     <h2 v-if="error.statusCode === 404" class="title">Page non trouvée</h2>
     <h2 v-else class="title">Une erreur est survenue</h2>
     <h3 class="text-vert">Naviguez vers :</h3>
-    <NuxtLink exact to="/">Page d'accueil</NuxtLink>
-    <NuxtLink exact to="/eco-conception">Blog</NuxtLink>
-    <NuxtLink exact to="/portfolio">Portfolio</NuxtLink>
+    <AppLink exact to="/">Page d'accueil</AppLink>
+    <AppLink exact to="/eco-conception/">Blog</AppLink>
+    <AppLink exact to="/portfolio/">Portfolio</AppLink>
   </section>
 </template>
 

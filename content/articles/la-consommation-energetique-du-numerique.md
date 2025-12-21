@@ -5,7 +5,7 @@ date: 2022-02-28
 tag: ['WebDesign', 'WordPress']
 temps: 4
 ---
-Rapide tour d'horizon des retombés environnementales d'internet et du numérique, préalable à une <a  href="/eco-conception/l-eco-conception-web" class="lien--vert">éco-conception de sites web</a> efficace, car agissant sur les principales sources d'impacts.
+Rapide tour d'horizon des retombés environnementales d'internet et du numérique, préalable à une <a  href="/eco-conception/l-eco-conception-web/" class="lien--vert">éco-conception de sites web</a> efficace, car agissant sur les principales sources d'impacts.
 Les chiffres que j’utilise ici proviennent de [GreenIt.fr](https://www.greenit.fr/), c’est la communauté des acteurs du numérique responsable en France. 
 
 
@@ -73,7 +73,7 @@ Cependant, **c’est la fabrication de ces équipements qui a le plus d’impact
 
 ## Pour aller plus loin
 
-Agir sur les équipements en limitant leur durée de vie est le principal levier pour un numérique plus écologique, durable et responsable. C'est cet axe de travail qui va être au cœur de <a  href="/eco-conception/l-eco-conception-web"  class="lien--vert">l'éco-conception d'un service web</a>.
+Agir sur les équipements en limitant leur durée de vie est le principal levier pour un numérique plus écologique, durable et responsable. C'est cet axe de travail qui va être au cœur de <a  href="/eco-conception/l-eco-conception-web/"  class="lien--vert">l'éco-conception d'un service web</a>.
 
 > Pour approfondir le sujet, je vous recommande les lectures suivantes dont sont issus les chiffres de cet article.
 > 

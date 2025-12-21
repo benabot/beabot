@@ -1,8 +1,8 @@
 <template>
   <div class="button_cont">
-    <NuxtLink class="example_f" :class="[bleu ? 'bleu' : 'vert']" :to="to"
-      ><span> <slot>lire la suite</slot></span></NuxtLink
-    >
+    <AppLink class="example_f" :class="[bleu ? 'bleu' : 'vert']" :to="to">
+      <span> <slot>lire la suite</slot></span>
+    </AppLink>
   </div>
 </template>
 

@@ -254,7 +254,10 @@ Les données sont conservées uniquement le temps nécessaire au traitement de l
 </template>
 
 <script setup>
+import { canonicalUrl } from '~/utils/seo-url'
+
 const config = useRuntimeConfig()
+const mentionsCanonicalUrl = canonicalUrl(config.public.siteUrl, '/mentions-legales')
 
 useHead({
   title: 'Mentions légales',
@@ -262,7 +265,7 @@ useHead({
     {
       hid: 'canonical',
       rel: 'canonical',
-      href: `${config.public.siteUrl}/mentions-legales`,
+      href: mentionsCanonicalUrl,
     },
   ],
 })

@@ -4,7 +4,7 @@
 
 **Projet** : BeAbot - Blog éco-conception web
 **Date création** : 15 décembre 2025
-**Dernière MAJ** : 18 décembre 2025
+**Dernière MAJ** : 21 décembre 2025
 **Branche active** : `dev` (Nuxt 3)
 **Sites** :
 
@@ -441,19 +441,19 @@ textarea:focus {
 ### ✅ PHASE 12 — Plan d’action (priorités)
 
 #### P0 — Bloquants indexation / duplication
-- [ ] **SEO-12-01** : Normaliser les URLs (trailing slash) **sur tout le site**
-- [ ] **SEO-12-02** : Corriger les **canonicals incohérents** et toute canonical pointant vers une 3xx/4xx
+- [x] **SEO-12-01** : Normaliser les URLs (trailing slash) **sur tout le site**
+- [x] **SEO-12-02** : Corriger les **canonicals incohérents** et toute canonical pointant vers une 3xx/4xx
 - [ ] **SEO-12-03** : Corriger les erreurs critiques Screaming Frog
-  - [ ] `/portfolio/` (200) est canonisée vers `/eco-conception/portfolio` (404) → **corriger la canonical de la page portfolio**
+  - [x] `/portfolio/` (200) est canonisée vers `/eco-conception/portfolio` (404) → **corriger la canonical de la page portfolio**
   - [ ] Certaines URLs remontent en **502/504** (ex: `/contact`, une page d’article) → **reproduire via curl en local + deploy preview** et corriger (bug build/routing)
 
 #### P1 — Qualité des meta + cohérence OG/Twitter
 - [ ] **SEO-12-04** : Vérifier cohérence `title` / `meta description` / `og:*` / `twitter:*` sur toutes les pages
-- [ ] **SEO-12-05** : Aligner `og:url` sur la canonical (même URL, même trailing slash)
+- [x] **SEO-12-05** : Aligner `og:url` sur la canonical (même URL, même trailing slash)
 
 #### P2 — Données structurées + sitemap
-- [ ] **SEO-12-06** : Vérifier les JSON-LD `BlogPosting` des articles (IDs, dates, image, breadcrumbs)
-- [ ] **SEO-12-07** : Vérifier et corriger les URLs dans `sitemap.xml` (domaine + trailing slash)
+- [x] **SEO-12-06** : Vérifier les JSON-LD `BlogPosting` des articles (IDs, dates, image, breadcrumbs)
+- [x] **SEO-12-07** : Vérifier et corriger les URLs dans `sitemap.xml` (domaine + trailing slash)
 
 ---
 
@@ -528,7 +528,7 @@ Livrables :
 
 ### 🔧 Notes techniques (Nuxt config actuelle)
 - `runtimeConfig.public.siteUrl` via `NUXT_PUBLIC_SITE_URL` : conserver comme source de vérité.
-- `@nuxtjs/sitemap` : corriger `routes()` pour renvoyer des URLs **avec slash final** (actuellement non).
+- `@nuxtjs/sitemap` : `routes()` renvoie des URLs **avec slash final**.
 - `netlify.toml` : `pretty_urls = true` (garde la décision trailing slash et évite de lutter via redirects).
 
 ---
@@ -576,5 +576,5 @@ Livrables :
 ---
 
 **📝 Maintenu par** : Claude Code et Codex
-**📅 Dernière MAJ** : 20 décembre 2025
+**📅 Dernière MAJ** : 21 décembre 2025
 **🎯 Phase actuelle** : Phase 12 - Optimisations SEO

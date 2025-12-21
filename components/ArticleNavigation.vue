@@ -1,20 +1,20 @@
 <template>
   <div class="boite-prev text-fin text-gris2">
-    <NuxtLink
+    <AppLink
       v-if="prev && prev._path"
       :to="prev._path"
       class="bloc"
     >
       &larr; {{ prev.title }}
-    </NuxtLink>
+    </AppLink>
     <span v-else>&nbsp;</span>
-    <NuxtLink
+    <AppLink
       v-if="next && next._path"
       :to="next._path"
       class="bloc"
     >
       {{ next.title }} &rarr;
-    </NuxtLink>
+    </AppLink>
     <span v-else>&nbsp;</span>
   </div>
 </template>

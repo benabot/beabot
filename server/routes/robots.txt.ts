@@ -1,5 +1,6 @@
 export default defineEventHandler((event) => {
   const config = useRuntimeConfig()
+  const baseUrl = String(config.public.siteUrl || '').replace(/\/+$/, '')
 
   const robotsTxt = `# robots.txt for BeAbot
 User-agent: *
@@ -10,7 +11,7 @@ Disallow: /cv.pdf
 Disallow: /CV-*.pdf
 
 # Sitemap
-Sitemap: ${config.public.siteUrl}/sitemap.xml
+Sitemap: ${baseUrl}/sitemap.xml
 `
 
   setResponseHeader(event, 'Content-Type', 'text/plain; charset=utf-8')
