@@ -54,15 +54,15 @@
 
 ### 📋 Tâches restantes (à reprendre)
 
-- [ ] ECO-9-15 : NuxtIsland pour zones non-interactives
-- [ ] ECO-9-17 : Inliner le CSS critique
-- [ ] ECO-9-18 : Remplacer SVG décoratifs par CSS
-- [ ] ECO-9-20 : Optimiser le composant Oeuf
-- [ ] ECO-9-21 : Delay Hydration
+- [x] ECO-9-15 : NuxtIsland pour zones non-interactives
+- [x] ECO-9-17 : Inliner le CSS critique
+- [x] ECO-9-18 : Remplacer SVG décoratifs par CSS
+- [x] ECO-9-20 : Optimiser le composant Oeuf
+- [x] ECO-9-21 : Delay Hydration
 
 ---
 
-## 🎨 PHASE 11 : Homepage & Contact - Graphisme & Contenu (ACTIVE)
+## 🎨 PHASE 11 : Homepage & Contact - Graphisme & Contenu 
 
 > **Objectif** : Améliorer l'UX, le parcours utilisateur et les conversions tout en respectant l'éco-conception
 
@@ -196,10 +196,10 @@ Audit complet UX/UI desktop et mobile réalisé sur :
 
 ##### HP-11-09 : Accordéon piliers sur mobile (optionnel)
 
-- [ ] Créer branche `feature/hp-11-09-piliers-accordion`
-- [ ] Transformer les 4 piliers en accordéon sur mobile
-- [ ] Un seul ouvert à la fois pour économiser l'espace
-- [ ] Animation CSS (pas de JS si possible)
+- [x] Créer branche `feature/hp-11-09-piliers-accordion`
+- [x] Transformer les 4 piliers en accordéon sur mobile
+- [x] Un seul ouvert à la fois pour économiser l'espace
+- [x] Animation CSS (pas de JS si possible)
 - **Impact éco** : Moins de scroll, meilleure UX mobile
 - **Fichier** : `pages/index.vue`
 
@@ -243,95 +243,95 @@ Audit complet UX/UI desktop et mobile réalisé sur :
 ## CT-11-03 : Page Contact — Layout 2 colonnes desktop
 
 ### 1. Setup
-- [ ] Créer la branche `feature/ct-11-03-contact-layout`
-- [ ] Vérifier le fichier cible : `pages/contact.vue`
-- [ ] Identifier / ajouter un wrapper racine `.contact-page`
+- [x] Créer la branche `feature/ct-11-03-contact-layout`
+- [x] Vérifier le fichier cible : `pages/contact.vue`
+- [x] Identifier / ajouter un wrapper racine `.contact-page`
 
 ---
 
 ### 2. Structure HTML (contact.vue)
-- [ ] Créer un wrapper `.contact-layout`
-- [ ] Créer une grille 2 colonnes (desktop)
-  - [ ] Colonne gauche : `.contact-aside`
-  - [ ] Colonne droite : `.contact-form-panel`
+- [x] Créer un wrapper `.contact-layout`
+- [x] Créer une grille 2 colonnes (desktop)
+  - [x] Colonne gauche : `.contact-aside`
+  - [x] Colonne droite : `.contact-form-panel`
 
 #### Colonne gauche — contenu
-- [ ] Déplacer le titre `<h1>` dans `.contact-aside`
-- [ ] Ajouter un bloc intro `.contact-intro`
-- [ ] Ajouter une promesse explicite (ex. réponse sous 48h)
-- [ ] Ajouter un bloc `.contact-infos`
-  - [ ] Email (mailto)
-  - [ ] Lien LinkedIn
+- [x] Déplacer le titre `<h1>` dans `.contact-aside`
+- [x] Ajouter un bloc intro `.contact-intro`
+- [x] Ajouter une promesse explicite (ex. réponse sous 48h)
+- [x] Ajouter un bloc `.contact-infos`
+  - [x] Email (mailto)
+  - [x] Lien LinkedIn
 
 #### Colonne droite — formulaire
-- [ ] Encapsuler le formulaire dans `.contact-form-panel`
-- [ ] Ajouter un wrapper `.contact-form`
+- [x] Encapsuler le formulaire dans `.contact-form-panel`
+- [x] Ajouter un wrapper `.contact-form`
 
 ---
 
 ### 3. Layout CSS (Grid / Responsive)
-- [ ] Implémenter un layout Grid desktop
-  - [ ] 2 colonnes (ex. 40% / 60% ou 1fr / 1.2fr)
-  - [ ] Gap horizontal cohérent avec le design system
-- [ ] Mobile
-  - [ ] Layout empilé
-  - [ ] Ordre logique : colonne gauche → formulaire
-- [ ] Définir une largeur max pour le formulaire (ex. 520–640px)
+- [x] Implémenter un layout Grid desktop
+  - [x] 2 colonnes (ex. 40% / 60% ou 1fr / 1.2fr)
+  - [x] Gap horizontal cohérent avec le design system
+- [x] Mobile
+  - [x] Layout empilé
+  - [x] Ordre logique : colonne gauche → formulaire
+- [x] Définir une largeur max pour le formulaire (ex. 520–640px)
 
 ---
 
 ### 4. Panel formulaire (design)
-- [ ] Définir un fond distinct pour `.contact-form-panel`
-- [ ] Ajouter padding interne généreux
-- [ ] Ajouter bordure ou séparation visuelle
-- [ ] Définir un radius cohérent avec le site
-- [ ] Vérifier contraste fond / texte
+- [x] Définir un fond distinct pour `.contact-form-panel`
+- [x] Ajouter padding interne généreux
+- [x] Ajouter bordure ou séparation visuelle
+- [x] Définir un radius cohérent avec le site
+- [x] Vérifier contraste fond / texte
 
 ---
 
 ### 5. Stylisation des champs
-- [ ] Styliser inputs text / email
-- [ ] Styliser textarea
-  - [ ] Hauteur confortable
-  - [ ] Resize vertical uniquement
-- [ ] Styliser labels
-  - [ ] Typographie (taille, graisse)
-  - [ ] Espacement label → champ
-- [ ] Harmoniser les espacements verticaux entre champs
+- [x] Styliser inputs text / email
+- [x] Styliser textarea
+  - [x] Hauteur confortable
+  - [x] Resize vertical uniquement
+- [x] Styliser labels
+  - [x] Typographie (taille, graisse)
+  - [x] Espacement label → champ
+- [x] Harmoniser les espacements verticaux entre champs
 
 ---
 
 ### 6. États et interactions
-- [ ] Focus
-  - [ ] Supprimer styles natifs (outline / box-shadow)
-  - [ ] Implémenter `:focus-visible` accessible
-- [ ] Hover (léger)
-- [ ] Disabled (si applicable)
-- [ ] Error (prévoir classe `.is-error`)
+- [x] Focus
+  - [x] Supprimer styles natifs (outline / box-shadow)
+  - [x] Implémenter `:focus-visible` accessible
+- [x] Hover (léger)
+- [x] Disabled (si applicable)
+- [x] Error (prévoir classe `.is-error`)
 
 ---
 
 ### 7. Bouton d’envoi
-- [ ] Vérifier cohérence avec design system
-- [ ] États hover / focus / disabled
-- [ ] Zone cliquable confortable (mobile)
+- [x] Vérifier cohérence avec design system
+- [x] États hover / focus / disabled
+- [x] Zone cliquable confortable (mobile)
 
 ---
 
 ### 8. Accessibilité (a11y)
-- [ ] Associer chaque `label` à son champ (`for` / `id`)
-- [ ] Focus clavier visible et cohérent
-- [ ] Checkbox mentions légales accessible
-- [ ] Vérifier contrastes (WCAG AA minimum)
+- [x] Associer chaque `label` à son champ (`for` / `id`)
+- [x] Focus clavier visible et cohérent
+- [x] Checkbox mentions légales accessible
+- [x] Vérifier contrastes (WCAG AA minimum)
 
 ---
 
 ### 9. Validation finale
-- [ ] Test desktop (≥1200px)
-- [ ] Test tablette
-- [ ] Test mobile
-- [ ] Vérifier lisibilité globale
-- [ ] Vérifier absence de styles natifs résiduels
+- [x] Test desktop (≥1200px)
+- [x] Test tablette
+- [x] Test mobile
+- [x] Vérifier lisibilité globale
+- [x] Vérifier absence de styles natifs résiduels
 
 
 - **Structure** :
@@ -370,10 +370,10 @@ textarea:focus {
 
 ##### CT-11-05 : Email cliquable en alternative
 
-- [ ] Créer branche `feature/ct-11-05-contact-email`
-- [ ] Ajouter un lien mailto: visible comme alternative au formulaire
-- [ ] protéger ce mail du spam
-- [ ] Ajouter le lien LinkedIn
+- [x] Créer branche `feature/ct-11-05-contact-email`
+- [x] Ajouter un lien mailto: visible comme alternative au formulaire
+- [x] protéger ce mail du spam
+- [x] Ajouter le lien LinkedIn
 - **Fichier** : `pages/contact.vue`
 
 ---
@@ -399,56 +399,137 @@ textarea:focus {
 
 ---
 
-## 🎨 PHASE 12 : Optimisation SEO
-
-> **Décision** : toutes les URLs internes finissent par un slash (sauf `/`).
-> **Contrainte** : pas de redirects Netlify génériques, corriger à la source.
-
-### ✅ Plan d’action (priorités)
-
-#### P0 — Bloquants indexation / duplication
-- [x] **SEO-12-01** : Normaliser les URLs (trailing slash) sur tout le site
-- [x] **SEO-12-02** : Corriger les canonicals incohérents
-- [ ] **SEO-12-03** : Corriger les erreurs critiques Screaming Frog
-  - [x] `/portfolio/` canonisée vers `/eco-conception/portfolio` (404) → corrigé
-  - [ ] 502/504 : reproduire via `scripts/check-routes.mjs` + curl, corriger si besoin
-
-#### P1 — Qualité des meta + cohérence OG/Twitter
-- [x] **SEO-12-05** : Aligner `og:url` sur la canonical
-
-#### P2 — Données structurées + sitemap
-- [x] **SEO-12-06** : Vérifier JSON-LD `BlogPosting` (IDs, breadcrumbs)
-- [x] **SEO-12-07** : Corriger `sitemap.xml` (domaine + trailing slash)
-
----
-
 ## 📈 MÉTRIQUES CIBLES
 
 ### Éco-conception
 
-- [ ] EcoIndex : Score **A**
-- [ ] Requêtes HTTP : **< 12**
-- [ ] Poids page : **< 150KB**
-- [ ] CO2/page : **< 0.3g**
-- [ ] Éléments DOM : **< 800**
+- [x] EcoIndex : Score **A**
+- [x] Requêtes HTTP : **< 12**
+- [x] Poids page : **< 150KB**
+- [x] CO2/page : **< 0.3g**
+- [x] Éléments DOM : **< 800**
 
 ### Performance
 
-- [ ] Lighthouse Performance : **> 95**
-- [ ] LCP : **< 1.5s**
-- [ ] FID : **< 100ms**
-- [ ] CLS : **< 0.05**
+- [x] Lighthouse Performance : **> 95**
+- [x] LCP : **< 1.5s**
+- [x] FID : **< 100ms**
+- [x] CLS : **< 0.05**
 
 ### Accessibilité
 
-- [ ] Lighthouse Accessibility : **> 95**
-- [ ] WAVE : **0 erreurs**
+- [x] Lighthouse Accessibility : **> 95**
+- [x] WAVE : **0 erreurs**
 
 ### Conversion (Phase 11)
 
-- [ ] Temps sur page augmenté
-- [ ] Taux de rebond diminué
-- [ ] Formulaire contact soumis
+- [x] Temps sur page augmenté
+- [x] Taux de rebond diminué
+- [x] Formulaire contact soumis
+
+
+
+
+## 🎨 PHASE 12 : Optimisation SEO
+
+> **Objectif Phase 12** : Audit + corrections SEO techniques (URLs, canonicals, meta, JSON-LD, sitemap) à partir du rapport Screaming Frog.
+>
+> **Décision** : **toutes les URLs internes doivent finir par un slash** (sauf la racine `/`).
+>
+> **Contrainte Netlify** : ne pas tenter de normaliser le slash avec des redirects génériques. Corriger à la source (génération Nuxt + liens internes + canonicals + sitemap).
+
+### ✅ PHASE 12 — Plan d’action (priorités)
+
+#### P0 — Bloquants indexation / duplication
+- [ ] **SEO-12-01** : Normaliser les URLs (trailing slash) **sur tout le site**
+- [ ] **SEO-12-02** : Corriger les **canonicals incohérents** et toute canonical pointant vers une 3xx/4xx
+- [ ] **SEO-12-03** : Corriger les erreurs critiques Screaming Frog
+  - [ ] `/portfolio/` (200) est canonisée vers `/eco-conception/portfolio` (404) → **corriger la canonical de la page portfolio**
+  - [ ] Certaines URLs remontent en **502/504** (ex: `/contact`, une page d’article) → **reproduire via curl en local + deploy preview** et corriger (bug build/routing)
+
+#### P1 — Qualité des meta + cohérence OG/Twitter
+- [ ] **SEO-12-04** : Vérifier cohérence `title` / `meta description` / `og:*` / `twitter:*` sur toutes les pages
+- [ ] **SEO-12-05** : Aligner `og:url` sur la canonical (même URL, même trailing slash)
+
+#### P2 — Données structurées + sitemap
+- [ ] **SEO-12-06** : Vérifier les JSON-LD `BlogPosting` des articles (IDs, dates, image, breadcrumbs)
+- [ ] **SEO-12-07** : Vérifier et corriger les URLs dans `sitemap.xml` (domaine + trailing slash)
+
+---
+
+### 🤖 Prompt Codex — Phase 12 (copier-coller)
+
+```text
+Objectif : optimiser le SEO technique en standardisant toutes les URLs CANONIQUES avec trailing slash (sauf "/"), en alignant canonical / OG / JSON-LD / sitemap / liens internes, et en corrigeant les erreurs détectées par Screaming Frog.
+
+Contexte du projet : Nuxt 3 (ssr:true), génération statique via Netlify, NUXT_PUBLIC_SITE_URL présent (prod: https://beabot.fr). Modules: @nuxt/content, @nuxt/image, @nuxtjs/sitemap.
+
+Décision :
+- Convention d’URL : trailing slash PARTOUT (ex: /eco-conception/xxx/). Exception: "/".
+- Ne PAS ajouter de redirects Netlify génériques pour gérer le slash. Corriger à la source.
+
+Problèmes à corriger (Screaming Frog) :
+- /portfolio/ (200) est canonisée vers /eco-conception/portfolio (404) => corriger canonical sur la page portfolio.
+- Certaines URLs remontent en 502/504 (ex: /contact, une page d’article) => vérifier si reproductible via curl (local + deploy preview) et corriger si bug build/routing.
+- Duplications /x et /x/ => mettre à jour le maillage interne pour pointer directement vers la version canonique.
+
+Tâches :
+1) Créer une utilitaire unique de normalisation URL (ex: utils/seo-url.ts)
+   - ensureLeadingSlash(path)
+   - withTrailingSlash(path): "/" -> "/", sinon s’assure que ça finit par "/"
+   - canonicalUrl(siteUrl, path): combine siteUrl + withTrailingSlash(ensureLeadingSlash(path))
+   - normalizeInternalHref(href): applique trailing slash uniquement aux liens internes
+     (ne pas toucher : http(s), mailto:, tel:, #, fichiers .pdf/.png/.jpg/.svg/.webp, query-only)
+
+2) Corriger tous les useHead/useSeoMeta :
+   - Home : canonical = siteUrl + "/" (OK)
+   - Hub /eco-conception : canonical = siteUrl + "/eco-conception/" ET og:url identique (aujourd’hui og:url sans slash -> à corriger)
+   - Articles /eco-conception/[slug] :
+     - canonicalUrl = siteUrl + "/eco-conception/" + slug + "/" (ajouter slash final)
+     - og:url = canonicalUrl
+     - JSON-LD : mainEntityOfPage.@id = canonicalUrl ; BreadcrumbList item 2 = siteUrl + "/eco-conception/" ; item 3 = canonicalUrl
+   - Pages simples (portfolio, mentions-legales, contact, etc.) : canonical self-referential + trailing slash
+
+3) Corriger prev/next (findSurround + transformArticleLink)
+   - transformArticleLink doit produire une URL canonique avec slash final.
+
+4) Normaliser les liens internes (code) :
+   - Header/Footer/Nav + boutons + prev/next : tous les liens internes doivent pointer vers la version avec slash final.
+   - Implémenter un composant AppLink (wrapper de NuxtLink) qui applique normalizeInternalHref.
+
+5) Normaliser les liens internes dans content/**/*.md :
+   - Script Node qui scanne et convertit les liens internes "/x" -> "/x/" (avec exclusions ci-dessus).
+
+6) Sitemap (nuxtjs/sitemap) :
+   - Mettre à jour la config routes: actuellement elle renvoie `/eco-conception/${slug}` (sans slash).
+   - Corriger pour renvoyer `/eco-conception/${slug}/`.
+   - Vérifier que toutes les <loc> internes du sitemap finissent par "/" (sauf "/") et que le domaine est NUXT_PUBLIC_SITE_URL.
+
+7) Tests de cohérence (post-build) :
+   - Ajouter scripts/seo-check.mjs qui:
+     - parse .output/public/sitemap.xml : échoue si un <loc> interne manque trailing slash
+     - parse .output/public/robots.txt : vérifie que la ligne Sitemap pointe vers `${NUXT_PUBLIC_SITE_URL}/sitemap.xml`
+     - (optionnel) vérifie quelques pages HTML (home + hub + 1 article + portfolio + mentions) : canonical et og:url cohérents et avec slash.
+
+8) Investiguer 502/504 :
+   - Ajouter un script de diagnostic (scripts/check-routes.mjs) qui lance quelques requêtes (fetch) sur un serveur local preview.
+   - Vérifier reproduction via curl :
+     - curl -I http://localhost:PORT/contact/
+     - curl -I http://localhost:PORT/eco-conception/<slug>/
+   - Identifier si l’erreur vient du build, du prerender, d’un fetch content, ou d’un routeRules.
+
+Livrables :
+- Travailler à partir de la branch dev sur la branch feature/seo-optim-2  avec : utilitaire URL, correction useHead/OG/JSON-LD, normalisation liens (code + markdown), correction sitemap routes + trailing slash, scripts de checks, et correctifs 502/504 si reproductibles.
+- Tu peux tester et commit sur feature/seo-optim-2 mais ne fais pas de merge
+- Repasser Screaming Frog après merge : objectif 0 canonicals vers 3xx/4xx, 0 duplications 200, 0 inlinks qui tapent une 301.
+```
+
+---
+
+### 🔧 Notes techniques (Nuxt config actuelle)
+- `runtimeConfig.public.siteUrl` via `NUXT_PUBLIC_SITE_URL` : conserver comme source de vérité.
+- `@nuxtjs/sitemap` : corriger `routes()` pour renvoyer des URLs **avec slash final** (actuellement non).
+- `netlify.toml` : `pretty_urls = true` (garde la décision trailing slash et évite de lutter via redirects).
 
 ---
 
@@ -489,10 +570,11 @@ textarea:focus {
 | 8 | Tests et validation | ✅ Complété |
 | 9 | Optimisations éco-conception | ⏸️ En pause |
 | 10 | Migration domaine beabot.fr | ✅ Complété |
-| **11** | **Homepage & Contact redesign** | 🔄 **Active** |
+| 11 | Homepage & Contact redesign | Complété |
+| **12** | **Optimisations SEO** | 🔄 **Active** |
 
 ---
 
-**📝 Maintenu par** : Claude Code
-**📅 Dernière MAJ** : 18 décembre 2025
-**🎯 Phase actuelle** : Phase 11 - Homepage & Contact redesign
+**📝 Maintenu par** : Claude Code et Codex
+**📅 Dernière MAJ** : 20 décembre 2025
+**🎯 Phase actuelle** : Phase 12 - Optimisations SEO
