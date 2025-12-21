@@ -1,22 +1,23 @@
 # 🤖 CLAUDE.md - Contexte Projet BeAbot
 
-> **Ce fichier est destiné à Claude Code pour comprendre le contexte du projet lors de futures sessions.**
+> **Ce fichier est destiné à Claude pour comprendre le contexte du projet.**
 
 ---
 
 ## 📋 INFORMATIONS PROJET
 
 ### Identité
+
 - **Nom** : BeAbot
 - **Type** : Blog statique + Portfolio
 - **Thématique** : Éco-conception web
-- **URL Production** : https://beabot.netlify.app (Nuxt 3, branch master)
-- **URL Développement** : https://dev-beabot.netlify.app (Nuxt 3, branch dev)
-- **URL Live** : https://beabot.fr (domaine principal)
+- **URL Production** : https://beabot.fr
+- **URL Dev** : https://dev-beabot.netlify.app
 - **Repository** : https://github.com/benabot/beabot
 - **Repo Local** : `/Users/benoitabot/Sites/beabot`
 
 ### Propriétaire
+
 - **Nom** : Benoît Abot
 - **Email** : hello@beabot.fr
 - **GitHub** : benabot
@@ -25,7 +26,6 @@
 
 ## 🔧 STACK TECHNIQUE
 
-### Configuration actuelle (Nuxt 3)
 ```json
 {
   "framework": "Nuxt 3.14+",
@@ -33,23 +33,24 @@
   "bundler": "Vite 6",
   "cms": "@nuxt/content v2.13+",
   "image": "@nuxt/image",
-  "sitemap": "@nuxtjs/sitemap",
+  "sitemap": "@nuxtjs/sitemap v6.1.5",
   "fonts": "System font stack",
   "node": "≥ 18",
-  "package-manager": "npm"
+  "package-manager": "npm",
+  "hosting": "Netlify (SSG)"
 }
 ```
 
-### Optimisations éco-conception actives
+### Optimisations actives
+
 - **SSG** : Génération statique complète
 - **System fonts** : Pas de web fonts externes
-- **Lazy loading** : Images et composants chargés à la demande
+- **Lazy loading** : Images et composants à la demande
 - **WebP** : Format d'image optimisé
 - **Manual chunking** : vendor-vue, vendor-nuxt, vendor-content, vendor-libs
-- **CSS externe** : Pas de CSS inline (meilleur cache)
-- **Cache headers** : 1 an pour assets statiques
-- **Compression** : Brotli/Gzip via Netlify
-- **Prefetch désactivé** : `prefetchLinks: false` (économie bande passante)
+- **CSS externe** : Meilleur cache (pas de inline)
+- **Trailing slash** : Convention URL avec `/` final
+- **Prefetch désactivé** : Économie bande passante
 
 ---
 
@@ -57,135 +58,91 @@
 
 ```
 beabot/
-├── ARCHIVES/                 # Ancienne documentation
-├── AUDITS/                   # Documentation d'audit
-│   ├── ECO_AUDIT_PHASE_9.md  # Audit éco-conception
-│   └── ...
 ├── assets/
 │   ├── css/
 │   │   ├── main.scss
 │   │   ├── article-content.scss
-│   │   └── vars/             # Variables SCSS
-│   │       ├── _colors.scss
-│   │       ├── _typo.scss
-│   │       └── _spacing.scss
+│   │   └── vars/           # Variables SCSS
 │   └── img/
-├── components/               # Composants Vue 3
-│   └── server/               # Server components (pas d'hydratation)
+├── components/
+│   ├── AppLink.vue         # Liens internes normalisés
+│   └── server/             # Server components
 ├── composables/
 │   └── useTags.ts
 ├── content/
-│   └── articles/             # Articles Markdown
+│   └── articles/           # Articles Markdown
 ├── layouts/
 │   ├── default.vue
 │   └── error.vue
 ├── pages/
-│   ├── index.vue             # Homepage (Phase 11)
-│   ├── contact.vue           # Contact (Phase 11)
+│   ├── index.vue
+│   ├── contact.vue
 │   ├── eco-conception.vue
 │   ├── portfolio.vue
 │   └── ...
-├── public/
-│   └── img/
+├── scripts/
+│   ├── seo-check.mjs       # Validation SEO post-build
+│   └── check-routes.mjs    # Debug routes
 ├── server/
 │   └── routes/
+│       └── robots.txt.ts   # robots.txt dynamique
+├── utils/
+│   └── seo-url.ts          # Normalisation URLs
 ├── nuxt.config.ts
 ├── netlify.toml
-├── CLAUDE.md                 # Ce fichier
-├── TODO.md                   # Tâches actives
-└── BRANCHING_STRATEGY.md
+├── TODO.md
+├── PROJECT_STATE.md
+└── CLAUDE.md               # Ce fichier
 ```
 
 ---
 
-## 🎯 PHASES ACTIVES
+## 🎯 PHASES DU PROJET
 
-### Phase 11 - Homepage & Contact Redesign (ACTIVE)
-**Objectif** : Améliorer UX, parcours utilisateur et conversions
+### Terminées
 
-#### Homepage - Priorités
-| Priorité | Tâches |
-|----------|--------|
-| **P1** | HP-11-01 Tagline hero, HP-11-02 Accroche positive, HP-11-03 Chiffres impacts, HP-11-04 Piliers concrets |
-| **P2** | HP-11-05 Hero mobile, HP-11-06 Grid impacts 2x2, HP-11-07 Scroll indicator |
-| **P3** | HP-11-08 Oeuf → CSS, HP-11-09 Accordéon mobile |
+| Phase | Description | Date |
+|-------|-------------|------|
+| 1-8 | Migration Nuxt 3 | Nov-Déc 2025 |
+| 9 | Éco-conception | 15-17 déc 2025 |
+| 10 | Domaine beabot.fr | 18 déc 2025 |
+| 11 | Homepage & Contact | 18-20 déc 2025 |
+| **12** | **SEO technique** | **21 déc 2025** |
 
-#### Contact - Priorités
-| Priorité | Tâches |
-|----------|--------|
-| **P1** | CT-11-01 Titre engageant, CT-11-02 Labels humanisés |
-| **P2** | CT-11-03 Layout 2 colonnes, CT-11-04 Focus states, CT-11-05 Email alternatif |
+### À venir
 
-### Phase 9 - Optimisations Éco-conception (en pause)
-**Objectif** : Requêtes HTTP < 12, DOM < 800 éléments, EcoIndex A
-
-Tâches restantes à reprendre :
-- ECO-9-15 : NuxtIsland pour zones non-interactives
-- ECO-9-17 : CSS critique inline
-- ECO-9-18 : SVG décoratifs → CSS
-- ECO-9-20 : Optimiser composant Oeuf
-- ECO-9-21 : Delay Hydration
-
----
-
-## 🚀 SOLUTIONS TECHNIQUES NUXT 3
-
-### Réduction des requêtes HTTP
-```vue
-<!-- Lazy Components (préfixe Lazy) -->
-<LazyOeuf />
-<LazyHomeEcoArticles />
-
-<!-- Server Components (suffixe .server.vue) -->
-<OeufServer fill="#04d94f" />
-```
-
-### Réduction du DOM
-```scss
-// Remplacer SVG par pseudo-éléments CSS
-.decoration::before {
-  content: '';
-  background-image: url('/img/oeuf-vert.svg');
-  background-repeat: no-repeat;
-}
-```
-
-```vue
-<!-- Vue 3 fragments (pas de wrapper) -->
-<template>
-  <h1>Titre</h1>
-  <p>Contenu</p>
-</template>
-```
+| Phase | Description |
+|-------|-------------|
+| 13 | SEO avancé & Contenu |
 
 ---
 
 ## 🌿 WORKFLOW GIT
 
 ### Branches
-- `master` : Production
-- `dev` : Développement (base de travail)
-- `optim/eco-9-XX-*` : Branches Phase 9
-- `feature/hp-11-XX-*` : Branches Phase 11 Homepage
-- `feature/ct-11-XX-*` : Branches Phase 11 Contact
+
+- `master` : Production (beabot.fr)
+- `dev` : Développement
+- `feature/*` : Nouvelles fonctionnalités
+- `optim/*` : Optimisations
 - `docs/*` : Documentation
 
 ### Règle importante
-**Toujours créer une branche de travail depuis `dev`**, ne jamais travailler directement sur `dev` ou `master`.
+
+**Toujours créer une branche depuis `dev`**, ne jamais travailler directement sur `dev` ou `master`.
 
 ```bash
-# Créer une branche de travail
 git checkout dev
 git pull origin dev
-git checkout -b feature/hp-11-01-hero-tagline
-
-# Après travail terminé
+git checkout -b feature/ma-feature
+# ... travail ...
 git add .
-git commit -m "feat: nouveau tagline hero avec CTAs"
-# Benoît s'occupe du merge et push
+git commit -m "feat: description"
+# Benoît s'occupe du merge
 ```
 
-### Convention de commits
+### Convention commits
+
 ```
 feat: nouvelle fonctionnalité
 fix: correction de bug
@@ -210,11 +167,9 @@ npm run dev          # http://localhost:3000
 npm run generate     # Génération statique
 npm run preview      # Preview du build
 
-# Tests
+# Validation
 npm run lint         # ESLint + Prettier
-
-# Analyse bundle
-npx nuxi analyze     # Voir la taille des chunks
+node scripts/seo-check.mjs  # Vérification SEO
 ```
 
 ---
@@ -223,60 +178,51 @@ npx nuxi analyze     # Voir la taille des chunks
 
 | Métrique | Actuel | Cible |
 |----------|--------|-------|
-| EcoIndex | B-C | **A** |
-| Requêtes HTTP | ~16 | **<12** |
-| Éléments DOM | ~900+ | **<800** |
-| Poids page | ~200KB | **<150KB** |
-| Lighthouse Perf | 85-90 | **>95** |
-| Lighthouse A11y | ~90 | **>95** |
+| EcoIndex | B-C | A |
+| Requêtes HTTP | ~16 | < 12 |
+| Poids page | ~150KB | < 100KB |
+| Lighthouse Perf | 85-90 | > 95 |
+| Lighthouse A11y | ~90 | > 95 |
 
 ---
 
 ## 🚨 GARDE-FOUS
 
 ### ❌ NE JAMAIS FAIRE
+
 - Travailler directement sur `master` ou `dev`
 - Force push sur branches protégées
-- Merger sans tester (`npm run dev` + `npm run generate`)
-- Ajouter des scripts externes (CDN tiers)
-- Ajouter des web fonts (garder system stack)
+- Merger sans tester (`npm run generate`)
+- Ajouter des scripts CDN externes
+- Ajouter des web fonts
 
 ### ✅ TOUJOURS FAIRE
+
 - Créer une branche dédiée depuis `dev`
-- Tester localement avant de proposer un merge
+- Tester localement avant merge
 - Utiliser des commits conventionnels
 - Mettre à jour TODO.md après chaque tâche
-- Privilégier CSS natif aux éléments DOM
+- Utiliser `AppLink` pour les liens internes
 - Vérifier l'accessibilité (focus, contraste, aria)
 
 ---
 
-## 📚 DOCUMENTATION
+## 📚 CONVENTIONS SEO
 
-| Fichier | Contenu |
-|---------|---------|
-| `CLAUDE.md` | Ce fichier (contexte technique) |
-| `TODO.md` | Tâches Phases 9, 10, 11 avec détails |
-| `BRANCHING_STRATEGY.md` | Stratégie Git détaillée |
-| `AUDITS/ECO_AUDIT_PHASE_9.md` | Audit éco-conception |
+### URLs
 
----
+- **Trailing slash** : Toutes les URLs internes finissent par `/` (sauf racine)
+- **Utilitaire** : `utils/seo-url.ts` pour normalisation
+- **Composant** : `AppLink.vue` pour liens internes
 
-## 📋 HISTORIQUE DES PHASES
+### Canonicals
 
-| Phase | Description | Statut |
-|-------|-------------|--------|
-| 1-4 | Migration Nuxt 3 | ✅ |
-| 5 | Finalisation | ✅ |
-| 6 | Bug fixes production | ✅ |
-| 7 | Netlify build image | ✅ |
-| 8 | Tests et validation | ✅ |
-| 9 | Optimisations éco-conception | ⏸️ En pause |
-| 10 | Migration domaine beabot.fr | ✅ |
-| **11** | **Homepage & Contact redesign** | 🔄 **Active** |
+- Racine : `https://beabot.fr` (sans slash)
+- Pages : `https://beabot.fr/page/` (avec slash)
+- og:url = canonical
 
 ---
 
-**📝 Maintenu par** : Claude Code
-**📅 Dernière MAJ** : 18 décembre 2025
-**🎯 Phase active** : 11 - Homepage & Contact redesign
+**📝 Maintenu par** : Claude
+**📅 Dernière MAJ** : 21 décembre 2025
+**🎯 Phase actuelle** : Prêt pour merge Phase 12 → master
