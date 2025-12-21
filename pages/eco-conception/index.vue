@@ -127,7 +127,7 @@
     </section>
     <div class="border"></div>
     <section v-if="faqArticle" class="featured">
-      <span class="featured__label">À lire en premier</span>
+      <span class="featured__label">Repères et définitions</span>
       <AppLink :to="articleLink(faqArticle)" class="article-link">
         <BaseHeading gris :titre="faqArticle.title" :tags="faqArticle.tag" />
       </AppLink>
