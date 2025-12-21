@@ -22,6 +22,7 @@
 - ✅ Sitemap.xml corrigé (beabot.fr)
 - ✅ robots.txt pointe vers beabot.fr
 - ✅ Scripts de validation SEO créés
+- ✅ Frontmatter SEO + updatedAt sur articles
 - ✅ Filtres /eco-conception enrichis (SEO, Images, Performance)
 
 ---
@@ -50,6 +51,7 @@ Phase 13    - SEO Avancé & Contenu  [░░░░░░░░░░░░░░
 - ✅ robots.txt dynamique via server route
 - ✅ Scripts de validation : `seo-check.mjs`, `check-routes.mjs`
 - ✅ Component `AppLink.vue` pour liens internes normalisés
+- ✅ Frontmatter SEO + updatedAt sur articles
 - ✅ Filtres /eco-conception enrichis (SEO, Images, Performance)
 
 ### Phase 11 : Homepage & Contact (18-20 décembre 2025)
