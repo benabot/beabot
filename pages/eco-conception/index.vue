@@ -311,29 +311,32 @@ a {
   border-radius: 0.25rem;
 }
 .featured {
-  border: 2px solid $vert;
-  background: rgba($vert, 0.05);
+  max-width: 960px;
+  margin: 2.2rem auto 3rem auto;
+  border: 0;
+  border-left: 5px solid $vert;
+  background: rgba(0, 168, 62, 0.04);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
   border-radius: 0.6rem;
-  padding: 1.6rem 1.4rem;
-  margin-bottom: 2.4rem;
+  padding: 1.6rem 1.8rem;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
 
   @media (min-width: $breakpoint-tablet) {
-    padding: 2rem 2.2rem;
+    padding: 1.8rem 2.2rem;
   }
 }
 .featured__label {
   display: inline-block;
   align-self: flex-start;
   color: $vert;
-  border: 1px solid $vert;
+  border: 1px solid rgba(0, 168, 62, 0.35);
   border-radius: 999px;
-  padding: 0.2rem 0.55rem;
+  padding: 0.15rem 0.55rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  font-size: 0.6rem;
 }
 .featured__desc {
   margin: 0;
