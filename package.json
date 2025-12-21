@@ -15,7 +15,8 @@
     "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
     "lint": "npm run lint:js && npm run lint:prettier",
-    "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix"
+    "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix",
+    "migrate:frontmatter": "node scripts/migrate-frontmatter-seo.mjs"
   },
   "dependencies": {
     "@nuxt/content": "^2.13.2",
