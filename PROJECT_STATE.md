@@ -24,6 +24,7 @@
 - ✅ Scripts de validation SEO créés
 - ✅ Frontmatter SEO + updatedAt sur articles
 - ✅ Filtres /eco-conception enrichis (SEO, Images, Performance)
+- ✅ Script de migration frontmatter (seo + updatedAt)
 
 ---
 
@@ -53,6 +54,7 @@ Phase 13    - SEO Avancé & Contenu  [░░░░░░░░░░░░░░
 - ✅ Component `AppLink.vue` pour liens internes normalisés
 - ✅ Frontmatter SEO + updatedAt sur articles
 - ✅ Filtres /eco-conception enrichis (SEO, Images, Performance)
+- ✅ Script de migration frontmatter (seo + updatedAt)
 
 ### Phase 11 : Homepage & Contact (18-20 décembre 2025)
 

@@ -42,6 +42,7 @@
 - [x] **SEO-12-06** : JSON-LD BlogPosting vérifiés
 - [x] **SEO-12-07** : Sitemap.xml corrigé (domaine + trailing slash)
 - [x] **SEO-12-08** : Frontmatter SEO + updatedAt sur articles
+- [x] **SEO-12-09** : Script de migration frontmatter (seo + updatedAt)
 - [x] Utilitaire `utils/seo-url.ts` créé
 - [x] Script `scripts/seo-check.mjs` pour validation
 - [x] Script `scripts/check-routes.mjs` pour debug
