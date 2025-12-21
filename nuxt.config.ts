@@ -210,7 +210,10 @@ export default defineNuxtConfig({
     routes: async () => {
       const { serverQueryContent } = await import('#content/server')
       const articles = await serverQueryContent('articles').find()
-      return articles.map((article) => `/eco-conception/${article._path?.split('/').pop()}`)
+      return articles
+        .map((article) => article._path?.split('/').pop())
+        .filter(Boolean)
+        .map((slug) => `/eco-conception/${slug}/`)
     },
   },
 

@@ -399,6 +399,29 @@ textarea:focus {
 
 ---
 
+## 🎨 PHASE 12 : Optimisation SEO
+
+> **Décision** : toutes les URLs internes finissent par un slash (sauf `/`).
+> **Contrainte** : pas de redirects Netlify génériques, corriger à la source.
+
+### ✅ Plan d’action (priorités)
+
+#### P0 — Bloquants indexation / duplication
+- [x] **SEO-12-01** : Normaliser les URLs (trailing slash) sur tout le site
+- [x] **SEO-12-02** : Corriger les canonicals incohérents
+- [ ] **SEO-12-03** : Corriger les erreurs critiques Screaming Frog
+  - [x] `/portfolio/` canonisée vers `/eco-conception/portfolio` (404) → corrigé
+  - [ ] 502/504 : reproduire via `scripts/check-routes.mjs` + curl, corriger si besoin
+
+#### P1 — Qualité des meta + cohérence OG/Twitter
+- [x] **SEO-12-05** : Aligner `og:url` sur la canonical
+
+#### P2 — Données structurées + sitemap
+- [x] **SEO-12-06** : Vérifier JSON-LD `BlogPosting` (IDs, breadcrumbs)
+- [x] **SEO-12-07** : Corriger `sitemap.xml` (domaine + trailing slash)
+
+---
+
 ## 📈 MÉTRIQUES CIBLES
 
 ### Éco-conception

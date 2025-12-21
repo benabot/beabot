@@ -13,31 +13,29 @@
       <transition name="slide-right">
         <ul v-if="showMobileMenu" class="menu-mobile">
           <li @click="showMobileMenu = !showMobileMenu">
-            <NuxtLink to="/" class="title title--menu h2"
-              >Accueil</NuxtLink
-            >
+            <AppLink to="/" class="title title--menu h2">
+              Accueil
+            </AppLink>
           </li>
           <li @click="showMobileMenu = !showMobileMenu">
-            <NuxtLink
-              to="/eco-conception"
-              class="title title--menu h2"
-              >Éco-conception</NuxtLink
-            >
+            <AppLink to="/eco-conception/" class="title title--menu h2">
+              Éco-conception
+            </AppLink>
           </li>
           <li @click="showMobileMenu = !showMobileMenu">
-            <NuxtLink to="/portfolio" class="title title--menu h2"
-              >Portfolio</NuxtLink
-            >
+            <AppLink to="/portfolio/" class="title title--menu h2">
+              Portfolio
+            </AppLink>
           </li>
           <li @click="showMobileMenu = !showMobileMenu">
-            <NuxtLink to="/contact" class="title title--menu h2">Contact</NuxtLink>
+            <AppLink to="/contact/" class="title title--menu h2">Contact</AppLink>
             
           </li>
         </ul>
       </transition>
     </nav>
     <nav role="navigation" class="nav-desktop nav-1">
-      <NuxtLink :class="couleurHaut" to="/" no-prefetch>
+      <AppLink :class="couleurHaut" to="/" no-prefetch>
         <svg
           x="0"
           y="0"
@@ -119,21 +117,21 @@
           />
         </svg>
         <!-- <img src="/beabot.svg" alt="beabot" /> -->
-      </NuxtLink>
+      </AppLink>
     </nav>
     <nav role="navigation" class="nav-desktop nav-2 h4">
-      <NuxtLink to="/eco-conception" :class="couleurHaut"
-        >Éco-conception</NuxtLink
-      >
+      <AppLink to="/eco-conception/" :class="couleurHaut">
+        Éco-conception
+      </AppLink>
     </nav>
     <nav role="navigation" class="nav-desktop nav-3 h4">
-      <NuxtLink to="/portfolio" :class="couleurBas"
-        >Portfolio</NuxtLink
-      >
+      <AppLink to="/portfolio/" :class="couleurBas">
+        Portfolio
+      </AppLink>
     </nav>
     <nav role="navigation" class="nav-desktop nav-4 h4">
      
-                  <NuxtLink to="/contact" :class="couleurBas">Contact</NuxtLink>
+                  <AppLink to="/contact/" :class="couleurBas">Contact</AppLink>
 
     </nav>
     <slot :class="{ 'main-flou': showMobileMenu }" />

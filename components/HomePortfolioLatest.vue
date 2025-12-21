@@ -25,7 +25,7 @@
         <BaseButton :to="portfolioLink(item)" bleu>présentation</BaseButton>
       </div>
       <div class="oeuf b">
-        <NuxtLink to="/portfolio" aria-label="voir le portfolio">
+        <AppLink to="/portfolio/" aria-label="voir le portfolio">
           <svg class="lien" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path
               fill="currentColor"
@@ -34,7 +34,7 @@
 	v4.9c0,0.3,0.2,0.6,0.6,0.6h4.9c0.3,0,0.6,0.2,0.6,0.6v0.9C19,12.8,18.8,13,18.4,13z"
             />
           </svg>
-        </NuxtLink>
+        </AppLink>
         <Oeuf class="fond" width="80%" transform="rotate(-95)" fill="#2561d9" />
       </div>
     </div>
@@ -44,6 +44,7 @@
 <script setup>
 import { computed } from 'vue'
 import { portfolioItems } from '~/utils/portfolioItems'
+import { withTrailingSlash } from '~/utils/seo-url'
 
 const bleuCouleur = '#2561d9'
 
@@ -58,7 +59,7 @@ const latestItems = computed(() => {
 
 function portfolioLink(item) {
   const hash = item.anchor ? `#${item.anchor}` : ''
-  return `/portfolio${hash}`
+  return `${withTrailingSlash('/portfolio')}${hash}`
 }
 
 function headingSubtitle(item) {

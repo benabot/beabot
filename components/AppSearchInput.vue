@@ -9,20 +9,16 @@
     <span></span>
     <ul v-if="articles.length" class="text-gris3">
       <li v-for="article of articles" :key="article.slug">
-        <NuxtLink
-          :to="{
-            name: 'eco-conception-slug',
-            params: { slug: article.slug },
-          }"
-        >
+        <AppLink :to="articleHref(article)">
           {{ article.title }}
-        </NuxtLink>
+        </AppLink>
       </li>
     </ul>
   </div>
 </template>
 <script setup>
 import { ref, watch } from 'vue'
+import { withTrailingSlash } from '~/utils/seo-url'
 
 const searchQuery = ref('')
 const articles = ref([])
@@ -46,6 +42,11 @@ watch(searchQuery, async (newQuery) => {
 
   articles.value = results
 })
+
+function articleHref(article) {
+  if (!article?.slug) return '/eco-conception/'
+  return withTrailingSlash(`/eco-conception/${article.slug}`)
+}
 </script>
 <style lang="scss" scoped>
 #search {

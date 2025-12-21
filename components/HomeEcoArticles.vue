@@ -26,7 +26,7 @@
       </div>
 
       <div class="oeuf b">
-        <NuxtLink to="/eco-conception" aria-label="voir le blog">
+        <AppLink to="/eco-conception/" aria-label="voir le blog">
           <svg class="lien" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path
               fill="currentColor"
@@ -35,7 +35,7 @@
 	v4.9c0,0.3,0.2,0.6,0.6,0.6h4.9c0.3,0,0.6,0.2,0.6,0.6v0.9C19,12.8,18.8,13,18.4,13z"
             />
           </svg>
-        </NuxtLink>
+        </AppLink>
         <Oeuf class="fond" width="80%" transform="rotate(-95)" fill="#04d94f" />
       </div>
     </div>
@@ -44,6 +44,7 @@
 
 <script setup>
 import { computed } from 'vue'
+import { withTrailingSlash } from '~/utils/seo-url'
 
 const { data: articles } = await useAsyncData('home-latest-eco-articles', () =>
   queryContent('articles')
@@ -56,8 +57,10 @@ const { data: articles } = await useAsyncData('home-latest-eco-articles', () =>
 const latestArticles = computed(() => articles.value || [])
 
 function articleLink(article) {
-  if (!article || !article._path) return '/eco-conception'
-  return article._path.replace(/^\/articles\//, '/eco-conception/')
+  if (!article || !article._path) return '/eco-conception/'
+  return withTrailingSlash(
+    article._path.replace(/^\/articles\//, '/eco-conception/')
+  )
 }
 
 function articleSubtitle(article) {

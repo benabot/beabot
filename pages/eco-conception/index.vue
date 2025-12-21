@@ -112,9 +112,9 @@
       <transition-group name="list" tag="div">
         <article v-for="article of articlesFilters" :key="article._path">
           <!-- <img :src="article.img" /> -->
-          <nuxt-link :to="articleLink(article)" class="article-link">
+          <AppLink :to="articleLink(article)" class="article-link">
             <BaseHeading gris :titre="article.title" :tags="article.tag"
-          /></nuxt-link>
+          /></AppLink>
           <div class="resum">
             <p class="text-gris3 text-fin">{{ article.description }}</p>
             <div class="boite-bouton">
@@ -132,6 +132,7 @@
 
 <script setup>
 import { computed } from 'vue'
+import { withTrailingSlash } from '~/utils/seo-url'
 
 // Head metadata
 const config = useRuntimeConfig()
@@ -178,10 +179,10 @@ const articlesFilters = computed(() => {
 function articleLink(a) {
   // Nuxt Content v2 generates _path automatically from file location
   // content/articles/foo.md → _path: '/articles/foo'
-  if (!a || !a._path) return '/eco-conception'
+  if (!a || !a._path) return '/eco-conception/'
 
   // Map content directory to the public route namespace
-  return a._path.replace(/^\/articles\//, '/eco-conception/')
+  return withTrailingSlash(a._path.replace(/^\/articles\//, '/eco-conception/'))
 }
 
 // Update tag filter

@@ -121,10 +121,10 @@
         Comprendre ces impacts permet de concevoir autrement.
       </p>
       <div class="sct-footer mt-n10">
-        <NuxtLink
+        <AppLink
           class="sct-footer--btn"
-          to="/eco-conception/la-consommation-energetique-du-numerique"
-          >en savoir plus</NuxtLink
+          to="/eco-conception/la-consommation-energetique-du-numerique/"
+          >en savoir plus</AppLink
         >
         <div class="fleche">
           <svg
@@ -285,10 +285,10 @@
 
       <div class="sct-footer">
         <!-- <button class="sct-footer--btn">en savoir plus</button> -->
-        <NuxtLink
+        <AppLink
           class="sct-footer--btn"
-          to="/eco-conception/l-eco-conception-web"
-          >en savoir plus</NuxtLink
+          to="/eco-conception/l-eco-conception-web/"
+          >en savoir plus</AppLink
         >
         <div class="fleche">
           <svg
@@ -379,7 +379,10 @@
 </template>
 
 <script setup>
+import { canonicalUrl } from '~/utils/seo-url'
+
 const config = useRuntimeConfig()
+const homeCanonicalUrl = canonicalUrl(config.public.siteUrl, '/')
 
 // Fonction de scroll smooth vers la section suivante
 const scrollToNext = () => {
@@ -406,7 +409,7 @@ useHead({
     {
       hid: 'canonical',
       rel: 'canonical',
-      href: `${config.public.siteUrl}/`,
+      href: homeCanonicalUrl,
     },
   ],
 })
