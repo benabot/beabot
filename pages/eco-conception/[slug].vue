@@ -178,6 +178,11 @@ const showUpdatedAt = computed(() => {
   return new Date(updatedAt) > new Date(publishedAt)
 })
 
+const isFaq = computed(() => article.value?.schema === 'FAQPage')
+const faqItems = computed(() =>
+  buildFaqItems(article.value?.body?.children || [])
+)
+
 // Format date helper
 function formatDate(date) {
   if (!date) return ''
@@ -188,6 +193,128 @@ function formatDate(date) {
 // Update tag in store
 function updateTag(tag) {
   tagsStore.setTag(tag)
+}
+
+function getTagName(node) {
+  return node?.tag || node?.tagName || node?.name || ''
+}
+
+function isHeading(node, level) {
+  const tagName = getTagName(node)
+  if (tagName === `h${level}`) return true
+  return node?.type === 'heading' && node?.depth === level
+}
+
+function normalizeHeadingText(text) {
+  return (text || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function extractPlainText(node) {
+  if (!node) return ''
+  if (typeof node === 'string') return node
+  if (Array.isArray(node)) {
+    return node.map(extractPlainText).filter(Boolean).join('')
+  }
+
+  if (node.type === 'text') return node.value || ''
+  if (node.type === 'comment') return ''
+
+  const tagName = getTagName(node)
+  const children = node.children || []
+  const childText = children.map(extractPlainText).filter(Boolean)
+
+  if (tagName === 'br') return '\n'
+  if (tagName === 'p') return childText.join('').trim()
+  if (tagName === 'li') return childText.join('').trim()
+  if (tagName === 'ul' || tagName === 'ol') {
+    return childText.map((item) => item.trim()).filter(Boolean).join('\n')
+  }
+
+  return childText.join('')
+}
+
+function shouldIgnoreNode(node) {
+  const tagName = getTagName(node)
+  if (tagName === 'nav') return true
+  const className = node?.props?.class || ''
+  const id = node?.props?.id || ''
+  if (typeof className === 'string' && className.includes('toc')) return true
+  if (typeof id === 'string' && id.includes('toc')) return true
+  return false
+}
+
+const SKIP_FAQ_HEADINGS = new Set([
+  'a voir egalement',
+  'voir egalement',
+  'a voir aussi',
+  'sommaire',
+  'table des matieres',
+  'table of contents',
+])
+
+function buildFaqItems(bodyChildren) {
+  const items = []
+  let currentQuestion = ''
+  let currentAnswerParts = []
+
+  const pushCurrent = () => {
+    if (!currentQuestion) return
+    const answer = currentAnswerParts
+      .map((part) => part.trim())
+      .filter(Boolean)
+      .join('\n\n')
+    const question = currentQuestion.trim()
+    if (question && answer) {
+      items.push({ q: question, a: answer })
+    }
+    currentQuestion = ''
+    currentAnswerParts = []
+  }
+
+  for (const node of bodyChildren) {
+    if (items.length >= 20) break
+
+    if (isHeading(node, 2)) {
+      pushCurrent()
+      const questionText = extractPlainText(node).trim()
+      const normalized = normalizeHeadingText(questionText)
+      if (!questionText || SKIP_FAQ_HEADINGS.has(normalized)) {
+        currentQuestion = ''
+        currentAnswerParts = []
+        continue
+      }
+      currentQuestion = questionText
+      continue
+    }
+
+    if (isHeading(node, 1)) {
+      continue
+    }
+
+    if (!currentQuestion) {
+      continue
+    }
+
+    if (shouldIgnoreNode(node)) {
+      continue
+    }
+
+    const text = extractPlainText(node).trim()
+    if (text) {
+      currentAnswerParts.push(text)
+    }
+  }
+
+  if (items.length < 20) {
+    pushCurrent()
+  }
+
+  return items.slice(0, 20)
 }
 
 // Setup IntersectionObserver for TOC
@@ -249,6 +376,68 @@ const ogImage = computed(() => {
     : `${config.public.siteUrl}${image}`
 })
 const robots = computed(() => article.value?.seo?.robots || 'index,follow')
+const breadcrumbList = computed(() => ({
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'BeAbot',
+      item: homeCanonicalUrl,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Éco-conception',
+      item: hubCanonicalUrl,
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: article.value?.title,
+      item: articleCanonicalUrl,
+    },
+  ],
+}))
+const blogPostingStructuredData = computed(() => ({
+  '@type': 'BlogPosting',
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': articleCanonicalUrl,
+  },
+  inLanguage: 'fr-FR',
+  headline: seoTitle.value,
+  description: seoDesc.value,
+  datePublished: article.value?.date,
+  dateModified: article.value?.updatedAt || article.value?.date,
+  author: {
+    '@type': 'Person',
+    name: 'Benoît Abot',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'BeAbot',
+    url: config.public.siteUrl,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${config.public.siteUrl}/beabot.png`,
+    },
+  },
+  image: [ogImage.value],
+}))
+const faqStructuredData = computed(() => ({
+  '@type': 'FAQPage',
+  '@id': `${articleCanonicalUrl}#faq`,
+  inLanguage: 'fr-FR',
+  mainEntity: faqItems.value.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a,
+    },
+  })),
+}))
 
 useHead({
   title: seoTitle.value,
@@ -282,55 +471,9 @@ useHead({
       children: JSON.stringify({
         '@context': 'https://schema.org',
         '@graph': [
-          {
-            '@type': 'BlogPosting',
-            mainEntityOfPage: {
-              '@type': 'WebPage',
-              '@id': articleCanonicalUrl,
-            },
-            inLanguage: 'fr-FR',
-            headline: seoTitle.value,
-            description: seoDesc.value,
-            datePublished: article.value?.date,
-            dateModified: article.value?.updatedAt || article.value?.date,
-            author: {
-              '@type': 'Person',
-              name: 'Benoît Abot',
-            },
-            publisher: {
-              '@type': 'Organization',
-              name: 'BeAbot',
-              url: config.public.siteUrl,
-              logo: {
-                '@type': 'ImageObject',
-                url: `${config.public.siteUrl}/beabot.png`,
-              },
-            },
-            image: [ogImage.value],
-          },
-          {
-            '@type': 'BreadcrumbList',
-            itemListElement: [
-              {
-                '@type': 'ListItem',
-                position: 1,
-                name: 'BeAbot',
-                item: homeCanonicalUrl,
-              },
-              {
-                '@type': 'ListItem',
-                position: 2,
-                name: 'Éco-conception',
-                item: hubCanonicalUrl,
-              },
-              {
-                '@type': 'ListItem',
-                position: 3,
-                name: article.value?.title,
-                item: articleCanonicalUrl,
-              },
-            ],
-          },
+          ...(isFaq.value
+            ? [faqStructuredData.value, breadcrumbList.value]
+            : [blogPostingStructuredData.value, breadcrumbList.value]),
         ],
       }),
     },
