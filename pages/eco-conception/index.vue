@@ -27,6 +27,24 @@
         >
           Typographie
         </li>
+        /
+        <li :class="{ 'text-vert': name === 'SEO' }" @click="updateTag('SEO')">
+          SEO
+        </li>
+        /
+        <li
+          :class="{ 'text-vert': name === 'Images' }"
+          @click="updateTag('Images')"
+        >
+          Images
+        </li>
+        /
+        <li
+          :class="{ 'text-vert': name === 'Performance' }"
+          @click="updateTag('Performance')"
+        >
+          Performance
+        </li>
         <br />
         <li v-show="name" class="text-gris4" @click="updateTag('')">
           Tout voir
