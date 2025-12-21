@@ -2,8 +2,13 @@
 title: Images et éco-conception web
 description: Les images représentent la part la plus lourde d'une page web. Bien pensées, elles servent le contenu. Mal maîtrisées, elles dégradent les performances et alourdissent l'empreinte environnementale.
 tag: ['Éco-conception', 'Images', 'WebDesign', 'SEO']
+seo:
+  title: Images & éco-conception — optimiser sans sacrifier le contenu
+  description: Comment réduire le poids des images tout en préservant la qualité et la pertinence du contenu dans une démarche d’éco-conception.
+  ogImage: /beabot.png
+  robots: index,follow
 date: 2025-12-19
-updatedAt: 2025-12-19
+updatedAt: 2025-12-21
 temps: 4
 ---
 
