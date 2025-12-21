@@ -1,4 +1,25 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://beabot.fr'
+const normalizedSiteUrl = siteUrl.replace(/\/+$/, '')
+const fileExtensionRegex = /\.[a-z0-9]+$/i
+
+const normalizeSitemapLoc = (loc: string): string => {
+  if (!loc) return loc
+  if (loc.startsWith(normalizedSiteUrl)) {
+    const pathPart = loc.slice(normalizedSiteUrl.length) || '/'
+    if (pathPart !== '/' && fileExtensionRegex.test(pathPart)) return loc
+    const normalizedPath = pathPart === '/' ? '/' : `${pathPart.replace(/\/+$/, '')}/`
+    return `${normalizedSiteUrl}${normalizedPath}`
+  }
+
+  if (loc.startsWith('/')) {
+    if (loc !== '/' && fileExtensionRegex.test(loc)) return loc
+    return loc === '/' ? '/' : `${loc.replace(/\/+$/, '')}/`
+  }
+
+  return loc
+}
+
 export default defineNuxtConfig({
   // Nuxt 3 uses SSG by default with `nuxt generate`
   ssr: true,
@@ -11,6 +32,11 @@ export default defineNuxtConfig({
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://beabot.netlify.app',
     },
+  },
+
+  site: {
+    url: siteUrl,
+    trailingSlash: true,
   },
 
   // TypeScript configuration
@@ -205,12 +231,15 @@ export default defineNuxtConfig({
 
   // Sitemap configuration
   sitemap: {
-    hostname: process.env.NUXT_PUBLIC_SITE_URL || 'https://beabot.fr',
+    hostname: siteUrl,
     gzip: true,
     routes: async () => {
       const { serverQueryContent } = await import('#content/server')
       const articles = await serverQueryContent('articles').find()
-      return articles.map((article) => `/eco-conception/${article._path?.split('/').pop()}`)
+      return articles
+        .map((article) => article._path?.split('/').pop())
+        .filter(Boolean)
+        .map((slug) => `/eco-conception/${slug}/`)
     },
   },
 
@@ -223,6 +252,20 @@ export default defineNuxtConfig({
       routes: ['/rss.xml', '/feed.json', '/sitemap.xml', '/robots.txt'],
       // Ignore 404 errors on API content query routes (cache/surround queries)
       failOnError: false,
+    },
+    hooks: {
+      'sitemap:resolved': (ctx) => {
+        ctx.urls = ctx.urls.map((entry) => ({
+          ...entry,
+          loc: normalizeSitemapLoc(entry.loc),
+        }))
+      },
+      'sitemap:output': (ctx) => {
+        ctx.sitemap = ctx.sitemap.replace(
+          /<loc>([^<]+)<\/loc>/g,
+          (_match, loc) => `<loc>${normalizeSitemapLoc(loc)}</loc>`
+        )
+      },
     },
     compressPublicAssets: true, // Enable Brotli/Gzip compression for better performance
     minify: true, // Minify HTML output
@@ -237,4 +280,5 @@ export default defineNuxtConfig({
     // componentIslands: true, // Disabled - causes #app-manifest errors in current version
     inlineSSRStyles: false, // Disable inline CSS for better caching and smaller HTML
   },
+
 })

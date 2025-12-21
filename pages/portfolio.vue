@@ -142,7 +142,10 @@ const change = (valeur) => {
   tout.value = false
 }
 
+import { canonicalUrl } from '~/utils/seo-url'
+
 const config = useRuntimeConfig()
+const portfolioCanonicalUrl = canonicalUrl(config.public.siteUrl, '/portfolio')
 
 useHead({
   title: 'portfolio',
@@ -158,7 +161,7 @@ useHead({
     {
       hid: 'canonical',
       rel: 'canonical',
-      href: `${config.public.siteUrl}/eco-conception/portfolio`,
+      href: portfolioCanonicalUrl,
     },
   ],
 })

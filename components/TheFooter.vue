@@ -13,9 +13,9 @@
         
         <nav id="footer--nav">
           <ul>
-              <li><NuxtLink to="/" no-prefetch>Accueil</NuxtLink></li>
-              <li><NuxtLink to="/eco-conception" no-prefetch>Éco-conception</NuxtLink></li>
-              <li><NuxtLink to="/portfolio" no-prefetch>Portfolio</NuxtLink></li>
+              <li><AppLink to="/" no-prefetch>Accueil</AppLink></li>
+              <li><AppLink to="/eco-conception/" no-prefetch>Éco-conception</AppLink></li>
+              <li><AppLink to="/portfolio/" no-prefetch>Portfolio</AppLink></li>
             </ul>
         </nav>
       
@@ -26,9 +26,9 @@
         >
       </div>
       <div class="item c">
-         <NuxtLink to="/contact"  no-prefetch aria-label="beAbot - Contact"
-          >Formulaire de contact</NuxtLink
-        >
+        <AppLink to="/contact/" no-prefetch aria-label="beAbot - Contact">
+          Formulaire de contact
+        </AppLink>
         <a href="https://twitter.com/AbotBenoit" target="_blank" class="twit"
           >@BenoitAbot</a
         >
@@ -44,7 +44,7 @@
         <a href="/rss.xml" class="rss">RSS</a>
       </div>
       <div class="item d">
-        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/mentions-legales/">Mentions légales</a>
         - beAbot {{ annee }}
       </div>
     </div>

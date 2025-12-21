@@ -12,16 +12,16 @@
         <div class="breadcrumb">
           <ul class="selector text-gris1">
             <li class="svg-baseline svg-icon">
-              <NuxtLink to="/" aria-label="Retour à l'accueil">
+              <AppLink to="/" aria-label="Retour à l'accueil">
                 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                   <path
                     fill="currentColor"
                     d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"
                   /></svg
-              ></NuxtLink>
+              ></AppLink>
             </li>
             |
-            <li><NuxtLink to="/eco-conception">Blog</NuxtLink></li>
+            <li><AppLink to="/eco-conception/">Blog</AppLink></li>
             |
             <li class="text-gris3">{{ article?.title }}</li>
           </ul>
@@ -31,9 +31,9 @@
             :key="tag"
             class="petit-text lettre-smcp"
             @click="updateTag(tag)"
-            ><NuxtLink to="/eco-conception"
-              ><span class="text-vert"> #</span>{{ tag }}</NuxtLink
-            ></span
+            ><AppLink to="/eco-conception/">
+              <span class="text-vert"> #</span>{{ tag }}
+            </AppLink></span
           >
         </div>
         <div class="chapitres text-gris1">
@@ -123,6 +123,7 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
+import { canonicalUrl, withTrailingSlash } from '~/utils/seo-url'
 
 const route = useRoute()
 const tagsStore = useTags()
@@ -149,9 +150,12 @@ const { data: surroundArticles } = await useAsyncData(
 // Transform article links from /articles/* to /eco-conception/*
 const transformArticleLink = (article) => {
   if (!article || !article._path) return null
+  const normalizedPath = withTrailingSlash(
+    article._path.replace(/^\/articles\//, '/eco-conception/')
+  )
   return {
     ...article,
-    _path: article._path.replace(/^\/articles\//, '/eco-conception/'),
+    _path: normalizedPath,
   }
 }
 
@@ -209,7 +213,12 @@ onBeforeUnmount(() => {
 
 // Head metadata with structured data
 const config = useRuntimeConfig()
-const canonicalUrl = `${config.public.siteUrl}/eco-conception/${route.params.slug}`
+const articleCanonicalUrl = canonicalUrl(
+  config.public.siteUrl,
+  `/eco-conception/${route.params.slug}`
+)
+const hubCanonicalUrl = canonicalUrl(config.public.siteUrl, '/eco-conception')
+const homeCanonicalUrl = canonicalUrl(config.public.siteUrl, '/')
 const metaDesc =
   article.value?.description ||
   `Article sur l’éco-conception web : ${article.value?.title || ''}`.trim()
@@ -229,7 +238,7 @@ useHead({
     { hid: 'og:site_name', property: 'og:site_name', content: 'BeAbot' },
     { hid: 'og:title', property: 'og:title', content: article.value?.title },
     { hid: 'og:description', property: 'og:description', content: metaDesc },
-    { hid: 'og:url', property: 'og:url', content: canonicalUrl },
+    { hid: 'og:url', property: 'og:url', content: articleCanonicalUrl },
     { hid: 'og:image', property: 'og:image', content: ogImage },
 
     // Twitter
@@ -240,7 +249,7 @@ useHead({
   ],
 
   link: [
-    { hid: 'canonical', rel: 'canonical', href: canonicalUrl },
+    { hid: 'canonical', rel: 'canonical', href: articleCanonicalUrl },
   ],
 
   script: [
@@ -253,7 +262,7 @@ useHead({
             '@type': 'BlogPosting',
             mainEntityOfPage: {
               '@type': 'WebPage',
-              '@id': canonicalUrl,
+              '@id': articleCanonicalUrl,
             },
             inLanguage: 'fr-FR',
             headline: article.value?.title,
@@ -282,19 +291,19 @@ useHead({
                 '@type': 'ListItem',
                 position: 1,
                 name: 'BeAbot',
-                item: config.public.siteUrl,
+                item: homeCanonicalUrl,
               },
               {
                 '@type': 'ListItem',
                 position: 2,
                 name: 'Éco-conception',
-                item: `${config.public.siteUrl}/eco-conception`,
+                item: hubCanonicalUrl,
               },
               {
                 '@type': 'ListItem',
                 position: 3,
                 name: article.value?.title,
-                item: canonicalUrl,
+                item: articleCanonicalUrl,
               },
             ],
           },
