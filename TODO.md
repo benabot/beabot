@@ -18,6 +18,7 @@
 ### Statut (21 décembre 2025)
 
 **Phase 12 SEO terminée** - Prêt pour merge sur master.
+- ✅ Filtres /eco-conception enrichis (SEO, Images, Performance)
 
 | Métrique | Valeur | Statut |
 |----------|--------|--------|
