@@ -217,6 +217,23 @@
         </div>
       </div>
     </section>
+    <section class="container home-faq-card" aria-labelledby="faq-home">
+      <div class="home-faq-card__inner">
+        <h2 id="faq-home" class="h3 text-gris2 text-black">
+          FAQ — Éco-conception web
+        </h2>
+        <p class="text-gris3 text-fin home-faq-card__lead">
+          Réponses rapides aux questions les plus fréquentes.
+        </p>
+        <ul class="home-faq-card__list text-gris2">
+          <li>L’éco-conception est-elle compatible avec le SEO ?</li>
+          <li>Un site éco-conçu est-il moins esthétique ?</li>
+          <li>L’éco-conception limite-t-elle les fonctionnalités ?</li>
+          <li>WordPress est-il compatible avec l’éco-conception ?</li>
+        </ul>
+        <BaseButton text="Voir la FAQ complète" :to="faqLink" />
+      </div>
+    </section>
     <section class="container container-4 fond-gris">
       <LazyOeuf
         class="oeuf container-4__oeuf-1"
@@ -379,10 +396,11 @@
 </template>
 
 <script setup>
-import { canonicalUrl } from '~/utils/seo-url'
+import { canonicalUrl, withTrailingSlash } from '~/utils/seo-url'
 
 const config = useRuntimeConfig()
 const homeCanonicalUrl = canonicalUrl(config.public.siteUrl, '/')
+const faqLink = withTrailingSlash('/eco-conception/faq-eco-conception')
 
 // Fonction de scroll smooth vers la section suivante
 const scrollToNext = () => {
@@ -444,6 +462,30 @@ section {
     @media (min-width: $breakpoint-tablet) {
       width: 50vw;
     }
+  }
+}
+.home-faq-card {
+  margin: 2.2rem auto 3rem;
+}
+.home-faq-card__inner {
+  border: 1px solid $vert;
+  background: rgba($vert, 0.05);
+  border-radius: 0.6rem;
+  padding: 1.6rem 1.8rem;
+}
+.home-faq-card__lead {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+.home-faq-card__list {
+  list-style: disc;
+  padding-left: 1.2rem;
+  margin: 0 0 1.2rem;
+  display: grid;
+  gap: 0.6rem 1.6rem;
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 .impact {
