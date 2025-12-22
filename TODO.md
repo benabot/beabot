@@ -110,7 +110,7 @@
 - [x] **PF-14-06** : Améliorer les cartes projet (contexte, rôle, métriques)
 - [x] **PF-14-07** : Ajouter bloc résultats sur projets éco-conçus
 - [x] **PF-14-16** : Ajuster UI portfolio (boutons compacts, palette adoucie, espacement cartes)
-- [ ] **PF-14-08** : Responsive mobile amélioré
+- [x] **PF-14-08** : Responsive mobile amélioré
 
 ### P2 — SEO et accessibilité
 

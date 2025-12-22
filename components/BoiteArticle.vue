@@ -41,53 +41,58 @@
       </a>
 
       <div class="article-body">
-        <header class="project-header">
-          <h2 class="h4 text-gris1">{{ titre }}</h2>
-          <h3 class="text-fin text-gris2">{{ sousTitre }}</h3>
-        </header>
+        <div class="project-main">
+          <header class="project-header">
+            <h2 class="h4 text-gris1">{{ titre }}</h2>
+            <h3 class="text-fin text-gris2">{{ sousTitre }}</h3>
+          </header>
 
-        <p v-if="context" class="project-context">{{ context }}</p>
-        <p v-if="role" class="project-role">
-          <span>Mon rôle :</span> {{ role }}
-        </p>
+          <p v-if="context" class="project-context">{{ context }}</p>
 
-        <div v-if="metricsItems.length" class="project-metrics">
-          <p class="metrics-title">Résultats</p>
-          <ul class="metrics-list">
-            <li v-for="item in metricsItems" :key="item.label">
-              <span class="metrics-label">{{ item.label }}</span>
-              <span class="metrics-value">{{ item.value }}</span>
-            </li>
-          </ul>
-        </div>
+          <div class="project-meta">
+            <p v-if="role" class="project-role-pill">
+              <span class="role-label">Rôle</span>
+              <span class="role-text">{{ role }}</span>
+            </p>
 
-        <div v-if="chips.length" class="boite-chips">
-          <span v-for="chip in chips" :key="chip" class="chips">
-            <span>{{ chip }}</span>
-          </span>
-        </div>
-
-        <div v-if="stack.length" class="stack-chips">
-          <p class="stack-title">Stack technique</p>
-          <div class="stack-list">
-            <span v-for="tech in stack" :key="tech" class="stack-pill">
-              {{ tech }}
-            </span>
+            <div v-if="stack.length" class="stack-inline">
+              <span v-for="tech in stack" :key="tech" class="stack-pill">
+                {{ tech }}
+              </span>
+            </div>
           </div>
         </div>
 
-        <div class="project-links">
-          <a
-            :href="lien"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="seepost project-site-link"
-          >
-            voir le site ⟶
-          </a>
-          <AppLink v-if="articleLink" :to="articleLink" class="article-link">
-            Lire l'article →
-          </AppLink>
+        <div class="project-aside">
+          <div v-if="metricsItems.length" class="project-metrics">
+            <p class="metrics-title">Résultats</p>
+            <ul class="metrics-list">
+              <li v-for="item in metricsItems" :key="item.label">
+                <span class="metrics-label">{{ item.label }}</span>
+                <span class="metrics-value">{{ item.value }}</span>
+              </li>
+            </ul>
+          </div>
+
+          <div v-if="chips.length" class="boite-chips">
+            <span v-for="chip in chips" :key="chip" class="chips">
+              <span>{{ chip }}</span>
+            </span>
+          </div>
+
+          <div class="project-links">
+            <a
+              :href="lien"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="seepost project-site-link"
+            >
+              voir le site ⟶
+            </a>
+            <AppLink v-if="articleLink" :to="articleLink" class="article-link">
+              Lire l'article →
+            </AppLink>
+          </div>
         </div>
       </div>
     </article>
@@ -191,26 +196,25 @@ const metricsItems = computed(() => {
 
 <style lang="scss" scoped>
 .boite-article {
-  width: 90%;
+  width: min(92vw, 1120px);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 
   @media (min-width: $breakpoint-tablet) {
-    width: 80%;
-    display: flex;
-    justify-content: flex-start;
-  }
-  &:nth-child(odd) {
-    @media (min-width: $breakpoint-tablet) {
-      justify-content: flex-end;
-    }
+    width: min(90vw, 1120px);
   }
 }
 .article-resum {
   text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  display: grid;
+  gap: 1.4rem;
+  align-items: center;
+  width: 100%;
+
   @media (min-width: $breakpoint-tablet) {
-    width: clamp(320px, 55vw, 560px);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: 1.8rem;
   }
 }
 .boite-image-link {
@@ -218,21 +222,32 @@ const metricsItems = computed(() => {
   position: relative;
 }
 .article-body {
+  display: grid;
+  gap: 1rem;
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: start;
+    gap: 1.4rem;
+  }
+}
+.project-main {
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 0.6rem;
+}
+.project-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
 }
 .project-header h2 {
-  margin-right: -2rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0;
-  position: relative;
-  z-index: 111;
+  margin: 0;
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
 }
 .project-header h3 {
-  font-size: 1.05rem;
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  margin: 0.25rem 0 0;
 }
 .project-context {
   color: $gris2;
@@ -241,21 +256,49 @@ const metricsItems = computed(() => {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-.project-role {
-  color: $gris2;
-  font-weight: 600;
 
-  span {
-    color: $bleu2;
-    font-weight: 700;
+  @media (min-width: $breakpoint-tablet) {
+    -webkit-line-clamp: 1;
   }
 }
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+}
+.project-role-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: $gris1;
+  font-weight: 700;
+  font-size: 0.82rem;
+}
+.role-label {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: $vert;
+}
+.role-text {
+  color: $gris2;
+  font-weight: 600;
+}
+.stack-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
 .project-metrics {
-  background: rgba(13, 199, 99, 0.08);
-  border: 1px solid rgba(13, 199, 99, 0.18);
-  border-radius: 16px;
-  padding: 0.75rem 0.9rem;
+  background: rgba(13, 199, 99, 0.06);
+  border: 1px solid rgba(13, 199, 99, 0.16);
+  border-radius: 14px;
+  padding: 0.65rem 0.8rem;
 }
 .metrics-title {
   margin: 0 0 0.5rem;
@@ -263,35 +306,41 @@ const metricsItems = computed(() => {
   color: $vert;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
 }
 .metrics-list {
   list-style: none;
   padding: 0;
   margin: 0;
   display: grid;
-  gap: 0.35rem;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.35rem 0.8rem;
 
   li {
     display: flex;
     justify-content: space-between;
     gap: 0.5rem;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: $gris2;
   }
 }
 .metrics-label {
   font-weight: 600;
+  color: $gris3;
 }
 .metrics-value {
   font-weight: 700;
-  color: $bleu2;
+  color: $gris1;
 }
 .boite-image {
   position: relative;
   width: 100%;
-  padding-top: 100%; /* 1:1 Aspect Ratio */
+  padding-top: 68%;
   overflow: hidden;
+
+  @media (min-width: $breakpoint-tablet) {
+    padding-top: 62%;
+  }
   &:hover .boite-image__image {
     @media (min-width: $breakpoint-tablet) {
       transform: scale(1.1);
@@ -357,7 +406,7 @@ svg {
 .boite-chips {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 0.4rem;
+  gap: 0.35rem;
 
   .chips {
     display: inline;
@@ -365,10 +414,8 @@ svg {
     color: $gris2;
     // border: 0.5px solid $gris3;
     border-radius: 1000px;
-    padding: 0.158rem 0.61rem;
-    font-size: 0.68rem;
-    margin-right: 0.33rem;
-    margin-bottom: 0.33rem;
+    padding: 0.15rem 0.55rem;
+    font-size: 0.65rem;
 
     span {
       bottom: 0.06em;
@@ -387,45 +434,30 @@ svg {
     }
   }
 }
-.stack-chips {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-.stack-title {
-  margin: 0;
-  font-weight: 700;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: $gris3;
-}
-.stack-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
 .stack-pill {
-  background: $fondClair;
-  color: $bleu2;
-  border: 1px solid rgba(4, 57, 217, 0.18);
+  background: rgba(4, 57, 217, 0.06);
+  color: $gris2;
+  border: 1px solid rgba(4, 57, 217, 0.16);
   border-radius: 999px;
-  padding: 0.25rem 0.65rem;
-  font-size: 0.75rem;
+  padding: 0.22rem 0.6rem;
+  font-size: 0.72rem;
   font-weight: 600;
 }
 .project-links {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.85rem;
-  margin-top: 0.6rem;
+  gap: 0.75rem;
+  margin-top: 0.3rem;
 }
 .seepost.project-site-link {
   position: static;
   right: auto;
   text-decoration: none;
   box-shadow: none;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
 }
 .seepost.project-site-link:hover {
   transform: translate3d(4px, 0, 0);
@@ -444,5 +476,21 @@ svg {
   outline: 2px solid $bleu2;
   outline-offset: 3px;
   border-radius: 4px;
+}
+
+.boite-article:nth-child(even) .article-resum {
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  }
+}
+.boite-article:nth-child(even) .boite-image-link {
+  @media (min-width: $breakpoint-tablet) {
+    order: 2;
+  }
+}
+.boite-article:nth-child(even) .article-body {
+  @media (min-width: $breakpoint-tablet) {
+    order: 1;
+  }
 }
 </style>

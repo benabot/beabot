@@ -167,33 +167,47 @@
 
 ### P0 — Structure et contenu
 
-- [ ] **PF-14-01** : Créer section Hero avec intro personnelle
+- [x] **PF-14-01** : Créer section Hero avec intro personnelle
 - [x] **PF-14-02** : Ajouter section compétences techniques
-- [ ] **PF-14-03** : Enrichir les données de chaque projet (contexte, rôle, résultats)
-- [ ] **PF-14-04** : Créer CTA final avec liens CV + Contact
+- [x] **PF-14-03** : Enrichir les données de chaque projet (contexte, rôle, résultats)
+- [x] **PF-14-04** : Créer CTA final avec liens CV + Contact
 
 ### P1 — Design et UX
 
-- [ ] **PF-14-05** : Refondre les filtres (boutons visuels, compteur)
-- [ ] **PF-14-06** : Améliorer les cartes projet (plus d'infos, layout)
-- [ ] **PF-14-07** : Ajouter bloc résultats sur projets éco-conçus
+- [x] **PF-14-05** : Refondre les filtres (boutons visuels, compteur)
+- [x] **PF-14-06** : Améliorer les cartes projet (plus d'infos, layout)
+- [x] **PF-14-07** : Ajouter bloc résultats sur projets éco-conçus
 - [x] **PF-14-16** : Ajuster l'espacement des cartes et éviter le recouvrement du footer
-- [ ] **PF-14-08** : Responsive mobile amélioré
+- [x] **PF-14-08** : Responsive mobile amélioré
 
 ### P2 — SEO et accessibilité
 
 - [ ] **PF-14-09** : Meta description personnalisée orientée recrutement
 - [ ] **PF-14-10** : JSON-LD Person ou ProfilePage
-- [ ] **PF-14-11** : Attributs ARIA sur filtres interactifs
+- [x] **PF-14-11** : Attributs ARIA sur filtres interactifs
 - [ ] **PF-14-12** : Focus states sur tous les éléments interactifs
 
 ### P3 — Données structurées projets
 
-- [ ] **PF-14-13** : Externaliser les données projets dans un fichier JSON ou composable
-- [ ] **PF-14-14** : Ajouter champ "featured" pour projets prioritaires
-- [ ] **PF-14-15** : Ajouter champ "metrics" pour résultats mesurables
+- [x] **PF-14-13** : Externaliser les données projets dans un fichier JSON ou composable
+- [x] **PF-14-14** : Ajouter champ "featured" pour projets prioritaires
+- [x] **PF-14-15** : Ajouter champ "metrics" pour résultats mesurables
 
 ---
+
+## ✅ Ajustements récents (UX & lisibilité)
+
+- Cartes projets compactées (image moins haute, contexte 1 ligne desktop)
+- Rôle mis en évidence via un label + stack en ligne pour lecture rapide
+- Résultats regroupés dans un bloc plus dense, tags alignés à droite
+- Réalisations moins verticales (alternance image/texte sur desktop)
+- Compétences resserrées, filtres alignés horizontalement en desktop
+
+## 🧭 État actuel / points à itérer plus tard
+
+- Valider la lisibilité mobile sur contenus réels plus longs
+- Ajuster finement les tailles typographiques si besoin (mobile)
+- Vérifier l’équilibre entre tags, stack et métriques sur projets sans résultats
 
 ## 📊 Métriques de succès
 

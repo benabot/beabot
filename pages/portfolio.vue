@@ -412,11 +412,11 @@ h1 {
 }
 .portfolio-skills {
   width: min(92vw, 980px);
-  margin: 0 auto 4rem;
+  margin: 0 auto 3.2rem;
 }
 .skills-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.6rem;
 }
 .skills-title {
   margin: 0 0 0.5rem;
@@ -430,7 +430,7 @@ h1 {
 }
 .skills-grid {
   display: grid;
-  gap: 1.4rem;
+  gap: 1.1rem;
   grid-template-columns: 1fr;
 
   @media (min-width: 720px) {
@@ -445,7 +445,7 @@ h1 {
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 18px;
-  padding: 1.1rem 1.3rem;
+  padding: 0.95rem 1.1rem;
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.04);
 }
 .skills-card-title {
@@ -460,7 +460,7 @@ h1 {
   padding: 0;
   margin: 0;
   display: grid;
-  gap: 0.5rem;
+  gap: 0.4rem;
   color: $gris2;
   font-weight: 600;
 }
@@ -492,16 +492,24 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(3.8rem, 8vw, 6.2rem);
-  padding-bottom: clamp(4rem, 10vw, 7rem);
+  gap: clamp(4.6rem, 9vw, 7.5rem);
+  padding-bottom: clamp(6.5rem, 14vw, 11rem);
 }
 .portfolio-filters {
   width: min(92vw, 980px);
-  margin: -0.5rem auto 3rem;
+  margin: -0.5rem auto 2.5rem;
   text-align: center;
+  display: grid;
+  gap: 1.5rem;
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+    align-items: end;
+    text-align: left;
+  }
 }
 .filters-header {
-  margin-bottom: 1.3rem;
+  margin-bottom: 0;
 }
 .filters-title {
   margin: 0 0 0.35rem;
@@ -518,6 +526,10 @@ h1 {
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.65rem;
+
+  @media (min-width: $breakpoint-tablet) {
+    justify-content: flex-start;
+  }
 }
 .filter-pill {
   border: 1px solid rgba(0, 0, 0, 0.1);
