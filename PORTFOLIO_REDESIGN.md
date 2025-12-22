@@ -197,17 +197,18 @@
 
 ## ✅ Ajustements récents (UX & lisibilité)
 
-- Cartes projets compactées (contexte 1 ligne desktop, rôle en pill, stack inline)
-- Alternance gauche/droite maintenue et visuels projets conservés en format carré
-- Résultats regroupés dans un bloc plus dense, tags alignés à droite
-- Réalisations moins verticales (header + filtres alignés sur desktop)
+- Cartes projets compactées (contexte 1 ligne desktop, rôle lisible au-dessus, stack limitée)
+- Visuels projets restaurés sur mobile (ratio carré + fallback ellipse sans déformation)
+- Alternance gauche/droite maintenue, image/texte équilibrés en desktop
+- Résultats regroupés en format compact, sans bloc trop massif
 - Compétences resserrées, vocabulaire simplifié et layout en colonnes
+- Espacements harmonisés via une échelle Fibonacci (rem)
 
 ## 🧭 État actuel / points à itérer plus tard
 
 - Valider la lisibilité mobile sur contenus réels plus longs
 - Ajuster finement les tailles typographiques si besoin (mobile)
-- Vérifier l’équilibre entre tags, stack et métriques sur projets sans résultats
+- Vérifier l’équilibre entre stack et métriques sur projets sans résultats
 - Vérifier la respiration finale avec des images de tailles différentes
 
 ## 📊 Métriques de succès
