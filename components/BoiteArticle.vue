@@ -48,8 +48,6 @@
             <h3 class="text-fin text-gris2">{{ sousTitre }}</h3>
           </header>
 
-          <p v-if="context" class="project-context">{{ context }}</p>
-
           <div v-if="role" class="project-role">
             <span class="role-label">Rôle</span>
             <span class="role-text">{{ role }}</span>
@@ -253,14 +251,6 @@ const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
     width: min(90vw, 1120px);
   }
 }
-.boite-article + .boite-article::before {
-  content: '';
-  display: block;
-  width: min(220px, 40%);
-  height: 1px;
-  background: rgba(0, 0, 0, 0.12);
-  margin: 0 auto var(--space-4, 2.1rem);
-}
 .article-resum {
   text-align: left;
   display: grid;
@@ -317,10 +307,6 @@ const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
 .project-header h3 {
   font-size: clamp(0.95rem, 2vw, 1.1rem);
   margin: 0.25rem 0 0;
-}
-.project-context {
-  color: $gris2;
-  line-height: 1.55;
 }
 .project-role {
   display: flex;
