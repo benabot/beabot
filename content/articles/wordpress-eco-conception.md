@@ -1,6 +1,7 @@
 ---
 title: Éco-concevoir un site WordPress
 description: Guide pratique pour concevoir un site WordPress sobre, performant et durable. Méthode, choix techniques et bonnes pratiques.
+chapo: Guide pratique pour concevoir un site WordPress sobre, performant et durable. Méthode, choix techniques et bonnes pratiques.
 seo:
   title: Éco-concevoir un site WordPress
   description: Guide pratique pour concevoir un site WordPress sobre, performant et durable. Méthode, choix techniques et bonnes pratiques.

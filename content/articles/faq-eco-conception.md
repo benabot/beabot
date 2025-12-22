@@ -1,6 +1,7 @@
 ---
 title: FAQ — Éco-conception web
 description: Réponses aux questions fréquentes sur l'éco-conception web, ses principes, ses impacts concrets et sa mise en œuvre dans des projets réels.
+chapo: Réponses aux questions fréquentes sur l'éco-conception web, ses principes, ses impacts concrets et sa mise en œuvre dans des projets réels.
 tag: ['Éco-conception', 'SEO', 'WebDesign', 'Performance']
 seo:
   title: FAQ éco-conception web — réponses essentielles

@@ -1,6 +1,7 @@
 ---
 title: Les impacts environnementaux du numérique
 description: Le numérique est souvent perçu comme immatériel, alors qu’il repose sur des infrastructures lourdes et énergivores. Cet article revient sur les impacts environnementaux concrets du numérique et sur les ordres de grandeur à connaître.
+chapo: Le numérique est souvent perçu comme immatériel, alors qu’il repose sur des infrastructures lourdes et énergivores. Cet article revient sur les impacts environnementaux concrets du numérique et sur les ordres de grandeur à connaître.
 seo:
   title: Les impacts environnementaux du numérique
   description: Le numérique est souvent perçu comme immatériel, alors qu’il repose sur des infrastructures lourdes et énergivores. Cet article revient sur les impacts environnementaux concrets du numérique et sur les ordres de grandeur à connaître.
