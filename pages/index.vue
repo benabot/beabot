@@ -382,10 +382,18 @@
           L’essentiel en questions-réponses, pour comprendre vite et décider mieux.
         </p>
         <ul class="home-faq-card__list text-gris2">
-          <li>SEO : est-ce compatible (et pourquoi) ?</li>
-          <li>Design : sobriété veut-elle dire moins esthétique ?</li>
-          <li>Fonctionnalités : que faut-il garder, que faut-il éviter ?</li>
-          <li>WordPress : peut-on faire léger et durable ?</li>
+          <li>
+            SEO : est-ce compatible (et pourquoi)<span class="insec"> &thinsp;</span>?
+          </li>
+          <li>
+            Design : sobriété veut-elle dire moins esthétique<span class="insec"> &thinsp;</span>?
+          </li>
+          <li>
+            Fonctionnalités : que faut-il garder, que faut-il éviter<span class="insec"> &thinsp;</span>?
+          </li>
+          <li>
+            WordPress : peut-on faire léger et durable<span class="insec"> &thinsp;</span>?
+          </li>
         </ul>
         <BaseButton text="Comprendre l’essentiel" :to="faqLink" />
       </div>

@@ -27,6 +27,7 @@
 - ✅ Script de migration frontmatter (seo + updatedAt)
 - ✅ JSON-LD FAQPage sur article FAQ
 - ✅ Chapo frontmatter pour le chapeau d’article
+- ✅ Cartouche FAQ homepage + CTA vers FAQ
 
 ---
 
@@ -59,6 +60,7 @@ Phase 13    - SEO Avancé & Contenu  [░░░░░░░░░░░░░░
 - ✅ Script de migration frontmatter (seo + updatedAt)
 - ✅ JSON-LD FAQPage sur article FAQ
 - ✅ Chapo frontmatter pour le chapeau d’article
+- ✅ Cartouche FAQ homepage + CTA vers FAQ
 
 ### Phase 11 : Homepage & Contact (18-20 décembre 2025)
 
