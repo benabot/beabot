@@ -465,24 +465,26 @@ section {
   }
 }
 .home-faq-card {
-  margin: 2.2rem auto 3rem;
+  margin: 1.6rem auto 2.4rem;
 }
 .home-faq-card__inner {
+  max-width: 960px;
+  margin: 0 auto;
   border: 1px solid $vert;
-  background: rgba($vert, 0.05);
+  background: rgba($vert, 0.04);
   border-radius: 0.6rem;
-  padding: 1.6rem 1.8rem;
+  padding: 1.2rem 1.6rem;
 }
 .home-faq-card__lead {
   margin-top: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 .home-faq-card__list {
   list-style: disc;
   padding-left: 1.2rem;
-  margin: 0 0 1.2rem;
+  margin: 0 0 1rem;
   display: grid;
-  gap: 0.6rem 1.6rem;
+  gap: 0.5rem 1.6rem;
 
   @media (min-width: $breakpoint-tablet) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
