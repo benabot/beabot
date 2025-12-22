@@ -217,23 +217,6 @@
         </div>
       </div>
     </section>
-    <section class="container home-faq-card" aria-labelledby="faq-home">
-      <div class="home-faq-card__inner">
-        <h2 id="faq-home" class="h3 text-gris2 text-black">
-          FAQ — Éco-conception web
-        </h2>
-        <p class="text-gris3 text-fin home-faq-card__lead">
-          Réponses rapides aux questions les plus fréquentes.
-        </p>
-        <ul class="home-faq-card__list text-gris2">
-          <li>L’éco-conception est-elle compatible avec le SEO ?</li>
-          <li>Un site éco-conçu est-il moins esthétique ?</li>
-          <li>L’éco-conception limite-t-elle les fonctionnalités ?</li>
-          <li>WordPress est-il compatible avec l’éco-conception ?</li>
-        </ul>
-        <BaseButton text="Voir la FAQ complète" :to="faqLink" />
-      </div>
-    </section>
     <section class="container container-4 fond-gris">
       <LazyOeuf
         class="oeuf container-4__oeuf-1"
@@ -388,6 +371,23 @@
             les moteurs de recherche.
           </p>
         </div>
+      </div>
+    </section>
+    <section class="container home-faq-card" aria-labelledby="faq-home">
+      <div class="home-faq-card__inner">
+        <h2 id="faq-home" class="h3 text-gris2 text-black">
+          FAQ — Éco-conception web
+        </h2>
+        <p class="text-gris3 text-fin home-faq-card__lead">
+          Réponses rapides aux questions les plus fréquentes.
+        </p>
+        <ul class="home-faq-card__list text-gris2">
+          <li>L’éco-conception est-elle compatible avec le SEO ?</li>
+          <li>Un site éco-conçu est-il moins esthétique ?</li>
+          <li>L’éco-conception limite-t-elle les fonctionnalités ?</li>
+          <li>WordPress est-il compatible avec l’éco-conception ?</li>
+        </ul>
+        <BaseButton text="Voir la FAQ complète" :to="faqLink" />
       </div>
     </section>
     <LazyHomeEcoArticles />
