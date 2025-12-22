@@ -270,6 +270,7 @@ const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
   text-decoration: none;
   line-height: 0;
   border-bottom: 0;
+  box-shadow: none;
 
   @media (min-width: $breakpoint-tablet) {
     width: min(100%, 380px);
@@ -400,40 +401,19 @@ const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
     transition: all 0.3s;
     z-index: 10;
     clip-path: ellipse(46% 42% at 49% 53%);
+    -webkit-clip-path: ellipse(46% 42% at 49% 53%);
     display: block;
 
     @media (min-width: $breakpoint-tablet) {
-      clip-path: none;
-    }
-  }
-  &__calque {
-    @media (min-width: $breakpoint-tablet) {
-      position: absolute;
-      // top: 0;
-      // left: 0;
-      // width: 101%;
-      // height: 101%;
-      top: -6px;
-      bottom: -6px;
-      left: -6px;
-      right: -6px;
-      background: $fondClair;
-      z-index: 30;
       clip-path: url(#myClip);
       -webkit-clip-path: url(#myClip);
     }
   }
+  &__calque {
+    display: none;
+  }
   .circle {
-    @media (min-width: $breakpoint-tablet) {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 20;
-      transition: all 0.3s;
-      background: radial-gradient(transparent 40%, transparent);
-    }
+    display: none;
   }
 }
 svg {
