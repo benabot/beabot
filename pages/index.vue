@@ -379,15 +379,15 @@
           FAQ — Éco-conception web
         </h2>
         <p class="text-gris3 text-fin home-faq-card__lead">
-          Réponses rapides aux questions les plus fréquentes.
+          L’essentiel en questions-réponses, pour comprendre vite et décider mieux.
         </p>
         <ul class="home-faq-card__list text-gris2">
-          <li>L’éco-conception est-elle compatible avec le SEO ?</li>
-          <li>Un site éco-conçu est-il moins esthétique ?</li>
-          <li>L’éco-conception limite-t-elle les fonctionnalités ?</li>
-          <li>WordPress est-il compatible avec l’éco-conception ?</li>
+          <li>SEO : est-ce compatible (et pourquoi) ?</li>
+          <li>Design : sobriété veut-elle dire moins esthétique ?</li>
+          <li>Fonctionnalités : que faut-il garder, que faut-il éviter ?</li>
+          <li>WordPress : peut-on faire léger et durable ?</li>
         </ul>
-        <BaseButton text="Voir la FAQ complète" :to="faqLink" />
+        <BaseButton text="Comprendre l’essentiel" :to="faqLink" />
       </div>
     </section>
     <LazyHomeEcoArticles />
