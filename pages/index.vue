@@ -373,7 +373,7 @@
         </div>
       </div>
     </section>
-    <section class="container home-faq-card" aria-labelledby="faq-home">
+    <section class="section-faq-home" aria-labelledby="faq-home">
       <div class="home-faq-card__inner">
         <h2 id="faq-home" class="h3 text-gris2 text-black">
           FAQ — Éco-conception web
@@ -464,8 +464,9 @@ section {
     }
   }
 }
-.home-faq-card {
-  margin: 1.6rem auto 2.4rem;
+.section-faq-home {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 .home-faq-card__inner {
   max-width: 960px;
@@ -473,16 +474,19 @@ section {
   border: 1px solid $vert;
   background: rgba($vert, 0.04);
   border-radius: 0.6rem;
-  padding: 1.2rem 1.6rem;
+  padding: 2rem 2.5rem;
+
+  h2 {
+    margin: 0 0 1.5rem;
+  }
 }
 .home-faq-card__lead {
-  margin-top: 0.5rem;
-  margin-bottom: 0.8rem;
+  margin: 0 0 1.5rem;
 }
 .home-faq-card__list {
   list-style: disc;
   padding-left: 1.2rem;
-  margin: 0 0 1rem;
+  margin: 0 0 2rem;
   display: grid;
   gap: 0.5rem 1.6rem;
 
