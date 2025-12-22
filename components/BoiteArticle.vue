@@ -267,6 +267,7 @@ const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
   display: block;
   position: relative;
   justify-self: start;
+  text-decoration: none;
 
   @media (min-width: $breakpoint-tablet) {
     width: min(100%, 380px);
@@ -400,7 +401,7 @@ const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
     transition: all 0.3s;
     z-index: 10;
     clip-path: none;
-    border-radius: 52% 48% 46% 54% / 48% 50% 50% 52%;
+    border-radius: 0;
     display: block;
 
     @media (min-width: $breakpoint-tablet) {
