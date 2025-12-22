@@ -177,6 +177,7 @@
 - [ ] **PF-14-05** : Refondre les filtres (boutons visuels, compteur)
 - [ ] **PF-14-06** : Améliorer les cartes projet (plus d'infos, layout)
 - [ ] **PF-14-07** : Ajouter bloc résultats sur projets éco-conçus
+- [x] **PF-14-16** : Ajuster l'espacement des cartes et éviter le recouvrement du footer
 - [ ] **PF-14-08** : Responsive mobile amélioré
 
 ### P2 — SEO et accessibilité

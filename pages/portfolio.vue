@@ -404,7 +404,8 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3.5rem;
+  gap: clamp(3.8rem, 8vw, 6.2rem);
+  padding-bottom: clamp(4rem, 10vw, 7rem);
 }
 .portfolio-filters {
   width: min(92vw, 980px);
