@@ -400,7 +400,7 @@ const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
     object-position: center;
     transition: all 0.3s;
     z-index: 10;
-    clip-path: ellipse(46% 42% at 49% 53%);
+    clip-path: ellipse(48% 48% at 50% 50%);
     display: block;
 
     @media (min-width: $breakpoint-tablet) {
@@ -520,11 +520,17 @@ svg {
   font-weight: 700;
   font-size: 0.85rem;
   color: $bleu2;
-  text-decoration: none;
+  text-decoration: none !important;
   text-align: center;
   padding: 0.35rem 0;
   transition: opacity 0.12s ease;
   position: relative;
+  border-bottom: none !important;
+}
+
+.article-link:visited {
+  color: $bleu2;
+  text-decoration: none !important;
 }
 
 .article-link::after {
@@ -541,6 +547,7 @@ svg {
 
 .article-link:hover {
   opacity: 0.85;
+  text-decoration: none !important;
 }
 
 .article-link:hover::after {
