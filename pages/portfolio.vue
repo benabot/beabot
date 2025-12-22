@@ -285,7 +285,7 @@ h1 {
   font-size: clamp(2.8rem, 6vw, 5.6rem);
   line-height: 0.95;
   margin: 0 0 1.5rem;
-  color: $bleu2;
+  color: $gris1;
 }
 
 .subtitle {
@@ -293,7 +293,8 @@ h1 {
   font-size: clamp(1.6rem, 3.5vw, 3rem);
   font-weight: 600;
   margin-top: 0.5rem;
-  opacity: 0.85;
+  color: $gris2;
+  opacity: 0.9;
 }
 
 .hero-description {
@@ -301,7 +302,8 @@ h1 {
   line-height: 1.6;
   margin: 0 auto 1.5rem;
   max-width: 600px;
-  opacity: 0.9;
+  color: $gris2;
+  opacity: 0.95;
 }
 
 /* Stats */
@@ -390,14 +392,19 @@ h1 {
 }
 .boite-article {
   @media (max-width: $breakpoint-tablet) {
-    margin-bottom: 3.6rem;
+    margin-bottom: 0;
   }
 }
 .boite-article:not(:first-of-type) {
-  margin-top: 2.6rem;
   @media (min-width: $breakpoint-tablet) {
-    margin-top: -60px;
+    margin-top: 0;
   }
+}
+.portfolio-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.5rem;
 }
 .portfolio-filters {
   width: min(92vw, 980px);
@@ -410,7 +417,7 @@ h1 {
 .filters-title {
   margin: 0 0 0.35rem;
   font-size: clamp(1.6rem, 3.6vw, 2.4rem);
-  color: $bleu2;
+  color: $gris1;
 }
 .filters-count {
   margin: 0;
@@ -424,27 +431,28 @@ h1 {
   gap: 0.65rem;
 }
 .filter-pill {
-  border: 2px solid rgba(4, 57, 217, 0.15);
-  background: rgba(255, 255, 255, 0.9);
-  color: $bleu2;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.85);
+  color: $gris2;
   border-radius: 999px;
-  padding: 0.45rem 1rem;
-  font-weight: 700;
+  padding: 0.3rem 0.7rem;
+  font-weight: 600;
+  font-size: 0.9rem;
   letter-spacing: 0.01em;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.45rem;
   transition: transform 0.15s ease, box-shadow 0.15s ease,
     background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 .filter-pill:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(4, 57, 217, 0.12);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 .filter-pill:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(4, 57, 217, 0.25);
+  box-shadow: 0 0 0 3px rgba(4, 57, 217, 0.18);
 }
 .filter-pill.is-active {
   background: $bleu2;
@@ -455,14 +463,14 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 1.5rem;
-  height: 1.5rem;
-  padding: 0 0.35rem;
+  min-width: 1.3rem;
+  height: 1.3rem;
+  padding: 0 0.3rem;
   border-radius: 999px;
-  background: rgba(4, 57, 217, 0.08);
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: $bleu2;
+  background: rgba(0, 0, 0, 0.06);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: $gris2;
 }
 .filter-pill.is-active .filter-count {
   background: rgba(255, 255, 255, 0.2);
