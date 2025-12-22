@@ -140,15 +140,15 @@ export const filters = [
 export const skills = {
   frontend: {
     title: 'Front-end',
-    items: ['Vue.js', 'Nuxt', 'HTML/CSS', 'JavaScript', 'TypeScript']
+    items: ['Vue.js', 'Nuxt', 'JavaScript', 'HTML/CSS', 'TypeScript']
   },
   cms: {
-    title: 'CMS & Back',
-    items: ['WordPress', 'Headless CMS', 'PHP', 'API REST']
+    title: 'CMS & intégration',
+    items: ['WordPress', 'WordPress headless', 'PHP', 'API REST']
   },
   eco: {
     title: 'Éco-conception',
-    items: ['EcoIndex', 'RGESN', 'Performance', 'Accessibilité']
+    items: ['EcoIndex', 'Performance web', 'Accessibilité', 'Sobriété numérique']
   },
   tools: {
     title: 'Outils',
@@ -156,10 +156,10 @@ export const skills = {
   },
   methods: {
     title: 'Méthodes',
-    items: ['Agile', 'SSG/SSR', 'CI/CD', 'Tests']
+    items: ['Agile', 'Tests', 'Revue de code', 'Déploiement automatisé']
   },
   design: {
     title: 'Design',
-    items: ['Figma', 'UI/UX', 'Typographie', 'Responsive']
+    items: ['Figma', 'UI/UX', 'Design system', 'Responsive']
   }
 }

@@ -220,10 +220,15 @@ const metricsItems = computed(() => {
 .boite-image-link {
   display: block;
   position: relative;
+  justify-self: start;
+
+  @media (min-width: $breakpoint-tablet) {
+    width: min(100%, 380px);
+  }
 }
 .article-body {
   display: grid;
-  gap: 1rem;
+  gap: 0.9rem;
 
   @media (min-width: $breakpoint-tablet) {
     grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
@@ -234,7 +239,7 @@ const metricsItems = computed(() => {
 .project-main {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.55rem;
 }
 .project-aside {
   display: flex;
@@ -271,13 +276,13 @@ const metricsItems = computed(() => {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.3rem 0.7rem;
+  padding: 0.25rem 0.6rem;
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(0, 0, 0, 0.08);
   color: $gris1;
   font-weight: 700;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
 }
 .role-label {
   font-size: 0.62rem;
@@ -335,12 +340,9 @@ const metricsItems = computed(() => {
 .boite-image {
   position: relative;
   width: 100%;
-  padding-top: 68%;
+  padding-top: 100%;
   overflow: hidden;
-
-  @media (min-width: $breakpoint-tablet) {
-    padding-top: 62%;
-  }
+  aspect-ratio: 1 / 1;
   &:hover .boite-image__image {
     @media (min-width: $breakpoint-tablet) {
       transform: scale(1.1);
@@ -486,6 +488,7 @@ svg {
 .boite-article:nth-child(even) .boite-image-link {
   @media (min-width: $breakpoint-tablet) {
     order: 2;
+    justify-self: end;
   }
 }
 .boite-article:nth-child(even) .article-body {

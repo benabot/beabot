@@ -62,7 +62,7 @@
       <header class="skills-header">
         <h2 id="portfolio-skills-title" class="skills-title">Compétences</h2>
         <p class="skills-subtitle">
-          6 blocs pour couvrir le front, le back/CMS, l’éco-conception et le design.
+          Stack principale, méthodes et outils utilisés pour livrer des sites sobres et fiables.
         </p>
       </header>
 
@@ -413,10 +413,21 @@ h1 {
 .portfolio-skills {
   width: min(92vw, 980px);
   margin: 0 auto 3.2rem;
+  display: grid;
+  gap: 1.6rem;
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: minmax(0, 0.35fr) minmax(0, 0.65fr);
+    align-items: start;
+  }
 }
 .skills-header {
   text-align: center;
-  margin-bottom: 1.6rem;
+  margin-bottom: 0;
+
+  @media (min-width: $breakpoint-tablet) {
+    text-align: left;
+  }
 }
 .skills-title {
   margin: 0 0 0.5rem;
@@ -492,12 +503,12 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(4.6rem, 9vw, 7.5rem);
-  padding-bottom: clamp(6.5rem, 14vw, 11rem);
+  gap: clamp(4rem, 8vw, 6.8rem);
+  padding-bottom: clamp(6rem, 12vw, 9rem);
 }
 .portfolio-filters {
   width: min(92vw, 980px);
-  margin: -0.5rem auto 2.5rem;
+  margin: 0 auto 2.5rem;
   text-align: center;
   display: grid;
   gap: 1.5rem;
