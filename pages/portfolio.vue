@@ -32,7 +32,10 @@
 
         <p class="hero-description">
           Je conçois des sites performants, accessibles et sobres en ressources.
-          Chaque projet est une occasion de prouver qu'efficacité et durabilité vont de pair.
+          Chaque projet est une occasion de prouver qu'efficacité et durabilité vont de pair,
+          reposant sur des
+          <a href="#competences" class="hero-inline-link">compétences mises en œuvre</a>
+          au fil de projets concrets.
         </p>
 
         <div class="hero-stats" aria-label="Statistiques du portfolio">
@@ -58,12 +61,13 @@
     </section>
 
     <!-- Compétences techniques -->
-    <section class="portfolio-skills" aria-labelledby="portfolio-skills-title">
+    <section
+      id="competences"
+      class="portfolio-skills"
+      aria-labelledby="portfolio-skills-title"
+    >
       <header class="skills-header">
         <h2 id="portfolio-skills-title" class="skills-title">Compétences</h2>
-        <p class="skills-subtitle">
-          Front, CMS et éco-conception : un socle concret pour livrer des sites fiables.
-        </p>
       </header>
 
       <div class="skills-grid">
@@ -112,6 +116,8 @@
         </button>
       </div>
     </section>
+
+    <div class="portfolio-divider" aria-hidden="true"></div>
 
     <TransitionGroup
       name="fade"
@@ -336,6 +342,16 @@ h1 {
   color: $gris2;
   opacity: 0.95;
 }
+.hero-inline-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(4, 57, 217, 0.35);
+  text-underline-offset: 3px;
+}
+.hero-inline-link:hover,
+.hero-inline-link:focus-visible {
+  text-decoration-color: rgba(4, 57, 217, 0.6);
+}
 
 /* Stats */
 .hero-stats {
@@ -428,7 +444,7 @@ h1 {
   gap: var(--space-4);
 
   @media (min-width: $breakpoint-tablet) {
-    grid-template-columns: minmax(0, 0.35fr) minmax(0, 0.65fr);
+    grid-template-columns: minmax(0, 0.3fr) minmax(0, 0.7fr);
     align-items: start;
   }
 }
@@ -445,16 +461,6 @@ h1 {
   font-size: clamp(1.6rem, 3.6vw, 2.4rem);
   color: $gris1;
 }
-.skills-subtitle {
-  margin: 0;
-  color: $gris2;
-  font-weight: 600;
-  line-height: 1.5;
-
-  @media (min-width: $breakpoint-tablet) {
-    max-width: 22rem;
-  }
-}
 .skills-grid {
   display: grid;
   gap: var(--space-3);
@@ -463,17 +469,12 @@ h1 {
   @media (min-width: 720px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  @media (min-width: $breakpoint-tablet) {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
 }
 .skills-card {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 18px;
-  padding: var(--space-3);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.04);
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
 }
 .skills-card-title {
   margin: 0 0 0.75rem;
@@ -491,6 +492,7 @@ h1 {
   color: $gris2;
   font-weight: 600;
   font-size: 0.95rem;
+  line-height: 1.5;
 }
 .skills-list li {
   padding-left: 1rem;
@@ -536,6 +538,12 @@ h1 {
     align-items: end;
     text-align: left;
   }
+}
+.portfolio-divider {
+  width: min(92vw, 1120px);
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+  margin: 0 auto var(--space-5);
 }
 .filters-header {
   margin-bottom: 0;
