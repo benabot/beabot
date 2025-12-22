@@ -36,7 +36,7 @@ export const projects: Project[] = [
     url: 'https://cycloplomberie-amiens.fr',
     featured: true,
     tags: ['WordPress', 'Éco-conçu', 'WebDesign'],
-    context: 'Artisan plombier intervenant à vélo, souhaitant un site sobre reflétant sa démarche écologique et locale.',
+    context: 'Site vitrine sobre pour un plombier à vélo engagé localement.',
     role: 'Design, développement WordPress, éco-conception',
     stack: ['WordPress', 'PHP', 'CSS', 'Thème sur-mesure'],
     metrics: {
@@ -54,7 +54,7 @@ export const projects: Project[] = [
     url: 'https://lapetiteboucle.fr/',
     featured: true,
     tags: ['WordPress', 'Éco-conçu', 'WebDesign'],
-    context: 'Association de collecte de cartouches d\'encre en triporteur électrique. Refonte complète d\'un site existant.',
+    context: 'Refonte éco-conçue du site d\'une association de collecte en triporteur.',
     role: 'Audit du site existant, refonte design, développement WordPress',
     stack: ['WordPress', 'PHP', 'CSS', 'Thème sur-mesure'],
     metrics: {
@@ -71,7 +71,7 @@ export const projects: Project[] = [
     url: 'https://vallee-esches.fr/',
     featured: false,
     tags: ['WordPress', 'WebDesign'],
-    context: 'Association pour l\'aménagement de la vallée de l\'Esches, valorisation des actions environnementales locales.',
+    context: 'Site vitrine pour une association environnementale locale.',
     role: 'Design, développement WordPress',
     stack: ['WordPress', 'PHP', 'CSS']
   },
@@ -85,7 +85,7 @@ export const projects: Project[] = [
     url: 'https://www.amc2.fr',
     featured: true,
     tags: ['VueJs', 'Nuxt', 'WordPress', 'WebDesign'],
-    context: 'PME industrielle souhaitant moderniser sa présence web avec un catalogue produits dynamique.',
+    context: 'Catalogue produits moderne pour une PME industrielle.',
     role: 'Design, développement front Nuxt, intégration API WordPress headless',
     stack: ['Nuxt', 'Vue.js', 'WordPress Headless', 'API REST']
   },
@@ -97,7 +97,7 @@ export const projects: Project[] = [
     url: 'https://www.guide-rse.banquepopulaire.fr/actions-rse',
     featured: false,
     tags: ['VueJs', 'WebDesign'],
-    context: 'Visualisation géographique des actions RSE de la Banque Populaire sur le territoire français.',
+    context: 'Carte interactive des actions RSE d\'une banque.',
     role: 'Développement front, intégration cartographique',
     stack: ['Vue.js', 'Bootstrap', 'Leaflet']
   },
@@ -109,7 +109,7 @@ export const projects: Project[] = [
     url: 'https://www.guide-rse.banquepopulaire.fr/resultats-2020',
     featured: false,
     tags: ['VueJs', 'WebDesign'],
-    context: 'Dashboard de data visualization pour présenter les résultats RSE annuels.',
+    context: 'Dataviz des résultats RSE annuels.',
     role: 'Développement front, data visualization',
     stack: ['Vue.js', 'Bootstrap', 'Chart.js']
   },
@@ -121,7 +121,7 @@ export const projects: Project[] = [
     url: 'https://app-noel.netlify.app',
     featured: false,
     tags: ['VueJs', 'WebDesign'],
-    context: 'Application ludique pour apprendre les bases de l\'interface d\'un ordinateur.',
+    context: 'Application pédagogique d\'initiation à l\'informatique.',
     role: 'Conception, design, développement',
     stack: ['Vue.js']
   }

@@ -60,26 +60,6 @@
       </div>
     </section>
 
-    <!-- Compétences techniques -->
-    <section
-      id="competences"
-      class="portfolio-skills"
-      aria-labelledby="portfolio-skills-title"
-    >
-      <header class="skills-header">
-        <h2 id="portfolio-skills-title" class="skills-title">Compétences</h2>
-      </header>
-
-      <div class="skills-grid">
-        <article v-for="block in skillsBlocks" :key="block.title" class="skills-card">
-          <h3 class="skills-card-title">{{ block.title }}</h3>
-          <ul class="skills-list">
-            <li v-for="item in block.items" :key="item">{{ item }}</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
     <!-- Filtres projets -->
     <section class="portfolio-filters" aria-labelledby="portfolio-filters-title">
       <div class="filters-header">
@@ -143,6 +123,26 @@
         :article-link="project.articleLink"
       />
     </TransitionGroup>
+
+    <!-- Compétences techniques -->
+    <section
+      id="competences"
+      class="portfolio-skills"
+      aria-labelledby="portfolio-skills-title"
+    >
+      <header class="skills-header">
+        <h2 id="portfolio-skills-title" class="skills-title">Compétences</h2>
+      </header>
+
+      <div class="skills-grid">
+        <article v-for="block in skillsBlocks" :key="block.title" class="skills-card">
+          <h3 class="skills-card-title">{{ block.title }}</h3>
+          <ul class="skills-list">
+            <li v-for="item in block.items" :key="item">{{ item }}</li>
+          </ul>
+        </article>
+      </div>
+    </section>
   </main>
 </template>
 
@@ -186,7 +186,12 @@ const filteredEcoCount = computed(() =>
   filteredProjects.value.filter((project) => project.tags.includes('Éco-conçu'))
     .length
 )
-const skillsBlocks = computed(() => Object.values(skills))
+const skillsBlocks = computed(() => [
+  skills.frontend,
+  skills.backend,
+  skills.quality,
+  skills.devops,
+])
 
 const focusFilter = (index) => {
   const buttons = filterButtons.value || []
@@ -439,7 +444,7 @@ h1 {
 }
 .portfolio-skills {
   width: min(92vw, 980px);
-  margin: 0 auto var(--space-5);
+  margin: var(--space-6) auto var(--space-6);
   display: grid;
   gap: var(--space-4);
 
@@ -522,9 +527,9 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-6);
+  gap: var(--space-5);
   padding-top: var(--space-4);
-  padding-bottom: var(--space-7);
+  padding-bottom: var(--space-5);
 }
 .portfolio-filters {
   width: min(92vw, 980px);

@@ -62,11 +62,13 @@
             <span
               v-if="hiddenTags.length"
               class="project-tag tag-more"
+              role="button"
               tabindex="0"
+              :aria-describedby="tooltipId"
               :aria-label="`Tags supplémentaires: ${hiddenTags.join(', ')}`"
             >
               +{{ hiddenTags.length }}
-              <span class="tag-tooltip" role="tooltip">
+              <span :id="tooltipId" class="tag-tooltip" role="tooltip">
                 {{ hiddenTags.join(' · ') }}
               </span>
             </span>
@@ -207,12 +209,20 @@ const normalizeTagLabel = (label) => {
   return normalized
 }
 
+const slugify = (value) =>
+  value
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+
 const isEcoProject = computed(
   () => props.metrics || (props.chips || []).includes('Éco-conçu')
 )
 
 const allTags = computed(() => {
-  const rawTags = [...(props.stack || []), ...(props.chips || [])]
+  const rawTags = [...(props.chips || [])]
   const seen = new Set()
   return rawTags
     .map(normalizeTagLabel)
@@ -227,6 +237,7 @@ const allTags = computed(() => {
 
 const visibleTags = computed(() => allTags.value.slice(0, 3))
 const hiddenTags = computed(() => allTags.value.slice(3))
+const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
 </script>
 
 <style lang="scss" scoped>
@@ -234,11 +245,21 @@ const hiddenTags = computed(() => allTags.value.slice(3))
   width: min(92vw, 1120px);
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 
   @media (min-width: $breakpoint-tablet) {
     width: min(90vw, 1120px);
   }
+}
+.boite-article + .boite-article::before {
+  content: '';
+  display: block;
+  width: min(220px, 40%);
+  height: 1px;
+  background: rgba(0, 0, 0, 0.12);
+  margin: 0 auto var(--space-4, 2.1rem);
 }
 .article-resum {
   text-align: left;
@@ -300,14 +321,6 @@ const hiddenTags = computed(() => allTags.value.slice(3))
 .project-context {
   color: $gris2;
   line-height: 1.55;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-
-  @media (min-width: $breakpoint-tablet) {
-    -webkit-line-clamp: 1;
-  }
 }
 .project-role {
   display: flex;

@@ -201,9 +201,9 @@
 - Visuels projets visibles sur mobile (ratio stable + fallback ellipse sans déformation)
 - Alternance gauche/droite maintenue, image/texte équilibrés en desktop
 - Résultats regroupés en format compact, sans bloc trop massif
-- Compétences regroupées en 4 catégories lisibles (annexe claire)
+- Compétences regroupées en 4 catégories lisibles, placées après les réalisations
 - Lien discret dans le hero vers le bloc Compétences (#competences)
-- Séparateur typographique entre “Réalisations” et la grille projets
+- Séparateur typographique entre “Réalisations” et la grille projets + règle discrète entre projets
 - Espacements harmonisés via une échelle Fibonacci (rem)
 
 ## 🧭 État actuel / points à itérer plus tard
