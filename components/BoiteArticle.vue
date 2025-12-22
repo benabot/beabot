@@ -44,22 +44,21 @@
         <div class="project-main">
           <header class="project-header">
             <h2 class="h4 text-gris1">{{ titre }}</h2>
+            <p v-if="isEcoProject" class="eco-flag">Éco-conçu</p>
             <h3 class="text-fin text-gris2">{{ sousTitre }}</h3>
           </header>
 
           <p v-if="context" class="project-context">{{ context }}</p>
 
-          <div class="project-meta">
-            <p v-if="role" class="project-role-pill">
-              <span class="role-label">Rôle</span>
-              <span class="role-text">{{ role }}</span>
-            </p>
+          <div v-if="role" class="project-role">
+            <span class="role-label">Rôle</span>
+            <span class="role-text">{{ role }}</span>
+          </div>
 
-            <div v-if="stack.length" class="stack-inline">
-              <span v-for="tech in stack" :key="tech" class="stack-pill">
-                {{ tech }}
-              </span>
-            </div>
+          <div v-if="displayStack.length" class="stack-inline">
+            <span v-for="tech in displayStack" :key="tech" class="stack-pill">
+              {{ tech }}
+            </span>
           </div>
         </div>
 
@@ -72,12 +71,6 @@
                 <span class="metrics-value">{{ item.value }}</span>
               </li>
             </ul>
-          </div>
-
-          <div v-if="chips.length" class="boite-chips">
-            <span v-for="chip in chips" :key="chip" class="chips">
-              <span>{{ chip }}</span>
-            </span>
           </div>
 
           <div class="project-links">
@@ -190,8 +183,32 @@ const metricsItems = computed(() => {
     })
   }
 
-  return items
+  return items.slice(0, 3)
 })
+
+const normalizeStackLabel = (label) => {
+  const normalized = label.trim()
+  if (normalized.toLowerCase() === 'vuejs') return 'Vue.js'
+  if (normalized.toLowerCase() === 'wordpress headless') return 'WordPress headless'
+  return normalized
+}
+
+const displayStack = computed(() => {
+  const seen = new Set()
+  return (props.stack || [])
+    .map(normalizeStackLabel)
+    .filter((label) => {
+      const key = label.toLowerCase()
+      if (seen.has(key)) return false
+      seen.add(key)
+      return true
+    })
+    .slice(0, 4)
+})
+
+const isEcoProject = computed(
+  () => props.metrics || (props.chips || []).includes('Éco-conçu')
+)
 </script>
 
 <style lang="scss" scoped>
@@ -208,13 +225,13 @@ const metricsItems = computed(() => {
 .article-resum {
   text-align: left;
   display: grid;
-  gap: 1.4rem;
+  gap: var(--space-4, 2.1rem);
   align-items: center;
   width: 100%;
 
   @media (min-width: $breakpoint-tablet) {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-    gap: 1.8rem;
+    gap: var(--space-5, 3.4rem);
   }
 }
 .boite-image-link {
@@ -228,27 +245,35 @@ const metricsItems = computed(() => {
 }
 .article-body {
   display: grid;
-  gap: 0.9rem;
+  gap: var(--space-2, 0.8rem);
 
   @media (min-width: $breakpoint-tablet) {
     grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
     align-items: start;
-    gap: 1.4rem;
+    gap: var(--space-4, 2.1rem);
   }
 }
 .project-main {
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
+  gap: var(--space-2, 0.8rem);
 }
 .project-aside {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: var(--space-2, 0.8rem);
 }
 .project-header h2 {
   margin: 0;
   font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+}
+.eco-flag {
+  margin: 0.25rem 0 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $vert;
 }
 .project-header h3 {
   font-size: clamp(0.95rem, 2vw, 1.1rem);
@@ -266,33 +291,22 @@ const metricsItems = computed(() => {
     -webkit-line-clamp: 1;
   }
 }
-.project-meta {
+.project-role {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  align-items: center;
-}
-.project-role-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.25rem 0.6rem;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  color: $gris1;
-  font-weight: 700;
-  font-size: 0.78rem;
+  flex-direction: column;
+  gap: 0.2rem;
+  color: $gris2;
 }
 .role-label {
-  font-size: 0.62rem;
+  font-size: 0.65rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: $vert;
+  letter-spacing: 0.12em;
+  color: $gris3;
+  font-weight: 700;
 }
 .role-text {
-  color: $gris2;
   font-weight: 600;
+  line-height: 1.4;
 }
 .stack-inline {
   display: flex;
@@ -300,15 +314,15 @@ const metricsItems = computed(() => {
   gap: 0.4rem;
 }
 .project-metrics {
-  background: rgba(13, 199, 99, 0.06);
-  border: 1px solid rgba(13, 199, 99, 0.16);
-  border-radius: 14px;
-  padding: 0.65rem 0.8rem;
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: var(--space-2, 0.8rem);
 }
 .metrics-title {
   margin: 0 0 0.5rem;
   font-weight: 700;
-  color: $vert;
+  color: $gris2;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   font-size: 0.7rem;
@@ -317,13 +331,13 @@ const metricsItems = computed(() => {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.35rem 0.8rem;
 
   li {
-    display: flex;
-    justify-content: space-between;
+    display: inline-flex;
+    align-items: baseline;
     gap: 0.5rem;
     font-size: 0.85rem;
     color: $gris2;
@@ -343,6 +357,14 @@ const metricsItems = computed(() => {
   padding-top: 100%;
   overflow: hidden;
   aspect-ratio: 1 / 1;
+  border-radius: 52% 48% 46% 54% / 48% 50% 50% 52%;
+  background: rgba(0, 0, 0, 0.02);
+  min-height: clamp(200px, 60vw, 320px);
+
+  @media (min-width: $breakpoint-tablet) {
+    border-radius: 0;
+  }
+
   &:hover .boite-image__image {
     @media (min-width: $breakpoint-tablet) {
       transform: scale(1.1);
@@ -363,10 +385,13 @@ const metricsItems = computed(() => {
     object-position: center;
     transition: all 0.3s;
     z-index: 10;
-    clip-path: ellipse(46% 42% at 49% 53%);
+    clip-path: none;
+    border-radius: 52% 48% 46% 54% / 48% 50% 50% 52%;
+    display: block;
 
     @media (min-width: $breakpoint-tablet) {
       clip-path: none;
+      border-radius: 0;
     }
   }
   &__calque {
@@ -405,44 +430,13 @@ svg {
   height: 0;
 }
 
-.boite-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-
-  .chips {
-    display: inline;
-    background: $gris6;
-    color: $gris2;
-    // border: 0.5px solid $gris3;
-    border-radius: 1000px;
-    padding: 0.15rem 0.55rem;
-    font-size: 0.65rem;
-
-    span {
-      bottom: 0.06em;
-      position: relative;
-      &::before {
-        content: '';
-        display: inline-block;
-        width: 1.68ex;
-        height: 1.68ex;
-        margin-right: 0.68ex;
-        border-radius: 100%;
-        background-color: $bleu1;
-        top: 0.07rem;
-        position: relative;
-      }
-    }
-  }
-}
 .stack-pill {
   background: rgba(4, 57, 217, 0.06);
   color: $gris2;
   border: 1px solid rgba(4, 57, 217, 0.16);
   border-radius: 999px;
   padding: 0.22rem 0.6rem;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 600;
 }
 .project-links {
@@ -450,7 +444,7 @@ svg {
   flex-wrap: wrap;
   align-items: center;
   gap: 0.75rem;
-  margin-top: 0.3rem;
+  margin-top: var(--space-2, 0.8rem);
 }
 .seepost.project-site-link {
   position: static;

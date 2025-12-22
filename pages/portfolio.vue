@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="portfolio-page">
     <!-- Section Hero -->
     <section class="hero-portfolio">
       <!-- Œufs décoratifs en background -->
@@ -62,7 +62,7 @@
       <header class="skills-header">
         <h2 id="portfolio-skills-title" class="skills-title">Compétences</h2>
         <p class="skills-subtitle">
-          Stack principale, méthodes et outils utilisés pour livrer des sites sobres et fiables.
+          Front, CMS et éco-conception : un socle concret pour livrer des sites fiables.
         </p>
       </header>
 
@@ -240,11 +240,22 @@ useHead({
 </script>
 
 <style lang="scss" scoped>
+/* Spacing scale (Fibonacci-inspired) */
+.portfolio-page {
+  --space-1: 0.5rem;
+  --space-2: 0.8rem;
+  --space-3: 1.3rem;
+  --space-4: 2.1rem;
+  --space-5: 3.4rem;
+  --space-6: 5.5rem;
+  --space-7: 8.9rem;
+}
+
 /* Hero Portfolio */
 .hero-portfolio {
   position: relative;
   width: clamp(90vw, 85vw, 900px);
-  margin: 3rem auto 4rem;
+  margin: var(--space-6) auto var(--space-5);
   padding: clamp(2rem, 4vw, 3.5rem);
   text-align: center;
   overflow: hidden;
@@ -333,7 +344,7 @@ h1 {
   align-items: center;
   justify-content: center;
   gap: 0.5rem 0.8rem;
-  margin: 1.5rem auto 2rem;
+  margin: var(--space-4) auto var(--space-4);
   font-size: clamp(0.9rem, 2vw, 1rem);
   font-weight: 600;
   opacity: 0.8;
@@ -357,7 +368,7 @@ h1 {
   gap: 12px;
   align-items: center;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: var(--space-4);
 
   @media (min-width: 640px) {
     flex-direction: row;
@@ -412,9 +423,9 @@ h1 {
 }
 .portfolio-skills {
   width: min(92vw, 980px);
-  margin: 0 auto 3.2rem;
+  margin: 0 auto var(--space-5);
   display: grid;
-  gap: 1.6rem;
+  gap: var(--space-4);
 
   @media (min-width: $breakpoint-tablet) {
     grid-template-columns: minmax(0, 0.35fr) minmax(0, 0.65fr);
@@ -438,10 +449,15 @@ h1 {
   margin: 0;
   color: $gris2;
   font-weight: 600;
+  line-height: 1.5;
+
+  @media (min-width: $breakpoint-tablet) {
+    max-width: 22rem;
+  }
 }
 .skills-grid {
   display: grid;
-  gap: 1.1rem;
+  gap: var(--space-3);
   grid-template-columns: 1fr;
 
   @media (min-width: 720px) {
@@ -456,13 +472,13 @@ h1 {
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 18px;
-  padding: 0.95rem 1.1rem;
+  padding: var(--space-3);
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.04);
 }
 .skills-card-title {
   margin: 0 0 0.75rem;
   color: $gris1;
-  font-size: 1rem;
+  font-size: 0.95rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -471,9 +487,10 @@ h1 {
   padding: 0;
   margin: 0;
   display: grid;
-  gap: 0.4rem;
+  gap: var(--space-1);
   color: $gris2;
   font-weight: 600;
+  font-size: 0.95rem;
 }
 .skills-list li {
   padding-left: 1rem;
@@ -503,15 +520,16 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(4rem, 8vw, 6.8rem);
-  padding-bottom: clamp(6rem, 12vw, 9rem);
+  gap: var(--space-6);
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-7);
 }
 .portfolio-filters {
   width: min(92vw, 980px);
-  margin: 0 auto 2.5rem;
+  margin: 0 auto var(--space-4);
   text-align: center;
   display: grid;
-  gap: 1.5rem;
+  gap: var(--space-4);
 
   @media (min-width: $breakpoint-tablet) {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
@@ -536,7 +554,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.65rem;
+  gap: var(--space-2);
 
   @media (min-width: $breakpoint-tablet) {
     justify-content: flex-start;
