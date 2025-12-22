@@ -304,7 +304,7 @@
         <!-- <button class="sct-footer--btn">en savoir plus</button> -->
         <AppLink
           class="sct-footer--btn"
-          to="/eco-conception/l-eco-conception-web/"
+          :to="faqLink"
           >en savoir plus</AppLink
         >
         <div class="fleche">
