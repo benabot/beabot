@@ -55,9 +55,20 @@
             <span class="role-text">{{ role }}</span>
           </div>
 
-          <div v-if="displayStack.length" class="stack-inline">
-            <span v-for="tech in displayStack" :key="tech" class="stack-pill">
-              {{ tech }}
+          <div v-if="visibleTags.length" class="project-tags">
+            <span v-for="tag in visibleTags" :key="tag" class="project-tag">
+              {{ tag }}
+            </span>
+            <span
+              v-if="hiddenTags.length"
+              class="project-tag tag-more"
+              tabindex="0"
+              :aria-label="`Tags supplémentaires: ${hiddenTags.join(', ')}`"
+            >
+              +{{ hiddenTags.length }}
+              <span class="tag-tooltip" role="tooltip">
+                {{ hiddenTags.join(' · ') }}
+              </span>
             </span>
           </div>
         </div>
@@ -186,29 +197,36 @@ const metricsItems = computed(() => {
   return items.slice(0, 3)
 })
 
-const normalizeStackLabel = (label) => {
+const normalizeTagLabel = (label) => {
   const normalized = label.trim()
-  if (normalized.toLowerCase() === 'vuejs') return 'Vue.js'
-  if (normalized.toLowerCase() === 'wordpress headless') return 'WordPress headless'
+  const lower = normalized.toLowerCase()
+  if (lower === 'vuejs') return 'Vue.js'
+  if (lower === 'webdesign') return 'Webdesign'
+  if (lower === 'wordpress headless') return 'WordPress headless'
+  if (lower === 'api rest') return 'API REST'
   return normalized
 }
 
-const displayStack = computed(() => {
+const isEcoProject = computed(
+  () => props.metrics || (props.chips || []).includes('Éco-conçu')
+)
+
+const allTags = computed(() => {
+  const rawTags = [...(props.stack || []), ...(props.chips || [])]
   const seen = new Set()
-  return (props.stack || [])
-    .map(normalizeStackLabel)
+  return rawTags
+    .map(normalizeTagLabel)
     .filter((label) => {
+      if (isEcoProject.value && label === 'Éco-conçu') return false
       const key = label.toLowerCase()
       if (seen.has(key)) return false
       seen.add(key)
       return true
     })
-    .slice(0, 4)
 })
 
-const isEcoProject = computed(
-  () => props.metrics || (props.chips || []).includes('Éco-conçu')
-)
+const visibleTags = computed(() => allTags.value.slice(0, 3))
+const hiddenTags = computed(() => allTags.value.slice(3))
 </script>
 
 <style lang="scss" scoped>
@@ -308,10 +326,11 @@ const isEcoProject = computed(
   font-weight: 600;
   line-height: 1.4;
 }
-.stack-inline {
+.project-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
+  align-items: center;
 }
 .project-metrics {
   background: rgba(0, 0, 0, 0.02);
@@ -361,10 +380,6 @@ const isEcoProject = computed(
   background: rgba(0, 0, 0, 0.02);
   min-height: clamp(200px, 60vw, 320px);
 
-  @media (min-width: $breakpoint-tablet) {
-    border-radius: 0;
-  }
-
   &:hover .boite-image__image {
     @media (min-width: $breakpoint-tablet) {
       transform: scale(1.1);
@@ -391,7 +406,6 @@ const isEcoProject = computed(
 
     @media (min-width: $breakpoint-tablet) {
       clip-path: none;
-      border-radius: 0;
     }
   }
   &__calque {
@@ -430,14 +444,46 @@ svg {
   height: 0;
 }
 
-.stack-pill {
-  background: rgba(4, 57, 217, 0.06);
-  color: $gris2;
-  border: 1px solid rgba(4, 57, 217, 0.16);
+.project-tag {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 999px;
-  padding: 0.22rem 0.6rem;
-  font-size: 0.7rem;
+  padding: 0.18rem 0.5rem;
+  font-size: 0.68rem;
   font-weight: 600;
+  color: $gris2;
+  background: transparent;
+}
+.tag-more {
+  position: relative;
+  cursor: default;
+}
+.tag-more:focus-visible {
+  outline: 1px solid rgba(4, 57, 217, 0.4);
+  outline-offset: 2px;
+}
+.tag-tooltip {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 0.35rem);
+  transform: translateX(-50%);
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.65rem;
+  color: $gris2;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 5;
+}
+.tag-more:hover .tag-tooltip,
+.tag-more:focus-visible .tag-tooltip {
+  opacity: 1;
+  visibility: visible;
 }
 .project-links {
   display: flex;
