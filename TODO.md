@@ -19,6 +19,7 @@
 
 **Phase 12 SEO terminée** - Prêt pour merge sur master.
 - ✅ Filtres /eco-conception enrichis (SEO, Images, Performance)
+- ✅ Chapo frontmatter pour le chapeau d’article
 
 | Métrique | Valeur | Statut |
 |----------|--------|--------|
@@ -44,6 +45,7 @@
 - [x] **SEO-12-08** : Frontmatter SEO + updatedAt sur articles
 - [x] **SEO-12-09** : Script de migration frontmatter (seo + updatedAt)
 - [x] **SEO-12-10** : JSON-LD FAQPage sur article FAQ
+- [x] **CONTENT-12-01** : Chapo frontmatter pour le chapeau d’article
 - [x] Utilitaire `utils/seo-url.ts` créé
 - [x] Script `scripts/seo-check.mjs` pour validation
 - [x] Script `scripts/check-routes.mjs` pour debug

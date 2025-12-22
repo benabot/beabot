@@ -1,7 +1,7 @@
 ---
 title: La petite boucle, éco-conception d'un thème WordPress
 description: Retour d’expérience sur la conception d’un thème WordPress éco-conçu pour un site réel. L’article détaille les choix techniques et graphiques effectués pour réduire l’impact environnemental sans sacrifier l’usage.
-chapo: Retour d’expérience sur la conception d’un thème WordPress éco-conçu pour un site réel. L’article détaille les choix techniques et graphiques effectués pour réduire l’impact environnemental sans sacrifier l’usage.
+chapo: Exemple concret sur la conception d’un thème WordPress éco-conçu pour la mise à jour d’un site. J'y détaille les choix techniques et graphiques effectués pour réduire l’impact environnemental sans sacrifier l’usage.
 seo:
   title: La petite boucle, éco-conception d'un thème WordPress
   description: Retour d’expérience sur la conception d’un thème WordPress éco-conçu pour un site réel. L’article détaille les choix techniques et graphiques effectués pour réduire l’impact environnemental sans sacrifier l’usage.

@@ -26,6 +26,7 @@
 - ✅ Filtres /eco-conception enrichis (SEO, Images, Performance)
 - ✅ Script de migration frontmatter (seo + updatedAt)
 - ✅ JSON-LD FAQPage sur article FAQ
+- ✅ Chapo frontmatter pour le chapeau d’article
 
 ---
 
@@ -57,6 +58,7 @@ Phase 13    - SEO Avancé & Contenu  [░░░░░░░░░░░░░░
 - ✅ Filtres /eco-conception enrichis (SEO, Images, Performance)
 - ✅ Script de migration frontmatter (seo + updatedAt)
 - ✅ JSON-LD FAQPage sur article FAQ
+- ✅ Chapo frontmatter pour le chapeau d’article
 
 ### Phase 11 : Homepage & Contact (18-20 décembre 2025)
 
