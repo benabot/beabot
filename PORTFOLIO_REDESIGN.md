@@ -168,7 +168,7 @@
 ### P0 — Structure et contenu
 
 - [ ] **PF-14-01** : Créer section Hero avec intro personnelle
-- [ ] **PF-14-02** : Ajouter section compétences techniques
+- [x] **PF-14-02** : Ajouter section compétences techniques
 - [ ] **PF-14-03** : Enrichir les données de chaque projet (contexte, rôle, résultats)
 - [ ] **PF-14-04** : Créer CTA final avec liens CV + Contact
 

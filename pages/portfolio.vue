@@ -57,6 +57,25 @@
       </div>
     </section>
 
+    <!-- Compétences techniques -->
+    <section class="portfolio-skills" aria-labelledby="portfolio-skills-title">
+      <header class="skills-header">
+        <h2 id="portfolio-skills-title" class="skills-title">Compétences</h2>
+        <p class="skills-subtitle">
+          6 blocs pour couvrir le front, le back/CMS, l’éco-conception et le design.
+        </p>
+      </header>
+
+      <div class="skills-grid">
+        <article v-for="block in skillsBlocks" :key="block.title" class="skills-card">
+          <h3 class="skills-card-title">{{ block.title }}</h3>
+          <ul class="skills-list">
+            <li v-for="item in block.items" :key="item">{{ item }}</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
     <!-- Filtres projets -->
     <section class="portfolio-filters" aria-labelledby="portfolio-filters-title">
       <div class="filters-header">
@@ -123,7 +142,7 @@
 
 <script setup>
 import { computed, ref } from 'vue'
-import { filters as portfolioFilters, projects } from '~/data/portfolio'
+import { filters as portfolioFilters, projects, skills } from '~/data/portfolio'
 import { canonicalUrl } from '~/utils/seo-url'
 
 const activeFilter = ref('all')
@@ -161,6 +180,7 @@ const filteredEcoCount = computed(() =>
   filteredProjects.value.filter((project) => project.tags.includes('Éco-conçu'))
     .length
 )
+const skillsBlocks = computed(() => Object.values(skills))
 
 const focusFilter = (index) => {
   const buttons = filterButtons.value || []
@@ -389,6 +409,74 @@ h1 {
   outline: 2px solid $bleu2;
   outline-offset: 4px;
   border-radius: 4px;
+}
+.portfolio-skills {
+  width: min(92vw, 980px);
+  margin: 0 auto 4rem;
+}
+.skills-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.skills-title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+  color: $gris1;
+}
+.skills-subtitle {
+  margin: 0;
+  color: $gris2;
+  font-weight: 600;
+}
+.skills-grid {
+  display: grid;
+  gap: 1.4rem;
+  grid-template-columns: 1fr;
+
+  @media (min-width: 720px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.skills-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  padding: 1.1rem 1.3rem;
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.04);
+}
+.skills-card-title {
+  margin: 0 0 0.75rem;
+  color: $gris1;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.skills-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+  color: $gris2;
+  font-weight: 600;
+}
+.skills-list li {
+  padding-left: 1rem;
+  position: relative;
+}
+.skills-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: $vert;
 }
 .boite-article {
   @media (max-width: $breakpoint-tablet) {
