@@ -39,7 +39,8 @@ Phase 9     - Éco-conception        [██████████████
 Phase 10    - Domaine beabot.fr     [████████████████████] 100% ✅
 Phase 11    - Homepage & Contact    [████████████████████] 100% ✅
 Phase 12    - SEO Technique         [████████████████████] 100% ✅
-Phase 13    - SEO Avancé & Contenu  [░░░░░░░░░░░░░░░░░░░░]   0% 🔜
+Phase 13    - SEO Avancé & Contenu  [░░░░░░░░░░░░░░░░░░░░]   0% ⏸️
+Phase 14    - Portfolio Emploi      [██░░░░░░░░░░░░░░░░░░]  10% 🔜
 ```
 
 ---
@@ -131,7 +132,23 @@ b1c275f fix: enforce trailing slashes in sitemap
 
 ## 🎯 PROCHAINES ÉTAPES
 
-### Immédiat : Merge dev → master
+### Priorité 1 : Phase 14 — Refonte Portfolio
+
+> **Objectif** : Recherche d'emploi
+> **Détails** : Voir `PORTFOLIO_REDESIGN.md`
+
+**Déjà fait** :
+- [x] Fichier de données `data/portfolio.ts` créé
+- [x] Documentation `PORTFOLIO_REDESIGN.md`
+
+**À faire** :
+1. Section Hero avec intro personnelle + CTAs
+2. Section compétences techniques
+3. Cartes projet enrichies (contexte, rôle, métriques)
+4. CTA final (CV + Contact)
+5. Filtres améliorés
+
+### Priorité 2 : Merge dev → master (Phase 12)
 
 ```bash
 git checkout master
@@ -140,7 +157,7 @@ git merge dev --no-ff -m "feat: Phase 12 SEO optimizations"
 git push origin master
 ```
 
-### Phase 13 : SEO Avancé & Contenu
+### Priorité 3 : Phase 13 — SEO Avancé & Contenu
 
 1. **Google Search Console**
    - Vérifier la propriété beabot.fr

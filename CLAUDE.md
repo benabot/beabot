@@ -107,7 +107,8 @@ beabot/
 | 9 | Éco-conception | 15-17 déc 2025 |
 | 10 | Domaine beabot.fr | 18 déc 2025 |
 | 11 | Homepage & Contact | 18-20 déc 2025 |
-| **12** | **SEO technique** | **21 déc 2025** |
+| 12 | SEO technique | 21 déc 2025 |
+| **14** | **Portfolio — Objectif Emploi** | **22 déc 2025** |
 
 ### À venir
 
@@ -204,6 +205,19 @@ node scripts/seo-check.mjs  # Vérification SEO
 - Mettre à jour TODO.md après chaque tâche
 - Utiliser `AppLink` pour les liens internes
 - Vérifier l'accessibilité (focus, contraste, aria)
+
+---
+
+## 📚 DOCUMENTATION PROJET
+
+| Fichier | Description |
+|---------|-------------|
+| `TODO.md` | Tâches et phases |
+| `PROJECT_STATE.md` | État du projet |
+| `CLAUDE.md` | Ce fichier |
+| `BRANCHING_STRATEGY.md` | Stratégie Git |
+| `PORTFOLIO_REDESIGN.md` | Specs refonte portfolio |
+| `data/portfolio.ts` | Données structurées projets |
 
 ---
 
