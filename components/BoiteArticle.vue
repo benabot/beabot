@@ -25,17 +25,10 @@
         <div class="boite-image">
           <div class="boite-image__calque"></div>
           <div class="circle"></div>
-          <NuxtImg
+          <img
             class="boite-image__image"
             :src="resolvedBackgroundUrl"
             :alt="titre || 'Image du projet'"
-            :width="imageWidth"
-            :height="imageHeight"
-            loading="lazy"
-            format="webp"
-            sizes="(max-width: 768px) 90vw, 40vw"
-            :placeholder="20"
-            preset="card"
           />
         </div>
       </a>
@@ -268,10 +261,21 @@ const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
 .boite-image-link {
   display: block;
   position: relative;
-  justify-self: start;
+  justify-self: center;
   text-decoration: none;
+  width: min(80vw, 280px); // Mobile: centered circle
+
+  // Override article-content.scss underline on image links
+  background: none !important;
+  background-image: none !important;
+
+  &:hover {
+    background: none !important;
+    background-image: none !important;
+  }
 
   @media (min-width: $breakpoint-tablet) {
+    justify-self: start;
     width: min(100%, 380px);
   }
 }
@@ -400,15 +404,19 @@ const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
     object-position: center;
     transition: all 0.3s;
     z-index: 10;
-    clip-path: ellipse(48% 48% at 50% 50%);
     display: block;
+    border-radius: 50%;
 
     @media (min-width: $breakpoint-tablet) {
+      border-radius: 0;
       clip-path: none;
     }
   }
   &__calque {
+    display: none; // Hidden on mobile
+
     @media (min-width: $breakpoint-tablet) {
+      display: block;
       position: absolute;
       top: -6px;
       bottom: -6px;
@@ -421,7 +429,10 @@ const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
     }
   }
   .circle {
+    display: none; // Hidden on mobile
+
     @media (min-width: $breakpoint-tablet) {
+      display: block;
       position: absolute;
       top: 0;
       left: 0;
@@ -501,6 +512,9 @@ svg {
   align-items: center;
   justify-content: center;
   transition: transform 0.12s ease, background-color 0.12s ease, color 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+
+  // Override article-content.scss underline styles
+  background-image: none !important;
 }
 
 .btn-view-site:hover {
@@ -509,6 +523,9 @@ svg {
   border-color: $bleu2;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(4, 57, 217, 0.2);
+
+  // Override article-content.scss underline on hover
+  background-image: none !important;
 }
 
 .btn-view-site:focus-visible {
@@ -516,23 +533,33 @@ svg {
   box-shadow: 0 0 0 3px rgba(4, 57, 217, 0.25);
 }
 
+.article-link:deep(a),
 .article-link {
   font-weight: 700;
   font-size: 0.85rem;
-  color: $bleu2;
+  color: $bleu2 !important;
   text-decoration: none !important;
   text-align: center;
   padding: 0.35rem 0;
   transition: opacity 0.12s ease;
   position: relative;
   border-bottom: none !important;
+  box-shadow: none !important;
+
+  // Override article-content.scss linear-gradient underline
+  background: none !important;
+  background-image: none !important;
 }
 
+.article-link:deep(a:visited),
 .article-link:visited {
-  color: $bleu2;
+  color: $bleu2 !important;
   text-decoration: none !important;
+  background: none !important;
+  background-image: none !important;
 }
 
+.article-link:deep(a::after),
 .article-link::after {
   content: '';
   position: absolute;
@@ -545,15 +572,20 @@ svg {
   transition: width 0.2s ease;
 }
 
+.article-link:deep(a:hover),
 .article-link:hover {
   opacity: 0.85;
   text-decoration: none !important;
+  background: none !important;
+  background-image: none !important;
 }
 
+.article-link:deep(a:hover::after),
 .article-link:hover::after {
   width: 80%;
 }
 
+.article-link:deep(a:focus-visible),
 .article-link:focus-visible {
   outline: 2px solid $bleu2;
   outline-offset: 3px;
