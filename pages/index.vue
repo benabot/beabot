@@ -375,7 +375,7 @@
     </section>
     <section class="section-faq-home" aria-labelledby="faq-home">
       <div class="home-faq-card__inner">
-        <h2 id="faq-home" class="h3 text-gris2 text-black">
+        <h2 id="faq-home" class="h3 text-gris2 text-black home-faq-card__title">
           FAQ — Éco-conception web
         </h2>
         <p class="text-gris3 text-fin home-faq-card__lead">
@@ -475,23 +475,44 @@ section {
   background: rgba($vert, 0.04);
   border-radius: 0.6rem;
   padding: 2rem 2.5rem;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
 
-  h2 {
-    margin: 0 0 1.5rem;
-  }
+}
+.home-faq-card__title {
+  margin: 0 0 1.5rem;
+  font-weight: $bold;
+  letter-spacing: 0.02em;
 }
 .home-faq-card__lead {
   margin: 0 0 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 .home-faq-card__list {
-  list-style: disc;
-  padding-left: 1.2rem;
+  list-style: none;
+  padding-left: 0;
   margin: 0 0 2rem;
   display: grid;
   gap: 0.5rem 1.6rem;
 
   @media (min-width: $breakpoint-tablet) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  li {
+    position: relative;
+    padding-left: 1.2rem;
+  }
+
+  li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 999px;
+    background: $vert;
   }
 }
 .impact {
