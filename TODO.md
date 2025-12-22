@@ -106,23 +106,23 @@
 
 ### P1 — Design et UX
 
-- [ ] **PF-14-05** : Refondre les filtres (boutons visuels, compteur)
-- [ ] **PF-14-06** : Améliorer les cartes projet (contexte, rôle, métriques)
-- [ ] **PF-14-07** : Ajouter bloc résultats sur projets éco-conçus
+- [x] **PF-14-05** : Refondre les filtres (boutons visuels, compteur)
+- [x] **PF-14-06** : Améliorer les cartes projet (contexte, rôle, métriques)
+- [x] **PF-14-07** : Ajouter bloc résultats sur projets éco-conçus
 - [ ] **PF-14-08** : Responsive mobile amélioré
 
 ### P2 — SEO et accessibilité
 
 - [ ] **PF-14-09** : Meta description orientée recrutement
 - [ ] **PF-14-10** : JSON-LD Person ou ProfilePage
-- [ ] **PF-14-11** : Attributs ARIA sur filtres interactifs
+- [x] **PF-14-11** : Attributs ARIA sur filtres interactifs
 - [ ] **PF-14-12** : Focus states sur tous les éléments interactifs
 
 ### P3 — Données structurées
 
 - [x] **PF-14-13** : Externaliser données projets dans `data/portfolio.ts`
-- [ ] **PF-14-14** : Intégrer les données dans portfolio.vue
-- [ ] **PF-14-15** : Composant ProjectCard enrichi
+- [x] **PF-14-14** : Intégrer les données dans portfolio.vue
+- [x] **PF-14-15** : Composant ProjectCard enrichi
 
 ---
 

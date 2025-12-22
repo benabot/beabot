@@ -58,148 +58,143 @@
     </section>
 
     <!-- Filtres projets -->
-    <ul class="selector text-gris2">
-      <li :class="{ 'text-bleu1': select === 'vjs' }" @click="change('vjs')">
-        VueJs
-      </li>
-      /
-      <li :class="{ 'text-bleu1': select === 'wp' }" @click="change('wp')">
-        WordPress
-      </li>
-      /
-      <li :class="{ 'text-bleu1': select === 'eco' }" @click="change('eco')">
-        Éco-conçu
-      </li>
-      /
-      <li
-        :class="{ 'text-bleu1': select === 'webDesign' }"
-        @click="change('webDesign')"
-      >
-        Webdesign
-      </li>
-      <br />
-      <li
-        v-show="!tout"
-        class="text-gris4"
-        @click="tout = true; select = ''"
-      >
-        Tout voir
-      </li>
-    </ul>
-    <section class="container--page">
-      <transition name="fade">
-        <LazyBoiteArticle
-          v-if="
-            tout ||
-            select === 'eco' ||
-            select === 'webDesign' ||
-            select === 'wp'
-          "
-          key="cycloplomberie"
-          id="cycloplomberie"
-          titre="La Cyclo-Plomberie"
-          sous-titre="Votre plombier à vélo à Amiens et alentours"
-          background-url="cyclop.png"
-          :chips="['WebDesign', 'WordPress', 'Éco-conçu']"
-          lien="https://cycloplomberie-amiens.fr"
-      /></transition>
-       <transition name="fade">
-        <LazyBoiteArticle
-          v-if="
-            tout ||
-            select === 'eco' ||
-            select === 'webDesign' ||
-            select === 'wp'
-          "
-          key="petiteboucle"
-          id="petite-boucle"
-          titre="La petite boucle"
-          sous-titre="Collecte de cartouches d'encre en triporteur électrique"
-          background-url="lpb.png"
-          :chips="['WebDesign', 'WordPress', 'Éco-conçu']"
-          lien="https://lapetiteboucle.fr/"
-      /> </transition>
-      <transition name="fade">
-        <LazyBoiteArticle
-          v-if="
-            tout ||
-            select === 'vjs' ||
-            select === 'webDesign' ||
-            select === 'wp'
-          "
-          key="amc2"
-          id="site1"
-          titre="AMC2"
-          sous-titre="Site vitrine et catalogue en ligne"
-          background-url="amc2.png"
-          :chips="['WebDesign', 'VueJs', 'Nuxt', 'WordPress (headless)']"
-          lien="https://www.amc2.fr"
-      /></transition>
-      <transition name="fade">
-        <LazyBoiteArticle
-          v-if="tout || select === 'vjs' || select === 'webDesign'"
-          key="guidersebanque1"
-          id="site2"
-          titre="Guide RSE Banque Populaire"
-          sous-titre="Carte interactive"
-          background-url="guideBleu1.png"
-          :chips="['WebDesign', 'VueJs', 'Bootstrap']"
-          lien="https://www.guide-rse.banquepopulaire.fr/actions-rse"
-      /></transition>
-      <transition name="fade">
-        <LazyBoiteArticle
-          v-if="tout || select === 'vjs' || select === 'webDesign'"
-          key="guidersebanque2"
-          id="guide-rse-dataviz"
-          titre="Guide RSE Banque Populaire"
-          sous-titre="Interface de visualisation de données"
-          background-url="guideBleu2.png"
-          :chips="['WebDesign', 'VueJs', 'Bootstrap']"
-          lien="https://www.guide-rse.banquepopulaire.fr/resultats-2020"
-      /></transition>
-      <transition name="fade">
-        <LazyBoiteArticle
-          v-if="tout || select === 'vjs' || select === 'webDesign'"
-          key="appnoel"
-          id="app-noel"
-          titre="App noël"
-          sous-titre="Application d'apprentissage à l'interface d'un ordinateur"
-          background-url="appNoel.png"
-          :chips="['WebDesign', 'VueJs']"
-          lien="https://app-noel.netlify.app"
-      /></transition>
-      <transition name="fade">
-        <LazyBoiteArticle
-          v-if="
-            tout ||
-            select === 'eco' ||
-            select === 'webDesign' ||
-            select === 'wp'
-          "
-          key="aave"
-          id="aave"
-          titre="AAVE"
-          sous-titre="Association pour l'aménagement de la vallée de l'Esches"
-          background-url="aave.png"
-          :chips="['WebDesign', 'WordPress']"
-          lien="https://vallee-esches.fr/"
-      /></transition>
+    <section class="portfolio-filters" aria-labelledby="portfolio-filters-title">
+      <div class="filters-header">
+        <h2 id="portfolio-filters-title" class="filters-title">Réalisations</h2>
+        <p class="filters-count" aria-live="polite">
+          {{ filteredProjects.length }} projets affichés
+          <span v-if="activeFilter === 'all'">
+            — dont {{ ecoCount }} éco-conçus
+          </span>
+          <span v-else>
+            — dont {{ filteredEcoCount }} éco-conçus
+          </span>
+        </p>
+      </div>
+
+      <div class="filters-tabs" role="tablist" aria-label="Filtres projets">
+        <button
+          v-for="(filter, index) in portfolioFilters"
+          :key="filter.id"
+          ref="filterButtons"
+          type="button"
+          class="filter-pill"
+          :class="{ 'is-active': activeFilter === filter.id }"
+          role="tab"
+          :id="`portfolio-tab-${filter.id}`"
+          :aria-selected="activeFilter === filter.id"
+          :tabindex="activeFilter === filter.id ? 0 : -1"
+          aria-controls="portfolio-grid"
+          @click="setFilter(filter.id)"
+          @keydown="onFilterKeydown($event, index)"
+        >
+          <span class="filter-label">{{ filter.label }}</span>
+          <span class="filter-count">{{ filter.count }}</span>
+        </button>
+      </div>
     </section>
+
+    <TransitionGroup
+      name="fade"
+      tag="section"
+      class="container--page portfolio-grid"
+      id="portfolio-grid"
+      role="tabpanel"
+      :aria-labelledby="`portfolio-tab-${activeFilter}`"
+    >
+      <LazyBoiteArticle
+        v-for="project in filteredProjects"
+        :key="project.id"
+        :id="project.id"
+        :titre="project.title"
+        :sous-titre="project.subtitle"
+        :background-url="project.image"
+        :chips="project.tags"
+        :lien="project.url"
+        :context="project.context"
+        :role="project.role"
+        :stack="project.stack"
+        :metrics="project.metrics"
+        :article-link="project.articleLink"
+      />
+    </TransitionGroup>
   </main>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import { filters as portfolioFilters, projects } from '~/data/portfolio'
+import { canonicalUrl } from '~/utils/seo-url'
 
-const select = ref('')
-const tout = ref(true)
+const activeFilter = ref('all')
+const filterButtons = ref([])
 
-const change = (valeur) => {
-  select.value = valeur
-  tout.value = false
+const setFilter = (filterId) => {
+  activeFilter.value = filterId
 }
 
-import { canonicalUrl } from '~/utils/seo-url'
+const matchesFilter = (project, filterId) => {
+  if (filterId === 'all') return true
+  if (filterId === 'vjs') {
+    return project.tags.includes('VueJs') || project.tags.includes('Nuxt')
+  }
+  if (filterId === 'wp') {
+    return project.tags.includes('WordPress')
+  }
+  if (filterId === 'eco') {
+    return project.tags.includes('Éco-conçu')
+  }
+  if (filterId === 'design') {
+    return project.tags.includes('WebDesign')
+  }
+
+  return true
+}
+
+const filteredProjects = computed(() =>
+  projects.filter((project) => matchesFilter(project, activeFilter.value))
+)
+const ecoCount = computed(() =>
+  projects.filter((project) => project.tags.includes('Éco-conçu')).length
+)
+const filteredEcoCount = computed(() =>
+  filteredProjects.value.filter((project) => project.tags.includes('Éco-conçu'))
+    .length
+)
+
+const focusFilter = (index) => {
+  const buttons = filterButtons.value || []
+  if (!buttons.length) return
+
+  const total = buttons.length
+  const nextIndex = ((index % total) + total) % total
+  buttons[nextIndex]?.focus()
+}
+
+const onFilterKeydown = (event, index) => {
+  switch (event.key) {
+    case 'ArrowRight':
+    case 'ArrowDown':
+      event.preventDefault()
+      focusFilter(index + 1)
+      break
+    case 'ArrowLeft':
+    case 'ArrowUp':
+      event.preventDefault()
+      focusFilter(index - 1)
+      break
+    case 'Home':
+      event.preventDefault()
+      focusFilter(0)
+      break
+    case 'End':
+      event.preventDefault()
+      focusFilter(portfolioFilters.length - 1)
+      break
+    default:
+      break
+  }
+}
 
 const config = useRuntimeConfig()
 const portfolioCanonicalUrl = canonicalUrl(config.public.siteUrl, '/portfolio')
@@ -404,25 +399,74 @@ h1 {
     margin-top: -60px;
   }
 }
-.selector {
+.portfolio-filters {
+  width: min(92vw, 980px);
+  margin: -0.5rem auto 3rem;
   text-align: center;
-  padding-left: 0;
-  margin-top: -1rem;
-  margin-bottom: 3rem;
-  @media (min-width: $breakpoint-tablet) {
-    // margin-top: -3rem;
-  }
-
-  li {
-    display: inline;
-    list-style: none;
-    // color: $bleu1;
-    text-align: center;
-    cursor: pointer;
-    &:hover {
-      color: $bleu1;
-    }
-  }
+}
+.filters-header {
+  margin-bottom: 1.3rem;
+}
+.filters-title {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+  color: $bleu2;
+}
+.filters-count {
+  margin: 0;
+  font-weight: 600;
+  color: $gris2;
+}
+.filters-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem;
+}
+.filter-pill {
+  border: 2px solid rgba(4, 57, 217, 0.15);
+  background: rgba(255, 255, 255, 0.9);
+  color: $bleu2;
+  border-radius: 999px;
+  padding: 0.45rem 1rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.filter-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(4, 57, 217, 0.12);
+}
+.filter-pill:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(4, 57, 217, 0.25);
+}
+.filter-pill.is-active {
+  background: $bleu2;
+  color: #fff;
+  border-color: $bleu2;
+}
+.filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  padding: 0 0.35rem;
+  border-radius: 999px;
+  background: rgba(4, 57, 217, 0.08);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: $bleu2;
+}
+.filter-pill.is-active .filter-count {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
 }
 .fade-enter-active,
 .fade-leave-active {

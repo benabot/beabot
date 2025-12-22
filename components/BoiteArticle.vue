@@ -16,7 +16,12 @@
     </svg>
 
     <article class="article-resum">
-      <a :href="lien" target="_blank">
+      <a
+        :href="lien"
+        class="boite-image-link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <div class="boite-image">
           <div class="boite-image__calque"></div>
           <div class="circle"></div>
@@ -31,19 +36,60 @@
             sizes="(max-width: 768px) 90vw, 40vw"
             :placeholder="20"
             preset="card"
-          /></div
-      ></a>
-      <h2 class="h4 text-gris1">{{ titre }}</h2>
-      <h3 class="text-fin text-gris2">{{ sousTitre }}</h3>
-      <div class="boite-chips">
-        <span v-for="chip in chips" :key="chip" class="chips"
-          ><span>{{ chip }}</span></span
-        >
-      </div>
-
-      <a :href="lien" target="_blank">
-        <button class="seepost">voir le site ⟶</button>
+          />
+        </div>
       </a>
+
+      <div class="article-body">
+        <header class="project-header">
+          <h2 class="h4 text-gris1">{{ titre }}</h2>
+          <h3 class="text-fin text-gris2">{{ sousTitre }}</h3>
+        </header>
+
+        <p v-if="context" class="project-context">{{ context }}</p>
+        <p v-if="role" class="project-role">
+          <span>Mon rôle :</span> {{ role }}
+        </p>
+
+        <div v-if="metricsItems.length" class="project-metrics">
+          <p class="metrics-title">Résultats</p>
+          <ul class="metrics-list">
+            <li v-for="item in metricsItems" :key="item.label">
+              <span class="metrics-label">{{ item.label }}</span>
+              <span class="metrics-value">{{ item.value }}</span>
+            </li>
+          </ul>
+        </div>
+
+        <div v-if="chips.length" class="boite-chips">
+          <span v-for="chip in chips" :key="chip" class="chips">
+            <span>{{ chip }}</span>
+          </span>
+        </div>
+
+        <div v-if="stack.length" class="stack-chips">
+          <p class="stack-title">Stack technique</p>
+          <div class="stack-list">
+            <span v-for="tech in stack" :key="tech" class="stack-pill">
+              {{ tech }}
+            </span>
+          </div>
+        </div>
+
+        <div class="project-links">
+          <a
+            :href="lien"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="seepost project-site-link"
+          >
+            voir le site ⟶
+          </a>
+          <AppLink v-if="articleLink" :to="articleLink" class="article-link">
+            Lire l'article →
+          </AppLink>
+        </div>
+      </div>
     </article>
   </div>
 </template>
@@ -79,6 +125,26 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
+  context: {
+    type: String,
+    default: '',
+  },
+  role: {
+    type: String,
+    default: '',
+  },
+  stack: {
+    type: Array,
+    default: () => [],
+  },
+  metrics: {
+    type: Object,
+    default: () => null,
+  },
+  articleLink: {
+    type: String,
+    default: '',
+  },
 })
 
 const resolvedBackgroundUrl = computed(() => {
@@ -88,6 +154,38 @@ const resolvedBackgroundUrl = computed(() => {
 
   // Fallback to public directory convention: /public/img/<file>
   return `/img/${src}`
+})
+
+const metricsItems = computed(() => {
+  if (!props.metrics) return []
+
+  const items = []
+  if (props.metrics.ecoIndex) {
+    items.push({ label: 'EcoIndex', value: props.metrics.ecoIndex })
+  }
+  if (props.metrics.requests) {
+    items.push({
+      label: 'Requêtes',
+      value: `${props.metrics.requests}`,
+    })
+  }
+  if (props.metrics.pageWeight) {
+    items.push({ label: 'Poids page', value: props.metrics.pageWeight })
+  }
+  if (props.metrics.lighthouse) {
+    items.push({
+      label: 'Lighthouse',
+      value: `${props.metrics.lighthouse}+`,
+    })
+  }
+  if (props.metrics.improvement) {
+    items.push({
+      label: 'Gain',
+      value: props.metrics.improvement,
+    })
+  }
+
+  return items
 })
 </script>
 
@@ -112,31 +210,82 @@ const resolvedBackgroundUrl = computed(() => {
   flex-direction: column;
   justify-content: flex-end;
   @media (min-width: $breakpoint-tablet) {
-    width: 40%;
+    width: clamp(320px, 55vw, 560px);
   }
+}
+.boite-image-link {
+  display: block;
+  position: relative;
+}
+.article-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.project-header h2 {
+  margin-right: -2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 111;
+}
+.project-header h3 {
+  font-size: 1.05rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+.project-context {
+  color: $gris2;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.project-role {
+  color: $gris2;
+  font-weight: 600;
 
-  a {
-    display: block;
-    position: relative;
-    // z-index: 2000;
+  span {
+    color: $bleu2;
+    font-weight: 700;
   }
-  h2 {
-    margin-right: -4rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0;
-    position: relative;
-    z-index: 111;
+}
+.project-metrics {
+  background: rgba(13, 199, 99, 0.08);
+  border: 1px solid rgba(13, 199, 99, 0.18);
+  border-radius: 16px;
+  padding: 0.75rem 0.9rem;
+}
+.metrics-title {
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+  color: $vert;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+.metrics-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.35rem;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: $gris2;
   }
-  h3 {
-    font-size: 1.18rem;
-    margin-top: 0.25rem;
-    margin-bottom: 0.25rem;
-  }
-  &:hover .clip-svg {
-    @media (min-width: $breakpoint-tablet) {
-      transform: scale(1.2);
-    }
-  }
+}
+.metrics-label {
+  font-weight: 600;
+}
+.metrics-value {
+  font-weight: 700;
+  color: $bleu2;
 }
 .boite-image {
   position: relative;
@@ -208,7 +357,7 @@ svg {
 .boite-chips {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 0.9rem;
+  margin-bottom: 0.4rem;
 
   .chips {
     display: inline;
@@ -237,5 +386,63 @@ svg {
       }
     }
   }
+}
+.stack-chips {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.stack-title {
+  margin: 0;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: $gris3;
+}
+.stack-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.stack-pill {
+  background: $fondClair;
+  color: $bleu2;
+  border: 1px solid rgba(4, 57, 217, 0.18);
+  border-radius: 999px;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: 0.6rem;
+}
+.seepost.project-site-link {
+  position: static;
+  right: auto;
+  text-decoration: none;
+  box-shadow: none;
+}
+.seepost.project-site-link:hover {
+  transform: translate3d(4px, 0, 0);
+}
+.seepost.project-site-link:focus-visible {
+  outline: 2px solid $bleu2;
+  outline-offset: 3px;
+}
+.article-link {
+  font-weight: 700;
+  color: $bleu2;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.article-link:focus-visible {
+  outline: 2px solid $bleu2;
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 </style>
