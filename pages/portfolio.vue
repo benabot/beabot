@@ -1,6 +1,63 @@
 <template>
   <main>
-    <h1 class="text-black h2 text-black">Portfolio</h1>
+    <!-- Section Hero -->
+    <section class="hero-portfolio">
+      <!-- Œufs décoratifs en background -->
+      <LazyOeuf
+        class="hero-oeuf hero-oeuf-1"
+        width="28%"
+        transform="rotate(-45)"
+        :fill="'#0439d9'"
+      />
+      <LazyOeuf
+        class="hero-oeuf hero-oeuf-2"
+        width="22%"
+        transform="rotate(15)"
+        :fill="'#f2a81d'"
+      />
+      <LazyOeuf
+        class="hero-oeuf hero-oeuf-3"
+        width="18%"
+        transform="rotate(-85)"
+        :fill="'#00a83e'"
+      />
+
+      <div class="hero-content">
+        <p class="kicker">Portfolio</p>
+
+        <h1>
+          Benoît Abot<br />
+          <span class="subtitle">Développeur web & designer<br />spécialisé en éco-conception</span>
+        </h1>
+
+        <p class="hero-description">
+          Je conçois des sites performants, accessibles et sobres en ressources.
+          Chaque projet est une occasion de prouver qu'efficacité et durabilité vont de pair.
+        </p>
+
+        <div class="hero-stats" aria-label="Statistiques du portfolio">
+          <span class="stat-item">15 ans d'expérience</span>
+          <span class="stat-separator">•</span>
+          <span class="stat-item">Spécialiste éco-conception</span>
+        </div>
+
+        <div class="hero-cta">
+          <a
+            href="/cv.pdf"
+            class="btn-primary"
+            download
+            aria-label="Télécharger mon CV au format PDF"
+          >
+            Voir mon CV ↓
+          </a>
+          <AppLink to="/contact/" class="btn-secondary">
+            Me contacter →
+          </AppLink>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filtres projets -->
     <ul class="selector text-gris2">
       <li :class="{ 'text-bleu1': select === 'vjs' }" @click="change('vjs')">
         VueJs
@@ -168,10 +225,173 @@ useHead({
 </script>
 
 <style lang="scss" scoped>
-h1 {
-  color: $bleu2;
+/* Hero Portfolio */
+.hero-portfolio {
+  position: relative;
+  width: clamp(90vw, 85vw, 900px);
+  margin: 3rem auto 4rem;
+  padding: clamp(2rem, 4vw, 3.5rem);
   text-align: center;
-  margin-top: 3rem;
+  overflow: hidden;
+
+  /* Fond subtil */
+  background: linear-gradient(135deg, rgba(242, 240, 240, 0.4) 0%, rgba(217, 217, 217, 0.2) 100%);
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+/* Œufs flottants en background */
+.hero-oeuf {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.hero-oeuf-1 {
+  top: -8%;
+  left: -5%;
+}
+
+.hero-oeuf-2 {
+  bottom: -6%;
+  right: -3%;
+}
+
+.hero-oeuf-3 {
+  top: 45%;
+  left: -4%;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
+}
+
+/* Contenu Hero (au-dessus des œufs) */
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.kicker {
+  margin: 0 0 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  opacity: 0.55;
+  display: inline-block;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.18);
+}
+
+h1 {
+  font-size: clamp(2.8rem, 6vw, 5.6rem);
+  line-height: 0.95;
+  margin: 0 0 1.5rem;
+  color: $bleu2;
+}
+
+.subtitle {
+  display: block;
+  font-size: clamp(1.6rem, 3.5vw, 3rem);
+  font-weight: 600;
+  margin-top: 0.5rem;
+  opacity: 0.85;
+}
+
+.hero-description {
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  line-height: 1.6;
+  margin: 0 auto 1.5rem;
+  max-width: 600px;
+  opacity: 0.9;
+}
+
+/* Stats */
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 0.8rem;
+  margin: 1.5rem auto 2rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  font-weight: 600;
+  opacity: 0.8;
+
+  @media (max-width: 640px) {
+    font-size: 0.85rem;
+  }
+}
+
+.stat-item {
+  white-space: nowrap;
+}
+
+.stat-separator {
+  opacity: 0.5;
+}
+
+.hero-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.btn-primary {
+  background-color: #0dc763;
+  color: white;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 800;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.12s ease, filter 0.12s ease, box-shadow 0.12s ease,
+    background-color 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
+
+.btn-primary:hover {
+  background-color: white;
+  color: #0dc763;
+  border-color: #0dc763;
+  transform: translateY(-1px);
+}
+
+.btn-primary:focus,
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(4, 217, 79, 0.22);
+}
+
+.btn-secondary {
+  color: $bleu2;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 0.75rem 1.5rem;
+  transition: opacity 0.12s ease;
+}
+
+.btn-secondary:hover {
+  opacity: 0.7;
+}
+
+.btn-secondary:focus,
+.btn-secondary:focus-visible {
+  outline: 2px solid $bleu2;
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 .boite-article {
   @media (max-width: $breakpoint-tablet) {
