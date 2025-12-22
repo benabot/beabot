@@ -89,7 +89,7 @@
         {{ article?.title }}
       </h1>
 
-      <p class="text-gris1 text-normal">{{ article?.description }}</p>
+      <p class="text-gris1 text-normal">{{ chapoText }}</p>
       <p class="petit-text text-gris3 infos">
         Publié le : {{ formatDate(article?.date) }}
         <span v-if="showUpdatedAt">
@@ -177,6 +177,9 @@ const showUpdatedAt = computed(() => {
   if (!publishedAt || !updatedAt) return false
   return new Date(updatedAt) > new Date(publishedAt)
 })
+const chapoText = computed(
+  () => article.value?.chapo || article.value?.description || ''
+)
 
 const isFaq = computed(() => article.value?.schema === 'FAQPage')
 const faqItems = computed(() =>
