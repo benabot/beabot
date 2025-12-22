@@ -60,42 +60,38 @@
       </div>
     </section>
 
-    <!-- Filtres projets -->
-    <section class="portfolio-filters" aria-labelledby="portfolio-filters-title">
-      <div class="filters-header">
-        <h2 id="portfolio-filters-title" class="filters-title">Réalisations</h2>
-        <p class="filters-count" aria-live="polite">
-          {{ filteredProjects.length }} projets affichés
-          <span v-if="activeFilter === 'all'">
-            — dont {{ ecoCount }} éco-conçus
-          </span>
-          <span v-else>
-            — dont {{ filteredEcoCount }} éco-conçus
-          </span>
-        </p>
-      </div>
+    <!-- Header section Réalisations -->
+    <header class="section-header" aria-labelledby="portfolio-filters-title">
+      <div class="section-header-main">
+        <div class="section-header-title-group">
+          <h2 id="portfolio-filters-title" class="section-title">Réalisations</h2>
+          <p class="section-count" aria-live="polite">
+            {{ filteredProjects.length }} projet{{ filteredProjects.length > 1 ? 's' : '' }} • dont {{ activeFilter === 'all' ? ecoCount : filteredEcoCount }} éco-conçu{{ (activeFilter === 'all' ? ecoCount : filteredEcoCount) > 1 ? 's' : '' }}
+          </p>
+        </div>
 
-      <div class="filters-tabs" role="tablist" aria-label="Filtres projets">
-        <button
-          v-for="(filter, index) in portfolioFilters"
-          :key="filter.id"
-          ref="filterButtons"
-          type="button"
-          class="filter-pill"
-          :class="{ 'is-active': activeFilter === filter.id }"
-          role="tab"
-          :id="`portfolio-tab-${filter.id}`"
-          :aria-selected="activeFilter === filter.id"
-          :tabindex="activeFilter === filter.id ? 0 : -1"
-          aria-controls="portfolio-grid"
-          @click="setFilter(filter.id)"
-          @keydown="onFilterKeydown($event, index)"
-        >
-          <span class="filter-label">{{ filter.label }}</span>
-          <span class="filter-count">{{ filter.count }}</span>
-        </button>
+        <div class="section-header-filters" role="tablist" aria-label="Filtres projets">
+          <button
+            v-for="(filter, index) in portfolioFilters"
+            :key="filter.id"
+            ref="filterButtons"
+            type="button"
+            class="filter-pill"
+            :class="{ 'is-active': activeFilter === filter.id }"
+            role="tab"
+            :id="`portfolio-tab-${filter.id}`"
+            :aria-selected="activeFilter === filter.id"
+            :tabindex="activeFilter === filter.id ? 0 : -1"
+            aria-controls="portfolio-grid"
+            @click="setFilter(filter.id)"
+            @keydown="onFilterKeydown($event, index)"
+          >
+            <span class="filter-label">{{ filter.label }}</span>
+            <span class="filter-count">{{ filter.count }}</span>
+          </button>
+        </div>
       </div>
-    </section>
+    </header>
 
     <div class="portfolio-divider" aria-hidden="true"></div>
 
@@ -130,17 +126,52 @@
       class="portfolio-skills"
       aria-labelledby="portfolio-skills-title"
     >
-      <header class="skills-header">
-        <h2 id="portfolio-skills-title" class="skills-title">Compétences</h2>
-      </header>
+      <div class="skills-container">
+        <header class="skills-header">
+          <h2 id="portfolio-skills-title" class="skills-title">Compétences</h2>
+        </header>
 
-      <div class="skills-grid">
-        <article v-for="block in skillsBlocks" :key="block.title" class="skills-card">
-          <h3 class="skills-card-title">{{ block.title }}</h3>
-          <ul class="skills-list">
-            <li v-for="item in block.items" :key="item">{{ item }}</li>
-          </ul>
-        </article>
+        <div class="skills-grid">
+          <article class="skills-card">
+            <h3 class="skills-card-title">
+              <span class="skill-emoji" aria-hidden="true">🎨</span>
+              Front-end
+            </h3>
+            <ul class="skills-list">
+              <li v-for="item in skillsBlocks[0].items" :key="item">{{ item }}</li>
+            </ul>
+          </article>
+
+          <article class="skills-card">
+            <h3 class="skills-card-title">
+              <span class="skill-emoji" aria-hidden="true">⚙️</span>
+              Back-end / CMS
+            </h3>
+            <ul class="skills-list">
+              <li v-for="item in skillsBlocks[1].items" :key="item">{{ item }}</li>
+            </ul>
+          </article>
+
+          <article class="skills-card">
+            <h3 class="skills-card-title">
+              <span class="skill-emoji" aria-hidden="true">🌱</span>
+              Éco-conception / Qualité
+            </h3>
+            <ul class="skills-list">
+              <li v-for="item in skillsBlocks[2].items" :key="item">{{ item }}</li>
+            </ul>
+          </article>
+
+          <article class="skills-card">
+            <h3 class="skills-card-title">
+              <span class="skill-emoji" aria-hidden="true">🛠️</span>
+              DevOps
+            </h3>
+            <ul class="skills-list">
+              <li v-for="item in skillsBlocks[3].items" :key="item">{{ item }}</li>
+            </ul>
+          </article>
+        </div>
       </div>
     </section>
   </main>
@@ -442,76 +473,118 @@ h1 {
   outline-offset: 4px;
   border-radius: 4px;
 }
+/* Section Compétences - Rupture visuelle douce */
 .portfolio-skills {
-  width: min(92vw, 980px);
-  margin: var(--space-6) auto var(--space-6);
-  display: grid;
-  gap: var(--space-4);
+  width: 100%;
+  margin-top: var(--space-7);
+  padding: var(--space-6) 0;
+  background: linear-gradient(180deg, rgba(245, 245, 245, 0.5) 0%, #fafafa 100%);
+  position: relative;
 
-  @media (min-width: $breakpoint-tablet) {
-    grid-template-columns: minmax(0, 0.3fr) minmax(0, 0.7fr);
-    align-items: start;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(85vw, 800px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(4, 57, 217, 0.2) 50%, transparent 100%);
   }
 }
+
+.skills-container {
+  width: min(92vw, 1120px);
+  margin: 0 auto;
+}
+
 .skills-header {
   text-align: center;
-  margin-bottom: 0;
+  margin-bottom: var(--space-5);
+}
 
-  @media (min-width: $breakpoint-tablet) {
-    text-align: left;
-  }
-}
 .skills-title {
-  margin: 0 0 0.5rem;
-  font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 800;
   color: $gris1;
+  white-space: nowrap;
 }
+
+/* Grid responsive 4 cols desktop / 2 tablette / 1 mobile */
 .skills-grid {
   display: grid;
-  gap: var(--space-3);
+  gap: var(--space-4);
   grid-template-columns: 1fr;
 
-  @media (min-width: 720px) {
+  @media (min-width: 640px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
+
+/* Cards avec fond, bordure et ombre */
 .skills-card {
-  background: transparent;
-  border: none;
-  padding: 0;
-  box-shadow: none;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: var(--space-4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
 }
+
 .skills-card-title {
-  margin: 0 0 0.75rem;
+  margin: 0 0 var(--space-3);
   color: $gris1;
-  font-size: 0.95rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
+
+.skill-emoji {
+  font-size: 1.3rem;
+  line-height: 1;
+  display: inline-block;
+}
+
 .skills-list {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: grid;
-  gap: var(--space-1);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
   color: $gris2;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   line-height: 1.5;
 }
+
 .skills-list li {
-  padding-left: 1rem;
+  padding-left: 1.2rem;
   position: relative;
 }
+
 .skills-list li::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 0.5rem;
-  width: 0.35rem;
-  height: 0.35rem;
+  top: 0.55rem;
+  width: 0.4rem;
+  height: 0.4rem;
   border-radius: 50%;
-  background: $vert;
+  background: $bleu2;
 }
 .boite-article {
   @media (max-width: $breakpoint-tablet) {
@@ -527,96 +600,162 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-5);
+  gap: var(--space-6);
   padding-top: var(--space-4);
-  padding-bottom: var(--space-5);
+  padding-bottom: var(--space-6);
+
+  @media (min-width: $breakpoint-tablet) {
+    gap: var(--space-7);
+  }
 }
-.portfolio-filters {
+/* Header section Réalisations */
+.section-header {
   width: min(92vw, 980px);
-  margin: 0 auto var(--space-4);
-  text-align: center;
-  display: grid;
+  margin: var(--space-6) auto var(--space-4);
+  padding: var(--space-4);
+  background: linear-gradient(135deg, rgba(242, 240, 240, 0.3) 0%, rgba(255, 255, 255, 0.5) 100%);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.section-header-main {
+  display: flex;
+  flex-direction: column;
   gap: var(--space-4);
 
   @media (min-width: $breakpoint-tablet) {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
-    align-items: end;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.section-header-title-group {
+  text-align: center;
+
+  @media (min-width: $breakpoint-tablet) {
     text-align: left;
   }
 }
-.portfolio-divider {
-  width: min(92vw, 1120px);
-  height: 1px;
-  background: rgba(0, 0, 0, 0.08);
-  margin: 0 auto var(--space-5);
-}
-.filters-header {
-  margin-bottom: 0;
-}
-.filters-title {
-  margin: 0 0 0.35rem;
-  font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+
+.section-title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 800;
   color: $gris1;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.75rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: $bleu1;
+    border-radius: 2px;
+
+    @media (min-width: $breakpoint-tablet) {
+      left: 0;
+    }
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    &::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
 }
-.filters-count {
-  margin: 0;
+
+.section-count {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
   font-weight: 600;
-  color: $gris2;
+  color: $gris3;
+  letter-spacing: 0.01em;
 }
-.filters-tabs {
+
+.section-header-filters {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: var(--space-2);
 
   @media (min-width: $breakpoint-tablet) {
-    justify-content: flex-start;
+    justify-content: flex-end;
   }
 }
+
+.portfolio-divider {
+  width: min(92vw, 1120px);
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+  margin: 0 auto var(--space-5);
+}
+
+/* Filter pills redesign */
 .filter-pill {
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0.85);
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  background: #fff;
   color: $gris2;
   border-radius: 999px;
-  padding: 0.3rem 0.7rem;
-  font-weight: 600;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
   font-size: 0.9rem;
   letter-spacing: 0.01em;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.5rem;
   transition: transform 0.15s ease, box-shadow 0.15s ease,
     background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
+
 .filter-pill:hover {
+  border-color: $bleu2;
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(4, 57, 217, 0.15);
 }
+
 .filter-pill:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(4, 57, 217, 0.18);
+  box-shadow: 0 0 0 3px rgba(4, 57, 217, 0.25);
+  border-color: $bleu2;
 }
+
 .filter-pill.is-active {
   background: $bleu2;
   color: #fff;
   border-color: $bleu2;
+  box-shadow: 0 2px 8px rgba(4, 57, 217, 0.2);
 }
+
+.filter-pill.is-active:hover {
+  background: darken($bleu2, 5%);
+  border-color: darken($bleu2, 5%);
+  box-shadow: 0 4px 12px rgba(4, 57, 217, 0.3);
+}
+
 .filter-count {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 1.3rem;
-  height: 1.3rem;
-  padding: 0 0.3rem;
+  min-width: 1.4rem;
+  height: 1.4rem;
+  padding: 0 0.35rem;
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.06);
-  font-size: 0.7rem;
-  font-weight: 600;
+  background: rgba(0, 0, 0, 0.08);
+  font-size: 0.75rem;
+  font-weight: 700;
   color: $gris2;
 }
+
 .filter-pill.is-active .filter-count {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.25);
   color: #fff;
 }
 .fade-enter-active,

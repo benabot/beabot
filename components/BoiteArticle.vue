@@ -43,14 +43,26 @@
       <div class="article-body">
         <div class="project-main">
           <header class="project-header">
-            <h2 class="h4 text-gris1">{{ titre }}</h2>
-            <p v-if="isEcoProject" class="eco-flag">Éco-conçu</p>
-            <h3 class="text-fin text-gris2">{{ sousTitre }}</h3>
+            <h2 class="project-title">{{ titre }}</h2>
+            <h3 class="project-subtitle">{{ sousTitre }}</h3>
           </header>
 
-          <div v-if="role" class="project-role">
-            <span class="role-label">Rôle</span>
-            <span class="role-text">{{ role }}</span>
+          <!-- Badge éco-conception -->
+          <div v-if="isEcoProject && metricsItems.length" class="eco-badge">
+            <div class="eco-badge-header">
+              <span class="eco-badge-icon" aria-hidden="true">🌱</span>
+              <span class="eco-badge-title">Éco-conçu</span>
+            </div>
+            <div class="eco-badge-metrics">
+              <span
+                v-for="item in metricsItems"
+                :key="item.label"
+                class="eco-metric"
+              >
+                <span class="eco-metric-label">{{ item.label }}</span>
+                <span class="eco-metric-value">{{ item.value }}</span>
+              </span>
+            </div>
           </div>
 
           <div v-if="visibleTags.length" class="project-tags">
@@ -74,27 +86,17 @@
         </div>
 
         <div class="project-aside">
-          <div v-if="metricsItems.length" class="project-metrics">
-            <p class="metrics-title">Résultats</p>
-            <ul class="metrics-list">
-              <li v-for="item in metricsItems" :key="item.label">
-                <span class="metrics-label">{{ item.label }}</span>
-                <span class="metrics-value">{{ item.value }}</span>
-              </li>
-            </ul>
-          </div>
-
           <div class="project-links">
             <a
               :href="lien"
               target="_blank"
               rel="noopener noreferrer"
-              class="seepost project-site-link"
+              class="btn-view-site"
             >
-              voir le site ⟶
+              Voir le site →
             </a>
             <AppLink v-if="articleLink" :to="articleLink" class="article-link">
-              Lire l'article →
+              Lire l'article
             </AppLink>
           </div>
         </div>
@@ -280,95 +282,97 @@ const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
   @media (min-width: $breakpoint-tablet) {
     grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
     align-items: start;
-    gap: var(--space-4, 2.1rem);
+    gap: var(--space-3, 1.3rem);
   }
 }
 .project-main {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2, 0.8rem);
+  gap: var(--space-1, 0.5rem);
 }
 .project-aside {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2, 0.8rem);
+  gap: var(--space-1, 0.5rem);
 }
-.project-header h2 {
+/* Hiérarchie typographique renforcée */
+.project-title {
   margin: 0;
-  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
-}
-.eco-flag {
-  margin: 0.25rem 0 0;
-  font-size: 0.7rem;
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
   font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: $vert;
+  color: $gris1;
+  line-height: 1.2;
 }
-.project-header h3 {
-  font-size: clamp(0.95rem, 2vw, 1.1rem);
-  margin: 0.25rem 0 0;
-}
-.project-role {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  color: $gris2;
-}
-.role-label {
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: $gris3;
-  font-weight: 700;
-}
-.role-text {
+
+.project-subtitle {
+  font-size: clamp(0.9rem, 2vw, 1rem);
   font-weight: 600;
+  color: $gris3;
+  margin: 0.35rem 0 0;
   line-height: 1.4;
 }
-.project-tags {
+
+/* Badge éco-conception visuellement distinctif */
+.eco-badge {
+  background: linear-gradient(135deg, rgba(0, 168, 62, 0.08) 0%, rgba(0, 168, 62, 0.05) 100%);
+  border: 2px solid rgba(0, 168, 62, 0.25);
+  border-radius: 10px;
+  padding: var(--space-1, 0.5rem) var(--space-2, 0.8rem);
+  margin-top: var(--space-1, 0.5rem);
+}
+
+.eco-badge-header {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
   align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.4rem;
 }
-.project-metrics {
-  background: rgba(0, 0, 0, 0.02);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 12px;
-  padding: var(--space-2, 0.8rem);
+
+.eco-badge-icon {
+  font-size: 1.1rem;
+  line-height: 1;
 }
-.metrics-title {
-  margin: 0 0 0.5rem;
-  font-weight: 700;
-  color: $gris2;
-  letter-spacing: 0.04em;
+
+.eco-badge-title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-size: 0.7rem;
+  color: darken($vert, 10%);
 }
-.metrics-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+
+.eco-badge-metrics {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem 0.8rem;
-
-  li {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 0.5rem;
-    font-size: 0.85rem;
-    color: $gris2;
-  }
 }
-.metrics-label {
+
+.eco-metric {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+}
+
+.eco-metric-label {
   font-weight: 600;
   color: $gris3;
+  font-size: 0.8rem;
 }
-.metrics-value {
-  font-weight: 700;
-  color: $gris1;
+
+.eco-metric-value {
+  font-weight: 800;
+  color: darken($vert, 5%);
+  font-size: 0.9rem;
+}
+
+/* Tags simplifiés */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+  margin-top: var(--space-1, 0.5rem);
 }
 .boite-image {
   position: relative;
@@ -438,13 +442,13 @@ svg {
 .project-tag {
   display: inline-flex;
   align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 999px;
-  padding: 0.18rem 0.5rem;
-  font-size: 0.68rem;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  color: $gris2;
-  background: transparent;
+  color: $gris3;
+  background: rgba(0, 0, 0, 0.02);
 }
 .tag-more {
   position: relative;
@@ -478,33 +482,71 @@ svg {
 }
 .project-links {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem;
+  flex-direction: column;
+  gap: 0.6rem;
   margin-top: var(--space-2, 0.8rem);
 }
-.seepost.project-site-link {
-  position: static;
-  right: auto;
+
+/* Bouton "Voir le site" cohérent avec hero */
+.btn-view-site {
+  background-color: $bleu2;
+  color: white;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  padding: 0.65rem 1.3rem;
+  font-weight: 800;
+  font-size: 0.85rem;
   text-decoration: none;
-  box-shadow: none;
-  padding: 0.55rem 1.1rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.12s ease, background-color 0.12s ease, color 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
 }
-.seepost.project-site-link:hover {
-  transform: translate3d(4px, 0, 0);
+
+.btn-view-site:hover {
+  background-color: white;
+  color: $bleu2;
+  border-color: $bleu2;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(4, 57, 217, 0.2);
 }
-.seepost.project-site-link:focus-visible {
-  outline: 2px solid $bleu2;
-  outline-offset: 3px;
+
+.btn-view-site:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(4, 57, 217, 0.25);
 }
+
 .article-link {
   font-weight: 700;
+  font-size: 0.85rem;
   color: $bleu2;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  text-decoration: none;
+  text-align: center;
+  padding: 0.35rem 0;
+  transition: opacity 0.12s ease;
+  position: relative;
 }
+
+.article-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background: $bleu2;
+  transition: width 0.2s ease;
+}
+
+.article-link:hover {
+  opacity: 0.85;
+}
+
+.article-link:hover::after {
+  width: 80%;
+}
+
 .article-link:focus-visible {
   outline: 2px solid $bleu2;
   outline-offset: 3px;
