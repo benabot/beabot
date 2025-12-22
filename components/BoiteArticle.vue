@@ -377,12 +377,7 @@ const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
   width: 100%;
   padding-top: 100%;
   overflow: hidden;
-  aspect-ratio: 1 / 1;
-  clip-path: ellipse(46% 42% at 49% 53%);
-  -webkit-clip-path: ellipse(46% 42% at 49% 53%);
-  border-radius: 0;
   background: transparent;
-  min-height: clamp(200px, 60vw, 320px);
 
   &:hover .boite-image__image {
     @media (min-width: $breakpoint-tablet) {
@@ -404,8 +399,7 @@ const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
     object-position: center;
     transition: all 0.3s;
     z-index: 10;
-    clip-path: none;
-    border-radius: 0;
+    clip-path: ellipse(46% 42% at 49% 53%);
     display: block;
 
     @media (min-width: $breakpoint-tablet) {
@@ -413,7 +407,6 @@ const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
     }
   }
   &__calque {
-    display: none;
     @media (min-width: $breakpoint-tablet) {
       position: absolute;
       // top: 0;
@@ -431,7 +424,6 @@ const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
     }
   }
   .circle {
-    display: none;
     @media (min-width: $breakpoint-tablet) {
       position: absolute;
       top: 0;
