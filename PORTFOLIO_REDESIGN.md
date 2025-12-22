@@ -197,18 +197,20 @@
 
 ## ✅ Ajustements récents (UX & lisibilité)
 
-- Cartes projets compactées (contexte 1 ligne desktop, rôle lisible au-dessus, stack limitée)
-- Visuels projets restaurés sur mobile (ratio carré + fallback ellipse sans déformation)
+- Hiérarchie des cartes clarifiée : rôle au-dessus des tags, tags limités avec +n
+- Visuels projets visibles sur mobile (ratio stable + fallback ellipse sans déformation)
 - Alternance gauche/droite maintenue, image/texte équilibrés en desktop
 - Résultats regroupés en format compact, sans bloc trop massif
-- Compétences resserrées, vocabulaire simplifié et layout en colonnes
+- Compétences regroupées en 4 catégories lisibles (annexe claire)
+- Lien discret dans le hero vers le bloc Compétences (#competences)
+- Séparateur typographique entre “Réalisations” et la grille projets
 - Espacements harmonisés via une échelle Fibonacci (rem)
 
 ## 🧭 État actuel / points à itérer plus tard
 
 - Valider la lisibilité mobile sur contenus réels plus longs
 - Ajuster finement les tailles typographiques si besoin (mobile)
-- Vérifier l’équilibre entre stack et métriques sur projets sans résultats
+- Vérifier l’équilibre entre tags et métriques sur projets sans résultats
 - Vérifier la respiration finale avec des images de tailles différentes
 
 ## 📊 Métriques de succès
