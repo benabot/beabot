@@ -27,7 +27,7 @@ export default defineEventHandler(async (event) => {
       items: articles.map((article) => {
         // Extraire le slug depuis _path (format: /articles/slug) et convertir en minuscules
         const slug = article._path?.split('/').pop()?.toLowerCase() || ''
-        const articleUrl = `${baseUrl}/eco-conception/${slug}`
+        const articleUrl = `${baseUrl}/eco-conception/${slug}/`
 
         return {
           id: articleUrl,

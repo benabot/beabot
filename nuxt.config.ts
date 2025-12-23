@@ -30,7 +30,7 @@ export default defineNuxtConfig({
   // Runtime configuration (accessible via useRuntimeConfig())
   runtimeConfig: {
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://beabot.netlify.app',
+      siteUrl: siteUrl, // Use the same siteUrl variable for consistency
     },
   },
 
