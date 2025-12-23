@@ -421,6 +421,32 @@ const scrollToNext = () => {
   }
 }
 
+// Schema Organization pour la page d'accueil
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'BeAbot',
+  url: config.public.siteUrl,
+  logo: `${config.public.siteUrl}/beabot.png`,
+  description: 'Développeur web spécialisé en éco-conception. Sites performants, accessibles et sobres.',
+  founder: {
+    '@type': 'Person',
+    name: 'Benoît Abot',
+    jobTitle: 'Développeur web & designer',
+    url: `${config.public.siteUrl}/portfolio/`,
+  },
+  sameAs: [
+    'https://github.com/benabot',
+    'https://www.linkedin.com/in/benoit-abot/',
+    'https://twitter.com/AbotBenoit',
+  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer service',
+    url: `${config.public.siteUrl}/contact/`,
+  },
+}
+
 useHead({
   title: 'Accueil - éco-conception web',
   meta: [
@@ -436,6 +462,12 @@ useHead({
       hid: 'canonical',
       rel: 'canonical',
       href: homeCanonicalUrl,
+    },
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(organizationSchema),
     },
   ],
 })

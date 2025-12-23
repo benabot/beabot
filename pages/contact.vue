@@ -152,11 +152,22 @@ function encode(data) {
 const config = useRuntimeConfig()
 const contactCanonicalUrl = canonicalUrl(config.public.siteUrl, '/contact')
 
+// SEO meta tags - useSeoMeta pour un remplacement propre des meta globales
+useSeoMeta({
+  title: 'Contact — Développeur web éco-conception',
+  description: 'Contactez Benoît Abot, développeur web spécialisé en éco-conception. Devis gratuit pour votre projet web sobre, performant et durable.',
+  ogTitle: 'Contact — Benoît Abot, développeur éco-conception',
+  ogDescription: 'Une question sur l\'éco-conception web ? Un site à créer ou optimiser ? Écrivez-moi, je vous réponds sous 48h.',
+  ogType: 'website',
+  ogUrl: contactCanonicalUrl,
+  twitterTitle: 'Contact — Benoît Abot',
+  twitterDescription: 'Développeur web éco-conception. Contactez-moi pour votre projet web sobre et performant.',
+  twitterCard: 'summary_large_image',
+})
+
 useHead({
-  title: 'Contact',
   link: [
     {
-      hid: 'canonical',
       rel: 'canonical',
       href: contactCanonicalUrl,
     },
