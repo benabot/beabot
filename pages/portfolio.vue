@@ -60,11 +60,16 @@
       </div>
     </section>
 
+    <!-- Timeline dot 1: Hero → Réalisations -->
+    <div class="timeline-dot" aria-hidden="true">
+      <span class="timeline-dot__core"></span>
+    </div>
+
     <!-- Header section Réalisations -->
     <header class="section-header" aria-labelledby="portfolio-filters-title">
       <div class="section-header-main">
         <div class="section-header-title-group">
-          <h2 id="portfolio-filters-title" class="section-title">Réalisations</h2>
+          <h2 id="portfolio-filters-title" class="section-title">Extraits de 15 ans de web</h2>
           <p class="section-count" aria-live="polite">
             {{ filteredProjects.length }} projet{{ filteredProjects.length > 1 ? 's' : '' }} • dont {{ activeFilter === 'all' ? ecoCount : filteredEcoCount }} éco-conçu{{ (activeFilter === 'all' ? ecoCount : filteredEcoCount) > 1 ? 's' : '' }}
           </p>
@@ -120,6 +125,11 @@
       />
     </TransitionGroup>
 
+    <!-- Timeline dot 2: Réalisations → Compétences -->
+    <div class="timeline-dot" aria-hidden="true">
+      <span class="timeline-dot__core"></span>
+    </div>
+
     <!-- Compétences techniques -->
     <section
       id="competences"
@@ -171,6 +181,35 @@
               <li v-for="item in skillsBlocks[3].items" :key="item">{{ item }}</li>
             </ul>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline dot 3: Compétences → CTA Final -->
+    <div class="timeline-dot" aria-hidden="true">
+      <span class="timeline-dot__core"></span>
+    </div>
+
+    <!-- CTA Final -->
+    <section class="cta-final">
+      <div class="cta-content">
+        <h2 class="cta-title">Envie de travailler ensemble ?</h2>
+        <p class="cta-description">
+          Disponible pour des missions freelance<br>
+          et ouvert aux opportunités CDI.
+        </p>
+        <div class="cta-buttons">
+          <a
+            href="/cv.pdf"
+            class="btn-primary"
+            download
+            aria-label="Télécharger mon CV au format PDF"
+          >
+            Télécharger mon CV ↓
+          </a>
+          <AppLink to="/contact/" class="btn-secondary">
+            Me contacter →
+          </AppLink>
         </div>
       </div>
     </section>
@@ -262,13 +301,34 @@ const config = useRuntimeConfig()
 const portfolioCanonicalUrl = canonicalUrl(config.public.siteUrl, '/portfolio')
 
 useHead({
-  title: 'portfolio',
+  title: 'Portfolio — Benoît Abot, développeur web éco-conception',
   meta: [
     {
       hid: 'description',
       name: 'description',
       content:
-        'Différentes créations web dont certaines sont éco-conçues et toutes bâties à partir d\'un wedesign soigné.',
+        'Portfolio de Benoît Abot, développeur web et designer spécialisé en éco-conception. 15 ans d\'expérience, Vue.js, Nuxt, WordPress. Disponible en freelance et CDI.',
+    },
+    {
+      hid: 'og:title',
+      property: 'og:title',
+      content: 'Portfolio — Benoît Abot, développeur web éco-conception',
+    },
+    {
+      hid: 'og:description',
+      property: 'og:description',
+      content:
+        'Développeur web et designer spécialisé en éco-conception. Sites performants, accessibles et sobres.',
+    },
+    {
+      hid: 'og:type',
+      property: 'og:type',
+      content: 'profile',
+    },
+    {
+      hid: 'og:url',
+      property: 'og:url',
+      content: portfolioCanonicalUrl,
     },
   ],
   link: [
@@ -276,6 +336,35 @@ useHead({
       hid: 'canonical',
       rel: 'canonical',
       href: portfolioCanonicalUrl,
+    },
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'ProfilePage',
+        mainEntity: {
+          '@type': 'Person',
+          name: 'Benoît Abot',
+          jobTitle: 'Développeur web & designer',
+          description:
+            'Spécialisé en éco-conception web. 15 ans d\'expérience.',
+          url: 'https://beabot.fr/portfolio/',
+          sameAs: [
+            'https://www.linkedin.com/in/benoit-abot/',
+            'https://github.com/benabot',
+          ],
+          knowsAbout: [
+            'Vue.js',
+            'Nuxt',
+            'WordPress',
+            'Éco-conception web',
+            'Accessibilité',
+            'Performance web',
+          ],
+        },
+      }),
     },
   ],
 })
@@ -766,5 +855,102 @@ h1 {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+/* Timeline dots - Points d'ancrage visuels entre sections */
+.timeline-dot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem 0;
+  position: relative;
+}
+
+/* Lignes verticales courtes au-dessus et en-dessous */
+.timeline-dot::before,
+.timeline-dot::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  width: 2px;
+  height: 24px;
+  transform: translateX(-50%);
+}
+
+.timeline-dot::before {
+  top: 0;
+  background: linear-gradient(to bottom, transparent, $bleu1);
+}
+
+.timeline-dot::after {
+  bottom: 0;
+  background: linear-gradient(to top, transparent, $bleu1);
+}
+
+/* Point central vert avec halo subtil */
+.timeline-dot__core {
+  width: 14px;
+  height: 14px;
+  background: $vert;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 4px rgba(0, 168, 62, 0.15),
+    0 0 0 8px rgba(0, 168, 62, 0.08);
+  position: relative;
+  z-index: 1;
+}
+
+/* CTA Final - Call to action */
+.cta-final {
+  width: 100%;
+  margin-top: var(--space-7);
+  margin-bottom: var(--space-6);
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cta-content {
+  position: relative;
+  width: clamp(90vw, 85vw, 900px);
+  padding: clamp(3rem, 5vw, 4rem) clamp(2rem, 4vw, 3.5rem);
+  text-align: center;
+
+  /* Même style que le hero */
+  background: linear-gradient(135deg, rgba(242, 240, 240, 0.4) 0%, rgba(217, 217, 217, 0.2) 100%);
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.cta-title {
+  margin: 0 0 1rem;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 800;
+  color: $gris1;
+  line-height: 1.2;
+}
+
+.cta-description {
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  line-height: 1.6;
+  margin: 0 auto var(--space-4);
+  color: $gris2;
+  opacity: 0.95;
+}
+
+.cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--space-4);
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    gap: 16px;
+  }
 }
 </style>
