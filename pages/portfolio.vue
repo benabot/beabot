@@ -916,6 +916,8 @@ h1 {
   padding: clamp(3rem, 5vw, 4rem) clamp(2rem, 4vw, 3.5rem);
   text-align: center;
   overflow: hidden;
+  height: auto;
+  max-height: 65vh;
 
   /* Même fond que le hero */
   background: linear-gradient(135deg, rgba(242, 240, 240, 0.4) 0%, rgba(217, 217, 217, 0.2) 100%);
