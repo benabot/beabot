@@ -89,13 +89,13 @@ Ce site applique les principes d'éco-conception web :
 
 | Métrique | Score | Outil |
 |----------|-------|-------|
-| **EcoIndex** | B-C | ecoindex.fr |
-| **Lighthouse Performance** | 90+ | PageSpeed Insights |
-| **Lighthouse Accessibility** | 95+ | PageSpeed Insights |
+| **EcoIndex** | A | ecoindex.fr |
+| **Lighthouse Performance** | 99 | PageSpeed Insights |
+| **Lighthouse Accessibility** | 96 | PageSpeed Insights |
 | **Lighthouse SEO** | 100 | PageSpeed Insights |
-| **Lighthouse Best Practices** | 95+ | PageSpeed Insights |
+| **Lighthouse Best Practices** | 100 | PageSpeed Insights |
 
-> 🎯 Objectif : EcoIndex A sur toutes les pages
+> ✅ Objectif EcoIndex A atteint !
 
 ---
 

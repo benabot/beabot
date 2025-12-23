@@ -222,15 +222,15 @@ node scripts/seo-check.mjs  # Vérification SEO
 
 ---
 
-## 📊 MÉTRIQUES CIBLES
+## 📊 MÉTRIQUES
 
-| Métrique | Actuel | Cible |
-|----------|--------|-------|
-| EcoIndex | B-C | A |
-| Requêtes HTTP | ~16 | < 12 |
-| Poids page | ~150KB | < 100KB |
-| Lighthouse Perf | 85-90 | > 95 |
-| Lighthouse A11y | ~90 | > 95 |
+| Métrique | Score | Outil |
+|----------|-------|-------|
+| EcoIndex | A | ecoindex.fr |
+| Lighthouse Perf | 99 | PageSpeed Insights |
+| Lighthouse A11y | 96 | PageSpeed Insights |
+| Lighthouse SEO | 100 | PageSpeed Insights |
+| Lighthouse BP | 100 | PageSpeed Insights |
 
 ---
 

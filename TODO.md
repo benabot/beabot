@@ -25,7 +25,8 @@
 | **URLs** | Trailing slash normalisé | ✅ |
 | **Portfolio** | Refonte complète | ✅ |
 | **Structured Data** | Toutes pages principales | ✅ |
-| **EcoIndex** | B-C | 🔶 Objectif A |
+| **EcoIndex** | A | ✅ |
+| **Lighthouse** | 99 / 96 / 100 / 100 | ✅ |
 
 ---
 
