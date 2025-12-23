@@ -65,6 +65,10 @@
       <span class="timeline-dot__core"></span>
     </div>
 
+    <div class="section-transition-wrap">
+      <p class="section-transition">Une sélection de projets pour montrer la méthode.</p>
+    </div>
+
     <!-- Header section Réalisations -->
     <header class="section-header" aria-labelledby="portfolio-filters-title">
       <div class="section-header-main">
@@ -131,6 +135,10 @@
       <span class="timeline-dot__core"></span>
     </div>
 
+    <div class="section-transition-wrap">
+      <p class="section-transition">Compétences mobilisées, en synthèse.</p>
+    </div>
+
     <!-- Compétences techniques -->
     <section
       id="competences"
@@ -185,6 +193,10 @@
     <!-- Timeline dot 3: Compétences → CTA Final -->
     <div class="timeline-dot" aria-hidden="true">
       <span class="timeline-dot__core"></span>
+    </div>
+
+    <div class="section-transition-wrap">
+      <p class="section-transition">Prêt à lancer le prochain projet ensemble ?</p>
     </div>
 
     <!-- CTA Final -->
@@ -757,11 +769,26 @@ h1 {
     gap: var(--space-5);
   }
 }
+.section-transition-wrap {
+  width: min(92vw, 980px);
+  margin: 0 auto var(--space-4);
+  padding-inline: var(--space-2);
+}
+
+.section-transition {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: $gris3;
+  opacity: 0.8;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
 /* Header section Réalisations */
 .section-header {
   width: min(92vw, 980px);
-  margin: var(--space-6) auto var(--space-4);
-  padding: var(--space-4);
+  margin: 0 auto var(--space-3);
+  padding: var(--space-3);
   background: linear-gradient(135deg, rgba(242, 240, 240, 0.3) 0%, rgba(255, 255, 255, 0.5) 100%);
   border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 16px;
@@ -825,9 +852,10 @@ h1 {
 .section-count {
   margin: 0.5rem 0 0;
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 500;
   color: $gris3;
   letter-spacing: 0.01em;
+  opacity: 0.8;
 }
 
 .section-header-filters {
@@ -845,7 +873,7 @@ h1 {
   width: min(92vw, 1120px);
   height: 1px;
   background: rgba(0, 0, 0, 0.08);
-  margin: 0 auto var(--space-5);
+  margin: var(--space-3) auto var(--space-4);
 }
 
 /* Filter pills redesign */
@@ -864,6 +892,11 @@ h1 {
   gap: 0.5rem;
   transition: transform 0.15s ease, box-shadow 0.15s ease,
     background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.filter-label {
+  font-weight: 600;
+  opacity: 0.85;
 }
 
 .filter-pill:hover {
@@ -887,6 +920,10 @@ h1 {
   color: #fff;
   border-color: $bleu2;
   box-shadow: 0 2px 8px rgba(4, 57, 217, 0.2);
+}
+
+.filter-pill.is-active .filter-label {
+  opacity: 1;
 }
 
 .filter-pill.is-active:hover {
@@ -928,7 +965,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2.5rem 0;
+  padding: var(--space-3) 0;
   position: relative;
 }
 

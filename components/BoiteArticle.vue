@@ -42,14 +42,14 @@
           </header>
 
           <!-- Badge éco-conception -->
-          <div v-if="isEcoProject && metricsItems.length" class="eco-badge">
+          <div v-if="isEcoProject && metricsVisible.length" class="eco-badge">
             <div class="eco-badge-header">
               <span class="eco-badge-icon" aria-hidden="true">🌱</span>
               <span class="eco-badge-title">Éco-conçu</span>
             </div>
             <div class="eco-badge-metrics">
               <span
-                v-for="item in metricsItems"
+                v-for="item in metricsVisible"
                 :key="item.label"
                 class="eco-metric"
               >
@@ -66,10 +66,17 @@
             <span
               v-if="hiddenTags.length"
               class="project-tag tag-more"
+              :class="{ 'is-open': isTooltipOpen }"
               role="button"
               tabindex="0"
               :aria-describedby="tooltipId"
+              :aria-expanded="isTooltipOpen"
               :aria-label="`Tags supplémentaires: ${hiddenTags.join(', ')}`"
+              @keydown="onMoreKeydown"
+              @focus="openTooltip"
+              @blur="closeTooltip"
+              @mouseenter="openTooltip"
+              @mouseleave="closeTooltip"
             >
               +{{ hiddenTags.length }}
               <span :id="tooltipId" class="tag-tooltip" role="tooltip">
@@ -99,7 +106,7 @@
   </div>
 </template>
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 const props = defineProps({
   titre: {
@@ -233,9 +240,37 @@ const allTags = computed(() => {
     })
 })
 
-const visibleTags = computed(() => allTags.value.slice(0, 3))
-const hiddenTags = computed(() => allTags.value.slice(3))
+const metricsVisible = computed(() => metricsItems.value.slice(0, 2))
+const visibleTags = computed(() => allTags.value.slice(0, 2))
+const hiddenTags = computed(() => allTags.value.slice(2))
 const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
+
+const isTooltipOpen = ref(false)
+
+const openTooltip = () => {
+  isTooltipOpen.value = true
+}
+
+const closeTooltip = () => {
+  isTooltipOpen.value = false
+}
+
+const toggleTooltip = () => {
+  isTooltipOpen.value = !isTooltipOpen.value
+}
+
+const onMoreKeydown = (event) => {
+  if (event.key === 'Enter' || event.key === ' ' || event.key === 'Spacebar') {
+    event.preventDefault()
+    toggleTooltip()
+    return
+  }
+
+  if (event.key === 'Escape') {
+    event.preventDefault()
+    closeTooltip()
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -314,6 +349,8 @@ const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
   display: flex;
   flex-direction: column;
   gap: var(--space-1, 0.5rem);
+  align-self: start;
+  width: 100%;
 }
 /* Hiérarchie typographique renforcée */
 .project-title {
@@ -326,10 +363,11 @@ const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
 
 .project-subtitle {
   font-size: clamp(0.9rem, 2vw, 1rem);
-  font-weight: 600;
+  font-weight: 500;
   color: $gris3;
   margin: 0.35rem 0 0;
   line-height: 1.4;
+  opacity: 0.85;
 }
 
 /* Badge éco-conception visuellement distinctif */
@@ -359,6 +397,7 @@ const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: darken($vert, 10%);
+  opacity: 0.75;
 }
 
 .eco-badge-metrics {
@@ -371,26 +410,27 @@ const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
   display: inline-flex;
   align-items: baseline;
   gap: 0.35rem;
-  font-size: 0.85rem;
-}
-
-.eco-metric-label {
-  font-weight: 600;
-  color: $gris3;
   font-size: 0.8rem;
 }
 
+.eco-metric-label {
+  font-weight: 500;
+  color: $gris3;
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
 .eco-metric-value {
-  font-weight: 800;
-  color: darken($vert, 5%);
-  font-size: 0.9rem;
+  font-weight: 700;
+  color: $gris2;
+  font-size: 0.85rem;
 }
 
 /* Tags simplifiés */
 .project-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem;
+  gap: 0.3rem;
   align-items: center;
   margin-top: var(--space-1, 0.5rem);
 }
@@ -473,13 +513,17 @@ svg {
   border-radius: 999px;
   padding: 0.2rem 0.55rem;
   font-size: 0.7rem;
-  font-weight: 600;
+  font-weight: 500;
   color: $gris3;
   background: rgba(0, 0, 0, 0.02);
+  opacity: 0.85;
 }
 .tag-more {
   position: relative;
-  cursor: default;
+  cursor: pointer;
+  font-weight: 600;
+  color: $gris2;
+  opacity: 1;
 }
 .tag-more:focus-visible {
   outline: 1px solid rgba(4, 57, 217, 0.4);
@@ -503,7 +547,8 @@ svg {
   z-index: 5;
 }
 .tag-more:hover .tag-tooltip,
-.tag-more:focus-visible .tag-tooltip {
+.tag-more:focus-visible .tag-tooltip,
+.tag-more.is-open .tag-tooltip {
   opacity: 1;
   visibility: visible;
 }
@@ -512,6 +557,13 @@ svg {
   flex-direction: column;
   gap: 0.6rem;
   margin-top: var(--space-2, 0.8rem);
+  align-items: stretch;
+  width: 100%;
+
+  @media (min-width: $breakpoint-tablet) {
+    align-items: flex-end;
+    margin-top: 0;
+  }
 }
 
 /* Bouton "Voir le site" cohérent avec hero */
@@ -527,10 +579,17 @@ svg {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
   transition: all 0.15s ease;
 
   // Override article-content.scss underline styles
   background-image: none !important;
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .btn-view-site {
+    width: auto;
+  }
 }
 
 .btn-view-site:hover {
