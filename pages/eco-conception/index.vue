@@ -160,28 +160,11 @@
 
 <script setup>
 import { computed } from 'vue'
-import { withTrailingSlash } from '~/utils/seo-url'
+import { withTrailingSlash, canonicalUrl } from '~/utils/seo-url'
 
 // Head metadata
 const config = useRuntimeConfig()
-
-// useHead({
-//   title: 'Éco-conception web - Articles',
-//   meta: [
-//     {
-//       hid: 'description',
-//       name: 'description',
-//       content: 'Découvrez tous les articles sur l\'éco-conception web, le webdesign éco-responsable et le numérique durable.',
-//     },
-//   ],
-//   link: [
-//     {
-//       hid: 'canonical',
-//       rel: 'canonical',
-//       href: `${config.public.siteUrl}/eco-conception/`,
-//     },
-//   ],
-// })
+const pageUrl = canonicalUrl(config.public.siteUrl, '/eco-conception')
 
 // Fetch articles with Nuxt Content v2
 const { data: articles } = await useAsyncData('eco-articles', () =>
@@ -190,6 +173,65 @@ const { data: articles } = await useAsyncData('eco-articles', () =>
     .sort({ date: -1 })
     .find()
 )
+
+// Generate article link helper (defined early for schema)
+function articleLink(a) {
+  if (!a || !a._path) return '/eco-conception/'
+  return withTrailingSlash(a._path.replace(/^\/articles\//, '/eco-conception/'))
+}
+
+// Schema CollectionPage avec ItemList des articles
+const collectionSchema = computed(() => {
+  const articleList = articles.value || []
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Blog éco-conception web',
+    description: 'Articles sur l\'éco-conception web : sobriété numérique, performance, webdesign, typographie et WordPress.',
+    url: pageUrl,
+    inLanguage: 'fr-FR',
+    isPartOf: {
+      '@type': 'WebSite',
+      name: 'BeAbot',
+      url: config.public.siteUrl,
+    },
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: articleList.length,
+      itemListElement: articleList.map((article, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        url: `${config.public.siteUrl}${articleLink(article)}`.replace(/\/+$/, '/'),
+        name: article.title,
+      })),
+    },
+  }
+})
+
+// SEO meta tags
+useSeoMeta({
+  title: 'Éco-conception web : sobriété, webdesign et performance',
+  description: 'Articles sur l\'éco-conception web : sobriété numérique, performance, webdesign, typographie et WordPress. Méthodes et retours d\'expérience.',
+  ogTitle: 'Éco-conception web : sobriété, webdesign et performance',
+  ogDescription: 'Articles sur l\'éco-conception web : sobriété numérique, webdesign, typographie, performance et WordPress.',
+  ogType: 'website',
+  ogUrl: pageUrl,
+  twitterTitle: 'Éco-conception web : sobriété, webdesign et performance',
+  twitterDescription: 'Articles sur l\'éco-conception web : sobriété numérique, webdesign, typographie, performance et WordPress.',
+  twitterCard: 'summary_large_image',
+})
+
+useHead({
+  link: [
+    { rel: 'canonical', href: pageUrl },
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: computed(() => JSON.stringify(collectionSchema.value)),
+    },
+  ],
+})
 
 // Use tags composable
 const tagsStore = useTags()
@@ -219,16 +261,6 @@ const faqArticle = computed(() => {
 const articlesWithoutFaq = computed(() =>
   (articlesFilters.value || []).filter((article) => !isFaqArticle(article))
 )
-
-// Generate article link
-function articleLink(a) {
-  // Nuxt Content v2 generates _path automatically from file location
-  // content/articles/foo.md → _path: '/articles/foo'
-  if (!a || !a._path) return '/eco-conception/'
-
-  // Map content directory to the public route namespace
-  return withTrailingSlash(a._path.replace(/^\/articles\//, '/eco-conception/'))
-}
 
 // Update tag filter
 function updateTag(tag) {
