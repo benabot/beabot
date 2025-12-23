@@ -69,9 +69,9 @@
     <header class="section-header" aria-labelledby="portfolio-filters-title">
       <div class="section-header-main">
         <div class="section-header-title-group">
-          <h2 id="portfolio-filters-title" class="section-title">Extraits de 15 ans de web</h2>
+          <h2 id="portfolio-filters-title" class="section-title">Réalisations</h2>
           <p class="section-count" aria-live="polite">
-            {{ filteredProjects.length }} projet{{ filteredProjects.length > 1 ? 's' : '' }} • dont {{ activeFilter === 'all' ? ecoCount : filteredEcoCount }} éco-conçu{{ (activeFilter === 'all' ? ecoCount : filteredEcoCount) > 1 ? 's' : '' }}
+            Extraits de 15 ans de web
           </p>
         </div>
 
@@ -327,7 +327,7 @@ useHead({
     {
       hid: 'og:title',
       property: 'og:title',
-      content: 'Portfolio — Benoît Abot, développeur web éco-conception',
+      content: 'Portfolio — Benoît Abot, développeur web - éco-conception',
     },
     {
       hid: 'og:description',
@@ -371,9 +371,31 @@ useHead({
             'https://github.com/benabot',
           ],
           knowsAbout: [
+            'JavaScript',
+            'HTML',
+            'CSS',
+            'Sass',
+            'PHP',
+            'SQL',
             'Vue.js',
             'Nuxt',
             'WordPress',
+            'WordPress Headless',
+            'WordPress theme development',
+            'WordPress plugin development',
+            'REST API',
+            'Git',
+            'DevOps',
+            'Docker',
+            'Nginx',
+            'Debian',
+            'Bash',
+            'SEO',
+            'WebDesign',
+            'UX Design',
+            'UI Design',
+            'Figma',
+            'Green IT',
             'Éco-conception web',
             'Accessibilité',
             'Performance web',
@@ -697,7 +719,7 @@ h1 {
 .section-header-main {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-2);
 
   @media (min-width: $breakpoint-tablet) {
     flex-direction: row;
