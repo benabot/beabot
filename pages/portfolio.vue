@@ -65,10 +65,6 @@
       <span class="timeline-dot__core"></span>
     </div>
 
-    <div class="section-transition-wrap">
-      <p class="section-transition">Une sélection de projets pour montrer la méthode.</p>
-    </div>
-
     <!-- Header section Réalisations -->
     <header class="section-header" aria-labelledby="portfolio-filters-title">
       <div class="section-header-main">
@@ -135,10 +131,6 @@
       <span class="timeline-dot__core"></span>
     </div>
 
-    <div class="section-transition-wrap">
-      <p class="section-transition">Compétences mobilisées, en synthèse.</p>
-    </div>
-
     <!-- Compétences techniques -->
     <section
       id="competences"
@@ -193,10 +185,6 @@
     <!-- Timeline dot 3: Compétences → CTA Final -->
     <div class="timeline-dot" aria-hidden="true">
       <span class="timeline-dot__core"></span>
-    </div>
-
-    <div class="section-transition-wrap">
-      <p class="section-transition">Prêt à lancer le prochain projet ensemble ?</p>
     </div>
 
     <!-- CTA Final -->
@@ -768,21 +756,6 @@ h1 {
   @media (min-width: $breakpoint-tablet) {
     gap: var(--space-5);
   }
-}
-.section-transition-wrap {
-  width: min(92vw, 980px);
-  margin: 0 auto var(--space-4);
-  padding-inline: var(--space-2);
-}
-
-.section-transition {
-  margin: 0;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: $gris3;
-  opacity: 0.8;
-  text-align: center;
-  letter-spacing: 0.01em;
 }
 /* Header section Réalisations */
 .section-header {

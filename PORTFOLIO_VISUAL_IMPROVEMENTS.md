@@ -262,6 +262,17 @@ Ou alternative sobre :
 
 ---
 
+## 🔄 Dernières mises à jour
+
+- [x] Hiérarchie interne des cartes : titre > sous-titre > métriques > tags
+- [x] Métriques éco limitées à 2 valeurs visibles
+- [x] Tags limités à 2 + “+n” avec tooltip accessible (hover/focus/clavier)
+- [x] CTA “Voir le site” aligné et stable (desktop à droite, mobile plein largeur)
+- [x] Contraste adouci sur textes secondaires (section-count, labels filtres)
+- [x] Suppression des micro-textes de transition (respiration via espacements)
+
+---
+
 ## 📁 Fichiers concernés
 
 | Fichier | Modifications |

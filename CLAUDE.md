@@ -19,8 +19,11 @@
 ### Propriétaire
 
 - **Nom** : Benoît Abot
+- **Rôle** : Développeur web & designer spécialisé éco-conception
+- **Expérience** : 15 ans
 - **Email** : hello@beabot.fr
-- **GitHub** : benabot
+- **GitHub** : https://github.com/benabot
+- **LinkedIn** : https://www.linkedin.com/in/benoit-abot/
 
 ---
 
@@ -71,6 +74,8 @@ beabot/
 │   └── useTags.ts
 ├── content/
 │   └── articles/           # Articles Markdown
+├── data/
+│   └── portfolio.ts        # Données projets structurées
 ├── layouts/
 │   ├── default.vue
 │   └── error.vue
@@ -92,6 +97,8 @@ beabot/
 ├── netlify.toml
 ├── TODO.md
 ├── PROJECT_STATE.md
+├── PORTFOLIO_REDESIGN.md   # Specs refonte portfolio
+├── PORTFOLIO_VISUAL_IMPROVEMENTS.md
 └── CLAUDE.md               # Ce fichier
 ```
 
@@ -108,13 +115,47 @@ beabot/
 | 10 | Domaine beabot.fr | 18 déc 2025 |
 | 11 | Homepage & Contact | 18-20 déc 2025 |
 | 12 | SEO technique | 21 déc 2025 |
-| **14** | **Portfolio — Objectif Emploi** | **22 déc 2025** |
+| **14** | **Portfolio — Objectif Emploi** | **22-23 déc 2025** |
 
 ### À venir
 
 | Phase | Description |
 |-------|-------------|
 | 13 | SEO avancé & Contenu |
+| 15 | Side Projects JS |
+
+### Branche en attente de merge
+
+- **`feature/portfolio-redesign`** : Refonte complète portfolio (Phase 14)
+
+---
+
+## 📄 PAGE PORTFOLIO
+
+### Structure actuelle (Phase 14)
+
+1. **Hero** : Nom, titre, accroche + CTAs (CV, Contact) + œufs décoratifs
+2. **Timeline dot** : Point d'ancrage visuel
+3. **Réalisations** : "Extraits de 15 ans de web" + filtres + cartes projet
+4. **Timeline dot**
+5. **Compétences** : 4 colonnes colorées + lien GitHub
+6. **Timeline dot**
+7. **CTA Final** : Titre + boutons + œufs décoratifs
+
+### Données projets
+
+Externalisées dans `data/portfolio.ts` avec interface TypeScript :
+- id, title, subtitle, image, url
+- featured, tags, context, role, stack
+- metrics (ecoIndex, requests, weight, lighthouse)
+- articleLink (si article associé)
+
+### SEO Portfolio
+
+- **Title** : "Portfolio — Benoît Abot, développeur web éco-conception"
+- **Meta description** : Orientée recrutement/freelance
+- **JSON-LD** : ProfilePage + Person
+- **Open Graph** : og:type = profile
 
 ---
 
@@ -128,19 +169,25 @@ beabot/
 - `optim/*` : Optimisations
 - `docs/*` : Documentation
 
+### Branche active
+
+**`feature/portfolio-redesign`** — Prêt pour merge
+
+```bash
+# Workflow de merge
+git checkout dev
+git merge feature/portfolio-redesign --no-ff -m "feat: Phase 14 Portfolio redesign"
+git push origin dev
+
+# Après validation
+git checkout master
+git merge dev --no-ff -m "feat: Phase 12 SEO + Phase 14 Portfolio"
+git push origin master
+```
+
 ### Règle importante
 
 **Toujours créer une branche depuis `dev`**, ne jamais travailler directement sur `dev` ou `master`.
-
-```bash
-git checkout dev
-git pull origin dev
-git checkout -b feature/ma-feature
-# ... travail ...
-git add .
-git commit -m "feat: description"
-# Benoît s'occupe du merge
-```
 
 ### Convention commits
 
@@ -217,6 +264,7 @@ node scripts/seo-check.mjs  # Vérification SEO
 | `CLAUDE.md` | Ce fichier |
 | `BRANCHING_STRATEGY.md` | Stratégie Git |
 | `PORTFOLIO_REDESIGN.md` | Specs refonte portfolio |
+| `PORTFOLIO_VISUAL_IMPROVEMENTS.md` | Améliorations visuelles portfolio |
 | `data/portfolio.ts` | Données structurées projets |
 
 ---
@@ -235,8 +283,42 @@ node scripts/seo-check.mjs  # Vérification SEO
 - Pages : `https://beabot.fr/page/` (avec slash)
 - og:url = canonical
 
+### JSON-LD par type de page
+
+| Page | Type JSON-LD |
+|------|--------------|
+| Homepage | WebSite + Organization |
+| Articles | BlogPosting |
+| FAQ | FAQPage |
+| Portfolio | ProfilePage + Person |
+
+---
+
+## 🎨 DESIGN SYSTEM
+
+### Couleurs (variables CSS)
+
+- `--bleu1` : Bleu principal
+- `--vert` : Vert CTA (#0dc763 environ)
+- `--gris1` à `--gris5` : Échelle de gris
+- `--fondClair` : Fond sections (#f8fafc)
+
+### Couleurs catégories compétences
+
+- Front-end : `#3b82f6` (bleu)
+- Back-end : `#8b5cf6` (violet)
+- Éco-conception : `#10b981` (vert)
+- DevOps : `#f59e0b` (orange)
+
+### Composants visuels
+
+- **Œufs décoratifs** : Formes organiques (Hero, CTA final)
+- **Timeline dots** : Points d'ancrage verts avec halo
+- **Badges éco** : Fond vert clair, bordure verte
+- **Pills filtres** : État actif vert
+
 ---
 
 **📝 Maintenu par** : Claude
-**📅 Dernière MAJ** : 21 décembre 2025
-**🎯 Phase actuelle** : Prêt pour merge Phase 12 → master
+**📅 Dernière MAJ** : 23 décembre 2025
+**🎯 Prochaine action** : Merge feature/portfolio-redesign → dev → master

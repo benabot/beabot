@@ -1,6 +1,6 @@
 # 📊 ÉTAT DU PROJET - BeAbot
 
-> **Récapitulatif de l'état du projet au 21 décembre 2025**
+> **Récapitulatif de l'état du projet au 23 décembre 2025**
 
 ---
 
@@ -15,19 +15,14 @@
 
 ### Dernière mise à jour
 
-**Phase 12 (SEO) terminée** — Prêt pour merge sur master.
+**Phase 14 (Portfolio) terminée** — Prêt pour merge sur dev puis master.
 
-- ✅ URLs normalisées avec trailing slash
-- ✅ Canonicals et og:url cohérents
-- ✅ Sitemap.xml corrigé (beabot.fr)
-- ✅ robots.txt pointe vers beabot.fr
-- ✅ Scripts de validation SEO créés
-- ✅ Frontmatter SEO + updatedAt sur articles
-- ✅ Filtres /eco-conception enrichis (SEO, Images, Performance)
-- ✅ Script de migration frontmatter (seo + updatedAt)
-- ✅ JSON-LD FAQPage sur article FAQ
-- ✅ Chapo frontmatter pour le chapeau d’article
-- ✅ Cartouche FAQ homepage + CTA vers FAQ
+- ✅ Hero portfolio avec intro personnelle + CTAs
+- ✅ Section compétences en rangée colorée + lien GitHub
+- ✅ Cartes projet enrichies avec badges éco
+- ✅ Timeline visuelle entre sections
+- ✅ CTA final compact avec œufs décoratifs
+- ✅ SEO complet (meta, og:, JSON-LD ProfilePage)
 
 ---
 
@@ -39,54 +34,96 @@ Phase 9     - Éco-conception        [██████████████
 Phase 10    - Domaine beabot.fr     [████████████████████] 100% ✅
 Phase 11    - Homepage & Contact    [████████████████████] 100% ✅
 Phase 12    - SEO Technique         [████████████████████] 100% ✅
-Phase 13    - SEO Avancé & Contenu  [░░░░░░░░░░░░░░░░░░░░]   0% ⏸️
-Phase 14    - Portfolio Emploi      [██░░░░░░░░░░░░░░░░░░]  10% 🔜
+Phase 14    - Portfolio Emploi      [████████████████████] 100% ✅
+Phase 13    - SEO Avancé & Contenu  [░░░░░░░░░░░░░░░░░░░░]   0% 🔜
+Phase 15    - Side Projects         [░░░░░░░░░░░░░░░░░░░░]   0% 🔜
 ```
 
 ---
 
 ## ✅ CE QUI A ÉTÉ FAIT
 
+### Phase 14 : Refonte Portfolio (22-23 décembre 2025)
+
+#### Structure et contenu
+- ✅ Hero avec nom, titre, accroche personnelle
+- ✅ Baseline "15 ans d'expérience • Spécialiste éco-conception"
+- ✅ CTAs : Voir mon CV (download) + Me contacter
+- ✅ Formes décoratives (œufs colorés) en background
+
+#### Section Réalisations
+- ✅ Titre + accroche "Extraits de 15 ans de web"
+- ✅ Filtres refondus (pills avec état actif)
+- ✅ Données projets externalisées (`data/portfolio.ts`)
+- ✅ Cartes projet enrichies (contexte, rôle, stack)
+- ✅ Badges métriques éco (EcoIndex A, requêtes, poids)
+- ✅ Lien "Lire l'article" si article associé
+
+#### Timeline visuelle
+- ✅ Points d'ancrage entre sections
+- ✅ Lignes en dégradé + point vert avec halo
+- ✅ Fil conducteur sobre et percutant
+
+#### Section Compétences
+- ✅ Layout 4 colonnes horizontales
+- ✅ Couleurs différentes par catégorie (bleu, violet, vert, orange)
+- ✅ Titres en uppercase avec bordure colorée
+- ✅ Lien GitHub intégré en header
+
+#### CTA Final
+- ✅ Œufs décoratifs (symétrie avec Hero)
+- ✅ Version compacte (titre + boutons)
+- ✅ Boutons cohérents avec le reste du site
+
+#### SEO
+- ✅ Title optimisé recrutement
+- ✅ Meta description orientée emploi/freelance
+- ✅ Open Graph complet (og:title, og:description, og:type, og:url)
+- ✅ JSON-LD ProfilePage + Person
+- ✅ Canonical URL
+
 ### Phase 12 : SEO Technique (21 décembre 2025)
 
-- ✅ Utilitaire `utils/seo-url.ts` pour normalisation URLs
-- ✅ Trailing slash cohérent sur toutes les URLs internes
-- ✅ Canonicals corrigées (racine sans `/`, pages avec `/`)
-- ✅ Sitemap.xml avec URLs complètes beabot.fr
-- ✅ robots.txt dynamique via server route
-- ✅ Scripts de validation : `seo-check.mjs`, `check-routes.mjs`
-- ✅ Component `AppLink.vue` pour liens internes normalisés
-- ✅ Frontmatter SEO + updatedAt sur articles
-- ✅ Filtres /eco-conception enrichis (SEO, Images, Performance)
-- ✅ Script de migration frontmatter (seo + updatedAt)
+- ✅ URLs normalisées avec trailing slash
+- ✅ Canonicals et og:url cohérents
+- ✅ Sitemap.xml corrigé
+- ✅ robots.txt dynamique
 - ✅ JSON-LD FAQPage sur article FAQ
-- ✅ Chapo frontmatter pour le chapeau d’article
-- ✅ Cartouche FAQ homepage + CTA vers FAQ
 
 ### Phase 11 : Homepage & Contact (18-20 décembre 2025)
 
 - ✅ Hero avec nouveau tagline et CTAs
-- ✅ Accroche reformulée en positif
-- ✅ Section Impacts avec grid 2×2 et chiffres concrets
-- ✅ Piliers avec exemples tangibles
-- ✅ Accordéon mobile pour les piliers
-- ✅ Page contact avec layout 2 colonnes
-- ✅ Formulaire humanisé avec opt-in RGPD
-- ✅ Email protégé du spam + lien LinkedIn
+- ✅ Section Impacts avec chiffres concrets
+- ✅ Piliers avec accordéon mobile
+- ✅ Page contact 2 colonnes + formulaire humanisé
 
-### Phase 10 : Migration domaine (18 décembre 2025)
+---
 
-- ✅ DNS beabot.fr configuré
-- ✅ Redirects Netlify (netlify.app → beabot.fr)
-- ✅ HTTPS activé
+## 📂 BRANCHES GIT
 
-### Phase 9 : Éco-conception (15-17 décembre 2025)
+### Branches actives
 
-- ✅ System font stack (0 requête fonts)
-- ✅ Lazy loading composants décoratifs
-- ✅ Server components pour zones statiques
-- ✅ Manual chunking JS optimisé
-- ✅ CSS externe (meilleur cache)
+| Branche | Description | État |
+|---------|-------------|------|
+| `master` | Production beabot.fr | 🔒 Stable |
+| `dev` | Développement | ✅ Phase 12 prête |
+| `feature/portfolio-redesign` | Refonte portfolio | ✅ **Prêt pour merge** |
+
+### Workflow de merge
+
+```bash
+# 1. Merger portfolio sur dev
+git checkout dev
+git merge feature/portfolio-redesign --no-ff -m "feat: Phase 14 Portfolio redesign"
+git push origin dev
+
+# 2. Tester sur dev-beabot.netlify.app
+
+# 3. Merger sur master
+git checkout master
+git merge dev --no-ff -m "feat: Phase 12 SEO + Phase 14 Portfolio"
+git push origin master
+```
 
 ---
 
@@ -109,67 +146,26 @@ Phase 14    - Portfolio Emploi      [██░░░░░░░░░░░░�
 
 ---
 
-## 📂 BRANCHES GIT
-
-### Branches actives
-
-| Branche | Description | État |
-|---------|-------------|------|
-| `master` | Production beabot.fr | 🔒 Stable |
-| `dev` | Développement | ✅ Prêt pour merge |
-
-### Commits récents (dev)
-
-```
-d4fac0b Merge branch 'feature/seo-optim-2' into dev
-83d5ab9 fix: drop trailing slash on root canonical
-f76a8f8 docs: update seo phase status
-b1c275f fix: enforce trailing slashes in sitemap
-28908bd feat: normalize seo urls and canonicals
-```
-
----
-
 ## 🎯 PROCHAINES ÉTAPES
 
-### Priorité 1 : Phase 14 — Refonte Portfolio
+### Priorité 1 : Merge et déploiement
 
-> **Objectif** : Recherche d'emploi
-> **Détails** : Voir `PORTFOLIO_REDESIGN.md`
+1. Merger `feature/portfolio-redesign` → `dev`
+2. Valider sur dev-beabot.netlify.app
+3. Merger `dev` → `master`
+4. Vérifier en production
 
-**Déjà fait** :
-- [x] Fichier de données `data/portfolio.ts` créé
-- [x] Documentation `PORTFOLIO_REDESIGN.md`
+### Priorité 2 : Phase 13 — SEO Avancé & Contenu
 
-**À faire** :
-1. Section Hero avec intro personnelle + CTAs
-2. Section compétences techniques
-3. Cartes projet enrichies (contexte, rôle, métriques)
-4. CTA final (CV + Contact)
-5. Filtres améliorés
+1. Vérifier propriété beabot.fr dans Google Search Console
+2. Soumettre sitemap
+3. Rédiger 2-3 articles à fort potentiel SEO
 
-### Priorité 2 : Merge dev → master (Phase 12)
+### Priorité 3 : Phase 15 — Side Projects
 
-```bash
-git checkout master
-git pull origin master
-git merge dev --no-ff -m "feat: Phase 12 SEO optimizations"
-git push origin master
-```
-
-### Priorité 3 : Phase 13 — SEO Avancé & Contenu
-
-1. **Google Search Console**
-   - Vérifier la propriété beabot.fr
-   - Soumettre le sitemap
-   - Demander l'indexation
-
-2. **Metas manquantes**
-   - og:url sur toutes les pages
-   - Meta descriptions personnalisées
-
-3. **Contenu SEO**
-   - 2-3 nouveaux articles à fort potentiel trafic
+1. Créer section "Explorations" ou "Side Projects"
+2. Ajouter projets JS/expérimentations
+3. Différencier visuellement des projets clients
 
 ---
 
@@ -200,10 +196,12 @@ git push origin master
 | Fichier | Description |
 |---------|-------------|
 | `TODO.md` | Tâches et phases |
-| `CLAUDE.md` | Contexte technique |
 | `PROJECT_STATE.md` | Ce fichier |
+| `CLAUDE.md` | Contexte technique |
 | `BRANCHING_STRATEGY.md` | Stratégie Git |
-| `AUDITS/*.md` | Historique audits |
+| `PORTFOLIO_REDESIGN.md` | Specs refonte portfolio |
+| `PORTFOLIO_VISUAL_IMPROVEMENTS.md` | Améliorations visuelles |
+| `data/portfolio.ts` | Données projets structurées |
 
 ---
 
@@ -223,6 +221,6 @@ git push origin master
 
 ---
 
-**📝 Généré le** : 21 décembre 2025
-**🔄 Branche analysée** : dev
-**🎯 Prochaine phase** : 13 - SEO Avancé & Contenu
+**📝 Généré le** : 23 décembre 2025
+**🔄 Branche analysée** : feature/portfolio-redesign
+**🎯 Prochaine action** : Merge → dev → master
