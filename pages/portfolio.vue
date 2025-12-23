@@ -133,55 +133,50 @@
     <!-- Compétences techniques -->
     <section
       id="competences"
-      class="portfolio-skills"
+      class="section-competences"
       aria-labelledby="portfolio-skills-title"
     >
-      <div class="skills-container">
-        <header class="skills-header">
-          <h2 id="portfolio-skills-title" class="skills-title">Compétences</h2>
-        </header>
+      <div class="container--page">
+        <h2 id="portfolio-skills-title" class="section-competences__title">Compétences</h2>
 
         <div class="skills-grid">
-          <article class="skills-card">
-            <h3 class="skills-card-title">
-              <span class="skill-emoji" aria-hidden="true">🎨</span>
-              Front-end
-            </h3>
-            <ul class="skills-list">
+          <div class="skill-group">
+            <h3>Front-end</h3>
+            <ul>
               <li v-for="item in skillsBlocks[0].items" :key="item">{{ item }}</li>
             </ul>
-          </article>
+          </div>
 
-          <article class="skills-card">
-            <h3 class="skills-card-title">
-              <span class="skill-emoji" aria-hidden="true">⚙️</span>
-              Back-end / CMS
-            </h3>
-            <ul class="skills-list">
+          <div class="skill-group">
+            <h3>Back-end / CMS</h3>
+            <ul>
               <li v-for="item in skillsBlocks[1].items" :key="item">{{ item }}</li>
             </ul>
-          </article>
+          </div>
 
-          <article class="skills-card">
-            <h3 class="skills-card-title">
-              <span class="skill-emoji" aria-hidden="true">🌱</span>
-              Éco-conception / Qualité
-            </h3>
-            <ul class="skills-list">
+          <div class="skill-group">
+            <h3>Éco-conception</h3>
+            <ul>
               <li v-for="item in skillsBlocks[2].items" :key="item">{{ item }}</li>
             </ul>
-          </article>
+          </div>
 
-          <article class="skills-card">
-            <h3 class="skills-card-title">
-              <span class="skill-emoji" aria-hidden="true">🛠️</span>
-              DevOps
-            </h3>
-            <ul class="skills-list">
+          <div class="skill-group">
+            <h3>DevOps</h3>
+            <ul>
               <li v-for="item in skillsBlocks[3].items" :key="item">{{ item }}</li>
             </ul>
-          </article>
+          </div>
         </div>
+
+        <a
+          href="https://github.com/benabot"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="github-cta"
+        >
+          📂 Voir mon code sur GitHub →
+        </a>
       </div>
     </section>
 
@@ -192,13 +187,33 @@
 
     <!-- CTA Final -->
     <section class="cta-final">
-      <div class="cta-content">
-        <h2 class="cta-title">Envie de travailler ensemble ?</h2>
-        <p class="cta-description">
+      <!-- Œufs décoratifs comme dans le Hero -->
+      <LazyOeuf
+        class="cta-oeuf cta-oeuf-1"
+        width="24%"
+        transform="rotate(30)"
+        :fill="'#0439d9'"
+      />
+      <LazyOeuf
+        class="cta-oeuf cta-oeuf-2"
+        width="20%"
+        transform="rotate(-60)"
+        :fill="'#00a83e'"
+      />
+      <LazyOeuf
+        class="cta-oeuf cta-oeuf-3"
+        width="18%"
+        transform="rotate(120)"
+        :fill="'#f2a81d'"
+      />
+
+      <div class="container--page cta-final__content">
+        <h2 class="cta-final__title">Envie de travailler ensemble ?</h2>
+        <p class="cta-final__description">
           Disponible pour des missions freelance<br>
           et ouvert aux opportunités CDI.
         </p>
-        <div class="cta-buttons">
+        <div class="cta-final__buttons">
           <a
             href="/cv.pdf"
             class="btn-primary"
@@ -562,118 +577,89 @@ h1 {
   outline-offset: 4px;
   border-radius: 4px;
 }
-/* Section Compétences - Rupture visuelle douce */
-.portfolio-skills {
-  width: 100%;
-  margin-top: var(--space-7);
-  padding: var(--space-6) 0;
-  background: linear-gradient(180deg, rgba(245, 245, 245, 0.5) 0%, #fafafa 100%);
-  position: relative;
+/* Section Compétences - Style minimaliste */
+.section-competences {
+  padding: 4rem 0;
+  margin-top: var(--space-6);
+}
 
-  &::before {
+.section-competences__title {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 800;
+  margin: 0 0 0.5rem;
+  color: $gris1;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.75rem;
+
+  &::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(85vw, 800px);
-    height: 1px;
-    background: linear-gradient(90deg, transparent 0%, rgba(4, 57, 217, 0.2) 50%, transparent 100%);
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: $bleu1;
+    border-radius: 2px;
   }
 }
 
-.skills-container {
-  width: min(92vw, 1120px);
-  margin: 0 auto;
-}
-
-.skills-header {
-  text-align: center;
-  margin-bottom: var(--space-5);
-}
-
-.skills-title {
-  margin: 0;
-  font-size: clamp(2rem, 5vw, 2.8rem);
-  font-weight: 800;
-  color: $gris1;
-  white-space: nowrap;
-}
-
-/* Grid responsive 4 cols desktop / 2 tablette / 1 mobile */
 .skills-grid {
   display: grid;
-  gap: var(--space-4);
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2.5rem 3rem;
+  margin-top: 3rem;
 
-  @media (min-width: 640px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  @media (max-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
 }
 
-/* Cards avec fond, bordure et ombre */
-.skills-card {
-  background: white;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 16px;
-  padding: var(--space-4);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  }
-}
-
-.skills-card-title {
-  margin: 0 0 var(--space-3);
-  color: $gris1;
-  font-size: 1rem;
+.skill-group h3 {
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.02em;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: $gris3;
+  margin: 0 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid $gris5;
 }
 
-.skill-emoji {
-  font-size: 1.3rem;
-  line-height: 1;
-  display: inline-block;
-}
-
-.skills-list {
+.skill-group ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
+}
+
+.skill-group li {
+  padding: 0.35rem 0;
+  font-size: 0.95rem;
+  color: $gris1;
+}
+
+.github-cta {
+  display: inline-block;
+  margin-top: 3rem;
+  padding: 1rem 1.5rem;
+  border: 2px solid $gris5;
+  border-radius: 12px;
   color: $gris2;
+  text-decoration: none;
   font-weight: 600;
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
+  transition: all 0.15s ease;
 
-.skills-list li {
-  padding-left: 1.2rem;
-  position: relative;
-}
+  &:hover {
+    border-color: $bleu1;
+    color: $bleu1;
+    transform: translateY(-2px);
+  }
 
-.skills-list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.55rem;
-  width: 0.4rem;
-  height: 0.4rem;
-  border-radius: 50%;
-  background: $bleu2;
+  &:focus-visible {
+    outline: 2px solid $bleu1;
+    outline-offset: 4px;
+  }
 }
 .boite-article {
   @media (max-width: $breakpoint-tablet) {
@@ -900,31 +886,56 @@ h1 {
   z-index: 1;
 }
 
-/* CTA Final - Call to action */
+/* CTA Final - Avec œufs décoratifs */
 .cta-final {
-  width: 100%;
-  margin-top: var(--space-7);
-  margin-bottom: var(--space-6);
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.cta-content {
   position: relative;
   width: clamp(90vw, 85vw, 900px);
+  margin: var(--space-7) auto var(--space-6);
   padding: clamp(3rem, 5vw, 4rem) clamp(2rem, 4vw, 3.5rem);
   text-align: center;
+  overflow: hidden;
 
-  /* Même style que le hero */
+  /* Même fond que le hero */
   background: linear-gradient(135deg, rgba(242, 240, 240, 0.4) 0%, rgba(217, 217, 217, 0.2) 100%);
   border: 2px solid rgba(0, 0, 0, 0.08);
   border-radius: 24px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
-.cta-title {
+/* Œufs flottants en background - même style que le Hero */
+.cta-oeuf {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.cta-oeuf-1 {
+  top: -6%;
+  right: -4%;
+}
+
+.cta-oeuf-2 {
+  bottom: -8%;
+  left: -3%;
+}
+
+.cta-oeuf-3 {
+  bottom: -5%;
+  right: 8%;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
+}
+
+/* Contenu CTA (au-dessus des œufs) */
+.cta-final__content {
+  position: relative;
+  z-index: 2;
+}
+
+.cta-final__title {
   margin: 0 0 1rem;
   font-size: clamp(2rem, 5vw, 2.8rem);
   font-weight: 800;
@@ -932,7 +943,7 @@ h1 {
   line-height: 1.2;
 }
 
-.cta-description {
+.cta-final__description {
   font-size: clamp(1.05rem, 2.2vw, 1.25rem);
   line-height: 1.6;
   margin: 0 auto var(--space-4);
@@ -940,7 +951,7 @@ h1 {
   opacity: 0.95;
 }
 
-.cta-buttons {
+.cta-final__buttons {
   display: flex;
   flex-direction: column;
   gap: 12px;
