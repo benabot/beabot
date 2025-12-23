@@ -1013,6 +1013,8 @@ h1 {
 .cta-final__content {
   position: relative;
   z-index: 2;
+  min-height: auto;
+  height: auto;
 }
 
 .cta-final__title {
