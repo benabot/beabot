@@ -940,7 +940,7 @@ h1 {
   text-align: center;
   overflow: hidden;
   height: auto;
-  max-height: 45vh;
+  max-height: 55vh;
 
   /* Même fond que le hero */
   background: linear-gradient(135deg, rgba(242, 240, 240, 0.4) 0%, rgba(217, 217, 217, 0.2) 100%);

@@ -251,10 +251,12 @@ const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
 .boite-article:hover {
   transform: translateY(-4px);
 }
-
-.boite-article:hover .boite-image__image {
+.boite-image__image:hover  {
   transform: scale(1.05);
 }
+// .boite-article:hover .boite-image__image {
+//   transform: scale(1.05);
+// }
 .article-resum {
   text-align: left;
   display: grid;
