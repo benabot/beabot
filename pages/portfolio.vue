@@ -971,11 +971,9 @@ h1 {
   position: relative;
   width: clamp(90vw, 85vw, 900px);
   margin: var(--space-3) auto var(--space-4);
-  padding: clamp(3rem, 5vw, 4rem) clamp(2rem, 4vw, 3.5rem);
+  padding: clamp(2rem, 3vw, 2.5rem) clamp(2rem, 4vw, 3.5rem);
   text-align: center;
   overflow: hidden;
-  height: auto;
-  max-height: 55vh;
 
   /* Même fond que le hero */
   background: linear-gradient(135deg, rgba(242, 240, 240, 0.4) 0%, rgba(217, 217, 217, 0.2) 100%);
@@ -1015,8 +1013,6 @@ h1 {
 .cta-final__content {
   position: relative;
   z-index: 2;
-    height: auto;
-  max-height: 65vh;
 }
 
 .cta-final__title {
