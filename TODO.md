@@ -5,7 +5,7 @@
 **Projet** : BeAbot - Blog éco-conception web
 **Date création** : 15 décembre 2025
 **Dernière MAJ** : 23 décembre 2025
-**Branche active** : `feature/portfolio-redesign` (prêt pour merge)
+**Branche active** : `dev`
 **Sites** :
 
 - 🟢 **Production** (Nuxt 3, master) : <https://beabot.fr>
@@ -17,13 +17,14 @@
 
 ### Statut (23 décembre 2025)
 
-**Phase 14 Portfolio terminée** — Prêt pour merge sur dev puis master.
+**Phase 14 Portfolio + SEO Structured Data** — Prêt pour merge sur master.
 
 | Métrique | Valeur | Statut |
 |----------|--------|--------|
 | **Framework** | Nuxt 3.14 | ✅ |
 | **URLs** | Trailing slash normalisé | ✅ |
 | **Portfolio** | Refonte complète | ✅ |
+| **Structured Data** | Toutes pages principales | ✅ |
 | **EcoIndex** | B-C | 🔶 Objectif A |
 
 ---
@@ -107,16 +108,15 @@
 
 ## 🔜 PROCHAINES ÉTAPES
 
-### Immédiat : Merge Phase 14
+### Immédiat : Merge dev → master
 
 ```bash
-git checkout dev
-git merge feature/portfolio-redesign --no-ff -m "feat: Phase 14 Portfolio redesign"
+# Depuis dev (déjà fait)
 git push origin dev
 
-# Puis après validation
+# Après validation sur dev-beabot.netlify.app
 git checkout master
-git merge dev --no-ff -m "feat: Phase 12 SEO + Phase 14 Portfolio"
+git merge dev --no-ff -m "feat: Phase 12 SEO + Phase 14 Portfolio + Structured Data"
 git push origin master
 ```
 
@@ -133,11 +133,12 @@ git push origin master
 - [ ] **SEO-13-03** : Demander l'indexation des pages principales
 - [ ] **SEO-13-04** : Analyser les Core Web Vitals après 2 semaines
 
-### P1 — Metas manquantes
+### P1 — Structured Data ✅
 
-- [ ] **SEO-13-05** : og:url sur toutes les pages
-- [ ] **SEO-13-06** : Meta descriptions personnalisées restantes
-- [ ] **SEO-13-07** : JSON-LD Organization sur homepage
+- [x] **SEO-13-05** : useSeoMeta() sur Contact avec og:url
+- [x] **SEO-13-06** : Meta descriptions spécifiques Contact
+- [x] **SEO-13-07** : JSON-LD Organization sur homepage
+- [x] **SEO-13-07b** : JSON-LD CollectionPage + ItemList sur /eco-conception/
 
 ### P2 — Contenu SEO
 

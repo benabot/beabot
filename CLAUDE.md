@@ -285,12 +285,14 @@ node scripts/seo-check.mjs  # Vérification SEO
 
 ### JSON-LD par type de page
 
-| Page | Type JSON-LD |
-|------|--------------|
-| Homepage | WebSite + Organization |
-| Articles | BlogPosting |
-| FAQ | FAQPage |
-| Portfolio | ProfilePage + Person |
+| Page | Type JSON-LD | Status |
+|------|--------------|--------|
+| Homepage | Organization (founder, sameAs, contactPoint) | ✅ |
+| /eco-conception/ | CollectionPage + ItemList (7 articles) | ✅ |
+| Articles | Article | ✅ |
+| FAQ | FAQPage + BreadcrumbList | ✅ |
+| Portfolio | ProfilePage + Person (knowsAbout) | ✅ |
+| Contact | useSeoMeta() spécifiques | ✅ |
 
 ---
 
@@ -321,4 +323,4 @@ node scripts/seo-check.mjs  # Vérification SEO
 
 **📝 Maintenu par** : Claude
 **📅 Dernière MAJ** : 23 décembre 2025
-**🎯 Prochaine action** : Merge feature/portfolio-redesign → dev → master
+**🎯 Prochaine action** : Push dev, merge dev → master pour production
