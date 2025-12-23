@@ -24,6 +24,7 @@ export interface Project {
   stack: string[]
   metrics?: ProjectMetrics
   articleLink?: string
+  objectPosition?: string
 }
 
 export const projects: Project[] = [
@@ -87,7 +88,8 @@ export const projects: Project[] = [
     tags: ['VueJs', 'Nuxt', 'WordPress', 'WebDesign'],
     context: 'Catalogue produits moderne pour une PME industrielle.',
     role: 'Design, développement front Nuxt, intégration API WordPress headless',
-    stack: ['Nuxt', 'Vue.js', 'WordPress Headless', 'API REST']
+    stack: ['Nuxt', 'Vue.js', 'WordPress Headless', 'API REST'],
+    objectPosition: 'center top'
   },
   {
     id: 'guide-rse-carte',
@@ -99,7 +101,8 @@ export const projects: Project[] = [
     tags: ['VueJs', 'WebDesign'],
     context: 'Carte interactive des actions RSE d\'une banque.',
     role: 'Développement front, intégration cartographique',
-    stack: ['Vue.js', 'Bootstrap', 'Leaflet']
+    stack: ['Vue.js', 'Bootstrap', 'Leaflet'],
+    objectPosition: 'center top'
   },
   {
     id: 'guide-rse-dataviz',
@@ -111,7 +114,8 @@ export const projects: Project[] = [
     tags: ['VueJs', 'WebDesign'],
     context: 'Dataviz des résultats RSE annuels.',
     role: 'Développement front, data visualization',
-    stack: ['Vue.js', 'Bootstrap', 'Chart.js']
+    stack: ['Vue.js', 'Bootstrap', 'Chart.js'],
+    objectPosition: 'center top'
   },
   {
     id: 'app-noel',

@@ -122,6 +122,7 @@
         :stack="project.stack"
         :metrics="project.metrics"
         :article-link="project.articleLink"
+        :object-position="project.objectPosition"
       />
     </TransitionGroup>
 
@@ -210,10 +211,6 @@
 
       <div class="container--page cta-final__content">
         <h2 class="cta-final__title">Envie de travailler ensemble ?</h2>
-        <p class="cta-final__description">
-          Disponible pour des missions freelance<br>
-          et ouvert aux opportunités CDI.
-        </p>
         <div class="cta-final__buttons">
           <a
             href="/cv.pdf"
@@ -629,19 +626,37 @@ h1 {
 .skills-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 1.25rem;
+  padding-inline: clamp(0.5rem, 2vw, 1.75rem);
 }
 
 @media (min-width: 500px) {
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: 1.75rem;
   }
 }
 
 @media (min-width: 900px) {
   .skills-grid {
     grid-template-columns: repeat(4, 1fr);
+    gap: 2.25rem;
+  }
+}
+
+.skill-group {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: 1rem;
+  display: grid;
+  align-content: start;
+  gap: 0.75rem;
+}
+
+@media (min-width: 900px) {
+  .skill-group {
+    padding: 1.25rem;
   }
 }
 
@@ -651,40 +666,46 @@ h1 {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: $bleu1;
-  margin: 0 0 0.75rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid $bleu1;
+  margin: 0;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .skill-group:nth-child(1) h3 {
   color: #3b82f6;
-  border-color: #3b82f6;
 }
 
 .skill-group:nth-child(2) h3 {
   color: #8b5cf6;
-  border-color: #8b5cf6;
 }
 
 .skill-group:nth-child(3) h3 {
   color: #10b981;
-  border-color: #10b981;
 }
 
 .skill-group:nth-child(4) h3 {
   color: #f59e0b;
-  border-color: #f59e0b;
 }
 
 .skill-group ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
 }
 
 .skill-group li {
-  padding: 0.25rem 0;
-  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  margin: 0.25rem 0.35rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.25;
   color: $gris2;
 }
 
@@ -693,15 +714,25 @@ h1 {
   text-decoration: none;
   font-weight: 600;
   font-size: 0.9rem;
-  transition: color 0.15s ease;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 999px;
+  transition: color 0.15s ease, border-color 0.15s ease;
 
   &:hover {
     color: $bleu1;
+    border-color: $bleu1;
   }
 
   &:focus-visible {
-    outline: 2px solid $bleu1;
-    outline-offset: 4px;
+    outline: 3px solid rgba(4, 57, 217, 0.35);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .github-cta {
+    transition: none;
   }
 }
 .boite-article {
@@ -723,7 +754,7 @@ h1 {
   padding-bottom: var(--space-6);
 
   @media (min-width: $breakpoint-tablet) {
-    gap: var(--space-7);
+    gap: var(--space-5);
   }
 }
 /* Header section Réalisations */
@@ -839,6 +870,10 @@ h1 {
   border-color: $bleu2;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(4, 57, 217, 0.15);
+}
+
+.filter-pill:active {
+  transform: scale(0.95);
 }
 
 .filter-pill:focus-visible {

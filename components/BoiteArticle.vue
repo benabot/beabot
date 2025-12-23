@@ -29,6 +29,7 @@
             class="boite-image__image"
             :src="resolvedBackgroundUrl"
             :alt="titre || 'Image du projet'"
+            :style="{ objectPosition }"
           />
         </div>
       </a>
@@ -148,6 +149,10 @@ const props = defineProps({
   articleLink: {
     type: String,
     default: '',
+  },
+  objectPosition: {
+    type: String,
+    default: 'center',
   },
 })
 
