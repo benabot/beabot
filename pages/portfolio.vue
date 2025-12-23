@@ -137,7 +137,17 @@
       aria-labelledby="portfolio-skills-title"
     >
       <div class="container--page">
-        <h2 id="portfolio-skills-title" class="section-competences__title">Compétences</h2>
+        <header class="section-competences__header">
+          <h2 id="portfolio-skills-title" class="section-competences__title">Compétences</h2>
+          <a
+            href="https://github.com/benabot"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="github-cta"
+          >
+            Voir mon GitHub →
+          </a>
+        </header>
 
         <div class="skills-grid">
           <div class="skill-group">
@@ -168,15 +178,6 @@
             </ul>
           </div>
         </div>
-
-        <a
-          href="https://github.com/benabot"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="github-cta"
-        >
-          📂 Voir mon code sur GitHub →
-        </a>
       </div>
     </section>
 
@@ -600,53 +601,79 @@ h1 {
   border-radius: 4px;
 }
 /* Section Compétences - Style minimaliste */
+#competences .container--page {
+  height: auto;
+  min-height: auto;
+}
 .section-competences {
-  padding: 4rem 0;
+  padding: 3rem 0;
   margin-top: var(--space-6);
+}
+
+.section-competences__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .section-competences__title {
   font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 800;
-  margin: 0 0 0.5rem;
+  margin: 0;
   color: $gris1;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 0.75rem;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 60px;
-    height: 3px;
-    background: $bleu1;
-    border-radius: 2px;
-  }
 }
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 2.5rem 3rem;
-  margin-top: 3rem;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
 
-  @media (max-width: 640px) {
+@media (min-width: 500px) {
+  .skills-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
   }
 }
 
+@media (min-width: 900px) {
+  .skills-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 .skill-group h3 {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: $gris3;
-  margin: 0 0 1rem;
+  letter-spacing: 0.08em;
+  color: $bleu1;
+  margin: 0 0 0.75rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid $gris5;
+  border-bottom: 2px solid $bleu1;
+}
+
+.skill-group:nth-child(1) h3 {
+  color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.skill-group:nth-child(2) h3 {
+  color: #8b5cf6;
+  border-color: #8b5cf6;
+}
+
+.skill-group:nth-child(3) h3 {
+  color: #10b981;
+  border-color: #10b981;
+}
+
+.skill-group:nth-child(4) h3 {
+  color: #f59e0b;
+  border-color: #f59e0b;
 }
 
 .skill-group ul {
@@ -656,26 +683,20 @@ h1 {
 }
 
 .skill-group li {
-  padding: 0.35rem 0;
-  font-size: 0.95rem;
-  color: $gris1;
+  padding: 0.25rem 0;
+  font-size: 0.9rem;
+  color: $gris2;
 }
 
 .github-cta {
-  display: inline-block;
-  margin-top: 3rem;
-  padding: 1rem 1.5rem;
-  border: 2px solid $gris5;
-  border-radius: 12px;
-  color: $gris2;
+  color: $gris3;
   text-decoration: none;
   font-weight: 600;
-  transition: all 0.15s ease;
+  font-size: 0.9rem;
+  transition: color 0.15s ease;
 
   &:hover {
-    border-color: $bleu1;
     color: $bleu1;
-    transform: translateY(-2px);
   }
 
   &:focus-visible {
@@ -719,7 +740,7 @@ h1 {
 .section-header-main {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-1);
 
   @media (min-width: $breakpoint-tablet) {
     flex-direction: row;
@@ -730,15 +751,17 @@ h1 {
 
 .section-header-title-group {
   text-align: center;
+ 
 
   @media (min-width: $breakpoint-tablet) {
     text-align: left;
+     width: 30%;
   }
 }
 
 .section-title {
   margin: 0 0 0.5rem;
-  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
   font-weight: 800;
   color: $gris1;
   position: relative;
@@ -912,12 +935,12 @@ h1 {
 .cta-final {
   position: relative;
   width: clamp(90vw, 85vw, 900px);
-  margin: var(--space-7) auto var(--space-6);
+  margin: var(--space-3) auto var(--space-4);
   padding: clamp(3rem, 5vw, 4rem) clamp(2rem, 4vw, 3.5rem);
   text-align: center;
   overflow: hidden;
   height: auto;
-  max-height: 65vh;
+  max-height: 45vh;
 
   /* Même fond que le hero */
   background: linear-gradient(135deg, rgba(242, 240, 240, 0.4) 0%, rgba(217, 217, 217, 0.2) 100%);
@@ -957,6 +980,8 @@ h1 {
 .cta-final__content {
   position: relative;
   z-index: 2;
+    height: auto;
+  max-height: 65vh;
 }
 
 .cta-final__title {

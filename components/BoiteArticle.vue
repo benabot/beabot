@@ -241,10 +241,19 @@ const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transition: transform 0.2s ease;
 
   @media (min-width: $breakpoint-tablet) {
     width: min(90vw, 1120px);
   }
+}
+
+.boite-article:hover {
+  transform: translateY(-4px);
+}
+
+.boite-article:hover .boite-image__image {
+  transform: scale(1.05);
 }
 .article-resum {
   text-align: left;
@@ -386,7 +395,7 @@ const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
 
   &:hover .boite-image__image {
     @media (min-width: $breakpoint-tablet) {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
   }
   &:hover .circle {
@@ -500,29 +509,26 @@ svg {
 
 /* Bouton "Voir le site" cohérent avec hero */
 .btn-view-site {
-  background-color: $bleu2;
+  background: $vert;
   color: white;
-  border: 2px solid transparent;
+  border: none;
   border-radius: 999px;
-  padding: 0.65rem 1.3rem;
-  font-weight: 800;
+  padding: 0.6rem 1.2rem;
+  font-weight: 700;
   font-size: 0.85rem;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.12s ease, background-color 0.12s ease, color 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+  transition: all 0.15s ease;
 
   // Override article-content.scss underline styles
   background-image: none !important;
 }
 
 .btn-view-site:hover {
-  background-color: white;
-  color: $bleu2;
-  border-color: $bleu2;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(4, 57, 217, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(13, 199, 99, 0.35);
 
   // Override article-content.scss underline on hover
   background-image: none !important;
@@ -530,7 +536,7 @@ svg {
 
 .btn-view-site:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(4, 57, 217, 0.25);
+  box-shadow: 0 0 0 3px rgba(13, 199, 99, 0.25);
 }
 
 .article-link:deep(a),
