@@ -5,69 +5,210 @@
 Made with [nuxt-content](https://content.nuxtjs.org) and the awesomeness of Markdown 👍.
 
 My website [beabot.fr](https://beabot.fr) where i'm talking mostly about greenIT (in french).
-## Build Setup
+
+---
+
+## 🚀 Stack technique
+
+| Technologie | Version | Usage |
+|-------------|---------|-------|
+| **Nuxt** | 3.14+ | Framework Vue.js SSG |
+| **Vue.js** | 3.5+ | UI Components |
+| **Vite** | 6 | Bundler |
+| **@nuxt/content** | 2.13+ | Markdown CMS |
+| **@nuxt/image** | 1.8+ | Optimisation images |
+| **@nuxtjs/sitemap** | 6.1+ | Génération sitemap |
+| **SCSS** | - | Styles |
+| **Node.js** | ≥18 | Runtime |
+
+---
+
+## 📦 Installation & Commandes
 
 ```bash
-# install dependencies
-$ yarn install
+# Cloner le projet
+git clone https://github.com/benabot/beabot.git
+cd beabot
 
-# serve with hot reload at localhost:3000
-$ yarn dev
+# Installer les dépendances
+npm install
 
-# build for production and launch server
-$ yarn build
-$ yarn start
+# Développement (http://localhost:3000)
+npm run dev
 
-# generate static project
-$ yarn generate
+# Build SSR
+npm run build
+
+# Génération statique (SSG)
+npm run generate
+
+# Preview du build statique
+npm run preview
+
+# Linting
+npm run lint
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+---
 
-## Special Directories
+## 📂 Structure du projet
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+```
+beabot/
+├── assets/css/          # Styles SCSS + variables
+├── components/          # Composants Vue réutilisables
+├── composables/         # Composables Vue (useTags, etc.)
+├── content/articles/    # Articles Markdown (blog)
+├── data/                # Données structurées (portfolio.ts)
+├── layouts/             # Layouts Nuxt
+├── pages/               # Routes (index, portfolio, contact, etc.)
+├── public/              # Assets statiques
+├── server/routes/       # API routes (RSS, robots.txt)
+├── utils/               # Utilitaires (seo-url.ts)
+└── nuxt.config.ts       # Configuration Nuxt
+```
 
-### `assets`
+---
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+## 🌿 Éco-conception
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+Ce site applique les principes d'éco-conception web :
 
-### `components`
+### Optimisations actives
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
+- **System fonts** : Pas de web fonts externes (0 requête)
+- **Lazy loading** : Images et composants chargés à la demande
+- **WebP** : Format d'image optimisé (qualité 70-75%)
+- **SSG** : Génération statique complète (pas de serveur Node)
+- **Manual chunking** : JS splitté (vendor-vue, vendor-nuxt, vendor-content)
+- **CSS externe** : Meilleur cache navigateur
+- **Prefetch désactivé** : Économie bande passante
+- **Compression** : Brotli/Gzip activé
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
+### Scores de performance
 
-### `layouts`
+| Métrique | Score | Outil |
+|----------|-------|-------|
+| **EcoIndex** | B-C | ecoindex.fr |
+| **Lighthouse Performance** | 90+ | PageSpeed Insights |
+| **Lighthouse Accessibility** | 95+ | PageSpeed Insights |
+| **Lighthouse SEO** | 100 | PageSpeed Insights |
+| **Lighthouse Best Practices** | 95+ | PageSpeed Insights |
 
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
+> 🎯 Objectif : EcoIndex A sur toutes les pages
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
+---
 
-### `pages`
+## 🔧 Travail réalisé (Décembre 2025)
 
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
+### Migration Nuxt 2 → Nuxt 3 (Phases 1-8)
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
+- Migration complète du framework
+- Réécriture des composants en Composition API
+- Migration @nuxt/content v1 → v2
+- Configuration Vite + TypeScript
 
-### `plugins`
+### Optimisations éco-conception (Phase 9)
 
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
+- Suppression des Google Fonts → System font stack
+- Lazy loading des composants lourds
+- Server components pour le rendu
+- Manual chunking du JavaScript
+- CSS externe avec `inlineSSRStyles: false`
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
+### Migration domaine (Phase 10)
 
-### `static`
+- Configuration DNS beabot.fr
+- HTTPS Let's Encrypt
+- Redirects Netlify
 
-This directory contains your static files. Each file inside this directory is mapped to `/`.
+### Refonte Homepage & Contact (Phase 11)
 
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
+- Hero avec tagline et CTAs
+- Section impacts environnementaux
+- 4 piliers de l'éco-conception
+- Page contact 2 colonnes
+- Formulaire Netlify + honeypot
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
+### SEO technique (Phase 12)
 
-### `store`
+- Normalisation URLs (trailing slash)
+- Canonicals cohérents
+- Sitemap XML dynamique
+- Robots.txt configuré
+- JSON-LD sur articles (Article schema)
+- JSON-LD FAQPage sur page FAQ
 
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
+### Refonte Portfolio (Phase 14)
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+- Hero avec intro personnelle + CTAs (CV, Contact)
+- Filtres interactifs avec compteurs
+- Cartes projet enrichies (badges éco-conception)
+- Métriques sur projets éco-conçus (EcoIndex, poids, requêtes)
+- Section compétences (4 colonnes colorées)
+- Timeline sobre entre sections
+- Données externalisées (`data/portfolio.ts`)
+- JSON-LD ProfilePage + Person
+
+### Structured Data SEO (Phase 13 - P1)
+
+- JSON-LD Organization sur homepage
+- JSON-LD CollectionPage + ItemList sur /eco-conception/
+- useSeoMeta() sur page Contact
+- Trailing slash sur flux RSS et feed.json
+
+---
+
+## 📄 Pages principales
+
+| Page | URL | Structured Data |
+|------|-----|-----------------|
+| Accueil | `/` | Organization |
+| Blog | `/eco-conception/` | CollectionPage + ItemList |
+| Portfolio | `/portfolio/` | ProfilePage + Person |
+| Contact | `/contact/` | useSeoMeta |
+| FAQ | `/eco-conception/faq-eco-conception/` | FAQPage + BreadcrumbList |
+| Articles | `/eco-conception/[slug]/` | Article |
+
+---
+
+## 🌐 Déploiement
+
+Le site est déployé sur **Netlify** avec génération statique :
+
+- **Production** : [beabot.fr](https://beabot.fr) (branche `master`)
+- **Développement** : [dev-beabot.netlify.app](https://dev-beabot.netlify.app) (branche `dev`)
+
+### Variables d'environnement
+
+```bash
+NUXT_PUBLIC_SITE_URL=https://beabot.fr  # Production
+NUXT_PUBLIC_SITE_URL=https://dev-beabot.netlify.app  # Dev
+```
+
+---
+
+## 📚 Documentation projet
+
+| Fichier | Description |
+|---------|-------------|
+| `CLAUDE.md` | Contexte pour Claude AI |
+| `TODO.md` | Tâches et roadmap |
+| `PROJECT_STATE.md` | État du projet |
+
+---
+
+## 👤 Auteur
+
+**Benoît Abot** — Développeur web & designer spécialisé éco-conception
+
+- 🌐 [beabot.fr](https://beabot.fr)
+- 💼 [LinkedIn](https://www.linkedin.com/in/benoit-abot/)
+- 🐙 [GitHub](https://github.com/benabot)
+- 📧 hello@beabot.fr
+
+---
+
+## 📝 Licence
+
+Ce projet est sous licence privée. Le code source est disponible à titre de référence pour l'éco-conception web.
