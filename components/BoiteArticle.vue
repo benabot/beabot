@@ -30,7 +30,6 @@
             :src="resolvedBackgroundUrl"
             :alt="titre || 'Image du projet'"
             :style="{ objectPosition }"
-            loading="lazy"
             sizes="280px sm:380px"
             format="webp"
           />
