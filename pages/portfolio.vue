@@ -1,5 +1,14 @@
 <template>
   <main class="portfolio-page">
+    <!-- SVG clipPath partagé pour toutes les cartes projet (1 seul au lieu de 7) -->
+    <svg class="sr-only" aria-hidden="true">
+      <defs>
+        <clipPath id="shared-egg-clip" clipPathUnits="objectBoundingBox">
+          <path d="M0,0 v1 h1 V0 H0 m0.948,0.507 c-0.063,0.25,-0.207,0.466,-0.461,0.466 S0.026,0.765,0.026,0.507 S0.236,0.084,0.487,0.041 c0.486,-0.083,0.531,0.191,0.461,0.466" />
+        </clipPath>
+      </defs>
+    </svg>
+
     <!-- Section Hero -->
     <section class="hero-portfolio">
       <!-- Œufs décoratifs en background -->
@@ -406,6 +415,19 @@ useHead({
 </script>
 
 <style lang="scss" scoped>
+/* SVG caché visuellement mais accessible pour clip-path */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Spacing scale (Fibonacci-inspired) */
 .portfolio-page {
   --space-1: 0.5rem;

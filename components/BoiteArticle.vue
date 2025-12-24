@@ -1,15 +1,5 @@
 <template>
   <div class="boite-article">
-    <svg aria-hidden="true" focusable="false" role="presentation">
-      <defs>
-        <clipPath :id="clipId" clipPathUnits="objectBoundingBox">
-          <path
-            d="M0,0 v1 h1 V0 H0 m0.948,0.507 c-0.063,0.25,-0.207,0.466,-0.461,0.466 S0.026,0.765,0.026,0.507 S0.236,0.084,0.487,0.041 c0.486,-0.083,0.531,0.191,0.461,0.466"
-          />
-        </clipPath>
-      </defs>
-    </svg>
-
     <article class="article-resum">
       <a
         :href="lien"
@@ -25,7 +15,10 @@
             :src="resolvedBackgroundUrl"
             :alt="titre || 'Image du projet'"
             :style="{ objectPosition }"
-            sizes="280px sm:380px"
+            width="380"
+            height="380"
+            densities="1x 2x"
+            loading="lazy"
             format="webp"
           />
         </div>
@@ -158,6 +151,10 @@ const props = defineProps({
     type: String,
     default: 'center',
   },
+  sharedClipId: {
+    type: String,
+    default: 'shared-egg-clip',
+  },
 })
 
 const resolvedBackgroundUrl = computed(() => {
@@ -242,11 +239,10 @@ const visibleTags = computed(() => allTags.value.slice(0, 2))
 const hiddenTags = computed(() => allTags.value.slice(2))
 const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
 
-// ID unique pour le clip-path (évite les conflits DOM lors du filtrage)
-const clipId = computed(() => `clip-${slugify(props.titre || 'projet')}`)
+// Utilise le clipPath partagé défini dans le parent (réduit le DOM de 7 SVG)
 const calqueStyle = computed(() => ({
-  clipPath: `url(#${clipId.value})`,
-  WebkitClipPath: `url(#${clipId.value})`
+  clipPath: `url(#${props.sharedClipId})`,
+  WebkitClipPath: `url(#${props.sharedClipId})`
 }))
 
 const isTooltipOpen = ref(false)
