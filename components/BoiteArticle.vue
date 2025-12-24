@@ -25,11 +25,14 @@
         <div class="boite-image">
           <div class="boite-image__calque"></div>
           <div class="circle"></div>
-          <img
+          <NuxtImg
             class="boite-image__image"
             :src="resolvedBackgroundUrl"
             :alt="titre || 'Image du projet'"
             :style="{ objectPosition }"
+            loading="lazy"
+            sizes="280px sm:380px"
+            format="webp"
           />
         </div>
       </a>
