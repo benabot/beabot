@@ -607,6 +607,9 @@ section {
     line-height: 1.75; // Plus d'espace entre les lignes (desktop)
     text-align: left;
     letter-spacing: 0.015em; // Légère aération globale
+    hyphens: none; // Désactivation de la césure
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
 
     // Amélioration typo mobile - plus d'air
     @media (max-width: $breakpoint-tablet) {
