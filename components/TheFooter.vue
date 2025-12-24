@@ -72,6 +72,9 @@ footer {
   display: flex;
   position: relative;
   z-index: 1;
+  @media (max-width: $breakpoint-tablet) {
+    padding-top: 4rem;
+  }
   .title--footer {
     color: rgba(235, 235, 235, 0.82);
     -webkit-text-stroke-width: 0;

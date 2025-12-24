@@ -474,6 +474,87 @@ useHead({
 </script>
 
 <style lang="scss" scoped>
+// Désactiver la césure sur les titres (mobile)
+@media (max-width: $breakpoint-tablet) {
+  h1, h2, h3, h4 {
+    hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+  }
+}
+
+// 1. Amélioration taille des numéros (1,2,3,4) sur mobile
+@media (max-width: $breakpoint-tablet) {
+  .pt-titre.h3 {
+    font-size: clamp(2.5rem, 10vw, 3.5rem); // Beaucoup plus visible sur mobile
+    font-weight: $black;
+    line-height: 1;
+  }
+}
+
+// 2. Amélioration visibilité des labels catégorie (petites capitales)
+@media (max-width: $breakpoint-tablet) {
+  .lettre-smcp {
+    font-size: clamp(0.75rem, 3.5vw, 0.9rem);
+    font-weight: 600; // Semi-bold pour meilleure lisibilité
+    letter-spacing: 0.08em; // Meilleur espacement
+    opacity: 0.85; // Légère opacité pour distinction visuelle
+  }
+
+  // Labels spécifiques au-dessus des titres (Durabilité, Efficience, etc.)
+  .text-gris3.lettre-smcp {
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+}
+
+// 5. Amélioration layout mobile pour numéro + titre (pillars)
+@media (max-width: $breakpoint-tablet) {
+  .boite-para__para {
+    .pt-titre.h3 {
+      margin-bottom: 1rem; // Espace après le numéro
+    }
+
+    .ligne {
+      margin: 1rem 0; // Espacement autour de la ligne verte
+    }
+
+    .pt-titre:not(.h3) {
+      margin-top: 0.75rem; // Espace avant le titre principal
+      margin-bottom: 1rem; // Espace après le titre
+    }
+
+    // Meilleur flow vertical global
+    > * + * {
+      margin-top: 0.75rem; // Espacement vertical cohérent
+    }
+
+    // Espace supplémentaire après le paragraphe de chaque pilier
+    > p:last-of-type {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .container-4__boite-para--para {
+    .pt-titre.h3 {
+      margin-bottom: 1rem;
+    }
+
+    .ligne {
+      margin: 1rem 0;
+    }
+
+    .pt-titre:not(.h3) {
+      margin-top: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    > * + * {
+      margin-top: 0.75rem;
+    }
+  }
+}
+
 section {
   position: relative;
   z-index: 3;
@@ -486,27 +567,77 @@ section {
   h2 {
     margin-bottom: 0.1rem;
   }
+  @media (max-width: $breakpoint-tablet) {
+    padding-bottom: 4rem;
+
+    // Hiérarchie typographique mobile - h1 plus gros
+    .title {
+      font-size: clamp(3.5rem, 14vw, 5rem); // Plus gros qu'avant
+      margin-bottom: 0;
+      line-height: 1;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 5.5vw, 2rem);
+      font-weight: $black;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .titre-sub {
+      font-size: clamp(0.9rem, 3.8vw, 1.05rem); // Plus petit
+      font-weight: 300; // Plus fin (text-fin override)
+      line-height: 1.5;
+      margin-top: 0.75rem;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 }
 .container-2 {
-  min-height: 60vh;
-  @media (min-width: $breakpoint-tablet) {
-    min-height: 100vh;
-  }
+  min-height: 100vh; // 100vh sur tous les écrans
   @media (max-width: $breakpoint-tablet) {
-    padding: 2rem 0;
+    padding: 5rem 0; // Plus de padding pour respirer
+    margin-top: 0; // Retrait margin-top pour laisser respirer
   }
   p {
     width: 90vw;
-    line-height: 1.618;
-    text-align: left;
+    line-height: 1.75; // Plus d'espace entre les lignes (desktop)
+    letter-spacing: 0.015em; // Légère aération globale
+
+    // Desktop : justifié avec césure
     @media (min-width: $breakpoint-tablet) {
       width: 50vw;
+      text-align: justify;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+    }
+
+    // Mobile : centré sans césure
+    @media (max-width: $breakpoint-tablet) {
+      text-align: center;
+      hyphens: none;
+      -webkit-hyphens: none;
+      -ms-hyphens: none;
+      font-size: clamp(1.05rem, 4.2vw, 1.2rem); // Légèrement plus petit
+      line-height: 1.8; // Encore plus d'espace vertical
+      letter-spacing: 0.02em; // Plus d'aération entre les lettres
+      max-width: 85vw; // Marges latérales plus généreuses
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 }
 .section-faq-home {
   margin-top: 4rem;
   margin-bottom: 4rem;
+  @media (max-width: $breakpoint-tablet) {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+  }
 }
 .home-faq-card__inner {
   max-width: 960px;
@@ -722,6 +853,9 @@ section {
 .container-3 {
   display: flex;
   overflow: hidden;
+  @media (max-width: $breakpoint-tablet) {
+    padding-top: 3rem;
+  }
   @media (min-width: $breakpoint-tablet) {
     padding-top: 10rem;
     padding-bottom: 5rem;
@@ -796,6 +930,9 @@ section {
 .container-4 {
   position: relative;
   justify-content: space-between;
+  @media (max-width: $breakpoint-tablet) {
+    padding-top: 3rem;
+  }
   &__boite-para {
     width: 100%;
     min-height: 80vh;
@@ -861,6 +998,9 @@ section {
 }
 .container-5 {
   margin-bottom: 6rem;
+  @media (max-width: $breakpoint-tablet) {
+    padding-top: 3rem;
+  }
   &__boite-titre {
     display: flex;
     width: 100%;
@@ -956,9 +1096,16 @@ section {
     }
   }
 
+  // 3. Amélioration distinction titres verts (derniers articles)
   h3 {
     span {
       color: $vert;
+
+      // Meilleure distinction sur mobile
+      @media (max-width: $breakpoint-tablet) {
+        font-weight: $black; // Poids plus prononcé
+        font-size: 1.05em; // Légèrement plus grand
+      }
     }
   }
   .a {
@@ -1063,9 +1210,12 @@ section {
   width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 3rem; // Espacement entre les deux blocs sur mobile
+
   @media (min-width: $breakpoint-tablet) {
     width: 66%;
     flex-direction: row;
+    gap: 0; // Pas de gap sur desktop (on utilise margin-right)
   }
 }
 :deep(.boite-para__para) {
@@ -1077,16 +1227,20 @@ section {
     text-align: justify;
   }
   &:first-of-type {
-    margin-right: 1.4rem;
+    margin-right: 0; // Pas de margin-right sur mobile (inutile en column)
     @media (min-width: $breakpoint-tablet) {
-      margin-right: 2rem;
+      margin-right: 2rem; // Uniquement sur desktop
     }
   }
 }
 :deep(.boite-para__titre) {
   text-align: left;
   word-break: keep-all;
-  margin-bottom: 0;
+  margin-bottom: 0.75rem; // Espacement entre titre et paragraphe
+
+  @media (min-width: $breakpoint-tablet) {
+    margin-bottom: 0;
+  }
 }
 #boite-logo {
   position: relative;
@@ -1170,10 +1324,20 @@ section {
 .mt-n10 {
   margin-top: -10%;
   @media (max-width: $breakpoint-tablet) {
-    margin-top: 0;
+    margin-top: 2rem;
   }
 }
+
+// Désactiver la césure sur les paragraphes avec mt-n10
+p.mt-n10 {
+  hyphens: none;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+}
 .sct-footer {
+  @media (max-width: $breakpoint-tablet) {
+    margin-top: 3rem;
+  }
   &--btn {
     color: $gris5;
     background: linear-gradient($gris1, $gris1) right bottom / 80% 0.55em
@@ -1181,6 +1345,8 @@ section {
     text-align: center;
     text-transform: uppercase;
     font-size: 0.86rem;
+    font-weight: 500; // 4. Cohérence poids de police pour tous les CTAs
+    letter-spacing: 0.05em; // 4. Cohérence espacement pour tous les CTAs
     border: none;
     // padding-left: 20px;
     // width: 200px;

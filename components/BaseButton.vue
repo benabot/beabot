@@ -30,6 +30,8 @@ defineProps({
   text-align: center;
   text-transform: uppercase;
   font-size: 0.86rem;
+  font-weight: 500; // Cohérence avec .sct-footer--btn
+  letter-spacing: 0.05em; // Cohérence avec .sct-footer--btn
   padding-left: 20px;
   width: 200px;
 
