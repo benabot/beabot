@@ -597,24 +597,25 @@ section {
   }
 }
 .container-2 {
-  min-height: 60vh;
-  @media (min-width: $breakpoint-tablet) {
-    min-height: 100vh;
-  }
+  min-height: 100vh; // 100vh sur tous les écrans
   @media (max-width: $breakpoint-tablet) {
-    padding: 4rem 0;
-    margin-top: 3rem;
+    padding: 5rem 0; // Plus de padding pour respirer
+    margin-top: 0; // Retrait margin-top pour laisser respirer
   }
   p {
     width: 90vw;
-    line-height: 1.618;
+    line-height: 1.75; // Plus d'espace entre les lignes (desktop)
     text-align: left;
+    letter-spacing: 0.015em; // Légère aération globale
 
-    // Amélioration typo mobile
+    // Amélioration typo mobile - plus d'air
     @media (max-width: $breakpoint-tablet) {
-      font-size: clamp(1.05rem, 4.5vw, 1.25rem); // Taille fluide responsive
-      line-height: 1.7; // Meilleure lisibilité sur petit écran
-      letter-spacing: 0.01em; // Légère aération des lettres
+      font-size: clamp(1.05rem, 4.2vw, 1.2rem); // Légèrement plus petit
+      line-height: 1.8; // Encore plus d'espace vertical
+      letter-spacing: 0.02em; // Plus d'aération entre les lettres
+      max-width: 85vw; // Marges latérales plus généreuses
+      margin-left: auto;
+      margin-right: auto;
     }
 
     @media (min-width: $breakpoint-tablet) {
