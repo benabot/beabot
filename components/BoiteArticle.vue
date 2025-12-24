@@ -2,15 +2,10 @@
   <div class="boite-article">
     <svg aria-hidden="true" focusable="false" role="presentation">
       <defs>
-        <clipPath id="myClip" clipPathUnits="objectBoundingBox">
+        <clipPath :id="clipId" clipPathUnits="objectBoundingBox">
           <path
             d="M0,0 v1 h1 V0 H0 m0.948,0.507 c-0.063,0.25,-0.207,0.466,-0.461,0.466 S0.026,0.765,0.026,0.507 S0.236,0.084,0.487,0.041 c0.486,-0.083,0.531,0.191,0.461,0.466"
           />
-        </clipPath>
-        <clipPath id="phone-clip" clipPathUnits="objectBoundingBox">
-          <path
-            d="M0.541,0.048 c0.263,0.067,0.492,0.217,0.492,0.486 c0,0.269,-0.22,0.486,-0.492,0.487 S0.095,0.8,0.049,0.535 C-0.038,0.023,0.25,-0.025,0.541,0.048"
-          ></path>
         </clipPath>
       </defs>
     </svg>
@@ -23,7 +18,7 @@
         rel="noopener noreferrer"
       >
         <div class="boite-image">
-          <div class="boite-image__calque"></div>
+          <div class="boite-image__calque" :style="calqueStyle"></div>
           <div class="circle"></div>
           <NuxtImg
             class="boite-image__image"
@@ -246,6 +241,13 @@ const metricsVisible = computed(() => metricsItems.value.slice(0, 2))
 const visibleTags = computed(() => allTags.value.slice(0, 2))
 const hiddenTags = computed(() => allTags.value.slice(2))
 const tooltipId = computed(() => `tags-${slugify(props.titre || 'projet')}`)
+
+// ID unique pour le clip-path (évite les conflits DOM lors du filtrage)
+const clipId = computed(() => `clip-${slugify(props.titre || 'projet')}`)
+const calqueStyle = computed(() => ({
+  clipPath: `url(#${clipId.value})`,
+  WebkitClipPath: `url(#${clipId.value})`
+}))
 
 const isTooltipOpen = ref(false)
 
@@ -482,8 +484,7 @@ const onMoreKeydown = (event) => {
       right: -6px;
       background: $fondClair;
       z-index: 30;
-      clip-path: url(#myClip);
-      -webkit-clip-path: url(#myClip);
+      // clip-path appliqué via :style pour ID unique par instance
     }
   }
   .circle {
