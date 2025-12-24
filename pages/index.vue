@@ -528,6 +528,11 @@ useHead({
     > * + * {
       margin-top: 0.75rem; // Espacement vertical cohérent
     }
+
+    // Espace supplémentaire après le paragraphe de chaque pilier
+    > p:last-of-type {
+      margin-bottom: 2rem;
+    }
   }
 
   .container-4__boite-para--para {
@@ -565,9 +570,9 @@ section {
   @media (max-width: $breakpoint-tablet) {
     padding-bottom: 4rem;
 
-    // Hiérarchie typographique mobile
+    // Hiérarchie typographique mobile - h1 plus gros
     .title {
-      font-size: clamp(3rem, 12vw, 4.5rem);
+      font-size: clamp(3.5rem, 14vw, 5rem); // Plus gros qu'avant
       margin-bottom: 0;
       line-height: 1;
     }
@@ -581,7 +586,8 @@ section {
     }
 
     .titre-sub {
-      font-size: clamp(0.95rem, 4vw, 1.1rem);
+      font-size: clamp(0.9rem, 3.8vw, 1.05rem); // Plus petit
+      font-weight: 300; // Plus fin (text-fin override)
       line-height: 1.5;
       margin-top: 0.75rem;
       max-width: 90%;
