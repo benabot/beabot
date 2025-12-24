@@ -605,24 +605,29 @@ section {
   p {
     width: 90vw;
     line-height: 1.75; // Plus d'espace entre les lignes (desktop)
-    text-align: left;
     letter-spacing: 0.015em; // Légère aération globale
-    hyphens: none; // Désactivation de la césure
-    -webkit-hyphens: none;
-    -ms-hyphens: none;
 
-    // Amélioration typo mobile - plus d'air
+    // Desktop : justifié avec césure
+    @media (min-width: $breakpoint-tablet) {
+      width: 50vw;
+      text-align: justify;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+    }
+
+    // Mobile : centré sans césure
     @media (max-width: $breakpoint-tablet) {
+      text-align: center;
+      hyphens: none;
+      -webkit-hyphens: none;
+      -ms-hyphens: none;
       font-size: clamp(1.05rem, 4.2vw, 1.2rem); // Légèrement plus petit
       line-height: 1.8; // Encore plus d'espace vertical
       letter-spacing: 0.02em; // Plus d'aération entre les lettres
       max-width: 85vw; // Marges latérales plus généreuses
       margin-left: auto;
       margin-right: auto;
-    }
-
-    @media (min-width: $breakpoint-tablet) {
-      width: 50vw;
     }
   }
 }
