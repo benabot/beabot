@@ -483,6 +483,73 @@ useHead({
   }
 }
 
+// 1. Amélioration taille des numéros (1,2,3,4) sur mobile
+@media (max-width: $breakpoint-tablet) {
+  .pt-titre.h3 {
+    font-size: clamp(2.5rem, 10vw, 3.5rem); // Beaucoup plus visible sur mobile
+    font-weight: $black;
+    line-height: 1;
+  }
+}
+
+// 2. Amélioration visibilité des labels catégorie (petites capitales)
+@media (max-width: $breakpoint-tablet) {
+  .lettre-smcp {
+    font-size: clamp(0.75rem, 3.5vw, 0.9rem);
+    font-weight: 600; // Semi-bold pour meilleure lisibilité
+    letter-spacing: 0.08em; // Meilleur espacement
+    opacity: 0.85; // Légère opacité pour distinction visuelle
+  }
+
+  // Labels spécifiques au-dessus des titres (Durabilité, Efficience, etc.)
+  .text-gris3.lettre-smcp {
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+}
+
+// 5. Amélioration layout mobile pour numéro + titre (pillars)
+@media (max-width: $breakpoint-tablet) {
+  .boite-para__para {
+    .pt-titre.h3 {
+      margin-bottom: 1rem; // Espace après le numéro
+    }
+
+    .ligne {
+      margin: 1rem 0; // Espacement autour de la ligne verte
+    }
+
+    .pt-titre:not(.h3) {
+      margin-top: 0.75rem; // Espace avant le titre principal
+      margin-bottom: 1rem; // Espace après le titre
+    }
+
+    // Meilleur flow vertical global
+    > * + * {
+      margin-top: 0.75rem; // Espacement vertical cohérent
+    }
+  }
+
+  .container-4__boite-para--para {
+    .pt-titre.h3 {
+      margin-bottom: 1rem;
+    }
+
+    .ligne {
+      margin: 1rem 0;
+    }
+
+    .pt-titre:not(.h3) {
+      margin-top: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    > * + * {
+      margin-top: 0.75rem;
+    }
+  }
+}
+
 section {
   position: relative;
   z-index: 3;
@@ -1014,9 +1081,16 @@ section {
     }
   }
 
+  // 3. Amélioration distinction titres verts (derniers articles)
   h3 {
     span {
       color: $vert;
+
+      // Meilleure distinction sur mobile
+      @media (max-width: $breakpoint-tablet) {
+        font-weight: $black; // Poids plus prononcé
+        font-size: 1.05em; // Légèrement plus grand
+      }
     }
   }
   .a {
@@ -1256,6 +1330,8 @@ p.mt-n10 {
     text-align: center;
     text-transform: uppercase;
     font-size: 0.86rem;
+    font-weight: 500; // 4. Cohérence poids de police pour tous les CTAs
+    letter-spacing: 0.05em; // 4. Cohérence espacement pour tous les CTAs
     border: none;
     // padding-left: 20px;
     // width: 200px;
