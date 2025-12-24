@@ -15,15 +15,16 @@
 
 ## 📊 CONTEXTE ACTUEL
 
-### Statut (23 décembre 2025)
+### Statut (24 décembre 2025)
 
-**Phase 14 Portfolio + SEO Structured Data** — Prêt pour merge sur master.
+**Phase 14 Portfolio + Homepage Mobile** — Prêt pour merge sur master.
 
 | Métrique | Valeur | Statut |
 |----------|--------|--------|
 | **Framework** | Nuxt 3.14 | ✅ |
 | **URLs** | Trailing slash normalisé | ✅ |
 | **Portfolio** | Refonte complète | ✅ |
+| **Homepage** | Améliorations mobile UX | ✅ |
 | **Structured Data** | Toutes pages principales | ✅ |
 | **EcoIndex** | A | ✅ |
 | **Lighthouse** | 99 / 96 / 100 / 100 | ✅ |
@@ -32,18 +33,20 @@
 
 ## ✅ PHASES TERMINÉES
 
-### Phase 14 : Refonte Portfolio — Objectif Emploi ✅
+### Phase 14 : Refonte Portfolio + Homepage Mobile ✅
 
-> **Terminée le 23 décembre 2025**
-> **Branche** : `feature/portfolio-redesign`
+> **Terminée le 24 décembre 2025**
+> **Branche** : `dev`
 
-#### Structure et contenu
+#### Portfolio - Structure et contenu
+
 - [x] **PF-14-01** : Section Hero avec intro personnelle + CTAs (CV, Contact)
 - [x] **PF-14-02** : Section compétences techniques (4 colonnes colorées)
 - [x] **PF-14-03** : Données projets enrichies (contexte, rôle, résultats)
 - [x] **PF-14-04** : CTA final avec œufs décoratifs + liens CV/Contact
 
-#### Design et UX
+#### Portfolio - Design et UX
+
 - [x] **PF-14-05** : Filtres refondus (boutons visuels, compteur dynamique)
 - [x] **PF-14-06** : Cartes projet améliorées (hiérarchie typo, badges éco)
 - [x] **PF-14-07** : Bloc métriques sur projets éco-conçus (EcoIndex, poids, requêtes)
@@ -52,17 +55,31 @@
 - [x] **PF-14-17** : Compétences en rangée horizontale avec couleurs par catégorie
 - [x] **PF-14-18** : CTA final compact avec œufs (symétrie avec Hero)
 - [x] **PF-14-19** : Lien GitHub intégré dans section Compétences
+- [x] **PF-14-20** : Ajustements finaux (CTA height, object-position images, spacing)
 
-#### SEO et accessibilité
+#### Portfolio - SEO et accessibilité
+
 - [x] **PF-14-09** : Meta description orientée recrutement
 - [x] **PF-14-10** : JSON-LD ProfilePage + Person
 - [x] **PF-14-11** : Attributs ARIA sur filtres interactifs
 - [x] **PF-14-12** : Focus states accessibles
 
-#### Données structurées
+#### Portfolio - Données structurées
 - [x] **PF-14-13** : Données projets externalisées dans `data/portfolio.ts`
 - [x] **PF-14-14** : Intégration des données dans portfolio.vue
 - [x] **PF-14-15** : Composant carte projet enrichi
+
+#### Homepage - Améliorations mobile (24 déc)
+- [x] **HP-14-21** : Numéros piliers (1-4) plus visibles (clamp 2.5-3.5rem, font-weight black)
+- [x] **HP-14-22** : Labels catégorie améliorés (font-weight 600, letter-spacing 0.08em)
+- [x] **HP-14-23** : Titres verts articles section mieux distingués (font-weight black mobile)
+- [x] **HP-14-24** : CTAs standardisés (font-weight 500, letter-spacing 0.05em)
+- [x] **HP-14-25** : Layout mobile piliers optimisé (spacing vertical cohérent)
+- [x] **HP-14-26** : Hero typo ajustée (h1 plus gros, sous-titre plus fin)
+- [x] **HP-14-27** : Container-2 100vh + espacement généreux (padding 5rem)
+- [x] **HP-14-28** : Container-2 typo améliorée (line-height 1.75-1.8, letter-spacing)
+- [x] **HP-14-29** : Container-2 alignement responsive (justify desktop, center mobile)
+- [x] **HP-14-30** : Container-2 césure adaptée (auto desktop, none mobile)
 
 ### Phase 12 : Optimisation SEO ✅
 
