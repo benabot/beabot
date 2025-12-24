@@ -10,16 +10,15 @@
         <div class="boite-image">
           <div class="boite-image__calque" :style="calqueStyle"></div>
           <div class="circle"></div>
-          <NuxtImg
+          <img
             class="boite-image__image"
             :src="resolvedBackgroundUrl"
             :alt="titre || 'Image du projet'"
             :style="{ objectPosition }"
             width="380"
             height="380"
-            densities="1x 2x"
             loading="lazy"
-            format="webp"
+            decoding="async"
           />
         </div>
       </a>
