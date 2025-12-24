@@ -474,6 +474,15 @@ useHead({
 </script>
 
 <style lang="scss" scoped>
+// Désactiver la césure sur les titres (mobile)
+@media (max-width: $breakpoint-tablet) {
+  h1, h2, h3, h4 {
+    hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+  }
+}
+
 section {
   position: relative;
   z-index: 3;
@@ -486,6 +495,33 @@ section {
   h2 {
     margin-bottom: 0.1rem;
   }
+  @media (max-width: $breakpoint-tablet) {
+    padding-bottom: 4rem;
+
+    // Hiérarchie typographique mobile
+    .title {
+      font-size: clamp(3rem, 12vw, 4.5rem);
+      margin-bottom: 0;
+      line-height: 1;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 5.5vw, 2rem);
+      font-weight: $black;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .titre-sub {
+      font-size: clamp(0.95rem, 4vw, 1.1rem);
+      line-height: 1.5;
+      margin-top: 0.75rem;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 }
 .container-2 {
   min-height: 60vh;
@@ -493,12 +529,21 @@ section {
     min-height: 100vh;
   }
   @media (max-width: $breakpoint-tablet) {
-    padding: 2rem 0;
+    padding: 4rem 0;
+    margin-top: 3rem;
   }
   p {
     width: 90vw;
     line-height: 1.618;
     text-align: left;
+
+    // Amélioration typo mobile
+    @media (max-width: $breakpoint-tablet) {
+      font-size: clamp(1.05rem, 4.5vw, 1.25rem); // Taille fluide responsive
+      line-height: 1.7; // Meilleure lisibilité sur petit écran
+      letter-spacing: 0.01em; // Légère aération des lettres
+    }
+
     @media (min-width: $breakpoint-tablet) {
       width: 50vw;
     }
@@ -507,6 +552,10 @@ section {
 .section-faq-home {
   margin-top: 4rem;
   margin-bottom: 4rem;
+  @media (max-width: $breakpoint-tablet) {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+  }
 }
 .home-faq-card__inner {
   max-width: 960px;
@@ -722,6 +771,9 @@ section {
 .container-3 {
   display: flex;
   overflow: hidden;
+  @media (max-width: $breakpoint-tablet) {
+    padding-top: 3rem;
+  }
   @media (min-width: $breakpoint-tablet) {
     padding-top: 10rem;
     padding-bottom: 5rem;
@@ -796,6 +848,9 @@ section {
 .container-4 {
   position: relative;
   justify-content: space-between;
+  @media (max-width: $breakpoint-tablet) {
+    padding-top: 3rem;
+  }
   &__boite-para {
     width: 100%;
     min-height: 80vh;
@@ -861,6 +916,9 @@ section {
 }
 .container-5 {
   margin-bottom: 6rem;
+  @media (max-width: $breakpoint-tablet) {
+    padding-top: 3rem;
+  }
   &__boite-titre {
     display: flex;
     width: 100%;
@@ -1063,9 +1121,12 @@ section {
   width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 3rem; // Espacement entre les deux blocs sur mobile
+
   @media (min-width: $breakpoint-tablet) {
     width: 66%;
     flex-direction: row;
+    gap: 0; // Pas de gap sur desktop (on utilise margin-right)
   }
 }
 :deep(.boite-para__para) {
@@ -1077,16 +1138,20 @@ section {
     text-align: justify;
   }
   &:first-of-type {
-    margin-right: 1.4rem;
+    margin-right: 0; // Pas de margin-right sur mobile (inutile en column)
     @media (min-width: $breakpoint-tablet) {
-      margin-right: 2rem;
+      margin-right: 2rem; // Uniquement sur desktop
     }
   }
 }
 :deep(.boite-para__titre) {
   text-align: left;
   word-break: keep-all;
-  margin-bottom: 0;
+  margin-bottom: 0.75rem; // Espacement entre titre et paragraphe
+
+  @media (min-width: $breakpoint-tablet) {
+    margin-bottom: 0;
+  }
 }
 #boite-logo {
   position: relative;
@@ -1170,10 +1235,20 @@ section {
 .mt-n10 {
   margin-top: -10%;
   @media (max-width: $breakpoint-tablet) {
-    margin-top: 0;
+    margin-top: 2rem;
   }
 }
+
+// Désactiver la césure sur les paragraphes avec mt-n10
+p.mt-n10 {
+  hyphens: none;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+}
 .sct-footer {
+  @media (max-width: $breakpoint-tablet) {
+    margin-top: 3rem;
+  }
   &--btn {
     color: $gris5;
     background: linear-gradient($gris1, $gris1) right bottom / 80% 0.55em
