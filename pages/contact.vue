@@ -72,7 +72,12 @@
 
           <label>
             Votre nom
-            <input name="name" v-model="form.name" required autocomplete="name" />
+            <input name="name" v-model="form.name" required autocomplete="family-name" />
+          </label>
+
+          <label>
+            Votre prénom
+            <input name="prenom" v-model="form.prenom" required autocomplete="given-name" />
           </label>
 
           <label>
@@ -89,21 +94,11 @@
   <span>
     J'accepte les
     <AppLink to="/mentions-legales/" target="_blank" rel="noopener noreferrer">mentions légales</AppLink>
+    <small class="privacy-note-inline">
+      Vos coordonnées sont utilisées uniquement pour répondre à votre demande. Aucune newsletter, aucun partage à des tiers.
+    </small>
   </span>
 </label>
-
-          <!-- <label class="optin">
-            <input type="checkbox" name="optin" v-model="form.optin" required />
-            <span>
-              J'accepte les
-              <AppLink to="/mentions-legales/" target="_blank" rel="noopener noreferrer">
-                mentions légales
-              </AppLink>.
-            </span>
-          </label> -->
-          <p class="privacy-note">
-  Vos coordonnées sont utilisées uniquement pour répondre à votre demande. Aucune newsletter, aucun partage à des tiers.
-</p>
 
 
           <button type="submit" :disabled="loading">
@@ -179,6 +174,7 @@ const sent = ref(false)
 const error = ref(null)
 const form = reactive({
   name: '',
+  prenom: '',
   email: '',
   message: '',
   botField: '',
@@ -194,6 +190,7 @@ async function onSubmit() {
     const body = encode({
       'form-name': 'contact',
       name: form.name,
+      prenom: form.prenom,
       email: form.email,
       message: form.message,
       'bot-field': form.botField,
@@ -209,6 +206,7 @@ async function onSubmit() {
     if (res.ok) {
       sent.value = true
       form.name = ''
+      form.prenom = ''
       form.email = ''
       form.message = ''
       form.botField = ''
@@ -439,11 +437,14 @@ textarea {
   min-height: 160px;
 }
 
-.privacy-note {
-  margin: 2px 0 14px;
+.privacy-note-inline {
+  display: block;
+  margin-top: 6px;
   font-size: 0.7rem;
   line-height: 1.35;
-  opacity: 0.60;
+  color: rgba(0, 0, 0, 0.6);
+  font-style: italic;
+  font-weight: 400;
 }
 
 /* Checkbox + optin */
