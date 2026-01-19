@@ -85,6 +85,15 @@
             >
               Voir le site →
             </a>
+            <a
+              v-if="githubLink"
+              :href="githubLink"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-github"
+            >
+              GitHub →
+            </a>
             <AppLink v-if="articleLink" :to="articleLink" class="article-link">
               Lire l'article
             </AppLink>
@@ -143,6 +152,10 @@ const props = defineProps({
     default: () => null,
   },
   articleLink: {
+    type: String,
+    default: '',
+  },
+  githubLink: {
     type: String,
     default: '',
   },
@@ -584,8 +597,30 @@ svg {
   background-image: none !important;
 }
 
+.btn-github {
+  background: transparent;
+  color: $gris2;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 999px;
+  padding: 0.55rem 1.2rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  transition: all 0.15s ease;
+
+  // Override article-content.scss underline styles
+  background-image: none !important;
+}
+
 @media (min-width: $breakpoint-tablet) {
   .btn-view-site {
+    width: auto;
+  }
+  .btn-github {
     width: auto;
   }
 }
@@ -601,6 +636,17 @@ svg {
 .btn-view-site:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px rgba(13, 199, 99, 0.25);
+}
+
+.btn-github:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 0, 0, 0.35);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.btn-github:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(4, 57, 217, 0.2);
 }
 
 .article-link:deep(a),

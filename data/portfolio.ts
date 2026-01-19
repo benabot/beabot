@@ -24,10 +24,24 @@ export interface Project {
   stack: string[]
   metrics?: ProjectMetrics
   articleLink?: string
+  githubLink?: string
   objectPosition?: string
 }
 
 export const projects: Project[] = [
+  {
+    id: 'chasse-patate',
+    title: 'chasse-patate',
+    subtitle: 'jeu de plateau cycliste',
+    image: 'chasse-patate.png',
+    url: 'https://topette.netlify.app',
+    featured: false,
+    tags: ['WebDesign', 'VueJs', 'SQL'],
+    context: 'Jeu de plateau cycliste accessible en ligne.',
+    role: 'Webdesign, développement front et gestion des données',
+    stack: ['Vue.js', 'SQL'],
+    githubLink: 'https://github.com/benabot/cycling-sim-game-game-code'
+  },
   // === PROJETS ÉCO-CONÇUS (featured) ===
   {
     id: 'cycloplomberie',

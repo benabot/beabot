@@ -131,6 +131,7 @@
         :stack="project.stack"
         :metrics="project.metrics"
         :article-link="project.articleLink"
+        :github-link="project.githubLink"
         :object-position="project.objectPosition"
       />
     </TransitionGroup>
