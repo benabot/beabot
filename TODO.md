@@ -19,6 +19,11 @@
 
 **Phase 14 Portfolio + Homepage Mobile** — Prêt pour merge sur master.
 
+**Patch Portfolio (25 janvier 2026)** — Correctif d’affichage projet BORDUR.
+
+- [x] Renommage public "chasse-patate" → "BORDUR"
+- [x] Liens projet mis à jour (topette.netlify.app → bordur.fr)
+
 | Métrique | Valeur | Statut |
 |----------|--------|--------|
 | **Framework** | Nuxt 3.14 | ✅ |

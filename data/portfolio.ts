@@ -31,10 +31,10 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 'chasse-patate',
-    title: 'chasse-patate',
+    title: 'BORDUR',
     subtitle: 'jeu de plateau cycliste',
     image: 'chasse-patate.png',
-    url: 'https://topette.netlify.app',
+    url: 'https://bordur.fr/',
     featured: false,
     tags: ['WebDesign', 'VueJs', 'SQL'],
     context: 'Jeu de plateau cycliste accessible en ligne.',

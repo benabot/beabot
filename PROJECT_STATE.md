@@ -17,6 +17,7 @@
 
 **Phase 14 (Portfolio) terminée** — Prêt pour merge sur dev puis master.
 
+- ✅ Correctif portfolio (25 janvier 2026) : affichage "BORDUR" + liens projet mis à jour vers bordur.fr
 - ✅ Hero portfolio avec intro personnelle + CTAs
 - ✅ Section compétences en rangée colorée + lien GitHub
 - ✅ Cartes projet enrichies avec badges éco
