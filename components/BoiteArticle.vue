@@ -1,11 +1,10 @@
 <template>
   <div class="boite-article">
     <article class="article-resum">
-      <a
-        :href="lien"
+      <component
+        :is="lien ? 'a' : 'div'"
+        v-bind="lien ? { href: lien, target: '_blank', rel: 'noopener noreferrer' } : {}"
         class="boite-image-link"
-        target="_blank"
-        rel="noopener noreferrer"
       >
         <div class="boite-image">
           <div class="boite-image__calque" :style="calqueStyle"></div>
@@ -21,7 +20,7 @@
             decoding="async"
           />
         </div>
-      </a>
+      </component>
 
       <div class="article-body">
         <div class="project-main">
@@ -78,6 +77,7 @@
         <div class="project-aside">
           <div class="project-links">
             <a
+              v-if="lien"
               :href="lien"
               target="_blank"
               rel="noopener noreferrer"

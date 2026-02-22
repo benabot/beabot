@@ -42,6 +42,35 @@ export const projects: Project[] = [
     stack: ['Vue.js', 'SQL'],
     githubLink: 'https://github.com/benabot/cycling-sim-game-game-code'
   },
+
+  // === APPS iOS (Swift) ===
+  {
+    id: 'duospend',
+    title: 'DuoSpend',
+    subtitle: 'App iOS de gestion de budget partagé pour couples',
+    image: 'duospend.webp',
+    url: '',
+    featured: false,
+    tags: ['iOS', 'Swift'],
+    context: 'Application de suivi des dépenses communes sur des projets partagés (voyage, mariage, colocation…). Une question, une réponse : "Qui doit combien à qui ?"',
+    role: 'Conception, architecture MVVM, développement Swift',
+    stack: ['Swift 6', 'SwiftUI', 'SwiftData', 'iCloud'],
+    githubLink: 'https://github.com/benabot/DuoSpend'
+  },
+  {
+    id: 'focusone',
+    title: 'FocusOne',
+    subtitle: 'App iOS de suivi d\'une micro-habitude quotidienne',
+    image: 'focusone.webp',
+    url: '',
+    featured: false,
+    tags: ['iOS', 'Swift'],
+    context: 'Un tap par jour pour suivre une habitude. Streak engine, widget Home Screen & Lock Screen, sync iCloud. Simple, sobre, local-first.',
+    role: 'Conception, développement Swift',
+    stack: ['Swift', 'SwiftUI', 'Core Data', 'CloudKit', 'WidgetKit'],
+    githubLink: 'https://github.com/benabot/focusone'
+  },
+
   // === PROJETS ÉCO-CONÇUS (featured) ===
   {
     id: 'cycloplomberie',
@@ -151,7 +180,8 @@ export const filters = [
   { id: 'vjs', label: 'Vue.js', count: projects.filter(p => p.tags.includes('VueJs') || p.tags.includes('Nuxt')).length },
   { id: 'wp', label: 'WordPress', count: projects.filter(p => p.tags.includes('WordPress')).length },
   { id: 'eco', label: 'Éco-conçu', count: projects.filter(p => p.tags.includes('Éco-conçu')).length },
-  { id: 'design', label: 'WebDesign', count: projects.filter(p => p.tags.includes('WebDesign')).length }
+  { id: 'design', label: 'WebDesign', count: projects.filter(p => p.tags.includes('WebDesign')).length },
+  { id: 'ios', label: 'iOS', count: projects.filter(p => p.tags.includes('iOS')).length }
 ]
 
 // Compétences techniques
@@ -171,5 +201,9 @@ export const skills = {
   devops: {
     title: 'DevOps',
     items: ['Git', 'Docker', 'Nginx', 'Bash', 'CI/CD']
+  },
+  mobile: {
+    title: 'iOS / Mobile',
+    items: ['Swift', 'SwiftUI', 'SwiftData', 'Core Data', 'CloudKit', 'WidgetKit']
   }
 }

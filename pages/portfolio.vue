@@ -265,6 +265,9 @@ const matchesFilter = (project, filterId) => {
   if (filterId === 'design') {
     return project.tags.includes('WebDesign')
   }
+  if (filterId === 'ios') {
+    return project.tags.includes('iOS')
+  }
 
   return true
 }
@@ -284,6 +287,7 @@ const skillsBlocks = computed(() => [
   skills.backend,
   skills.quality,
   skills.devops,
+  skills.mobile,
 ])
 
 const focusFilter = (index) => {
@@ -407,6 +411,9 @@ useHead({
             'Éco-conception web',
             'Accessibilité',
             'Performance web',
+            'Swift',
+            'SwiftUI',
+            'iOS',
           ],
         },
       }),
@@ -662,7 +669,7 @@ h1 {
 
 @media (min-width: 900px) {
   .skills-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 2.25rem;
   }
 }
@@ -708,6 +715,10 @@ h1 {
 
 .skill-group:nth-child(4) h3 {
   color: #f59e0b;
+}
+
+.skill-group:nth-child(5) h3 {
+  color: #ef4444;
 }
 
 .skill-group ul {
