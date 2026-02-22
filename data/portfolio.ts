@@ -42,6 +42,35 @@ export const projects: Project[] = [
     stack: ['Vue.js', 'SQL'],
     githubLink: 'https://github.com/benabot/cycling-sim-game-game-code'
   },
+
+  // === APPS iOS (Swift) ===
+  {
+    id: 'duospend',
+    title: 'DuoSpend',
+    subtitle: 'App iOS de gestion de budget partagé pour couples',
+    image: 'duospend.webp',
+    url: '',
+    featured: false,
+    tags: ['iOS', 'Swift'],
+    context: 'Application de suivi des dépenses communes sur des projets partagés (voyage, mariage, colocation…). Une question, une réponse : "Qui doit combien à qui ?"',
+    role: 'Conception, architecture MVVM, développement Swift',
+    stack: ['Swift 6', 'SwiftUI', 'SwiftData', 'iCloud'],
+    githubLink: 'https://github.com/benabot/DuoSpend'
+  },
+  {
+    id: 'focusone',
+    title: 'FocusOne',
+    subtitle: 'App iOS de suivi d\'une micro-habitude quotidienne',
+    image: 'focusone.webp',
+    url: '',
+    featured: false,
+    tags: ['iOS', 'Swift'],
+    context: 'Un tap par jour pour suivre une habitude. Streak engine, widget Home Screen & Lock Screen, sync iCloud. Simple, sobre, local-first.',
+    role: 'Conception, développement Swift',
+    stack: ['Swift', 'SwiftUI', 'Core Data', 'CloudKit', 'WidgetKit'],
+    githubLink: 'https://github.com/benabot/focusone'
+  },
+
   // === PROJETS ÉCO-CONÇUS (featured) ===
   {
     id: 'cycloplomberie',
@@ -142,34 +171,6 @@ export const projects: Project[] = [
     context: 'Application pédagogique d\'initiation à l\'informatique.',
     role: 'Conception, design, développement',
     stack: ['Vue.js']
-  },
-
-  // === APPS iOS (Swift) ===
-  {
-    id: 'duospend',
-    title: 'DuoSpend',
-    subtitle: 'App iOS de gestion de budget partagé pour couples',
-    image: 'duospend.webp',
-    url: 'https://github.com/benabot/DuoSpend',
-    featured: false,
-    tags: ['iOS', 'Swift'],
-    context: 'Application de suivi des dépenses communes sur des projets partagés (voyage, mariage, colocation…). Une question, une réponse : "Qui doit combien à qui ?"',
-    role: 'Conception, architecture MVVM, développement Swift',
-    stack: ['Swift 6', 'SwiftUI', 'SwiftData', 'iCloud'],
-    githubLink: 'https://github.com/benabot/DuoSpend'
-  },
-  {
-    id: 'focusone',
-    title: 'FocusOne',
-    subtitle: 'App iOS de suivi d\'une micro-habitude quotidienne',
-    image: 'focusone.webp',
-    url: 'https://github.com/benabot/focusone',
-    featured: false,
-    tags: ['iOS', 'Swift'],
-    context: 'Un tap par jour pour suivre une habitude. Streak engine, widget Home Screen & Lock Screen, sync iCloud. Simple, sobre, local-first.',
-    role: 'Conception, développement Swift',
-    stack: ['Swift', 'SwiftUI', 'Core Data', 'CloudKit', 'WidgetKit'],
-    githubLink: 'https://github.com/benabot/focusone'
   }
 ]
 
