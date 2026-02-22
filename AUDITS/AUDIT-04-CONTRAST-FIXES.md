@@ -64,7 +64,7 @@
 
 1. **Test Visuel** :
    ```bash
-   yarn dev
+   npm run dev
    # Vérifier :
    # - Liens "Tout voir" (gris4)
    # - Tags actifs (vert)
@@ -114,7 +114,7 @@ assets/css/vars/_colors.scss
 - [x] Analyse contrastes complète
 - [x] Corrections appliquées
 - [ ] Tests visuels OK
-- [ ] `yarn dev` sans erreur
+- [ ] `npm run dev` sans erreur
 - [ ] WAVE 0 erreur contraste
 - [ ] Commit créé
 - [ ] PR vers master

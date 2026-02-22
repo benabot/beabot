@@ -32,7 +32,7 @@ Fichier de configuration principal pour Netlify.
 ##### [build] - Configuration de build
 ```toml
 [build]
-  command = "yarn generate"
+  command = "npm run generate"
   publish = ".output/public"
   environment = { NODE_VERSION = "18" }
 ```
@@ -203,7 +203,7 @@ NUXT_PUBLIC_API_BASE=/api
 **Site settings > Build & deploy > Build settings**
 
 ```
-Build command:        yarn generate
+Build command:        npm run generate
 Publish directory:    .output/public
 Node version:         18
 ```
@@ -217,19 +217,19 @@ Le `netlify.toml` définit 3 contextes :
 1. **Production** (main branch) :
    ```toml
    [context.production]
-     command = "yarn generate"
+     command = "npm run generate"
    ```
 
 2. **Deploy previews** (Pull Requests) :
    ```toml
    [context.deploy-preview]
-     command = "yarn generate"
+     command = "npm run generate"
    ```
 
 3. **Branch deploys** (autres branches) :
    ```toml
    [context.branch-deploy]
-     command = "yarn generate"
+     command = "npm run generate"
    ```
 
 ### Déploiement continu
@@ -239,8 +239,8 @@ Le `netlify.toml` définit 3 contextes :
 **Workflow** :
 1. `git push origin main`
 2. Netlify détecte le push
-3. Lance `yarn install`
-4. Exécute `yarn generate`
+3. Lance `npm install`
+4. Exécute `npm run generate`
 5. Vérifie `.output/public/`
 6. Déploie sur CDN
 7. Purge cache CDN
@@ -257,8 +257,8 @@ Le script `scripts/pre-build-check.js` valide la configuration Netlify :
 check(fileExists('netlify.toml'), '❌ netlify.toml is missing')
 
 // Vérifie commande de build
-check(netlifyConfig.includes('yarn generate'),
-  '❌ netlify.toml should use "yarn generate"')
+check(netlifyConfig.includes('npm run generate'),
+  '❌ netlify.toml should use "npm run generate"')
 
 // Vérifie répertoire de publication
 check(netlifyConfig.includes('.output/public'),
@@ -271,9 +271,9 @@ check(fileExists('public/contact-form.html'),
 
 **Exécution** :
 ```bash
-yarn test                    # Manuel
-yarn build                   # Auto (via prebuild)
-yarn generate                # Auto (via pregenerate)
+npm test                    # Manuel
+npm run build                   # Auto (via prebuild)
+npm run generate                # Auto (via pregenerate)
 ```
 
 ---
@@ -370,7 +370,7 @@ Netlify utilise un CDN multi-régions :
 2. **Vérifier commande de build**
    ```bash
    # Tester localement
-   yarn generate
+   npm run generate
 
    # Vérifier output
    ls -la .output/public/
@@ -502,9 +502,9 @@ Netlify utilise un CDN multi-régions :
 
 Avant de pusher vers production :
 
-- [ ] `yarn test` passe (49/49 checks)
-- [ ] `yarn build` fonctionne localement
-- [ ] `yarn generate` génère `.output/public/`
+- [ ] `npm test` passe (49/49 checks)
+- [ ] `npm run build` fonctionne localement
+- [ ] `npm run generate` génère `.output/public/`
 - [ ] `netlify.toml` existe et configuré
 - [ ] `public/contact-form.html` existe
 - [ ] Formulaire contact testé localement

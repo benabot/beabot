@@ -87,7 +87,7 @@ nvm install 20
 nvm use 20
 
 # Yarn
-yarn --version # 1.22+ ou 4.0+ (Berry)
+npm --version # 1.22+ ou 4.0+ (Berry)
 
 # Git propre
 git status # Aucun changement non commité
@@ -205,10 +205,10 @@ mv package.json package.json.old
 mv package.json.new package.json
 
 # Installer
-yarn install
+npm install
 
 # Vérifier versions
-yarn list --depth=0 | grep nuxt
+npm list --depth=0 | grep nuxt
 # Attendu : nuxt@3.14.0
 ```
 
@@ -374,10 +374,10 @@ NUXT_PUBLIC_SITE_URL=https://beabot.fr
 
 ```bash
 # Générer types TypeScript
-yarn nuxt prepare
+npx nuxt prepare
 
 # Essayer de démarrer (va planter, c'est normal)
-yarn dev
+npm run dev
 
 # Erreurs attendues :
 # - "Cannot find module layouts/default.vue"
@@ -387,7 +387,7 @@ yarn dev
 
 ### ✅ Validation Phase 1
 
-- [ ] `yarn install` sans erreur
+- [ ] `npm install` sans erreur
 - [ ] `nuxt.config.ts` créé
 - [ ] `app.config.ts` créé
 - [ ] Types TypeScript générés (`.nuxt/`)
@@ -777,7 +777,7 @@ useHead({
 - [ ] Pages migrées (asyncData → useAsyncData)
 - [ ] Test local :
   ```bash
-  yarn dev
+  npm run dev
   # Site doit s'afficher sans erreur console
   ```
 
@@ -834,13 +834,13 @@ tags:
 **Option 1 : Garder Vuex (compatible Nuxt 3)**
 
 ```bash
-yarn add vuex@4
+npm install vuex@4
 ```
 
 **Option 2 : Migrer vers Pinia (RECOMMANDÉ)**
 
 ```bash
-yarn add pinia @pinia/nuxt
+npm install pinia @pinia/nuxt
 ```
 
 **nuxt.config.ts :**
@@ -1099,7 +1099,7 @@ fontLoader: {
 **APRÈS : Option 1 - Google Fonts local**
 
 ```bash
-yarn add @nuxtjs/google-fonts
+npm install @nuxtjs/google-fonts
 ```
 
 ```ts
@@ -1119,7 +1119,7 @@ export default defineNuxtConfig({
 **APRÈS : Option 2 - Fontsource**
 
 ```bash
-yarn add @fontsource/open-sans
+npm install @fontsource/open-sans
 ```
 
 ```vue
@@ -1138,8 +1138,8 @@ import '@fontsource/open-sans/700.css'
 - [ ] Fonts auto-hébergées
 - [ ] Tester performance :
   ```bash
-  yarn build
-  yarn preview
+  npm run build
+  npm run preview
   # Ouvrir Lighthouse
   ```
 - [ ] Git commit
@@ -1152,10 +1152,10 @@ import '@fontsource/open-sans/700.css'
 
 ```bash
 # Générer le site statique
-yarn generate
+npm run generate
 
 # Preview local
-yarn preview
+npm run preview
 # Ouvrir http://localhost:3000
 
 # Tester toutes les pages
@@ -1231,7 +1231,7 @@ export default defineNuxtConfig({
 **Créer `netlify.toml` :**
 ```toml
 [build]
-  command = "yarn generate"
+  command = "npm run generate"
   publish = ".output/public"
 
 [[headers]]
@@ -1309,14 +1309,14 @@ git pull origin main
 **Option 1 : Auto-deploy (recommandé)**
 
 1. Netlify détecte le push sur `main`
-2. Build automatique avec `yarn generate`
+2. Build automatique avec `npm run generate`
 3. Deploy sur https://beabot.netlify.app
 
 **Option 2 : Manual deploy**
 
 ```bash
 # Build local
-yarn generate
+npm run generate
 
 # Deploy avec Netlify CLI
 npx netlify-cli deploy --prod --dir=.output/public

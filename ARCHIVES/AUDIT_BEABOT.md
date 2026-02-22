@@ -501,8 +501,8 @@ export default defineNuxtConfig({
 
 ```bash
 # À exécuter localement
-yarn outdated
-yarn audit
+npm outdated
+npm audit
 ```
 
 **Packages critiques à vérifier** :
@@ -512,7 +512,7 @@ yarn audit
 
 **Action recommandée** :
 ```bash
-yarn audit fix
+npm audit fix
 # OU migration Nuxt 3 qui upgrade tout
 ```
 
@@ -707,7 +707,7 @@ Une fois les fichiers accessibles, je générerai :
 
 Je créerai **MIGRATION_PLAN.md** avec :
 - Ordre exact des étapes
-- Commandes yarn précises
+- Commandes npm précises
 - Scripts de migration automatiques
 - Checklist de validation
 

@@ -4,14 +4,14 @@
 [build]
   # Use supported build image (Noble LTS until 2029)
   image = "ubuntu-24.04"
-  # Build command for Nuxt 3 static generation (force npm to avoid yarn/npm mix)
+  # Build command for Nuxt 3 static generation
   command = "npm run generate"
 
   # Output directory (Nuxt 3 default)
   publish = ".output/public"
 
   # Environment variables
-  environment = { NODE_VERSION = "22", NUXT_PUBLIC_SITE_URL = "https://beabot.fr", NETLIFY_USE_YARN = "false", NPM_FLAGS = "--legacy-peer-deps", NITRO_PRESET = "static", PYTHON_VERSION = "3.11.8" }
+  environment = { NODE_VERSION = "22", NUXT_PUBLIC_SITE_URL = "https://beabot.fr", NPM_FLAGS = "--legacy-peer-deps", NITRO_PRESET = "static", PYTHON_VERSION = "3.11.8" }
 
 # Build optimizations
 [build.processing]

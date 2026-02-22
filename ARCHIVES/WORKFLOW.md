@@ -88,7 +88,7 @@ git branch
 # - AUDIT-04: Contraste
 
 # Tester après chaque modif
-yarn dev
+npm run dev
 
 # Commit atomique par tâche
 git add nuxt.config.js
@@ -127,8 +127,8 @@ Corriger les 4 problèmes critiques identifiés dans l'audit avant la migration 
 - [x] AUDIT-04: Contraste couleurs WCAG AA
 
 ## 📊 Validation
-- [x] `yarn lint` passe
-- [x] `yarn dev` démarre sans erreur
+- [x] `npm run lint` passe
+- [x] `npm run dev` démarre sans erreur
 - [x] Tests manuels OK
 - [x] Lighthouse Accessibility: +15 points
 
@@ -225,15 +225,15 @@ feature/nuxt3-migration (complète) → master
 ## 📋 Checklist Avant Merge
 
 ### Avant chaque commit
-- [ ] Code compilé (`yarn dev`)
-- [ ] Lint passe (`yarn lint`)
+- [ ] Code compilé (`npm run dev`)
+- [ ] Lint passe (`npm run lint`)
 - [ ] Tester manuellement
 - [ ] Message commit conventionnel
 
 ### Avant chaque push
 - [ ] Tous les commits atomiques
-- [ ] Build réussit (`yarn build`)
-- [ ] Generate OK (`yarn generate`)
+- [ ] Build réussit (`npm run build`)
+- [ ] Generate OK (`npm run generate`)
 
 ### Avant merge sur master
 - [ ] Lighthouse ≥ 90
