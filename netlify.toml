@@ -11,7 +11,7 @@
   publish = ".output/public"
 
   # Environment variables
-  environment = { NODE_VERSION = "18", NUXT_PUBLIC_SITE_URL = "https://beabot.fr", NETLIFY_USE_YARN = "false", NITRO_PRESET = "static", PYTHON_VERSION = "3.11.8" }
+  environment = { NODE_VERSION = "22", NUXT_PUBLIC_SITE_URL = "https://beabot.fr", NETLIFY_USE_YARN = "false", NPM_FLAGS = "--legacy-peer-deps", NITRO_PRESET = "static", PYTHON_VERSION = "3.11.8" }
 
 # Build optimizations
 [build.processing]

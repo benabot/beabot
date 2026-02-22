@@ -40,5 +40,5 @@
     "sass-loader": "^16.0.3",
     "vite": "^6.0.1"
   },
-  "packageManager": "yarn@1.22.22"
+  "packageManager": "npm@10.8.2"
 }
