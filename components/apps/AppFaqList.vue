@@ -23,15 +23,18 @@ defineProps<{
 
 .faq-item {
   overflow: hidden;
-  border-radius: 1.15rem;
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 18px 36px rgba(15, 23, 42, 0.05);
+  border-radius: 1rem;
+  background: rgba(243, 244, 246, 0.88);
 }
 
 .faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
   list-style: none;
   cursor: pointer;
-  padding: 1rem 1.15rem;
+  padding: 1rem 1.1rem;
   font-weight: 600;
   color: $gris1;
 }
@@ -42,8 +45,8 @@ defineProps<{
 
 .faq-item summary::after {
   content: '+';
-  float: right;
   color: $vert;
+  flex-shrink: 0;
 }
 
 .faq-item[open] summary::after {
@@ -57,7 +60,7 @@ defineProps<{
 
 .faq-item p {
   margin: 0;
-  padding: 0 1.15rem 1rem;
+  padding: 0 1.1rem 1rem;
   color: $gris2;
   line-height: 1.7;
 }

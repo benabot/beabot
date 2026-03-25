@@ -5,46 +5,90 @@
 
       <section class="app-hero">
         <div class="app-hero__content">
-          <p class="app-meta">{{ duoSpendContent.platform }}</p>
+          <p class="app-meta">{{ duoSpendContent.stage }}</p>
           <h1>{{ duoSpendContent.name }}</h1>
           <p class="app-intro">{{ duoSpendContent.intro }}</p>
           <p class="app-summary">{{ duoSpendContent.summary }}</p>
+
+          <div class="app-actions">
+            <AppLink to="#release-form" class="app-primary-action">
+              Être informé
+            </AppLink>
+            <AppLink to="/apps/" class="app-secondary-action">
+              Retour aux apps
+            </AppLink>
+          </div>
         </div>
+
         <div class="app-hero__visual">
-          <div class="app-frame">
-            <div class="app-frame__bar" aria-hidden="true">
+          <div class="app-mockup app-mockup--dark">
+            <div class="app-mockup__bar" aria-hidden="true">
               <span></span>
               <span></span>
               <span></span>
             </div>
-            <img
-              :src="duoSpendContent.preview.src"
-              :alt="duoSpendContent.preview.alt"
-              width="900"
-              height="620"
-              loading="eager"
-              decoding="async"
-            />
+            <div
+              class="app-mockup__screen app-mockup__screen--image"
+              role="img"
+              :aria-label="duoSpendContent.preview.alt"
+            >
+              <img
+                :src="duoSpendContent.preview.src"
+                :alt="duoSpendContent.preview.alt"
+                width="900"
+                height="620"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="app-section" aria-labelledby="duo-overview-title">
-        <h2 id="duo-overview-title">Aperçu</h2>
-        <p v-for="paragraph in duoSpendContent.overview" :key="paragraph">
-          {{ paragraph }}
-        </p>
+      <section class="app-surface" aria-labelledby="duo-overview-title">
+        <div class="app-surface__copy">
+          <h2 id="duo-overview-title">Aperçu</h2>
+          <p v-for="paragraph in duoSpendContent.overview" :key="paragraph">
+            {{ paragraph }}
+          </p>
+        </div>
+
+        <div class="app-surface__status">
+          <p class="app-surface__eyebrow">Repères</p>
+          <dl class="app-surface__list">
+            <div>
+              <dt>Plateforme</dt>
+              <dd>{{ duoSpendContent.platform }}</dd>
+            </div>
+            <div>
+              <dt>Statut</dt>
+              <dd>{{ duoSpendContent.stage }}</dd>
+            </div>
+            <div>
+              <dt>Capture</dt>
+              <dd>{{ duoSpendContent.preview.label }}</dd>
+            </div>
+          </dl>
+        </div>
       </section>
 
-      <section class="app-panel" aria-labelledby="duo-media-title">
-        <h2 id="duo-media-title">Capture</h2>
-        <div class="app-media">
-          <div class="app-media__shell">
-            <div class="app-media__bar" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
+      <section class="app-section" aria-labelledby="duo-capture-title">
+        <div class="section-heading">
+          <h2 id="duo-capture-title">Visuel</h2>
+          <p>Capture à remplacer quand le visuel final sera prêt.</p>
+        </div>
+
+        <div class="app-capture app-capture--image">
+          <div class="app-capture__bar" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div
+            class="app-capture__screen app-capture__screen--image"
+            role="img"
+            :aria-label="duoSpendContent.preview.alt"
+          >
             <img
               :src="duoSpendContent.preview.src"
               :alt="duoSpendContent.preview.alt"
@@ -58,21 +102,38 @@
       </section>
 
       <section class="app-section" aria-labelledby="duo-details-title">
-        <h2 id="duo-details-title">Détails</h2>
-        <ul class="app-list">
-          <li v-for="item in duoSpendContent.details" :key="item">
-            {{ item }}
-          </li>
-        </ul>
+        <div class="section-heading">
+          <h2 id="duo-details-title">Détails</h2>
+          <p>Repères à compléter avant publication.</p>
+        </div>
+
+        <div class="detail-grid">
+          <article
+            v-for="point in duoSpendContent.detailPoints"
+            :key="point.label"
+            class="detail-card"
+          >
+            <p class="detail-card__label">{{ point.label }}</p>
+            <p class="detail-card__value">{{ point.value }}</p>
+          </article>
+        </div>
       </section>
 
       <section class="app-section" aria-labelledby="duo-faq-title">
-        <h2 id="duo-faq-title">FAQ</h2>
+        <div class="section-heading">
+          <h2 id="duo-faq-title">FAQ</h2>
+          <p>Questions à compléter.</p>
+        </div>
+
         <AppFaqList :items="duoSpendContent.faq" />
       </section>
 
       <section class="app-section" aria-labelledby="duo-legal-title">
-        <h2 id="duo-legal-title">Mentions légales</h2>
+        <div class="section-heading">
+          <h2 id="duo-legal-title">Mentions légales</h2>
+          <p>Version provisoire en français et en anglais.</p>
+        </div>
+
         <AppLegalTabs
           base-id="duo-spend-legal"
           :content="duoSpendContent.legal"
@@ -80,14 +141,15 @@
         />
       </section>
 
-      <section class="app-panel app-panel--cta" aria-labelledby="duo-cta-title">
-        <h2 id="duo-cta-title">{{ duoSpendContent.cta.title }}</h2>
-        <p>{{ duoSpendContent.cta.description }}</p>
+      <section class="app-cta" id="release-form" aria-labelledby="duo-cta-title">
+        <div class="app-cta__heading">
+          <h2 id="duo-cta-title">{{ duoSpendContent.cta.title }}</h2>
+          <p>{{ duoSpendContent.cta.description }}</p>
+        </div>
+
         <AppReleaseInterestForm :app-name="duoSpendContent.name" />
-        <AppLink
-          :to="duoSpendContent.cta.secondaryTo"
-          class="app-secondary-link"
-        >
+
+        <AppLink :to="duoSpendContent.cta.secondaryTo" class="app-cta__link">
           {{ duoSpendContent.cta.secondaryLabel }}
         </AppLink>
       </section>
@@ -149,7 +211,7 @@ useHead({
 
 <style lang="scss" scoped>
 .app-page {
-  padding: clamp(2.5rem, 6vw, 4rem) 5% 5rem;
+  padding: clamp(2rem, 5vw, 3.5rem) 5% 5rem;
 
   @media (min-width: $breakpoint-tablet) {
     padding-inline: 10%;
@@ -157,7 +219,7 @@ useHead({
 }
 
 .app-shell {
-  width: min(100%, 74rem);
+  width: min(100%, 76rem);
   margin: 0 auto;
 }
 
@@ -165,11 +227,11 @@ useHead({
   display: grid;
   gap: 1.5rem;
   align-items: center;
-  padding-bottom: clamp(2rem, 5vw, 3.5rem);
+  padding-bottom: clamp(2.25rem, 5vw, 3.5rem);
 
-  @media (min-width: 900px) {
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-    gap: clamp(1.5rem, 4vw, 3rem);
+  @media (min-width: 920px) {
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+    gap: clamp(2rem, 4vw, 3.75rem);
   }
 }
 
@@ -182,97 +244,31 @@ useHead({
   align-items: center;
 }
 
-.app-frame,
-.app-panel,
-.app-media {
-  border-radius: 1.5rem;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.06);
-}
-
-.app-frame {
-  padding: 1rem;
-}
-
-.app-frame__bar,
-.app-media__bar {
-  display: flex;
-  align-items: center;
-  gap: 0.38rem;
-}
-
-.app-frame__bar {
-  margin-bottom: 0.75rem;
-}
-
-.app-frame__bar span,
-.app-media__bar span {
-  width: 0.56rem;
-  height: 0.56rem;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.2);
-}
-
-.app-frame__bar span:first-child,
-.app-media__bar span:first-child {
-  background: rgba(239, 68, 68, 0.55);
-}
-
-.app-frame__bar span:nth-child(2),
-.app-media__bar span:nth-child(2) {
-  background: rgba(245, 158, 11, 0.55);
-}
-
-.app-frame__bar span:nth-child(3),
-.app-media__bar span:nth-child(3) {
-  background: rgba(34, 197, 94, 0.55);
-}
-
-.app-frame img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 1.2rem;
-}
-
-.app-panel {
-  margin-top: 1rem;
-  padding: 1.35rem;
-}
-
-.app-section {
-  display: grid;
-  gap: 0.9rem;
-  margin-top: 1rem;
-}
-
 .app-meta {
-  margin: 0 0 0.75rem;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  margin: 0 0 0.8rem;
   color: $vert;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .app-hero h1,
-.app-panel h2,
-.app-section h2 {
+.section-heading h2 {
   margin: 0;
   color: $gris1;
 }
 
 .app-hero h1 {
-  font-size: clamp(2.6rem, 6vw, 4.5rem);
-  line-height: 0.95;
-  letter-spacing: -0.04em;
+  font-size: clamp(3.1rem, 6.8vw, 5.8rem);
+  line-height: 0.93;
+  letter-spacing: -0.055em;
 }
 
 .app-intro,
-.app-summary,
-.app-panel p,
-.app-section p {
-  margin: 0.85rem 0 0;
+.app-summary {
+  margin: 0.9rem 0 0;
+  max-width: 36rem;
   color: $gris2;
   line-height: 1.65;
 }
@@ -281,65 +277,280 @@ useHead({
   color: $gris3;
 }
 
-.app-media {
-  margin-top: 1rem;
-  overflow: hidden;
-  background: linear-gradient(
-    145deg,
-    rgba(243, 244, 246, 0.95),
-    rgba(255, 255, 255, 0.95)
-  );
+.app-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.35rem;
 }
 
-.app-media__shell {
-  padding: 1rem;
+.app-primary-action,
+.app-secondary-action,
+.app-cta__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.9rem;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
 }
 
-.app-media img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 1.2rem;
+.app-primary-action {
+  background: $vert;
+  color: white;
 }
 
-.app-list {
-  margin: 1rem 0 0;
-  padding-left: 1.2rem;
+.app-secondary-action,
+.app-cta__link {
+  background: rgba(243, 244, 246, 0.9);
   color: $gris2;
 }
 
-.app-list li + li {
-  margin-top: 0.55rem;
+.app-primary-action:focus-visible,
+.app-secondary-action:focus-visible,
+.app-cta__link:focus-visible {
+  outline: 2px solid $vert;
+  outline-offset: 3px;
 }
 
-.app-panel--cta {
+.app-mockup {
+  padding: 1rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.1);
+}
+
+.app-mockup--dark {
+  background: linear-gradient(180deg, #111827, #0f172a);
+}
+
+.app-mockup__bar,
+.app-capture__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.38rem;
+  margin-bottom: 0.8rem;
+}
+
+.app-mockup__bar span,
+.app-capture__bar span {
+  width: 0.56rem;
+  height: 0.56rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.app-mockup__bar span:first-child,
+.app-capture__bar span:first-child {
+  background: rgba(239, 68, 68, 0.62);
+}
+
+.app-mockup__bar span:nth-child(2),
+.app-capture__bar span:nth-child(2) {
+  background: rgba(245, 158, 11, 0.58);
+}
+
+.app-mockup__bar span:nth-child(3),
+.app-capture__bar span:nth-child(3) {
+  background: rgba(34, 197, 94, 0.58);
+}
+
+.app-mockup__screen {
+  min-height: 20rem;
+  border-radius: 1.15rem;
   display: grid;
-  gap: 1rem;
+  place-items: center;
+  padding: 1.25rem;
+}
+
+.app-mockup__screen--image {
   background: linear-gradient(
     145deg,
-    rgba(4, 217, 79, 0.08),
-    rgba(255, 255, 255, 0.96)
+    rgba(255, 255, 255, 0.04),
+    rgba(4, 217, 79, 0.06)
   );
 }
 
-.app-section .app-list {
-  margin-top: 0.2rem;
+.app-mockup__screen--image img,
+.app-capture__screen--image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
 }
 
-.app-panel--cta p {
-  margin-top: 0;
+.app-surface {
+  display: grid;
+  gap: 1.25rem;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border-radius: 1.5rem;
+  background: rgba(243, 244, 246, 0.88);
 }
 
-.app-secondary-link {
-  width: fit-content;
+@media (min-width: 900px) {
+  .app-surface {
+    grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
+    align-items: start;
+  }
+}
+
+.app-surface__copy {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.app-surface__copy p {
+  margin: 0;
+  color: $gris2;
+  line-height: 1.65;
+}
+
+.app-surface__status {
+  padding: 1rem;
+  border-radius: 1.15rem;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.app-surface__eyebrow {
+  margin: 0 0 0.75rem;
   color: $vert;
-  text-decoration: underline;
-  text-underline-offset: 0.18em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.app-secondary-link:focus-visible {
-  outline: 2px solid $vert;
-  outline-offset: 3px;
-  border-radius: 0.35rem;
+.app-surface__list {
+  display: grid;
+  gap: 0.9rem;
+  margin: 0;
+}
+
+.app-surface__list div {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.app-surface__list dt {
+  color: $gris3;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.app-surface__list dd {
+  margin: 0;
+  color: $gris1;
+  font-weight: 600;
+}
+
+.app-section {
+  display: grid;
+  gap: 1rem;
+  margin-top: clamp(2rem, 5vw, 3rem);
+}
+
+.section-heading {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.section-heading p {
+  margin: 0;
+  max-width: 40rem;
+  color: $gris2;
+  line-height: 1.6;
+}
+
+.app-capture {
+  padding: 1rem;
+  border-radius: 1.45rem;
+  background: linear-gradient(
+    145deg,
+    rgba(243, 244, 246, 0.95),
+    rgba(255, 255, 255, 0.96)
+  );
+  box-shadow: 0 18px 34px rgba(15, 23, 42, 0.05);
+}
+
+.app-capture__screen {
+  min-height: 18rem;
+  border-radius: 1.15rem;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.app-capture__screen--image {
+  padding: 1rem;
+}
+
+.app-capture__screen--image img {
+  max-width: 100%;
+}
+
+.detail-grid {
+  display: grid;
+  gap: 0.75rem;
+
+  @media (min-width: 700px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 1080px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.detail-card {
+  display: grid;
+  gap: 0.4rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.detail-card__label {
+  margin: 0;
+  color: $vert;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.detail-card__value {
+  margin: 0;
+  color: $gris1;
+  font-weight: 600;
+}
+
+.app-cta {
+  display: grid;
+  gap: 1rem;
+  margin-top: clamp(2rem, 5vw, 3rem);
+}
+
+.app-cta__heading {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.app-cta__heading h2 {
+  margin: 0;
+  color: $gris1;
+}
+
+.app-cta__heading p {
+  margin: 0;
+  color: $gris2;
+  line-height: 1.6;
+  max-width: 34rem;
+}
+
+.app-cta__link {
+  width: fit-content;
 }
 </style>

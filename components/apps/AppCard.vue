@@ -1,11 +1,6 @@
 <template>
   <article class="app-card" :class="`app-card--${props.variant}`">
     <figure class="app-card__visual">
-      <div class="app-card__windowbar" aria-hidden="true">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
       <div
         class="app-card__media"
         :class="{
@@ -36,12 +31,15 @@
     </figure>
 
     <div class="app-card__body">
-      <p class="app-card__platform">{{ props.app.platform }}</p>
+      <div class="app-card__chips" aria-label="Statut de l'app">
+        <span class="app-card__chip">{{ props.app.stage }}</span>
+        <span class="app-card__chip">{{ props.app.platform }}</span>
+      </div>
       <h3 class="app-card__title">{{ props.app.name }}</h3>
       <p class="app-card__summary">{{ props.app.summary }}</p>
-      <AppLink :to="props.app.href" class="app-card__link"
-        >Voir la page</AppLink
-      >
+      <AppLink :to="props.app.href" class="app-card__link">
+        Voir la page
+      </AppLink>
     </div>
   </article>
 </template>
@@ -64,14 +62,6 @@ const props = withDefaults(
 .app-card {
   display: grid;
   gap: 1rem;
-  padding: 1.15rem;
-  border-radius: 1.5rem;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.98),
-    rgba(246, 248, 250, 0.96)
-  );
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
 }
 
 .app-card--featured {
@@ -84,46 +74,16 @@ const props = withDefaults(
 
 .app-card__visual {
   display: grid;
-  gap: 0.7rem;
   margin: 0;
-}
-
-.app-card__windowbar {
-  display: flex;
-  align-items: center;
-  gap: 0.38rem;
-  padding-inline: 0.1rem;
-}
-
-.app-card__windowbar span {
-  width: 0.56rem;
-  height: 0.56rem;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.2);
-}
-
-.app-card__windowbar span:first-child {
-  background: rgba(239, 68, 68, 0.55);
-}
-
-.app-card__windowbar span:nth-child(2) {
-  background: rgba(245, 158, 11, 0.55);
-}
-
-.app-card__windowbar span:nth-child(3) {
-  background: rgba(34, 197, 94, 0.55);
 }
 
 .app-card__media {
   overflow: hidden;
   border-radius: 1.25rem;
-  background: linear-gradient(
-    145deg,
-    rgba(243, 244, 246, 0.95),
-    rgba(255, 255, 255, 0.95)
-  );
+  background: rgba(243, 244, 246, 0.92);
   aspect-ratio: var(--app-card-ratio);
   position: relative;
+  box-shadow: 0 18px 34px rgba(15, 23, 42, 0.06);
 
   img {
     display: block;
@@ -134,11 +94,7 @@ const props = withDefaults(
 }
 
 .app-card__media--placeholder {
-  background: linear-gradient(
-    145deg,
-    rgba(4, 57, 217, 0.05),
-    rgba(4, 217, 79, 0.08)
-  );
+  background: linear-gradient(145deg, rgba(4, 57, 217, 0.04), rgba(4, 217, 79, 0.08));
 }
 
 .app-card__placeholder {
@@ -176,21 +132,33 @@ const props = withDefaults(
 
 .app-card__body {
   display: grid;
-  gap: 0.75rem;
+  gap: 0.7rem;
+  max-width: 38rem;
 }
 
-.app-card__platform {
-  margin: 0;
-  font-size: 0.74rem;
+.app-card__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.app-card__chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.6rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(243, 244, 246, 0.95);
+  color: $gris3;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: $vert;
 }
 
 .app-card__title {
   margin: 0;
-  font-size: clamp(1.55rem, 3vw, 2.1rem);
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
   line-height: 0.98;
   color: $gris1;
 }
@@ -199,7 +167,7 @@ const props = withDefaults(
   margin: 0;
   color: $gris2;
   line-height: 1.65;
-  max-width: 34ch;
+  max-width: 36ch;
 }
 
 .app-card__link {
@@ -217,7 +185,7 @@ const props = withDefaults(
 }
 
 .app-card--featured .app-card__summary {
-  max-width: 38ch;
+  max-width: 40ch;
 }
 
 .app-card--compact .app-card__title {

@@ -30,6 +30,8 @@ defineProps<{
 
 <style lang="scss" scoped>
 .app-breadcrumb {
+  position: static;
+  inset: auto;
   margin-bottom: clamp(1rem, 2.2vw, 1.5rem);
 }
 

@@ -96,32 +96,35 @@ function onKeydown(event: KeyboardEvent, index: number) {
 .legal-tabs {
   display: grid;
   gap: 1rem;
+  overflow: hidden;
+  border-radius: 1.2rem;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.04);
 }
 
 .legal-tabs__list {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-  padding: 0.3rem;
-  border-radius: 999px;
-  background: rgba(243, 244, 246, 0.9);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.35rem;
+  padding: 0.35rem;
+  background: rgba(243, 244, 246, 0.88);
 }
 
 .legal-tabs__tab {
-  min-height: 2.75rem;
-  padding: 0.65rem 1rem;
+  min-height: 2.9rem;
+  padding: 0.7rem 1rem;
   border: 0;
-  border-radius: 999px;
+  border-radius: 0.85rem;
   background: transparent;
   color: $gris3;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   cursor: pointer;
 }
 
 .legal-tabs__tab--active {
   background: white;
   color: $vert;
-  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.05);
 }
 
 .legal-tabs__tab:focus-visible {
@@ -130,7 +133,14 @@ function onKeydown(event: KeyboardEvent, index: number) {
 }
 
 .legal-tabs__panel {
-  padding: 0.25rem 0 0;
+  padding: 0 1.15rem 1.15rem;
+}
+
+.legal-tabs__title {
+  margin: 0 0 0.65rem;
+  color: $gris1;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
 }
 
 .legal-tabs__panel p {

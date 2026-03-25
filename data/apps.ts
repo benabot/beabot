@@ -11,6 +11,7 @@ export interface AppIndexEntry {
   slug: string
   name: string
   platform: string
+  stage: string
   summary: string
   href: string
   preview: AppPreview
@@ -38,15 +39,21 @@ export interface AppCta {
   secondaryTo: string
 }
 
+export interface AppDetailPoint {
+  label: string
+  value: string
+}
+
 export interface AppDetailContent {
   slug: string
   name: string
   platform: string
+  stage: string
   href: string
   intro: string
   summary: string
   overview: string[]
-  details: string[]
+  detailPoints: AppDetailPoint[]
   preview: AppPreview
   faq: AppFaqItem[]
   legal: AppLegalTabsContent
@@ -63,9 +70,9 @@ export interface BreadcrumbEntry {
 }
 
 export const appsIndexContent = {
-  title: 'Mes apps Apple',
-  intro: 'Applications du site.',
-  closingText: 'D’autres pages seront ajoutées ici.',
+  title: 'Mes Apps Apple',
+  intro: 'Applications Apple en préparation.',
+  closingText: 'Le blog et le portfolio restent accessibles.',
   links: [
     {
       label: 'Blog',
@@ -78,7 +85,7 @@ export const appsIndexContent = {
   ],
   seo: {
     title: 'Apps',
-    description: 'Pages des applications BeAbot.',
+    description: 'Applications BeAbot en préparation.',
   },
 }
 
@@ -87,19 +94,21 @@ export const appsIndexEntries: AppIndexEntry[] = [
     slug: 'meeting-mode',
     name: 'Meeting Mode',
     platform: 'macOS',
-    summary: 'Page à venir.',
+    stage: 'Prépublication',
+    summary: 'Page à compléter.',
     href: '/apps/meeting-mode/',
     preview: {
       alt: 'Emplacement de capture pour Meeting Mode',
       available: false,
-      label: 'Capture à ajouter',
+      label: 'Capture à venir',
     },
   },
   {
     slug: 'duo-spend',
     name: 'DuoSpend',
     platform: 'iOS',
-    summary: 'Page à venir.',
+    stage: 'Prépublication',
+    summary: 'Page à compléter.',
     href: '/apps/duo-spend/',
     preview: {
       src: '/img/duospend.webp',
@@ -114,49 +123,69 @@ export const meetingModeContent: AppDetailContent = {
   slug: 'meeting-mode',
   name: 'Meeting Mode',
   platform: 'macOS',
+  stage: 'Prépublication',
   href: '/apps/meeting-mode/',
-  intro: 'macOS.',
-  summary: 'Page à compléter.',
-  overview: ['Texte à venir.'],
-  details: ['Visuels à ajouter.', 'Détails à préciser.'],
+  intro: 'Présentation à compléter.',
+  summary: 'Contenu à compléter avant publication.',
+  overview: ['Texte à compléter avant publication.'],
+  detailPoints: [
+    {
+      label: 'Plateforme',
+      value: 'macOS',
+    },
+    {
+      label: 'Statut',
+      value: 'Prépublication',
+    },
+    {
+      label: 'Capture',
+      value: 'À venir',
+    },
+    {
+      label: 'Texte',
+      value: 'À compléter',
+    },
+  ],
   preview: {
     alt: 'Emplacement de capture pour Meeting Mode',
     available: false,
-    label: 'Capture à ajouter',
+    label: 'Capture à venir',
   },
   faq: [
     {
-      question: 'La page est-elle finalisée ?',
-      answer: 'Non.',
+      question: 'Question à compléter',
+      answer: 'Réponse à compléter.',
     },
     {
-      question: 'La sortie est-elle annoncée ?',
-      answer: 'Pas encore.',
+      question: 'Question à compléter',
+      answer: 'Réponse à compléter.',
     },
   ],
   legal: {
     fr: {
+      title: 'Mentions légales',
       paragraphs: [
         'Texte provisoire à compléter avant publication.',
-        'Contact : hello@beabot.fr.',
+        'Informations finales à ajouter avant mise en ligne.',
       ],
     },
     en: {
+      title: 'Legal',
       paragraphs: [
-        'Temporary text to complete before publication.',
-        'Contact: hello@beabot.fr.',
+        'Temporary copy to complete before publication.',
+        'Final information will be added before launch.',
       ],
     },
   },
   cta: {
-    title: 'Être informé de la sortie',
-    description: "L'app n'est pas encore publiée.",
+    title: 'Être informé',
+    description: "Recevoir un message quand l'app est prête.",
     secondaryLabel: 'Retour aux apps',
     secondaryTo: '/apps/',
   },
   seo: {
     title: 'Meeting Mode',
-    description: 'Page Meeting Mode.',
+    description: 'Présentation de Meeting Mode en cours de préparation.',
   },
 }
 
@@ -164,11 +193,29 @@ export const duoSpendContent: AppDetailContent = {
   slug: 'duo-spend',
   name: 'DuoSpend',
   platform: 'iOS',
+  stage: 'Prépublication',
   href: '/apps/duo-spend/',
-  intro: 'iOS.',
-  summary: 'Page à compléter.',
-  overview: ['Texte à venir.'],
-  details: ['Visuels à ajouter.', 'Détails à préciser.'],
+  intro: 'Présentation à compléter.',
+  summary: 'Contenu à compléter avant publication.',
+  overview: ['Texte à compléter avant publication.'],
+  detailPoints: [
+    {
+      label: 'Plateforme',
+      value: 'iOS',
+    },
+    {
+      label: 'Statut',
+      value: 'Prépublication',
+    },
+    {
+      label: 'Capture',
+      value: 'Capture actuelle',
+    },
+    {
+      label: 'Texte',
+      value: 'À compléter',
+    },
+  ],
   preview: {
     src: '/img/duospend.webp',
     alt: 'Capture de l’app DuoSpend',
@@ -177,37 +224,39 @@ export const duoSpendContent: AppDetailContent = {
   },
   faq: [
     {
-      question: 'La page est-elle finalisée ?',
-      answer: 'Non.',
+      question: 'Question à compléter',
+      answer: 'Réponse à compléter.',
     },
     {
-      question: 'La sortie est-elle annoncée ?',
-      answer: 'Pas encore.',
+      question: 'Question à compléter',
+      answer: 'Réponse à compléter.',
     },
   ],
   legal: {
     fr: {
+      title: 'Mentions légales',
       paragraphs: [
         'Texte provisoire à compléter avant publication.',
-        'Contact : hello@beabot.fr.',
+        'Informations finales à ajouter avant mise en ligne.',
       ],
     },
     en: {
+      title: 'Legal',
       paragraphs: [
-        'Temporary text to complete before publication.',
-        'Contact: hello@beabot.fr.',
+        'Temporary copy to complete before publication.',
+        'Final information will be added before launch.',
       ],
     },
   },
   cta: {
-    title: 'Être informé de la sortie',
-    description: "L'app n'est pas encore publiée.",
+    title: 'Être informé',
+    description: "Recevoir un message quand l'app est prête.",
     secondaryLabel: 'Retour aux apps',
     secondaryTo: '/apps/',
   },
   seo: {
     title: 'DuoSpend',
-    description: 'Page DuoSpend.',
+    description: 'Présentation de DuoSpend en cours de préparation.',
   },
 }
 

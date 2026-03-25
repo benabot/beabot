@@ -27,7 +27,7 @@
       </section>
 
       <section class="apps-closing" aria-labelledby="apps-closing-title">
-        <h2 id="apps-closing-title">À venir</h2>
+        <h2 id="apps-closing-title">Voir aussi</h2>
         <p>{{ appsIndexContent.closingText }}</p>
         <div class="apps-closing__links">
           <AppLink
@@ -95,7 +95,7 @@ useHead({
 
 <style lang="scss" scoped>
 .apps-index {
-  padding: clamp(2.5rem, 6vw, 4rem) 5% 5rem;
+  padding: clamp(2rem, 5vw, 3.5rem) 5% 5rem;
 
   @media (min-width: $breakpoint-tablet) {
     padding-inline: 10%;
@@ -103,13 +103,13 @@ useHead({
 }
 
 .apps-shell {
-  width: min(100%, 74rem);
+  width: min(100%, 76rem);
   margin: 0 auto;
 }
 
 .apps-hero {
-  max-width: 46rem;
-  padding-bottom: clamp(2rem, 5vw, 3rem);
+  max-width: 48rem;
+  padding-bottom: clamp(2.25rem, 5vw, 3.4rem);
 }
 
 .apps-hero__eyebrow {
@@ -132,9 +132,9 @@ useHead({
 }
 
 .apps-hero h1 {
-  font-size: clamp(2.7rem, 6vw, 4.6rem);
+  font-size: clamp(3.1rem, 6.4vw, 5.4rem);
   line-height: 0.95;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.05em;
 }
 
 .apps-hero p,
@@ -142,17 +142,16 @@ useHead({
   margin: 0.9rem 0 0;
   color: $gris2;
   line-height: 1.65;
-  max-width: 38rem;
+  max-width: 34rem;
 }
 
 .apps-closing {
   display: grid;
   gap: 1rem;
   margin-top: clamp(2rem, 5vw, 3.5rem);
-  padding: 1.5rem;
+  padding: clamp(1.3rem, 3vw, 1.75rem);
   border-radius: 1.5rem;
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.05);
+  background: rgba(243, 244, 246, 0.82);
 
   @media (min-width: 900px) {
     grid-template-columns: minmax(0, 1fr) auto;

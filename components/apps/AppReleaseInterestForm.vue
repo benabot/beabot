@@ -12,41 +12,42 @@
     <input type="hidden" name="app" :value="appName" />
 
     <p class="release-form__honeypot">
-      <label
-        >Ne pas remplir : <input v-model="botField" name="bot-field"
-      /></label>
+      <label>
+        Ne pas remplir
+        <input v-model="botField" name="bot-field" />
+      </label>
     </p>
 
-    <label class="release-form__field">
-      Être informé de la sortie de l'app
-      <input
-        v-model="email"
-        type="email"
-        name="email"
-        required
-        autocomplete="email"
-        inputmode="email"
-        placeholder="vous@exemple.fr"
-      />
-    </label>
+    <div class="release-form__intro">
+      <p class="release-form__eyebrow">Prépublication</p>
+      <h3>Être informé de la sortie de l'app</h3>
+      <p>Le formulaire enregistre la demande quand la page est prête.</p>
+    </div>
 
-    <button type="submit" :disabled="loading">
-      {{ loading ? 'Envoi…' : "M'informer de la sortie" }}
-    </button>
+    <div class="release-form__controls">
+      <label class="release-form__field">
+        <span>Adresse e-mail</span>
+        <input
+          v-model="email"
+          type="email"
+          name="email"
+          required
+          autocomplete="email"
+          inputmode="email"
+          placeholder="vous@exemple.fr"
+        />
+      </label>
 
-    <p class="release-form__note">
-      Le formulaire transmet votre demande à hello@beabot.fr.
-    </p>
+      <button type="submit" :disabled="loading">
+        {{ loading ? 'Envoi…' : 'Envoyer' }}
+      </button>
+    </div>
+
     <p v-if="sent" class="release-form__success" aria-live="polite">
-      Demande envoyée pour {{ appName }}.
+      Demande enregistrée pour {{ appName }}.
     </p>
     <p v-else-if="error" class="release-form__error" aria-live="assertive">
       {{ error }}
-    </p>
-
-    <p class="release-form__fallback">
-      Ou écrivez directement à
-      <a :href="mailtoHref">hello@beabot.fr</a>.
     </p>
   </form>
 </template>
@@ -66,16 +67,6 @@ const botField = ref('')
 const loading = ref(false)
 const sent = ref(false)
 const error = ref('')
-
-const mailtoHref = computed(() => {
-  const subject = encodeURIComponent(
-    `Être informé de la sortie de ${props.appName}`,
-  )
-  const body = encodeURIComponent(
-    `Bonjour,\n\nJe souhaite être informé de la sortie de ${props.appName}.\n\nMon email : ${email.value || '[à compléter]'}\n`,
-  )
-  return `mailto:hello@beabot.fr?subject=${subject}&body=${body}`
-})
 
 function encode(data: Record<string, string>) {
   return Object.keys(data)
@@ -111,8 +102,7 @@ async function onSubmit() {
     email.value = ''
     botField.value = ''
   } catch {
-    error.value =
-      'Impossible d’envoyer la demande pour le moment. Utilisez le lien email juste en dessous.'
+    error.value = 'Impossible d’envoyer la demande pour le moment.'
   } finally {
     loading.value = false
   }
@@ -122,35 +112,85 @@ async function onSubmit() {
 <style lang="scss" scoped>
 .release-form {
   display: grid;
-  gap: 0.9rem;
+  gap: 1rem;
+  padding: clamp(1.25rem, 3vw, 1.85rem);
+  border-radius: 1.5rem;
+  background: linear-gradient(135deg, #04d94f 0%, #03c944 100%);
+  color: white;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
 
   @media (min-width: $breakpoint-tablet) {
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
     align-items: end;
+    gap: 1.25rem 1.5rem;
+  }
+}
+
+.release-form__intro {
+  display: grid;
+  gap: 0.55rem;
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-column: 1 / 2;
+    max-width: 34rem;
+  }
+}
+
+.release-form__eyebrow {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.release-form__intro h3 {
+  margin: 0;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.release-form__intro p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.65;
+}
+
+.release-form__controls {
+  display: grid;
+  gap: 0.85rem;
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-column: 2 / 3;
   }
 }
 
 .release-form__field {
   display: grid;
-  gap: 0.55rem;
+  gap: 0.5rem;
   font-weight: 600;
-  color: $gris2;
+  color: rgba(255, 255, 255, 0.94);
 }
 
 .release-form__field input {
   width: 100%;
   min-height: 3rem;
-  padding: 0.8rem 0.95rem;
-  border: 1px solid rgba(0, 0, 0, 0.14);
-  border-radius: 0.9rem;
-  background: rgba(255, 255, 255, 0.9);
-  color: $gris1;
+  padding: 0.85rem 0.95rem;
+  border: 0;
+  border-radius: 0.95rem;
+  background: rgba(255, 255, 255, 0.18);
+  color: white;
+}
+
+.release-form__field input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .release-form__field input:focus-visible {
   outline: none;
-  border-color: $vert;
-  box-shadow: 0 0 0 4px rgba(13, 199, 99, 0.14);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.28);
 }
 
 .release-form button {
@@ -159,59 +199,32 @@ async function onSubmit() {
   justify-content: center;
   width: 100%;
   min-height: 3rem;
-  padding: 0.8rem 1.2rem;
+  padding: 0.85rem 1.2rem;
   border: 0;
   border-radius: 999px;
-  background: $vert;
-  color: white;
-  font-weight: 700;
+  background: white;
+  color: $vert;
+  font-weight: 800;
   cursor: pointer;
   transition:
     transform 0.14s ease,
     box-shadow 0.14s ease,
     opacity 0.14s ease;
-
-  @media (min-width: $breakpoint-tablet) {
-    width: auto;
-  }
 }
 
 .release-form button:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(13, 199, 99, 0.18);
+  box-shadow: 0 12px 24px rgba(255, 255, 255, 0.14);
 }
 
 .release-form button:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 4px rgba(13, 199, 99, 0.18);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.38);
 }
 
 .release-form button:disabled {
-  opacity: 0.7;
+  opacity: 0.72;
   cursor: progress;
-}
-
-.release-form__note,
-.release-form__fallback {
-  margin: 0;
-  color: $gris3;
-  line-height: 1.6;
-
-  @media (min-width: $breakpoint-tablet) {
-    grid-column: 1 / -1;
-  }
-}
-
-.release-form__fallback a {
-  color: $vert;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.release-form__fallback a:focus-visible {
-  outline: 2px solid $vert;
-  outline-offset: 3px;
-  border-radius: 0.3rem;
 }
 
 .release-form__success,
@@ -225,11 +238,11 @@ async function onSubmit() {
 }
 
 .release-form__success {
-  color: darken($vert, 10%);
+  color: rgba(255, 255, 255, 0.96);
 }
 
 .release-form__error {
-  color: #b91c1c;
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .release-form__honeypot {
