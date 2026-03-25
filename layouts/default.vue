@@ -13,9 +13,7 @@
       <transition name="slide-right">
         <ul v-if="showMobileMenu" class="menu-mobile">
           <li @click="showMobileMenu = !showMobileMenu">
-            <AppLink to="/" class="title title--menu h2">
-              Accueil
-            </AppLink>
+            <AppLink to="/" class="title title--menu h2"> Accueil </AppLink>
           </li>
           <li @click="showMobileMenu = !showMobileMenu">
             <AppLink to="/eco-conception/" class="title title--menu h2">
@@ -28,8 +26,9 @@
             </AppLink>
           </li>
           <li @click="showMobileMenu = !showMobileMenu">
-            <AppLink to="/contact/" class="title title--menu h2">Contact</AppLink>
-            
+            <AppLink to="/contact/" class="title title--menu h2"
+              >Contact</AppLink
+            >
           </li>
         </ul>
       </transition>
@@ -125,14 +124,10 @@
       </AppLink>
     </nav>
     <nav role="navigation" class="nav-desktop nav-3 h4">
-      <AppLink to="/portfolio/" :class="couleurBas">
-        Portfolio
-      </AppLink>
+      <AppLink to="/portfolio/" :class="couleurBas"> Portfolio </AppLink>
     </nav>
     <nav role="navigation" class="nav-desktop nav-4 h4">
-     
-                  <AppLink to="/contact/" :class="couleurBas">Contact</AppLink>
-
+      <AppLink to="/contact/" :class="couleurBas">Contact</AppLink>
     </nav>
     <slot :class="{ 'main-flou': showMobileMenu }" />
     <TheFooter />
@@ -157,7 +152,6 @@ const showMobileMenu = ref(false)
 const acc = computed(() => route.path)
 
 const couleurHaut = computed(() => {
-  let clr = 'couleur-gris'
   if (acc.value === '/') {
     if (scrollPosition.value < windowHeight.value) {
       return 'couleur-none'
@@ -171,11 +165,10 @@ const couleurHaut = computed(() => {
       return 'couleur-blanc'
     }
   }
-  return clr
+  return 'couleur-gris'
 })
 
 const couleurBas = computed(() => {
-  let clr = 'couleur-gris'
   if (acc.value === '/') {
     if (scrollPosition.value < 66) {
       return 'couleur-none'
@@ -189,7 +182,7 @@ const couleurBas = computed(() => {
       return 'couleur-blanc'
     }
   }
-  return clr
+  return 'couleur-gris'
 })
 
 const updateScroll = () => {
@@ -219,7 +212,7 @@ a.nuxt-link-active {
 
 .nav-desktop a.router-link-active,
 .nav-desktop a.router-link-exact-active {
-font-weight: bold;
+  font-weight: bold;
 }
 // .fade-enter {
 //   color: red;
@@ -356,7 +349,10 @@ font-weight: bold;
     &-3 {
       bottom: 6px;
       left: 10px;
-      background: linear-gradient(color.adjust($bleu2, $lightness: 10%), color.adjust($bleu2, $lightness: 10%))
+      background: linear-gradient(
+          color.adjust($bleu2, $lightness: 10%),
+          color.adjust($bleu2, $lightness: 10%)
+        )
         left bottom / 0 0.1em no-repeat;
     }
     &-4 {

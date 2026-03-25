@@ -19,7 +19,6 @@
               >
             </li>
             <li><AppLink to="/portfolio/" no-prefetch>Portfolio</AppLink></li>
-            <li><AppLink to="/apps/" no-prefetch>Apps</AppLink></li>
             <li>
               <AppLink to="/eco-conception/faq-eco-conception/" no-prefetch
                 >FAQ Éco-conception</AppLink

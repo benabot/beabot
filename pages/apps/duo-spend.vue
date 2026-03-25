@@ -1,60 +1,25 @@
 <template>
-  <main class="app-detail">
-    <section class="app-hero">
-      <div class="app-hero__copy">
-        <p class="app-kicker">{{ duoSpendContent.platform }}</p>
-        <h1>{{ duoSpendContent.heroTitle }}</h1>
-        <p class="app-hero__lead">{{ duoSpendContent.heroLead }}</p>
-        <p class="app-hero__description">
-          {{ duoSpendContent.heroDescription }}
+  <main class="app-page">
+    <div class="app-shell">
+      <AppBreadcrumb :items="breadcrumbItems" />
+
+      <section class="app-hero">
+        <p class="app-meta">{{ duoSpendContent.platform }}</p>
+        <h1>{{ duoSpendContent.name }}</h1>
+        <p class="app-intro">{{ duoSpendContent.intro }}</p>
+        <p class="app-summary">{{ duoSpendContent.summary }}</p>
+      </section>
+
+      <section class="app-panel" aria-labelledby="duo-overview-title">
+        <h2 id="duo-overview-title">Aperçu</h2>
+        <p v-for="paragraph in duoSpendContent.overview" :key="paragraph">
+          {{ paragraph }}
         </p>
-        <div class="app-hero__actions">
-          <AppLink
-            :to="duoSpendContent.cta.to"
-            class="app-btn app-btn--primary"
-          >
-            {{ duoSpendContent.cta.label }}
-          </AppLink>
-          <AppLink to="/apps/" class="app-btn app-btn--secondary">
-            Retour aux apps
-          </AppLink>
-        </div>
-      </div>
+      </section>
 
-      <div class="app-preview">
-        <img
-          :src="duoSpendContent.preview.src"
-          :alt="duoSpendContent.preview.alt"
-          width="900"
-          height="620"
-          loading="eager"
-          decoding="async"
-        />
-      </div>
-    </section>
-
-    <div class="timeline-dot" aria-hidden="true">
-      <span class="timeline-dot__core"></span>
-    </div>
-
-    <section class="app-section" aria-labelledby="duospend-problem-title">
-      <h2 id="duospend-problem-title">Le problème</h2>
-      <p v-for="paragraph in duoSpendContent.problem" :key="paragraph">
-        {{ paragraph }}
-      </p>
-    </section>
-
-    <div class="timeline-dot" aria-hidden="true">
-      <span class="timeline-dot__core"></span>
-    </div>
-
-    <section
-      class="app-section app-section--wide"
-      aria-labelledby="duospend-capture-title"
-    >
-      <h2 id="duospend-capture-title">Capture</h2>
-      <div class="capture-panel">
-        <div class="capture-panel__image">
+      <section class="app-panel" aria-labelledby="duo-media-title">
+        <h2 id="duo-media-title">Capture</h2>
+        <div class="app-media">
           <img
             :src="duoSpendContent.preview.src"
             :alt="duoSpendContent.preview.alt"
@@ -64,66 +29,69 @@
             decoding="async"
           />
         </div>
-        <div class="capture-panel__notes">
-          <p v-for="note in duoSpendContent.captureNotes" :key="note">
-            {{ note }}
-          </p>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <div class="timeline-dot" aria-hidden="true">
-      <span class="timeline-dot__core"></span>
-    </div>
+      <section class="app-panel" aria-labelledby="duo-details-title">
+        <h2 id="duo-details-title">Détails</h2>
+        <ul class="app-list">
+          <li v-for="item in duoSpendContent.details" :key="item">
+            {{ item }}
+          </li>
+        </ul>
+      </section>
 
-    <section class="app-section" aria-labelledby="duospend-faq-title">
-      <h2 id="duospend-faq-title">FAQ</h2>
-      <AppFaqList :items="duoSpendContent.faq" />
-    </section>
+      <section class="app-panel" aria-labelledby="duo-faq-title">
+        <h2 id="duo-faq-title">FAQ</h2>
+        <AppFaqList :items="duoSpendContent.faq" />
+      </section>
 
-    <div class="timeline-dot" aria-hidden="true">
-      <span class="timeline-dot__core"></span>
-    </div>
+      <section class="app-panel" aria-labelledby="duo-legal-title">
+        <h2 id="duo-legal-title">Mentions légales</h2>
+        <AppLegalTabs
+          base-id="duo-spend-legal"
+          :content="duoSpendContent.legal"
+          label="Mentions légales"
+        />
+      </section>
 
-    <section
-      class="app-section app-section--wide"
-      aria-labelledby="duospend-privacy-title"
-    >
-      <h2 id="duospend-privacy-title">Politique de confidentialité</h2>
-      <AppPrivacyPolicy :policy="duoSpendContent.privacy" />
-    </section>
-
-    <div class="timeline-dot" aria-hidden="true">
-      <span class="timeline-dot__core"></span>
-    </div>
-
-    <section class="app-cta" aria-labelledby="duospend-cta-title">
-      <div class="app-cta__panel">
-        <h2 id="duospend-cta-title">Être informé de la sortie de l'app</h2>
-        <p>{{ duoSpendContent.cta.note }}</p>
+      <section class="app-panel app-panel--cta" aria-labelledby="duo-cta-title">
+        <h2 id="duo-cta-title">{{ duoSpendContent.cta.title }}</h2>
+        <p>{{ duoSpendContent.cta.description }}</p>
         <AppReleaseInterestForm :app-name="duoSpendContent.name" />
-        <div class="app-cta__actions">
-          <AppLink
-            :to="duoSpendContent.cta.to"
-            class="app-btn app-btn--primary"
-          >
-            Me contacter
-          </AppLink>
-          <AppLink to="/apps/" class="app-btn app-btn--secondary">
-            Retour à la page Apps
-          </AppLink>
-        </div>
-      </div>
-    </section>
+        <AppLink
+          :to="duoSpendContent.cta.secondaryTo"
+          class="app-secondary-link"
+        >
+          {{ duoSpendContent.cta.secondaryLabel }}
+        </AppLink>
+      </section>
+    </div>
   </main>
 </template>
 
 <script setup lang="ts">
-import { duoSpendContent } from '~/data/apps'
+import AppBreadcrumb from '~/components/apps/AppBreadcrumb.vue'
+import AppFaqList from '~/components/apps/AppFaqList.vue'
+import AppLegalTabs from '~/components/apps/AppLegalTabs.vue'
+import AppReleaseInterestForm from '~/components/apps/AppReleaseInterestForm.vue'
+
+import { buildBreadcrumbSchema, duoSpendContent } from '~/data/apps'
 import { canonicalUrl } from '~/utils/seo-url'
 
 const config = useRuntimeConfig()
 const pageUrl = canonicalUrl(config.public.siteUrl, '/apps/duo-spend')
+
+const breadcrumbItems = [
+  { label: 'Accueil', to: '/' },
+  { label: 'Apps', to: '/apps/' },
+  { label: 'DuoSpend' },
+]
+
+const breadcrumbSchema = buildBreadcrumbSchema(config.public.siteUrl, [
+  { name: 'Accueil', path: '/' },
+  { name: 'Apps', path: '/apps/' },
+  { name: 'DuoSpend', path: '/apps/duo-spend/' },
+])
 
 useSeoMeta({
   title: duoSpendContent.seo.title,
@@ -134,7 +102,7 @@ useSeoMeta({
   ogUrl: pageUrl,
   twitterTitle: duoSpendContent.seo.title,
   twitterDescription: duoSpendContent.seo.description,
-  twitterCard: 'summary_large_image',
+  twitterCard: 'summary',
 })
 
 useHead({
@@ -144,37 +112,43 @@ useHead({
       href: pageUrl,
     },
   ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify(breadcrumbSchema),
+    },
+  ],
 })
 </script>
 
 <style lang="scss" scoped>
-.app-detail {
-  padding: clamp(4.5rem, 8vw, 6rem) 5% 6rem;
+.app-page {
+  padding: clamp(4rem, 8vw, 6rem) 5% 5rem;
 
   @media (min-width: $breakpoint-tablet) {
     padding-inline: 10%;
   }
 }
 
-.app-hero {
-  display: grid;
-  gap: 2rem;
-  align-items: center;
-  width: min(100%, 1120px);
+.app-shell {
+  width: min(100%, 52rem);
   margin: 0 auto;
-
-  @media (min-width: 980px) {
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-    gap: 3rem;
-  }
 }
 
-.app-hero__copy {
-  max-width: 38rem;
+.app-hero,
+.app-panel {
+  padding: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.92);
 }
 
-.app-kicker {
-  margin: 0 0 0.9rem;
+.app-panel {
+  margin-top: 1rem;
+}
+
+.app-meta {
+  margin: 0 0 0.75rem;
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -182,206 +156,72 @@ useHead({
   color: $gris3;
 }
 
-.app-hero h1 {
+.app-hero h1,
+.app-panel h2 {
   margin: 0;
-  font-size: clamp(2.4rem, 5.5vw, 5rem);
-  line-height: 0.94;
-  letter-spacing: -0.03em;
   color: $gris1;
 }
 
-.app-hero__lead {
-  margin: 1rem 0 0;
-  font-size: clamp(1.05rem, 2vw, 1.28rem);
-  font-weight: 700;
-  line-height: 1.6;
+.app-hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  line-height: 0.95;
+}
+
+.app-intro,
+.app-summary,
+.app-panel p {
+  margin: 0.85rem 0 0;
   color: $gris2;
+  line-height: 1.65;
 }
 
-.app-hero__description {
-  margin: 1rem 0 0;
+.app-summary {
   color: $gris3;
-  line-height: 1.75;
 }
 
-.app-hero__actions,
-.app-cta__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.85rem;
-  margin-top: 1.5rem;
-}
-
-.app-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 3rem;
-  padding: 0.8rem 1.2rem;
-  border-radius: 999px;
-  font-weight: 700;
-  transition:
-    transform 0.14s ease,
-    box-shadow 0.14s ease,
-    opacity 0.14s ease;
-}
-
-.app-btn--primary {
-  background: $vert;
-  color: white;
-
-  &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 10px 24px rgba(13, 199, 99, 0.18);
-  }
-
-  &:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 4px rgba(13, 199, 99, 0.18);
-  }
-}
-
-.app-btn--secondary {
-  color: $bleu2;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-
-  &:hover {
-    opacity: 0.72;
-  }
-
-  &:focus-visible {
-    outline: 2px solid $bleu2;
-    outline-offset: 4px;
-    border-radius: 999px;
-  }
-}
-
-.app-preview,
-.capture-panel__image {
-  border-radius: 1.6rem;
+.app-media {
+  margin-top: 1rem;
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.08);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.94),
-    rgba(244, 247, 251, 0.98)
-  );
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
-
-  img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
+  border-radius: 1rem;
+  background: rgba(248, 250, 252, 0.96);
 }
 
-.app-section,
-.app-cta {
-  width: min(100%, 820px);
-  margin: 0 auto;
+.app-media img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-.app-section--wide {
-  width: min(100%, 1080px);
-}
-
-.app-section h2,
-.app-cta h2 {
-  margin: 0 0 1rem;
-  font-size: clamp(1.55rem, 3vw, 2.2rem);
-  line-height: 1.03;
-  color: $gris1;
-}
-
-.app-section p {
-  margin: 0;
+.app-list {
+  margin: 1rem 0 0;
+  padding-left: 1.2rem;
   color: $gris2;
-  line-height: 1.75;
 }
 
-.app-section p + p {
-  margin-top: 1rem;
+.app-list li + li {
+  margin-top: 0.55rem;
 }
 
-.capture-panel {
-  display: grid;
-  gap: 1.25rem;
-
-  @media (min-width: 960px) {
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-    align-items: center;
-  }
-}
-
-.capture-panel__notes {
+.app-panel--cta {
   display: grid;
   gap: 1rem;
 }
 
-.app-cta__panel {
-  padding: clamp(1.5rem, 4vw, 2.2rem);
-  border-radius: 1.5rem;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.92),
-    rgba(246, 248, 250, 0.9)
-  );
-  border: 1px solid rgba(0, 0, 0, 0.08);
+.app-panel--cta p {
+  margin-top: 0;
 }
 
-.app-cta__panel p {
-  margin: 0;
-  color: $gris2;
-  line-height: 1.75;
+.app-secondary-link {
+  width: fit-content;
+  color: $bleu2;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
 }
 
-.app-cta__panel :deep(.release-form) {
-  margin-top: 1.2rem;
-}
-
-.timeline-dot {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2.1rem 0;
-  position: relative;
-}
-
-.timeline-dot::before,
-.timeline-dot::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  width: 1px;
-  height: 1.4rem;
-  background: linear-gradient(
-    180deg,
-    rgba(4, 57, 217, 0.08),
-    rgba(13, 199, 99, 0.3)
-  );
-  transform: translateX(-50%);
-}
-
-.timeline-dot::before {
-  top: 0;
-}
-
-.timeline-dot::after {
-  bottom: 0;
-}
-
-.timeline-dot__core {
-  width: 0.8rem;
-  height: 0.8rem;
-  border-radius: 50%;
-  background: $vert;
-  box-shadow: 0 0 0 0.45rem rgba(13, 199, 99, 0.13);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .app-btn {
-    transition: none;
-  }
+.app-secondary-link:focus-visible {
+  outline: 2px solid $bleu2;
+  outline-offset: 3px;
+  border-radius: 0.35rem;
 }
 </style>

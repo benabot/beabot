@@ -4,7 +4,7 @@ const type = 'website'
 const url = process.env.NUXT_PUBLIC_SITE_URL || 'https://beabot.netlify.app'
 const title = 'Beabot : éco-conception web'
 const description =
-  'L'éco-conception web, c'est concilier respect de l'environnement et technologies numériques de pointe pour un internet durable.'
+  "L'éco-conception web, c'est concilier respect de l'environnement et technologies numériques de pointe pour un internet durable."
 const mainImage = '/beabot.png'
 export default (meta) => {
   return [

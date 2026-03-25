@@ -35,10 +35,10 @@
     </button>
 
     <p class="release-form__note">
-      L’email sert uniquement à signaler votre intérêt pour {{ appName }}.
+      Le formulaire transmet votre demande à hello@beabot.fr.
     </p>
     <p v-if="sent" class="release-form__success" aria-live="polite">
-      Demande envoyée. Je vous recontacterai pour la sortie de {{ appName }}.
+      Demande envoyée pour {{ appName }}.
     </p>
     <p v-else-if="error" class="release-form__error" aria-live="assertive">
       {{ error }}

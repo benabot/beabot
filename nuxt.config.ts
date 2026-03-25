@@ -8,7 +8,8 @@ const normalizeSitemapLoc = (loc: string): string => {
   if (loc.startsWith(normalizedSiteUrl)) {
     const pathPart = loc.slice(normalizedSiteUrl.length) || '/'
     if (pathPart !== '/' && fileExtensionRegex.test(pathPart)) return loc
-    const normalizedPath = pathPart === '/' ? '/' : `${pathPart.replace(/\/+$/, '')}/`
+    const normalizedPath =
+      pathPart === '/' ? '/' : `${pathPart.replace(/\/+$/, '')}/`
     return `${normalizedSiteUrl}${normalizedPath}`
   }
 
@@ -57,7 +58,8 @@ export default defineNuxtConfig({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
           name: 'description',
-          content: "L'éco-conception web, c'est concilier respect de l'environnement et technologies numériques de pointe pour un internet durable.",
+          content:
+            "L'éco-conception web, c'est concilier respect de l'environnement et technologies numériques de pointe pour un internet durable.",
         },
         // Performance hints
         { name: 'theme-color', content: '#ffffff' },
@@ -68,7 +70,8 @@ export default defineNuxtConfig({
         },
         {
           property: 'og:description',
-          content: "L'éco-conception web, c'est concilier respect de l'environnement et technologies numériques de pointe pour un internet durable.",
+          content:
+            "L'éco-conception web, c'est concilier respect de l'environnement et technologies numériques de pointe pour un internet durable.",
         },
         {
           property: 'og:image',
@@ -81,7 +84,8 @@ export default defineNuxtConfig({
         },
         {
           name: 'twitter:description',
-          content: "L'éco-conception web, c'est concilier respect de l'environnement et technologies numériques de pointe pour un internet durable.",
+          content:
+            "L'éco-conception web, c'est concilier respect de l'environnement et technologies numériques de pointe pour un internet durable.",
         },
         {
           name: 'twitter:image',
@@ -90,10 +94,21 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
-        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+        {
+          rel: 'icon',
+          type: 'image/png',
+          sizes: '32x32',
+          href: '/favicon-32x32.png',
+        },
         // Preconnect to own domain for faster resource loading (uses runtime config)
-        { rel: 'preconnect', href: process.env.NUXT_PUBLIC_SITE_URL || 'https://beabot.fr' },
-        { rel: 'dns-prefetch', href: process.env.NUXT_PUBLIC_SITE_URL || 'https://beabot.fr' },
+        {
+          rel: 'preconnect',
+          href: process.env.NUXT_PUBLIC_SITE_URL || 'https://beabot.fr',
+        },
+        {
+          rel: 'dns-prefetch',
+          href: process.env.NUXT_PUBLIC_SITE_URL || 'https://beabot.fr',
+        },
       ],
     },
     // Désactive la transition globale pour éviter CSS/JS supplémentaires
@@ -116,16 +131,11 @@ export default defineNuxtConfig({
         clientPort: 24679,
       },
     },
-    resolve: {
-      alias: {
-        // Prevent rare dev errors resolving internal Nuxt paths
-        '#internal/nuxt/paths': 'nuxt/dist/app/paths.mjs',
-      },
-    },
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@use "~/assets/css/vars/_colors.scss" as *; @use "~/assets/css/vars/_typo.scss" as *; @use "~/assets/css/vars/_spacing.scss" as *; @use "~/assets/css/mixins/mixins.scss" as *;',
+          additionalData:
+            '@use "~/assets/css/vars/_colors.scss" as *; @use "~/assets/css/vars/_typo.scss" as *; @use "~/assets/css/vars/_spacing.scss" as *; @use "~/assets/css/mixins/mixins.scss" as *;',
           api: 'modern-compiler',
         },
       },
@@ -143,15 +153,25 @@ export default defineNuxtConfig({
         output: {
           manualChunks: (id) => {
             // Group Vue core together
-            if (id.includes('node_modules/vue') || id.includes('node_modules/@vue')) {
+            if (
+              id.includes('node_modules/vue') ||
+              id.includes('node_modules/@vue')
+            ) {
               return 'vendor-vue'
             }
             // Group Nuxt core modules
-            if (id.includes('node_modules/@nuxt') || id.includes('node_modules/nuxt')) {
+            if (
+              id.includes('node_modules/@nuxt') ||
+              id.includes('node_modules/nuxt')
+            ) {
               return 'vendor-nuxt'
             }
             // Group content/markdown related
-            if (id.includes('shiki') || id.includes('markdown') || id.includes('@nuxt/content')) {
+            if (
+              id.includes('shiki') ||
+              id.includes('markdown') ||
+              id.includes('@nuxt/content')
+            ) {
               return 'vendor-content'
             }
             // Group all other node_modules into vendor
@@ -174,11 +194,7 @@ export default defineNuxtConfig({
   },
 
   // Modules
-  modules: [
-    '@nuxt/content',
-    '@nuxt/image',
-    '@nuxtjs/sitemap',
-  ],
+  modules: ['@nuxt/content', '@nuxt/image', '@nuxtjs/sitemap'],
 
   // Content module configuration
   content: {
@@ -186,7 +202,22 @@ export default defineNuxtConfig({
       // Use VS Code Dark+ theme for better code readability
       theme: 'dark-plus',
       // Preload common languages for blog articles
-      preload: ['javascript', 'js', 'typescript', 'ts', 'css', 'scss', 'html', 'vue', 'bash', 'shell', 'json', 'yaml', 'markdown', 'md'],
+      preload: [
+        'javascript',
+        'js',
+        'typescript',
+        'ts',
+        'css',
+        'scss',
+        'html',
+        'vue',
+        'bash',
+        'shell',
+        'json',
+        'yaml',
+        'markdown',
+        'md',
+      ],
     },
     markdown: {
       toc: {
@@ -263,7 +294,7 @@ export default defineNuxtConfig({
       'sitemap:output': (ctx) => {
         ctx.sitemap = ctx.sitemap.replace(
           /<loc>([^<]+)<\/loc>/g,
-          (_match, loc) => `<loc>${normalizeSitemapLoc(loc)}</loc>`
+          (_match, loc) => `<loc>${normalizeSitemapLoc(loc)}</loc>`,
         )
       },
     },
@@ -280,5 +311,4 @@ export default defineNuxtConfig({
     // componentIslands: true, // Disabled - causes #app-manifest errors in current version
     inlineSSRStyles: false, // Disable inline CSS for better caching and smaller HTML
   },
-
 })

@@ -90,18 +90,20 @@
 - [x] **HP-14-29** : Container-2 alignement responsive (justify desktop, center mobile)
 - [x] **HP-14-30** : Container-2 césure adaptée (auto desktop, none mobile)
 
-### Pages Apps : Landing + détail apps natives ✅
+### Pages Apps : structure simplifiée ✅
 
 > **Terminée le 25 mars 2026**
 > **Branche** : `feat/apps-pages`
 
-- [x] **APP-16-01** : Créer la page `/apps/` inspirée du rythme visuel du portfolio
+- [x] **APP-16-01** : Créer la page `/apps/`
 - [x] **APP-16-02** : Créer la page `/apps/meeting-mode/`
 - [x] **APP-16-03** : Créer la page `/apps/duo-spend/`
 - [x] **APP-16-04** : Externaliser le contenu apps dans `data/apps.ts`
-- [x] **APP-16-05** : Ajouter les sections de confidentialité FR / EN
+- [x] **APP-16-05** : Ajouter une section légale FR / EN provisoire
 - [x] **APP-16-06** : Prévoir un formulaire “être informé de la sortie de l'app”
-- [x] **APP-16-07** : Ajouter le lien `Apps` dans le footer
+- [x] **APP-16-07** : Ajouter un fil d’Ariane UI + JSON-LD `BreadcrumbList`
+- [x] **APP-16-08** : Simplifier `/apps/` en index extensible
+- [x] **APP-16-09** : Retirer le lien `Apps` du footer pour garder la navigation inchangée
 
 ### Phase 12 : Optimisation SEO ✅
 

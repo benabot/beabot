@@ -41,7 +41,7 @@
         >:
         <span class="text-black"
           >votre site web a le pouvoir de contribuer à la solution</span
-        >. 
+        >.
         <br />
         <br />
         Un site web conçu de manière écoresponsable nécessite
@@ -190,7 +190,6 @@
             Allonger la durée de vie
           </p>
           <h3 class="pt-titre text-black text-gris2">Durabilité</h3>
-          
 
           <p class="text-gris2">
             Un site allégé (≈ 500 Ko au lieu de plusieurs mégaoctets) reste
@@ -204,11 +203,10 @@
             2<span class="text-vert">.</span>
           </div>
           <div class="ligne ligne__verte"></div>
-           <p class="text-gris3 text-black lettre-smcp">
+          <p class="text-gris3 text-black lettre-smcp">
             Faire mieux avec moins
           </p>
           <h3 class="pt-titre text-black text-gris2">Efficience</h3>
-         
 
           <p class="text-gris2">
             Réduire de 60 à 70 % le poids d’un site à fonctionnalités
@@ -249,11 +247,10 @@
             3<span class="text-blanc">.</span>
           </div>
           <div class="ligne"></div>
-            <p class="text-gris4 text-black lettre-smcp">
+          <p class="text-gris4 text-black lettre-smcp">
             Répondre à l’essentiel
           </p>
           <h3 class="pt-titre text-black text-gris5">Sobriété</h3>
-        
 
           <p class="text-gris5">
             Proposer un service répondant à un besoin avéré, avec des
@@ -268,11 +265,8 @@
             4<span class="text-blanc">.</span>
           </div>
           <div class="ligne"></div>
-          <p class="text-gris4 text-black lettre-smcp">
-            Une démarche continue
-          </p>
+          <p class="text-gris4 text-black lettre-smcp">Une démarche continue</p>
           <h3 class="pt-titre text-black text-gris5">Transversalité</h3>
-          
 
           <p class="text-gris5">
             Du recueil des besoins au développement du site, jusqu’à
@@ -281,15 +275,15 @@
           </p>
         </div>
       </div>
-            <p class="text-gris5  lettre-smcp para-trans">Cette approche permet de concevoir des sites à la fois plus légers, plus rapides et plus durables, sans renoncer à la qualité graphique ni à l’expérience utilisateur.</p>
+      <p class="text-gris5 lettre-smcp para-trans">
+        Cette approche permet de concevoir des sites à la fois plus légers, plus
+        rapides et plus durables, sans renoncer à la qualité graphique ni à
+        l’expérience utilisateur.
+      </p>
 
       <div class="sct-footer">
         <!-- <button class="sct-footer--btn">en savoir plus</button> -->
-        <AppLink
-          class="sct-footer--btn"
-          :to="faqLink"
-          >en savoir plus</AppLink
-        >
+        <AppLink class="sct-footer--btn" :to="faqLink">en savoir plus</AppLink>
         <div class="fleche">
           <svg
             x="0"
@@ -379,20 +373,30 @@
           FAQ — Éco-conception web
         </h2>
         <p class="text-gris3 text-fin home-faq-card__lead">
-          L’essentiel en questions-réponses, pour comprendre vite et décider mieux.
+          L’essentiel en questions-réponses, pour comprendre vite et décider
+          mieux.
         </p>
         <ul class="home-faq-card__list text-gris2">
           <li>
-            SEO : est-ce compatible (et pourquoi)<span class="insec"> &thinsp;</span>?
+            SEO : est-ce compatible (et pourquoi)<span class="insec"
+              >&thinsp;</span
+            >?
           </li>
           <li>
-            Design : sobriété veut-elle dire moins esthétique<span class="insec"> &thinsp;</span>?
+            Design : sobriété veut-elle dire moins esthétique<span class="insec"
+              >&thinsp;</span
+            >?
           </li>
           <li>
-            Fonctionnalités : que faut-il garder, que faut-il éviter<span class="insec"> &thinsp;</span>?
+            Fonctionnalités : que faut-il garder, que faut-il éviter<span
+              class="insec"
+              >&thinsp;</span
+            >?
           </li>
           <li>
-            WordPress : peut-on faire léger et durable<span class="insec"> &thinsp;</span>?
+            WordPress : peut-on faire léger et durable<span class="insec"
+              >&thinsp;</span
+            >?
           </li>
         </ul>
         <BaseButton text="Comprendre l’essentiel" :to="faqLink" />
@@ -416,7 +420,7 @@ const scrollToNext = () => {
   if (container2) {
     container2.scrollIntoView({
       behavior: 'smooth',
-      block: 'start'
+      block: 'start',
     })
   }
 }
@@ -428,7 +432,8 @@ const organizationSchema = {
   name: 'BeAbot',
   url: config.public.siteUrl,
   logo: `${config.public.siteUrl}/beabot.png`,
-  description: 'Développeur web spécialisé en éco-conception. Sites performants, accessibles et sobres.',
+  description:
+    'Développeur web spécialisé en éco-conception. Sites performants, accessibles et sobres.',
   founder: {
     '@type': 'Person',
     name: 'Benoît Abot',
@@ -476,7 +481,10 @@ useHead({
 <style lang="scss" scoped>
 // Désactiver la césure sur les titres (mobile)
 @media (max-width: $breakpoint-tablet) {
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     hyphens: none;
     -webkit-hyphens: none;
     -ms-hyphens: none;
@@ -647,7 +655,6 @@ section {
   border-radius: 0.6rem;
   padding: 2rem 2.5rem;
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
-
 }
 .home-faq-card__title {
   margin: 0 0 1.5rem;
@@ -843,12 +850,10 @@ section {
   }
 }
 .impact--titre {
-   @media (max-width: $breakpoint-tablet) {
+  @media (max-width: $breakpoint-tablet) {
     padding-top: 3rem;
   }
 }
-
-
 
 .container-3 {
   display: flex;
@@ -1474,7 +1479,11 @@ p.mt-n10 {
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
     transform: translateY(0);
   }
   40% {
