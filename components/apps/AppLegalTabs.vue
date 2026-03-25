@@ -101,42 +101,36 @@ function onKeydown(event: KeyboardEvent, index: number) {
 .legal-tabs__list {
   display: inline-flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.25rem;
+  padding: 0.3rem;
+  border-radius: 999px;
+  background: rgba(243, 244, 246, 0.9);
 }
 
 .legal-tabs__tab {
   min-height: 2.75rem;
   padding: 0.65rem 1rem;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  border: 0;
   border-radius: 999px;
-  background: white;
-  color: $gris2;
+  background: transparent;
+  color: $gris3;
   font-weight: 600;
   cursor: pointer;
 }
 
 .legal-tabs__tab--active {
-  border-color: rgba(4, 57, 217, 0.24);
-  background: rgba(4, 57, 217, 0.06);
-  color: $gris1;
+  background: white;
+  color: $vert;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.05);
 }
 
 .legal-tabs__tab:focus-visible {
-  outline: 2px solid $bleu2;
+  outline: 2px solid $vert;
   outline-offset: 3px;
 }
 
 .legal-tabs__panel {
-  padding: 1.25rem;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.92);
-}
-
-.legal-tabs__title {
-  margin: 0 0 0.75rem;
-  font-size: 1rem;
-  color: $gris1;
+  padding: 0.25rem 0 0;
 }
 
 .legal-tabs__panel p {

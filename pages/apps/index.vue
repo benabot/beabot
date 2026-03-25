@@ -4,22 +4,30 @@
       <AppBreadcrumb :items="breadcrumbItems" />
 
       <section class="apps-hero">
+        <p class="apps-hero__eyebrow">Apps</p>
         <h1>{{ appsIndexContent.title }}</h1>
         <p>{{ appsIndexContent.intro }}</p>
       </section>
 
       <section class="apps-section" aria-labelledby="apps-list-title">
-        <header class="apps-section__header">
-          <h2 id="apps-list-title">Liste</h2>
-        </header>
-
+        <h2 id="apps-list-title" class="sr-only">Applications</h2>
         <div class="apps-grid">
-          <AppCard v-for="app in appsIndexEntries" :key="app.slug" :app="app" />
+          <AppCard
+            v-for="(app, index) in appsIndexEntries"
+            :key="app.slug"
+            :app="app"
+            :variant="index % 2 === 0 ? 'featured' : 'compact'"
+            class="apps-grid__item"
+            :class="{
+              'apps-grid__item--featured': index % 2 === 0,
+              'apps-grid__item--compact': index % 2 === 1,
+            }"
+          />
         </div>
       </section>
 
       <section class="apps-closing" aria-labelledby="apps-closing-title">
-        <h2 id="apps-closing-title">Suite</h2>
+        <h2 id="apps-closing-title">À venir</h2>
         <p>{{ appsIndexContent.closingText }}</p>
         <div class="apps-closing__links">
           <AppLink
@@ -87,7 +95,7 @@ useHead({
 
 <style lang="scss" scoped>
 .apps-index {
-  padding: clamp(4rem, 8vw, 6rem) 5% 5rem;
+  padding: clamp(2.5rem, 6vw, 4rem) 5% 5rem;
 
   @media (min-width: $breakpoint-tablet) {
     padding-inline: 10%;
@@ -95,29 +103,38 @@ useHead({
 }
 
 .apps-shell {
-  width: min(100%, 72rem);
+  width: min(100%, 74rem);
   margin: 0 auto;
 }
 
-.apps-hero,
-.apps-section,
-.apps-closing {
-  padding: 1.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 1.25rem;
-  background: rgba(255, 255, 255, 0.92);
+.apps-hero {
+  max-width: 46rem;
+  padding-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.apps-hero__eyebrow {
+  display: inline-flex;
+  margin: 0 0 1rem;
+  padding: 0.32rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(4, 217, 79, 0.08);
+  color: $vert;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .apps-hero h1,
-.apps-section h2,
 .apps-closing h2 {
   margin: 0;
   color: $gris1;
 }
 
 .apps-hero h1 {
-  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-size: clamp(2.7rem, 6vw, 4.6rem);
   line-height: 0.95;
+  letter-spacing: -0.04em;
 }
 
 .apps-hero p,
@@ -125,38 +142,79 @@ useHead({
   margin: 0.9rem 0 0;
   color: $gris2;
   line-height: 1.65;
+  max-width: 38rem;
 }
 
-.apps-section,
 .apps-closing {
-  margin-top: 1.25rem;
+  display: grid;
+  gap: 1rem;
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.05);
+
+  @media (min-width: 900px) {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+  }
 }
 
 .apps-grid {
   display: grid;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin-top: 0.5rem;
 
   @media (min-width: 900px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    align-items: start;
+  }
+}
+
+.apps-grid__item {
+  @media (min-width: 900px) {
+    grid-column: span 12;
+  }
+}
+
+.apps-grid__item--featured {
+  @media (min-width: 900px) {
+    grid-column: span 7;
+  }
+}
+
+.apps-grid__item--compact {
+  @media (min-width: 900px) {
+    grid-column: span 5;
+    margin-top: clamp(1rem, 5vw, 4.5rem);
   }
 }
 
 .apps-closing__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 0.9rem;
+  margin-top: 0.25rem;
+
+  @media (min-width: 900px) {
+    justify-content: flex-end;
+    margin-top: 0;
+  }
 }
 
 .apps-closing__link {
-  color: $bleu2;
-  text-decoration: underline;
-  text-underline-offset: 0.18em;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.6rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(243, 244, 246, 0.9);
+  color: $gris2;
+  text-decoration: none;
 }
 
 .apps-closing__link:focus-visible {
-  outline: 2px solid $bleu2;
+  outline: 2px solid $vert;
   outline-offset: 3px;
   border-radius: 0.35rem;
 }

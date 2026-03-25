@@ -103,7 +103,7 @@
 - [x] **APP-16-06** : Prévoir un formulaire “être informé de la sortie de l'app”
 - [x] **APP-16-07** : Ajouter un fil d’Ariane UI + JSON-LD `BreadcrumbList`
 - [x] **APP-16-08** : Simplifier `/apps/` en index extensible
-- [x] **APP-16-09** : Retirer le lien `Apps` du footer pour garder la navigation inchangée
+- [x] **APP-16-09** : Ajouter le lien `Apps` dans le footer avec état actif sur les sous-pages
 
 ### Phase 12 : Optimisation SEO ✅
 

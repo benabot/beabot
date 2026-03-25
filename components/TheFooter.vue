@@ -20,6 +20,16 @@
             </li>
             <li><AppLink to="/portfolio/" no-prefetch>Portfolio</AppLink></li>
             <li>
+              <AppLink
+                to="/apps/"
+                no-prefetch
+                class="footer-link"
+                :class="{ 'footer-link--active': isAppsActive }"
+                :aria-current="isAppsActive ? 'page' : undefined"
+                >Apps</AppLink
+              >
+            </li>
+            <li>
               <AppLink to="/eco-conception/faq-eco-conception/" no-prefetch
                 >FAQ Éco-conception</AppLink
               >
@@ -57,9 +67,18 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 const annee = ref(new Date().getFullYear())
+const route = useRoute()
+
+const isAppsActive = computed(() => {
+  return (
+    route.path === '/apps/' ||
+    route.path === '/apps' ||
+    route.path.startsWith('/apps/')
+  )
+})
 </script>
 
 <style lang="scss" scoped>
@@ -117,6 +136,12 @@ footer {
     transition: background-size 0.3s ease;
     &:hover {
       background-size: 100% 0.12em;
+    }
+
+    &.footer-link--active {
+      color: $vert;
+      background-size: 100% 0.12em;
+      font-weight: 700;
     }
   }
 }

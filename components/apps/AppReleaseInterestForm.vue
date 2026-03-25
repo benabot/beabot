@@ -123,6 +123,11 @@ async function onSubmit() {
 .release-form {
   display: grid;
   gap: 0.9rem;
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+  }
 }
 
 .release-form__field {
@@ -144,15 +149,15 @@ async function onSubmit() {
 
 .release-form__field input:focus-visible {
   outline: none;
-  border-color: $bleu2;
-  box-shadow: 0 0 0 4px rgba(4, 57, 217, 0.14);
+  border-color: $vert;
+  box-shadow: 0 0 0 4px rgba(13, 199, 99, 0.14);
 }
 
 .release-form button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: fit-content;
+  width: 100%;
   min-height: 3rem;
   padding: 0.8rem 1.2rem;
   border: 0;
@@ -165,6 +170,10 @@ async function onSubmit() {
     transform 0.14s ease,
     box-shadow 0.14s ease,
     opacity 0.14s ease;
+
+  @media (min-width: $breakpoint-tablet) {
+    width: auto;
+  }
 }
 
 .release-form button:hover:not(:disabled) {
@@ -187,16 +196,20 @@ async function onSubmit() {
   margin: 0;
   color: $gris3;
   line-height: 1.6;
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-column: 1 / -1;
+  }
 }
 
 .release-form__fallback a {
-  color: $bleu2;
+  color: $vert;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
 .release-form__fallback a:focus-visible {
-  outline: 2px solid $bleu2;
+  outline: 2px solid $vert;
   outline-offset: 3px;
   border-radius: 0.3rem;
 }
@@ -205,6 +218,10 @@ async function onSubmit() {
 .release-form__error {
   margin: 0;
   line-height: 1.6;
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-column: 1 / -1;
+  }
 }
 
 .release-form__success {

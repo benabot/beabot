@@ -30,33 +30,36 @@ defineProps<{
 
 <style lang="scss" scoped>
 .app-breadcrumb {
-  margin-bottom: 1.5rem;
+  margin-bottom: clamp(1rem, 2.2vw, 1.5rem);
 }
 
 .app-breadcrumb ol {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 0.38rem;
   margin: 0;
   padding: 0;
   list-style: none;
   color: $gris3;
-  font-size: 0.95rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .app-breadcrumb li {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.38rem;
 }
 
 .app-breadcrumb li + li::before {
-  content: '>';
-  color: rgba(0, 0, 0, 0.38);
+  content: '›';
+  color: rgba(0, 0, 0, 0.35);
 }
 
 .app-breadcrumb__link {
-  color: $gris2;
+  color: $gris3;
   text-decoration: none;
 }
 
@@ -66,7 +69,7 @@ defineProps<{
 }
 
 .app-breadcrumb__link:focus-visible {
-  outline: 2px solid $bleu2;
+  outline: 2px solid $vert;
   outline-offset: 3px;
   border-radius: 0.35rem;
 }

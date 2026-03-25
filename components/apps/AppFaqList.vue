@@ -18,21 +18,21 @@ defineProps<{
 <style lang="scss" scoped>
 .faq-list {
   display: grid;
-  gap: 0.9rem;
+  gap: 0.75rem;
 }
 
 .faq-item {
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.84);
   overflow: hidden;
+  border-radius: 1.15rem;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 18px 36px rgba(15, 23, 42, 0.05);
 }
 
 .faq-item summary {
   list-style: none;
   cursor: pointer;
   padding: 1rem 1.15rem;
-  font-weight: 700;
+  font-weight: 600;
   color: $gris1;
 }
 
@@ -43,7 +43,7 @@ defineProps<{
 .faq-item summary::after {
   content: '+';
   float: right;
-  color: $bleu2;
+  color: $vert;
 }
 
 .faq-item[open] summary::after {
@@ -52,7 +52,7 @@ defineProps<{
 
 .faq-item summary:focus-visible {
   outline: none;
-  box-shadow: inset 0 0 0 3px rgba(4, 57, 217, 0.18);
+  box-shadow: inset 0 0 0 3px rgba(13, 199, 99, 0.16);
 }
 
 .faq-item p {
