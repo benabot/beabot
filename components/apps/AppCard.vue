@@ -22,7 +22,17 @@
           role="img"
           :aria-label="props.app.preview.alt"
         >
-          <span>{{ props.app.preview.label }}</span>
+          <div class="app-card__placeholder-frame" aria-hidden="true">
+            <div class="app-card__placeholder-bar">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="app-card__placeholder-screen">
+              <strong>{{ props.app.name }}</strong>
+              <span>{{ props.app.preview.label }}</span>
+            </div>
+          </div>
         </div>
       </div>
     </figure>
@@ -35,7 +45,7 @@
       <h3 class="app-card__title">{{ props.app.name }}</h3>
       <p class="app-card__summary">{{ props.app.summary }}</p>
       <AppLink :to="props.app.href" class="app-card__link">
-        Voir la page
+        Découvrir {{ props.app.name }}
       </AppLink>
     </div>
   </article>
@@ -66,7 +76,7 @@ const props = withDefaults(
 }
 
 .app-card--compact {
-  --app-card-ratio: 16 / 10;
+  --app-card-ratio: 4 / 5;
 }
 
 .app-card__visual {
@@ -80,7 +90,7 @@ const props = withDefaults(
   background: rgba(243, 244, 246, 0.92);
   aspect-ratio: var(--app-card-ratio);
   position: relative;
-  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 16px 34px rgba(15, 23, 42, 0.06);
 
   img {
     display: block;
@@ -91,7 +101,11 @@ const props = withDefaults(
 }
 
 .app-card__media--placeholder {
-  background: rgba(243, 244, 246, 0.92);
+  background: linear-gradient(
+    180deg,
+    rgba(243, 244, 246, 0.94),
+    rgba(236, 239, 241, 0.98)
+  );
 }
 
 .app-card__placeholder {
@@ -99,23 +113,61 @@ const props = withDefaults(
   padding: 1.25rem;
   display: grid;
   place-items: center;
-  border-radius: 1.25rem;
-  color: $gris2;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.92),
-    rgba(243, 244, 246, 0.98)
-  );
-  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.04);
+}
+
+.app-card__placeholder-frame {
+  width: min(78%, 19rem);
+  aspect-ratio: 4 / 5;
+  border-radius: 1rem;
+  padding: 0.8rem;
+  display: grid;
+  gap: 0.75rem;
+  background: linear-gradient(180deg, #121826, #1e293b);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 16px 34px rgba(15, 23, 42, 0.12);
+}
+
+.app-card__placeholder-bar {
+  display: flex;
+  gap: 0.28rem;
+}
+
+.app-card__placeholder-bar span {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.32);
+}
+
+.app-card__placeholder-screen {
+  min-height: 0;
+  border-radius: 0.7rem;
+  padding: 1rem;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: 0.35rem;
+  background: linear-gradient(180deg, #eff6ff, #dbeafe);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.44);
+
+  strong {
+    color: #0f172a;
+    font-size: 1rem;
+  }
+
+  span {
+    color: rgba(15, 23, 42, 0.66);
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
 }
 
 .app-card__body {
   display: grid;
-  gap: 0.62rem;
+  gap: 0.68rem;
   max-width: 38rem;
 }
 
@@ -157,8 +209,17 @@ const props = withDefaults(
   width: fit-content;
   color: $vert;
   font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 0.18em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  text-decoration: none;
+}
+
+.app-card__link::after {
+  content: '→';
+  font-size: 1rem;
+  line-height: 1;
+  transform: translateY(-0.02em);
 }
 
 .app-card__link:focus-visible {

@@ -92,7 +92,7 @@ export interface BreadcrumbEntry {
 
 export const appsIndexContent = {
   title: 'Mes Apps Apple',
-  intro: 'Applications Apple en préparation.',
+  intro: 'Deux applications natives en préparation. Une pour iOS, une pour macOS.',
   seo: {
     title: 'Apps',
     description: 'Applications BeAbot en préparation.',

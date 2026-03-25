@@ -6,7 +6,8 @@
       <section class="apps-hero">
         <p class="apps-hero__eyebrow">Apps</p>
         <h1>{{ appsIndexContent.title }}</h1>
-        <p>{{ appsIndexContent.intro }}</p>
+        <p class="apps-hero__intro">{{ appsIndexContent.intro }}</p>
+        <p class="apps-hero__meta">DuoSpend pour iOS. Meeting Mode pour macOS.</p>
       </section>
 
       <section class="apps-section" aria-labelledby="apps-list-title">
@@ -93,8 +94,8 @@ useHead({
 }
 
 .apps-hero {
-  max-width: 40rem;
-  padding-bottom: clamp(2rem, 4.5vw, 3.2rem);
+  max-width: 44rem;
+  padding-bottom: clamp(2rem, 4.5vw, 3.4rem);
 }
 
 .apps-hero__eyebrow {
@@ -121,16 +122,24 @@ useHead({
   letter-spacing: -0.055em;
 }
 
-.apps-hero p {
+.apps-hero__intro {
   margin: 0.9rem 0 0;
   color: $gris2;
   line-height: 1.6;
   max-width: 31rem;
 }
 
+.apps-hero__meta {
+  margin: 0.7rem 0 0;
+  color: $gris3;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
 .apps-grid {
   display: grid;
-  gap: clamp(1.2rem, 2.5vw, 2rem);
+  gap: clamp(1.35rem, 2.8vw, 2.1rem);
   margin-top: 0.75rem;
 
   @media (min-width: 900px) {
