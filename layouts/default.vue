@@ -288,7 +288,7 @@ a.nuxt-link-active {
     .nav-desktop {
       display: block;
     }
-    nav {
+    .nav-desktop {
       position: fixed;
       font-weight: $light;
       margin: 0;
