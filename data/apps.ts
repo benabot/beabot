@@ -15,6 +15,7 @@ export interface AppIndexEntry {
   summary: string
   href: string
   preview: AppPreview
+  featured?: boolean
 }
 
 export interface AppFaqItem {
@@ -92,7 +93,7 @@ export interface BreadcrumbEntry {
 export const appsIndexContent = {
   title: 'Mes Apps Apple',
   intro: 'Applications Apple en préparation.',
-  closingText: 'Le blog et le portfolio restent accessibles.',
+  closingText: 'Le portfolio et le blog restent disponibles.',
   links: [
     {
       label: 'Blog',
@@ -111,30 +112,32 @@ export const appsIndexContent = {
 
 export const appsIndexEntries: AppIndexEntry[] = [
   {
-    slug: 'meeting-mode',
-    name: 'Meeting Mode',
-    platform: 'macOS',
-    stage: 'Prépublication',
-    summary: 'Page à compléter.',
-    href: '/apps/meeting-mode/',
-    preview: {
-      alt: 'Emplacement de capture pour Meeting Mode',
-      available: false,
-      label: 'Capture à venir',
-    },
-  },
-  {
     slug: 'duo-spend',
     name: 'DuoSpend',
     platform: 'iOS',
     stage: 'Prépublication',
-    summary: 'Gérez vos dépenses communes. Sans prise de tête.',
+    summary: 'Dépenses partagées.',
     href: '/apps/duo-spend/',
+    featured: true,
     preview: {
       src: '/img/duospend.webp',
       alt: 'Capture de l’app DuoSpend',
       available: true,
       label: 'Capture actuelle',
+    },
+  },
+  {
+    slug: 'meeting-mode',
+    name: 'Meeting Mode',
+    platform: 'macOS',
+    stage: 'Prépublication',
+    summary: 'Préparation de réunions.',
+    href: '/apps/meeting-mode/',
+    featured: false,
+    preview: {
+      alt: 'Emplacement de capture pour Meeting Mode',
+      available: false,
+      label: 'Capture à venir',
     },
   },
 ]

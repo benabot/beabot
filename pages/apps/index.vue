@@ -13,14 +13,14 @@
         <h2 id="apps-list-title" class="sr-only">Applications</h2>
         <div class="apps-grid">
           <AppCard
-            v-for="(app, index) in appsIndexEntries"
+            v-for="app in appsIndexEntries"
             :key="app.slug"
             :app="app"
-            :variant="index % 2 === 0 ? 'featured' : 'compact'"
+            :variant="app.featured ? 'featured' : 'compact'"
             class="apps-grid__item"
             :class="{
-              'apps-grid__item--featured': index % 2 === 0,
-              'apps-grid__item--compact': index % 2 === 1,
+              'apps-grid__item--featured': app.featured,
+              'apps-grid__item--compact': !app.featured,
             }"
           />
         </div>
@@ -103,13 +103,13 @@ useHead({
 }
 
 .apps-shell {
-  width: min(100%, 76rem);
+  width: min(100%, 78rem);
   margin: 0 auto;
 }
 
 .apps-hero {
-  max-width: 48rem;
-  padding-bottom: clamp(2.25rem, 5vw, 3.4rem);
+  max-width: 40rem;
+  padding-bottom: clamp(2rem, 4.5vw, 3.2rem);
 }
 
 .apps-hero__eyebrow {
@@ -132,24 +132,24 @@ useHead({
 }
 
 .apps-hero h1 {
-  font-size: clamp(3.1rem, 6.4vw, 5.4rem);
-  line-height: 0.95;
-  letter-spacing: -0.05em;
+  font-size: clamp(3.2rem, 6vw, 5.25rem);
+  line-height: 0.94;
+  letter-spacing: -0.055em;
 }
 
 .apps-hero p,
 .apps-closing p {
   margin: 0.9rem 0 0;
   color: $gris2;
-  line-height: 1.65;
-  max-width: 34rem;
+  line-height: 1.6;
+  max-width: 31rem;
 }
 
 .apps-closing {
   display: grid;
   gap: 1rem;
   margin-top: clamp(2rem, 5vw, 3.5rem);
-  padding: clamp(1.3rem, 3vw, 1.75rem);
+  padding: clamp(1.15rem, 2.8vw, 1.9rem);
   border-radius: 1.5rem;
   background: rgba(243, 244, 246, 0.82);
 
@@ -161,8 +161,8 @@ useHead({
 
 .apps-grid {
   display: grid;
-  gap: clamp(1rem, 2vw, 1.5rem);
-  margin-top: 0.5rem;
+  gap: clamp(1.2rem, 2.5vw, 2rem);
+  margin-top: 0.75rem;
 
   @media (min-width: 900px) {
     grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -185,7 +185,7 @@ useHead({
 .apps-grid__item--compact {
   @media (min-width: 900px) {
     grid-column: span 5;
-    margin-top: clamp(1rem, 5vw, 4.5rem);
+    margin-top: clamp(2rem, 7vw, 6rem);
   }
 }
 

@@ -22,10 +22,7 @@
           role="img"
           :aria-label="props.app.preview.alt"
         >
-          <div class="app-card__placeholder-screen">
-            <strong>{{ props.app.name }}</strong>
-            <span>{{ props.app.preview.label }}</span>
-          </div>
+          <span>{{ props.app.preview.label }}</span>
         </div>
       </div>
     </figure>
@@ -69,7 +66,7 @@ const props = withDefaults(
 }
 
 .app-card--compact {
-  --app-card-ratio: 4 / 5;
+  --app-card-ratio: 16 / 10;
 }
 
 .app-card__visual {
@@ -83,7 +80,7 @@ const props = withDefaults(
   background: rgba(243, 244, 246, 0.92);
   aspect-ratio: var(--app-card-ratio);
   position: relative;
-  box-shadow: 0 18px 34px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.05);
 
   img {
     display: block;
@@ -94,7 +91,7 @@ const props = withDefaults(
 }
 
 .app-card__media--placeholder {
-  background: linear-gradient(145deg, rgba(4, 57, 217, 0.04), rgba(4, 217, 79, 0.08));
+  background: rgba(243, 244, 246, 0.92);
 }
 
 .app-card__placeholder {
@@ -102,37 +99,23 @@ const props = withDefaults(
   padding: 1.25rem;
   display: grid;
   place-items: center;
-}
-
-.app-card__placeholder-screen {
-  width: min(72%, 18rem);
-  aspect-ratio: 16 / 10;
-  border-radius: 1rem;
-  display: grid;
-  align-content: center;
-  justify-items: center;
-  gap: 0.4rem;
-  padding: 1rem;
-  text-align: center;
-  color: white;
-  background: #111827;
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
-    0 18px 40px rgba(15, 23, 42, 0.12);
-
-  strong {
-    font-size: 1.1rem;
-    color: white;
-  }
-
-  span {
-    color: rgba(255, 255, 255, 0.72);
-  }
+  border-radius: 1.25rem;
+  color: $gris2;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.92),
+    rgba(243, 244, 246, 0.98)
+  );
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.04);
 }
 
 .app-card__body {
   display: grid;
-  gap: 0.7rem;
+  gap: 0.62rem;
   max-width: 38rem;
 }
 
@@ -166,7 +149,7 @@ const props = withDefaults(
 .app-card__summary {
   margin: 0;
   color: $gris2;
-  line-height: 1.65;
+  line-height: 1.55;
   max-width: 36ch;
 }
 
@@ -185,10 +168,10 @@ const props = withDefaults(
 }
 
 .app-card--featured .app-card__summary {
-  max-width: 40ch;
+  max-width: 34ch;
 }
 
 .app-card--compact .app-card__title {
-  font-size: clamp(1.4rem, 2.6vw, 1.85rem);
+  font-size: clamp(1.55rem, 2.7vw, 2rem);
 }
 </style>
