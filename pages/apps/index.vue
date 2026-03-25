@@ -25,21 +25,6 @@
           />
         </div>
       </section>
-
-      <section class="apps-closing" aria-labelledby="apps-closing-title">
-        <h2 id="apps-closing-title">Voir aussi</h2>
-        <p>{{ appsIndexContent.closingText }}</p>
-        <div class="apps-closing__links">
-          <AppLink
-            v-for="link in appsIndexContent.links"
-            :key="link.to"
-            :to="link.to"
-            class="apps-closing__link"
-          >
-            {{ link.label }}
-          </AppLink>
-        </div>
-      </section>
     </div>
   </main>
 </template>
@@ -125,8 +110,7 @@ useHead({
   text-transform: uppercase;
 }
 
-.apps-hero h1,
-.apps-closing h2 {
+.apps-hero h1 {
   margin: 0;
   color: $gris1;
 }
@@ -137,26 +121,11 @@ useHead({
   letter-spacing: -0.055em;
 }
 
-.apps-hero p,
-.apps-closing p {
+.apps-hero p {
   margin: 0.9rem 0 0;
   color: $gris2;
   line-height: 1.6;
   max-width: 31rem;
-}
-
-.apps-closing {
-  display: grid;
-  gap: 1rem;
-  margin-top: clamp(2rem, 5vw, 3.5rem);
-  padding: clamp(1.15rem, 2.8vw, 1.9rem);
-  border-radius: 1.5rem;
-  background: rgba(243, 244, 246, 0.82);
-
-  @media (min-width: 900px) {
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: end;
-  }
 }
 
 .apps-grid {
@@ -187,34 +156,5 @@ useHead({
     grid-column: span 5;
     margin-top: clamp(2rem, 7vw, 6rem);
   }
-}
-
-.apps-closing__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.9rem;
-  margin-top: 0.25rem;
-
-  @media (min-width: 900px) {
-    justify-content: flex-end;
-    margin-top: 0;
-  }
-}
-
-.apps-closing__link {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2.6rem;
-  padding: 0.4rem 0.9rem;
-  border-radius: 999px;
-  background: rgba(243, 244, 246, 0.9);
-  color: $gris2;
-  text-decoration: none;
-}
-
-.apps-closing__link:focus-visible {
-  outline: 2px solid $vert;
-  outline-offset: 3px;
-  border-radius: 0.35rem;
 }
 </style>

@@ -93,17 +93,6 @@ export interface BreadcrumbEntry {
 export const appsIndexContent = {
   title: 'Mes Apps Apple',
   intro: 'Applications Apple en préparation.',
-  closingText: 'Le portfolio et le blog restent disponibles.',
-  links: [
-    {
-      label: 'Blog',
-      to: '/eco-conception/',
-    },
-    {
-      label: 'Portfolio',
-      to: '/portfolio/',
-    },
-  ],
   seo: {
     title: 'Apps',
     description: 'Applications BeAbot en préparation.',
