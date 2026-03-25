@@ -22,6 +22,11 @@ export interface AppFaqItem {
   answer: string
 }
 
+export interface AppFaqSection {
+  title: string
+  items: AppFaqItem[]
+}
+
 export interface AppLegalContent {
   title?: string
   paragraphs: string[]
@@ -69,6 +74,7 @@ export interface AppDetailContent {
   detailPoints: AppDetailPoint[]
   preview: AppPreview
   faq: AppFaqItem[]
+  faqSections?: AppFaqSection[]
   pricing?: AppPricingContent
   legal: AppLegalTabsContent
   cta: AppCta
@@ -130,6 +136,167 @@ export const appsIndexEntries: AppIndexEntry[] = [
       available: true,
       label: 'Capture actuelle',
     },
+  },
+]
+
+const duoSpendFaqSections: AppFaqSection[] = [
+  {
+    title: 'Premiers pas',
+    items: [
+      {
+        question: "C'est quoi DuoSpend exactement ?",
+        answer:
+          "DuoSpend est une app iPhone pour gérer les dépenses d'un projet commun à deux. Mariage, voyage, emménagement, travaux, projet bébé - vous enregistrez vos dépenses, l'app calcule qui doit combien à qui. Rien de plus.",
+      },
+      {
+        question: "Pour qui c'est fait ?",
+        answer:
+          "Pour les couples qui partagent des dépenses sur un projet précis. Pas pour les groupes d'amis, pas pour les entreprises - pour vous deux, dans un contexte défini.",
+      },
+      {
+        question: 'Faut-il créer un compte ?',
+        answer: 'Non. Pas de compte, pas d’email, pas de mot de passe. Vous ouvrez l’app et vous commencez.',
+      },
+      {
+        question: "L'app fonctionne-t-elle sans connexion ?",
+        answer:
+          'Oui. DuoSpend fonctionne entièrement hors ligne. Tout est stocké sur votre iPhone - pas besoin de Wi-Fi ou de données mobiles.',
+      },
+      {
+        question: "L'app est-elle disponible sur Android ?",
+        answer:
+          'Non. DuoSpend est une app iPhone uniquement, conçue avec les technologies Apple (Swift, SwiftUI). Une version Android n’est pas prévue.',
+      },
+    ],
+  },
+  {
+    title: 'Fonctionnement',
+    items: [
+      {
+        question: 'Comment fonctionne le calcul de la balance ?',
+        answer:
+          "Pour chaque dépense, l'app calcule la part théorique de chaque partenaire selon la répartition choisie (50/50 ou personnalisée). Elle compare cette part avec ce que chacun a réellement payé. L'écart cumulé donne la balance nette : une seule phrase, un seul montant.",
+      },
+      {
+        question: 'Peut-on avoir une répartition autre que 50/50 ?',
+        answer:
+          'Oui. Quand vous ajoutez une dépense, vous choisissez "50/50" ou une répartition personnalisée (ex. 70/30, 60/40). Chaque dépense peut avoir sa propre répartition.',
+      },
+      {
+        question: 'Peut-on avoir plusieurs projets en même temps ?',
+        answer:
+          'Oui. Chaque projet est indépendant, avec ses propres partenaires, son budget et son solde. Par exemple : un projet "Vacances été" et un projet "Travaux salon" en parallèle. Au-delà du premier projet, DuoSpend Pro est nécessaire.',
+      },
+      {
+        question: "L'app gère-t-elle plusieurs devises ?",
+        answer:
+          'Non, pas encore. DuoSpend fonctionne avec une seule devise (€ par défaut selon votre région). La gestion multi-devises est dans le backlog pour une version future.',
+      },
+      {
+        question: 'Peut-on exporter les données ?',
+        answer:
+          'Oui, avec DuoSpend Pro : générez un récapitulatif PDF de n’importe quel projet, avec la liste des dépenses et la balance finale.',
+      },
+    ],
+  },
+  {
+    title: 'DuoSpend Pro',
+    items: [
+      {
+        question: 'C’est quoi DuoSpend Pro ?',
+        answer:
+          'Un achat unique à 6,99 € qui débloque les projets illimités, les widgets pour l’écran d’accueil et l’export PDF. Pas d’abonnement, pas de renouvellement - vous payez une fois.',
+      },
+      {
+        question: 'Pourquoi ne pas tout laisser gratuit ?',
+        answer:
+          'DuoSpend est développée et maintenue par une seule personne. L’achat Pro permet de financer le développement continu sans dépendre de la publicité ou de la revente de données.',
+      },
+      {
+        question: 'La version gratuite est-elle vraiment utilisable ?',
+        answer:
+          'Oui. Avec un projet gratuit, vous avez accès à toutes les fonctionnalités essentielles : dépenses illimitées, balance en temps réel, répartitions personnalisées, budget de projet.',
+      },
+      {
+        question: "L'achat Pro est-il partageable avec ma famille ?",
+        answer:
+          'Oui, si le partage familial est activé sur votre compte Apple, DuoSpend Pro est automatiquement partagé avec votre groupe familial.',
+      },
+      {
+        question: "J'ai changé d'iPhone — comment récupérer mon achat ?",
+        answer:
+          'Ouvrez DuoSpend, allez dans Réglages et appuyez sur "Restaurer mes achats". L’App Store retrouve votre licence via votre identifiant Apple.',
+      },
+    ],
+  },
+  {
+    title: 'Widgets',
+    items: [
+      {
+        question: 'Comment ajouter un widget DuoSpend sur mon écran d’accueil ?',
+        answer:
+          'Maintenez votre doigt sur l’écran d’accueil → mode édition → appuyez sur + → cherchez "DuoSpend" → choisissez la taille (petit, moyen ou grand) → ajoutez. DuoSpend Pro est requis.',
+      },
+      {
+        question: 'Quels widgets sont disponibles ?',
+        answer:
+          'Trois tailles : petit (balance nette du projet), moyen (balance + barre de contribution), grand (balance + barre + dernières dépenses).',
+      },
+      {
+        question: 'Quel projet s’affiche dans le widget ?',
+        answer:
+          'Automatiquement le projet le plus récent. La possibilité de choisir le projet directement depuis le widget est prévue dans une prochaine version.',
+      },
+    ],
+  },
+  {
+    title: 'Confidentialité et données',
+    items: [
+      {
+        question: 'Mes données sont-elles envoyées sur un serveur ?',
+        answer: 'Non. DuoSpend ne dispose d’aucun serveur. Vos données restent sur votre iPhone.',
+      },
+      {
+        question: "L'app contient-elle des trackers ou de la pub ?",
+        answer:
+          'Non. Pas de publicité, pas d’analytique, pas de SDK tiers. Votre vie privée est un invariant du produit, pas un argument marketing.',
+      },
+      {
+        question: 'Que se passe-t-il si je désinstalle l’app ?',
+        answer:
+          'Toutes vos données locales sont supprimées. Si vous souhaitez garder une trace, exportez vos projets en PDF (Pro) avant de désinstaller.',
+      },
+      {
+        question: 'Puis-je supprimer mes données sans désinstaller l’app ?',
+        answer:
+          'Oui. Réglages → Données → "Supprimer toutes les données". Cette action est irréversible.',
+      },
+      {
+        question: "Est-ce que l'app fonctionne avec iCloud ?",
+        answer:
+          'Pas en v1.0 - les données restent sur votre appareil. La synchronisation iCloud (même compte Apple, plusieurs appareils) est prévue pour la v1.1.',
+      },
+    ],
+  },
+  {
+    title: 'Synchronisation et avenir',
+    items: [
+      {
+        question: 'Peut-on utiliser l’app à deux sur deux iPhones différents ?',
+        answer:
+          'Pas encore en v1.0. La synchronisation entre deux iPhones sur le même compte Apple arrive en v1.1. Le partage entre deux comptes Apple différents (chacun son iPhone) est prévu pour la v2.0 - c’est la feature la plus demandée.',
+      },
+      {
+        question: 'Quelles fonctionnalités sont prévues ?',
+        answer:
+          'v1.1 : synchronisation iCloud (même compte Apple). v2.0 : partage entre deux comptes Apple (la vraie sync couple). Plus tard : catégories de dépenses, graphiques, recherche, templates de projets.',
+      },
+      {
+        question: 'Comment signaler un bug ou suggérer une fonctionnalité ?',
+        answer:
+          'Via la page support : beabot.fr/apps/duo-spend/. L’app est développée par une seule personne - les retours sont lus et pris en compte.',
+      },
+    ],
   },
 ]
 
@@ -241,31 +408,8 @@ export const duoSpendContent: AppDetailContent = {
     available: true,
     label: 'Capture actuelle',
   },
-  faq: [
-    {
-      question: "L’app fonctionne-t-elle sans connexion ?",
-      answer: 'Oui. Toutes les données sont stockées localement sur votre iPhone.',
-    },
-    {
-      question: 'Faut-il créer un compte ?',
-      answer: 'Non. Aucun compte, aucune inscription.',
-    },
-    {
-      question: 'L’app est-elle disponible sur Android ?',
-      answer:
-        'Non. DuoSpend est une app iPhone uniquement, conçue pour l’écosystème Apple.',
-    },
-    {
-      question: 'Peut-on synchroniser entre deux iPhones ?',
-      answer:
-        'Pas encore en v1.0. La synchronisation iCloud sera ajoutée dans une version ultérieure.',
-    },
-    {
-      question: 'Les paiements sont-ils sécurisés ?',
-      answer:
-        'Les achats sont gérés directement par Apple via l’App Store. DuoSpend ne voit jamais vos coordonnées bancaires.',
-    },
-  ],
+  faq: duoSpendFaqSections.flatMap((section) => section.items),
+  faqSections: duoSpendFaqSections,
   pricing: {
     title: 'Tarifs',
     intro: 'Une formule gratuite pour démarrer, une formule Pro pour aller plus loin.',

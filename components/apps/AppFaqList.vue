@@ -1,22 +1,64 @@
 <template>
   <div class="faq-list">
-    <details v-for="item in items" :key="item.question" class="faq-item">
-      <summary>{{ item.question }}</summary>
-      <p>{{ item.answer }}</p>
-    </details>
+    <template v-if="props.sections?.length">
+      <section
+        v-for="section in props.sections"
+        :key="section.title"
+        class="faq-group"
+      >
+        <h3 class="faq-group__title">{{ section.title }}</h3>
+        <div class="faq-group__items">
+          <details
+            v-for="item in section.items"
+            :key="item.question"
+            class="faq-item"
+          >
+            <summary>{{ item.question }}</summary>
+            <p>{{ item.answer }}</p>
+          </details>
+        </div>
+      </section>
+    </template>
+
+    <template v-else>
+      <details v-for="item in props.items" :key="item.question" class="faq-item">
+        <summary>{{ item.question }}</summary>
+        <p>{{ item.answer }}</p>
+      </details>
+    </template>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { AppFaqItem } from '~/data/apps'
+import type { AppFaqItem, AppFaqSection } from '~/data/apps'
 
-defineProps<{
+const props = defineProps<{
   items: AppFaqItem[]
+  sections?: AppFaqSection[]
 }>()
 </script>
 
 <style lang="scss" scoped>
 .faq-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.faq-group {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.faq-group__title {
+  margin: 0;
+  color: $gris1;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.faq-group__items {
   display: grid;
   gap: 0.75rem;
 }

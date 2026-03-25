@@ -151,7 +151,10 @@
           <p>Questions fréquentes.</p>
         </div>
 
-        <AppFaqList :items="duoSpendContent.faq" />
+        <AppFaqList
+          :items="duoSpendContent.faq"
+          :sections="duoSpendContent.faqSections"
+        />
       </section>
 
       <section class="app-section" aria-labelledby="duo-legal-title">
