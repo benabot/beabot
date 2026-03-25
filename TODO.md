@@ -4,8 +4,8 @@
 
 **Projet** : BeAbot - Blog éco-conception web
 **Date création** : 15 décembre 2025
-**Dernière MAJ** : 23 décembre 2025
-**Branche active** : `dev`
+**Dernière MAJ** : 25 mars 2026
+**Branche active** : `feat/apps-pages`
 **Sites** :
 
 - 🟢 **Production** (Nuxt 3, master) : <https://beabot.fr>
@@ -15,24 +15,26 @@
 
 ## 📊 CONTEXTE ACTUEL
 
-### Statut (24 décembre 2025)
+### Statut (25 mars 2026)
 
 **Phase 14 Portfolio + Homepage Mobile** — Prêt pour merge sur master.
 
 **Patch Portfolio (25 janvier 2026)** — Correctif d’affichage projet BORDUR.
 
+**Pages Apps (25 mars 2026)** — Landing `/apps/` + pages détail Meeting Mode / DuoSpend.
+
 - [x] Renommage public "chasse-patate" → "BORDUR"
 - [x] Liens projet mis à jour (topette.netlify.app → bordur.fr)
 
-| Métrique | Valeur | Statut |
-|----------|--------|--------|
-| **Framework** | Nuxt 3.14 | ✅ |
-| **URLs** | Trailing slash normalisé | ✅ |
-| **Portfolio** | Refonte complète | ✅ |
-| **Homepage** | Améliorations mobile UX | ✅ |
-| **Structured Data** | Toutes pages principales | ✅ |
-| **EcoIndex** | A | ✅ |
-| **Lighthouse** | 99 / 96 / 100 / 100 | ✅ |
+| Métrique            | Valeur                   | Statut |
+| ------------------- | ------------------------ | ------ |
+| **Framework**       | Nuxt 3.14                | ✅     |
+| **URLs**            | Trailing slash normalisé | ✅     |
+| **Portfolio**       | Refonte complète         | ✅     |
+| **Homepage**        | Améliorations mobile UX  | ✅     |
+| **Structured Data** | Toutes pages principales | ✅     |
+| **EcoIndex**        | A                        | ✅     |
+| **Lighthouse**      | 99 / 96 / 100 / 100      | ✅     |
 
 ---
 
@@ -70,11 +72,13 @@
 - [x] **PF-14-12** : Focus states accessibles
 
 #### Portfolio - Données structurées
+
 - [x] **PF-14-13** : Données projets externalisées dans `data/portfolio.ts`
 - [x] **PF-14-14** : Intégration des données dans portfolio.vue
 - [x] **PF-14-15** : Composant carte projet enrichi
 
 #### Homepage - Améliorations mobile (24 déc)
+
 - [x] **HP-14-21** : Numéros piliers (1-4) plus visibles (clamp 2.5-3.5rem, font-weight black)
 - [x] **HP-14-22** : Labels catégorie améliorés (font-weight 600, letter-spacing 0.08em)
 - [x] **HP-14-23** : Titres verts articles section mieux distingués (font-weight black mobile)
@@ -85,6 +89,19 @@
 - [x] **HP-14-28** : Container-2 typo améliorée (line-height 1.75-1.8, letter-spacing)
 - [x] **HP-14-29** : Container-2 alignement responsive (justify desktop, center mobile)
 - [x] **HP-14-30** : Container-2 césure adaptée (auto desktop, none mobile)
+
+### Pages Apps : Landing + détail apps natives ✅
+
+> **Terminée le 25 mars 2026**
+> **Branche** : `feat/apps-pages`
+
+- [x] **APP-16-01** : Créer la page `/apps/` inspirée du rythme visuel du portfolio
+- [x] **APP-16-02** : Créer la page `/apps/meeting-mode/`
+- [x] **APP-16-03** : Créer la page `/apps/duo-spend/`
+- [x] **APP-16-04** : Externaliser le contenu apps dans `data/apps.ts`
+- [x] **APP-16-05** : Ajouter les sections de confidentialité FR / EN
+- [x] **APP-16-06** : Prévoir un formulaire “être informé de la sortie de l'app”
+- [x] **APP-16-07** : Ajouter le lien `Apps` dans le footer
 
 ### Phase 12 : Optimisation SEO ✅
 
@@ -189,10 +206,12 @@ git push origin master
 ## ⏸️ BACKLOG
 
 ### Performance
+
 - [ ] Réduire hauteur Hero mobile
 - [ ] Indicateur de progression scroll
 
 ### Éco-conception
+
 - [ ] Requêtes HTTP : Objectif < 12
 - [ ] EcoIndex : Objectif A
 
@@ -200,27 +219,27 @@ git push origin master
 
 ## 📊 MÉTRIQUES CIBLES
 
-| Métrique | Actuel | Cible |
-|----------|--------|-------|
-| EcoIndex | B-C | **A** |
-| Requêtes HTTP | ~16 | **< 12** |
-| Poids page | ~150KB | **< 100KB** |
-| Lighthouse Perf | 85-90 | **> 95** |
+| Métrique        | Actuel | Cible       |
+| --------------- | ------ | ----------- |
+| EcoIndex        | B-C    | **A**       |
+| Requêtes HTTP   | ~16    | **< 12**    |
+| Poids page      | ~150KB | **< 100KB** |
+| Lighthouse Perf | 85-90  | **> 95**    |
 
 ---
 
 ## 📋 HISTORIQUE DES PHASES
 
-| Phase | Description | Statut | Date |
-|-------|-------------|--------|------|
-| 1-8 | Migration Nuxt 3 | ✅ | Nov-Déc 2025 |
-| 9 | Éco-conception | ✅ | 17 déc 2025 |
-| 10 | Domaine beabot.fr | ✅ | 18 déc 2025 |
-| 11 | Homepage & Contact | ✅ | 20 déc 2025 |
-| 12 | SEO technique | ✅ | 21 déc 2025 |
-| **14** | **Portfolio redesign** | ✅ | **23 déc 2025** |
-| 13 | SEO avancé & Contenu | 🔜 | À venir |
-| 15 | Side Projects | 🔜 | À venir |
+| Phase  | Description            | Statut | Date            |
+| ------ | ---------------------- | ------ | --------------- |
+| 1-8    | Migration Nuxt 3       | ✅     | Nov-Déc 2025    |
+| 9      | Éco-conception         | ✅     | 17 déc 2025     |
+| 10     | Domaine beabot.fr      | ✅     | 18 déc 2025     |
+| 11     | Homepage & Contact     | ✅     | 20 déc 2025     |
+| 12     | SEO technique          | ✅     | 21 déc 2025     |
+| **14** | **Portfolio redesign** | ✅     | **23 déc 2025** |
+| 13     | SEO avancé & Contenu   | 🔜     | À venir         |
+| 15     | Side Projects          | 🔜     | À venir         |
 
 ---
 
