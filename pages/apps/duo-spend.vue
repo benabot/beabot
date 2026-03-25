@@ -47,7 +47,7 @@
 
       <section class="app-surface" aria-labelledby="duo-overview-title">
         <div class="app-surface__copy">
-          <h2 id="duo-overview-title">Aperçu</h2>
+          <h2 id="duo-overview-title">Le problème</h2>
           <p v-for="paragraph in duoSpendContent.overview" :key="paragraph">
             {{ paragraph }}
           </p>
@@ -57,16 +57,16 @@
           <p class="app-surface__eyebrow">Repères</p>
           <dl class="app-surface__list">
             <div>
-              <dt>Plateforme</dt>
-              <dd>{{ duoSpendContent.platform }}</dd>
+              <dt>Usage</dt>
+              <dd>Dépenses communes à deux</dd>
             </div>
             <div>
-              <dt>Statut</dt>
-              <dd>{{ duoSpendContent.stage }}</dd>
+              <dt>Stockage</dt>
+              <dd>Local sur iPhone</dd>
             </div>
             <div>
-              <dt>Capture</dt>
-              <dd>{{ duoSpendContent.preview.label }}</dd>
+              <dt>Connexion</dt>
+              <dd>Hors ligne</dd>
             </div>
           </dl>
         </div>
@@ -75,7 +75,7 @@
       <section class="app-section" aria-labelledby="duo-capture-title">
         <div class="section-heading">
           <h2 id="duo-capture-title">Visuel</h2>
-          <p>Capture à remplacer quand le visuel final sera prêt.</p>
+          <p>Aperçu du produit en attente du visuel final.</p>
         </div>
 
         <div class="app-capture app-capture--image">
@@ -103,8 +103,8 @@
 
       <section class="app-section" aria-labelledby="duo-details-title">
         <div class="section-heading">
-          <h2 id="duo-details-title">Détails</h2>
-          <p>Repères à compléter avant publication.</p>
+          <h2 id="duo-details-title">Points clés</h2>
+          <p>Les repères de base pour lire l’app sans la surcharger.</p>
         </div>
 
         <div class="detail-grid">
@@ -119,10 +119,36 @@
         </div>
       </section>
 
+      <section
+        v-if="duoSpendContent.pricing"
+        class="app-section"
+        aria-labelledby="duo-pricing-title"
+      >
+        <div class="section-heading">
+          <h2 id="duo-pricing-title">{{ duoSpendContent.pricing.title }}</h2>
+          <p>{{ duoSpendContent.pricing.intro }}</p>
+        </div>
+
+        <div class="pricing-grid">
+          <article
+            v-for="plan in duoSpendContent.pricing.plans"
+            :key="plan.name"
+            class="pricing-card"
+          >
+            <p class="pricing-card__name">{{ plan.name }}</p>
+            <p class="pricing-card__price">{{ plan.price }}</p>
+            <p class="pricing-card__summary">{{ plan.description }}</p>
+            <ul class="pricing-card__list">
+              <li v-for="item in plan.items" :key="item">{{ item }}</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
       <section class="app-section" aria-labelledby="duo-faq-title">
         <div class="section-heading">
           <h2 id="duo-faq-title">FAQ</h2>
-          <p>Questions à compléter.</p>
+          <p>Questions fréquentes.</p>
         </div>
 
         <AppFaqList :items="duoSpendContent.faq" />
@@ -148,6 +174,10 @@
         </div>
 
         <AppReleaseInterestForm :app-name="duoSpendContent.name" />
+
+        <p class="app-cta__note">
+          Pour toute question, la page DuoSpend reste le point de contact.
+        </p>
 
         <AppLink :to="duoSpendContent.cta.secondaryTo" class="app-cta__link">
           {{ duoSpendContent.cta.secondaryLabel }}
@@ -527,6 +557,68 @@ useHead({
   font-weight: 600;
 }
 
+.pricing-grid {
+  display: grid;
+  gap: 0.75rem;
+
+  @media (min-width: 820px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.pricing-card {
+  display: grid;
+  gap: 0.65rem;
+  padding: 1.05rem;
+  border-radius: 1.15rem;
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.pricing-card__name {
+  margin: 0;
+  color: $vert;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pricing-card__price {
+  margin: 0;
+  color: $gris1;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.pricing-card__summary {
+  margin: 0;
+  color: $gris2;
+  line-height: 1.65;
+}
+
+.pricing-card__list {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pricing-card__list li {
+  position: relative;
+  padding-left: 1rem;
+  color: $gris2;
+  line-height: 1.6;
+}
+
+.pricing-card__list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: $vert;
+}
+
 .app-cta {
   display: grid;
   gap: 1rem;
@@ -548,6 +640,13 @@ useHead({
   color: $gris2;
   line-height: 1.6;
   max-width: 34rem;
+}
+
+.app-cta__note {
+  margin: 0;
+  max-width: 34rem;
+  color: $gris2;
+  line-height: 1.6;
 }
 
 .app-cta__link {

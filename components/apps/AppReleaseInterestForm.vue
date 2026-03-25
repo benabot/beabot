@@ -21,7 +21,7 @@
     <div class="release-form__intro">
       <p class="release-form__eyebrow">Prépublication</p>
       <h3>Être informé de la sortie de l'app</h3>
-      <p>Le formulaire enregistre la demande quand la page est prête.</p>
+      <p>Recevez un message quand {{ appName }} sera disponible.</p>
     </div>
 
     <div class="release-form__controls">
