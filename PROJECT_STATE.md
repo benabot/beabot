@@ -1,6 +1,6 @@
 # 📊 ÉTAT DU PROJET - BeAbot
 
-> **Récapitulatif de l'état du projet au 23 décembre 2025**
+> **Récapitulatif de l'état du projet au 26 mars 2026**
 
 ---
 
@@ -14,6 +14,16 @@
 | **Dev Preview** | https://dev-beabot.netlify.app | Nuxt 3.14 | dev | ✅ Tests |
 
 ### Dernière mise à jour
+
+**Pages Apps (26 mars 2026)** — Landing `/apps/` + pages détail Meeting Mode / DuoSpend.
+
+- ✅ Landing `/apps/` structurée (hero + grille extensible + CTA explicites)
+- ✅ Pages détail `/apps/meeting-mode/` + `/apps/duo-spend/`
+- ✅ Breadcrumb UI + JSON-LD `BreadcrumbList`
+- ✅ Section légale FR/EN avec onglets accessibles
+- ✅ Formulaire “être informé” (Netlify Forms)
+- ✅ Intégration des textes Meeting Mode + DuoSpend (présentation, FAQ, privacy)
+- ✅ Lien `Apps` actif dans le footer
 
 **Phase 14 (Portfolio) terminée** — Prêt pour merge sur dev puis master.
 
@@ -36,6 +46,7 @@ Phase 10    - Domaine beabot.fr     [██████████████�
 Phase 11    - Homepage & Contact    [████████████████████] 100% ✅
 Phase 12    - SEO Technique         [████████████████████] 100% ✅
 Phase 14    - Portfolio Emploi      [████████████████████] 100% ✅
+Pages Apps  - /apps + pages détail  [████████████████████] 100% ✅
 Phase 13    - SEO Avancé & Contenu  [░░░░░░░░░░░░░░░░░░░░]   0% 🔜
 Phase 15    - Side Projects         [░░░░░░░░░░░░░░░░░░░░]   0% 🔜
 ```
@@ -98,6 +109,17 @@ Phase 15    - Side Projects         [░░░░░░░░░░░░░░�
 - ✅ Piliers avec accordéon mobile
 - ✅ Page contact 2 colonnes + formulaire humanisé
 
+### Pages Apps (mars 2026)
+
+- ✅ Landing `/apps/` avec hero + grille d’apps extensible
+- ✅ Pages détail Meeting Mode + DuoSpend
+- ✅ Breadcrumb UI + JSON-LD `BreadcrumbList`
+- ✅ Section légale FR/EN (onglets accessibles)
+- ✅ Formulaire d’intérêt “être informé”
+- ✅ Intégration des textes Meeting Mode + DuoSpend (présentation, FAQ, privacy)
+- ✅ CTA explicites “Découvrir …” sur la landing
+- ✅ Lien `Apps` actif dans le footer
+
 ---
 
 ## 📂 BRANCHES GIT
@@ -109,6 +131,7 @@ Phase 15    - Side Projects         [░░░░░░░░░░░░░░�
 | `master` | Production beabot.fr | 🔒 Stable |
 | `dev` | Développement | ✅ Phase 12 prête |
 | `feature/portfolio-redesign` | Refonte portfolio | ✅ **Prêt pour merge** |
+| `feat/apps-pages` | Pages Apps | ✅ En cours |
 
 ### Workflow de merge
 
@@ -167,6 +190,15 @@ git push origin master
 1. Créer section "Explorations" ou "Side Projects"
 2. Ajouter projets JS/expérimentations
 3. Différencier visuellement des projets clients
+
+### Priorité 4 : Finaliser Pages Apps
+
+1. Ajouter les images définitives
+2. Améliorer UI / SEO sur `/apps/` et les pages enfants
+3. Remplacer le paragraphe de bas de page DuoSpend par un bouton vers `/contact/`
+4. Configurer l’inscription par mail côté Netlify Forms
+5. Ajouter les URLs App Store et ajuster les CTA quand disponibles
+6. Lancer un audit graphique UX/UI
 
 ---
 
