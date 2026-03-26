@@ -23,14 +23,16 @@
           :aria-label="props.app.preview.alt"
         >
           <div class="app-card__placeholder-frame" aria-hidden="true">
-            <div class="app-card__placeholder-bar">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-            <div class="app-card__placeholder-screen">
-              <strong>{{ props.app.name }}</strong>
-              <span>{{ props.app.preview.label }}</span>
+            <span class="app-card__placeholder-orb app-card__placeholder-orb--one"></span>
+            <span class="app-card__placeholder-orb app-card__placeholder-orb--two"></span>
+            <div class="app-card__placeholder-panel">
+              <div class="app-card__placeholder-bar">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="app-card__placeholder-wordmark">{{ props.app.name }}</div>
+              <div class="app-card__placeholder-caption">{{ props.app.platform }}</div>
             </div>
           </div>
         </div>
@@ -45,7 +47,7 @@
       <h3 class="app-card__title">{{ props.app.name }}</h3>
       <p class="app-card__summary">{{ props.app.summary }}</p>
       <AppLink :to="props.app.href" class="app-card__link">
-        Découvrir {{ props.app.name }}
+        Voir {{ props.app.name }}
       </AppLink>
     </div>
   </article>
@@ -116,16 +118,52 @@ const props = withDefaults(
 }
 
 .app-card__placeholder-frame {
-  width: min(78%, 19rem);
+  width: min(82%, 19rem);
   aspect-ratio: 4 / 5;
   border-radius: 1rem;
-  padding: 0.8rem;
+  padding: 0.9rem;
   display: grid;
-  gap: 0.75rem;
+  align-content: end;
   background: linear-gradient(180deg, #121826, #1e293b);
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.08),
     0 16px 34px rgba(15, 23, 42, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.app-card__placeholder-orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(2px);
+  opacity: 0.75;
+}
+
+.app-card__placeholder-orb--one {
+  top: 1rem;
+  left: 1rem;
+  width: 5.25rem;
+  height: 5.25rem;
+  background: rgba(4, 217, 79, 0.16);
+}
+
+.app-card__placeholder-orb--two {
+  right: 1rem;
+  bottom: 3.4rem;
+  width: 7rem;
+  height: 7rem;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.app-card__placeholder-panel {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.8rem;
+  padding: 0.9rem;
+  border-radius: 0.95rem;
+  background: linear-gradient(180deg, rgba(16, 24, 40, 0.88), rgba(15, 23, 42, 0.92));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
 .app-card__placeholder-bar {
@@ -140,29 +178,19 @@ const props = withDefaults(
   background: rgba(255, 255, 255, 0.32);
 }
 
-.app-card__placeholder-screen {
-  min-height: 0;
-  border-radius: 0.7rem;
-  padding: 1rem;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  gap: 0.35rem;
-  background: linear-gradient(180deg, #eff6ff, #dbeafe);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.44);
+.app-card__placeholder-wordmark {
+  color: rgba(255, 255, 255, 0.94);
+  font-size: clamp(1.4rem, 3vw, 1.95rem);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+}
 
-  strong {
-    color: #0f172a;
-    font-size: 1rem;
-  }
-
-  span {
-    color: rgba(15, 23, 42, 0.66);
-    font-size: 0.76rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
+.app-card__placeholder-caption {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .app-card__body {

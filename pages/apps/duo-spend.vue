@@ -72,7 +72,11 @@
         </div>
       </section>
 
-      <section class="app-section" aria-labelledby="duo-capture-title">
+      <section
+        v-if="duoSpendContent.showVisual"
+        class="app-section"
+        aria-labelledby="duo-capture-title"
+      >
         <div class="section-heading">
           <h2 id="duo-capture-title">Visuel</h2>
           <p>Aperçu du produit en attente du visuel final.</p>
@@ -178,10 +182,6 @@
 
         <AppReleaseInterestForm :app-name="duoSpendContent.name" />
 
-        <p class="app-cta__note">
-          Pour toute question, la page DuoSpend reste le point de contact.
-        </p>
-
         <AppLink :to="duoSpendContent.cta.secondaryTo" class="app-cta__link">
           {{ duoSpendContent.cta.secondaryLabel }}
         </AppLink>
@@ -196,7 +196,11 @@ import AppFaqList from '~/components/apps/AppFaqList.vue'
 import AppLegalTabs from '~/components/apps/AppLegalTabs.vue'
 import AppReleaseInterestForm from '~/components/apps/AppReleaseInterestForm.vue'
 
-import { buildBreadcrumbSchema, duoSpendContent } from '~/data/apps'
+import {
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  duoSpendContent,
+} from '~/data/apps'
 import { canonicalUrl } from '~/utils/seo-url'
 
 const config = useRuntimeConfig()
@@ -214,10 +218,12 @@ const breadcrumbSchema = buildBreadcrumbSchema(config.public.siteUrl, [
   { name: 'DuoSpend', path: '/apps/duo-spend/' },
 ])
 
+const faqSchema = buildFaqSchema(duoSpendContent.faq)
+
 useSeoMeta({
   title: duoSpendContent.seo.title,
   description: duoSpendContent.seo.description,
-  ogTitle: duoSpendContent.seo.title,
+  ogTitle: 'DuoSpend — Dépenses communes à deux',
   ogDescription: duoSpendContent.seo.description,
   ogType: 'website',
   ogUrl: pageUrl,
@@ -237,6 +243,10 @@ useHead({
     {
       type: 'application/ld+json',
       children: JSON.stringify(breadcrumbSchema),
+    },
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify(faqSchema),
     },
   ],
 })
@@ -643,13 +653,6 @@ useHead({
   color: $gris2;
   line-height: 1.6;
   max-width: 34rem;
-}
-
-.app-cta__note {
-  margin: 0;
-  max-width: 34rem;
-  color: $gris2;
-  line-height: 1.6;
 }
 
 .app-cta__link {

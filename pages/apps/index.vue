@@ -7,7 +7,7 @@
         <p class="apps-hero__eyebrow">Apps</p>
         <h1>{{ appsIndexContent.title }}</h1>
         <p class="apps-hero__intro">{{ appsIndexContent.intro }}</p>
-        <p class="apps-hero__meta">DuoSpend pour iOS. Meeting Mode pour macOS.</p>
+        <p class="apps-hero__meta">{{ appsIndexContent.meta }}</p>
       </section>
 
       <section class="apps-section" aria-labelledby="apps-list-title">
@@ -38,6 +38,7 @@ import {
   appsIndexContent,
   appsIndexEntries,
   buildBreadcrumbSchema,
+  buildItemListSchema,
 } from '~/data/apps'
 import { canonicalUrl } from '~/utils/seo-url'
 
@@ -50,6 +51,8 @@ const breadcrumbSchema = buildBreadcrumbSchema(config.public.siteUrl, [
   { name: 'Accueil', path: '/' },
   { name: 'Apps', path: '/apps/' },
 ])
+
+const itemListSchema = buildItemListSchema(config.public.siteUrl, appsIndexEntries)
 
 useSeoMeta({
   title: appsIndexContent.seo.title,
@@ -74,6 +77,10 @@ useHead({
     {
       type: 'application/ld+json',
       children: JSON.stringify(breadcrumbSchema),
+    },
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify(itemListSchema),
     },
   ],
 })

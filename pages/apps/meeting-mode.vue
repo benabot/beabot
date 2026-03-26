@@ -48,18 +48,12 @@
       <section class="app-surface" aria-labelledby="meeting-overview-title">
         <div class="app-surface__copy">
           <h2 id="meeting-overview-title">Ce que fait Meeting Mode</h2>
-          <p v-for="paragraph in meetingModeContent.overview" :key="paragraph">
-            {{ paragraph }}
-          </p>
-
-          <div class="app-surface__group">
-            <p class="app-surface__eyebrow">Avec un preset</p>
-            <ul class="app-surface__bullets">
-              <li v-for="item in meetingModeContent.capabilities" :key="item">
-                {{ item }}
-              </li>
-            </ul>
-          </div>
+          <p class="app-surface__lead">Avec un preset, Meeting Mode peut :</p>
+          <ul class="app-surface__bullets">
+            <li v-for="item in meetingModeContent.capabilities" :key="item">
+              {{ item }}
+            </li>
+          </ul>
         </div>
 
         <div class="app-surface__status">
@@ -72,7 +66,11 @@
         </div>
       </section>
 
-      <section class="app-section" aria-labelledby="meeting-capture-title">
+      <section
+        v-if="meetingModeContent.showVisual"
+        class="app-section"
+        aria-labelledby="meeting-capture-title"
+      >
         <div class="section-heading">
           <h2 id="meeting-capture-title">Capture provisoire</h2>
           <p>En attente de la capture finale.</p>
@@ -188,7 +186,11 @@ import AppFaqList from '~/components/apps/AppFaqList.vue'
 import AppLegalTabs from '~/components/apps/AppLegalTabs.vue'
 import AppReleaseInterestForm from '~/components/apps/AppReleaseInterestForm.vue'
 
-import { buildBreadcrumbSchema, meetingModeContent } from '~/data/apps'
+import {
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  meetingModeContent,
+} from '~/data/apps'
 import { canonicalUrl } from '~/utils/seo-url'
 
 const config = useRuntimeConfig()
@@ -206,10 +208,12 @@ const breadcrumbSchema = buildBreadcrumbSchema(config.public.siteUrl, [
   { name: 'Meeting Mode', path: '/apps/meeting-mode/' },
 ])
 
+const faqSchema = buildFaqSchema(meetingModeContent.faq)
+
 useSeoMeta({
   title: meetingModeContent.seo.title,
   description: meetingModeContent.seo.description,
-  ogTitle: meetingModeContent.seo.title,
+  ogTitle: 'Meeting Mode — Préparez votre Mac avant chaque réunion',
   ogDescription: meetingModeContent.seo.description,
   ogType: 'website',
   ogUrl: pageUrl,
@@ -229,6 +233,10 @@ useHead({
     {
       type: 'application/ld+json',
       children: JSON.stringify(breadcrumbSchema),
+    },
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify(faqSchema),
     },
   ],
 })
@@ -461,10 +469,10 @@ useHead({
   line-height: 1.65;
 }
 
-.app-surface__group {
-  display: grid;
-  gap: 0.65rem;
-  margin-top: 0.4rem;
+.app-surface__lead {
+  margin-top: 0.1rem;
+  color: $gris1;
+  font-weight: 600;
 }
 
 .app-surface__status {

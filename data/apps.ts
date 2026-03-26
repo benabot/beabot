@@ -72,6 +72,7 @@ export interface AppDetailContent {
   intro: string
   summary: string
   overview: string[]
+  showVisual: boolean
   capabilities?: string[]
   useCases?: string[]
   detailPoints: AppDetailPoint[]
@@ -95,11 +96,13 @@ export interface BreadcrumbEntry {
 }
 
 export const appsIndexContent = {
-  title: 'Mes Apps Apple',
-  intro: 'Deux applications natives en préparation. Une pour iOS, une pour macOS.',
+  title: 'Applications iOS & macOS',
+  intro: 'Deux apps natives conçues pour aller droit au but.',
+  meta: "Pas d'abonnement caché, pas de compte imposé.",
   seo: {
-    title: 'Apps',
-    description: 'Applications BeAbot en préparation.',
+    title: 'Applications iOS & macOS — BeAbot',
+    description:
+      'DuoSpend pour gérer vos dépenses à deux, Meeting Mode pour préparer votre Mac avant une réunion. Deux apps natives Swift, sans abonnement.',
   },
 }
 
@@ -109,7 +112,7 @@ export const appsIndexEntries: AppIndexEntry[] = [
     name: 'DuoSpend',
     platform: 'iOS',
     stage: 'Prépublication',
-    summary: 'Dépenses partagées.',
+    summary: "Solde net en un coup d'œil.",
     href: '/apps/duo-spend/',
     featured: true,
     preview: {
@@ -124,8 +127,7 @@ export const appsIndexEntries: AppIndexEntry[] = [
     name: 'Meeting Mode',
     platform: 'macOS',
     stage: 'Prépublication',
-    summary:
-      'Meeting Mode prépare votre Mac pour une réunion, une démo ou un partage d’écran en un clic : il ouvre ce qu’il faut, masque le reste, affiche un écran propre, puis propose un restore simple et compréhensible.',
+    summary: 'Préparer un Mac avant une réunion.',
     href: '/apps/meeting-mode/',
     featured: false,
     preview: {
@@ -308,9 +310,7 @@ export const meetingModeContent: AppDetailContent = {
   summary:
     'L’idée est directe : préparer, montrer, restaurer.',
   overview: [
-    "L’idée est volontairement directe : lancer le bon preset, ouvrir les apps, liens et fichiers utiles, réduire les distractions visibles, afficher un fond propre avant le partage, puis revenir ensuite à un état de travail pratique.",
-    'Contrairement à beaucoup d’outils trop ambitieux, Meeting Mode ne prétend pas reconstruire parfaitement l’état de votre bureau. L’app se concentre sur un flux court, fiable et compréhensible : préparer, montrer, restaurer.',
-    'L’app fonctionne en local et garde une logique claire : une seule session active à la fois, un restore limité à ce qui a été effectivement changé par Meeting Mode.',
+    'Meeting Mode reste centré sur un flux court, fiable et compréhensible.',
   ],
   capabilities: [
     'ouvrir des applications utiles à votre réunion',
@@ -367,6 +367,7 @@ export const meetingModeContent: AppDetailContent = {
     available: false,
     label: 'Capture à venir',
   },
+  showVisual: false,
   faq: [
     {
       question: 'À quoi sert Meeting Mode ?',
@@ -479,13 +480,13 @@ export const meetingModeContent: AppDetailContent = {
   cta: {
     title: "Être informé de la sortie de l'app",
     description: "L'app n'est pas encore publiée. Laissez votre adresse pour recevoir la suite quand elle sera prête.",
-    secondaryLabel: 'Retour aux apps',
-    secondaryTo: '/apps/',
+    secondaryLabel: 'Une question ? Contactez-moi',
+    secondaryTo: '/contact/',
   },
   seo: {
-    title: 'Meeting Mode — app macOS de préparation avant réunion',
+    title: 'Meeting Mode — App macOS menu bar pour réunions | BeAbot',
     description:
-      'Meeting Mode prépare un Mac avant une réunion, une démo ou un partage d’écran. L’app ouvre des éléments utiles, affiche un écran propre et restaure ce qu’elle a modifié.',
+      'Meeting Mode prépare votre Mac en un clic : ouvre vos apps, masque le reste, affiche un écran propre. App macOS barre de menu, locale, sans compte.',
   },
 }
 
@@ -495,9 +496,8 @@ export const duoSpendContent: AppDetailContent = {
   platform: 'iOS',
   stage: 'Prépublication',
   href: '/apps/duo-spend/',
-  intro: 'Gérez vos dépenses communes. Sans prise de tête.',
-  summary:
-    'Une seule question compte : qui doit combien à qui ? DuoSpend y répond en un coup d’œil, pour chaque projet que vous partagez à deux.',
+  intro: "Qui doit combien à qui ? Un coup d'œil suffit.",
+  summary: 'Un suivi simple pour vos projets partagés.',
   overview: [
     'Vous organisez un voyage, un mariage, des travaux ou un emménagement. L’un avance les frais, l’autre rembourse, mais le solde n’est pas toujours évident à suivre.',
     'DuoSpend est conçue pour deux. Créez un projet, ajoutez vos dépenses, choisissez qui paie quoi et en quelle proportion. L’app calcule le solde net en temps réel et l’affiche clairement.',
@@ -527,6 +527,7 @@ export const duoSpendContent: AppDetailContent = {
     available: true,
     label: 'Capture actuelle',
   },
+  showVisual: false,
   faq: duoSpendFaqSections.flatMap((section) => section.items),
   faqSections: duoSpendFaqSections,
   pricing: {
@@ -586,15 +587,39 @@ export const duoSpendContent: AppDetailContent = {
     title: "Être informé de la sortie de l'app",
     description:
       "L'app n'est pas encore publiée. Laissez votre adresse pour recevoir la suite quand elle sera prête.",
-    secondaryLabel: 'Retour aux apps',
-    secondaryTo: '/apps/',
+    secondaryLabel: 'Une question ? Contactez-moi',
+    secondaryTo: '/contact/',
   },
   seo: {
-    title: 'DuoSpend — dépenses communes à deux',
+    title: 'DuoSpend — App iPhone pour dépenses à deux | BeAbot',
     description:
-      "DuoSpend suit les dépenses communes à deux, garde les données sur l'iPhone et fonctionne hors ligne.",
+      'DuoSpend calcule qui doit combien à qui, sur chaque projet commun. Hors ligne, sans compte, sans pub. Achat unique 6,99 €.',
   },
 }
+
+export const buildFaqSchema = (items: AppFaqItem[]) => ({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+})
+
+export const buildItemListSchema = (siteUrl: string, items: AppIndexEntry[]) => ({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.name,
+    item: canonicalUrl(siteUrl, item.href),
+  })),
+})
 
 export const buildBreadcrumbSchema = (
   siteUrl: string,
