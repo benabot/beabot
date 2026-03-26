@@ -11,6 +11,8 @@ export interface AppPreview {
 export interface AppGalleryItem {
   src: string
   alt: string
+  title: string
+  subtitle: string
 }
 
 export interface AppIndexEntry {
@@ -540,18 +542,38 @@ export const duoSpendContent: AppDetailContent = {
     {
       src: '/img/apps/duospend-resume.webp',
       alt: 'Aperçu de l’écran résumé DuoSpend',
+      title: 'Résumé',
+      subtitle: 'Vue d’ensemble du projet',
+    },
+    {
+      src: '/img/apps/duospend-depense1.webp',
+      alt: 'Aperçu de la première dépense dans DuoSpend',
+      title: 'Dépense 1',
+      subtitle: 'Saisie et partage',
+    },
+    {
+      src: '/img/apps/duospend-depense2.webp',
+      alt: 'Aperçu de la seconde dépense dans DuoSpend',
+      title: 'Dépense 2',
+      subtitle: 'Suivi de la balance',
     },
     {
       src: '/img/apps/duospend-ajout-depense.webp',
       alt: 'Aperçu de l’ajout d’une dépense dans DuoSpend',
+      title: 'Ajout',
+      subtitle: 'Entrée rapide',
     },
     {
       src: '/img/apps/duospend-export-pdf.webp',
       alt: 'Aperçu de l’export PDF dans DuoSpend',
+      title: 'Export PDF',
+      subtitle: 'Récapitulatif partageable',
     },
     {
       src: '/img/apps/duospend-nouveau-projet.webp',
       alt: 'Aperçu de la création d’un projet dans DuoSpend',
+      title: 'Nouveau projet',
+      subtitle: 'Démarrage du suivi',
     },
   ],
   faq: duoSpendFaqSections.flatMap((section) => section.items),

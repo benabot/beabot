@@ -139,14 +139,20 @@
             :key="image.src"
             class="gallery-card"
           >
-            <img
-              :src="image.src"
-              :alt="image.alt"
-              width="1206"
-              height="2622"
-              loading="lazy"
-              decoding="async"
-            />
+            <div class="gallery-card__media">
+              <img
+                :src="image.src"
+                :alt="image.alt"
+                width="1206"
+                height="2622"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption class="gallery-card__caption">
+              <p class="gallery-card__title">{{ image.title }}</p>
+              <p class="gallery-card__subtitle">{{ image.subtitle }}</p>
+            </figcaption>
           </figure>
         </div>
       </section>
@@ -591,22 +597,53 @@ useHead({
 
 .gallery-card {
   margin: 0;
-  padding: 0.85rem;
+  padding: 0.85rem 0.85rem 0.95rem;
   border-radius: 1.15rem;
   background: rgba(255, 255, 255, 0.92);
   box-shadow: 0 14px 30px rgba(15, 23, 42, 0.04);
+  display: grid;
+  gap: 0.8rem;
+}
+
+.gallery-card__media {
   aspect-ratio: 4 / 5;
+  border-radius: 0.8rem;
+  overflow: hidden;
   display: grid;
   place-items: center;
+  background: rgba(248, 246, 241, 0.92);
 }
 
 .gallery-card img {
   display: block;
   width: 100%;
   height: 100%;
-  border-radius: 0.8rem;
   object-fit: contain;
   object-position: center;
+}
+
+.gallery-card__caption {
+  display: grid;
+  gap: 0.16rem;
+  margin: 0;
+}
+
+.gallery-card__title,
+.gallery-card__subtitle {
+  margin: 0;
+}
+
+.gallery-card__title {
+  color: $gris1;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.gallery-card__subtitle {
+  color: $gris3;
+  font-size: 0.76rem;
+  line-height: 1.45;
 }
 
 .detail-grid {
