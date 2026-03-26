@@ -129,8 +129,8 @@
         aria-labelledby="duo-gallery-title"
       >
         <div class="section-heading">
-          <h2 id="duo-gallery-title">Autres écrans</h2>
-          <p>Quelques vignettes pour situer les principaux flux.</p>
+          <h2 id="duo-gallery-title">L'app en images</h2>
+          <p>Les principaux écrans de DuoSpend.</p>
         </div>
 
         <div class="gallery-grid">
@@ -150,8 +150,8 @@
               />
             </div>
             <figcaption class="gallery-card__caption">
-              <p class="gallery-card__title">{{ image.title }}</p>
-              <p class="gallery-card__subtitle">{{ image.subtitle }}</p>
+              <span class="gallery-card__title">{{ image.title }}</span>
+              <span class="gallery-card__subtitle">{{ image.subtitle }}</span>
             </figcaption>
           </figure>
         </div>
@@ -201,17 +201,21 @@
         />
       </section>
 
-      <section class="app-section" aria-labelledby="duo-legal-title">
-        <div class="section-heading">
-          <h2 id="duo-legal-title">Mentions légales</h2>
-          <p>Version provisoire en français et en anglais.</p>
-        </div>
+      <section class="app-section app-section--legal" aria-labelledby="duo-legal-title">
+        <details class="legal-disclosure">
+          <summary class="legal-disclosure__summary">
+            <h2 id="duo-legal-title" class="legal-disclosure__title">Confidentialité</h2>
+            <span class="legal-disclosure__meta">Politique de confidentialité en français et en anglais.</span>
+          </summary>
 
-        <AppLegalTabs
-          base-id="duo-spend-legal"
-          :content="duoSpendContent.legal"
-          label="Mentions légales"
-        />
+          <div class="legal-disclosure__body">
+            <AppLegalTabs
+              base-id="duo-spend-legal"
+              :content="duoSpendContent.legal"
+              label="Mentions légales"
+            />
+          </div>
+        </details>
       </section>
 
       <section class="app-cta" id="release-form" aria-labelledby="duo-cta-title">
@@ -603,6 +607,7 @@ useHead({
   box-shadow: 0 14px 30px rgba(15, 23, 42, 0.04);
   display: grid;
   gap: 0.8rem;
+  overflow: hidden;
 }
 
 .gallery-card__media {
@@ -644,6 +649,55 @@ useHead({
   color: $gris3;
   font-size: 0.76rem;
   line-height: 1.45;
+}
+
+.legal-disclosure {
+  margin: 0;
+  border-radius: 1rem;
+  background: rgba(243, 244, 246, 0.7);
+  overflow: hidden;
+}
+
+.legal-disclosure__summary {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &::after {
+    content: '+';
+    margin-left: auto;
+    color: $vert;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+}
+
+.legal-disclosure[open] .legal-disclosure__summary::after {
+  content: '−';
+}
+
+.legal-disclosure__title {
+  margin: 0;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 700;
+  color: $gris1;
+}
+
+.legal-disclosure__meta {
+  color: $gris3;
+  font-size: 0.78rem;
+}
+
+.legal-disclosure__body {
+  padding: 0 1.25rem 1.25rem;
 }
 
 .detail-grid {

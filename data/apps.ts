@@ -506,28 +506,31 @@ export const duoSpendContent: AppDetailContent = {
   stage: 'Prépublication',
   href: '/apps/duo-spend/',
   intro: "Qui doit combien à qui ? Un coup d'œil suffit.",
-  summary: 'Un suivi simple pour vos projets partagés.',
+  summary: 'Voyage, mariage, emménagement — chaque projet a son solde.',
   overview: [
-    'Vous organisez un voyage, un mariage, des travaux ou un emménagement. L’un avance les frais, l’autre rembourse, mais le solde n’est pas toujours évident à suivre.',
-    'DuoSpend est conçue pour deux. Créez un projet, ajoutez vos dépenses, choisissez qui paie quoi et en quelle proportion. L’app calcule le solde net en temps réel et l’affiche clairement.',
-    'DuoSpend est développée avec les technologies Apple (Swift, SwiftUI, SwiftData), sans framework tiers ni dépendance externe. Le support est assuré directement par son auteur.',
+    "Vous organisez un voyage, un mariage, des travaux ou un emménagement. L’un avance les frais, l’autre rembourse — mais le solde n’est jamais évident à suivre.",
+    "DuoSpend est conçue pour deux. Créez un projet, ajoutez vos dépenses, choisissez qui paie quoi et en quelle proportion. L’app calcule le solde net en temps réel.",
   ],
   detailPoints: [
     {
       label: 'Un solde',
-      value: 'Qui doit quoi à qui.',
+      value: 'Un seul chiffre. Qui rembourse qui.',
     },
     {
       label: 'Par projet',
-      value: 'Voyage, mariage, travaux, bébé.',
+      value: 'Un projet, un espace dédié.',
     },
     {
       label: 'Répartition',
-      value: '50/50 ou sur mesure.',
+      value: 'Chacun sa part, définie à la dépense.',
     },
     {
       label: 'Local',
-      value: 'Les données restent sur l’iPhone.',
+      value: 'Tout reste sur votre iPhone. Rien ailleurs.',
+    },
+    {
+      label: 'Technologie',
+      value: 'Swift natif, sans dépendance externe. Support assuré directement par son auteur.',
     },
   ],
   preview: {
@@ -580,18 +583,18 @@ export const duoSpendContent: AppDetailContent = {
   faqSections: duoSpendFaqSections,
   pricing: {
     title: 'Tarifs',
-    intro: 'Une formule gratuite pour démarrer, une formule Pro pour aller plus loin.',
+    intro: "Gratuit pour commencer. Un achat unique pour ne plus s'arrêter.",
     plans: [
       {
         name: 'Gratuit',
         price: '0 €',
-        description: 'Pour commencer avec un projet complet.',
+        description: 'Un projet. Toutes les fonctions. Gratuit.',
         items: ['1 projet complet', 'Fonctions essentielles incluses'],
       },
       {
         name: 'DuoSpend Pro',
         price: '6,99 €',
-        description: 'Achat unique, à vie.',
+        description: 'Achat unique, à vie. Aucun abonnement.',
         items: [
           'Projets illimités',
           "Widgets pour l'écran d'accueil",
@@ -632,9 +635,8 @@ export const duoSpendContent: AppDetailContent = {
     },
   },
   cta: {
-    title: "Être informé de la sortie de l'app",
-    description:
-      "L'app n'est pas encore publiée. Laissez votre adresse pour recevoir la suite quand elle sera prête.",
+    title: 'Soyez le premier à savoir.',
+    description: "DuoSpend arrive bientôt. Laissez votre adresse — je vous préviens dès l'ouverture.",
     secondaryLabel: 'Une question ? Contactez-moi',
     secondaryTo: '/contact/',
   },
