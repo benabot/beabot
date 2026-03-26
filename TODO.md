@@ -5,7 +5,7 @@
 **Projet** : BeAbot - Blog éco-conception web
 **Date création** : 15 décembre 2025
 **Dernière MAJ** : 26 mars 2026
-**Branche active** : `feat/apps-pages`
+**Branche active** : `style/apps-graphisme`
 **Sites** :
 
 - 🟢 **Production** (Nuxt 3, master) : <https://beabot.fr>
@@ -22,6 +22,13 @@
 **Patch Portfolio (25 janvier 2026)** — Correctif d’affichage projet BORDUR.
 
 **Pages Apps (26 mars 2026)** — Landing `/apps/` + pages détail Meeting Mode / DuoSpend.
+
+- [x] Recomposition de la landing `/apps/` (hero, grille, CTA, cartes)
+- [x] Intégration des images DuoSpend dans les cartes et la page détail
+- [x] Hiérarchie visuelle du milieu de page DuoSpend (galerie, FAQ, confidentialité)
+- [x] Ancre `#privacy` auto-ouverte sur la section confidentialité
+- [x] CTA de bas de page harmonisés avec le design system
+- [x] H1 de `/apps/` neutralisé sur `iOS` et `macOS`
 
 - [x] Renommage public "chasse-patate" → "BORDUR"
 - [x] Liens projet mis à jour (topette.netlify.app → bordur.fr)
@@ -113,21 +120,18 @@
 #### Reste à faire (Apps)
 
 **/apps/**  
-- [ ] Améliorer le titre  
-- [ ] Améliorer le chapô  
-- [ ] Améliorer l’UI  
-- [ ] Améliorer le SEO  
-- [ ] Ajouter les images  
+- [ ] Finaliser le wording de la landing  
+- [ ] Finaliser le SEO  
+- [ ] Remplacer les derniers placeholders visuels si de nouveaux assets arrivent  
 
 **/apps/duo-spend/** + **/apps/meeting-mode/**  
-- [ ] Ajouter les images  
-- [ ] Améliorer l’UI des pages enfants de `/apps/`  
-- [ ] Améliorer le SEO  
-- [ ] Supprimer le paragraphe “Pour toute question, la page DuoSpend reste le point de contact. Retour aux apps” et remplacer par un bouton vers `/contact/`  
-- [ ] Configurer l’inscription par mail côté Netlify Forms (notification email)  
+- [ ] Ajouter les visuels définitifs quand ils seront disponibles  
+- [ ] Finaliser le SEO des pages enfants  
+- [ ] Vérifier le wording final App Store / contact  
+- [ ] Confirmer la configuration d’envoi des formulaires mail côté Netlify Forms  
 
 **Audit graphique UX/UI**  
-- [ ] Créer l’audit graphique UX/UI  
+- [ ] Créer l’audit graphique UX/UI
 
 **Tests**  
 - [ ] Lancer les tests pour ces pages (`npm run lint`, `npm run generate`, `node scripts/seo-check.mjs`)

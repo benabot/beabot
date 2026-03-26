@@ -15,14 +15,18 @@
 
 ### Dernière mise à jour
 
-**Pages Apps (26 mars 2026)** — Landing `/apps/` + pages détail Meeting Mode / DuoSpend.
+**Pages Apps (26 mars 2026)** — Landing `/apps/` + pages détail Meeting Mode / DuoSpend, sur la branche `style/apps-graphisme`.
 
-- ✅ Landing `/apps/` structurée (hero + grille extensible + CTA explicites)
+- ✅ Landing `/apps/` structurée (hero, grille extensible, CTA explicites)
 - ✅ Pages détail `/apps/meeting-mode/` + `/apps/duo-spend/`
 - ✅ Breadcrumb UI + JSON-LD `BreadcrumbList`
 - ✅ Section légale FR/EN avec onglets accessibles
 - ✅ Formulaire “être informé” (Netlify Forms)
 - ✅ Intégration des textes Meeting Mode + DuoSpend (présentation, FAQ, privacy)
+- ✅ H1 de `/apps/` neutralisé sur `iOS` et `macOS`
+- ✅ Galerie DuoSpend asymétrique avec légendes et hiérarchie renforcée
+- ✅ Section confidentialité DuoSpend accessible via `#privacy`
+- ✅ CTA de bas de page harmonisés avec le design system
 - ✅ Lien `Apps` actif dans le footer
 
 **Phase 14 (Portfolio) terminée** — Prêt pour merge sur dev puis master.
@@ -119,6 +123,7 @@ Phase 15    - Side Projects         [░░░░░░░░░░░░░░�
 - ✅ Intégration des textes Meeting Mode + DuoSpend (présentation, FAQ, privacy)
 - ✅ CTA explicites “Découvrir …” sur la landing
 - ✅ Lien `Apps` actif dans le footer
+- ✅ Ajustements graphiques finaux sur `/apps/duo-spend/` (galerie, FAQ, confidentialité)
 
 ---
 
@@ -193,12 +198,11 @@ git push origin master
 
 ### Priorité 4 : Finaliser Pages Apps
 
-1. Ajouter les images définitives
-2. Améliorer UI / SEO sur `/apps/` et les pages enfants
-3. Remplacer le paragraphe de bas de page DuoSpend par un bouton vers `/contact/`
-4. Configurer l’inscription par mail côté Netlify Forms
-5. Ajouter les URLs App Store et ajuster les CTA quand disponibles
-6. Lancer un audit graphique UX/UI
+1. Ajouter les visuels définitifs quand ils seront disponibles
+2. Finaliser le wording et le SEO sur `/apps/` et les pages enfants
+3. Confirmer la configuration d’envoi des formulaires mail côté Netlify Forms
+4. Ajouter les URLs App Store et ajuster les CTA quand disponibles
+5. Lancer un audit graphique UX/UI
 
 ---
 
