@@ -14,9 +14,9 @@
             <AppLink to="#release-form" class="app-primary-action">
               Être informé
             </AppLink>
-            <AppLink to="/apps/" class="app-secondary-action">
-              Retour aux apps
-            </AppLink>
+            <NuxtLink to="/contact/" class="app-secondary-action app-detail__contact-cta">
+              Une question ? Contactez-moi
+            </NuxtLink>
           </div>
         </div>
 

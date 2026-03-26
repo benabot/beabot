@@ -132,12 +132,12 @@ export interface BreadcrumbEntry {
 
 export const appsIndexContent = {
   title: 'Applications iOS & macOS',
-  intro: 'Deux apps natives conçues pour aller droit au but.',
-  meta: "Pas d'abonnement caché, pas de compte imposé.",
+  intro: "Des applications iOS et macOS pensées pour aller à l'essentiel.",
+  meta: 'Conçues sans tracking, sans SDK tiers, sans compte imposé. Vos données vous appartiennent.',
   seo: {
-    title: 'Applications iOS & macOS — BeAbot',
+    title: 'Apps iOS & macOS — BeAbot',
     description:
-      'DuoSpend pour gérer vos dépenses à deux, Meeting Mode pour préparer votre Mac avant une réunion. Deux apps natives Swift, sans abonnement.',
+      "DuoSpend et Meeting Mode : deux apps natives Swift, sans tracking, sans SDK tiers. D'autres apps à venir, certaines gratuites, certaines avec abonnement.",
     image: '/img/apps/duospend-vignette-apps.webp',
   },
 }
@@ -148,7 +148,7 @@ export const appsIndexEntries: AppIndexEntry[] = [
     name: 'DuoSpend',
     platform: 'iOS',
     stage: 'Prépublication',
-    summary: "Solde net en un coup d'œil.",
+    summary: 'Gérez vos dépenses communes à deux. Sans compte, sans connexion.',
     href: '/apps/duo-spend/',
     featured: true,
     preview: {
@@ -164,7 +164,7 @@ export const appsIndexEntries: AppIndexEntry[] = [
     name: 'Meeting Mode',
     platform: 'macOS',
     stage: 'Prépublication',
-    summary: 'Votre Mac prêt en un clic.',
+    summary: 'Préparez votre Mac avant une réunion en un clic. Ouvrez le bon, masquez le reste.',
     href: '/apps/meeting-mode/',
     featured: false,
     preview: {
@@ -198,7 +198,7 @@ const duoSpendFaqSections: AppFaqSection[] = [
       {
         question: "L'app fonctionne-t-elle sans connexion ?",
         answer:
-          'Oui. DuoSpend fonctionne entièrement hors ligne. Tout est stocké sur votre iPhone - pas besoin de Wi-Fi ou de données mobiles.',
+          'Oui. DuoSpend fonctionne entièrement hors ligne dans sa version actuelle. Vous n’avez pas besoin de Wi‑Fi ni de données mobiles.',
       },
       {
         question: "L'app est-elle disponible sur Android ?",
@@ -292,7 +292,7 @@ const duoSpendFaqSections: AppFaqSection[] = [
     items: [
       {
         question: 'Mes données sont-elles envoyées sur un serveur ?',
-        answer: 'Non. DuoSpend ne dispose d’aucun serveur. Vos données restent sur votre iPhone.',
+        answer: 'Non. DuoSpend ne dispose d’aucun serveur. Vos données vous appartiennent.',
       },
       {
         question: "L'app contient-elle des trackers ou de la pub ?",
@@ -520,7 +520,7 @@ export const meetingModeContent: AppDetailContent = {
         'Cette politique de confidentialité explique quelles données sont traitées par l’application Meeting Mode, dans quel but, et quels choix vous avez en tant qu’utilisateur.',
         'Meeting Mode est conçue pour fonctionner principalement en local sur votre Mac. L’application enregistre localement vos presets et préférences, gère une session active et un restore simple, et ne requiert pas de compte utilisateur.',
         'Les données stockées localement peuvent inclure vos presets, vos préférences d’application, votre langue choisie, vos raccourcis configurés, l’état de session nécessaire au restore, ainsi que des chemins de fichiers, URLs ou références d’apps que vous avez ajoutés à vos presets.',
-        'Ces données restent stockées localement sur votre appareil, sauf si vous décidez vous-même de les exporter, les partager ou les sauvegarder par un autre moyen.',
+        'Dans la version actuelle, les données sont stockées localement sur votre appareil. Une synchronisation iCloud optionnelle est prévue dans une prochaine version ; cette politique sera mise à jour en conséquence.',
         'Les données locales servent uniquement à exécuter les presets que vous avez configurés, ouvrir les apps, liens et fichiers demandés, mémoriser vos réglages, restaurer au mieux l’état de session réellement modifié, et améliorer la continuité d’usage après une fermeture inattendue.',
         'Meeting Mode ne collecte pas de données personnelles sur ses serveurs dans le cadre du fonctionnement local standard, ne crée pas de compte utilisateur, ne suit pas votre activité à des fins publicitaires, ne vend pas vos données, ne profile pas votre comportement et ne transmet pas vos presets à ses serveurs.',
         'L’app n’utilise pas de publicité ciblée ni de tracking inter-apps ou inter-sites. Si cela change, cette politique sera mise à jour en conséquence.',
@@ -539,7 +539,7 @@ export const meetingModeContent: AppDetailContent = {
         'This privacy policy explains what data is processed by the Meeting Mode app, for what purpose, and what choices you have as a user.',
         'Meeting Mode is designed to operate primarily locally on your Mac. The app stores presets and preferences locally, manages an active session and a simple restore flow, and does not require a user account.',
         'Locally stored data may include your presets, app preferences, selected language, configured shortcuts, the session state needed for restore, and file paths, URLs, or app references you added to your presets.',
-        'This data remains stored locally on your device unless you choose to export, share, or back it up yourself through another means.',
+        'In the current version, data is stored locally on your device. Optional iCloud sync is planned for a future version; this policy will be updated accordingly.',
         'Local data is used only to run the presets you configured, open the requested apps, links, and files, remember your settings, restore, on a best-effort basis, the session state actually changed, and preserve continuity after an unexpected closure.',
         'Meeting Mode does not collect personal data on its servers in the standard local operation, does not create user accounts, does not track users for advertising purposes, does not sell data, does not profile behavior, and does not send your presets to its servers.',
         'The app does not use targeted advertising or cross-app / cross-site tracking. If that changes, this policy will be updated accordingly.',
@@ -573,11 +573,11 @@ export const duoSpendContent: AppDetailContent = {
   platform: 'iOS',
   stage: 'Prépublication',
   href: '/apps/duo-spend/',
-  intro: "Une app pour couple ou tous ceux qui ont des projets à deux. Qui doit combien à qui ? Un coup d'œil suffit.",
-  summary: 'Voyage, mariage, emménagement — chaque projet a son solde.',
+  intro: 'Conçue sans tracking, sans compte imposé, sans SDK tiers.',
+  summary: 'Gérez vos dépenses communes à deux, avec un suivi simple et clair.',
   overview: [
     "Vous organisez un voyage, un mariage, des travaux ou un emménagement. L’un avance les frais, l’autre rembourse — mais le solde n’est jamais évident à suivre.",
-    "DuoSpend est conçue pour deux. Créez un projet, ajoutez vos dépenses, choisissez qui paie quoi et en quelle proportion. L’app calcule le solde net en temps réel.",
+    "DuoSpend est conçue pour deux. Créez un projet, ajoutez vos dépenses, choisissez qui paie quoi et en quelle proportion. L’app calcule le solde net en temps réel, sans tracking, sans compte imposé, sans SDK tiers.",
   ],
   detailPoints: [
     {
@@ -597,7 +597,7 @@ export const duoSpendContent: AppDetailContent = {
     },
     {
       label: 'Local',
-      value: 'Tout reste sur votre iPhone. Rien ailleurs.',
+      value: 'Vos données vous appartiennent. Pas de tracking, pas de SDK tiers.',
     },
     {
       label: 'Technologie',
@@ -680,11 +680,11 @@ export const duoSpendContent: AppDetailContent = {
       title: 'Politique de confidentialité',
       paragraphs: [
         'DuoSpend ne collecte aucune donnée personnelle identifiable.',
-        'Les projets que vous créez et les dépenses que vous enregistrez sont stockés localement sur votre iPhone avec SwiftData. Les données restent sur l’appareil jusqu’à suppression ou désinstallation.',
+        'Dans la version actuelle, les projets que vous créez et les dépenses que vous enregistrez sont stockés localement sur votre iPhone avec SwiftData. Une synchronisation iCloud optionnelle est prévue dans une prochaine version ; cette politique sera mise à jour en conséquence.',
         'Lorsque vous utilisez les widgets de l’écran d’accueil, une copie réduite des données peut être partagée entre l’app et l’extension widget via un App Group local géré par iOS.',
         'Si vous achetez DuoSpend Pro, la transaction est gérée par Apple via l’App Store. DuoSpend ne reçoit ni ne stocke vos informations de paiement. Seul l’état de l’achat est conservé localement.',
         'DuoSpend n’intègre aucun système de tracking, aucune publicité et aucun SDK tiers comme Firebase, Amplitude ou Mixpanel.',
-        'La version 1.0 fonctionne hors ligne. Aucune synchronisation iCloud n’est active à ce stade.',
+        'La version actuelle fonctionne hors ligne. Une synchronisation iCloud optionnelle est prévue dans une prochaine version.',
         'Vous pouvez supprimer toutes vos données depuis Réglages → Données → Supprimer toutes les données. L’action est irréversible.',
         'DuoSpend n’est pas destinée aux enfants de moins de 13 ans.',
         'Pour toute question, la page DuoSpend reste le point de contact.',
@@ -694,11 +694,11 @@ export const duoSpendContent: AppDetailContent = {
       title: 'Privacy policy',
       paragraphs: [
         'DuoSpend does not collect any personally identifiable information.',
-        'Projects and expenses are stored locally on your iPhone with SwiftData. Data stays on the device until you delete it or uninstall the app.',
+        'In the current version, projects and expenses are stored locally on your iPhone with SwiftData. Optional iCloud sync is planned for a future version; this policy will be updated accordingly.',
         'When you use the home screen widgets, a limited copy of your data may be shared between the app and the widget extension through a local App Group managed by iOS.',
         'If you purchase DuoSpend Pro, Apple handles the transaction through the App Store. DuoSpend does not receive or store payment information. Only the purchase state is kept locally.',
         'DuoSpend includes no tracking, no advertising, and no third-party SDKs such as Firebase, Amplitude, or Mixpanel.',
-        'Version 1.0 works fully offline. No iCloud sync is active at this stage.',
+        'The current version works fully offline. Optional iCloud sync is planned for a future version.',
         'You can delete all your data from Settings → Data → Delete all data. This action is irreversible.',
         'DuoSpend is not intended for children under 13.',
         'For any question, the DuoSpend page remains the contact point.',
