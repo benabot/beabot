@@ -72,7 +72,11 @@ export interface AppDetailContent {
   intro: string
   summary: string
   overview: string[]
+  capabilities?: string[]
+  useCases?: string[]
   detailPoints: AppDetailPoint[]
+  limits?: string[]
+  principles?: string[]
   preview: AppPreview
   faq: AppFaqItem[]
   faqSections?: AppFaqSection[]
@@ -298,26 +302,64 @@ export const meetingModeContent: AppDetailContent = {
   platform: 'macOS',
   stage: 'Prépublication',
   href: '/apps/meeting-mode/',
-  intro: 'Présentation à compléter.',
-  summary: 'Contenu à compléter avant publication.',
-  overview: ['Texte à compléter avant publication.'],
+  intro:
+    'Meeting Mode est une app macOS de barre de menu pensée pour un usage simple : préparer rapidement un Mac avant une réunion, une démo, un entretien ou un partage d’écran.',
+  summary:
+    'L’idée est directe : préparer, montrer, restaurer.',
+  overview: [
+    "L’idée est volontairement directe : lancer le bon preset, ouvrir les apps, liens et fichiers utiles, réduire les distractions visibles, afficher un fond propre avant le partage, puis revenir ensuite à un état de travail pratique.",
+    'Contrairement à beaucoup d’outils trop ambitieux, Meeting Mode ne prétend pas reconstruire parfaitement l’état de votre bureau. L’app se concentre sur un flux court, fiable et compréhensible : préparer, montrer, restaurer.',
+    'L’app fonctionne en local et garde une logique claire : une seule session active à la fois, un restore limité à ce qui a été effectivement changé par Meeting Mode.',
+  ],
+  capabilities: [
+    'ouvrir des applications utiles à votre réunion',
+    'ouvrir des URLs et des fichiers locaux',
+    'masquer, en best effort, les apps visibles qui ne font pas partie du preset',
+    'afficher un écran visuellement propre avec le clean screen overlay',
+    'restaurer ensuite ce que l’app a réellement modifié',
+  ],
+  useCases: [
+    'des démos produit',
+    'des visios clients',
+    'des entretiens',
+    'du support en partage d’écran',
+    'des présentations internes',
+    'des calls où il faut ouvrir toujours les mêmes éléments, tout en évitant d’exposer le reste',
+  ],
   detailPoints: [
     {
-      label: 'Plateforme',
-      value: 'macOS',
+      label: 'Un vrai flux en un clic',
+      value:
+        'Vous choisissez un preset, vous lancez la session, et l’app exécute l’essentiel immédiatement.',
     },
     {
-      label: 'Statut',
-      value: 'Prépublication',
+      label: 'Pensé pour le partage d’écran',
+      value:
+        'L’objectif n’est pas la productivité générale. L’objectif est de rendre l’écran propre, lisible et présentable avant un partage.',
     },
     {
-      label: 'Capture',
-      value: 'À venir',
+      label: 'Restore clair, sans magie',
+      value:
+        'Meeting Mode tente de restaurer uniquement ce qu’il a réellement modifié pendant la session.',
     },
     {
-      label: 'Texte',
-      value: 'À compléter',
+      label: 'Local d’abord',
+      value:
+        'Les presets et l’état de session sont stockés localement. Pas de cloud imposé, pas de compte, pas de couche inutile.',
     },
+  ],
+  limits: [
+    'la restauration parfaite de toutes les fenêtres',
+    "la fermeture précise d'un onglet de navigateur déjà ouvert",
+    "la fermeture précise d'un document dans une app déjà en cours d'exécution",
+    'la reconstruction exacte des Spaces, bureaux virtuels ou états de minimisation',
+  ],
+  principles: [
+    'la fiabilité',
+    'la simplicité',
+    'la rapidité d’usage',
+    'la clarté du restore',
+    'la finition visuelle',
   ],
   preview: {
     alt: 'Emplacement de capture pour Meeting Mode',
@@ -326,39 +368,123 @@ export const meetingModeContent: AppDetailContent = {
   },
   faq: [
     {
-      question: 'Question à compléter',
-      answer: 'Réponse à compléter.',
+      question: 'À quoi sert Meeting Mode ?',
+      answer:
+        "Meeting Mode sert à préparer rapidement votre Mac avant une réunion, une démo, un entretien ou un partage d’écran. L’app peut ouvrir vos apps, liens et fichiers utiles, masquer certaines apps visibles, afficher un écran propre, puis proposer un restore simple à la fin.",
     },
     {
-      question: 'Question à compléter',
-      answer: 'Réponse à compléter.',
+      question: 'Sur quel système l’app fonctionne-t-elle ?',
+      answer: 'Meeting Mode est une app macOS. Elle a été pensée comme une app de barre de menu.',
+    },
+    {
+      question: 'Qu’est-ce qu’un preset ?',
+      answer:
+        'Un preset est une configuration réutilisable. Il peut contenir des apps à ouvrir, des liens, des fichiers locaux, une checklist et l’option de clean screen.',
+    },
+    {
+      question: 'Que fait exactement “Start Session” ?',
+      answer:
+        'Start Session lance les éléments du preset, masque en best effort les apps visibles hors preset, active l’écran propre si demandé, puis marque la session comme active.',
+    },
+    {
+      question: 'Que fait “Restore Session” ?',
+      answer:
+        'Restore Session retire l’overlay et tente de restaurer uniquement ce que Meeting Mode a réellement changé pendant la session.',
+    },
+    {
+      question: 'Est-ce que l’app ferme tout automatiquement à la fin ?',
+      answer:
+        'Non. Meeting Mode reste volontairement prudent. Le restore est best effort et limité au scope réel de la session. L’app ne promet pas de refermer parfaitement chaque fenêtre, chaque onglet ou chaque document.',
+    },
+    {
+      question: 'Est-ce que Meeting Mode gère les fenêtres, les Spaces ou les onglets du navigateur ?',
+      answer:
+        'Non. Ce n’est pas le but du produit. Meeting Mode ne cherche pas à devenir un gestionnaire avancé du bureau macOS.',
+    },
+    {
+      question: 'Est-ce que mes données quittent mon Mac ?',
+      answer:
+        'Le fonctionnement prévu de l’app est principalement local : presets, préférences et état de session sont stockés localement. Si cette politique change un jour, la privacy policy et les informations App Store devront être mises à jour.',
+    },
+    {
+      question: 'Est-ce que l’app nécessite un compte ?',
+      answer: 'Non, l’usage prévu n’impose pas de compte.',
+    },
+    {
+      question:
+        'Est-ce que l’app a besoin de permissions sensibles comme l’accessibilité ou l’enregistrement d’écran ?',
+      answer:
+        'Dans l’état actuel documenté du projet, l’implémentation ne repose pas sur une demande obligatoire d’Accessibility, d’Automation ou de Screen Recording pour son flux principal. Les limites éventuelles viennent surtout du comportement de macOS lui-même.',
+    },
+    {
+      question: 'Puis-je créer plusieurs presets ?',
+      answer: 'Oui. Vous pouvez créer, modifier et supprimer plusieurs presets.',
+    },
+    {
+      question: 'L’app fonctionne-t-elle hors connexion ?',
+      answer:
+        'Oui pour le fonctionnement local de base. En revanche, les URLs de vos presets dépendent naturellement de la disponibilité du réseau et du service cible.',
+    },
+    {
+      question: 'Est-ce qu’il y a une synchronisation cloud ?',
+      answer: 'Non. Ce n’est pas dans le périmètre du produit à ce stade.',
+    },
+    {
+      question: 'Pourquoi ne pas promettre un restore parfait ?',
+      answer:
+        'Parce que ce serait trompeur. Sur macOS, certaines actions inter-apps restent limitées ou fragiles. Meeting Mode préfère un restore compréhensible et honnête plutôt qu’une promesse irréaliste.',
     },
   ],
   legal: {
     fr: {
       title: 'Mentions légales',
       paragraphs: [
-        'Texte provisoire à compléter avant publication.',
-        'Informations finales à ajouter avant mise en ligne.',
+        'Meeting Mode respecte votre vie privée.',
+        'Cette politique de confidentialité explique quelles données sont traitées par l’application Meeting Mode, dans quel but, et quels choix vous avez en tant qu’utilisateur.',
+        'Meeting Mode est conçue pour fonctionner principalement en local sur votre Mac. L’application enregistre localement vos presets et préférences, gère une session active et un restore simple, et ne requiert pas de compte utilisateur.',
+        'Les données stockées localement peuvent inclure vos presets, vos préférences d’application, votre langue choisie, vos raccourcis configurés, l’état de session nécessaire au restore, ainsi que des chemins de fichiers, URLs ou références d’apps que vous avez ajoutés à vos presets.',
+        'Ces données restent stockées localement sur votre appareil, sauf si vous décidez vous-même de les exporter, les partager ou les sauvegarder par un autre moyen.',
+        'Les données locales servent uniquement à exécuter les presets que vous avez configurés, ouvrir les apps, liens et fichiers demandés, mémoriser vos réglages, restaurer au mieux l’état de session réellement modifié, et améliorer la continuité d’usage après une fermeture inattendue.',
+        'Meeting Mode ne collecte pas de données personnelles sur ses serveurs dans le cadre du fonctionnement local standard, ne crée pas de compte utilisateur, ne suit pas votre activité à des fins publicitaires, ne vend pas vos données, ne profile pas votre comportement et ne transmet pas vos presets à ses serveurs.',
+        'L’app n’utilise pas de publicité ciblée ni de tracking inter-apps ou inter-sites. Si cela change, cette politique sera mise à jour en conséquence.',
+        'Meeting Mode peut utiliser des APIs système macOS nécessaires à son fonctionnement, par exemple pour ouvrir des applications, ouvrir des liens ou afficher un overlay visuel. L’application ne demande pas plus d’accès que nécessaire.',
+        'Nous ne partageons pas de données personnelles avec des tiers dans le cadre du fonctionnement local standard. En revanche, lorsque vous ouvrez un site web, un lien, un document ou une application tierce via un preset, l’utilisation de ce service tiers est régie par ses propres conditions.',
+        'Les données enregistrées par Meeting Mode sont conservées localement sur votre appareil aussi longtemps que vous utilisez l’application ou jusqu’à leur suppression.',
+        'Meeting Mode est conçu pour limiter la circulation des données en privilégiant le stockage local lorsque cela suffit.',
+        'Selon votre pays de résidence, vous pouvez disposer de droits relatifs à vos données personnelles. Pour toute question, utilisez le contact prévu par la page produit.',
+        'Meeting Mode n’est pas conçu spécifiquement pour les enfants. La politique pourra être mise à jour si l’application ou ses pratiques évoluent.',
       ],
     },
     en: {
       title: 'Legal',
       paragraphs: [
-        'Temporary copy to complete before publication.',
-        'Final information will be added before launch.',
+        'Meeting Mode respects your privacy.',
+        'This privacy policy explains what data is processed by the Meeting Mode app, for what purpose, and what choices you have as a user.',
+        'Meeting Mode is designed to operate primarily locally on your Mac. The app stores presets and preferences locally, manages an active session and a simple restore flow, and does not require a user account.',
+        'Locally stored data may include your presets, app preferences, selected language, configured shortcuts, the session state needed for restore, and file paths, URLs, or app references you added to your presets.',
+        'This data remains stored locally on your device unless you choose to export, share, or back it up yourself through another means.',
+        'Local data is used only to run the presets you configured, open the requested apps, links, and files, remember your settings, restore, on a best-effort basis, the session state actually changed, and preserve continuity after an unexpected closure.',
+        'Meeting Mode does not collect personal data on its servers in the standard local operation, does not create user accounts, does not track users for advertising purposes, does not sell data, does not profile behavior, and does not send your presets to its servers.',
+        'The app does not use targeted advertising or cross-app / cross-site tracking. If that changes, this policy will be updated accordingly.',
+        'Meeting Mode may use macOS system APIs required for its functionality, for example to open applications, open links, or display a visual overlay. The app is designed not to request more access than necessary.',
+        'We do not share personal data with third parties in the standard local operation. When you open a third-party website, link, document, or app through a preset, that third-party service is governed by its own terms.',
+        'Data stored by Meeting Mode is kept locally on your device for as long as you use the app or until you remove it.',
+        'Meeting Mode is designed to minimize unnecessary data exposure by relying on local storage whenever that is sufficient.',
+        'Depending on your country or region, you may have rights regarding your personal data. For any question, use the contact point provided on the product page.',
+        'Meeting Mode is not specifically directed to children. This policy may be updated if the app or its practices evolve.',
       ],
     },
   },
   cta: {
-    title: 'Être informé',
-    description: "Recevoir un message quand l'app est prête.",
+    title: "Être informé de la sortie de l'app",
+    description: "L'app n'est pas encore publiée. Laissez votre adresse pour recevoir la suite quand elle sera prête.",
     secondaryLabel: 'Retour aux apps',
     secondaryTo: '/apps/',
   },
   seo: {
-    title: 'Meeting Mode',
-    description: 'Présentation de Meeting Mode en cours de préparation.',
+    title: 'Meeting Mode — app macOS de préparation avant réunion',
+    description:
+      'Meeting Mode prépare un Mac avant une réunion, une démo ou un partage d’écran. L’app ouvre des éléments utiles, affiche un écran propre et restaure ce qu’elle a modifié.',
   },
 }
 

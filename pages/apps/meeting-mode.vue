@@ -47,35 +47,35 @@
 
       <section class="app-surface" aria-labelledby="meeting-overview-title">
         <div class="app-surface__copy">
-          <h2 id="meeting-overview-title">Aperçu</h2>
+          <h2 id="meeting-overview-title">Ce que fait Meeting Mode</h2>
           <p v-for="paragraph in meetingModeContent.overview" :key="paragraph">
             {{ paragraph }}
           </p>
+
+          <div class="app-surface__group">
+            <p class="app-surface__eyebrow">Avec un preset</p>
+            <ul class="app-surface__bullets">
+              <li v-for="item in meetingModeContent.capabilities" :key="item">
+                {{ item }}
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div class="app-surface__status">
-          <p class="app-surface__eyebrow">Repères</p>
-          <dl class="app-surface__list">
-            <div>
-              <dt>Plateforme</dt>
-              <dd>{{ meetingModeContent.platform }}</dd>
-            </div>
-            <div>
-              <dt>Statut</dt>
-              <dd>{{ meetingModeContent.stage }}</dd>
-            </div>
-            <div>
-              <dt>Capture</dt>
-              <dd>{{ meetingModeContent.preview.label }}</dd>
-            </div>
-          </dl>
+          <p class="app-surface__eyebrow">Pour qui</p>
+          <ul class="app-surface__cases">
+            <li v-for="item in meetingModeContent.useCases" :key="item">
+              {{ item }}
+            </li>
+          </ul>
         </div>
       </section>
 
       <section class="app-section" aria-labelledby="meeting-capture-title">
         <div class="section-heading">
-          <h2 id="meeting-capture-title">Visuel</h2>
-          <p>Placeholder à remplacer par la capture finale.</p>
+          <h2 id="meeting-capture-title">Capture provisoire</h2>
+          <p>En attente de la capture finale.</p>
         </div>
 
         <div class="app-capture app-capture--meeting">
@@ -103,8 +103,8 @@
 
       <section class="app-section" aria-labelledby="meeting-details-title">
         <div class="section-heading">
-          <h2 id="meeting-details-title">Détails</h2>
-          <p>Repères à compléter avant publication.</p>
+          <h2 id="meeting-details-title">En pratique</h2>
+          <p>Quatre repères pour comprendre le flux de l’app.</p>
         </div>
 
         <div class="detail-grid">
@@ -119,10 +119,35 @@
         </div>
       </section>
 
+      <section class="app-section app-section--split" aria-labelledby="meeting-scope-title">
+        <div class="app-scope">
+          <div class="section-heading">
+            <h2 id="meeting-scope-title">Ce que l’app ne prétend pas faire</h2>
+            <p>Ce choix est volontaire. Il garde l’app plus fiable, plus rapide à utiliser et plus honnête sur les limites réelles de macOS.</p>
+          </div>
+
+          <ul class="limit-list">
+            <li v-for="item in meetingModeContent.limits" :key="item">
+              {{ item }}
+            </li>
+          </ul>
+        </div>
+
+        <aside class="app-principles" aria-labelledby="meeting-principles-title">
+          <p class="app-principles__eyebrow">Une approche pragmatique</p>
+          <h3 id="meeting-principles-title">Ce que l’app privilégie</h3>
+          <ol class="app-principles__list">
+            <li v-for="item in meetingModeContent.principles" :key="item">
+              {{ item }}
+            </li>
+          </ol>
+        </aside>
+      </section>
+
       <section class="app-section" aria-labelledby="meeting-faq-title">
         <div class="section-heading">
           <h2 id="meeting-faq-title">FAQ</h2>
-          <p>Questions à compléter.</p>
+          <p>Questions fréquentes sur le fonctionnement.</p>
         </div>
 
         <AppFaqList :items="meetingModeContent.faq" />
@@ -131,7 +156,7 @@
       <section class="app-section" aria-labelledby="meeting-legal-title">
         <div class="section-heading">
           <h2 id="meeting-legal-title">Mentions légales</h2>
-          <p>Version provisoire en français et en anglais.</p>
+          <p>Politique de confidentialité provisoire en français et en anglais.</p>
         </div>
 
         <AppLegalTabs
@@ -436,6 +461,12 @@ useHead({
   line-height: 1.65;
 }
 
+.app-surface__group {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 0.4rem;
+}
+
 .app-surface__status {
   padding: 1rem;
   border-radius: 1.15rem;
@@ -451,29 +482,114 @@ useHead({
   text-transform: uppercase;
 }
 
-.app-surface__list {
+.app-surface__bullets,
+.app-surface__cases {
   display: grid;
-  gap: 0.9rem;
   margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.app-surface__list div {
+.app-surface__bullets {
+  gap: 0.55rem;
+}
+
+.app-surface__cases {
+  gap: 0.7rem;
+}
+
+.app-surface__bullets li,
+.app-surface__cases li {
+  position: relative;
+  padding-left: 1rem;
+  color: $gris2;
+  line-height: 1.55;
+}
+
+.app-surface__bullets li::before,
+.app-surface__cases li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 999px;
+  background: $vert;
+}
+
+.app-section--split {
+  gap: 1rem;
+}
+
+@media (min-width: 960px) {
+  .app-section--split {
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+    align-items: start;
+  }
+}
+
+.app-scope {
   display: grid;
-  gap: 0.2rem;
+  gap: 1rem;
+  padding: clamp(1.2rem, 2.8vw, 1.65rem);
+  border-radius: 1.35rem;
+  background: rgba(243, 244, 246, 0.88);
 }
 
-.app-surface__list dt {
-  color: $gris3;
-  font-size: 0.74rem;
+.limit-list {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.limit-list li {
+  position: relative;
+  padding-left: 1rem;
+  color: $gris2;
+  line-height: 1.6;
+}
+
+.limit-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: $vert;
+}
+
+.app-principles {
+  display: grid;
+  gap: 0.85rem;
+  padding: clamp(1.2rem, 2.8vw, 1.65rem);
+  border-radius: 1.35rem;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.04);
+}
+
+.app-principles__eyebrow {
+  margin: 0;
+  color: $vert;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.app-surface__list dd {
+.app-principles h3 {
   margin: 0;
   color: $gris1;
-  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.app-principles__list {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding-left: 1.2rem;
+  color: $gris2;
+  line-height: 1.6;
 }
 
 .app-section {
