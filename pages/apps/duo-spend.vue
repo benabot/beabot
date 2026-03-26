@@ -116,9 +116,13 @@
             v-for="point in duoSpendContent.detailPoints"
             :key="point.label"
             class="detail-card"
+            :class="{ 'detail-card--featured': point.featured }"
           >
             <p class="detail-card__label">{{ point.label }}</p>
             <p class="detail-card__value">{{ point.value }}</p>
+            <p v-if="point.description" class="detail-card__description">
+              {{ point.description }}
+            </p>
           </article>
         </div>
       </section>
@@ -825,22 +829,29 @@ useHead({
 .detail-grid {
   display: grid;
   gap: 0.75rem;
+  grid-template-columns: 1fr;
 
   @media (min-width: 700px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  @media (min-width: 1080px) {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: 1.5fr 1fr 1fr;
+    grid-auto-rows: auto;
   }
 }
 
 .detail-card {
   display: grid;
-  gap: 0.4rem;
-  padding: 1rem;
+  gap: 0.45rem;
+  padding: 1.1rem 1.15rem;
   border-radius: 1rem;
   background: rgba(255, 255, 255, 0.92);
+  align-content: start;
+}
+
+.detail-card--featured {
+  @media (min-width: 700px) {
+    grid-row: span 2;
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(13, 199, 99, 0.15);
+  }
 }
 
 .detail-card__label {
@@ -855,7 +866,17 @@ useHead({
 .detail-card__value {
   margin: 0;
   color: $gris1;
-  font-weight: 600;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.detail-card__description {
+  margin: 0.35rem 0 0;
+  color: $gris2;
+  font-size: 0.88rem;
+  line-height: 1.65;
 }
 
 .pricing-grid {

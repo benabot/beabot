@@ -69,6 +69,8 @@ export interface AppPricingContent {
 export interface AppDetailPoint {
   label: string
   value: string
+  description?: string
+  featured?: boolean
 }
 
 export interface AppDetailContent {
@@ -515,6 +517,9 @@ export const duoSpendContent: AppDetailContent = {
     {
       label: 'Un solde',
       value: 'Un seul chiffre. Qui rembourse qui.',
+      description:
+        'Pas de tableau, pas de calculatrice. DuoSpend additionne chaque dépense, applique la répartition choisie, et affiche en permanence qui doit combien à qui — sur chaque projet.',
+      featured: true,
     },
     {
       label: 'Par projet',
