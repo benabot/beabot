@@ -134,7 +134,7 @@ useHead({
 }
 
 .apps-hero__platform {
-  color: $gris1;
+  color: #05d94f;
 }
 
 .apps-hero__intro {
