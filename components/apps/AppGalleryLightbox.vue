@@ -127,7 +127,7 @@ defineExpose({
   padding: 0;
   border: none;
   background: transparent;
-  display: grid;
+  display: none;
   place-items: center;
 
   &::backdrop {
