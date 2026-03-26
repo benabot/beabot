@@ -170,10 +170,10 @@ git push origin master
 
 ### P0 — Google Search Console
 
-- [ ] **SEO-13-01** : Vérifier la propriété beabot.fr
-- [ ] **SEO-13-02** : Soumettre le sitemap
-- [ ] **SEO-13-03** : Demander l'indexation des pages principales
-- [ ] **SEO-13-04** : Analyser les Core Web Vitals après 2 semaines
+- [x] **SEO-13-01** : Vérifier la propriété beabot.fr
+- [x] **SEO-13-02** : Soumettre le sitemap
+- [x] **SEO-13-03** : Demander l'indexation des pages principales
+- [x] **SEO-13-04** : Analyser les Core Web Vitals après 2 semaines
 
 ### P1 — Structured Data ✅
 
@@ -215,7 +215,7 @@ git push origin master
 ### Éco-conception
 
 - [ ] Requêtes HTTP : Objectif < 12
-- [ ] EcoIndex : Objectif A
+- [x] EcoIndex : Objectif A
 
 ---
 
