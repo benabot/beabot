@@ -24,7 +24,9 @@
 - ✅ Formulaire “être informé” (Netlify Forms)
 - ✅ Intégration des textes Meeting Mode + DuoSpend (présentation, FAQ, privacy)
 - ✅ H1 de `/apps/` neutralisé sur `iOS` et `macOS`
-- ✅ Galerie DuoSpend asymétrique avec légendes et hiérarchie renforcée
+- ✅ Galerie DuoSpend en grille 2x3 avec images entières et captions
+- ✅ Card `Un solde` mise en avant avec description détaillée
+- ✅ Wording DuoSpend révisé dans `data/apps.ts`
 - ✅ Section confidentialité DuoSpend accessible via `#privacy`
 - ✅ CTA de bas de page harmonisés avec le design system
 - ✅ Lien `Apps` actif dans le footer
@@ -123,7 +125,7 @@ Phase 15    - Side Projects         [░░░░░░░░░░░░░░�
 - ✅ Intégration des textes Meeting Mode + DuoSpend (présentation, FAQ, privacy)
 - ✅ CTA explicites “Découvrir …” sur la landing
 - ✅ Lien `Apps` actif dans le footer
-- ✅ Ajustements graphiques finaux sur `/apps/duo-spend/` (galerie, FAQ, confidentialité)
+- ✅ Ajustements graphiques finaux sur `/apps/duo-spend/` (galerie 2x3, FAQ, confidentialité, card mise en avant)
 
 ---
 
@@ -136,7 +138,7 @@ Phase 15    - Side Projects         [░░░░░░░░░░░░░░�
 | `master` | Production beabot.fr | 🔒 Stable |
 | `dev` | Développement | ✅ Phase 12 prête |
 | `feature/portfolio-redesign` | Refonte portfolio | ✅ **Prêt pour merge** |
-| `feat/apps-pages` | Pages Apps | ✅ En cours |
+| `style/apps-graphisme` | Pages Apps | ✅ En cours |
 
 ### Workflow de merge
 

@@ -15,7 +15,7 @@
 
 ## 📊 CONTEXTE ACTUEL
 
-### Statut (25 mars 2026)
+### Statut (26 mars 2026)
 
 **Phase 14 Portfolio + Homepage Mobile** — Prêt pour merge sur master.
 
@@ -29,6 +29,11 @@
 - [x] Ancre `#privacy` auto-ouverte sur la section confidentialité
 - [x] CTA de bas de page harmonisés avec le design system
 - [x] H1 de `/apps/` neutralisé sur `iOS` et `macOS`
+- [x] Galerie DuoSpend réorganisée en 2x3 avec images entières
+- [x] Card `Un solde` mise en avant avec description détaillée
+- [x] Formulaire d’intérêt et lien `/contact/` conservés sur les pages enfants
+- [x] Référence `preview.src` de DuoSpend alignée sur `duospend-hero.webp`
+- [x] Wording DuoSpend mis à jour dans `data/apps.ts`
 
 - [x] Renommage public "chasse-patate" → "BORDUR"
 - [x] Liens projet mis à jour (topette.netlify.app → bordur.fr)
@@ -100,7 +105,7 @@
 ### Pages Apps : structure + contenu ✅
 
 > **Terminée le 26 mars 2026**
-> **Branche** : `feat/apps-pages`
+> **Branche** : `style/apps-graphisme`
 
 - [x] **APP-16-01** : Créer la page `/apps/`
 - [x] **APP-16-02** : Créer la page `/apps/meeting-mode/`
@@ -116,6 +121,9 @@
 - [x] **APP-16-12** : Intégrer les textes Meeting Mode (présentation, FAQ, privacy FR/EN)
 - [x] **APP-16-13** : Corriger le breadcrumb non-sticky (nav fixe isolée)
 - [x] **APP-16-14** : Mettre à jour les résumés courts dans la landing `/apps/`
+- [x] **APP-16-15** : Ajouter la galerie DuoSpend en 2x3 avec captions sous chaque image
+- [x] **APP-16-16** : Mettre en avant la card `Un solde` avec description dédiée
+- [x] **APP-16-17** : Corriger la référence image principale DuoSpend via `preview.src`
 
 #### Reste à faire (Apps)
 
