@@ -130,6 +130,7 @@
 - [x] **APP-16-15** : Ajouter la galerie DuoSpend en 2x3 avec captions sous chaque image
 - [x] **APP-16-16** : Mettre en avant la card `Un solde` avec description dédiée
 - [x] **APP-16-17** : Corriger la référence image principale DuoSpend via `preview.src`
+- [x] **APP-16-18** : Corriger l’affichage par défaut de la lightbox native des galeries
 
 #### Reste à faire (Apps)
 

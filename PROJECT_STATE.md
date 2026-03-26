@@ -38,6 +38,7 @@
 - ✅ Confidentialité Meeting Mode accessible via `#privacy`
 - ✅ Wording Meeting Mode réécrit dans `data/apps.ts`
 - ✅ Lightbox native réutilisable branchée sur les galeries Apps
+- ✅ Lightbox native corrigée pour rester masquée tant qu’elle n’est pas ouverte
 
 **Phase 14 (Portfolio) terminée** — Prêt pour merge sur dev puis master.
 
