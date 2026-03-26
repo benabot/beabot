@@ -39,6 +39,7 @@
 - [x] Galerie Meeting Mode alimentée par les visuels macOS du dossier `public/img/apps/`
 - [x] Ancre `#privacy` auto-ouverte sur la confidentialité Meeting Mode
 - [x] Wording Meeting Mode aligné dans `data/apps.ts`
+- [x] Lightbox native réutilisable pour les galeries DuoSpend et Meeting Mode
 
 - [x] Renommage public "chasse-patate" → "BORDUR"
 - [x] Liens projet mis à jour (topette.netlify.app → bordur.fr)

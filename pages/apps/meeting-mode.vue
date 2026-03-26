@@ -145,9 +145,15 @@
 
         <div class="gallery-grid">
           <figure
-            v-for="image in meetingModeContent.gallery"
+            v-for="(image, index) in meetingModeContent.gallery"
             :key="image.src"
-            class="gallery-card"
+            class="gallery-card gallery-card--clickable"
+            role="button"
+            tabindex="0"
+            :aria-label="`Agrandir : ${image.title || image.alt}`"
+            @click="openLightbox(index)"
+            @keydown.enter.prevent="openLightbox(index)"
+            @keydown.space.prevent="openLightbox(index)"
           >
             <div class="gallery-card__media">
               <img
@@ -165,6 +171,11 @@
             </figcaption>
           </figure>
         </div>
+
+        <AppGalleryLightbox
+          ref="lightbox"
+          :images="meetingModeContent.gallery"
+        />
       </section>
 
       <section class="app-section" aria-labelledby="meeting-faq-title">
@@ -222,6 +233,7 @@
 import { nextTick, onMounted, ref, watch } from 'vue'
 
 import AppBreadcrumb from '~/components/apps/AppBreadcrumb.vue'
+import AppGalleryLightbox from '~/components/apps/AppGalleryLightbox.vue'
 import AppFaqList from '~/components/apps/AppFaqList.vue'
 import AppLegalTabs from '~/components/apps/AppLegalTabs.vue'
 import AppReleaseInterestForm from '~/components/apps/AppReleaseInterestForm.vue'
@@ -237,6 +249,7 @@ const config = useRuntimeConfig()
 const route = useRoute()
 const pageUrl = canonicalUrl(config.public.siteUrl, '/apps/meeting-mode')
 const privacyDetails = ref<HTMLDetailsElement | null>(null)
+const lightbox = ref<InstanceType<typeof AppGalleryLightbox> | null>(null)
 
 const breadcrumbItems = [
   { label: 'Accueil', to: '/' },
@@ -251,6 +264,10 @@ const breadcrumbSchema = buildBreadcrumbSchema(config.public.siteUrl, [
 ])
 
 const faqSchema = buildFaqSchema(meetingModeContent.faq)
+
+function openLightbox(index: number) {
+  lightbox.value?.open(index)
+}
 
 const openPrivacySection = async () => {
   if (route.hash !== '#privacy') {
@@ -710,6 +727,23 @@ useHead({
   overflow: hidden;
   display: grid;
   grid-template-rows: 1fr auto;
+}
+
+.gallery-card--clickable {
+  cursor: zoom-in;
+  transition:
+    transform 0.14s ease,
+    box-shadow 0.14s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $vert;
+    outline-offset: 3px;
+  }
 }
 
 .gallery-card__media {

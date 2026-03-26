@@ -37,6 +37,7 @@
 - ✅ Bloc before/after Meeting Mode intégré en pratique
 - ✅ Confidentialité Meeting Mode accessible via `#privacy`
 - ✅ Wording Meeting Mode réécrit dans `data/apps.ts`
+- ✅ Lightbox native réutilisable branchée sur les galeries Apps
 
 **Phase 14 (Portfolio) terminée** — Prêt pour merge sur dev puis master.
 
