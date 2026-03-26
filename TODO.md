@@ -131,17 +131,19 @@
 - [x] **APP-16-16** : Mettre en avant la card `Un solde` avec description dédiée
 - [x] **APP-16-17** : Corriger la référence image principale DuoSpend via `preview.src`
 - [x] **APP-16-18** : Corriger l’affichage par défaut de la lightbox native des galeries
+- [x] **APP-16-19** : Finaliser le SEO des pages `/apps/`, `/apps/duo-spend/` et `/apps/meeting-mode/`
+- [x] **APP-16-20** : Aligner titles, meta descriptions, OG, Twitter et canonical sur `https://beabot.fr`
+- [x] **APP-16-21** : Ajouter `CollectionPage` sur `/apps/` et `SoftwareApplication` sur les pages détail
+- [x] **APP-16-22** : Vérifier `sitemap.xml` et `robots.txt` sur le domaine canonique
 
 #### Reste à faire (Apps)
 
 **/apps/**  
 - [ ] Finaliser le wording de la landing  
-- [ ] Finaliser le SEO  
 - [ ] Remplacer les derniers placeholders visuels si de nouveaux assets arrivent  
 
 **/apps/duo-spend/** + **/apps/meeting-mode/**  
 - [ ] Ajouter les visuels définitifs quand ils seront disponibles  
-- [ ] Finaliser le SEO des pages enfants  
 - [ ] Vérifier le wording final App Store / contact  
 - [ ] Confirmer la configuration d’envoi des formulaires mail côté Netlify Forms  
 - [ ] Finaliser la direction visuelle des deux pages enfants après intégration des derniers assets  

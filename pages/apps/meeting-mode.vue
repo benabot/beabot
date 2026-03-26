@@ -241,13 +241,15 @@ import AppReleaseInterestForm from '~/components/apps/AppReleaseInterestForm.vue
 import {
   buildBreadcrumbSchema,
   buildFaqSchema,
+  buildSoftwareApplicationSchema,
   meetingModeContent,
 } from '~/data/apps'
-import { canonicalUrl } from '~/utils/seo-url'
+import { absoluteUrl, canonicalUrl } from '~/utils/seo-url'
 
 const config = useRuntimeConfig()
 const route = useRoute()
 const pageUrl = canonicalUrl(config.public.siteUrl, '/apps/meeting-mode')
+const ogImage = absoluteUrl(config.public.siteUrl, meetingModeContent.seo.image)
 const privacyDetails = ref<HTMLDetailsElement | null>(null)
 const lightbox = ref<InstanceType<typeof AppGalleryLightbox> | null>(null)
 
@@ -264,6 +266,14 @@ const breadcrumbSchema = buildBreadcrumbSchema(config.public.siteUrl, [
 ])
 
 const faqSchema = buildFaqSchema(meetingModeContent.faq)
+const softwareApplicationSchema = buildSoftwareApplicationSchema({
+  name: meetingModeContent.name,
+  description: meetingModeContent.seo.description,
+  url: pageUrl,
+  operatingSystem: 'macOS',
+  applicationCategory: 'ProductivityApplication',
+  image: ogImage,
+})
 
 function openLightbox(index: number) {
   lightbox.value?.open(index)
@@ -303,13 +313,16 @@ watch(
 useSeoMeta({
   title: meetingModeContent.seo.title,
   description: meetingModeContent.seo.description,
-  ogTitle: 'Meeting Mode — Préparez votre Mac avant chaque réunion',
+  ogTitle: meetingModeContent.seo.title,
   ogDescription: meetingModeContent.seo.description,
   ogType: 'website',
+  ogSiteName: 'BeAbot',
   ogUrl: pageUrl,
+  ogImage,
   twitterTitle: meetingModeContent.seo.title,
   twitterDescription: meetingModeContent.seo.description,
-  twitterCard: 'summary',
+  twitterCard: 'summary_large_image',
+  twitterImage: ogImage,
 })
 
 useHead({
@@ -327,6 +340,10 @@ useHead({
     {
       type: 'application/ld+json',
       children: JSON.stringify(faqSchema),
+    },
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify(softwareApplicationSchema),
     },
   ],
 })

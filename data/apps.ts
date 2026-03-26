@@ -105,7 +105,24 @@ export interface AppDetailContent {
   seo: {
     title: string
     description: string
+    image?: string
   }
+}
+
+export interface CollectionPageSchemaInput {
+  siteUrl: string
+  pageUrl: string
+  name: string
+  description: string
+}
+
+export interface SoftwareApplicationSchemaInput {
+  name: string
+  description: string
+  url: string
+  operatingSystem: string
+  applicationCategory: string
+  image?: string
 }
 
 export interface BreadcrumbEntry {
@@ -121,6 +138,7 @@ export const appsIndexContent = {
     title: 'Applications iOS & macOS — BeAbot',
     description:
       'DuoSpend pour gérer vos dépenses à deux, Meeting Mode pour préparer votre Mac avant une réunion. Deux apps natives Swift, sans abonnement.',
+    image: '/img/apps/duospend-vignette-apps.webp',
   },
 }
 
@@ -328,7 +346,7 @@ export const meetingModeContent: AppDetailContent = {
   href: '/apps/meeting-mode/',
   intro:
     'Meeting Mode prépare votre Mac pour une réunion, une démo ou un partage d’écran en un clic : il ouvre ce qu’il faut, masque le reste, affiche un écran propre, puis propose un restore simple et compréhensible.',
-  summary: 'Préparer, montrer, restaurer.',
+  summary: 'Préparer, montrer, restaurer depuis la barre de menu.',
   overview: [
     'Meeting Mode reste centré sur un flux court, fiable et compréhensible.',
   ],
@@ -544,7 +562,8 @@ export const meetingModeContent: AppDetailContent = {
   seo: {
     title: 'Meeting Mode — App macOS menu bar pour réunions | BeAbot',
     description:
-      'Meeting Mode prépare votre Mac en un clic : ouvre vos apps, masque le reste, affiche un écran propre. App macOS barre de menu, locale, sans compte.',
+      'Meeting Mode prépare votre Mac en un clic : ouvre vos apps, masque le reste, affiche un écran propre. App macOS de barre de menu, locale, sans compte.',
+    image: '/img/apps/meeting-mode_vignette-apps.webp',
   },
 }
 
@@ -696,8 +715,46 @@ export const duoSpendContent: AppDetailContent = {
     title: 'DuoSpend — App iPhone pour dépenses à deux | BeAbot',
     description:
       'DuoSpend calcule qui doit combien à qui, sur chaque projet commun. Hors ligne, sans compte, sans pub. Achat unique 6,99 €.',
+    image: '/img/apps/duospend-vignette-apps.webp',
   },
 }
+
+export const buildCollectionPageSchema = ({
+  siteUrl,
+  pageUrl,
+  name,
+  description,
+}: CollectionPageSchemaInput) => ({
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name,
+  description,
+  url: pageUrl,
+  inLanguage: 'fr-FR',
+  isPartOf: {
+    '@type': 'WebSite',
+    name: 'BeAbot',
+    url: siteUrl,
+  },
+})
+
+export const buildSoftwareApplicationSchema = ({
+  name,
+  description,
+  url,
+  operatingSystem,
+  applicationCategory,
+  image,
+}: SoftwareApplicationSchemaInput) => ({
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name,
+  description,
+  url,
+  operatingSystem,
+  applicationCategory,
+  ...(image ? { image } : {}),
+})
 
 export const buildFaqSchema = (items: AppFaqItem[]) => ({
   '@context': 'https://schema.org',

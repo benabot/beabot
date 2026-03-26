@@ -15,6 +15,19 @@
 
 ### Dernière mise à jour
 
+**SEO Apps (26 mars 2026)** — Hardening SEO des pages `/apps/`, `/apps/duo-spend/` et `/apps/meeting-mode/`, avec alignement des métadonnées, des données structurées et des fichiers d’indexation.
+
+- ✅ Titles corrigés pour supprimer le préfixe redondant `BeAbot -` quand le suffixe porte déjà la marque
+- ✅ Meta descriptions vérifiées et conservées quand pertinentes, avec resserrage du texte Meeting Mode
+- ✅ Open Graph / Twitter alignés sur les canoniques, avec `summary_large_image`
+- ✅ Images sociales dédiées pour DuoSpend et Meeting Mode
+- ✅ JSON-LD enrichi avec `CollectionPage` sur `/apps/` et `SoftwareApplication` sur les deux pages détail
+- ✅ `BreadcrumbList`, `ItemList` et `FAQPage` conservés là où ils existaient déjà
+- ✅ Contenu Meeting Mode renforcé naturellement sur l’expression `barre de menu`
+- ✅ `sitemap.xml` généré automatiquement via `@nuxtjs/sitemap` avec domaine canonique `https://beabot.fr`
+- ✅ `robots.txt` servi par la route serveur `server/routes/robots.txt.ts` et pointant vers `/sitemap.xml`
+- ✅ Canonicals, `og:url` et trailing slash alignés sur `https://beabot.fr/.../`
+
 **Pages Apps (26 mars 2026)** — Landing `/apps/` + pages détail Meeting Mode / DuoSpend, sur la branche `style/apps-graphisme`.
 
 - ✅ Landing `/apps/` structurée (hero, grille extensible, CTA explicites)
@@ -39,6 +52,7 @@
 - ✅ Wording Meeting Mode réécrit dans `data/apps.ts`
 - ✅ Lightbox native réutilisable branchée sur les galeries Apps
 - ✅ Lightbox native corrigée pour rester masquée tant qu’elle n’est pas ouverte
+- ✅ SEO des trois pages Apps finalisé et vérifié en build statique
 
 **Phase 14 (Portfolio) terminée** — Prêt pour merge sur dev puis master.
 

@@ -2,6 +2,18 @@ const FILE_EXTENSIONS = new Set(['.pdf', '.png', '.jpg', '.jpeg', '.svg', '.webp
 
 const stripTrailingSlash = (value: string) => value.replace(/\/+$/, '')
 
+export const absoluteUrl = (siteUrl: string, path = ''): string => {
+  const base = stripTrailingSlash(String(siteUrl || '').trim())
+  const value = String(path || '').trim()
+
+  if (!value) return base || '/'
+  if (value.startsWith('http://') || value.startsWith('https://')) return value
+  if (value.startsWith('//')) return value
+  if (value.startsWith('/')) return `${base}${value}`
+
+  return `${base}/${value}`
+}
+
 export const ensureLeadingSlash = (path = ''): string => {
   const trimmed = String(path).trim()
   if (!trimmed) return '/'

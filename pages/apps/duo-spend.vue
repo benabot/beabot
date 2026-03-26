@@ -270,13 +270,15 @@ import AppReleaseInterestForm from '~/components/apps/AppReleaseInterestForm.vue
 import {
   buildBreadcrumbSchema,
   buildFaqSchema,
+  buildSoftwareApplicationSchema,
   duoSpendContent,
 } from '~/data/apps'
-import { canonicalUrl } from '~/utils/seo-url'
+import { absoluteUrl, canonicalUrl } from '~/utils/seo-url'
 
 const config = useRuntimeConfig()
 const route = useRoute()
 const pageUrl = canonicalUrl(config.public.siteUrl, '/apps/duo-spend')
+const ogImage = absoluteUrl(config.public.siteUrl, duoSpendContent.seo.image)
 const privacyDetails = ref<HTMLDetailsElement | null>(null)
 const lightbox = ref<InstanceType<typeof AppGalleryLightbox> | null>(null)
 
@@ -293,6 +295,14 @@ const breadcrumbSchema = buildBreadcrumbSchema(config.public.siteUrl, [
 ])
 
 const faqSchema = buildFaqSchema(duoSpendContent.faq)
+const softwareApplicationSchema = buildSoftwareApplicationSchema({
+  name: duoSpendContent.name,
+  description: duoSpendContent.seo.description,
+  url: pageUrl,
+  operatingSystem: 'iOS',
+  applicationCategory: 'FinanceApplication',
+  image: ogImage,
+})
 
 function openLightbox(index: number) {
   lightbox.value?.open(index)
@@ -332,13 +342,16 @@ watch(
 useSeoMeta({
   title: duoSpendContent.seo.title,
   description: duoSpendContent.seo.description,
-  ogTitle: 'DuoSpend — App iPhone pour dépenses à deux',
+  ogTitle: duoSpendContent.seo.title,
   ogDescription: duoSpendContent.seo.description,
   ogType: 'website',
+  ogSiteName: 'BeAbot',
   ogUrl: pageUrl,
+  ogImage,
   twitterTitle: duoSpendContent.seo.title,
   twitterDescription: duoSpendContent.seo.description,
-  twitterCard: 'summary',
+  twitterCard: 'summary_large_image',
+  twitterImage: ogImage,
 })
 
 useHead({
@@ -356,6 +369,10 @@ useHead({
     {
       type: 'application/ld+json',
       children: JSON.stringify(faqSchema),
+    },
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify(softwareApplicationSchema),
     },
   ],
 })

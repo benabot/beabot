@@ -40,13 +40,15 @@ import AppCard from '~/components/apps/AppCard.vue'
 import {
   appsIndexContent,
   appsIndexEntries,
+  buildCollectionPageSchema,
   buildBreadcrumbSchema,
   buildItemListSchema,
 } from '~/data/apps'
-import { canonicalUrl } from '~/utils/seo-url'
+import { absoluteUrl, canonicalUrl } from '~/utils/seo-url'
 
 const config = useRuntimeConfig()
 const pageUrl = canonicalUrl(config.public.siteUrl, '/apps')
+const ogImage = absoluteUrl(config.public.siteUrl, appsIndexContent.seo.image)
 
 const breadcrumbItems = [{ label: 'Accueil', to: '/' }, { label: 'Apps' }]
 
@@ -56,18 +58,26 @@ const breadcrumbSchema = buildBreadcrumbSchema(config.public.siteUrl, [
 ])
 
 const itemListSchema = buildItemListSchema(config.public.siteUrl, appsIndexEntries)
+const collectionSchema = buildCollectionPageSchema({
+  siteUrl: config.public.siteUrl,
+  pageUrl,
+  name: appsIndexContent.title,
+  description: appsIndexContent.seo.description,
+})
 
 useSeoMeta({
   title: appsIndexContent.seo.title,
   description: appsIndexContent.seo.description,
   ogTitle: appsIndexContent.seo.title,
-  ogDescription:
-    'DuoSpend pour iOS, Meeting Mode pour macOS. Apps Swift natives, sans compte, sans publicité.',
+  ogDescription: appsIndexContent.seo.description,
   ogType: 'website',
+  ogSiteName: 'BeAbot',
   ogUrl: pageUrl,
+  ogImage,
   twitterTitle: appsIndexContent.seo.title,
   twitterDescription: appsIndexContent.seo.description,
-  twitterCard: 'summary',
+  twitterCard: 'summary_large_image',
+  twitterImage: ogImage,
 })
 
 useHead({
@@ -78,6 +88,10 @@ useHead({
     },
   ],
   script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify(collectionSchema),
+    },
     {
       type: 'application/ld+json',
       children: JSON.stringify(breadcrumbSchema),

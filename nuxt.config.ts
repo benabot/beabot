@@ -75,7 +75,7 @@ export default defineNuxtConfig({
         },
         {
           property: 'og:image',
-          content: 'https://beabot.fr/beabot.png',
+          content: `${siteUrl}/beabot.png`,
         },
         // Twitter Card
         {
@@ -89,7 +89,7 @@ export default defineNuxtConfig({
         },
         {
           name: 'twitter:image',
-          content: 'https://beabot.fr/beabot.png',
+          content: `${siteUrl}/beabot.png`,
         },
       ],
       link: [
@@ -103,11 +103,11 @@ export default defineNuxtConfig({
         // Preconnect to own domain for faster resource loading (uses runtime config)
         {
           rel: 'preconnect',
-          href: process.env.NUXT_PUBLIC_SITE_URL || 'https://beabot.fr',
+          href: siteUrl,
         },
         {
           rel: 'dns-prefetch',
-          href: process.env.NUXT_PUBLIC_SITE_URL || 'https://beabot.fr',
+          href: siteUrl,
         },
       ],
     },
