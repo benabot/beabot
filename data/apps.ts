@@ -124,7 +124,8 @@ export const appsIndexEntries: AppIndexEntry[] = [
     name: 'Meeting Mode',
     platform: 'macOS',
     stage: 'Prépublication',
-    summary: 'Préparation de réunions.',
+    summary:
+      'Meeting Mode prépare votre Mac pour une réunion, une démo ou un partage d’écran en un clic : il ouvre ce qu’il faut, masque le reste, affiche un écran propre, puis propose un restore simple et compréhensible.',
     href: '/apps/meeting-mode/',
     featured: false,
     preview: {
