@@ -5,7 +5,10 @@
 
       <section class="apps-hero">
         <p class="apps-hero__eyebrow">Apps</p>
-        <h1>{{ appsIndexContent.title }}</h1>
+        <h1>
+          Applications <span class="apps-hero__platform">iOS</span> &
+          <span class="apps-hero__platform">macOS</span>
+        </h1>
         <p class="apps-hero__intro">{{ appsIndexContent.intro }}</p>
         <p class="apps-hero__meta">{{ appsIndexContent.meta }}</p>
       </section>
@@ -128,6 +131,10 @@ useHead({
   font-size: clamp(3.2rem, 6vw, 5.25rem);
   line-height: 0.94;
   letter-spacing: -0.055em;
+}
+
+.apps-hero__platform {
+  color: $gris1;
 }
 
 .apps-hero__intro {
