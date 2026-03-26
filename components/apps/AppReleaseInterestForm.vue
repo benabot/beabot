@@ -115,7 +115,7 @@ async function onSubmit() {
   gap: 1rem;
   padding: clamp(1.25rem, 3vw, 1.85rem);
   border-radius: 1.5rem;
-  background: linear-gradient(135deg, #04d94f 0%, #03c944 100%);
+  background: linear-gradient(135deg, #05d94f 0%, #04c947 100%);
   color: white;
   box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
 
