@@ -336,6 +336,11 @@ useHead({
   border-radius: 999px;
   text-decoration: none;
   font-weight: 700;
+  transition:
+    transform 0.14s ease,
+    box-shadow 0.14s ease,
+    background-color 0.14s ease,
+    color 0.14s ease;
 }
 
 .app-primary-action {
@@ -347,6 +352,13 @@ useHead({
 .app-cta__link {
   background: rgba(243, 244, 246, 0.9);
   color: $gris2;
+}
+
+.app-cta__link:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.98);
+  color: $gris1;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
 }
 
 .app-primary-action:focus-visible,
