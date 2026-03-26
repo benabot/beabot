@@ -49,7 +49,7 @@
         <div class="app-surface__copy">
           <h2 id="meeting-overview-title">Ce que fait Meeting Mode</h2>
           <p class="app-surface__lead">Avec un preset, Meeting Mode peut :</p>
-          <ul class="app-surface__bullets">
+          <ul class="app-capabilities">
             <li v-for="item in meetingModeContent.capabilities" :key="item">
               {{ item }}
             </li>
@@ -292,6 +292,14 @@ useHead({
   color: $gris1;
 }
 
+.section-heading h2,
+.app-surface h2,
+.app-cta__heading h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
 .app-hero h1 {
   font-size: clamp(3.1rem, 6.8vw, 5.8rem);
   line-height: 0.93;
@@ -431,7 +439,7 @@ useHead({
   border-radius: 0.7rem;
   display: grid;
   place-items: center;
-  background: linear-gradient(145deg, #2f6df0, #5da8ff);
+  background: linear-gradient(145deg, #232326, #111827);
   color: white;
   font-weight: 700;
 }
@@ -490,7 +498,7 @@ useHead({
   text-transform: uppercase;
 }
 
-.app-surface__bullets,
+.app-capabilities,
 .app-surface__cases {
   display: grid;
   margin: 0;
@@ -498,7 +506,7 @@ useHead({
   list-style: none;
 }
 
-.app-surface__bullets {
+.app-capabilities {
   gap: 0.55rem;
 }
 
@@ -506,24 +514,38 @@ useHead({
   gap: 0.7rem;
 }
 
-.app-surface__bullets li,
+.app-capabilities li,
 .app-surface__cases li {
   position: relative;
-  padding-left: 1rem;
+  padding: 0.5rem 0.75rem 0.5rem 1.75rem;
   color: $gris2;
   line-height: 1.55;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 0.5rem;
 }
 
-.app-surface__bullets li::before,
 .app-surface__cases li::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 0.7em;
+  top: 50%;
   width: 0.35rem;
   height: 0.35rem;
   border-radius: 999px;
   background: $vert;
+  transform: translateY(-50%);
+}
+
+.app-capabilities li::before {
+  content: '';
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 999px;
+  background: $vert;
+  transform: translateY(-50%);
 }
 
 .app-section--split {

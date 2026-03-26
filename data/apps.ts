@@ -306,9 +306,8 @@ export const meetingModeContent: AppDetailContent = {
   stage: 'Prépublication',
   href: '/apps/meeting-mode/',
   intro:
-    'Meeting Mode est une app macOS de barre de menu pensée pour un usage simple : préparer rapidement un Mac avant une réunion, une démo, un entretien ou un partage d’écran.',
-  summary:
-    'L’idée est directe : préparer, montrer, restaurer.',
+    'Meeting Mode prépare votre Mac pour une réunion, une démo ou un partage d’écran en un clic : il ouvre ce qu’il faut, masque le reste, affiche un écran propre, puis propose un restore simple et compréhensible.',
+  summary: 'Préparer, montrer, restaurer.',
   overview: [
     'Meeting Mode reste centré sur un flux court, fiable et compréhensible.',
   ],

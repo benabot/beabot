@@ -22,19 +22,25 @@
           role="img"
           :aria-label="props.app.preview.alt"
         >
-          <div class="app-card__placeholder-frame" aria-hidden="true">
-            <span class="app-card__placeholder-orb app-card__placeholder-orb--one"></span>
-            <span class="app-card__placeholder-orb app-card__placeholder-orb--two"></span>
-            <div class="app-card__placeholder-panel">
-              <div class="app-card__placeholder-bar">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <div class="app-card__placeholder-wordmark">{{ props.app.name }}</div>
-              <div class="app-card__placeholder-caption">{{ props.app.platform }}</div>
-            </div>
-          </div>
+          <svg
+            class="app-card__placeholder-svg"
+            viewBox="0 0 160 120"
+            width="160"
+            height="120"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <rect width="160" height="120" rx="16" fill="#f0ede9" />
+            <rect x="18" y="18" width="124" height="8" rx="4" fill="#d3cec5" />
+            <rect x="18" y="32" width="88" height="6" rx="3" fill="#e0dbd1" />
+            <rect x="18" y="44" width="64" height="6" rx="3" fill="#e0dbd1" />
+            <rect x="43" y="58" width="74" height="42" rx="12" fill="#1f2937" />
+            <rect x="52" y="66" width="56" height="26" rx="7" fill="#18212f" />
+            <rect x="58" y="72" width="18" height="6" rx="3" fill="#0dc763" />
+            <rect x="58" y="82" width="34" height="4" rx="2" fill="#7f8a96" />
+            <rect x="73" y="100" width="14" height="4" rx="2" fill="#d3cec5" />
+            <rect x="67" y="104" width="26" height="3" rx="1.5" fill="#c7c1b7" />
+          </svg>
         </div>
       </div>
     </figure>
@@ -112,85 +118,16 @@ const props = withDefaults(
 
 .app-card__placeholder {
   min-height: 100%;
-  padding: 1.25rem;
+  padding: 1rem;
   display: grid;
   place-items: center;
+  background: linear-gradient(180deg, #f5f1eb, #ece7e0);
 }
 
-.app-card__placeholder-frame {
-  width: min(82%, 19rem);
-  aspect-ratio: 4 / 5;
-  border-radius: 1rem;
-  padding: 0.9rem;
-  display: grid;
-  align-content: end;
-  background: linear-gradient(180deg, #121826, #1e293b);
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
-    0 16px 34px rgba(15, 23, 42, 0.12);
-  position: relative;
-  overflow: hidden;
-}
-
-.app-card__placeholder-orb {
-  position: absolute;
-  border-radius: 999px;
-  filter: blur(2px);
-  opacity: 0.75;
-}
-
-.app-card__placeholder-orb--one {
-  top: 1rem;
-  left: 1rem;
-  width: 5.25rem;
-  height: 5.25rem;
-  background: rgba(4, 217, 79, 0.16);
-}
-
-.app-card__placeholder-orb--two {
-  right: 1rem;
-  bottom: 3.4rem;
-  width: 7rem;
-  height: 7rem;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.app-card__placeholder-panel {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  gap: 0.8rem;
-  padding: 0.9rem;
-  border-radius: 0.95rem;
-  background: linear-gradient(180deg, rgba(16, 24, 40, 0.88), rgba(15, 23, 42, 0.92));
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
-}
-
-.app-card__placeholder-bar {
-  display: flex;
-  gap: 0.28rem;
-}
-
-.app-card__placeholder-bar span {
-  width: 0.55rem;
-  height: 0.55rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.32);
-}
-
-.app-card__placeholder-wordmark {
-  color: rgba(255, 255, 255, 0.94);
-  font-size: clamp(1.4rem, 3vw, 1.95rem);
-  font-weight: 700;
-  letter-spacing: -0.05em;
-}
-
-.app-card__placeholder-caption {
-  color: rgba(255, 255, 255, 0.58);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+.app-card__placeholder-svg {
+  display: block;
+  width: min(100%, 16rem);
+  height: auto;
 }
 
 .app-card__body {

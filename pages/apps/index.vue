@@ -58,7 +58,8 @@ useSeoMeta({
   title: appsIndexContent.seo.title,
   description: appsIndexContent.seo.description,
   ogTitle: appsIndexContent.seo.title,
-  ogDescription: appsIndexContent.seo.description,
+  ogDescription:
+    'DuoSpend pour iOS, Meeting Mode pour macOS. Apps Swift natives, sans compte, sans publicité.',
   ogType: 'website',
   ogUrl: pageUrl,
   twitterTitle: appsIndexContent.seo.title,

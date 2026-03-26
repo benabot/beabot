@@ -138,7 +138,13 @@
             v-for="plan in duoSpendContent.pricing.plans"
             :key="plan.name"
             class="pricing-card"
+            :class="{
+              'pricing-card--featured': plan.name === 'DuoSpend Pro',
+            }"
           >
+            <div v-if="plan.name === 'DuoSpend Pro'" class="pricing-card__badge">
+              Recommandé
+            </div>
             <p class="pricing-card__name">{{ plan.name }}</p>
             <p class="pricing-card__price">{{ plan.price }}</p>
             <p class="pricing-card__summary">{{ plan.description }}</p>
@@ -223,7 +229,7 @@ const faqSchema = buildFaqSchema(duoSpendContent.faq)
 useSeoMeta({
   title: duoSpendContent.seo.title,
   description: duoSpendContent.seo.description,
-  ogTitle: 'DuoSpend — Dépenses communes à deux',
+  ogTitle: 'DuoSpend — App iPhone pour dépenses à deux',
   ogDescription: duoSpendContent.seo.description,
   ogType: 'website',
   ogUrl: pageUrl,
@@ -300,6 +306,14 @@ useHead({
 .section-heading h2 {
   margin: 0;
   color: $gris1;
+}
+
+.section-heading h2,
+.app-surface h2,
+.app-cta__heading h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
 }
 
 .app-hero h1 {
@@ -585,6 +599,26 @@ useHead({
   padding: 1.05rem;
   border-radius: 1.15rem;
   background: rgba(255, 255, 255, 0.94);
+  position: relative;
+}
+
+.pricing-card--featured {
+  border: 1.5px solid rgba(13, 199, 99, 0.7);
+  background: rgba(13, 199, 99, 0.04);
+}
+
+.pricing-card__badge {
+  position: absolute;
+  top: -0.55rem;
+  right: 1rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: $vert;
+  color: white;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .pricing-card__name {
