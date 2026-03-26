@@ -34,6 +34,11 @@
 - [x] Formulaire d’intérêt et lien `/contact/` conservés sur les pages enfants
 - [x] Référence `preview.src` de DuoSpend alignée sur `duospend-hero.webp`
 - [x] Wording DuoSpend mis à jour dans `data/apps.ts`
+- [x] Refonte Meeting Mode (hero, before/after, galerie, FAQ, confidentialité)
+- [x] Preview Meeting Mode activée dans la landing `/apps/`
+- [x] Galerie Meeting Mode alimentée par les visuels macOS du dossier `public/img/apps/`
+- [x] Ancre `#privacy` auto-ouverte sur la confidentialité Meeting Mode
+- [x] Wording Meeting Mode aligné dans `data/apps.ts`
 
 - [x] Renommage public "chasse-patate" → "BORDUR"
 - [x] Liens projet mis à jour (topette.netlify.app → bordur.fr)
@@ -137,6 +142,8 @@
 - [ ] Finaliser le SEO des pages enfants  
 - [ ] Vérifier le wording final App Store / contact  
 - [ ] Confirmer la configuration d’envoi des formulaires mail côté Netlify Forms  
+- [ ] Finaliser la direction visuelle des deux pages enfants après intégration des derniers assets  
+- [ ] Vérifier l’ergonomie du bloc confidentialité + ancre `#privacy` sur Meeting Mode  
 
 **Audit graphique UX/UI**  
 - [ ] Créer l’audit graphique UX/UI

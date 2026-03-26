@@ -73,6 +73,12 @@ export interface AppDetailPoint {
   featured?: boolean
 }
 
+export interface AppBeforeAfter {
+  before: { src: string; alt: string; label: string }
+  after: { src: string; alt: string; label: string }
+  caption: string
+}
+
 export interface AppDetailContent {
   slug: string
   name: string
@@ -88,6 +94,7 @@ export interface AppDetailContent {
   detailPoints: AppDetailPoint[]
   limits?: string[]
   principles?: string[]
+  beforeAfter?: AppBeforeAfter
   preview: AppPreview
   gallery?: AppGalleryItem[]
   faq: AppFaqItem[]
@@ -139,13 +146,15 @@ export const appsIndexEntries: AppIndexEntry[] = [
     name: 'Meeting Mode',
     platform: 'macOS',
     stage: 'Prépublication',
-    summary: 'Préparer un Mac avant une réunion.',
+    summary: 'Votre Mac prêt en un clic.',
     href: '/apps/meeting-mode/',
     featured: false,
     preview: {
-      alt: 'Emplacement de capture pour Meeting Mode',
-      available: false,
-      label: 'Capture à venir',
+      src: '/img/apps/meeting-mode_vignette-apps.webp',
+      alt: 'Aperçu de Meeting Mode sur macOS',
+      available: true,
+      label: 'Capture actuelle',
+      fit: 'cover',
     },
   },
 ]
@@ -324,25 +333,27 @@ export const meetingModeContent: AppDetailContent = {
     'Meeting Mode reste centré sur un flux court, fiable et compréhensible.',
   ],
   capabilities: [
-    'ouvrir des applications utiles à votre réunion',
-    'ouvrir des URLs et des fichiers locaux',
-    'masquer, en best effort, les apps visibles qui ne font pas partie du preset',
-    'afficher un écran visuellement propre avec le clean screen overlay',
-    'restaurer ensuite ce que l’app a réellement modifié',
+    'ouvrir les applications, liens et fichiers de votre preset',
+    'masquer les apps visibles qui ne font pas partie de la session',
+    'afficher un écran propre avant le partage avec le clean screen overlay',
+    'restaurer ce que l’app a réellement changé pendant la session',
   ],
   useCases: [
-    'des démos produit',
-    'des visios clients',
-    'des entretiens',
-    'du support en partage d’écran',
-    'des présentations internes',
-    'des calls où il faut ouvrir toujours les mêmes éléments, tout en évitant d’exposer le reste',
+    'démos produit',
+    'visios clients',
+    'entretiens',
+    'partage d’écran et support',
+    'présentations internes',
+    'tout call avec des apps et liens récurrents à ouvrir',
   ],
   detailPoints: [
     {
       label: 'Un vrai flux en un clic',
       value:
         'Vous choisissez un preset, vous lancez la session, et l’app exécute l’essentiel immédiatement.',
+      description:
+        'Pas de configuration à chaque fois. Un preset mémorise vos apps, liens et fichiers utiles. Start Session les ouvre, masque le reste, et affiche un écran propre — en une action.',
+      featured: true,
     },
     {
       label: 'Pensé pour le partage d’écran',
@@ -360,25 +371,60 @@ export const meetingModeContent: AppDetailContent = {
         'Les presets et l’état de session sont stockés localement. Pas de cloud imposé, pas de compte, pas de couche inutile.',
     },
   ],
-  limits: [
-    'la restauration parfaite de toutes les fenêtres',
-    "la fermeture précise d'un onglet de navigateur déjà ouvert",
-    "la fermeture précise d'un document dans une app déjà en cours d'exécution",
-    'la reconstruction exacte des Spaces, bureaux virtuels ou états de minimisation',
-  ],
-  principles: [
-    'la fiabilité',
-    'la simplicité',
-    'la rapidité d’usage',
-    'la clarté du restore',
-    'la finition visuelle',
-  ],
   preview: {
-    alt: 'Emplacement de capture pour Meeting Mode',
-    available: false,
-    label: 'Capture à venir',
+    src: '/img/apps/meeting-mode_hero.webp',
+    alt: 'Écran principal de Meeting Mode sur macOS',
+    available: true,
+    label: "Aperçu de l'app",
+    fit: 'cover',
   },
   showVisual: false,
+  gallery: [
+    {
+      src: '/img/apps/meeting-mode_avant.webp',
+      alt: "Bureau macOS standard avant le lancement d'une session Meeting Mode",
+      title: 'Avant',
+      subtitle: 'Bureau standard',
+    },
+    {
+      src: '/img/apps/meeting-mode_preset_1.webp',
+      alt: "Écran de configuration d'un preset dans Meeting Mode",
+      title: 'Preset',
+      subtitle: 'Configuration de la session',
+    },
+    {
+      src: '/img/apps/meeting-mode_actif.webp',
+      alt: 'Session Meeting Mode active sur macOS',
+      title: 'Session active',
+      subtitle: 'Clean screen overlay',
+    },
+    {
+      src: '/img/apps/meeting-mode_reglages.webp',
+      alt: 'Réglages de Meeting Mode',
+      title: 'Réglages',
+      subtitle: 'Préférences locales',
+    },
+    {
+      src: '/img/apps/meeting-mode_apres.webp',
+      alt: 'Bureau après restore par Meeting Mode',
+      title: 'Après',
+      subtitle: 'Restore de session',
+    },
+  ],
+  beforeAfter: {
+    before: {
+      src: '/img/apps/meeting-mode_avant.webp',
+      alt: "Bureau macOS standard avant le lancement d'une session Meeting Mode",
+      label: 'Avant',
+    },
+    after: {
+      src: '/img/apps/meeting-mode_apres.webp',
+      alt: "Bureau macOS après le lancement d'une session Meeting Mode — écran propre",
+      label: 'Après',
+    },
+    caption:
+      'En un clic, Meeting Mode ouvre ce qu’il faut et masque le reste. L’écran est prêt pour le partage.',
+  },
   faq: [
     {
       question: 'À quoi sert Meeting Mode ?',
@@ -450,7 +496,7 @@ export const meetingModeContent: AppDetailContent = {
   ],
   legal: {
     fr: {
-      title: 'Mentions légales',
+      title: 'Confidentialité',
       paragraphs: [
         'Meeting Mode respecte votre vie privée.',
         'Cette politique de confidentialité explique quelles données sont traitées par l’application Meeting Mode, dans quel but, et quels choix vous avez en tant qu’utilisateur.',
@@ -489,8 +535,9 @@ export const meetingModeContent: AppDetailContent = {
     },
   },
   cta: {
-    title: "Être informé de la sortie de l'app",
-    description: "L'app n'est pas encore publiée. Laissez votre adresse pour recevoir la suite quand elle sera prête.",
+    title: 'Soyez le premier à savoir.',
+    description:
+      "Meeting Mode arrive bientôt. Laissez votre adresse — je vous préviens dès l'ouverture.",
     secondaryLabel: 'Une question ? Contactez-moi',
     secondaryTo: '/contact/',
   },

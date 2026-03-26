@@ -28,18 +28,18 @@
               <span></span>
             </div>
             <div
-              class="app-mockup__screen app-mockup__screen--meeting"
+              class="app-mockup__screen app-mockup__screen--image"
               role="img"
               :aria-label="meetingModeContent.preview.alt"
             >
-              <div class="monitor" aria-hidden="true">
-                <div class="monitor__frame">
-                  <div class="monitor__screen">
-                    <span>{{ meetingModeContent.name }}</span>
-                  </div>
-                </div>
-                <div class="monitor__stand"></div>
-              </div>
+              <img
+                :src="meetingModeContent.preview.src"
+                :alt="meetingModeContent.preview.alt"
+                width="1280"
+                height="800"
+                loading="eager"
+                decoding="async"
+              />
             </div>
           </div>
         </div>
@@ -67,41 +67,53 @@
       </section>
 
       <section
-        v-if="meetingModeContent.showVisual"
+        v-if="meetingModeContent.beforeAfter"
         class="app-section"
-        aria-labelledby="meeting-capture-title"
+        aria-labelledby="meeting-before-after-title"
       >
         <div class="section-heading">
-          <h2 id="meeting-capture-title">Capture provisoire</h2>
-          <p>En attente de la capture finale.</p>
+          <h2 id="meeting-before-after-title">En pratique</h2>
+          <p>{{ meetingModeContent.beforeAfter.caption }}</p>
         </div>
 
-        <div class="app-capture app-capture--meeting">
-          <div class="app-capture__bar" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div
-            class="app-capture__screen app-capture__screen--meeting"
-            role="img"
-            :aria-label="meetingModeContent.preview.alt"
-          >
-            <div class="monitor monitor--large" aria-hidden="true">
-              <div class="monitor__frame">
-                <div class="monitor__screen">
-                  <span>{{ meetingModeContent.preview.label }}</span>
-                </div>
-              </div>
-              <div class="monitor__stand"></div>
+        <div class="before-after-grid">
+          <figure class="before-after-card">
+            <div class="before-after-card__media">
+              <img
+                :src="meetingModeContent.beforeAfter.before.src"
+                :alt="meetingModeContent.beforeAfter.before.alt"
+                width="2858"
+                height="1726"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
-          </div>
+            <figcaption class="before-after-card__label before-after-card__label--before">
+              {{ meetingModeContent.beforeAfter.before.label }}
+            </figcaption>
+          </figure>
+
+          <figure class="before-after-card">
+            <div class="before-after-card__media">
+              <img
+                :src="meetingModeContent.beforeAfter.after.src"
+                :alt="meetingModeContent.beforeAfter.after.alt"
+                width="2870"
+                height="1808"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption class="before-after-card__label before-after-card__label--after">
+              {{ meetingModeContent.beforeAfter.after.label }}
+            </figcaption>
+          </figure>
         </div>
       </section>
 
       <section class="app-section" aria-labelledby="meeting-details-title">
         <div class="section-heading">
-          <h2 id="meeting-details-title">En pratique</h2>
+          <h2 id="meeting-details-title">Points clés</h2>
           <p>Quatre repères pour comprendre le flux de l’app.</p>
         </div>
 
@@ -110,58 +122,84 @@
             v-for="point in meetingModeContent.detailPoints"
             :key="point.label"
             class="detail-card"
+            :class="{ 'detail-card--featured': point.featured }"
           >
             <p class="detail-card__label">{{ point.label }}</p>
             <p class="detail-card__value">{{ point.value }}</p>
+            <p v-if="point.description" class="detail-card__description">
+              {{ point.description }}
+            </p>
           </article>
         </div>
       </section>
 
-      <section class="app-section app-section--split" aria-labelledby="meeting-scope-title">
-        <div class="app-scope">
-          <div class="section-heading">
-            <h2 id="meeting-scope-title">Ce que l’app ne prétend pas faire</h2>
-            <p>Ce choix est volontaire. Il garde l’app plus fiable, plus rapide à utiliser et plus honnête sur les limites réelles de macOS.</p>
-          </div>
-
-          <ul class="limit-list">
-            <li v-for="item in meetingModeContent.limits" :key="item">
-              {{ item }}
-            </li>
-          </ul>
+      <section
+        v-if="meetingModeContent.gallery?.length"
+        class="app-section"
+        aria-labelledby="meeting-gallery-title"
+      >
+        <div class="section-heading">
+          <h2 id="meeting-gallery-title">L'app en images</h2>
+          <p>Les principaux écrans de Meeting Mode.</p>
         </div>
 
-        <aside class="app-principles" aria-labelledby="meeting-principles-title">
-          <p class="app-principles__eyebrow">Une approche pragmatique</p>
-          <h3 id="meeting-principles-title">Ce que l’app privilégie</h3>
-          <ol class="app-principles__list">
-            <li v-for="item in meetingModeContent.principles" :key="item">
-              {{ item }}
-            </li>
-          </ol>
-        </aside>
+        <div class="gallery-grid">
+          <figure
+            v-for="image in meetingModeContent.gallery"
+            :key="image.src"
+            class="gallery-card"
+          >
+            <div class="gallery-card__media">
+              <img
+                :src="image.src"
+                :alt="image.alt"
+                width="1280"
+                height="800"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption class="gallery-card__caption">
+              <span class="gallery-card__title">{{ image.title }}</span>
+              <span class="gallery-card__subtitle">{{ image.subtitle }}</span>
+            </figcaption>
+          </figure>
+        </div>
       </section>
 
       <section class="app-section" aria-labelledby="meeting-faq-title">
-        <div class="section-heading">
-          <h2 id="meeting-faq-title">FAQ</h2>
-          <p>Questions fréquentes sur le fonctionnement.</p>
-        </div>
+        <div class="faq-wrapper">
+          <div class="section-heading">
+            <h2 id="meeting-faq-title">FAQ</h2>
+            <p>Questions fréquentes sur le fonctionnement.</p>
+          </div>
 
-        <AppFaqList :items="meetingModeContent.faq" />
+          <AppFaqList :items="meetingModeContent.faq" />
+        </div>
       </section>
 
-      <section class="app-section" aria-labelledby="meeting-legal-title">
-        <div class="section-heading">
-          <h2 id="meeting-legal-title">Mentions légales</h2>
-          <p>Politique de confidentialité provisoire en français et en anglais.</p>
-        </div>
+      <section
+        id="privacy"
+        class="app-section app-section--legal"
+        aria-labelledby="meeting-legal-title"
+      >
+        <details ref="privacyDetails" class="legal-disclosure">
+          <summary class="legal-disclosure__summary">
+            <div class="legal-disclosure__header">
+              <h2 id="meeting-legal-title" class="legal-disclosure__title">Confidentialité</h2>
+              <p class="legal-disclosure__meta">Politique de confidentialité — FR / EN</p>
+            </div>
+            <span class="legal-disclosure__toggle" aria-hidden="true"></span>
+          </summary>
 
-        <AppLegalTabs
-          base-id="meeting-mode-legal"
-          :content="meetingModeContent.legal"
-          label="Mentions légales"
-        />
+          <div class="legal-disclosure__body">
+            <AppLegalTabs
+              base-id="meeting-mode-legal"
+              :content="meetingModeContent.legal"
+              label="Mentions légales"
+            />
+          </div>
+        </details>
       </section>
 
       <section class="app-cta" id="release-form" aria-labelledby="meeting-cta-title">
@@ -181,6 +219,8 @@
 </template>
 
 <script setup lang="ts">
+import { nextTick, onMounted, ref, watch } from 'vue'
+
 import AppBreadcrumb from '~/components/apps/AppBreadcrumb.vue'
 import AppFaqList from '~/components/apps/AppFaqList.vue'
 import AppLegalTabs from '~/components/apps/AppLegalTabs.vue'
@@ -194,7 +234,9 @@ import {
 import { canonicalUrl } from '~/utils/seo-url'
 
 const config = useRuntimeConfig()
+const route = useRoute()
 const pageUrl = canonicalUrl(config.public.siteUrl, '/apps/meeting-mode')
+const privacyDetails = ref<HTMLDetailsElement | null>(null)
 
 const breadcrumbItems = [
   { label: 'Accueil', to: '/' },
@@ -209,6 +251,37 @@ const breadcrumbSchema = buildBreadcrumbSchema(config.public.siteUrl, [
 ])
 
 const faqSchema = buildFaqSchema(meetingModeContent.faq)
+
+const openPrivacySection = async () => {
+  if (route.hash !== '#privacy') {
+    return
+  }
+
+  await nextTick()
+
+  if (!privacyDetails.value) {
+    return
+  }
+
+  privacyDetails.value.open = true
+  privacyDetails.value.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start',
+  })
+}
+
+onMounted(() => {
+  void openPrivacySection()
+})
+
+watch(
+  () => route.hash,
+  (hash) => {
+    if (hash === '#privacy') {
+      void openPrivacySection()
+    }
+  },
+)
 
 useSeoMeta({
   title: meetingModeContent.seo.title,
@@ -417,7 +490,7 @@ useHead({
   padding: 1.25rem;
 }
 
-.app-mockup__screen--meeting {
+.app-mockup__screen--image {
   background: linear-gradient(
     145deg,
     rgba(255, 255, 255, 0.04),
@@ -425,42 +498,12 @@ useHead({
   );
 }
 
-.monitor {
-  width: min(78%, 21rem);
-  display: grid;
-  gap: 0.45rem;
-  justify-items: center;
-}
-
-.monitor--large {
-  width: min(100%, 25rem);
-}
-
-.monitor__frame {
+.app-mockup__screen--image img,
+.app-capture__screen--image img {
+  display: block;
   width: 100%;
-  aspect-ratio: 16 / 10;
-  padding: 1rem;
-  border-radius: 1.05rem;
-  background: #111827;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-}
-
-.monitor__screen {
-  width: 100%;
-  height: 100%;
-  border-radius: 0.7rem;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(145deg, #232326, #111827);
-  color: white;
-  font-weight: 700;
-}
-
-.monitor__stand {
-  width: 38%;
-  height: 0.55rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.16);
+  height: auto;
+  border-radius: 1rem;
 }
 
 .app-surface {
@@ -560,78 +603,76 @@ useHead({
   transform: translateY(-50%);
 }
 
-.app-section--split {
-  gap: 1rem;
-}
+.before-after-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr;
 
-@media (min-width: 960px) {
-  .app-section--split {
-    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-    align-items: start;
+  @media (min-width: 700px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-.app-scope {
-  display: grid;
-  gap: 1rem;
-  padding: clamp(1.2rem, 2.8vw, 1.65rem);
-  border-radius: 1.35rem;
-  background: rgba(243, 244, 246, 0.88);
-}
-
-.limit-list {
-  display: grid;
-  gap: 0.65rem;
+.before-after-card {
   margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.limit-list li {
-  position: relative;
-  padding-left: 1rem;
-  color: $gris2;
-  line-height: 1.6;
-}
-
-.limit-list li::before {
-  content: '—';
-  position: absolute;
-  left: 0;
-  color: $vert;
-}
-
-.app-principles {
+  border-radius: 1.15rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.06);
   display: grid;
-  gap: 0.85rem;
-  padding: clamp(1.2rem, 2.8vw, 1.65rem);
-  border-radius: 1.35rem;
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.04);
+  grid-template-rows: 1fr auto;
 }
 
-.app-principles__eyebrow {
-  margin: 0;
-  color: $vert;
-  font-size: 0.72rem;
+.before-after-card__media {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.before-after-card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+}
+
+.before-after-card__label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.85rem 0.65rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    flex-shrink: 0;
+  }
 }
 
-.app-principles h3 {
-  margin: 0;
-  color: $gris1;
-  font-size: 1.05rem;
-}
-
-.app-principles__list {
-  display: grid;
-  gap: 0.65rem;
-  margin: 0;
-  padding-left: 1.2rem;
+.before-after-card__label--before {
   color: $gris2;
-  line-height: 1.6;
+  background: rgba(255, 255, 255, 0.96);
+
+  &::before {
+    background: $gris3;
+  }
+}
+
+.before-after-card__label--after {
+  color: $vert;
+  background: rgba(255, 255, 255, 0.96);
+
+  &::before {
+    background: $vert;
+  }
 }
 
 .app-section {
@@ -652,52 +693,32 @@ useHead({
   line-height: 1.6;
 }
 
-.app-capture {
-  padding: 1rem;
-  border-radius: 1.45rem;
-  background: linear-gradient(
-    145deg,
-    rgba(243, 244, 246, 0.95),
-    rgba(255, 255, 255, 0.96)
-  );
-  box-shadow: 0 18px 34px rgba(15, 23, 42, 0.05);
-}
-
-.app-capture__screen {
-  min-height: 18rem;
-  border-radius: 1.15rem;
-  display: grid;
-  place-items: center;
-  background: rgba(255, 255, 255, 0.82);
-}
-
-.app-capture__screen--meeting {
-  background: linear-gradient(
-    145deg,
-    rgba(255, 255, 255, 0.7),
-    rgba(4, 217, 79, 0.06)
-  );
-}
-
 .detail-grid {
   display: grid;
   gap: 0.75rem;
+  grid-template-columns: 1fr;
 
   @media (min-width: 700px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  @media (min-width: 1080px) {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: 1.5fr 1fr 1fr;
+    grid-auto-rows: auto;
   }
 }
 
 .detail-card {
   display: grid;
-  gap: 0.4rem;
-  padding: 1rem;
+  gap: 0.45rem;
+  padding: 1.1rem 1.15rem;
   border-radius: 1rem;
   background: rgba(255, 255, 255, 0.92);
+  align-content: start;
+}
+
+.detail-card--featured {
+  @media (min-width: 700px) {
+    grid-row: span 2;
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(13, 199, 99, 0.15);
+  }
 }
 
 .detail-card__label {
@@ -712,7 +733,92 @@ useHead({
 .detail-card__value {
   margin: 0;
   color: $gris1;
-  font-weight: 600;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.detail-card__description {
+  margin: 0.35rem 0 0;
+  color: $gris2;
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.faq-wrapper {
+  padding: clamp(1.5rem, 3.5vw, 2.25rem) clamp(1.25rem, 3vw, 2rem);
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(0, 0, 0, 0.055);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+}
+
+.faq-wrapper .section-heading {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.legal-disclosure {
+  margin: 0;
+  border-radius: 1.35rem;
+  background: rgba(243, 244, 246, 0.82);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  overflow: hidden;
+}
+
+.legal-disclosure__summary {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.15rem;
+  cursor: pointer;
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &::after {
+    content: '+';
+    margin-left: auto;
+    color: $vert;
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+}
+
+details[open] .legal-disclosure__summary::after {
+  content: '−';
+}
+
+.legal-disclosure__header {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.legal-disclosure__title {
+  margin: 0;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 700;
+  color: $gris1;
+}
+
+.legal-disclosure__meta {
+  margin: 0;
+  color: $gris3;
+  font-size: 0.78rem;
+}
+
+.legal-disclosure__toggle {
+  display: none;
+}
+
+.legal-disclosure__body {
+  padding: 0 1.25rem 1.25rem;
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 .app-cta {

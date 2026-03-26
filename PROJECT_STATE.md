@@ -30,6 +30,13 @@
 - ✅ Section confidentialité DuoSpend accessible via `#privacy`
 - ✅ CTA de bas de page harmonisés avec le design system
 - ✅ Lien `Apps` actif dans le footer
+- ✅ Refonte Meeting Mode finalisée sur la base du template DuoSpend
+- ✅ Hero Meeting Mode alimenté par `meeting-mode_hero.webp`
+- ✅ Vignette listing Meeting Mode alimentée par `meeting-mode_vignette-apps.webp`
+- ✅ Galerie Meeting Mode alimentée par les visuels avant/après, preset, actif et réglages
+- ✅ Bloc before/after Meeting Mode intégré en pratique
+- ✅ Confidentialité Meeting Mode accessible via `#privacy`
+- ✅ Wording Meeting Mode réécrit dans `data/apps.ts`
 
 **Phase 14 (Portfolio) terminée** — Prêt pour merge sur dev puis master.
 
