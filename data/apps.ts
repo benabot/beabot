@@ -132,8 +132,12 @@ export interface BreadcrumbEntry {
 
 export const appsIndexContent = {
   title: 'Applications iOS & macOS',
-  intro: "Des applications iOS et macOS pensées pour aller à l'essentiel.",
-  meta: 'Conçues sans tracking, sans SDK tiers, sans compte imposé. Vos données vous appartiennent.',
+  intro: [
+    "Des applications iOS et macOS pensées pour aller à l'essentiel.",
+    "Chaque app est conçue de la même façon que mes sites : sobre, sans couche inutile. Pas de compte imposé, pas de tracking. Vos données vous appartiennent.",
+    "Certaines sont gratuites ou à achat unique, d'autres proposeront un abonnement optionnel. Dans tous les cas : un usage clair, une valeur réelle.",
+  ],
+  meta: '',
   seo: {
     title: 'Apps iOS & macOS — BeAbot',
     description:
@@ -148,7 +152,7 @@ export const appsIndexEntries: AppIndexEntry[] = [
     name: 'DuoSpend',
     platform: 'iOS',
     stage: 'Prépublication',
-    summary: 'Gérez vos dépenses communes à deux. Sans compte, sans connexion.',
+    summary: "Une app pour couple ou tous ceux qui ont des projets à deux. Qui doit combien à qui\u00a0? Un coup d'œil suffit.\nVoyage, mariage, emménagement — chaque projet a son solde.",
     href: '/apps/duo-spend/',
     featured: true,
     preview: {

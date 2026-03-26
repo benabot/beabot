@@ -95,7 +95,7 @@ export const projects: Project[] = [
     title: 'La petite boucle',
     subtitle: 'Refonte éco-conçue pour une collecte solidaire en triporteur',
     image: 'lpb.webp',
-    url: 'https://lapetiteboucle.fr/',
+    url: '',
     featured: true,
     tags: ['WordPress', 'Éco-conçu', 'WebDesign'],
     context: 'Refonte éco-conçue du site d\'une association de collecte en triporteur.',
@@ -105,7 +105,8 @@ export const projects: Project[] = [
       ecoIndex: 'A',
       improvement: 'EcoIndex C → A, -60% poids'
     },
-    articleLink: '/eco-conception/theme-wordpress-eco-conception/'
+    articleLink: '/eco-conception/theme-wordpress-eco-conception/',
+    githubLink: 'https://github.com/benabot/lapetiteboucle'
   },
   {
     id: 'aave',
@@ -139,12 +140,13 @@ export const projects: Project[] = [
     title: 'Guide RSE Banque Populaire',
     subtitle: 'Carte interactive des engagements RSE',
     image: 'guideBleu1.webp',
-    url: 'https://www.guide-rse.banquepopulaire.fr/actions-rse',
+    url: 'https://web.archive.org/web/20200920085252/https://www.guide-rse.banquepopulaire.fr/actions-rse',
     featured: false,
     tags: ['VueJs', 'WebDesign'],
     context: 'Carte interactive des actions RSE d\'une banque.',
     role: 'Développement front, intégration cartographique',
     stack: ['Vue.js', 'Bootstrap', 'Leaflet'],
+    githubLink: 'https://github.com/benabot/svgMapVuejs',
     objectPosition: 'center top'
   },
   {
@@ -152,7 +154,7 @@ export const projects: Project[] = [
     title: 'Guide RSE Banque Populaire',
     subtitle: 'Interface de visualisation de données',
     image: 'guideBleu2.webp',
-    url: 'https://www.guide-rse.banquepopulaire.fr/resultats-2020',
+    url: 'https://web.archive.org/web/20220523090433/https://www.guide-rse.banquepopulaire.fr/resultats-2020',
     featured: false,
     tags: ['VueJs', 'WebDesign'],
     context: 'Dataviz des résultats RSE annuels.',

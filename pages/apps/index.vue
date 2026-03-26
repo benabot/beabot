@@ -4,17 +4,20 @@
       <AppBreadcrumb :items="breadcrumbItems" />
 
       <section class="apps-hero">
-        <p class="apps-hero__eyebrow">Apps</p>
-        <h1>
-          Applications <span class="apps-hero__platform">iOS</span> &
-          <span class="apps-hero__platform">macOS</span>
-        </h1>
-        <p class="apps-hero__intro">{{ appsIndexContent.intro }}</p>
-        <p class="apps-hero__meta">{{ appsIndexContent.meta }}</p>
+        <div class="apps-hero__left">
+          <p class="apps-hero__eyebrow">Apps</p>
+          <h1>
+            Applications <span class="apps-hero__platform">iOS</span> &
+            <span class="apps-hero__platform">macOS</span>
+          </h1>
+        </div>
+        <div class="apps-hero__intro">
+          <p v-for="(line, i) in appsIndexContent.intro" :key="i" class="apps-hero__intro-p">{{ line }}</p>
+        </div>
       </section>
 
       <section class="apps-section" aria-labelledby="apps-list-title">
-        <h2 id="apps-list-title" class="sr-only">Applications</h2>
+        <h2 id="apps-list-title" class="apps-section__title">Sorti de l'atelier</h2>
         <div class="apps-grid">
           <AppCard
             v-for="app in appsIndexEntries"
@@ -119,8 +122,11 @@ useHead({
 }
 
 .apps-hero {
-  max-width: 44rem;
-  padding-bottom: clamp(2rem, 4.5vw, 3.4rem);
+  padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.apps-hero__left {
+  min-width: 0;
 }
 
 .apps-hero__eyebrow {
@@ -152,10 +158,28 @@ useHead({
 }
 
 .apps-hero__intro {
-  margin: 0.9rem 0 0;
+  max-width: 38rem;
+  margin: 1.5rem 0 0;
   color: $gris2;
-  line-height: 1.6;
-  max-width: 31rem;
+
+  @media (min-width: $breakpoint-tablet) {
+    margin-left: 42%;
+  }
+}
+
+.apps-hero__intro-p {
+  margin: 0 0 1rem;
+  line-height: 1.75;
+
+  &:first-child {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: $gris1;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .apps-hero__meta {
@@ -164,6 +188,16 @@ useHead({
   font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.04em;
+}
+
+.apps-section__title {
+  margin: 0 0 clamp(1.5rem, 3vw, 2.5rem);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: $gris3;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .apps-grid {
