@@ -135,10 +135,9 @@
 
         <div class="gallery-grid">
           <figure
-            v-for="(image, index) in duoSpendContent.gallery"
+            v-for="image in duoSpendContent.gallery"
             :key="image.src"
             class="gallery-card"
-            :class="{ 'gallery-card--featured': index === 0 }"
           >
             <div class="gallery-card__media">
               <img
@@ -146,7 +145,7 @@
                 :alt="image.alt"
                 width="1206"
                 height="2622"
-                :loading="index === 0 ? 'eager' : 'lazy'"
+                loading="lazy"
                 decoding="async"
               />
             </div>
@@ -676,43 +675,25 @@ useHead({
 .gallery-grid {
   display: grid;
   gap: 0.75rem;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 
-  @media (min-width: 700px) {
-    grid-template-columns: 1.65fr 1fr 1fr;
-    grid-auto-rows: 1fr;
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 .gallery-card {
   margin: 0;
-  border-radius: 1.15rem;
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.04);
+  border-radius: 1rem;
+  background: rgba(248, 246, 242, 0.95);
   overflow: hidden;
   display: grid;
   grid-template-rows: 1fr auto;
 }
 
-.gallery-card--featured {
-  @media (min-width: 700px) {
-    grid-row: span 2;
-  }
-}
-
 .gallery-card__media {
+  aspect-ratio: 9 / 19.5;
   overflow: hidden;
-  aspect-ratio: 9 / 16;
-  display: block;
-}
-
-.gallery-card--featured .gallery-card__media {
-  aspect-ratio: 4 / 6.25;
-
-  @media (min-width: 700px) {
-    aspect-ratio: unset;
-    height: 100%;
-  }
 }
 
 .gallery-card__media img,
@@ -720,34 +701,38 @@ useHead({
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: top center;
+  object-fit: contain;
+  object-position: center top;
 }
 
 .gallery-card__caption {
   display: grid;
-  gap: 0.16rem;
-  padding: 0.6rem 0.85rem 0.7rem;
+  gap: 0.1rem;
+  padding: 0.5rem 0.65rem 0.55rem;
   background: rgba(255, 255, 255, 0.96);
   border-top: 1px solid rgba(0, 0, 0, 0.04);
 }
 
-.gallery-card__title,
-.gallery-card__subtitle {
-  margin: 0;
-}
-
 .gallery-card__title {
+  display: block;
+  margin: 0;
   color: $gris1;
-  font-size: 0.8rem;
+  font-size: 0.74rem;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .gallery-card__subtitle {
+  display: block;
+  margin: 0;
   color: $gris3;
-  font-size: 0.72rem;
-  line-height: 1.45;
+  font-size: 0.68rem;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .legal-disclosure {
