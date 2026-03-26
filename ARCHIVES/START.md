@@ -74,9 +74,9 @@ git branch                  # Branches disponibles
 
 ### Développement
 ```bash
-yarn dev                    # Dev server (http://localhost:3000)
-yarn lint                   # Vérifier code
-yarn build                  # Build production
+npm run dev                    # Dev server (http://localhost:3000)
+npm run lint                   # Vérifier code
+npm run build                  # Build production
 ```
 
 ### Git
@@ -120,7 +120,7 @@ Utilise des descriptions pertinentes basées sur le contexte.
 
 ```
 Claude, lis CLAUDE.md puis exécute les tâches AUDIT-02 et AUDIT-03 
-du TODO.md. Après chaque modification, teste avec yarn dev et fais 
+du TODO.md. Après chaque modification, teste avec npm run dev et fais 
 un commit atomique.
 ```
 
@@ -190,8 +190,8 @@ git checkout fix/quick-fixes-p0
 ```bash
 # Nettoyer
 rm -rf node_modules .nuxt
-yarn install
-yarn dev
+npm install
+npm run dev
 ```
 
 ---
@@ -199,7 +199,7 @@ yarn dev
 ## 💡 TIPS
 
 1. **Commits atomiques** : 1 commit = 1 tâche du TODO.md
-2. **Tester après chaque modif** : `yarn dev`
+2. **Tester après chaque modif** : `npm run dev`
 3. **Progress check** : `./progress.sh` régulièrement
 4. **Messages clairs** : `git commit -m "fix(vue): Add :key to v-for"`
 
@@ -210,8 +210,8 @@ yarn dev
 ```bash
 # 1. Vérifier que tout est OK
 ./progress.sh
-yarn lint
-yarn dev
+npm run lint
+npm run dev
 
 # 2. Commit final si besoin
 git add .

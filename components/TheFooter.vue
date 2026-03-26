@@ -10,21 +10,35 @@
       <div class="item a">
         <div class="title title--footer h1 beabot">beAbot</div>
 
-        
         <nav id="footer--nav">
           <ul>
-              <li><AppLink to="/" no-prefetch>Accueil</AppLink></li>
-              <li><AppLink to="/eco-conception/" no-prefetch>Éco-conception</AppLink></li>
-              <li><AppLink to="/portfolio/" no-prefetch>Portfolio</AppLink></li>
-              <li><AppLink to="/eco-conception/faq-eco-conception/" no-prefetch>FAQ Éco-conception</AppLink></li>
-            </ul>
+            <li><AppLink to="/" no-prefetch>Accueil</AppLink></li>
+            <li>
+              <AppLink to="/eco-conception/" no-prefetch
+                >Éco-conception</AppLink
+              >
+            </li>
+            <li><AppLink to="/portfolio/" no-prefetch>Portfolio</AppLink></li>
+            <li>
+              <AppLink
+                to="/apps/"
+                no-prefetch
+                class="footer-link"
+                :class="{ 'footer-link--active': isAppsActive }"
+                :aria-current="isAppsActive ? 'page' : undefined"
+                >Apps</AppLink
+              >
+            </li>
+            <li>
+              <AppLink to="/eco-conception/faq-eco-conception/" no-prefetch
+                >FAQ Éco-conception</AppLink
+              >
+            </li>
+          </ul>
         </nav>
-      
       </div>
       <div class="item b h3 text-black">
-        <p class="h3 text-black" 
-          >Échangeons</p
-        >
+        <p class="h3 text-black">Échangeons</p>
       </div>
       <div class="item c">
         <AppLink to="/contact/" no-prefetch aria-label="beAbot - Contact">
@@ -53,9 +67,18 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 const annee = ref(new Date().getFullYear())
+const route = useRoute()
+
+const isAppsActive = computed(() => {
+  return (
+    route.path === '/apps/' ||
+    route.path === '/apps' ||
+    route.path.startsWith('/apps/')
+  )
+})
 </script>
 
 <style lang="scss" scoped>
@@ -108,10 +131,17 @@ footer {
   a {
     text-decoration: none;
     color: $gris4;
-    background: linear-gradient(currentColor, currentColor) left bottom / 0% 0.12em no-repeat;
+    background: linear-gradient(currentColor, currentColor) left bottom / 0%
+      0.12em no-repeat;
     transition: background-size 0.3s ease;
     &:hover {
       background-size: 100% 0.12em;
+    }
+
+    &.footer-link--active {
+      color: $vert;
+      background-size: 100% 0.12em;
+      font-weight: 700;
     }
   }
 }
@@ -149,14 +179,14 @@ footer {
 
   &.a {
     grid-area: A;
-   
+
     //color: $gris4;
     //user-select: none;
     //pointer-events: none;
     display: flex;
     flex-direction: column;
-    
-    .title--footer { 
+
+    .title--footer {
       font-size: clamp(3rem, 10vw, 6rem);
     }
   }
@@ -251,9 +281,10 @@ footer {
   display: inline-block;
   padding: 0.15rem 0;
   text-decoration: none;
-  color: rgba(166,165,164, 0.85);
+  color: rgba(166, 165, 164, 0.85);
   letter-spacing: 0.01em;
-  background: linear-gradient(currentColor, currentColor) left bottom / 0% 0.12em no-repeat;
+  background: linear-gradient(currentColor, currentColor) left bottom / 0%
+    0.12em no-repeat;
   transition: background-size 0.3s ease;
 }
 
@@ -263,12 +294,9 @@ footer {
 
 #footer--nav a:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(166,165,164, 0.18);
+  box-shadow: 0 0 0 3px rgba(166, 165, 164, 0.18);
   border-radius: 6px;
 }
-
-
-
 
 #footer--nav {
   position: relative;
@@ -344,5 +372,4 @@ footer {
   background-color: #04d94f;
   transform: translateY(0.05em);
 }
-
 </style>

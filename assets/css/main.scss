@@ -108,9 +108,8 @@ h1,
 h2,
 h3,
 h4 {
-  word-break: break-word;
-
-  hyphens: auto;
+  hyphens: manual;
+  overflow-wrap: break-word;
 
   margin-top: 0;
 }
@@ -373,4 +372,3 @@ section {
     transform: translateX(0);
   }
 }
-

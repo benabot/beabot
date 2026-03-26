@@ -83,7 +83,7 @@
               rel="noopener noreferrer"
               class="btn-view-site"
             >
-              Voir le site →
+              {{ lien.includes('web.archive.org') ? 'Archive (fonctionnalités limitées) →' : 'Voir le site →' }}
             </a>
             <a
               v-if="githubLink"

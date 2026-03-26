@@ -121,15 +121,15 @@ Statut : Merge completed, ready to commit
   - Vérifie présence Nuxt 3 et absence modules obsolètes
   - Valide structure fichiers et conventions de nommage
   - Vérifie configuration Netlify
-  - Auto-exécution avant `yarn build` et `yarn generate`
+  - Auto-exécution avant `npm run build` et `npm run generate`
 - [x] **Intégration package.json** : Scripts de test configurés ✅
-  - `yarn test` : Lance la validation complète
+  - `npm test` : Lance la validation complète
   - `prebuild` : Auto-test avant build
   - `pregenerate` : Auto-test avant génération
 
 ### Configuration Netlify (100%) ✅ NOUVEAU !
 - [x] **netlify.toml créé** : Configuration complète Nuxt 3 ✅
-  - Build command: `yarn generate`
+  - Build command: `npm run generate`
   - Publish directory: `.output/public` (Nuxt 3)
   - Node.js 18 + NUXT_PUBLIC_SITE_URL
   - Headers sécurité (X-Frame-Options, CSP, etc.)
@@ -273,18 +273,18 @@ Key improvements:
 ### 2. Tester le build local (5 min)
 ```bash
 # Dev server
-yarn dev
+npm run dev
 # Ouvrir http://localhost:3000
 # Vérifier toutes les pages
 
 # Build production
-yarn build
+npm run build
 
 # Generate static
-yarn generate
+npm run generate
 
 # Preview
-yarn preview
+npm run preview
 ```
 
 ### 3. Push vers GitHub et merger vers master (10 min)
@@ -346,37 +346,37 @@ git log --oneline --graph --all -20
 ### Yarn
 ```bash
 # Installer dépendances
-yarn install
+npm install
 
 # Dev server
-yarn dev
+npm run dev
 
 # Build
-yarn build
+npm run build
 
 # Generate static
-yarn generate
+npm run generate
 
 # Preview build
-yarn preview
+npm run preview
 
 # Tests
-yarn test
+npm test
 
 # Lint
-yarn lint
+npm run lint
 ```
 
 ### Diagnostic
 ```bash
 # Vérifier versions
 node --version    # Devrait être ≥ 18
-yarn --version    # Devrait être 1.22.22
+npm --version    # Devrait être 1.22.22
 npx nuxi info     # Info Nuxt 3
 
 # Vérifier dépendances
-yarn list --depth=0 | grep nuxt
-yarn list --depth=0 | grep vue
+npm list --depth=0 | grep nuxt
+npm list --depth=0 | grep vue
 ```
 
 ---
@@ -420,9 +420,9 @@ yarn list --depth=0 | grep vue
 - [x] Vuex remplacé par composables ✅
 
 ### Tests ⏳ À FAIRE
-- [ ] `yarn dev` fonctionne
-- [ ] `yarn build` fonctionne
-- [ ] `yarn generate` fonctionne
+- [ ] `npm run dev` fonctionne
+- [ ] `npm run build` fonctionne
+- [ ] `npm run generate` fonctionne
 - [ ] Toutes les pages s'affichent
 - [ ] Navigation fonctionne
 - [ ] Images s'affichent
@@ -446,7 +446,7 @@ yarn list --depth=0 | grep vue
 5. **SCSS modernisation** : Dart Sass 3.0 100% compatible
 
 ### Points d'attention
-1. **Tester toutes les pages** après yarn dev
+1. **Tester toutes les pages** après npm run dev
 2. **Vérifier CV** à /cv.pdf
 3. **Vérifier robots.txt** bloque bien /cv.pdf
 4. **Tester formulaire contact** sur Netlify

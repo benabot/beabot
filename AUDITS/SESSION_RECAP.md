@@ -110,31 +110,31 @@ Depuis le répertoire principal `/Users/benoitabot/Sites/beabot` :
 git checkout zen-raman
 
 # 2. Installer les dépendances
-yarn install
+npm install
 
 # 3. Tester le dev server
-yarn dev
+npm run dev
 
 # 4. Tester le build
-yarn build
+npm run build
 
 # 5. Tester la génération statique
-yarn generate
+npm run generate
 
 # 6. Preview du build
-yarn preview
+npm run preview
 ```
 
 ### Vérifications importantes
 
-- [ ] `yarn dev` démarre sans erreur
+- [ ] `npm run dev` démarre sans erreur
 - [ ] Toutes les pages s'affichent correctement
 - [ ] Les composants renommés fonctionnent
 - [ ] La recherche d'articles fonctionne
 - [ ] La navigation prev/next fonctionne
 - [ ] Les formulaires fonctionnent (contact)
-- [ ] `yarn build` réussit
-- [ ] `yarn generate` crée le site statique
+- [ ] `npm run build` réussit
+- [ ] `npm run generate` crée le site statique
 
 ---
 

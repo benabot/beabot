@@ -10,7 +10,13 @@
 // Global app configuration
 useHead({
   titleTemplate: (titleChunk) => {
-    return titleChunk ? `BeAbot - ${titleChunk}` : 'BeAbot - Éco-conception web'
+    if (!titleChunk) {
+      return 'BeAbot - Éco-conception web'
+    }
+
+    return titleChunk.trim().endsWith('BeAbot')
+      ? titleChunk
+      : `BeAbot - ${titleChunk}`
   },
 })
 </script>

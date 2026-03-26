@@ -13,23 +13,16 @@
       <transition name="slide-right">
         <ul v-if="showMobileMenu" class="menu-mobile">
           <li @click="showMobileMenu = !showMobileMenu">
-            <AppLink to="/" class="title title--menu h2">
-              Accueil
-            </AppLink>
+            <AppLink to="/" class="title title--menu h2"> Accueil </AppLink>
           </li>
-          <li @click="showMobileMenu = !showMobileMenu">
-            <AppLink to="/eco-conception/" class="title title--menu h2">
-              Éco-conception
+          <li
+            v-for="item in navigationItems"
+            :key="`mobile-${item.to}`"
+            @click="showMobileMenu = !showMobileMenu"
+          >
+            <AppLink :to="item.to" class="title title--menu h2">
+              {{ item.label }}
             </AppLink>
-          </li>
-          <li @click="showMobileMenu = !showMobileMenu">
-            <AppLink to="/portfolio/" class="title title--menu h2">
-              Portfolio
-            </AppLink>
-          </li>
-          <li @click="showMobileMenu = !showMobileMenu">
-            <AppLink to="/contact/" class="title title--menu h2">Contact</AppLink>
-            
           </li>
         </ul>
       </transition>
@@ -119,20 +112,16 @@
         <!-- <img src="/beabot.svg" alt="beabot" /> -->
       </AppLink>
     </nav>
-    <nav role="navigation" class="nav-desktop nav-2 h4">
-      <AppLink to="/eco-conception/" :class="couleurHaut">
-        Éco-conception
+    <nav role="navigation" class="nav-desktop nav-links">
+      <AppLink
+        v-for="item in navigationItems"
+        :key="item.to"
+        :to="item.to"
+        :data-nav-active="isNavItemActive(item.to) ? 'true' : undefined"
+        :class="[couleurHaut, 'nav-link', item.variant]"
+      >
+        {{ item.label }}
       </AppLink>
-    </nav>
-    <nav role="navigation" class="nav-desktop nav-3 h4">
-      <AppLink to="/portfolio/" :class="couleurBas">
-        Portfolio
-      </AppLink>
-    </nav>
-    <nav role="navigation" class="nav-desktop nav-4 h4">
-     
-                  <AppLink to="/contact/" :class="couleurBas">Contact</AppLink>
-
     </nav>
     <slot :class="{ 'main-flou': showMobileMenu }" />
     <TheFooter />
@@ -148,16 +137,21 @@ import { useRoute } from 'vue-router'
 
 const route = useRoute()
 
-const windowHeight = ref(null)
-const scrollPos = ref(null)
-const scrollPosition = ref(null)
+const navigationItems = [
+  { label: 'Éco-conception', to: '/eco-conception/', variant: 'nav-link--eco' },
+  { label: 'Portfolio', to: '/portfolio/', variant: 'nav-link--portfolio' },
+  { label: 'Apps', to: '/apps/', variant: 'nav-link--apps' },
+  { label: 'Contact', to: '/contact/', variant: 'nav-link--contact' },
+]
+
+const windowHeight = ref(0)
+const scrollPosition = ref(0)
 const degrad = ref('url(#SVGID2)')
 const showMobileMenu = ref(false)
 
 const acc = computed(() => route.path)
 
 const couleurHaut = computed(() => {
-  let clr = 'couleur-gris'
   if (acc.value === '/') {
     if (scrollPosition.value < windowHeight.value) {
       return 'couleur-none'
@@ -171,38 +165,26 @@ const couleurHaut = computed(() => {
       return 'couleur-blanc'
     }
   }
-  return clr
-})
-
-const couleurBas = computed(() => {
-  let clr = 'couleur-gris'
-  if (acc.value === '/') {
-    if (scrollPosition.value < 66) {
-      return 'couleur-none'
-    }
-    if (
-      (scrollPosition.value > 66 &&
-        scrollPosition.value < windowHeight.value * 2) ||
-      (scrollPosition.value > windowHeight.value * 3 &&
-        scrollPosition.value < windowHeight.value * 4)
-    ) {
-      return 'couleur-blanc'
-    }
-  }
-  return clr
+  return 'couleur-gris'
 })
 
 const updateScroll = () => {
   scrollPosition.value = window.scrollY
 }
 
-const handleScroll = (e) => {
-  scrollPos.value = e.target.scrollTop
+const isNavItemActive = (path) => {
+  const normalizedCurrentPath = route.path.endsWith('/')
+    ? route.path
+    : `${route.path}/`
+  return (
+    normalizedCurrentPath === path || normalizedCurrentPath.startsWith(path)
+  )
 }
 
 onMounted(() => {
   window.addEventListener('scroll', updateScroll)
   windowHeight.value = window.innerHeight
+  updateScroll()
   // ScrollTrigger setup would go here if needed
 })
 
@@ -218,8 +200,9 @@ a.nuxt-link-active {
 }
 
 .nav-desktop a.router-link-active,
-.nav-desktop a.router-link-exact-active {
-font-weight: bold;
+.nav-desktop a.router-link-exact-active,
+.nav-desktop a[data-nav-active='true'] {
+  font-weight: bold;
 }
 // .fade-enter {
 //   color: red;
@@ -294,42 +277,69 @@ font-weight: bold;
     overflow: visible;
     .nav-desktop {
       display: block;
-    }
-    nav {
       position: fixed;
       font-weight: $light;
       margin: 0;
       z-index: 1000;
-      // min-width: 80px;
-      // width: 15%;
       overflow: visible;
       word-break: keep-all;
       hyphens: none;
-      // background: linear-gradient(red, red) bottom / 0 0.1em no-repeat;
-      // background-size: 0 0.1em;
-      transition: 0.3s ease-in-out background-size;
-
-      &:hover {
-        background-size: 88% 0.46em;
-      }
 
       a {
         text-decoration: none;
-        // -webkit-text-stroke-width: 1px;
-        // -webkit-text-stroke-color: $fondClair;
-        // text-shadow: 0.2px 0.2px 0.9px $fondClair, -0.2px -0.2px 0.9px $fondClair,
-        //   0.2px 0.2px 0.9px $fondClair, -0.2px -0.2px 0.9px $fondClair;
-        // text-shadow: 0px 0px 1.9px $fondClair;
-        // text-shadow: 0.4px 0 0 $fondClair, -0.4px 0 0 $fondClair,
-        //   0 0.4px 0 $fondClair, 0 -0.4px 0 $fondClair, 0.3px 0.3px $fondClair,
-        //   -0.3px -0.3px 0 $fondClair, 0.3px -0.3px 0 $fondClair,
-        //   -0.3px 0.3px 0 $fondClair;
       }
       img {
         filter: grayscale(1);
         &:hover {
           filter: grayscale(0);
         }
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      top: 11px;
+      left: calc(4px + 150px + clamp(0.9rem, 2vw, 2rem));
+      align-items: center;
+      gap: clamp(0.9rem, 2vw, 1.8rem);
+      font-size: clamp(0.95rem, 1vw + 0.35rem, 1.15rem);
+      line-height: 1.2;
+
+      .nav-link {
+        display: inline-flex;
+        width: max-content;
+        transition: 0.3s ease-in-out background-size;
+
+        &:hover {
+          background-size: 100% 0.46em;
+        }
+      }
+
+      .nav-link.couleur-none {
+        display: none;
+      }
+
+      .nav-link--eco {
+        background: linear-gradient($vert, $vert) left bottom / 0 0.1em
+          no-repeat;
+      }
+
+      .nav-link--portfolio {
+        background: linear-gradient(
+            color.adjust($bleu2, $lightness: 10%),
+            color.adjust($bleu2, $lightness: 10%)
+          )
+          left bottom / 0 0.1em no-repeat;
+      }
+
+      .nav-link--apps {
+        background: linear-gradient($bleu1, $bleu1) left bottom / 0 0.1em
+          no-repeat;
+      }
+
+      .nav-link--contact {
+        background: linear-gradient($jaune, $jaune) left bottom / 0 0.1em
+          no-repeat;
       }
     }
   }
@@ -340,31 +350,9 @@ font-weight: bold;
       left: 4px;
       max-width: 150px;
 
-      // background: linear-gradient(red, red) bottom / 0 0.1em no-repeat;
-
       svg {
         width: 100%;
       }
-    }
-    &-2 {
-      top: 6px;
-      right: 10px;
-      padding-left: 11px;
-      text-align: right;
-      background: linear-gradient($vert, $vert) right bottom / 0 0.1em no-repeat;
-    }
-    &-3 {
-      bottom: 6px;
-      left: 10px;
-      background: linear-gradient(color.adjust($bleu2, $lightness: 10%), color.adjust($bleu2, $lightness: 10%))
-        left bottom / 0 0.1em no-repeat;
-    }
-    &-4 {
-      bottom: 6px;
-      right: 10px;
-      text-align: right;
-      background: linear-gradient($jaune, $jaune) right bottom / 0 0.1em
-        no-repeat;
     }
   }
 }

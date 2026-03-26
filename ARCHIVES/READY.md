@@ -61,7 +61,7 @@ Ensuite, consulte TODO.md et aide-moi à corriger les tâches suivantes :
 2. AUDIT-03 : Ajouter alt sur toutes les images (14 manquants)
 
 Je suis sur la branch fix/quick-fixes-p0. Fais un commit atomique après chaque 
-correction et teste avec yarn dev entre chaque modification.
+correction et teste avec npm run dev entre chaque modification.
 ```
 
 ---
@@ -97,9 +97,9 @@ correction et teste avec yarn dev entre chaque modification.
 
 ### Développement
 ```bash
-yarn dev          # http://localhost:3000
-yarn lint         # Vérifier code
-yarn build        # Build production
+npm run dev          # http://localhost:3000
+npm run lint         # Vérifier code
+npm run build        # Build production
 ```
 
 ### Git
@@ -128,8 +128,8 @@ git branch        # Branches
 ### 1. Vérifier
 ```bash
 ./progress.sh     # Tout est ✅ ?
-yarn lint         # Pas d'erreur
-yarn build        # Build OK
+npm run lint         # Pas d'erreur
+npm run build        # Build OK
 ```
 
 ### 2. Push

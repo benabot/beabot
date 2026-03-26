@@ -132,20 +132,20 @@ git push origin feat/nuxt3-phase1-deps
 cd /Users/benoitabot/.claude-worktrees/beabot/zen-raman
 
 # 1. Tester dev
-yarn dev
+npm run dev
 # ✓ Vérifier toutes les pages
 # ✓ Vérifier composants renommés
 # ✓ Vérifier recherche articles
 # ✓ Vérifier navigation prev/next
 
 # 2. Tester build
-yarn build
+npm run build
 
 # 3. Tester génération statique
-yarn generate
+npm run generate
 
 # 4. Preview
-yarn preview
+npm run preview
 ```
 
 ### Phase 3 - Content & Store (1-2h)
@@ -205,7 +205,7 @@ Vous êtes **déjà** dans un worktree utilisant zen-raman. Pas besoin de `git c
 ```bash
 # Option 1 : Aller dans le worktree
 cd /Users/benoitabot/.claude-worktrees/beabot/zen-raman
-yarn dev
+npm run dev
 
 # Option 2 : Merger depuis le repo principal
 cd /Users/benoitabot/Sites/beabot
@@ -224,9 +224,9 @@ git merge zen-raman
 - **Conventions nommage** : 100% ✅
 
 ### Tests à faire
-- **yarn dev** : ⏳ Non testé
-- **yarn build** : ⏳ Non testé
-- **yarn generate** : ⏳ Non testé
+- **npm run dev** : ⏳ Non testé
+- **npm run build** : ⏳ Non testé
+- **npm run generate** : ⏳ Non testé
 - **Lighthouse** : ⏳ Non testé
 - **EcoIndex** : ⏳ Non testé
 
@@ -254,7 +254,7 @@ git merge zen-raman
 1. **Tester le build** (15 min)
    ```bash
    cd /Users/benoitabot/.claude-worktrees/beabot/zen-raman
-   yarn dev
+   npm run dev
    # Vérifier toutes les pages
    ```
 
@@ -267,9 +267,9 @@ git merge zen-raman
 
 3. **Tester depuis la branche mergée** (15 min)
    ```bash
-   yarn install
-   yarn dev
-   yarn build
+   npm install
+   npm run dev
+   npm run build
    ```
 
 ### Cette semaine
@@ -298,12 +298,12 @@ git merge zen-raman
 ```bash
 # Via worktree zen-raman
 cd /Users/benoitabot/.claude-worktrees/beabot/zen-raman
-yarn dev
+npm run dev
 
 # Via repo principal (après merge)
 cd /Users/benoitabot/Sites/beabot
 git checkout feat/nuxt3-phase1-deps
-yarn dev
+npm run dev
 ```
 
 ---
