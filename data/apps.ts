@@ -505,7 +505,7 @@ export const duoSpendContent: AppDetailContent = {
   platform: 'iOS',
   stage: 'Prépublication',
   href: '/apps/duo-spend/',
-  intro: "Qui doit combien à qui ? Un coup d'œil suffit.",
+  intro: "Une app pour couple ou tous ceux qui ont des projets à deux. Qui doit combien à qui ? Un coup d'œil suffit.",
   summary: 'Voyage, mariage, emménagement — chaque projet a son solde.',
   overview: [
     "Vous organisez un voyage, un mariage, des travaux ou un emménagement. L’un avance les frais, l’autre rembourse — mais le solde n’est jamais évident à suivre.",
