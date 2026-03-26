@@ -5,14 +5,15 @@
         class="app-card__media"
         :class="{
           'app-card__media--placeholder': !props.app.preview.available,
+          'app-card__media--contain': props.app.preview.fit === 'contain',
         }"
       >
         <img
           v-if="props.app.preview.available && props.app.preview.src"
           :src="props.app.preview.src"
           :alt="props.app.preview.alt"
-          width="900"
-          height="620"
+          width="1206"
+          height="2622"
           loading="lazy"
           decoding="async"
         />
@@ -53,7 +54,7 @@
       <h3 class="app-card__title">{{ props.app.name }}</h3>
       <p class="app-card__summary">{{ props.app.summary }}</p>
       <AppLink :to="props.app.href" class="app-card__link">
-        Voir {{ props.app.name }}
+        Découvrir {{ props.app.name }}
       </AppLink>
     </div>
   </article>
@@ -80,11 +81,11 @@ const props = withDefaults(
 }
 
 .app-card--featured {
-  --app-card-ratio: 16 / 10;
+  --app-card-ratio: 4 / 5;
 }
 
 .app-card--compact {
-  --app-card-ratio: 4 / 5;
+  --app-card-ratio: 16 / 10;
 }
 
 .app-card__visual {
@@ -114,6 +115,16 @@ const props = withDefaults(
     rgba(243, 244, 246, 0.94),
     rgba(236, 239, 241, 0.98)
   );
+}
+
+.app-card__media--contain {
+  background: linear-gradient(180deg, #f8f6f1, #f0ece6);
+
+  img {
+    object-fit: contain;
+    object-position: center;
+    padding: 0.9rem;
+  }
 }
 
 .app-card__placeholder {

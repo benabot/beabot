@@ -35,8 +35,8 @@
               <img
                 :src="duoSpendContent.preview.src"
                 :alt="duoSpendContent.preview.alt"
-                width="900"
-                height="620"
+                width="1206"
+                height="2622"
                 loading="eager"
                 decoding="async"
               />
@@ -96,8 +96,8 @@
             <img
               :src="duoSpendContent.preview.src"
               :alt="duoSpendContent.preview.alt"
-              width="900"
-              height="620"
+              width="1206"
+              height="2622"
               loading="lazy"
               decoding="async"
             />
@@ -120,6 +120,34 @@
             <p class="detail-card__label">{{ point.label }}</p>
             <p class="detail-card__value">{{ point.value }}</p>
           </article>
+        </div>
+      </section>
+
+      <section
+        v-if="duoSpendContent.gallery?.length"
+        class="app-section"
+        aria-labelledby="duo-gallery-title"
+      >
+        <div class="section-heading">
+          <h2 id="duo-gallery-title">Autres écrans</h2>
+          <p>Quelques vignettes pour situer les principaux flux.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure
+            v-for="image in duoSpendContent.gallery"
+            :key="image.src"
+            class="gallery-card"
+          >
+            <img
+              :src="image.src"
+              :alt="image.alt"
+              width="1206"
+              height="2622"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
         </div>
       </section>
 
@@ -546,6 +574,39 @@ useHead({
 
 .app-capture__screen--image img {
   max-width: 100%;
+}
+
+.gallery-grid {
+  display: grid;
+  gap: 0.75rem;
+
+  @media (min-width: 700px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 1100px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.gallery-card {
+  margin: 0;
+  padding: 0.85rem;
+  border-radius: 1.15rem;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.04);
+  aspect-ratio: 4 / 5;
+  display: grid;
+  place-items: center;
+}
+
+.gallery-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.8rem;
+  object-fit: contain;
+  object-position: center;
 }
 
 .detail-grid {

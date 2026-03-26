@@ -5,6 +5,12 @@ export interface AppPreview {
   alt: string
   available: boolean
   label: string
+  fit?: 'cover' | 'contain'
+}
+
+export interface AppGalleryItem {
+  src: string
+  alt: string
 }
 
 export interface AppIndexEntry {
@@ -79,6 +85,7 @@ export interface AppDetailContent {
   limits?: string[]
   principles?: string[]
   preview: AppPreview
+  gallery?: AppGalleryItem[]
   faq: AppFaqItem[]
   faqSections?: AppFaqSection[]
   pricing?: AppPricingContent
@@ -116,10 +123,11 @@ export const appsIndexEntries: AppIndexEntry[] = [
     href: '/apps/duo-spend/',
     featured: true,
     preview: {
-      src: '/img/duospend.webp',
-      alt: 'Capture de l’app DuoSpend',
+      src: '/img/apps/duospend-vignette-apps.webp',
+      alt: 'Vignette de l’app DuoSpend',
       available: true,
       label: 'Capture actuelle',
+      fit: 'contain',
     },
   },
   {
@@ -521,12 +529,31 @@ export const duoSpendContent: AppDetailContent = {
     },
   ],
   preview: {
-    src: '/img/duospend.webp',
-    alt: 'Capture de l’app DuoSpend',
+    src: '/img/apps/duospend-hero.webp',
+    alt: "Écran d'accueil de DuoSpend sur iPhone 15",
     available: true,
-    label: 'Capture actuelle',
+    label: "Aperçu de l'app",
+    fit: 'contain',
   },
   showVisual: false,
+  gallery: [
+    {
+      src: '/img/apps/duospend-resume.webp',
+      alt: 'Aperçu de l’écran résumé DuoSpend',
+    },
+    {
+      src: '/img/apps/duospend-ajout-depense.webp',
+      alt: 'Aperçu de l’ajout d’une dépense dans DuoSpend',
+    },
+    {
+      src: '/img/apps/duospend-export-pdf.webp',
+      alt: 'Aperçu de l’export PDF dans DuoSpend',
+    },
+    {
+      src: '/img/apps/duospend-nouveau-projet.webp',
+      alt: 'Aperçu de la création d’un projet dans DuoSpend',
+    },
+  ],
   faq: duoSpendFaqSections.flatMap((section) => section.items),
   faqSections: duoSpendFaqSections,
   pricing: {
