@@ -55,7 +55,7 @@
 
         <div class="app-surface__status">
           <p class="app-surface__eyebrow">Repères</p>
-          <dl class="app-surface__list">
+          <dl class="app-surface__list app-surface__list--cards">
             <div>
               <dt>Usage</dt>
               <dd>Dépenses communes à deux</dd>
@@ -135,9 +135,10 @@
 
         <div class="gallery-grid">
           <figure
-            v-for="image in duoSpendContent.gallery"
+            v-for="(image, index) in duoSpendContent.gallery"
             :key="image.src"
             class="gallery-card"
+            :class="{ 'gallery-card--featured': index === 0 }"
           >
             <div class="gallery-card__media">
               <img
@@ -145,7 +146,7 @@
                 :alt="image.alt"
                 width="1206"
                 height="2622"
-                loading="lazy"
+                :loading="index === 0 ? 'eager' : 'lazy'"
                 decoding="async"
               />
             </div>
@@ -189,30 +190,39 @@
         </div>
       </section>
 
-      <section class="app-section" aria-labelledby="duo-faq-title">
-        <div class="section-heading">
-          <h2 id="duo-faq-title">FAQ</h2>
-          <p>Questions fréquentes.</p>
-        </div>
+      <section class="app-section app-section--faq" aria-labelledby="duo-faq-title">
+        <div class="faq-wrapper">
+          <div class="section-heading">
+            <h2 id="duo-faq-title">FAQ</h2>
+            <p>Questions fréquentes.</p>
+          </div>
 
-        <AppFaqList
-          :items="duoSpendContent.faq"
-          :sections="duoSpendContent.faqSections"
-        />
+          <AppFaqList
+            :items="duoSpendContent.faq"
+            :sections="duoSpendContent.faqSections"
+          />
+        </div>
       </section>
 
-      <section class="app-section app-section--legal" aria-labelledby="duo-legal-title">
-        <details class="legal-disclosure">
+      <section
+        id="privacy"
+        class="app-section app-section--legal"
+        aria-labelledby="duo-legal-title"
+      >
+        <details ref="privacyDetails" class="legal-disclosure">
           <summary class="legal-disclosure__summary">
-            <h2 id="duo-legal-title" class="legal-disclosure__title">Confidentialité</h2>
-            <span class="legal-disclosure__meta">Politique de confidentialité en français et en anglais.</span>
+            <div class="legal-disclosure__header">
+              <h2 id="duo-legal-title" class="legal-disclosure__title">Confidentialité</h2>
+              <p class="legal-disclosure__meta">Politique de confidentialité — FR / EN</p>
+            </div>
+            <span class="legal-disclosure__toggle" aria-hidden="true"></span>
           </summary>
 
           <div class="legal-disclosure__body">
             <AppLegalTabs
               base-id="duo-spend-legal"
               :content="duoSpendContent.legal"
-              label="Mentions légales"
+              label="Confidentialité"
             />
           </div>
         </details>
@@ -235,6 +245,8 @@
 </template>
 
 <script setup lang="ts">
+import { nextTick, onMounted, ref, watch } from 'vue'
+
 import AppBreadcrumb from '~/components/apps/AppBreadcrumb.vue'
 import AppFaqList from '~/components/apps/AppFaqList.vue'
 import AppLegalTabs from '~/components/apps/AppLegalTabs.vue'
@@ -248,7 +260,9 @@ import {
 import { canonicalUrl } from '~/utils/seo-url'
 
 const config = useRuntimeConfig()
+const route = useRoute()
 const pageUrl = canonicalUrl(config.public.siteUrl, '/apps/duo-spend')
+const privacyDetails = ref<HTMLDetailsElement | null>(null)
 
 const breadcrumbItems = [
   { label: 'Accueil', to: '/' },
@@ -263,6 +277,37 @@ const breadcrumbSchema = buildBreadcrumbSchema(config.public.siteUrl, [
 ])
 
 const faqSchema = buildFaqSchema(duoSpendContent.faq)
+
+const openPrivacySection = async () => {
+  if (route.hash !== '#privacy') {
+    return
+  }
+
+  await nextTick()
+
+  if (!privacyDetails.value) {
+    return
+  }
+
+  privacyDetails.value.open = true
+  privacyDetails.value.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start',
+  })
+}
+
+onMounted(() => {
+  void openPrivacySection()
+})
+
+watch(
+  () => route.hash,
+  (hash) => {
+    if (hash === '#privacy') {
+      void openPrivacySection()
+    }
+  },
+)
 
 useSeoMeta({
   title: duoSpendContent.seo.title,
@@ -534,6 +579,21 @@ useHead({
   margin: 0;
 }
 
+.app-surface__list--cards {
+  gap: 0.75rem;
+
+  @media (min-width: 700px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.app-surface__list--cards div {
+  padding: 0.85rem 0.9rem;
+  border-radius: 0.95rem;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+
 .app-surface__list div {
   display: grid;
   gap: 0.2rem;
@@ -551,6 +611,7 @@ useHead({
   margin: 0;
   color: $gris1;
   font-weight: 600;
+  line-height: 1.45;
 }
 
 .app-section {
@@ -569,6 +630,18 @@ useHead({
   max-width: 40rem;
   color: $gris2;
   line-height: 1.6;
+}
+
+.app-section--faq {
+  padding: clamp(1.4rem, 3vw, 1.85rem);
+  border-radius: 1.5rem;
+  background: rgba(243, 244, 246, 0.78);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+.faq-wrapper {
+  display: grid;
+  gap: 1rem;
 }
 
 .app-capture {
@@ -603,11 +676,12 @@ useHead({
   gap: 0.75rem;
 
   @media (min-width: 700px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1.6fr) repeat(2, minmax(0, 1fr));
+    grid-auto-rows: minmax(0, 1fr);
   }
 
   @media (min-width: 1100px) {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1.6fr) repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -622,6 +696,12 @@ useHead({
   overflow: hidden;
 }
 
+.gallery-card--featured {
+  @media (min-width: 700px) {
+    grid-row: span 2;
+  }
+}
+
 .gallery-card__media {
   aspect-ratio: 4 / 5;
   border-radius: 0.8rem;
@@ -631,11 +711,20 @@ useHead({
   background: rgba(248, 246, 241, 0.92);
 }
 
+.gallery-card--featured .gallery-card__media {
+  aspect-ratio: 4 / 6.25;
+}
+
 .gallery-card img {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.gallery-card:not(.gallery-card--featured) .gallery-card__media img {
+  object-fit: cover;
   object-position: center;
 }
 
@@ -665,35 +754,34 @@ useHead({
 
 .legal-disclosure {
   margin: 0;
-  border-radius: 1rem;
-  background: rgba(243, 244, 246, 0.7);
+  border-radius: 1.35rem;
+  background: rgba(243, 244, 246, 0.82);
+  border: 1px solid rgba(15, 23, 42, 0.05);
   overflow: hidden;
 }
 
 .legal-disclosure__summary {
-  display: flex;
-  align-items: baseline;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 1rem;
-  padding: 1rem 1.25rem;
+  align-items: center;
+  padding: 1.15rem 1.25rem;
   cursor: pointer;
   list-style: none;
+  transition: background-color 0.14s ease;
 
   &::-webkit-details-marker {
     display: none;
   }
 
-  &::after {
-    content: '+';
-    margin-left: auto;
-    color: $vert;
-    font-size: 1.2rem;
-    font-weight: 700;
-    line-height: 1;
+  &:hover {
+    background: rgba(255, 255, 255, 0.54);
   }
 }
 
-.legal-disclosure[open] .legal-disclosure__summary::after {
-  content: '−';
+.legal-disclosure__header {
+  display: grid;
+  gap: 0.22rem;
 }
 
 .legal-disclosure__title {
@@ -704,12 +792,51 @@ useHead({
 }
 
 .legal-disclosure__meta {
+  margin: 0;
   color: $gris3;
   font-size: 0.78rem;
 }
 
+.legal-disclosure__toggle {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: rgba(13, 217, 79, 0.12);
+  border: 1px solid rgba(13, 217, 79, 0.2);
+}
+
+.legal-disclosure__toggle::before,
+.legal-disclosure__toggle::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0.8rem;
+  height: 1.5px;
+  border-radius: 999px;
+  background: $vert;
+  transform: translate(-50%, -50%);
+  transition: transform 0.14s ease, opacity 0.14s ease;
+}
+
+.legal-disclosure__toggle::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.legal-disclosure[open] .legal-disclosure__toggle::after {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(90deg) scaleX(0.35);
+}
+
+.legal-disclosure[open] .legal-disclosure__toggle {
+  background: rgba(13, 217, 79, 0.18);
+  transform: translateY(-1px);
+}
+
 .legal-disclosure__body {
   padding: 0 1.25rem 1.25rem;
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 .detail-grid {
