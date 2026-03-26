@@ -4,7 +4,7 @@
 
 **Projet** : BeAbot - Blog éco-conception web
 **Date création** : 15 décembre 2025
-**Dernière MAJ** : 25 mars 2026
+**Dernière MAJ** : 26 mars 2026
 **Branche active** : `feat/apps-pages`
 **Sites** :
 
@@ -21,7 +21,7 @@
 
 **Patch Portfolio (25 janvier 2026)** — Correctif d’affichage projet BORDUR.
 
-**Pages Apps (25 mars 2026)** — Landing `/apps/` + pages détail Meeting Mode / DuoSpend.
+**Pages Apps (26 mars 2026)** — Landing `/apps/` + pages détail Meeting Mode / DuoSpend.
 
 - [x] Renommage public "chasse-patate" → "BORDUR"
 - [x] Liens projet mis à jour (topette.netlify.app → bordur.fr)
@@ -90,9 +90,9 @@
 - [x] **HP-14-29** : Container-2 alignement responsive (justify desktop, center mobile)
 - [x] **HP-14-30** : Container-2 césure adaptée (auto desktop, none mobile)
 
-### Pages Apps : structure simplifiée ✅
+### Pages Apps : structure + contenu ✅
 
-> **Terminée le 25 mars 2026**
+> **Terminée le 26 mars 2026**
 > **Branche** : `feat/apps-pages`
 
 - [x] **APP-16-01** : Créer la page `/apps/`
@@ -104,6 +104,33 @@
 - [x] **APP-16-07** : Ajouter un fil d’Ariane UI + JSON-LD `BreadcrumbList`
 - [x] **APP-16-08** : Simplifier `/apps/` en index extensible
 - [x] **APP-16-09** : Ajouter le lien `Apps` dans le footer avec état actif sur les sous-pages
+- [x] **APP-16-10** : Recomposer la landing `/apps/` (hero, grille, CTA explicites)
+- [x] **APP-16-11** : Intégrer les textes DuoSpend (présentation, FAQ, privacy FR/EN)
+- [x] **APP-16-12** : Intégrer les textes Meeting Mode (présentation, FAQ, privacy FR/EN)
+- [x] **APP-16-13** : Corriger le breadcrumb non-sticky (nav fixe isolée)
+- [x] **APP-16-14** : Mettre à jour les résumés courts dans la landing `/apps/`
+
+#### Reste à faire (Apps)
+
+**/apps/**  
+- [ ] Améliorer le titre  
+- [ ] Améliorer le chapô  
+- [ ] Améliorer l’UI  
+- [ ] Améliorer le SEO  
+- [ ] Ajouter les images  
+
+**/apps/duo-spend/** + **/apps/meeting-mode/**  
+- [ ] Ajouter les images  
+- [ ] Améliorer l’UI des pages enfants de `/apps/`  
+- [ ] Améliorer le SEO  
+- [ ] Supprimer le paragraphe “Pour toute question, la page DuoSpend reste le point de contact. Retour aux apps” et remplacer par un bouton vers `/contact/`  
+- [ ] Configurer l’inscription par mail côté Netlify Forms (notification email)  
+
+**Audit graphique UX/UI**  
+- [ ] Créer l’audit graphique UX/UI  
+
+**Tests**  
+- [ ] Lancer les tests pour ces pages (`npm run lint`, `npm run generate`, `node scripts/seo-check.mjs`)
 
 ### Phase 12 : Optimisation SEO ✅
 
