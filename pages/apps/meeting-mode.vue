@@ -693,6 +693,69 @@ useHead({
   line-height: 1.6;
 }
 
+.gallery-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.gallery-card {
+  margin: 0;
+  border-radius: 1rem;
+  background: rgba(248, 246, 242, 0.95);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.gallery-card__media {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.gallery-card__media img,
+.gallery-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center top;
+}
+
+.gallery-card__caption {
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.5rem 0.65rem 0.55rem;
+  background: rgba(255, 255, 255, 0.96);
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.gallery-card__title {
+  display: block;
+  margin: 0;
+  color: $gris1;
+  font-size: 0.74rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gallery-card__subtitle {
+  display: block;
+  margin: 0;
+  color: $gris3;
+  font-size: 0.68rem;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .detail-grid {
   display: grid;
   gap: 0.75rem;
