@@ -632,16 +632,18 @@ useHead({
   line-height: 1.6;
 }
 
-.app-section--faq {
-  padding: clamp(1.4rem, 3vw, 1.85rem);
+.faq-wrapper {
+  padding: clamp(1.5rem, 3.5vw, 2.25rem) clamp(1.25rem, 3vw, 2rem);
   border-radius: 1.5rem;
-  background: rgba(243, 244, 246, 0.78);
-  border: 1px solid rgba(15, 23, 42, 0.05);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(0, 0, 0, 0.055);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
 }
 
-.faq-wrapper {
-  display: grid;
-  gap: 1rem;
+.faq-wrapper .section-heading {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .app-capture {
@@ -674,26 +676,22 @@ useHead({
 .gallery-grid {
   display: grid;
   gap: 0.75rem;
+  grid-template-columns: 1fr;
 
   @media (min-width: 700px) {
-    grid-template-columns: minmax(0, 1.6fr) repeat(2, minmax(0, 1fr));
-    grid-auto-rows: minmax(0, 1fr);
-  }
-
-  @media (min-width: 1100px) {
-    grid-template-columns: minmax(0, 1.6fr) repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1.65fr 1fr 1fr;
+    grid-auto-rows: 1fr;
   }
 }
 
 .gallery-card {
   margin: 0;
-  padding: 0.85rem 0.85rem 0.95rem;
   border-radius: 1.15rem;
   background: rgba(255, 255, 255, 0.92);
   box-shadow: 0 14px 30px rgba(15, 23, 42, 0.04);
-  display: grid;
-  gap: 0.8rem;
   overflow: hidden;
+  display: grid;
+  grid-template-rows: 1fr auto;
 }
 
 .gallery-card--featured {
@@ -703,18 +701,21 @@ useHead({
 }
 
 .gallery-card__media {
-  aspect-ratio: 4 / 5;
-  border-radius: 0.8rem;
   overflow: hidden;
-  display: grid;
-  place-items: center;
-  background: rgba(248, 246, 241, 0.92);
+  aspect-ratio: 9 / 16;
+  display: block;
 }
 
 .gallery-card--featured .gallery-card__media {
   aspect-ratio: 4 / 6.25;
+
+  @media (min-width: 700px) {
+    aspect-ratio: unset;
+    height: 100%;
+  }
 }
 
+.gallery-card__media img,
 .gallery-card img {
   display: block;
   width: 100%;
@@ -723,15 +724,12 @@ useHead({
   object-position: top center;
 }
 
-.gallery-card:not(.gallery-card--featured) .gallery-card__media img {
-  object-fit: cover;
-  object-position: center;
-}
-
 .gallery-card__caption {
   display: grid;
   gap: 0.16rem;
-  margin: 0;
+  padding: 0.6rem 0.85rem 0.7rem;
+  background: rgba(255, 255, 255, 0.96);
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .gallery-card__title,
@@ -741,14 +739,14 @@ useHead({
 
 .gallery-card__title {
   color: $gris1;
-  font-size: 0.92rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 .gallery-card__subtitle {
   color: $gris3;
-  font-size: 0.76rem;
+  font-size: 0.72rem;
   line-height: 1.45;
 }
 
