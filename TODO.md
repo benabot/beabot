@@ -34,6 +34,7 @@
 - [x] Formulaire d’intérêt et lien `/contact/` conservés sur les pages enfants
 - [x] Référence `preview.src` de DuoSpend alignée sur `duospend-hero.webp`
 - [x] Wording DuoSpend mis à jour dans `data/apps.ts`
+- [x] Navigation mobile corrigée pour masquer la nav desktop et conserver `Apps` avant `Contact`
 - [x] Refonte Meeting Mode (hero, before/after, galerie, FAQ, confidentialité)
 - [x] Preview Meeting Mode activée dans la landing `/apps/`
 - [x] Galerie Meeting Mode alimentée par les visuels macOS du dossier `public/img/apps/`
@@ -138,21 +139,25 @@
 
 #### Reste à faire (Apps)
 
-**/apps/**  
-- [ ] Finaliser le wording de la landing  
-- [ ] Remplacer les derniers placeholders visuels si de nouveaux assets arrivent  
+**/apps/**
 
-**/apps/duo-spend/** + **/apps/meeting-mode/**  
-- [ ] Ajouter les visuels définitifs quand ils seront disponibles  
-- [ ] Vérifier le wording final App Store / contact  
-- [ ] Confirmer la configuration d’envoi des formulaires mail côté Netlify Forms  
-- [ ] Finaliser la direction visuelle des deux pages enfants après intégration des derniers assets  
-- [ ] Vérifier l’ergonomie du bloc confidentialité + ancre `#privacy` sur Meeting Mode  
+- [ ] Finaliser le wording de la landing
+- [ ] Remplacer les derniers placeholders visuels si de nouveaux assets arrivent
 
-**Audit graphique UX/UI**  
+**/apps/duo-spend/** + **/apps/meeting-mode/**
+
+- [ ] Ajouter les visuels définitifs quand ils seront disponibles
+- [ ] Vérifier le wording final App Store / contact
+- [ ] Confirmer la configuration d’envoi des formulaires mail côté Netlify Forms
+- [ ] Finaliser la direction visuelle des deux pages enfants après intégration des derniers assets
+- [ ] Vérifier l’ergonomie du bloc confidentialité + ancre `#privacy` sur Meeting Mode
+
+**Audit graphique UX/UI**
+
 - [ ] Créer l’audit graphique UX/UI
 
-**Tests**  
+**Tests**
+
 - [ ] Lancer les tests pour ces pages (`npm run lint`, `npm run generate`, `node scripts/seo-check.mjs`)
 
 ### Phase 12 : Optimisation SEO ✅

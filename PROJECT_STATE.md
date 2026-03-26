@@ -8,10 +8,10 @@
 
 ### Site en production
 
-| Site | URL | Stack | Branch | État |
-|------|-----|-------|--------|------|
-| **Production** | https://beabot.fr | Nuxt 3.14 | master | ✅ Stable |
-| **Dev Preview** | https://dev-beabot.netlify.app | Nuxt 3.14 | dev | ✅ Tests |
+| Site            | URL                            | Stack     | Branch | État      |
+| --------------- | ------------------------------ | --------- | ------ | --------- |
+| **Production**  | https://beabot.fr              | Nuxt 3.14 | master | ✅ Stable |
+| **Dev Preview** | https://dev-beabot.netlify.app | Nuxt 3.14 | dev    | ✅ Tests  |
 
 ### Dernière mise à jour
 
@@ -27,6 +27,12 @@
 - ✅ `sitemap.xml` généré automatiquement via `@nuxtjs/sitemap` avec domaine canonique `https://beabot.fr`
 - ✅ `robots.txt` servi par la route serveur `server/routes/robots.txt.ts` et pointant vers `/sitemap.xml`
 - ✅ Canonicals, `og:url` et trailing slash alignés sur `https://beabot.fr/.../`
+
+**Navigation mobile (26 mars 2026)** — Correctif ciblé sur le menu mobile du layout principal.
+
+- ✅ La nav desktop reste réservée au desktop, sans fuite visuelle sur mobile
+- ✅ Le menu mobile continue de s’ouvrir uniquement au clic sur `beAbot + logo`
+- ✅ `Apps` est conservé avant `Contact` dans le menu mobile
 
 **Pages Apps (26 mars 2026)** — Landing `/apps/` + pages détail Meeting Mode / DuoSpend, sur la branche `style/apps-graphisme`.
 
@@ -87,12 +93,14 @@ Phase 15    - Side Projects         [░░░░░░░░░░░░░░�
 ### Phase 14 : Refonte Portfolio (22-23 décembre 2025)
 
 #### Structure et contenu
+
 - ✅ Hero avec nom, titre, accroche personnelle
 - ✅ Baseline "15 ans d'expérience • Spécialiste éco-conception"
 - ✅ CTAs : Voir mon CV (download) + Me contacter
 - ✅ Formes décoratives (œufs colorés) en background
 
 #### Section Réalisations
+
 - ✅ Titre + accroche "Extraits de 15 ans de web"
 - ✅ Filtres refondus (pills avec état actif)
 - ✅ Données projets externalisées (`data/portfolio.ts`)
@@ -101,22 +109,26 @@ Phase 15    - Side Projects         [░░░░░░░░░░░░░░�
 - ✅ Lien "Lire l'article" si article associé
 
 #### Timeline visuelle
+
 - ✅ Points d'ancrage entre sections
 - ✅ Lignes en dégradé + point vert avec halo
 - ✅ Fil conducteur sobre et percutant
 
 #### Section Compétences
+
 - ✅ Layout 4 colonnes horizontales
 - ✅ Couleurs différentes par catégorie (bleu, violet, vert, orange)
 - ✅ Titres en uppercase avec bordure colorée
 - ✅ Lien GitHub intégré en header
 
 #### CTA Final
+
 - ✅ Œufs décoratifs (symétrie avec Hero)
 - ✅ Version compacte (titre + boutons)
 - ✅ Boutons cohérents avec le reste du site
 
 #### SEO
+
 - ✅ Title optimisé recrutement
 - ✅ Meta description orientée emploi/freelance
 - ✅ Open Graph complet (og:title, og:description, og:type, og:url)
@@ -156,12 +168,12 @@ Phase 15    - Side Projects         [░░░░░░░░░░░░░░�
 
 ### Branches actives
 
-| Branche | Description | État |
-|---------|-------------|------|
-| `master` | Production beabot.fr | 🔒 Stable |
-| `dev` | Développement | ✅ Phase 12 prête |
-| `feature/portfolio-redesign` | Refonte portfolio | ✅ **Prêt pour merge** |
-| `style/apps-graphisme` | Pages Apps | ✅ En cours |
+| Branche                      | Description          | État                   |
+| ---------------------------- | -------------------- | ---------------------- |
+| `master`                     | Production beabot.fr | 🔒 Stable              |
+| `dev`                        | Développement        | ✅ Phase 12 prête      |
+| `feature/portfolio-redesign` | Refonte portfolio    | ✅ **Prêt pour merge** |
+| `style/apps-graphisme`       | Pages Apps           | ✅ En cours            |
 
 ### Workflow de merge
 
@@ -235,35 +247,35 @@ git push origin master
 
 ### Actuelles
 
-| Métrique | Valeur |
-|----------|--------|
-| EcoIndex | B-C |
-| Requêtes HTTP | ~16 |
-| Poids page | ~150KB |
-| Lighthouse Perf | 85-90 |
+| Métrique        | Valeur |
+| --------------- | ------ |
+| EcoIndex        | B-C    |
+| Requêtes HTTP   | ~16    |
+| Poids page      | ~150KB |
+| Lighthouse Perf | 85-90  |
 
 ### Cibles
 
-| Métrique | Objectif |
-|----------|----------|
-| EcoIndex | A |
-| Requêtes HTTP | < 12 |
-| Poids page | < 100KB |
-| Lighthouse | > 95 |
+| Métrique      | Objectif |
+| ------------- | -------- |
+| EcoIndex      | A        |
+| Requêtes HTTP | < 12     |
+| Poids page    | < 100KB  |
+| Lighthouse    | > 95     |
 
 ---
 
 ## 📚 DOCUMENTATION
 
-| Fichier | Description |
-|---------|-------------|
-| `TODO.md` | Tâches et phases |
-| `PROJECT_STATE.md` | Ce fichier |
-| `CLAUDE.md` | Contexte technique |
-| `BRANCHING_STRATEGY.md` | Stratégie Git |
-| `PORTFOLIO_REDESIGN.md` | Specs refonte portfolio |
-| `PORTFOLIO_VISUAL_IMPROVEMENTS.md` | Améliorations visuelles |
-| `data/portfolio.ts` | Données projets structurées |
+| Fichier                            | Description                 |
+| ---------------------------------- | --------------------------- |
+| `TODO.md`                          | Tâches et phases            |
+| `PROJECT_STATE.md`                 | Ce fichier                  |
+| `CLAUDE.md`                        | Contexte technique          |
+| `BRANCHING_STRATEGY.md`            | Stratégie Git               |
+| `PORTFOLIO_REDESIGN.md`            | Specs refonte portfolio     |
+| `PORTFOLIO_VISUAL_IMPROVEMENTS.md` | Améliorations visuelles     |
+| `data/portfolio.ts`                | Données projets structurées |
 
 ---
 
