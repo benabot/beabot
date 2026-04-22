@@ -5,7 +5,7 @@
 **Projet** : BeAbot - Blog éco-conception web
 **Date création** : 15 décembre 2025
 **Dernière MAJ** : 22 avril 2026
-**Branche active** : `feature/home-v3-positioning`
+**Branche active** : `feature/greenlight-page`
 **Sites** :
 
 - 🟢 **Production** (Nuxt 3, master) : <https://beabot.fr>
@@ -16,6 +16,16 @@
 ## 📊 CONTEXTE ACTUEL
 
 ### Statut (22 avril 2026)
+
+**Phase 17 Greenlight (22 avril 2026)** — Page `/greenlight/` et intégration dans la navigation principale, sur la branche `feature/greenlight-page`.
+
+- [x] Page produit `/greenlight/` créée avec hero, bénéfices, comparatif de versions, FAQ et CTA final
+- [x] Positionnement Greenlight recentré sur rapidité, visibilité, crédibilité, lisibilité et durabilité
+- [x] Différence Greenlight-free / Greenlight rendue explicite sans inventer de lien de téléchargement
+- [x] Navigation principale réordonnée avec entrée `Greenlight`
+- [x] Footer mis à jour avec lien `Greenlight`
+- [x] CTA existants de la home vérifiés sur `/greenlight/`
+- [x] Validation `npm run generate` + `NUXT_PUBLIC_SITE_URL=https://beabot.fr node scripts/seo-check.mjs`
 
 **Phase 16 Homepage V3 (22 avril 2026)** — Refonte de la home selon le positionnement hybride services + éco-conception, sur la branche `feature/home-v3-positioning`.
 

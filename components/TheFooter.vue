@@ -13,12 +13,13 @@
         <nav id="footer--nav">
           <ul>
             <li><AppLink to="/" no-prefetch>Accueil</AppLink></li>
+            <li><AppLink to="/portfolio/" no-prefetch>Portfolio</AppLink></li>
+            <li><AppLink to="/greenlight/" no-prefetch>Greenlight</AppLink></li>
             <li>
               <AppLink to="/eco-conception/" no-prefetch
                 >Éco-conception</AppLink
               >
             </li>
-            <li><AppLink to="/portfolio/" no-prefetch>Portfolio</AppLink></li>
             <li>
               <AppLink
                 to="/apps/"

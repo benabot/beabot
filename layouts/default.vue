@@ -138,25 +138,37 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 
 const navigationItems = [
-  { label: 'Éco-conception', to: '/eco-conception/', variant: 'nav-link--eco' },
   { label: 'Portfolio', to: '/portfolio/', variant: 'nav-link--portfolio' },
+  { label: 'Greenlight', to: '/greenlight/', variant: 'nav-link--greenlight' },
+  { label: 'Éco-conception', to: '/eco-conception/', variant: 'nav-link--eco' },
   { label: 'Apps', to: '/apps/', variant: 'nav-link--apps' },
   { label: 'Contact', to: '/contact/', variant: 'nav-link--contact' },
 ]
 
 const isHomeRoute = computed(() => route.path === '/' || route.path === '')
+const isGreenlightRoute = computed(
+  () =>
+    route.path === '/greenlight/' ||
+    route.path === '/greenlight' ||
+    route.path === '/green-light/' ||
+    route.path === '/green-light',
+)
 const showMobileMenu = ref(false)
 const isHeroActive = ref(isHomeRoute.value)
 const isLogoHovered = ref(false)
 
 const getDefaultLogoFill = () =>
-  isHomeRoute.value ? 'url(#SVGID1)' : 'url(#SVGID2)'
+  isHomeRoute.value || isGreenlightRoute.value ? 'url(#SVGID1)' : 'url(#SVGID2)'
 
 const degrad = ref(getDefaultLogoFill())
 
 const couleurHaut = computed(() => {
   if (isHomeRoute.value) {
     return isHeroActive.value ? 'couleur-none' : 'couleur-blanc'
+  }
+
+  if (isGreenlightRoute.value) {
+    return 'couleur-blanc'
   }
 
   return 'couleur-gris'
@@ -378,6 +390,11 @@ a.nuxt-link-active {
             color.adjust($bleu2, $lightness: 10%)
           )
           left bottom / 0 0.1em no-repeat;
+      }
+
+      .nav-link--greenlight {
+        background: linear-gradient(#72f4a2, #72f4a2) left bottom / 0 0.1em
+          no-repeat;
       }
 
       .nav-link--apps {
