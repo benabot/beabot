@@ -36,8 +36,8 @@
           xml:space="preserve"
           role="img"
           aria-label="BeAbot - Accueil"
-          @mouseover="degrad = 'url(#SVGID1)'"
-          @mouseleave="degrad = 'url(#SVGID2)'"
+          @mouseover="setLogoHover"
+          @mouseleave="resetLogoHover"
         >
           <title>BeAbot</title>
           <linearGradient
@@ -128,7 +128,7 @@
   </div>
 </template>
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 
 // import { gsap } from 'gsap'
@@ -144,32 +144,66 @@ const navigationItems = [
   { label: 'Contact', to: '/contact/', variant: 'nav-link--contact' },
 ]
 
-const windowHeight = ref(0)
-const scrollPosition = ref(0)
-const degrad = ref('url(#SVGID2)')
+const isHomeRoute = computed(() => route.path === '/' || route.path === '')
 const showMobileMenu = ref(false)
+const isHeroActive = ref(isHomeRoute.value)
+const isLogoHovered = ref(false)
 
-const acc = computed(() => route.path)
+const getDefaultLogoFill = () =>
+  isHomeRoute.value ? 'url(#SVGID1)' : 'url(#SVGID2)'
+
+const degrad = ref(getDefaultLogoFill())
 
 const couleurHaut = computed(() => {
-  if (acc.value === '/') {
-    if (scrollPosition.value < windowHeight.value) {
-      return 'couleur-none'
-    }
-    if (
-      (scrollPosition.value > windowHeight.value &&
-        scrollPosition.value < windowHeight.value * 3) ||
-      (scrollPosition.value > windowHeight.value * 4 &&
-        scrollPosition.value < windowHeight.value * 5)
-    ) {
-      return 'couleur-blanc'
-    }
+  if (isHomeRoute.value) {
+    return isHeroActive.value ? 'couleur-none' : 'couleur-blanc'
   }
+
   return 'couleur-gris'
 })
 
-const updateScroll = () => {
-  scrollPosition.value = window.scrollY
+const setLogoHover = () => {
+  isLogoHovered.value = true
+  degrad.value = 'url(#SVGID1)'
+}
+
+const resetLogoHover = () => {
+  isLogoHovered.value = false
+  degrad.value = getDefaultLogoFill()
+}
+
+const syncLogoFill = () => {
+  if (!isLogoHovered.value) {
+    degrad.value = getDefaultLogoFill()
+  }
+}
+
+const updateHeroState = () => {
+  if (!isHomeRoute.value) {
+    isHeroActive.value = false
+    syncLogoFill()
+    return
+  }
+
+  const hero = document.querySelector('.home-hero')
+
+  if (!(hero instanceof HTMLElement)) {
+    isHeroActive.value = true
+    syncLogoFill()
+    return
+  }
+
+  const nav = document.querySelector('.nav-desktop.nav-1')
+  const navBottom =
+    nav instanceof HTMLElement ? nav.getBoundingClientRect().bottom : 96
+
+  isHeroActive.value = hero.getBoundingClientRect().bottom > navBottom
+  syncLogoFill()
+}
+
+const refreshHeroState = async () => {
+  await nextTick()
+  updateHeroState()
 }
 
 const isNavItemActive = (path) => {
@@ -181,15 +215,29 @@ const isNavItemActive = (path) => {
   )
 }
 
+watch(isHomeRoute, (value) => {
+  if (!value) {
+    isHeroActive.value = false
+  }
+  syncLogoFill()
+})
+
+watch(
+  () => route.fullPath,
+  () => {
+    refreshHeroState()
+  },
+)
+
 onMounted(() => {
-  window.addEventListener('scroll', updateScroll)
-  windowHeight.value = window.innerHeight
-  updateScroll()
-  // ScrollTrigger setup would go here if needed
+  refreshHeroState()
+  window.addEventListener('scroll', updateHeroState, { passive: true })
+  window.addEventListener('resize', updateHeroState)
 })
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', updateScroll)
+  window.removeEventListener('scroll', updateHeroState)
+  window.removeEventListener('resize', updateHeroState)
 })
 </script>
 <style lang="scss">

@@ -4,8 +4,8 @@
 
 **Projet** : BeAbot - Blog éco-conception web
 **Date création** : 15 décembre 2025
-**Dernière MAJ** : 26 mars 2026
-**Branche active** : `style/apps-graphisme`
+**Dernière MAJ** : 22 avril 2026
+**Branche active** : `feature/home-v3-positioning`
 **Sites** :
 
 - 🟢 **Production** (Nuxt 3, master) : <https://beabot.fr>
@@ -15,7 +15,22 @@
 
 ## 📊 CONTEXTE ACTUEL
 
-### Statut (26 mars 2026)
+### Statut (22 avril 2026)
+
+**Phase 16 Homepage V3 (22 avril 2026)** — Refonte de la home selon le positionnement hybride services + éco-conception, sur la branche `feature/home-v3-positioning`.
+
+- [x] Hero repositionné sur l’offre de développement web éco-conçu
+- [x] Bloc de preuves chiffrées recentré sur les métriques de beabot.fr
+- [x] Section services reconstruite autour de 3 offres lisibles
+- [x] Section réalisations recentrée sur 4 projets prioritaires
+- [x] Bloc Greenlight intégré sans inventer de lien de téléchargement
+- [x] Section approche raccourcie avec lien vers `/eco-conception/`
+- [x] Articles déplacés plus bas dans la page avec logique de listing conservée
+- [x] CTA final réaligné sur la promesse WordPress sobre, rapide et durable
+- [x] SEO homepage mis à jour (title, description, JSON-LD Organization / Person)
+- [x] Navigation desktop recalée sur le hero (masquée sur `.home-hero`, visible ensuite)
+- [x] Hover des cartes de réalisations recentré sur un zoom image plus doux et plus long, sans mouvement du texte
+- [x] Validation `npm run generate` + `NUXT_PUBLIC_SITE_URL=https://beabot.fr node scripts/seo-check.mjs`
 
 **Phase 14 Portfolio + Homepage Mobile** — Prêt pour merge sur master.
 
