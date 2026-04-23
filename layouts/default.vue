@@ -1,6 +1,10 @@
 <template>
   <div id="wrapper">
-    <nav role="navigation" class="nav-mobile">
+    <nav
+      role="navigation"
+      class="nav-mobile"
+      :class="{ 'nav-mobile--greenlight': isGreenlightRoute }"
+    >
       <!-- <button @click="showMobileMenu = !showMobileMenu">bla</button> -->
       <img
         src="/beabot.svg"
@@ -159,9 +163,7 @@ const isDarkSectionActive = ref(false)
 const isLogoHovered = ref(false)
 
 const getDefaultLogoFill = () =>
-  isHomeRoute.value || isGreenlightRoute.value || isDarkSectionActive.value
-    ? 'url(#SVGID1)'
-    : 'url(#SVGID2)'
+  isHomeRoute.value || isDarkSectionActive.value ? 'url(#SVGID1)' : 'url(#SVGID2)'
 
 const degrad = ref(getDefaultLogoFill())
 
@@ -171,7 +173,7 @@ const couleurHaut = computed(() => {
   }
 
   if (isGreenlightRoute.value) {
-    return 'couleur-blanc'
+    return 'couleur-gris'
   }
 
   if (isDarkSectionActive.value) {
@@ -344,10 +346,10 @@ a.nuxt-link-active {
   .nav-desktop {
     display: none;
   }
-  .nav-mobile {
-    display: block;
-    position: fixed;
-    z-index: 9999;
+    .nav-mobile {
+      display: block;
+      position: fixed;
+      z-index: 9999;
     @media (min-width: $breakpoint-tablet) {
       display: none;
     }
@@ -362,18 +364,28 @@ a.nuxt-link-active {
     .logo-gris {
       filter: grayscale(1);
     }
-    .menu-mobile {
-      position: absolute;
-      padding-top: 3rem;
-      width: 114vw;
-      height: 60vh;
-      background: $vert;
-      clip-path: ellipse(87% 91% at 0% 8%);
-      ul {
-        list-style-type: none;
+      .menu-mobile {
+        position: absolute;
+        padding-top: 3rem;
+        width: 114vw;
+        height: 60vh;
+        background: $vert;
+        clip-path: ellipse(87% 91% at 0% 8%);
+        ul {
+          list-style-type: none;
+        }
+      }
+
+      &--greenlight {
+        .menu-mobile {
+          background: linear-gradient(180deg, #1b1f20 0%, #111414 100%);
+        }
+
+        .menu-mobile .title {
+          color: $fondClair;
+        }
       }
     }
-  }
   @media (min-width: $breakpoint-tablet) {
     overflow: visible;
     .nav-desktop {

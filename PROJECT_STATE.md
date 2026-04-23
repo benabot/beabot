@@ -48,6 +48,9 @@
 - ✅ Page produit Greenlight créée avec hero, bénéfices, comparatif de versions, FAQ et CTA final
 - ✅ Navigation principale et footer enrichis avec l’entrée `Greenlight`
 - ✅ Positionnement recentré sur rapidité, visibilité, crédibilité, lisibilité, durabilité et maintenance simplifiée
+- ✅ Deuxième passe commerciale: hero split plus affirmé, preuves Greenlight-free visibles, différence free/premium clarifiée et CTA de choix renforcé
+- ✅ Navigation de la page Greenlight repassée en foncé pour mieux lire le produit sur fond clair
+- ✅ Validation `npm run generate` relancée après la refonte et le réglage de la nav
 
 **Phase 16 Homepage V3 (22 avril 2026)** — Refonte de la home selon le positionnement hybride services + éco-conception.
 

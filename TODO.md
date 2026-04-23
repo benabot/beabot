@@ -61,6 +61,8 @@
 - [x] Navigation principale réordonnée avec entrée `Greenlight`
 - [x] Footer mis à jour avec lien `Greenlight`
 - [x] CTA existants de la home vérifiés sur `/greenlight/`
+- [x] Deuxième passe commerciale sur `/greenlight/` : hero plus fort, preuves free visibles, distinctions free/premium clarifiées et CTA de choix renforcé
+- [x] Navigation de `/greenlight/` repassée en foncé pour mieux lire la page produit claire
 - [x] Validation `npm run generate` + `NUXT_PUBLIC_SITE_URL=https://beabot.fr node scripts/seo-check.mjs`
 
 **Phase 16 Homepage V3 (22 avril 2026)** — Refonte de la home selon le positionnement hybride services + éco-conception, sur la branche `feature/home-v3-positioning`.
