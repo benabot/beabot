@@ -1,6 +1,18 @@
 <template>
   <div class="eco-pillar">
     <section class="eco-hero" aria-labelledby="eco-hero-title">
+      <Oeuf
+        class="eco-oeuf eco-oeuf--hero-1"
+        width="24%"
+        transform="rotate(-38)"
+        fill="#04d94f"
+      />
+      <Oeuf
+        class="eco-oeuf eco-oeuf--hero-2"
+        width="18%"
+        transform="rotate(24)"
+        fill="#0439d9"
+      />
       <div class="eco-shell eco-hero__grid">
         <div class="eco-hero__copy">
           <p class="eco-eyebrow">Éditorial & expertise</p>
@@ -103,7 +115,10 @@
       </div>
     </section>
 
-    <section class="eco-section" aria-labelledby="eco-impacts-title">
+    <section
+      class="eco-section eco-section--impacts"
+      aria-labelledby="eco-impacts-title"
+    >
       <div class="eco-shell">
         <header class="eco-section__intro">
           <div>
@@ -194,7 +209,10 @@
       </div>
     </section>
 
-    <section class="eco-section" aria-labelledby="eco-benefits-title">
+    <section
+      class="eco-section eco-section--benefits"
+      aria-labelledby="eco-benefits-title"
+    >
       <div class="eco-shell">
         <header class="eco-section__intro">
           <div>
@@ -225,7 +243,7 @@
 
     <section
       id="eco-resources"
-      class="eco-section eco-section--alt"
+      class="eco-section eco-section--alt eco-section--resources"
       aria-labelledby="eco-resources-title"
     >
       <div class="eco-shell">
@@ -390,7 +408,10 @@
       </div>
     </section>
 
-    <section class="eco-section" aria-labelledby="eco-faq-title">
+    <section
+      class="eco-section eco-section--faq"
+      aria-labelledby="eco-faq-title"
+    >
       <div class="eco-shell eco-faq">
         <div class="eco-faq__intro">
           <p class="eco-eyebrow">FAQ</p>
@@ -403,6 +424,18 @@
             ou intérêt réel pour le SEO. Voici une sélection courte pour poser
             le cadre.
           </p>
+          <Oeuf
+            class="eco-oeuf eco-oeuf--faq eco-oeuf--faq-main"
+            width="76%"
+            transform="rotate(-58)"
+            fill="#04d94f"
+          />
+          <Oeuf
+            class="eco-oeuf eco-oeuf--faq eco-oeuf--faq-secondary"
+            width="34%"
+            transform="rotate(24)"
+            fill="#0439d9"
+          />
         </div>
 
         <div class="eco-faq__content">
@@ -991,7 +1024,35 @@ useHead(() => {
 }
 
 .eco-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   padding-top: clamp(7rem, 12vw, 9.5rem);
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(0, 168, 62, 0.12),
+      transparent 20rem
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28), transparent 74%);
+}
+
+.eco-hero::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(17, 17, 13, 0),
+    rgba(17, 17, 13, 0.14),
+    rgba(17, 17, 13, 0)
+  );
+}
+
+.eco-hero .eco-shell {
+  position: relative;
+  z-index: 1;
 }
 
 .eco-section--alt {
@@ -1000,6 +1061,12 @@ useHead(() => {
     rgba(255, 255, 255, 0.52),
     rgba(255, 255, 255, 0.22)
   );
+}
+
+.eco-section--resources {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.48), rgba(244, 242, 236, 0)),
+    linear-gradient(90deg, rgba(4, 57, 217, 0.035), rgba(0, 168, 62, 0.035));
 }
 
 .eco-section--dark {
@@ -1033,6 +1100,77 @@ useHead(() => {
 .eco-section--promise {
   padding-top: clamp(3.6rem, 6vw, 5.25rem);
   padding-bottom: clamp(3.6rem, 6vw, 5.25rem);
+}
+
+.eco-section--principles {
+  padding-top: clamp(5rem, 8vw, 8rem);
+  padding-bottom: clamp(5rem, 8vw, 8rem);
+  background:
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(242, 168, 29, 0.16),
+      transparent 18rem
+    ),
+    radial-gradient(
+      circle at 88% 72%,
+      rgba(0, 168, 62, 0.18),
+      transparent 22rem
+    ),
+    linear-gradient(180deg, #0d0f0b 0%, #181813 56%, #0f100c 100%);
+}
+
+.eco-section--impacts,
+.eco-section--benefits,
+.eco-section--faq {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.eco-section--impacts {
+  background:
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(242, 168, 29, 0.09),
+      transparent 15rem
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(244, 242, 236, 0));
+}
+
+.eco-section--impacts::before {
+  content: '';
+  position: absolute;
+  right: -5rem;
+  bottom: 12%;
+  width: min(24vw, 16rem);
+  aspect-ratio: 1;
+  border-radius: 46% 54% 49% 51%;
+  background: rgba(0, 168, 62, 0.08);
+  transform: rotate(-18deg);
+}
+
+.eco-section--benefits {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.42) 54%,
+    rgba(244, 242, 236, 0.1)
+  );
+}
+
+.eco-section--faq {
+  padding-top: clamp(4.5rem, 8vw, 7.2rem);
+  background:
+    radial-gradient(
+      circle at 78% 18%,
+      rgba(4, 57, 217, 0.06),
+      transparent 16rem
+    ),
+    linear-gradient(
+      180deg,
+      rgba(244, 242, 236, 0.06),
+      rgba(255, 255, 255, 0.34)
+    );
 }
 
 .eco-hero__grid,
@@ -1206,6 +1344,18 @@ useHead(() => {
   pointer-events: none;
 }
 
+.eco-oeuf--hero-1 {
+  top: 9%;
+  right: -5%;
+  opacity: 0.11;
+}
+
+.eco-oeuf--hero-2 {
+  bottom: 4%;
+  left: -4%;
+  opacity: 0.08;
+}
+
 .eco-oeuf--promise-1 {
   top: -5%;
   right: -3%;
@@ -1258,6 +1408,20 @@ useHead(() => {
   opacity: 0.12;
 }
 
+.eco-oeuf--faq-main {
+  top: calc(100% + 1.4rem);
+  left: clamp(-2.8rem, -4vw, -1rem);
+  opacity: 0.12;
+  transform-origin: center;
+}
+
+.eco-oeuf--faq-secondary {
+  top: calc(100% + 10rem);
+  left: clamp(9rem, 18vw, 14rem);
+  opacity: 0.08;
+  transform-origin: center;
+}
+
 .eco-hero__panel,
 .eco-archive,
 .eco-impact-card,
@@ -1273,6 +1437,8 @@ useHead(() => {
 }
 
 .eco-hero__panel {
+  position: relative;
+  overflow: hidden;
   padding: clamp(1.25rem, 3vw, 1.8rem);
   border-radius: 2rem;
   background:
@@ -1286,6 +1452,20 @@ useHead(() => {
       rgba(255, 255, 255, 0.94),
       rgba(248, 246, 239, 0.88)
     );
+  border: 1px solid rgba(17, 17, 13, 0.08);
+}
+
+.eco-hero__panel::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 0.25rem;
+  background: linear-gradient(
+    90deg,
+    color.adjust($vert, $lightness: 8%),
+    rgba(4, 57, 217, 0.42),
+    rgba(242, 168, 29, 0.34)
+  );
 }
 
 .eco-panel__grid {
@@ -1335,6 +1515,40 @@ useHead(() => {
   }
 }
 
+.eco-section--resources .eco-section__intro {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border-radius: 2rem;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(0, 168, 62, 0.08),
+      transparent 14rem
+    ),
+    rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(17, 17, 13, 0.06);
+}
+
+.eco-section--impacts .eco-section__intro,
+.eco-section--benefits .eco-section__intro,
+.eco-section--faq .eco-faq {
+  position: relative;
+  z-index: 1;
+}
+
+.eco-section--impacts .eco-section__intro {
+  align-items: start;
+}
+
+.eco-section--impacts .eco-section__title {
+  max-width: 9ch;
+}
+
+.eco-section--impacts .eco-section__lede {
+  padding-top: 0.2rem;
+  font-size: clamp(1.02rem, 1.25vw, 1.14rem);
+  line-height: 1.55;
+}
+
 .eco-section__actions {
   display: grid;
   gap: 1rem;
@@ -1374,6 +1588,8 @@ useHead(() => {
 }
 
 .eco-impact-grid {
+  position: relative;
+  z-index: 1;
   @media (min-width: $breakpoint-tablet) {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
@@ -1391,6 +1607,26 @@ useHead(() => {
 .eco-impact-card {
   display: grid;
   gap: 0.8rem;
+  min-height: 13rem;
+  align-content: space-between;
+  border: 1px solid rgba(17, 17, 13, 0.07);
+  background:
+    radial-gradient(circle at 80% 10%, rgba(0, 168, 62, 0.1), transparent 9rem),
+    rgba(255, 255, 255, 0.82);
+}
+
+.eco-impact-card:nth-child(even) {
+  transform: translateY(0.9rem);
+}
+
+.eco-impact-card:nth-child(3) {
+  background:
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(4, 57, 217, 0.08),
+      transparent 9rem
+    ),
+    rgba(255, 255, 255, 0.82);
 }
 
 .eco-impact-card__value {
@@ -1430,6 +1666,8 @@ useHead(() => {
 }
 
 .eco-section__footer {
+  position: relative;
+  z-index: 1;
   display: flex;
   margin-top: 1.25rem;
 }
@@ -1437,6 +1675,19 @@ useHead(() => {
 .eco-definition__copy {
   display: grid;
   gap: 1rem;
+}
+
+.eco-section--principles .eco-definition {
+  align-items: center;
+}
+
+.eco-section--principles .eco-section__title {
+  max-width: 11ch;
+  font-size: clamp(2.45rem, 5vw, 4.4rem);
+}
+
+.eco-section--principles .eco-definition__text {
+  max-width: 34rem;
 }
 
 .eco-principles-grid {
@@ -1449,6 +1700,8 @@ useHead(() => {
 }
 
 .eco-benefits-grid {
+  counter-reset: eco-benefits;
+
   @media (min-width: $breakpoint-tablet) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -1458,6 +1711,65 @@ useHead(() => {
 .eco-principle-card {
   display: grid;
   gap: 0.8rem;
+}
+
+.eco-benefit-card {
+  counter-increment: eco-benefits;
+  position: relative;
+  overflow: hidden;
+  min-height: 12rem;
+  align-content: end;
+  padding-top: 3.4rem;
+  border: 1px solid rgba(17, 17, 13, 0.06);
+  background:
+    radial-gradient(circle at 86% 0, rgba(0, 168, 62, 0.1), transparent 9rem),
+    rgba(255, 255, 255, 0.78);
+}
+
+.eco-benefit-card::before {
+  content: counter(eco-benefits, decimal-leading-zero);
+  position: absolute;
+  top: 1.15rem;
+  left: 1.2rem;
+  color: rgba(17, 17, 13, 0.34);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.eco-benefit-card::after {
+  content: '';
+  position: absolute;
+  top: 1.15rem;
+  right: 1.2rem;
+  width: 2rem;
+  height: 0.35rem;
+  border-radius: 999px;
+  background: color.adjust($vert, $lightness: 4%);
+}
+
+.eco-benefit-card:nth-child(2),
+.eco-benefit-card:nth-child(5) {
+  transform: translateY(1rem);
+}
+
+.eco-benefit-card:nth-child(3n + 2)::after {
+  background: rgba(4, 57, 217, 0.62);
+}
+
+.eco-benefit-card:nth-child(3n)::after {
+  background: rgba(242, 168, 29, 0.72);
+}
+
+.eco-section--principles .eco-principle-card {
+  min-height: 12rem;
+  align-content: end;
+  padding: clamp(1.25rem, 2vw, 1.55rem);
+}
+
+.eco-section--principles .eco-principle-card:nth-child(2),
+.eco-section--principles .eco-principle-card:nth-child(3) {
+  transform: translateY(1rem);
 }
 
 .eco-section--dark .eco-principle-card,
@@ -1480,8 +1792,11 @@ useHead(() => {
 }
 
 .eco-featured-grid {
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+
   @media (min-width: $breakpoint-tablet) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
   }
 }
 
@@ -1492,6 +1807,8 @@ useHead(() => {
   overflow: hidden;
   padding-left: 1.6rem;
   border: 1px solid rgba(17, 17, 13, 0.06);
+  min-height: 15rem;
+  align-content: space-between;
 }
 
 .eco-resource-card::before,
@@ -1547,14 +1864,18 @@ useHead(() => {
     linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 246, 239, 0.9));
 }
 
+.eco-resource-card:nth-child(2) {
+  transform: translateY(1rem);
+}
+
 .eco-resource-card h3 a,
 .eco-archive-card h3 a {
   background: none;
 }
 
 .eco-archive {
-  margin-top: 2rem;
-  padding: clamp(1.25rem, 3vw, 1.8rem);
+  margin-top: clamp(3rem, 5vw, 4.2rem);
+  padding: clamp(1.45rem, 3.4vw, 2.25rem);
   border-radius: 2rem;
   position: relative;
   overflow: hidden;
@@ -1570,7 +1891,11 @@ useHead(() => {
       rgba(4, 57, 217, 0.08),
       transparent 12rem
     ),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(246, 243, 235, 0.94));
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.96),
+      rgba(246, 243, 235, 0.94)
+    );
   border: 1px solid rgba(17, 17, 13, 0.08);
   box-shadow:
     0 1.4rem 3rem rgba(29, 27, 19, 0.1),
@@ -1601,7 +1926,8 @@ useHead(() => {
 }
 
 .eco-archive__header h3 {
-  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-size: clamp(1.65rem, 2.7vw, 2.35rem);
+  line-height: 1;
 }
 
 .eco-toolbar {
@@ -1673,7 +1999,12 @@ useHead(() => {
 }
 
 .eco-results {
+  display: inline-flex;
+  width: fit-content;
   margin: 1rem 0 0;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(17, 17, 13, 0.05);
   color: var(--text-muted);
   font-size: 0.92rem;
 }
@@ -1739,14 +2070,34 @@ useHead(() => {
   gap: 1rem;
 }
 
+.eco-faq__intro {
+  position: relative;
+  align-self: start;
+  padding-top: 0.5rem;
+}
+
+.eco-faq__intro > :not(.eco-oeuf) {
+  position: relative;
+  z-index: 1;
+}
+
+.eco-section--faq .eco-section__title {
+  max-width: 9ch;
+}
+
+.eco-faq__content {
+  gap: 0.85rem;
+}
+
 .eco-faq-item {
   border-radius: 1.45rem;
   overflow: hidden;
+  border: 1px solid rgba(17, 17, 13, 0.06);
 }
 
 .eco-faq-item summary {
   position: relative;
-  padding: 1.1rem 1.3rem;
+  padding: 1.2rem 3rem 1.2rem 1.3rem;
   list-style: none;
   cursor: pointer;
   font-weight: 700;
@@ -1772,6 +2123,16 @@ useHead(() => {
   content: '–';
 }
 
+.eco-faq-item[open] {
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(0, 168, 62, 0.08),
+      transparent 9rem
+    ),
+    rgba(255, 255, 255, 0.82);
+}
+
 .eco-faq-item__answer {
   padding: 0 1.3rem 1.2rem;
 }
@@ -1781,7 +2142,8 @@ useHead(() => {
 }
 
 .eco-section--cta {
-  padding-top: clamp(2.5rem, 5vw, 4rem);
+  padding-top: clamp(3rem, 6vw, 5rem);
+  padding-bottom: clamp(4.5rem, 8vw, 7.5rem);
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0),
@@ -1795,7 +2157,7 @@ useHead(() => {
   --text-muted: rgba(247, 245, 239, 0.56);
   position: relative;
   overflow: hidden;
-  padding: clamp(1.8rem, 4vw, 3rem);
+  padding: clamp(2.2rem, 5vw, 4rem);
   border-radius: 2.2rem;
   background:
     radial-gradient(
@@ -1814,6 +2176,7 @@ useHead(() => {
       rgba(23, 23, 18, 0.96) 100%
     );
   color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   display: grid;
   gap: 1rem;
   justify-items: center;
@@ -1834,7 +2197,8 @@ useHead(() => {
 }
 
 .eco-final__title {
-  max-width: 11ch;
+  max-width: 12ch;
+  font-size: clamp(2.25rem, 5vw, 4rem);
 }
 
 .eco-final__text {
@@ -1887,9 +2251,30 @@ input:focus-visible {
     flex-direction: column;
   }
 
+  .eco-impact-card:nth-child(even),
+  .eco-benefit-card:nth-child(2),
+  .eco-benefit-card:nth-child(5),
+  .eco-resource-card:nth-child(2),
+  .eco-section--principles .eco-principle-card:nth-child(2),
+  .eco-section--principles .eco-principle-card:nth-child(3) {
+    transform: none;
+  }
+
+  .eco-section--resources .eco-section__intro,
+  .eco-archive {
+    border-radius: 1.5rem;
+  }
+
+  .eco-oeuf--hero-1 {
+    right: -18%;
+    opacity: 0.08;
+  }
+
   .eco-oeuf--promise-2,
+  .eco-oeuf--hero-2,
   .eco-oeuf--cta-3,
-  .eco-oeuf--archive-2 {
+  .eco-oeuf--archive-2,
+  .eco-oeuf--faq {
     display: none;
   }
 }

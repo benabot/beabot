@@ -155,10 +155,13 @@ const isGreenlightRoute = computed(
 )
 const showMobileMenu = ref(false)
 const isHeroActive = ref(isHomeRoute.value)
+const isDarkSectionActive = ref(false)
 const isLogoHovered = ref(false)
 
 const getDefaultLogoFill = () =>
-  isHomeRoute.value || isGreenlightRoute.value ? 'url(#SVGID1)' : 'url(#SVGID2)'
+  isHomeRoute.value || isGreenlightRoute.value || isDarkSectionActive.value
+    ? 'url(#SVGID1)'
+    : 'url(#SVGID2)'
 
 const degrad = ref(getDefaultLogoFill())
 
@@ -168,6 +171,10 @@ const couleurHaut = computed(() => {
   }
 
   if (isGreenlightRoute.value) {
+    return 'couleur-blanc'
+  }
+
+  if (isDarkSectionActive.value) {
     return 'couleur-blanc'
   }
 
@@ -190,7 +197,41 @@ const syncLogoFill = () => {
   }
 }
 
+const darkNavSectionSelector = '.eco-section--dark, [data-nav-theme="light"]'
+
+const getNavBottom = () => {
+  const navElements = [
+    document.querySelector('.nav-desktop.nav-1'),
+    document.querySelector('.nav-desktop.nav-links'),
+  ]
+
+  return navElements.reduce((bottom, element) => {
+    if (!(element instanceof HTMLElement)) return bottom
+    return Math.max(bottom, element.getBoundingClientRect().bottom)
+  }, 96)
+}
+
+const updateDarkSectionState = () => {
+  const sections = document.querySelectorAll(darkNavSectionSelector)
+
+  if (!sections.length) {
+    isDarkSectionActive.value = false
+    return
+  }
+
+  const navBottom = getNavBottom()
+
+  isDarkSectionActive.value = Array.from(sections).some((section) => {
+    if (!(section instanceof HTMLElement)) return false
+
+    const rect = section.getBoundingClientRect()
+    return rect.top <= navBottom && rect.bottom >= navBottom
+  })
+}
+
 const updateHeroState = () => {
+  updateDarkSectionState()
+
   if (!isHomeRoute.value) {
     isHeroActive.value = false
     syncLogoFill()

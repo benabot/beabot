@@ -5,7 +5,7 @@
 **Projet** : BeAbot - Blog éco-conception web
 **Date création** : 15 décembre 2025
 **Dernière MAJ** : 23 avril 2026
-**Branche active** : `feature/eco-conception-pillar`
+**Branche active** : `feature/eco-conception-visual-rhythm`
 **Sites** :
 
 - 🟢 **Production** (Nuxt 3, master) : <https://beabot.fr>
@@ -16,6 +16,16 @@
 ## 📊 CONTEXTE ACTUEL
 
 ### Statut (23 avril 2026)
+
+**Phase 19 Rythme visuel Éco-conception (23 avril 2026)** — Amélioration de la hiérarchie visuelle de `/eco-conception/`, sur la branche `feature/eco-conception-visual-rhythm`.
+
+- [x] Hero renforcé avec deux œufs décoratifs discrets en arrière-plan
+- [x] Sections `impacts`, `bénéfices`, `ressources` et `FAQ` différenciées pour casser l’uniformité des blocs clairs
+- [x] Section définition conservée comme pivot sombre avec plus de respiration et de contraste interne
+- [x] Grilles impacts/bénéfices/articles rendues moins homogènes par des accents visuels sobres
+- [x] Archive éditoriale gardée intacte côté contenu, mais mieux hiérarchisée visuellement
+- [x] FAQ rééquilibrée avec un grand œuf organique sous l’introduction
+- [x] Navigation desktop rendue claire au survol des sections sombres marquées
 
 **Phase 18 Page pilier Éco-conception (23 avril 2026)** — Refonte de `/eco-conception/` en page pilier éditoriale + archive, sur la branche `feature/eco-conception-pillar`.
 
