@@ -4,8 +4,8 @@
 
 **Projet** : BeAbot - Blog éco-conception web
 **Date création** : 15 décembre 2025
-**Dernière MAJ** : 22 avril 2026
-**Branche active** : `feature/greenlight-page`
+**Dernière MAJ** : 23 avril 2026
+**Branche active** : `feature/eco-conception-pillar`
 **Sites** :
 
 - 🟢 **Production** (Nuxt 3, master) : <https://beabot.fr>
@@ -15,7 +15,25 @@
 
 ## 📊 CONTEXTE ACTUEL
 
-### Statut (22 avril 2026)
+### Statut (23 avril 2026)
+
+**Phase 18 Page pilier Éco-conception (23 avril 2026)** — Refonte de `/eco-conception/` en page pilier éditoriale + archive, sur la branche `feature/eco-conception-pillar`.
+
+- [x] Hero reconstruit pour positionner clairement l’éco-conception web comme méthode de conception
+- [x] Bloc de repères éditoriaux ajouté pour cadrer ce que l’éco-conception est et n’est pas
+- [x] Section impacts du numérique hiérarchisée avec 4 repères chiffrés issus des contenus existants
+- [x] Bloc définition / principes ajouté autour de 4 axes : utile, utilisable, sobre, durable
+- [x] Bloc bénéfices concrets recentré sur vitesse, SEO, accessibilité, maintenance, crédibilité et cohérence RSE
+- [x] Section ressources refondue en gardant le rôle d’archive éditoriale (articles, filtres, recherche)
+- [x] FAQ intégrée directement dans la page via `details` tout en conservant l’article FAQ existant
+- [x] CTA final aligné avec la home et enrichi d’un lien secondaire vers Greenlight
+- [x] Direction visuelle rééquilibrée pour garder une majorité de fond clair sur la page, sans bloc sombre dominant
+- [x] Rythme visuel renforcé avec des respirations sombres et le retour des œufs décoratifs BeAbot
+- [x] Bloc archive densifié visuellement avec plus d’œufs, plus de relief et des cartes moins uniformes
+- [x] SEO mis à jour pour la page pilier avec canonical, OG, `CollectionPage + ItemList` conservé et `FAQPage` ajouté
+- [x] Parent `pages/eco-conception.vue` simplifié pour ne plus injecter de H1 ni de métadonnées parasites
+- [x] Validation `npm run generate` + `NUXT_PUBLIC_SITE_URL=https://beabot.fr node scripts/seo-check.mjs`
+- [x] `npm run lint` lancé : warnings historiques du dépôt confirmés, pas de blocage spécifique à cette tâche
 
 **Phase 17 Greenlight (22 avril 2026)** — Page `/greenlight/` et intégration dans la navigation principale, sur la branche `feature/greenlight-page`.
 
