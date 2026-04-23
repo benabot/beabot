@@ -266,6 +266,7 @@ node scripts/seo-check.mjs  # Vérification SEO
 | `PORTFOLIO_REDESIGN.md` | Specs refonte portfolio |
 | `PORTFOLIO_VISUAL_IMPROVEMENTS.md` | Améliorations visuelles portfolio |
 | `data/portfolio.ts` | Données structurées projets |
+| `docs/HOMEPAGE_REDESIGN_V3.md` | DDesign V3 |
 
 ---
 
