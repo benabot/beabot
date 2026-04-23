@@ -6,7 +6,6 @@
       <div class="contact-aside">
         <p class="kicker">Contact</p>
 
-
         <h1>Parlons de votre projet</h1>
 
         <p>
@@ -21,30 +20,31 @@
             <li>Échanges clairs, sans jargon inutile</li>
             <li>Aucune exploitation commerciale de vos données</li>
           </ul> -->
-          <p>Un premier échange suffit pour cadrer : objectifs, contraintes, budget, délais.</p>
+          <p>
+            Un premier échange suffit pour cadrer : objectifs, contraintes,
+            budget, délais.
+          </p>
         </div>
 
+        <div class="contact-links">
+          <button
+            type="button"
+            class="copy-email-btn"
+            @click="copyEmail"
+            :disabled="copied"
+          >
+            {{ copied ? 'Email copié ✓' : 'Copier mon email' }}
+          </button>
 
-<div class="contact-links">
-  <button
-    type="button"
-    class="copy-email-btn"
-    @click="copyEmail"
-    :disabled="copied"
-  >
-    {{ copied ? 'Email copié ✓' : 'Copier mon email' }}
-  </button>
-
-  <a
-    class="contact-link"
-    href="https://www.linkedin.com/in/benoit-abot/"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    LinkedIn
-  </a>
-</div>
-
+          <a
+            class="contact-link"
+            href="https://www.linkedin.com/in/benoit-abot/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+        </div>
 
         <p v-if="sent" class="notice" aria-live="polite">
           ✓ Message envoyé ! Je vous recontacte très vite.
@@ -67,45 +67,81 @@
 
           <!-- Honeypot -->
           <p class="hp">
-            <label>Ne pas remplir : <input name="bot-field" v-model="form.botField" /></label>
+            <label
+              >Ne pas remplir : <input name="bot-field" v-model="form.botField"
+            /></label>
           </p>
 
           <label>
             Votre nom
-            <input name="name" v-model="form.name" required autocomplete="family-name" />
+            <input
+              name="name"
+              v-model="form.name"
+              required
+              autocomplete="family-name"
+            />
           </label>
 
           <label>
             Votre prénom
-            <input name="prenom" v-model="form.prenom" required autocomplete="given-name" />
+            <input
+              name="prenom"
+              v-model="form.prenom"
+              required
+              autocomplete="given-name"
+            />
           </label>
 
           <label>
             Votre Email
-            <input type="email" name="email" v-model="form.email" required autocomplete="email" />
+            <input
+              type="email"
+              name="email"
+              v-model="form.email"
+              required
+              autocomplete="email"
+            />
           </label>
 
           <label>
             Votre message (décrivez votre projet ou posez votre question)
-            <textarea name="message" v-model="form.message" required rows="7"></textarea>
+            <textarea
+              name="message"
+              v-model="form.message"
+              required
+              rows="7"
+            ></textarea>
           </label>
-<label class="optin">
-  <input class="optin__control" type="checkbox" name="optin" v-model="form.optin" required />
-  <span>
-    J'accepte les
-    <AppLink to="/mentions-legales/" target="_blank" rel="noopener noreferrer">mentions légales</AppLink>
-    <small class="privacy-note-inline">
-      Vos coordonnées sont utilisées uniquement pour répondre à votre demande. Aucune newsletter, aucun partage à des tiers.
-    </small>
-  </span>
-</label>
-
+          <label class="optin">
+            <input
+              class="optin__control"
+              type="checkbox"
+              name="optin"
+              v-model="form.optin"
+              required
+            />
+            <span>
+              J'accepte les
+              <AppLink
+                to="/mentions-legales/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >mentions légales</AppLink
+              >
+              <small class="privacy-note-inline">
+                Vos coordonnées sont utilisées uniquement pour répondre à votre
+                demande. Aucune newsletter, aucun partage à des tiers.
+              </small>
+            </span>
+          </label>
 
           <button type="submit" :disabled="loading">
             {{ loading ? 'Envoi…' : 'Envoyer mon message →' }}
           </button>
 
-          <p class="form-note">Vous recevrez une réponse sous 2 jours ouvrés.</p>
+          <p class="form-note">
+            Vous recevrez une réponse sous 2 jours ouvrés.
+          </p>
         </form>
       </div>
     </div>
@@ -137,7 +173,6 @@ async function copyEmail() {
   }
 }
 
-
 function encode(data) {
   return Object.keys(data)
     .map((k) => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]))
@@ -150,13 +185,16 @@ const contactCanonicalUrl = canonicalUrl(config.public.siteUrl, '/contact')
 // SEO meta tags - useSeoMeta pour un remplacement propre des meta globales
 useSeoMeta({
   title: 'Contact — Développeur web éco-conception',
-  description: 'Contactez Benoît Abot, développeur web spécialisé en éco-conception. Devis gratuit pour votre projet web sobre, performant et durable.',
+  description:
+    'Contactez Benoît Abot, développeur web spécialisé en éco-conception. Devis gratuit pour votre projet web sobre, performant et durable.',
   ogTitle: 'Contact — Benoît Abot, développeur éco-conception',
-  ogDescription: 'Une question sur l\'éco-conception web ? Un site à créer ou optimiser ? Écrivez-moi, je vous réponds sous 48h.',
+  ogDescription:
+    "Une question sur l'éco-conception web ? Un site à créer ou optimiser ? Écrivez-moi, je vous réponds sous 48h.",
   ogType: 'website',
   ogUrl: contactCanonicalUrl,
   twitterTitle: 'Contact — Benoît Abot',
-  twitterDescription: 'Développeur web éco-conception. Contactez-moi pour votre projet web sobre et performant.',
+  twitterDescription:
+    'Développeur web éco-conception. Contactez-moi pour votre projet web sobre et performant.',
   twitterCard: 'summary_large_image',
 })
 
@@ -226,7 +264,7 @@ async function onSubmit() {
 /* Container: tu peux garder ton clamp */
 .container {
   width: clamp(90vw, 80vw, 1040px);
-  margin: 2rem auto;
+  margin: 2rem auto clamp(5.5rem, 9vw, 7rem);
 }
 
 /* Layout 2 colonnes desktop */
@@ -261,9 +299,8 @@ h1 {
   /* petit trait “print”, discret */
   display: inline-block;
   padding-bottom: 0.35rem;
-  border-bottom: 2px solid rgba(0,0,0,0.18);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.18);
 }
-
 
 .contact-aside p {
   line-height: 1.6;
@@ -290,7 +327,7 @@ h1 {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
 }
@@ -309,7 +346,13 @@ h1 {
 }
 
 .email-svg text {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Arial,
+    sans-serif;
   font-size: 16px;
   font-weight: 700;
   fill: #000;
@@ -319,12 +362,16 @@ h1 {
 .copy-email-btn {
   padding: 8px 12px;
   border-radius: 999px;
-  border: 2px solid rgba(0,0,0,0.14);
-  background: rgba(255,255,255,0.7);
+  border: 2px solid rgba(0, 0, 0, 0.14);
+  background: rgba(255, 255, 255, 0.7);
   cursor: pointer;
   color: grey;
   font-weight: 800;
-  transition: transform .12s ease, background .12s ease, border-color .12s ease, box-shadow .12s ease;
+  transition:
+    transform 0.12s ease,
+    background 0.12s ease,
+    border-color 0.12s ease,
+    box-shadow 0.12s ease;
 }
 
 .copy-btn:hover {
@@ -352,7 +399,6 @@ h1 {
   align-items: center;
   justify-content: center;
 }
-
 
 .contact-link {
   text-decoration: underline;
@@ -383,7 +429,6 @@ h1 {
   border-radius: 18px;
   background: rgba(0, 0, 0, 0.02);
   padding: clamp(16px, 2vw, 24px);
-
 }
 
 /* Form */
@@ -414,7 +459,10 @@ textarea {
   font-size: 16px;
   line-height: 1.35;
 
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
 }
 
 input:hover,
@@ -449,7 +497,6 @@ textarea {
 
 /* Checkbox + optin */
 
-
 .optin {
   display: grid;
   grid-template-columns: 22px 1fr;
@@ -465,23 +512,26 @@ textarea {
   margin: 0;
   width: 18px;
   height: 18px;
- align-self: center;
-  border: 2px solid rgba(0,0,0,0.28);
+  align-self: center;
+  border: 2px solid rgba(0, 0, 0, 0.28);
   border-radius: 6px;
-  background: rgba(255,255,255,0.8);
+  background: rgba(255, 255, 255, 0.8);
 
   display: grid;
   place-content: center;
 
-  transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
 }
 
 .optin__control::before {
-  content: "";
+  content: '';
   width: 10px;
   height: 10px;
   transform: scale(0);
-  transition: transform .12s ease;
+  transition: transform 0.12s ease;
   box-shadow: inset 1em 1em #04d94f;
   clip-path: polygon(14% 44%, 0 65%, 44% 100%, 100% 20%, 80% 0, 43% 62%);
 }
@@ -501,8 +551,6 @@ textarea {
   border-color: #04d94f;
 }
 
-
-
 input[type='checkbox'] {
   width: 18px;
   height: 18px;
@@ -517,7 +565,8 @@ input[type='checkbox'] {
 } */
 
 .optin a {
-  background: linear-gradient(currentColor, currentColor) right bottom / 100% 0.12em no-repeat;
+  background: linear-gradient(currentColor, currentColor) right bottom / 100%
+    0.12em no-repeat;
   transition: background-size 0.3s ease;
   text-decoration: none;
 }
@@ -537,8 +586,13 @@ button {
   cursor: pointer;
   font-weight: 800;
 
-  transition: transform 0.12s ease, filter 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease,
-    color 0.12s ease, border-color 0.12s ease;
+  transition:
+    transform 0.12s ease,
+    filter 0.12s ease,
+    box-shadow 0.12s ease,
+    background-color 0.12s ease,
+    color 0.12s ease,
+    border-color 0.12s ease;
 }
 
 button:hover {

@@ -1,6 +1,6 @@
 # 📊 ÉTAT DU PROJET - BeAbot
 
-> **Récapitulatif de l'état du projet au 26 mars 2026**
+> **Récapitulatif de l'état du projet au 23 avril 2026**
 
 ---
 
@@ -14,6 +14,47 @@
 | **Dev Preview** | https://dev-beabot.netlify.app | Nuxt 3.14 | dev    | ✅ Tests  |
 
 ### Dernière mise à jour
+
+**Fix Footer transparent (23 avril 2026)** — Correction de l’intégration organique du footer sur la branche `fix/footer-clip-transparent`.
+
+- ✅ Faux SVG de vague retiré du footer
+- ✅ Sommet organique appliqué directement au footer via masque CSS
+- ✅ Transparence réelle conservée dans la découpe, sans vague peinte ni fond simulé
+- ✅ Masque borné à une hauteur de vague fixe pour éviter les bandes blanches sur la home
+- ✅ Chevauchement footer/main conservé, mais sans gros padding global
+- ✅ Marges basses ciblées sur `/contact/` et `/portfolio/` pour empêcher la vague de mordre le contenu
+- ✅ Footer marqué `data-nav-theme="light"` pour garder la navigation lisible au survol de la zone sombre
+- ✅ Validation `npm run generate` OK
+- ⚠️ `npm run lint` reste non bloquant avec des warnings historiques repo-wide
+
+**Phase 19 Rythme visuel Éco-conception (23 avril 2026)** — Amélioration visuelle de `/eco-conception/`.
+
+- ✅ Alternance clair/sombre renforcée sans transformer la page en landing gadget
+- ✅ Œufs décoratifs réintroduits dans le hero, les transitions, l’archive, la FAQ et le CTA final
+- ✅ FAQ rééquilibrée avec une présence organique plus forte à gauche de l’introduction
+- ✅ Navigation desktop rendue claire au survol des sections sombres marquées
+- ✅ `npm run generate` et `seo-check` validés
+
+**Phase 18 Page pilier Éco-conception (23 avril 2026)** — Refonte de `/eco-conception/` en page pilier éditoriale + archive.
+
+- ✅ Fusion de l’ancienne approche éditoriale de la home avec l’archive d’articles éco-conception
+- ✅ Hero, repères, impacts, définition, bénéfices, ressources, FAQ et CTA final restructurés
+- ✅ Page conservée comme point d’entrée SEO et archive de blog
+- ✅ Données structurées `CollectionPage + ItemList` conservées et `FAQPage` ajoutée
+- ✅ Parent `pages/eco-conception.vue` simplifié pour éviter les métadonnées parasites
+
+**Phase 17 Greenlight (22 avril 2026)** — Page `/greenlight/` et intégration dans la navigation principale.
+
+- ✅ Page produit Greenlight créée avec hero, bénéfices, comparatif de versions, FAQ et CTA final
+- ✅ Navigation principale et footer enrichis avec l’entrée `Greenlight`
+- ✅ Positionnement recentré sur rapidité, visibilité, crédibilité, lisibilité, durabilité et maintenance simplifiée
+
+**Phase 16 Homepage V3 (22 avril 2026)** — Refonte de la home selon le positionnement hybride services + éco-conception.
+
+- ✅ Hero repositionné sur l’offre de développement web éco-conçu
+- ✅ Sections preuves chiffrées, services, réalisations, Greenlight, approche, articles et CTA final reconstruites
+- ✅ Effets hover des cartes projets adoucis et limités à l’image
+- ✅ Navigation desktop masquée sur `.home-hero`, claire ensuite
 
 **SEO Apps (26 mars 2026)** — Hardening SEO des pages `/apps/`, `/apps/duo-spend/` et `/apps/meeting-mode/`, avec alignement des métadonnées, des données structurées et des fichiers d’indexation.
 
@@ -82,6 +123,10 @@ Phase 11    - Homepage & Contact    [██████████████�
 Phase 12    - SEO Technique         [████████████████████] 100% ✅
 Phase 14    - Portfolio Emploi      [████████████████████] 100% ✅
 Pages Apps  - /apps + pages détail  [████████████████████] 100% ✅
+Home V3     - Positionnement offre  [████████████████████] 100% ✅
+Greenlight  - Page produit          [████████████████████] 100% ✅
+Éco pilier  - Archive + page pilier [████████████████████] 100% ✅
+Footer      - Découpe transparente  [████████████████████] 100% ✅
 Phase 13    - SEO Avancé & Contenu  [░░░░░░░░░░░░░░░░░░░░]   0% 🔜
 Phase 15    - Side Projects         [░░░░░░░░░░░░░░░░░░░░]   0% 🔜
 ```
@@ -89,6 +134,16 @@ Phase 15    - Side Projects         [░░░░░░░░░░░░░░�
 ---
 
 ## ✅ CE QUI A ÉTÉ FAIT
+
+### Avril 2026 : Home V3, Greenlight, page pilier Éco-conception et footer
+
+- ✅ Home refondue en page d’offre pour “développeur web spécialisé en éco-conception”
+- ✅ Page `/greenlight/` créée et intégrée dans la navigation principale
+- ✅ Page `/eco-conception/` refondue en page pilier claire + archive éditoriale
+- ✅ Rythme visuel de `/eco-conception/` renforcé avec sections sombres et œufs décoratifs
+- ✅ Footer corrigé avec une découpe organique réellement transparente
+- ✅ Ajustements de fin de page sur `/contact/` et `/portfolio/` pour préserver les contenus sous la vague
+- ✅ Build statique validé après les corrections footer
 
 ### Phase 14 : Refonte Portfolio (22-23 décembre 2025)
 
@@ -168,26 +223,29 @@ Phase 15    - Side Projects         [░░░░░░░░░░░░░░�
 
 ### Branches actives
 
-| Branche                      | Description          | État                   |
-| ---------------------------- | -------------------- | ---------------------- |
-| `master`                     | Production beabot.fr | 🔒 Stable              |
-| `dev`                        | Développement        | ✅ Phase 12 prête      |
-| `feature/portfolio-redesign` | Refonte portfolio    | ✅ **Prêt pour merge** |
-| `style/apps-graphisme`       | Pages Apps           | ✅ En cours            |
+| Branche                                | Description                  | État                       |
+| -------------------------------------- | ---------------------------- | -------------------------- |
+| `master`                               | Production beabot.fr         | 🔒 Stable                  |
+| `dev`                                  | Développement                | ✅ Base de travail         |
+| `fix/footer-clip-transparent`          | Footer organique transparent | ✅ En cours / prêt à revue |
+| `feature/home-v3-positioning`          | Homepage V3                  | ✅ Réalisée                |
+| `feature/greenlight-page`              | Page Greenlight              | ✅ Réalisée                |
+| `feature/eco-conception-pillar`        | Page pilier éco-conception   | ✅ Réalisée                |
+| `feature/eco-conception-visual-rhythm` | Rythme visuel éco-conception | ✅ Réalisée                |
 
 ### Workflow de merge
 
 ```bash
-# 1. Merger portfolio sur dev
+# 1. Merger la branche de travail sur dev après revue
 git checkout dev
-git merge feature/portfolio-redesign --no-ff -m "feat: Phase 14 Portfolio redesign"
+git merge fix/footer-clip-transparent --no-ff -m "fix: footer transparent clip integration"
 git push origin dev
 
 # 2. Tester sur dev-beabot.netlify.app
 
 # 3. Merger sur master
 git checkout master
-git merge dev --no-ff -m "feat: Phase 12 SEO + Phase 14 Portfolio"
+git merge dev --no-ff -m "fix: footer transparent clip integration"
 git push origin master
 ```
 

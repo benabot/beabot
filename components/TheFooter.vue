@@ -1,11 +1,5 @@
 <template>
-  <footer id="footer" class="fond-gris">
-    <svg viewBox="0 0 1366 144.3" aria-hidden="true" focusable="false">
-      <path
-        d="M0 0h1366v81c-84.4 17.6-217.1 39.2-380.5 38.5-228.3-1-329.2-44.6-547-48C336.3 69.9 185.6 76.8 0 121V0z"
-        fill="#f2f2f2"
-      />
-    </svg>
+  <footer id="footer" class="fond-gris" data-nav-theme="light">
     <div class="container-or">
       <div class="item a">
         <div class="title title--footer h1 beabot">beAbot</div>
@@ -93,12 +87,87 @@ $height: 90vh;
 }
 
 footer {
+  --footer-wave-height: clamp(3rem, 8vw, 4.75rem);
+
   display: flex;
   position: relative;
+  margin-top: calc(var(--footer-wave-height) * -1);
+  padding-top: calc(var(--footer-wave-height) + clamp(2rem, 4vw, 3rem));
+  padding-bottom: clamp(2.5rem, 6vw, 4rem);
   z-index: 1;
-  @media (max-width: $breakpoint-tablet) {
-    padding-top: 4rem;
+  background: $fondGris;
+  -webkit-mask-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath fill='white' d='M0 78 C130 28 275 50 410 66 C555 84 690 50 820 70 C955 91 1060 93 1180 52 C1280 18 1365 58 1440 34 L1440 120 L0 120 Z'/%3E%3C/svg%3E"),
+    linear-gradient(#000, #000);
+  mask-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath fill='white' d='M0 78 C130 28 275 50 410 66 C555 84 690 50 820 70 C955 91 1060 93 1180 52 C1280 18 1365 58 1440 34 L1440 120 L0 120 Z'/%3E%3C/svg%3E"),
+    linear-gradient(#000, #000);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size:
+    100% var(--footer-wave-height),
+    100% calc(100% - var(--footer-wave-height) + 1px);
+  mask-size:
+    100% var(--footer-wave-height),
+    100% calc(100% - var(--footer-wave-height) + 1px);
+  -webkit-mask-position:
+    top left,
+    left calc(var(--footer-wave-height) - 1px);
+  mask-position:
+    top left,
+    left calc(var(--footer-wave-height) - 1px);
+
+  @supports not (
+    (mask-image: linear-gradient(#000, #000)) or
+      (-webkit-mask-image: linear-gradient(#000, #000))
+  ) {
+    clip-path: polygon(
+      0 11%,
+      7% 6%,
+      15% 8%,
+      28% 6.5%,
+      42% 8.5%,
+      56% 6.5%,
+      70% 9%,
+      84% 7%,
+      100% 6%,
+      100% 100%,
+      0 100%
+    );
   }
+
+  @media (min-width: $breakpoint-tablet) {
+    --footer-wave-height: clamp(3.75rem, 5vw, 5.25rem);
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    -webkit-mask-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 720 120' preserveAspectRatio='none'%3E%3Cpath fill='white' d='M0 74 C70 36 140 54 212 65 C310 80 390 45 482 64 C576 83 648 56 720 38 L720 120 L0 120 Z'/%3E%3C/svg%3E"),
+      linear-gradient(#000, #000);
+    mask-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 720 120' preserveAspectRatio='none'%3E%3Cpath fill='white' d='M0 74 C70 36 140 54 212 65 C310 80 390 45 482 64 C576 83 648 56 720 38 L720 120 L0 120 Z'/%3E%3C/svg%3E"),
+      linear-gradient(#000, #000);
+  }
+
+  @supports not (
+    (mask-image: linear-gradient(#000, #000)) or
+      (-webkit-mask-image: linear-gradient(#000, #000))
+  ) {
+    @media (max-width: $breakpoint-tablet) {
+      clip-path: polygon(
+        0 10%,
+        14% 5.5%,
+        28% 7.5%,
+        44% 5.8%,
+        62% 8%,
+        80% 6.5%,
+        100% 5.5%,
+        100% 100%,
+        0 100%
+      );
+    }
+  }
+
   .title--footer {
     color: rgba(235, 235, 235, 0.82);
     -webkit-text-stroke-width: 0;
@@ -121,14 +190,6 @@ footer {
     top: 0.125em;
     position: relative;
   }
-  svg {
-    position: absolute;
-    top: -3px;
-    width: 100%;
-    height: auto;
-    max-height: 100%;
-  }
-
   a {
     text-decoration: none;
     color: $gris4;

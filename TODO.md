@@ -5,7 +5,7 @@
 **Projet** : BeAbot - Blog éco-conception web
 **Date création** : 15 décembre 2025
 **Dernière MAJ** : 23 avril 2026
-**Branche active** : `feature/eco-conception-visual-rhythm`
+**Branche active** : `fix/footer-clip-transparent`
 **Sites** :
 
 - 🟢 **Production** (Nuxt 3, master) : <https://beabot.fr>
@@ -16,6 +16,14 @@
 ## 📊 CONTEXTE ACTUEL
 
 ### Statut (23 avril 2026)
+
+**Fix Footer transparent (23 avril 2026)** — Correction du sommet organique du footer, sur la branche `fix/footer-clip-transparent`.
+
+- [x] Faux SVG de vague retiré du footer
+- [x] Découpe supérieure douce appliquée directement au footer via masque CSS
+- [x] Gros padding global de transition retiré pour laisser le footer s’emboîter sous `main`
+- [x] Solution CSS sans dépendance, sans script et sans décor peint
+- [x] Marges basses ajoutées sur `/contact/` et `/portfolio/` pour éviter que la vague ne morde le contenu
 
 **Phase 19 Rythme visuel Éco-conception (23 avril 2026)** — Amélioration de la hiérarchie visuelle de `/eco-conception/`, sur la branche `feature/eco-conception-visual-rhythm`.
 

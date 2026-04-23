@@ -4,7 +4,9 @@
     <svg class="sr-only" aria-hidden="true">
       <defs>
         <clipPath id="shared-egg-clip" clipPathUnits="objectBoundingBox">
-          <path d="M0,0 v1 h1 V0 H0 m0.948,0.507 c-0.063,0.25,-0.207,0.466,-0.461,0.466 S0.026,0.765,0.026,0.507 S0.236,0.084,0.487,0.041 c0.486,-0.083,0.531,0.191,0.461,0.466" />
+          <path
+            d="M0,0 v1 h1 V0 H0 m0.948,0.507 c-0.063,0.25,-0.207,0.466,-0.461,0.466 S0.026,0.765,0.026,0.507 S0.236,0.084,0.487,0.041 c0.486,-0.083,0.531,0.191,0.461,0.466"
+          />
         </clipPath>
       </defs>
     </svg>
@@ -36,14 +38,18 @@
 
         <h1>
           Benoît Abot<br />
-          <span class="subtitle">Développeur web & designer<br />spécialisé en éco-conception</span>
+          <span class="subtitle"
+            >Développeur web & designer<br />spécialisé en éco-conception</span
+          >
         </h1>
 
         <p class="hero-description">
           Je conçois des sites performants, accessibles et sobres en ressources.
-          Chaque projet est une occasion de prouver qu'efficacité et durabilité vont de pair,
-          reposant sur des
-          <a href="#competences" class="hero-inline-link">compétences mises en œuvre</a>
+          Chaque projet est une occasion de prouver qu'efficacité et durabilité
+          vont de pair, reposant sur des
+          <a href="#competences" class="hero-inline-link"
+            >compétences mises en œuvre</a
+          >
           au fil de projets concrets.
         </p>
 
@@ -78,13 +84,19 @@
     <header class="section-header" aria-labelledby="portfolio-filters-title">
       <div class="section-header-main">
         <div class="section-header-title-group">
-          <h2 id="portfolio-filters-title" class="section-title">Réalisations</h2>
+          <h2 id="portfolio-filters-title" class="section-title">
+            Réalisations
+          </h2>
           <p class="section-count" aria-live="polite">
             Extraits de 15 ans de web
           </p>
         </div>
 
-        <div class="section-header-filters" role="tablist" aria-label="Filtres projets">
+        <div
+          class="section-header-filters"
+          role="tablist"
+          aria-label="Filtres projets"
+        >
           <button
             v-for="(filter, index) in portfolioFilters"
             :key="filter.id"
@@ -149,7 +161,9 @@
     >
       <div class="container--page">
         <header class="section-competences__header">
-          <h2 id="portfolio-skills-title" class="section-competences__title">Compétences</h2>
+          <h2 id="portfolio-skills-title" class="section-competences__title">
+            Compétences
+          </h2>
           <a
             href="https://github.com/benabot"
             target="_blank"
@@ -164,28 +178,36 @@
           <div class="skill-group">
             <h3>Front-end</h3>
             <ul>
-              <li v-for="item in skillsBlocks[0].items" :key="item">{{ item }}</li>
+              <li v-for="item in skillsBlocks[0].items" :key="item">
+                {{ item }}
+              </li>
             </ul>
           </div>
 
           <div class="skill-group">
             <h3>Back-end / CMS</h3>
             <ul>
-              <li v-for="item in skillsBlocks[1].items" :key="item">{{ item }}</li>
+              <li v-for="item in skillsBlocks[1].items" :key="item">
+                {{ item }}
+              </li>
             </ul>
           </div>
 
           <div class="skill-group">
             <h3>Éco-conception</h3>
             <ul>
-              <li v-for="item in skillsBlocks[2].items" :key="item">{{ item }}</li>
+              <li v-for="item in skillsBlocks[2].items" :key="item">
+                {{ item }}
+              </li>
             </ul>
           </div>
 
           <div class="skill-group">
             <h3>DevOps</h3>
             <ul>
-              <li v-for="item in skillsBlocks[3].items" :key="item">{{ item }}</li>
+              <li v-for="item in skillsBlocks[3].items" :key="item">
+                {{ item }}
+              </li>
             </ul>
           </div>
         </div>
@@ -273,14 +295,16 @@ const matchesFilter = (project, filterId) => {
 }
 
 const filteredProjects = computed(() =>
-  projects.filter((project) => matchesFilter(project, activeFilter.value))
+  projects.filter((project) => matchesFilter(project, activeFilter.value)),
 )
-const ecoCount = computed(() =>
-  projects.filter((project) => project.tags.includes('Éco-conçu')).length
+const ecoCount = computed(
+  () => projects.filter((project) => project.tags.includes('Éco-conçu')).length,
 )
-const filteredEcoCount = computed(() =>
-  filteredProjects.value.filter((project) => project.tags.includes('Éco-conçu'))
-    .length
+const filteredEcoCount = computed(
+  () =>
+    filteredProjects.value.filter((project) =>
+      project.tags.includes('Éco-conçu'),
+    ).length,
 )
 const skillsBlocks = computed(() => [
   skills.frontend,
@@ -334,7 +358,7 @@ useHead({
       hid: 'description',
       name: 'description',
       content:
-        'Portfolio de Benoît Abot, développeur web et designer spécialisé en éco-conception. 15 ans d\'expérience, Vue.js, Nuxt, WordPress. Disponible en freelance et CDI.',
+        "Portfolio de Benoît Abot, développeur web et designer spécialisé en éco-conception. 15 ans d'expérience, Vue.js, Nuxt, WordPress. Disponible en freelance et CDI.",
     },
     {
       hid: 'og:title',
@@ -375,8 +399,7 @@ useHead({
           '@type': 'Person',
           name: 'Benoît Abot',
           jobTitle: 'Développeur web & designer',
-          description:
-            'Spécialisé en éco-conception web. 15 ans d\'expérience.',
+          description: "Spécialisé en éco-conception web. 15 ans d'expérience.",
           url: 'https://beabot.fr/portfolio/',
           sameAs: [
             'https://www.linkedin.com/in/benoit-abot/',
@@ -457,7 +480,11 @@ useHead({
   overflow: hidden;
 
   /* Fond subtil */
-  background: linear-gradient(135deg, rgba(242, 240, 240, 0.4) 0%, rgba(217, 217, 217, 0.2) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(242, 240, 240, 0.4) 0%,
+    rgba(217, 217, 217, 0.2) 100%
+  );
   border: 2px solid rgba(0, 0, 0, 0.08);
   border-radius: 24px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
@@ -591,8 +618,13 @@ h1 {
   font-weight: 800;
   text-decoration: none;
   display: inline-block;
-  transition: transform 0.12s ease, filter 0.12s ease, box-shadow 0.12s ease,
-    background-color 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+  transition:
+    transform 0.12s ease,
+    filter 0.12s ease,
+    box-shadow 0.12s ease,
+    background-color 0.12s ease,
+    color 0.12s ease,
+    border-color 0.12s ease;
 }
 
 .btn-primary:hover {
@@ -751,7 +783,9 @@ h1 {
   padding: 0.45rem 0.8rem;
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 999px;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
 
   &:hover {
     color: $bleu1;
@@ -796,7 +830,11 @@ h1 {
   width: min(92vw, 980px);
   margin: 0 auto var(--space-3);
   padding: var(--space-3);
-  background: linear-gradient(135deg, rgba(242, 240, 240, 0.3) 0%, rgba(255, 255, 255, 0.5) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(242, 240, 240, 0.3) 0%,
+    rgba(255, 255, 255, 0.5) 100%
+  );
   border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
@@ -816,11 +854,10 @@ h1 {
 
 .section-header-title-group {
   text-align: center;
- 
 
   @media (min-width: $breakpoint-tablet) {
     text-align: left;
-     width: 30%;
+    width: 30%;
   }
 }
 
@@ -897,8 +934,12 @@ h1 {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  transition: transform 0.15s ease, box-shadow 0.15s ease,
-    background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
 }
 
 .filter-label {
@@ -1014,13 +1055,17 @@ h1 {
 .cta-final {
   position: relative;
   width: clamp(90vw, 85vw, 900px);
-  margin: var(--space-3) auto var(--space-4);
+  margin: var(--space-3) auto clamp(5.5rem, 9vw, 7rem);
   padding: clamp(2rem, 3vw, 2.5rem) clamp(2rem, 4vw, 3.5rem);
   text-align: center;
   overflow: hidden;
 
   /* Même fond que le hero */
-  background: linear-gradient(135deg, rgba(242, 240, 240, 0.4) 0%, rgba(217, 217, 217, 0.2) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(242, 240, 240, 0.4) 0%,
+    rgba(217, 217, 217, 0.2) 100%
+  );
   border: 2px solid rgba(0, 0, 0, 0.08);
   border-radius: 24px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
