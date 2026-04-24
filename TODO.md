@@ -25,6 +25,13 @@
 - [x] Lien GitHub ajouté sur la carte projet
 - [x] Validation `npm run generate` effectuée avec succès
 
+**Ajout Siturem à la landing apps (24 avril 2026)** — Mise à jour ciblée de `data/apps.ts`, sur la branche `feature/add-siturem-portfolio`.
+
+- [x] App `Siturem` ajoutée dans la liste `/apps/`
+- [x] Statut `Prépublication` et plateforme `iOS` configurés pour les chips de carte
+- [x] Lien cible préparé vers `/apps/siturem/` sans créer la page
+- [x] Validation `npm run generate` effectuée avec succès
+
 **Fix Liens tags article + bas de page (24 avril 2026)** — Correctif ciblé sur les pages articles éco-conception, sur la branche `fix/eco-article-tags-anchor`.
 
 - [x] Les tags cliquables des articles pointent vers `/eco-conception/?tag=...#eco-archive`

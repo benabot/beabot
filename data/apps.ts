@@ -141,7 +141,7 @@ export const appsIndexContent = {
   seo: {
     title: 'Apps iOS & macOS — BeAbot',
     description:
-      "DuoSpend et Meeting Mode : deux apps natives Swift, sans tracking, sans SDK tiers. D'autres apps à venir, certaines gratuites, certaines avec abonnement.",
+      "DuoSpend, Meeting Mode et Siturem : des apps natives Swift, sans tracking ni SDK tiers. D'autres apps à venir, certaines gratuites, certaines avec abonnement.",
     image: '/img/apps/duospend-vignette-apps.webp',
   },
 }
@@ -174,6 +174,23 @@ export const appsIndexEntries: AppIndexEntry[] = [
     preview: {
       src: '/img/apps/meeting-mode_vignette-apps.webp',
       alt: 'Aperçu de Meeting Mode sur macOS',
+      available: true,
+      label: 'Capture actuelle',
+      fit: 'cover',
+    },
+  },
+  {
+    slug: 'siturem',
+    name: 'Siturem',
+    platform: 'iOS',
+    stage: 'Prépublication',
+    summary:
+      'Méditation timer pour pratiquants avancés. Objectif : fournir un cadre stable pour pratiquer régulièrement, sans friction et sans distraction.',
+    href: '/apps/siturem/',
+    featured: false,
+    preview: {
+      src: '/img/siturem/siturem-landing.webp',
+      alt: 'Aperçu de Siturem sur iPhone',
       available: true,
       label: 'Capture actuelle',
       fit: 'cover',
