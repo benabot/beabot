@@ -293,7 +293,7 @@
           </article>
         </div>
 
-        <div class="eco-archive">
+        <div id="eco-archive" class="eco-archive">
           <Oeuf
             class="eco-oeuf eco-oeuf--archive-1"
             width="17%"
@@ -1873,7 +1873,8 @@ useHead(() => {
   background: none;
 }
 
-.eco-archive {
+ .eco-archive {
+  scroll-margin-top: clamp(5rem, 10vw, 7rem);
   margin-top: clamp(3rem, 5vw, 4.2rem);
   padding: clamp(1.45rem, 3.4vw, 2.25rem);
   border-radius: 2rem;
