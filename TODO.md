@@ -5,7 +5,7 @@
 **Projet** : BeAbot - Blog éco-conception web
 **Date création** : 15 décembre 2025
 **Dernière MAJ** : 24 avril 2026
-**Branche active** : `fix/eco-article-tags-anchor`
+**Branche active** : `feature/add-siturem-portfolio`
 **Sites** :
 
 - 🟢 **Production** (Nuxt 3, master) : <https://beabot.fr>
@@ -16,6 +16,14 @@
 ## 📊 CONTEXTE ACTUEL
 
 ### Statut (24 avril 2026)
+
+**Ajout Siturem au portfolio (24 avril 2026)** — Mise à jour ciblée de `data/portfolio.ts`, sur la branche `feature/add-siturem-portfolio`.
+
+- [x] Projet `Siturem` ajouté juste après `BORDUR` dans l’ordre d’affichage
+- [x] Tags iOS / Swift renseignés
+- [x] Lien cible préparé vers `/apps/siturem/` sans créer la page
+- [x] Lien GitHub ajouté sur la carte projet
+- [x] Validation `npm run generate` effectuée avec succès
 
 **Fix Liens tags article + bas de page (24 avril 2026)** — Correctif ciblé sur les pages articles éco-conception, sur la branche `fix/eco-article-tags-anchor`.
 
