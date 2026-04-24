@@ -1,6 +1,6 @@
 # 📊 ÉTAT DU PROJET - BeAbot
 
-> **Récapitulatif de l'état du projet au 23 avril 2026**
+> **Récapitulatif de l'état du projet au 24 avril 2026**
 
 ---
 
@@ -14,6 +14,14 @@
 | **Dev Preview** | https://dev-beabot.netlify.app | Nuxt 3.14 | dev    | ✅ Tests  |
 
 ### Dernière mise à jour
+
+**Fix Liens tags article + bas de page (24 avril 2026)** — Correctif ciblé sur les pages articles éco-conception et synchronisation de l’archive filtrée.
+
+- ✅ Les tags cliquables des articles pointent vers `/eco-conception/?tag=...#eco-archive`
+- ✅ Le filtre actif est conservé via la query string `?tag=`
+- ✅ Le conteneur principal des pages article dispose d’un padding bas dédié pour éviter le recouvrement par le footer
+- ✅ Validation `npm run generate` OK
+- ✅ Vérifications desktop et mobile réalisées sur les pages concernées
 
 **Fix Footer transparent (23 avril 2026)** — Correction de l’intégration organique du footer sur la branche `fix/footer-clip-transparent`.
 
@@ -230,6 +238,7 @@ Phase 15    - Side Projects         [░░░░░░░░░░░░░░�
 | -------------------------------------- | ---------------------------- | -------------------------- |
 | `master`                               | Production beabot.fr         | 🔒 Stable                  |
 | `dev`                                  | Développement                | ✅ Base de travail         |
+| `fix/eco-article-tags-anchor`          | Tags article + layout eco    | ✅ Prêt à merger sur dev   |
 | `fix/footer-clip-transparent`          | Footer organique transparent | ✅ En cours / prêt à revue |
 | `feature/home-v3-positioning`          | Homepage V3                  | ✅ Réalisée                |
 | `feature/greenlight-page`              | Page Greenlight              | ✅ Réalisée                |

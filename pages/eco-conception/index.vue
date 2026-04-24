@@ -293,7 +293,7 @@
           </article>
         </div>
 
-        <div class="eco-archive">
+        <div id="eco-archive" class="eco-archive">
           <Oeuf
             class="eco-oeuf eco-oeuf--archive-1"
             width="17%"
@@ -516,7 +516,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { canonicalUrl, withTrailingSlash } from '~/utils/seo-url'
 
 type EcoArticle = {
@@ -675,6 +675,7 @@ useSeoMeta({
 })
 
 const tagsStore = useTags()
+const route = useRoute()
 const searchQuery = ref('')
 
 const allArticles = computed(() => articles.value || [])
@@ -784,6 +785,16 @@ const filteredArticles = computed(() => {
 function updateTag(tag: string) {
   tagsStore.setTag(normalizeTagLabel(tag))
 }
+
+watch(
+  () => route.query.tag,
+  (queryTag) => {
+    const tagValue = Array.isArray(queryTag) ? queryTag[0] : queryTag
+    if (typeof tagValue !== 'string') return
+    tagsStore.setTag(normalizeTagLabel(tagValue))
+  },
+  { immediate: true },
+)
 
 function formatDate(date?: string) {
   if (!date) return ''
@@ -1873,7 +1884,8 @@ useHead(() => {
   background: none;
 }
 
-.eco-archive {
+ .eco-archive {
+  scroll-margin-top: clamp(5rem, 10vw, 7rem);
   margin-top: clamp(3rem, 5vw, 4.2rem);
   padding: clamp(1.45rem, 3.4vw, 2.25rem);
   border-radius: 2rem;
