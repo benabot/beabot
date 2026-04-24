@@ -1,6 +1,7 @@
 <template>
-  <section>
-    <aside>
+  <main class="eco-article-main">
+    <section>
+      <aside>
       <Oeuf class="oeuf oeuf--1" width="60%" fill="#f2a81d" />
       <Oeuf
         class="oeuf oeuf--2"
@@ -31,7 +32,7 @@
             :key="tag"
             class="petit-text lettre-smcp"
             @click="updateTag(tag)"
-            ><AppLink to="/eco-conception/">
+            ><AppLink :to="articleTagLink(tag)">
               <span class="text-vert"> #</span>{{ tag }}
             </AppLink></span
           >
@@ -83,8 +84,8 @@
           <ArticleNavigation class="petit-text2" :prev="prev" :next="next" />
         </div>
       </div>
-    </aside>
-    <article>
+      </aside>
+      <article>
       <h1 class="text-black h3 text-gris1">
         {{ article?.title }}
       </h1>
@@ -121,8 +122,9 @@
 		l0,5.6l0,2.8c0,1-0.4,2-1.1,2.7c-0.7,0.7-1.7,1.1-2.7,1.1l-2.8,0l-5.6,0c-3.7,0-7.4,0-11.1-0.1V97.8z"
         />
       </svg>
-    </article>
-  </section>
+      </article>
+    </section>
+  </main>
 </template>
 
 <script setup>
@@ -196,6 +198,14 @@ function formatDate(date) {
 // Update tag in store
 function updateTag(tag) {
   tagsStore.setTag(tag)
+}
+
+function articleTagLink(tag) {
+  return {
+    path: '/eco-conception/',
+    query: { tag },
+    hash: '#eco-archive',
+  }
 }
 
 function getTagName(node) {
@@ -488,6 +498,10 @@ useHead({
 <style lang="scss" scoped>
 h1 {
   margin: 0.95em 0;
+}
+
+.eco-article-main {
+  padding-bottom: clamp(10rem, 16vw, 16rem);
 }
 
 section {
