@@ -84,7 +84,7 @@
               aria-label="Scores Lighthouse : performance 99, accessibilité 96, bonnes pratiques 100, SEO 100"
             >
               <span>
-                99
+                100
                 <small>Perf.</small>
               </span>
               <span>
@@ -104,7 +104,7 @@
 
           <article class="metric-card">
             <p class="metric-card__label">Poids page</p>
-            <p class="metric-card__value">~650 Ko</p>
+            <p class="metric-card__value">~140 Ko</p>
             <p class="metric-card__meta">Un site léger qui reste durable.</p>
           </article>
         </div>
