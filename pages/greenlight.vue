@@ -22,7 +22,7 @@
             <a
               class="greenlight-button greenlight-button--primary"
               :href="freeDownloadUrl"
-              download="greenlight-free.zip"
+              download="greenlight-free-v1.0.0.zip"
             >
               Télécharger Greenlight-free
             </a>
@@ -192,7 +192,7 @@
                   v-if="version.accent === 'free'"
                   class="greenlight-button greenlight-button--secondary"
                   :href="version.cta.href"
-                  download="greenlight-free.zip"
+                  download="greenlight-free-v1.0.0.zip"
                 >
                   {{ version.cta.label }}
                 </a>
@@ -361,7 +361,7 @@
               <a
                 class="greenlight-button greenlight-button--secondary"
                 :href="freeDownloadUrl"
-                download="greenlight-free.zip"
+                download="greenlight-free-v1.0.0.zip"
               >
                 Télécharger Greenlight-free
               </a>
@@ -463,7 +463,7 @@ const versionCards = [
     ],
     cta: {
       label: 'Télécharger Greenlight-free',
-      href: '/greenlight-free.zip',
+      href: '/greenlight-free-v1.0.0.zip',
     },
     accent: 'free',
   },
@@ -589,7 +589,7 @@ const faqItems = [
   },
 ] as const
 
-const freeDownloadUrl = '/greenlight-free.zip'
+const freeDownloadUrl = '/greenlight-free-v1.0.0.zip'
 const versionsLink = { path: '/greenlight/', hash: '#versions' }
 
 const breadcrumbSchema = buildGreenlightBreadcrumbSchema(config.public.siteUrl)
