@@ -15,6 +15,13 @@
 
 ### Dernière mise à jour
 
+**Formulaire d’intérêt apps (24 avril 2026)** — Mise à niveau du composant partagé `AppReleaseInterestForm` sur la branche `fix/app-release-interest-form`.
+
+- ✅ Les pages `/apps/siturem/`, `/apps/duo-spend/` et `/apps/meeting-mode/` conservent le CTA `Être informé`
+- ✅ Le CTA descend vers la section `#release-form` et ouvre un vrai formulaire Netlify
+- ✅ Champs `nom` optionnel, `email` obligatoire, `app` préremplie et consentement explicite
+- ✅ États succès / erreur et validation client ajoutés sans backend ni dépendance externe
+
 **Page Siturem (24 avril 2026)** — Création de `/apps/siturem/` sur la branche `feature/add-siturem-portfolio`, puis simplification après revue en retirant le bloc visuel intermédiaire jugé superflu.
 
 - ✅ Page Siturem ajoutée sur le modèle des autres pages Apps
