@@ -15,6 +15,13 @@
 
 ### Dernière mise à jour
 
+**Page Siturem (24 avril 2026)** — Création de `/apps/siturem/` sur la branche `feature/add-siturem-portfolio`, puis simplification après revue en retirant le bloc visuel intermédiaire jugé superflu.
+
+- ✅ Page Siturem ajoutée sur le modèle des autres pages Apps
+- ✅ Galerie alimentée avec les visuels `public/img/siturem/`
+- ✅ Politique de confidentialité intégrée en FR / EN / ES / DE
+- ✅ Bloc visuel intermédiaire retiré pour garder une page plus sobre
+
 **Fix Liens tags article + bas de page (24 avril 2026)** — Correctif ciblé sur les pages articles éco-conception et synchronisation de l’archive filtrée.
 
 - ✅ Les tags cliquables des articles pointent vers `/eco-conception/?tag=...#eco-archive`

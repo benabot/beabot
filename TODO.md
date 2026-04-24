@@ -38,6 +38,7 @@
 - [x] Contenu Siturem ajouté dans `data/apps.ts`
 - [x] Galerie alimentée avec les visuels du dossier `public/img/siturem/`
 - [x] Politique de confidentialité intégrée en FR / EN / ES / DE
+- [x] Section visuelle intermédiaire supprimée après revue
 - [x] Validation `npm run generate` effectuée avec succès
 - [x] Validation `npm run lint` lancée : warnings historiques du dépôt confirmés, contrôle ciblé des fichiers touchés OK
 

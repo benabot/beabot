@@ -98,47 +98,6 @@
       </section>
 
       <section
-        v-if="situremContent.showVisual"
-        class="app-section"
-        aria-labelledby="siturem-capture-title"
-      >
-        <div class="section-heading">
-          <h2 id="siturem-capture-title">
-            Visuel
-          </h2>
-          <p>
-            Le visuel principal de Siturem montre une app iOS simple, cadrée et
-            sans distraction.
-          </p>
-        </div>
-
-        <div class="app-capture app-capture--image">
-          <div
-            class="app-capture__bar"
-            aria-hidden="true"
-          >
-            <span />
-            <span />
-            <span />
-          </div>
-          <div
-            class="app-capture__screen app-capture__screen--image"
-            role="img"
-            :aria-label="situremContent.preview.alt"
-          >
-            <img
-              :src="situremContent.preview.src"
-              :alt="situremContent.preview.alt"
-              width="1206"
-              height="2622"
-              loading="lazy"
-              decoding="async"
-            >
-          </div>
-        </div>
-      </section>
-
-      <section
         class="app-section"
         aria-labelledby="siturem-details-title"
       >
