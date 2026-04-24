@@ -4,8 +4,8 @@
 
 **Projet** : BeAbot - Blog éco-conception web
 **Date création** : 15 décembre 2025
-**Dernière MAJ** : 23 avril 2026
-**Branche active** : `fix/footer-clip-transparent`
+**Dernière MAJ** : 24 avril 2026
+**Branche active** : `fix/eco-article-tags-anchor`
 **Sites** :
 
 - 🟢 **Production** (Nuxt 3, master) : <https://beabot.fr>
@@ -15,7 +15,17 @@
 
 ## 📊 CONTEXTE ACTUEL
 
-### Statut (23 avril 2026)
+### Statut (24 avril 2026)
+
+**Fix Liens tags article + bas de page (24 avril 2026)** — Correctif ciblé sur les pages articles éco-conception, sur la branche `fix/eco-article-tags-anchor`.
+
+- [x] Les tags cliquables des articles pointent vers `/eco-conception/?tag=...#eco-archive`
+- [x] Le filtre actif est conservé via la query string existante `?tag=`
+- [x] L’archive existante reste l’ancre cible sans modifier la logique de filtre
+- [x] Le conteneur principal des articles dispose d’un `main.eco-article-main`
+- [x] Un padding bas suffisant est ajouté pour empêcher le footer de masquer la fin de contenu
+- [x] Validation `npm run generate` effectuée avec succès
+- [x] Vérification desktop et mobile sur les pages articles et l’archive
 
 **Fix Footer transparent (23 avril 2026)** — Correction du sommet organique du footer, sur la branche `fix/footer-clip-transparent`.
 
