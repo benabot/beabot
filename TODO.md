@@ -5,7 +5,7 @@
 **Projet** : BeAbot - Blog éco-conception web
 **Date création** : 15 décembre 2025
 **Dernière MAJ** : 24 avril 2026
-**Branche active** : `feature/add-siturem-portfolio`
+**Branche active** : `fix/app-release-interest-form`
 **Sites** :
 
 - 🟢 **Production** (Nuxt 3, master) : <https://beabot.fr>
@@ -16,6 +16,15 @@
 ## 📊 CONTEXTE ACTUEL
 
 ### Statut (24 avril 2026)
+
+**Fix formulaire d'intérêt apps (24 avril 2026)** — Correction ciblée du formulaire de notification de sortie des apps, sur la branche `fix/app-release-interest-form`.
+
+- [x] Formulaire mutualisé `AppReleaseInterestForm` enrichi avec nom optionnel, email obligatoire, app cachée et consentement explicite
+- [x] Soumission Netlify Forms conservée sans backend ni dépendance externe
+- [x] États succès / erreur et validation client renforcés
+- [x] Ancres `#release-form` et CTA `Être informé` conservés sur les 3 pages apps
+- [x] Validation `npm run generate` effectuée avec succès
+- [x] Validation ciblée `npm run lint:js -- --quiet` et Prettier du composant effectuées avec succès
 
 **Ajout Siturem au portfolio (24 avril 2026)** — Mise à jour ciblée de `data/portfolio.ts`, sur la branche `feature/add-siturem-portfolio`.
 
