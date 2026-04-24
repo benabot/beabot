@@ -6,6 +6,7 @@
     data-netlify="true"
     netlify-honeypot="bot-field"
     :action="actionPath"
+    :aria-describedby="statusMessageId"
     @submit.prevent="onSubmit"
   >
     <input type="hidden" name="form-name" value="app-release-interest" />
@@ -26,7 +27,18 @@
 
     <div class="release-form__controls">
       <label class="release-form__field">
-        <span>Adresse e-mail</span>
+        <span>Nom <small>optionnel</small></span>
+        <input
+          v-model="name"
+          type="text"
+          name="name"
+          autocomplete="name"
+          placeholder="Votre nom"
+        />
+      </label>
+
+      <label class="release-form__field">
+        <span>Adresse e-mail <small>obligatoire</small></span>
         <input
           v-model="email"
           type="email"
@@ -38,15 +50,40 @@
         />
       </label>
 
+      <label class="release-form__consent">
+        <input v-model="consent" type="checkbox" name="consent" required />
+        <span>
+          J'accepte d'être recontacté uniquement pour la sortie de
+          {{ appName }}.
+          <AppLink
+            to="/mentions-legales/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Mentions légales
+          </AppLink>
+        </span>
+      </label>
+
       <button type="submit" :disabled="loading">
         {{ loading ? 'Envoi…' : 'Envoyer' }}
       </button>
     </div>
 
-    <p v-if="sent" class="release-form__success" aria-live="polite">
+    <p
+      v-if="sent"
+      :id="successMessageId"
+      class="release-form__success"
+      aria-live="polite"
+    >
       Demande enregistrée pour {{ appName }}.
     </p>
-    <p v-else-if="error" class="release-form__error" aria-live="assertive">
+    <p
+      v-else-if="error"
+      :id="errorMessageId"
+      class="release-form__error"
+      aria-live="assertive"
+    >
       {{ error }}
     </p>
   </form>
@@ -61,9 +98,24 @@ const props = defineProps<{
 
 const route = useRoute()
 const actionPath = computed(() => route.path || '/')
+const formId = computed(
+  () =>
+    `release-interest-${props.appName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+)
+const successMessageId = computed(() => `${formId.value}-success`)
+const errorMessageId = computed(() => `${formId.value}-error`)
+const statusMessageId = computed(() =>
+  error.value
+    ? errorMessageId.value
+    : sent.value
+      ? successMessageId.value
+      : undefined,
+)
 
+const name = ref('')
 const email = ref('')
 const botField = ref('')
+const consent = ref(false)
 const loading = ref(false)
 const sent = ref(false)
 const error = ref('')
@@ -77,15 +129,29 @@ function encode(data: Record<string, string>) {
 async function onSubmit() {
   if (loading.value) return
 
-  loading.value = true
   error.value = ''
+  sent.value = false
+
+  if (!email.value.trim()) {
+    error.value = 'Indiquez votre adresse e-mail pour être prévenu.'
+    return
+  }
+
+  if (!consent.value) {
+    error.value = "Confirmez l'accord de contact avant l'envoi."
+    return
+  }
+
+  loading.value = true
 
   try {
     const body = encode({
       'form-name': 'app-release-interest',
       app: props.appName,
-      email: email.value,
+      name: name.value.trim(),
+      email: email.value.trim(),
       'bot-field': botField.value,
+      consent: consent.value ? 'yes' : 'no',
     })
 
     const response = await fetch(actionPath.value, {
@@ -99,8 +165,10 @@ async function onSubmit() {
     }
 
     sent.value = true
+    name.value = ''
     email.value = ''
     botField.value = ''
+    consent.value = false
   } catch {
     error.value = 'Impossible d’envoyer la demande pour le moment.'
   } finally {
@@ -174,6 +242,12 @@ async function onSubmit() {
   color: rgba(255, 255, 255, 0.94);
 }
 
+.release-form__field small {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
+}
+
 .release-form__field input {
   width: 100%;
   min-height: 3rem;
@@ -191,6 +265,35 @@ async function onSubmit() {
 .release-form__field input:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.28);
+}
+
+.release-form__consent {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.65rem;
+  align-items: start;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.release-form__consent input {
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-top: 0.18rem;
+  accent-color: white;
+}
+
+.release-form__consent input:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.38);
+  outline-offset: 3px;
+}
+
+.release-form__consent a {
+  color: white;
+  font-weight: 700;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
 }
 
 .release-form button {
