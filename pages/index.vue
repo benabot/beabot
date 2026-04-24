@@ -91,7 +91,7 @@
                 96
                 <small>A11y</small>
               </span>
-              <span>
+              <span>Ò
                 100
                 <small>BP</small>
               </span>
@@ -104,7 +104,7 @@
 
           <article class="metric-card">
             <p class="metric-card__label">Poids page</p>
-            <p class="metric-card__value">~150 Ko</p>
+            <p class="metric-card__value">~650 Ko</p>
             <p class="metric-card__meta">Un site léger qui reste durable.</p>
           </article>
         </div>

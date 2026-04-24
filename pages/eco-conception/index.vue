@@ -308,8 +308,8 @@
           />
           <div class="eco-archive__header">
             <div>
-              <p class="eco-eyebrow">Archive</p>
-              <h3>Tous les articles</h3>
+              <p class="eco-eyebrow">Blog</p>
+              <h3>Tous les articles éco-conception web</h3>
             </div>
             <p class="eco-archive__lede">
               Filtrez par thème ou recherchez un sujet précis sans quitter la
