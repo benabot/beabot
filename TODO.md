@@ -32,6 +32,15 @@
 - [x] Lien cible préparé vers `/apps/siturem/` sans créer la page
 - [x] Validation `npm run generate` effectuée avec succès
 
+**Création de la page Siturem (24 avril 2026)** — Mise en place de `/apps/siturem/`, sur la branche `feature/add-siturem-portfolio`.
+
+- [x] Page `pages/apps/siturem.vue` créée sur le modèle de `/apps/duo-spend/`
+- [x] Contenu Siturem ajouté dans `data/apps.ts`
+- [x] Galerie alimentée avec les visuels du dossier `public/img/siturem/`
+- [x] Politique de confidentialité intégrée en FR / EN / ES / DE
+- [x] Validation `npm run generate` effectuée avec succès
+- [x] Validation `npm run lint` lancée : warnings historiques du dépôt confirmés, contrôle ciblé des fichiers touchés OK
+
 **Fix Liens tags article + bas de page (24 avril 2026)** — Correctif ciblé sur les pages articles éco-conception, sur la branche `fix/eco-article-tags-anchor`.
 
 - [x] Les tags cliquables des articles pointent vers `/eco-conception/?tag=...#eco-archive`
