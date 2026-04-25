@@ -81,7 +81,7 @@
             <p class="metric-card__label">Lighthouse</p>
             <div
               class="metric-card__scores"
-              aria-label="Scores Lighthouse : performance 99, accessibilité 96, bonnes pratiques 100, SEO 100"
+              aria-label="Scores Lighthouse : performance 100, accessibilité 96, bonnes pratiques 100, SEO 100"
             >
               <span>
                 100
@@ -91,7 +91,7 @@
                 96
                 <small>A11y</small>
               </span>
-              <span>Ò
+              <span>
                 100
                 <small>BP</small>
               </span>

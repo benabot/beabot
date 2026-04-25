@@ -1,6 +1,6 @@
 <template>
   <main class="eco-article-main">
-    <section>
+    <section class="eco-article-section">
       <aside>
         <Oeuf class="oeuf oeuf--1" width="60%" fill="#f2a81d" />
         <Oeuf
@@ -512,6 +512,9 @@ h1 {
 
 .eco-article-main {
   padding-bottom: clamp(10rem, 16vw, 16rem);
+}
+.eco-article-section {
+  padding-top: clamp(1rem, 4vw, 2rem);
 }
 
 section {
