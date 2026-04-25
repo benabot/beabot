@@ -5,31 +5,30 @@
       class="nav-mobile"
       :class="{ 'nav-mobile--greenlight': isGreenlightRoute }"
     >
-      <!-- <button @click="showMobileMenu = !showMobileMenu">bla</button> -->
-      <img
-        src="/beabot.svg"
-        alt="beabot"
-        width="1112"
-        height="337"
-        :class="{ 'logo-gris': showMobileMenu }"
-        @click="showMobileMenu = !showMobileMenu"
-      />
-      <transition name="slide-right">
-        <ul v-if="showMobileMenu" class="menu-mobile">
-          <li @click="showMobileMenu = !showMobileMenu">
-            <AppLink to="/" class="title title--menu h2"> Accueil </AppLink>
+      <details @toggle="onMobileMenuToggle">
+        <summary class="nav-mobile-summary">
+          <img
+            src="/beabot.svg"
+            alt="Menu de navigation BeAbot"
+            width="1112"
+            height="337"
+            :class="{ 'logo-gris': showMobileMenu }"
+          />
+        </summary>
+        <ul class="menu-mobile">
+          <li>
+            <AppLink to="/" class="title title--menu h2">Accueil</AppLink>
           </li>
           <li
             v-for="item in navigationItems"
             :key="`mobile-${item.to}`"
-            @click="showMobileMenu = !showMobileMenu"
           >
             <AppLink :to="item.to" class="title title--menu h2">
               {{ item.label }}
             </AppLink>
           </li>
         </ul>
-      </transition>
+      </details>
     </nav>
     <nav role="navigation" class="nav-desktop nav-1">
       <AppLink :class="couleurHaut" to="/" no-prefetch>
@@ -169,7 +168,8 @@ const degrad = ref(getDefaultLogoFill())
 
 const couleurHaut = computed(() => {
   if (isHomeRoute.value) {
-    return isHeroActive.value ? 'couleur-none' : 'couleur-blanc'
+    // Always white on home: hero is dark, noScripts prevents JS scroll handlers
+    return 'couleur-blanc'
   }
 
   if (isGreenlightRoute.value) {
@@ -191,6 +191,10 @@ const setLogoHover = () => {
 const resetLogoHover = () => {
   isLogoHovered.value = false
   degrad.value = getDefaultLogoFill()
+}
+
+const onMobileMenuToggle = (event) => {
+  showMobileMenu.value = event.target.open
 }
 
 const syncLogoFill = () => {
@@ -352,6 +356,20 @@ a.nuxt-link-active {
       z-index: 9999;
     @media (min-width: $breakpoint-tablet) {
       display: none;
+    }
+
+    details {
+      display: block;
+    }
+
+    .nav-mobile-summary {
+      display: block;
+      list-style: none;
+      cursor: pointer;
+
+      &::-webkit-details-marker {
+        display: none;
+      }
     }
 
     img {
