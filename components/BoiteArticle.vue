@@ -490,7 +490,7 @@ const onMoreKeydown = (event) => {
       bottom: -6px;
       left: -6px;
       right: -6px;
-      background: $fondClair;
+      background: #F6F7F5;
       z-index: 30;
       // clip-path appliqué via :style pour ID unique par instance
     }

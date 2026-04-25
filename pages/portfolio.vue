@@ -1,6 +1,6 @@
 <template>
   <main class="portfolio-page">
-    <!-- SVG clipPath partagé pour toutes les cartes projet (1 seul au lieu de 7) -->
+    <!-- SVG clipPath partagé pour cartes projet -->
     <svg class="sr-only" aria-hidden="true">
       <defs>
         <clipPath id="shared-egg-clip" clipPathUnits="objectBoundingBox">
@@ -11,92 +11,76 @@
       </defs>
     </svg>
 
-    <!-- Section Hero -->
-    <section class="hero-portfolio">
-      <!-- Œufs décoratifs en background -->
-      <LazyOeuf
-        class="hero-oeuf hero-oeuf-1"
-        width="28%"
-        transform="rotate(-45)"
-        :fill="'#0439d9'"
-      />
-      <LazyOeuf
-        class="hero-oeuf hero-oeuf-2"
-        width="22%"
-        transform="rotate(15)"
-        :fill="'#f2a81d'"
-      />
-      <LazyOeuf
-        class="hero-oeuf hero-oeuf-3"
-        width="18%"
-        transform="rotate(-85)"
-        :fill="'#00a83e'"
-      />
+    <!-- Hero noir intégral -->
+    <section
+      class="hero"
+      data-nav-theme="light"
+      aria-labelledby="portfolio-hero-title"
+    >
+      <span
+        class="deco-egg deco-egg--green hero-egg-1"
+        aria-hidden="true"
+      ></span>
+      <span
+        class="deco-egg deco-egg--amber hero-egg-2"
+        aria-hidden="true"
+      ></span>
+      <span
+        class="deco-egg deco-egg--blue hero-egg-3"
+        aria-hidden="true"
+      ></span>
 
-      <div class="hero-content">
-        <p class="kicker">Portfolio</p>
-
-        <h1>
-          Benoît Abot<br />
-          <span class="subtitle"
-            >Développeur web & designer<br />spécialisé en éco-conception</span
-          >
+      <div class="hero__content">
+        <p class="kicker kicker--light">Portfolio</p>
+        <h1 id="portfolio-hero-title" class="hero__title">
+          <span class="hero__name">Benoît Abot</span>
+          <span class="hero__role">
+            Développeur web &amp; designer spécialisé en éco&#8209;conception
+          </span>
         </h1>
-
-        <p class="hero-description">
-          Je conçois des sites performants, accessibles et sobres en ressources.
-          Chaque projet est une occasion de prouver qu'efficacité et durabilité
-          vont de pair, reposant sur des
-          <a href="#competences" class="hero-inline-link"
-            >compétences mises en œuvre</a
-          >
+        <p class="hero__lead">
+          Je conçois des sites performants, accessibles et sobres en
+          ressources. Chaque projet est une occasion de prouver qu'efficacité
+          et durabilité vont de pair, reposant sur des
+          <a href="#competences-title" class="hero__link">
+            compétences mises en œuvre
+          </a>
           au fil de projets concrets.
         </p>
-
-        <div class="hero-stats" aria-label="Statistiques du portfolio">
-          <span class="stat-item">15 ans d'expérience</span>
-          <span class="stat-separator">•</span>
-          <span class="stat-item">Spécialiste éco-conception</span>
-        </div>
-
-        <div class="hero-cta">
+        <p class="hero__meta">
+          15 ans d'expérience
+          <span aria-hidden="true">•</span>
+          Spécialiste éco-conception
+        </p>
+        <div class="hero__cta">
           <a
             href="/cv.pdf"
-            class="btn-primary"
+            class="btn btn--primary"
             download
             aria-label="Télécharger mon CV au format PDF"
           >
             Voir mon CV ↓
           </a>
-          <AppLink to="/contact/" class="btn-secondary">
+          <AppLink to="/contact/" class="btn btn--ghost">
             Me contacter →
           </AppLink>
         </div>
       </div>
     </section>
 
-    <!-- Timeline dot 1: Hero → Réalisations -->
-    <div class="timeline-dot" aria-hidden="true">
-      <span class="timeline-dot__core"></span>
-    </div>
+    <!-- Réalisations (clair) -->
+    <section class="realisations" aria-labelledby="realisations-title">
+      <div class="realisations__inner">
+        <p class="kicker">Réalisations</p>
+        <h2 id="realisations-title" class="section-title">
+          Extraits de 15 ans de web
+        </h2>
+        <p class="section-lead">
+          Projets WordPress et front-end conçus avec la même logique de sobriété
+          technique.
+        </p>
 
-    <!-- Header section Réalisations -->
-    <header class="section-header" aria-labelledby="portfolio-filters-title">
-      <div class="section-header-main">
-        <div class="section-header-title-group">
-          <h2 id="portfolio-filters-title" class="section-title">
-            Réalisations
-          </h2>
-          <p class="section-count" aria-live="polite">
-            Extraits de 15 ans de web
-          </p>
-        </div>
-
-        <div
-          class="section-header-filters"
-          role="tablist"
-          aria-label="Filtres projets"
-        >
+        <div class="filters" role="tablist" aria-label="Filtres projets">
           <button
             v-for="(filter, index) in portfolioFilters"
             :key="filter.id"
@@ -112,149 +96,103 @@
             @click="setFilter(filter.id)"
             @keydown="onFilterKeydown($event, index)"
           >
-            <span class="filter-label">{{ filter.label }}</span>
-            <span class="filter-count">{{ filter.count }}</span>
+            <span>{{ filter.label }}</span>
+            <span class="filter-pill__count">{{ filter.count }}</span>
           </button>
         </div>
-      </div>
-    </header>
 
-    <div class="portfolio-divider" aria-hidden="true"></div>
-
-    <TransitionGroup
-      name="fade"
-      tag="section"
-      class="container--page portfolio-grid"
-      id="portfolio-grid"
-      role="tabpanel"
-      :aria-labelledby="`portfolio-tab-${activeFilter}`"
-    >
-      <LazyBoiteArticle
-        v-for="project in filteredProjects"
-        :key="project.id"
-        :id="project.id"
-        :titre="project.title"
-        :sous-titre="project.subtitle"
-        :background-url="project.image"
-        :chips="project.tags"
-        :lien="project.url"
-        :context="project.context"
-        :role="project.role"
-        :stack="project.stack"
-        :metrics="project.metrics"
-        :article-link="project.articleLink"
-        :github-link="project.githubLink"
-        :object-position="project.objectPosition"
-      />
-    </TransitionGroup>
-
-    <!-- Timeline dot 2: Réalisations → Compétences -->
-    <div class="timeline-dot" aria-hidden="true">
-      <span class="timeline-dot__core"></span>
-    </div>
-
-    <!-- Compétences techniques -->
-    <section
-      id="competences"
-      class="section-competences"
-      aria-labelledby="portfolio-skills-title"
-    >
-      <div class="container--page">
-        <header class="section-competences__header">
-          <h2 id="portfolio-skills-title" class="section-competences__title">
-            Compétences
-          </h2>
-          <a
-            href="https://github.com/benabot"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="github-cta"
-          >
-            Voir mon GitHub →
-          </a>
-        </header>
-
-        <div class="skills-grid">
-          <div class="skill-group">
-            <h3>Front-end</h3>
-            <ul>
-              <li v-for="item in skillsBlocks[0].items" :key="item">
-                {{ item }}
-              </li>
-            </ul>
-          </div>
-
-          <div class="skill-group">
-            <h3>Back-end / CMS</h3>
-            <ul>
-              <li v-for="item in skillsBlocks[1].items" :key="item">
-                {{ item }}
-              </li>
-            </ul>
-          </div>
-
-          <div class="skill-group">
-            <h3>Éco-conception</h3>
-            <ul>
-              <li v-for="item in skillsBlocks[2].items" :key="item">
-                {{ item }}
-              </li>
-            </ul>
-          </div>
-
-          <div class="skill-group">
-            <h3>DevOps</h3>
-            <ul>
-              <li v-for="item in skillsBlocks[3].items" :key="item">
-                {{ item }}
-              </li>
-            </ul>
-          </div>
+        <div
+          id="portfolio-grid"
+          class="projects-list"
+          role="tabpanel"
+          :aria-labelledby="`portfolio-tab-${activeFilter}`"
+        >
+          <BoiteArticle
+            v-for="project in filteredProjects"
+            :key="project.id"
+            :titre="project.title"
+            :sous-titre="project.subtitle"
+            :background-url="project.image"
+            :lien="project.url"
+            :chips="project.tags"
+            :metrics="project.metrics"
+            :article-link="project.articleLink"
+            :github-link="project.githubLink"
+            :object-position="project.objectPosition"
+          />
         </div>
       </div>
     </section>
 
-    <!-- Timeline dot 3: Compétences → CTA Final -->
-    <div class="timeline-dot" aria-hidden="true">
-      <span class="timeline-dot__core"></span>
-    </div>
+    <!-- Dark-tail : compétences + contact, un seul wrapper -->
+    <section
+      class="dark-tail"
+      data-nav-theme="light"
+      aria-labelledby="competences-title"
+    >
+      <span
+        class="deco-egg deco-egg--amber tail-egg-1"
+        aria-hidden="true"
+      ></span>
+      <span
+        class="deco-egg deco-egg--purple tail-egg-2"
+        aria-hidden="true"
+      ></span>
+      <span
+        class="deco-egg deco-egg--green-big tail-egg-3"
+        aria-hidden="true"
+      ></span>
+      <span
+        class="deco-egg deco-egg--blue-small tail-egg-4"
+        aria-hidden="true"
+      ></span>
 
-    <!-- CTA Final -->
-    <section class="cta-final">
-      <!-- Œufs décoratifs comme dans le Hero -->
-      <LazyOeuf
-        class="cta-oeuf cta-oeuf-1"
-        width="24%"
-        transform="rotate(30)"
-        :fill="'#0439d9'"
-      />
-      <LazyOeuf
-        class="cta-oeuf cta-oeuf-2"
-        width="20%"
-        transform="rotate(-60)"
-        :fill="'#00a83e'"
-      />
-      <LazyOeuf
-        class="cta-oeuf cta-oeuf-3"
-        width="18%"
-        transform="rotate(120)"
-        :fill="'#f2a81d'"
-      />
+      <div class="dark-tail__inner">
+        <p class="kicker kicker--light">Compétences</p>
+        <h2 id="competences-title" class="section-title section-title--light">
+          Stack & savoir-faire
+        </h2>
 
-      <div class="container--page cta-final__content">
-        <h2 class="cta-final__title">Envie de travailler ensemble ?</h2>
-        <div class="cta-final__buttons">
-          <a
-            href="/cv.pdf"
-            class="btn-primary"
-            download
-            aria-label="Télécharger mon CV au format PDF"
+        <div class="skills">
+          <div
+            v-for="block in skillBlocks"
+            :key="block.title"
+            class="skill"
+            :style="{ '--skill-color': block.color }"
           >
-            Télécharger mon CV ↓
-          </a>
-          <AppLink to="/contact/" class="btn-secondary">
-            Me contacter →
-          </AppLink>
+            <span class="skill__icon" aria-hidden="true">{{ block.icon }}</span>
+            <span class="skill__rule" aria-hidden="true"></span>
+            <h3 class="skill__title">{{ block.title }}</h3>
+            <p class="skill__items">{{ block.items.join(', ') }}</p>
+          </div>
+        </div>
+
+        <div class="bridge" aria-hidden="true">
+          <span class="bridge__line"></span>
+          <span class="bridge__dot"></span>
+        </div>
+
+        <div class="contact" aria-labelledby="contact-title">
+          <p class="kicker kicker--light">Contact</p>
+          <h2 id="contact-title" class="section-title section-title--light">
+            Un site à alléger, refondre ou développer proprement&nbsp;?
+          </h2>
+          <p class="section-lead section-lead--light">
+            Conception, développement, optimisation ou base technique sobre.
+          </p>
+          <div class="contact__cta">
+            <AppLink to="/contact/" class="btn btn--primary">
+              Me contacter
+            </AppLink>
+            <a
+              href="https://github.com/benabot"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn--ghost btn--ghost-light"
+            >
+              Voir mon GitHub ↗
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -275,49 +213,49 @@ const setFilter = (filterId) => {
 
 const matchesFilter = (project, filterId) => {
   if (filterId === 'all') return true
-  if (filterId === 'vjs') {
+  if (filterId === 'vjs')
     return project.tags.includes('VueJs') || project.tags.includes('Nuxt')
-  }
-  if (filterId === 'wp') {
-    return project.tags.includes('WordPress')
-  }
-  if (filterId === 'eco') {
-    return project.tags.includes('Éco-conçu')
-  }
-  if (filterId === 'design') {
-    return project.tags.includes('WebDesign')
-  }
-  if (filterId === 'ios') {
-    return project.tags.includes('iOS')
-  }
-
+  if (filterId === 'wp') return project.tags.includes('WordPress')
+  if (filterId === 'eco') return project.tags.includes('Éco-conçu')
+  if (filterId === 'design') return project.tags.includes('WebDesign')
+  if (filterId === 'ios') return project.tags.includes('iOS')
   return true
 }
 
 const filteredProjects = computed(() =>
   projects.filter((project) => matchesFilter(project, activeFilter.value)),
 )
-const ecoCount = computed(
-  () => projects.filter((project) => project.tags.includes('Éco-conçu')).length,
-)
-const filteredEcoCount = computed(
-  () =>
-    filteredProjects.value.filter((project) =>
-      project.tags.includes('Éco-conçu'),
-    ).length,
-)
-const skillsBlocks = computed(() => [
-  skills.frontend,
-  skills.backend,
-  skills.quality,
-  skills.devops,
-  skills.mobile,
+
+const skillBlocks = computed(() => [
+  {
+    title: 'Front-end',
+    icon: '</>',
+    color: '#3b82f6',
+    items: skills.frontend.items,
+  },
+  {
+    title: 'WordPress',
+    icon: 'W',
+    color: '#8b5cf6',
+    items: skills.backend.items,
+  },
+  {
+    title: 'Éco-conception',
+    icon: '⬡',
+    color: '#0dc763',
+    items: skills.quality.items,
+  },
+  {
+    title: 'DevOps léger',
+    icon: '☁',
+    color: '#f59e0b',
+    items: skills.devops.items,
+  },
 ])
 
 const focusFilter = (index) => {
   const buttons = filterButtons.value || []
   if (!buttons.length) return
-
   const total = buttons.length
   const nextIndex = ((index % total) + total) % total
   buttons[nextIndex]?.focus()
@@ -371,24 +309,10 @@ useHead({
       content:
         'Développeur web et designer spécialisé en éco-conception. Sites performants, accessibles et sobres.',
     },
-    {
-      hid: 'og:type',
-      property: 'og:type',
-      content: 'profile',
-    },
-    {
-      hid: 'og:url',
-      property: 'og:url',
-      content: portfolioCanonicalUrl,
-    },
+    { hid: 'og:type', property: 'og:type', content: 'profile' },
+    { hid: 'og:url', property: 'og:url', content: portfolioCanonicalUrl },
   ],
-  link: [
-    {
-      hid: 'canonical',
-      rel: 'canonical',
-      href: portfolioCanonicalUrl,
-    },
-  ],
+  link: [{ hid: 'canonical', rel: 'canonical', href: portfolioCanonicalUrl }],
   script: [
     {
       type: 'application/ld+json',
@@ -446,7 +370,6 @@ useHead({
 </script>
 
 <style lang="scss" scoped>
-/* SVG caché visuellement mais accessible pour clip-path */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -459,680 +382,496 @@ useHead({
   border: 0;
 }
 
-/* Spacing scale (Fibonacci-inspired) */
 .portfolio-page {
-  --space-1: 0.5rem;
-  --space-2: 0.8rem;
-  --space-3: 1.3rem;
-  --space-4: 2.1rem;
-  --space-5: 3.4rem;
-  --space-6: 5.5rem;
-  --space-7: 8.9rem;
-}
+  --noir: #0a0e0c;
+  --blanc-casse: #f5f7f6;
+  --gris-clair: #b8c0bc;
+  --fond-clair: #f6f7f5;
+  --bordure-sombre: #2d3531;
+  --bordure-claire: #d1d5db;
 
-/* Hero Portfolio */
-.hero-portfolio {
-  position: relative;
-  width: clamp(90vw, 85vw, 900px);
-  margin: var(--space-6) auto var(--space-5);
-  padding: clamp(2rem, 4vw, 3.5rem);
-  text-align: center;
-  overflow: hidden;
-
-  /* Fond subtil */
-  background: linear-gradient(
-    135deg,
-    rgba(242, 240, 240, 0.4) 0%,
-    rgba(217, 217, 217, 0.2) 100%
-  );
-  border: 2px solid rgba(0, 0, 0, 0.08);
-  border-radius: 24px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-}
-
-/* Œufs flottants en background */
-.hero-oeuf {
-  position: absolute;
-  z-index: 1;
-  opacity: 0.15;
-  pointer-events: none;
-}
-
-.hero-oeuf-1 {
-  top: -8%;
-  left: -5%;
-}
-
-.hero-oeuf-2 {
-  bottom: -6%;
-  right: -3%;
-}
-
-.hero-oeuf-3 {
-  top: 45%;
-  left: -4%;
-
-  @media (max-width: 640px) {
-    display: none;
-  }
-}
-
-/* Contenu Hero (au-dessus des œufs) */
-.hero-content {
-  position: relative;
-  z-index: 2;
-}
-
-.kicker {
-  margin: 0 0 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  opacity: 0.55;
-  display: inline-block;
-  padding-bottom: 0.35rem;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.18);
-}
-
-h1 {
-  font-size: clamp(2.8rem, 6vw, 5.6rem);
-  line-height: 0.95;
-  margin: 0 0 1.5rem;
+  background: var(--fond-clair);
   color: $gris1;
 }
 
-.subtitle {
-  display: block;
-  font-size: clamp(1.6rem, 3.5vw, 3rem);
-  font-weight: 600;
-  margin-top: 0.5rem;
-  color: $gris2;
-  opacity: 0.9;
+/* === Boutons === */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &--primary {
+    background: $vert;
+    color: var(--noir);
+    border-color: $vert;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(0, 168, 62, 0.25);
+    }
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(0, 168, 62, 0.35);
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: var(--blanc-casse);
+    border-color: rgba(255, 255, 255, 0.4);
+
+    &:hover {
+      border-color: var(--blanc-casse);
+      transform: translateY(-1px);
+    }
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+    }
+  }
+
 }
 
-.hero-description {
-  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
-  line-height: 1.6;
-  margin: 0 auto 1.5rem;
-  max-width: 600px;
-  color: $gris2;
-  opacity: 0.95;
-}
-.hero-inline-link {
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-color: rgba(4, 57, 217, 0.35);
-  text-underline-offset: 3px;
-}
-.hero-inline-link:hover,
-.hero-inline-link:focus-visible {
-  text-decoration-color: rgba(4, 57, 217, 0.6);
+/* === Kicker (réutilisable) === */
+.kicker {
+  margin: 0 0 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $gris3;
+
+  &--light {
+    color: var(--gris-clair);
+  }
 }
 
-/* Stats */
-.hero-stats {
+/* === Titres section === */
+.section-title {
+  margin: 0 0 0.6rem;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: $gris1;
+
+  &--light {
+    color: var(--blanc-casse);
+  }
+}
+
+.section-lead {
+  margin: 0 0 2rem;
+  font-size: clamp(1rem, 1.8vw, 1.1rem);
+  color: $gris3;
+  max-width: 56ch;
+  line-height: 1.55;
+
+  &--light {
+    color: var(--gris-clair);
+  }
+}
+
+/* === Hero noir intégral === */
+.hero {
+  position: relative;
+  background:
+    radial-gradient(
+      ellipse at 70% 0%,
+      rgba(0, 168, 62, 0.12) 0%,
+      transparent 55%
+    ),
+    var(--noir);
+  color: var(--blanc-casse);
+  padding: clamp(5rem, 10vw, 8rem) 6% clamp(3.5rem, 7vw, 5.5rem);
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.hero__title {
+  margin: 0 0 1.5rem;
   display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.hero__name {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 800;
+  color: var(--blanc-casse);
+}
+
+.hero__role {
+  font-size: clamp(1.3rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  color: var(--gris-clair);
+}
+
+.hero__lead {
+  margin: 0 auto 1.25rem;
+  font-size: clamp(1rem, 1.6vw, 1.1rem);
+  color: var(--gris-clair);
+  line-height: 1.6;
+  max-width: 56ch;
+}
+
+.hero__link {
+  color: var(--blanc-casse);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s ease;
+
+  &:hover {
+    text-decoration-color: $vert;
+  }
+}
+
+.hero__meta {
+  display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem 0.8rem;
-  margin: var(--space-4) auto var(--space-4);
-  font-size: clamp(0.9rem, 2vw, 1rem);
-  font-weight: 600;
-  opacity: 0.8;
-
-  @media (max-width: 640px) {
-    font-size: 0.85rem;
-  }
-}
-
-.stat-item {
-  white-space: nowrap;
-}
-
-.stat-separator {
-  opacity: 0.5;
-}
-
-.hero-cta {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: center;
-  justify-content: center;
-  margin-top: var(--space-4);
-
-  @media (min-width: 640px) {
-    flex-direction: row;
-    gap: 16px;
-  }
-}
-
-.btn-primary {
-  background-color: #0dc763;
-  color: white;
-  border: 2px solid transparent;
-  border-radius: 999px;
-  padding: 0.75rem 1.5rem;
-  font-weight: 800;
-  text-decoration: none;
-  display: inline-block;
-  transition:
-    transform 0.12s ease,
-    filter 0.12s ease,
-    box-shadow 0.12s ease,
-    background-color 0.12s ease,
-    color 0.12s ease,
-    border-color 0.12s ease;
-}
-
-.btn-primary:hover {
-  background-color: white;
-  color: #0dc763;
-  border-color: #0dc763;
-  transform: translateY(-1px);
-}
-
-.btn-primary:focus,
-.btn-primary:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(4, 217, 79, 0.22);
-}
-
-.btn-secondary {
-  color: $bleu2;
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  padding: 0.75rem 1.5rem;
-  transition: opacity 0.12s ease;
-}
-
-.btn-secondary:hover {
+  gap: 0.75rem;
+  margin: 0 0 2rem;
+  font-size: 0.9rem;
+  color: var(--gris-clair);
   opacity: 0.7;
 }
 
-.btn-secondary:focus,
-.btn-secondary:focus-visible {
-  outline: 2px solid $bleu2;
-  outline-offset: 4px;
-  border-radius: 4px;
-}
-/* Section Compétences - Style minimaliste */
-#competences .container--page {
-  height: auto;
-  min-height: auto;
-}
-.section-competences {
-  padding: 3rem 0;
-  margin-top: var(--space-6);
-}
-
-.section-competences__header {
+.hero__cta {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 2rem;
+  justify-content: center;
 }
 
-.section-competences__title {
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  font-weight: 800;
-  margin: 0;
-  color: $gris1;
+/* === Réalisations === */
+.realisations {
+  background: var(--fond-clair);
+  padding: clamp(4rem, 8vw, 7rem) 6%;
 }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-  padding-inline: clamp(0.5rem, 2vw, 1.75rem);
+.realisations__inner {
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-@media (min-width: 500px) {
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.75rem;
-  }
-}
-
-@media (min-width: 900px) {
-  .skills-grid {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 2.25rem;
-  }
-}
-
-.skill-group {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 16px;
-  padding: 1rem;
-  display: grid;
-  align-content: start;
-  gap: 0.75rem;
-}
-
-@media (min-width: 900px) {
-  .skill-group {
-    padding: 1.25rem;
-  }
-}
-
-.skill-group h3 {
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: $bleu1;
-  margin: 0;
-  padding-bottom: 0.35rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-}
-
-.skill-group:nth-child(1) h3 {
-  color: #3b82f6;
-}
-
-.skill-group:nth-child(2) h3 {
-  color: #8b5cf6;
-}
-
-.skill-group:nth-child(3) h3 {
-  color: #10b981;
-}
-
-.skill-group:nth-child(4) h3 {
-  color: #f59e0b;
-}
-
-.skill-group:nth-child(5) h3 {
-  color: #ef4444;
-}
-
-.skill-group ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* === Filtres === */
+.filters {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
+  gap: 0.5rem;
+  margin: 0 0 2rem;
 }
 
-.skill-group li {
+.filter-pill {
   display: inline-flex;
   align-items: center;
-  padding: 0.35rem 0.6rem;
+  gap: 0.45rem;
+  padding: 0.45rem 0.95rem;
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  margin: 0.25rem 0.35rem 0 0;
-  font-size: 0.95rem;
-  line-height: 1.25;
-  color: $gris2;
-}
-
-.github-cta {
-  color: $gris3;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
-  padding: 0.45rem 0.8rem;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 999px;
-  transition:
-    color 0.15s ease,
-    border-color 0.15s ease;
-
-  &:hover {
-    color: $bleu1;
-    border-color: $bleu1;
-  }
-
-  &:focus-visible {
-    outline: 3px solid rgba(4, 57, 217, 0.35);
-    outline-offset: 2px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .github-cta {
-    transition: none;
-  }
-}
-.boite-article {
-  @media (max-width: $breakpoint-tablet) {
-    margin-bottom: 0;
-  }
-}
-.boite-article:not(:first-of-type) {
-  @media (min-width: $breakpoint-tablet) {
-    margin-top: 0;
-  }
-}
-.portfolio-grid {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-6);
-  padding-top: var(--space-4);
-  padding-bottom: var(--space-6);
-
-  @media (min-width: $breakpoint-tablet) {
-    gap: var(--space-5);
-  }
-}
-/* Header section Réalisations */
-.section-header {
-  width: min(92vw, 980px);
-  margin: 0 auto var(--space-3);
-  padding: var(--space-3);
-  background: linear-gradient(
-    135deg,
-    rgba(242, 240, 240, 0.3) 0%,
-    rgba(255, 255, 255, 0.5) 100%
-  );
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-}
-
-.section-header-main {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-
-  @media (min-width: $breakpoint-tablet) {
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
-  }
-}
-
-.section-header-title-group {
-  text-align: center;
-
-  @media (min-width: $breakpoint-tablet) {
-    text-align: left;
-    width: 30%;
-  }
-}
-
-.section-title {
-  margin: 0 0 0.5rem;
-  font-size: clamp(1.8rem, 5vw, 2.5rem);
-  font-weight: 800;
-  color: $gris1;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 0.75rem;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 60px;
-    height: 3px;
-    background: $bleu1;
-    border-radius: 2px;
-
-    @media (min-width: $breakpoint-tablet) {
-      left: 0;
-    }
-  }
-
-  @media (max-width: $breakpoint-tablet) {
-    &::after {
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  }
-}
-
-.section-count {
-  margin: 0.5rem 0 0;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: $gris3;
-  letter-spacing: 0.01em;
-  opacity: 0.8;
-}
-
-.section-header-filters {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-2);
-
-  @media (min-width: $breakpoint-tablet) {
-    justify-content: flex-end;
-  }
-}
-
-.portfolio-divider {
-  width: min(92vw, 1120px);
-  height: 1px;
-  background: rgba(0, 0, 0, 0.08);
-  margin: var(--space-3) auto var(--space-4);
-}
-
-/* Filter pills redesign */
-.filter-pill {
-  border: 2px solid rgba(0, 0, 0, 0.12);
   background: #fff;
   color: $gris2;
-  border-radius: 999px;
-  padding: 0.5rem 1rem;
-  font-weight: 700;
-  font-size: 0.9rem;
-  letter-spacing: 0.01em;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease,
-    background-color 0.15s ease,
-    color 0.15s ease,
-    border-color 0.15s ease;
-}
-
-.filter-label {
+  border: 1px solid var(--bordure-claire);
   font-weight: 600;
-  opacity: 0.85;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.15s ease;
+
+  &:hover {
+    border-color: $gris1;
+  }
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 168, 62, 0.25);
+  }
+  &.is-active {
+    background: var(--noir);
+    color: #fff;
+    border-color: var(--noir);
+  }
 }
 
-.filter-pill:hover {
-  border-color: $bleu2;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(4, 57, 217, 0.15);
-}
-
-.filter-pill:active {
-  transform: scale(0.95);
-}
-
-.filter-pill:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(4, 57, 217, 0.25);
-  border-color: $bleu2;
-}
-
-.filter-pill.is-active {
-  background: $bleu2;
-  color: #fff;
-  border-color: $bleu2;
-  box-shadow: 0 2px 8px rgba(4, 57, 217, 0.2);
-}
-
-.filter-pill.is-active .filter-label {
-  opacity: 1;
-}
-
-.filter-pill.is-active:hover {
-  background: darken($bleu2, 5%);
-  border-color: darken($bleu2, 5%);
-  box-shadow: 0 4px 12px rgba(4, 57, 217, 0.3);
-}
-
-.filter-count {
+.filter-pill__count {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 1.4rem;
-  height: 1.4rem;
+  min-width: 1.3rem;
+  height: 1.3rem;
   padding: 0 0.35rem;
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.08);
-  font-size: 0.75rem;
+  background: rgba(0, 0, 0, 0.06);
+  font-size: 0.7rem;
   font-weight: 700;
   color: $gris2;
 }
 
-.filter-pill.is-active .filter-count {
-  background: rgba(255, 255, 255, 0.25);
+.filter-pill.is-active .filter-pill__count {
+  background: rgba(255, 255, 255, 0.18);
   color: #fff;
 }
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.25s ease-out;
-}
 
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-/* Timeline dots - Points d'ancrage visuels entre sections */
-.timeline-dot {
+/* === Liste projets (BoiteArticle) === */
+.projects-list {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: var(--space-3) 0;
+  flex-direction: column;
+  gap: clamp(3rem, 6vw, 5rem);
+}
+
+/* === Dark-tail === */
+.dark-tail {
   position: relative;
-}
-
-/* Lignes verticales courtes au-dessus et en-dessous */
-.timeline-dot::before,
-.timeline-dot::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  width: 2px;
-  height: 24px;
-  transform: translateX(-50%);
-}
-
-.timeline-dot::before {
-  top: 0;
-  background: linear-gradient(to bottom, transparent, $bleu1);
-}
-
-.timeline-dot::after {
-  bottom: 0;
-  background: linear-gradient(to top, transparent, $bleu1);
-}
-
-/* Point central vert avec halo subtil */
-.timeline-dot__core {
-  width: 14px;
-  height: 14px;
-  background: $vert;
-  border-radius: 50%;
-  box-shadow:
-    0 0 0 4px rgba(0, 168, 62, 0.15),
-    0 0 0 8px rgba(0, 168, 62, 0.08);
-  position: relative;
-  z-index: 1;
-}
-
-/* CTA Final - Avec œufs décoratifs */
-.cta-final {
-  position: relative;
-  width: clamp(90vw, 85vw, 900px);
-  margin: var(--space-3) auto clamp(5.5rem, 9vw, 7rem);
-  padding: clamp(2rem, 3vw, 2.5rem) clamp(2rem, 4vw, 3.5rem);
-  text-align: center;
+  background: var(--noir);
+  color: var(--blanc-casse);
+  padding: clamp(4rem, 8vw, 7rem) 6%;
   overflow: hidden;
-
-  /* Même fond que le hero */
-  background: linear-gradient(
-    135deg,
-    rgba(242, 240, 240, 0.4) 0%,
-    rgba(217, 217, 217, 0.2) 100%
-  );
-  border: 2px solid rgba(0, 0, 0, 0.08);
-  border-radius: 24px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
-/* Œufs flottants en background - même style que le Hero */
-.cta-oeuf {
+.dark-tail__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 960px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.skill {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.5rem 1.25rem;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--bordure-sombre);
+  border-radius: 14px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 1.25rem;
+    width: 32px;
+    height: 2px;
+    background: var(--skill-color);
+    border-radius: 2px;
+  }
+
+  &:hover {
+    border-color: var(--skill-color);
+    background: rgba(255, 255, 255, 0.04);
+  }
+}
+
+.skill__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--skill-color);
+}
+
+.skill__rule {
+  display: none;
+}
+
+.skill__title {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--skill-color);
+}
+
+.skill__items {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--gris-clair);
+  line-height: 1.55;
+}
+
+/* === Bridge === */
+.bridge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(1rem, 2vw, 1.5rem);
+}
+
+.bridge__line {
+  display: none;
+}
+
+.bridge__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: $vert;
+  box-shadow: 0 0 0 4px rgba(0, 168, 62, 0.18);
+  margin-top: 0.85rem;
+}
+
+/* === Contact === */
+.contact {
+  margin-top: 1rem;
+}
+
+.contact__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+.btn--ghost-light {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: var(--blanc-casse);
+}
+
+/* === Œufs décoratifs === */
+.deco-egg {
   position: absolute;
-  z-index: 1;
-  opacity: 0.15;
   pointer-events: none;
+  border-radius: 50% 50% 50% 50% / 55% 55% 45% 45%;
+  z-index: 1;
+
+  &--green {
+    width: 200px;
+    height: 245px;
+    background: $vert;
+    opacity: 0.85;
+  }
+  &--green-big {
+    width: 280px;
+    height: 340px;
+    background: $vert;
+    opacity: 0.7;
+  }
+  &--amber {
+    width: 90px;
+    height: 110px;
+    background: #f59e0b;
+    opacity: 0.85;
+  }
+  &--blue {
+    width: 110px;
+    height: 135px;
+    background: #3b82f6;
+    opacity: 0.7;
+  }
+  &--blue-small {
+    width: 70px;
+    height: 88px;
+    background: #3b82f6;
+    opacity: 0.65;
+  }
+  &--purple {
+    width: 100px;
+    height: 125px;
+    background: #8b5cf6;
+    opacity: 0.6;
+  }
 }
 
-.cta-oeuf-1 {
-  top: -6%;
-  right: -4%;
+/* Hero œufs (vifs sur fond noir) */
+.hero-egg-1 {
+  top: -60px;
+  right: -50px;
+  transform: rotate(20deg);
 }
+.hero-egg-2 {
+  top: 30%;
+  right: 10%;
+  transform: rotate(-15deg);
 
-.cta-oeuf-2 {
-  bottom: -8%;
-  left: -3%;
-}
-
-.cta-oeuf-3 {
-  bottom: -5%;
-  right: 8%;
-
-  @media (max-width: 640px) {
+  @media (max-width: 720px) {
     display: none;
   }
 }
-
-/* Contenu CTA (au-dessus des œufs) */
-.cta-final__content {
-  position: relative;
-  z-index: 2;
-  min-height: auto;
-  height: auto;
+.hero-egg-3 {
+  bottom: -50px;
+  left: -40px;
+  transform: rotate(-25deg);
 }
 
-.cta-final__title {
-  margin: 0 0 1rem;
-  font-size: clamp(2rem, 5vw, 2.8rem);
-  font-weight: 800;
-  color: $gris1;
-  line-height: 1.2;
+/* Tail œufs */
+.tail-egg-1 {
+  top: 5%;
+  right: 6%;
+  transform: rotate(15deg);
+
+  @media (max-width: 720px) {
+    display: none;
+  }
+}
+.tail-egg-2 {
+  top: 35%;
+  left: -40px;
+  transform: rotate(-20deg);
+
+  @media (max-width: 720px) {
+    display: none;
+  }
+}
+.tail-egg-3 {
+  bottom: -80px;
+  right: -60px;
+  transform: rotate(10deg);
+}
+.tail-egg-4 {
+  bottom: 8%;
+  left: 8%;
+  transform: rotate(-30deg);
 }
 
-.cta-final__description {
-  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
-  line-height: 1.6;
-  margin: 0 auto var(--space-4);
-  color: $gris2;
-  opacity: 0.95;
-}
-
-.cta-final__buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: center;
-  justify-content: center;
-  margin-top: var(--space-4);
-
-  @media (min-width: 640px) {
-    flex-direction: row;
-    gap: 16px;
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .filter-pill {
+    transition: none;
   }
 }
 </style>
