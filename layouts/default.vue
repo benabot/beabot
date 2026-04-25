@@ -1,5 +1,5 @@
 <template>
-  <div id="wrapper">
+  <div id="wrapper" :class="{ 'is-home': isHomeRoute }">
     <nav
       role="navigation"
       class="nav-mobile"
@@ -515,5 +515,44 @@ a.nuxt-link-active {
 }
 [class*='couleur-'] {
   transition: all ease-in 0.3s;
+}
+
+// ─── Home hero nav reveal (CSS-only, no JS) ───────────────────────────────────
+// Fallback: nav always visible on home (browsers without view-timeline support).
+#wrapper.is-home .nav-desktop {
+  opacity: 1;
+  visibility: visible;
+}
+
+@keyframes nav-reveal {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+// Progressive enhancement: hide nav over hero, reveal as hero exits viewport.
+// Requires view-timeline-name (Chrome 115+, Firefox 114+, Safari 18+) AND
+// timeline-scope (needed to share the hero's timeline with a fixed sibling).
+// On unsupported browsers the fallback above keeps the nav visible.
+@supports (view-timeline-name: --x) and (timeline-scope: none) {
+  @media (prefers-reduced-motion: no-preference) {
+    // Promote hero's named timeline so fixed .nav-desktop siblings can see it.
+    #wrapper.is-home {
+      timeline-scope: --hero;
+    }
+
+    // At exit 0%: hero top = viewport top (scroll ≈ 0) → nav hidden.
+    // At exit 30%: hero scrolled 30% of its height past viewport → nav visible.
+    #wrapper.is-home .nav-desktop {
+      animation: nav-reveal linear both;
+      animation-timeline: --hero;
+      animation-range: exit 0% exit 30%;
+    }
+  }
 }
 </style>

@@ -587,6 +587,16 @@ useHead({
   align-items: center;
   padding-top: clamp(6rem, 10vw, 9rem);
   padding-bottom: clamp(4rem, 7vw, 5rem);
+
+  // Named view-timeline consumed by the layout's nav-reveal animation.
+  // Gated on the same @supports condition as the consumer so that no
+  // unnecessary property is set on browsers that cannot use it.
+  @supports (view-timeline-name: --x) and (timeline-scope: none) {
+    @media (prefers-reduced-motion: no-preference) {
+      view-timeline-name: --hero;
+      view-timeline-axis: block;
+    }
+  }
 }
 
 .home-hero__grid {
