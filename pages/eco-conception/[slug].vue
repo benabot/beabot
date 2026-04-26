@@ -427,6 +427,7 @@ const blogPostingStructuredData = computed(() => ({
   author: {
     '@type': 'Person',
     name: 'Benoît Abot',
+    url: config.public.siteUrl,
   },
   publisher: {
     '@type': 'Organization',
@@ -453,56 +454,59 @@ const faqStructuredData = computed(() => ({
   })),
 }))
 
-useHead({
-  title: seoTitle.value,
+useHead(
+  computed(() => ({
+    title: seoTitle.value,
+    titleTemplate: '%s | BeAbot',
 
-  meta: [
-    { hid: 'description', name: 'description', content: seoDesc.value },
-    { hid: 'robots', name: 'robots', content: robots.value },
+    meta: [
+      { hid: 'description', name: 'description', content: seoDesc.value },
+      { hid: 'robots', name: 'robots', content: robots.value },
 
-    // Open Graph
-    { hid: 'og:type', property: 'og:type', content: 'article' },
-    { hid: 'og:site_name', property: 'og:site_name', content: 'BeAbot' },
-    { hid: 'og:title', property: 'og:title', content: seoTitle.value },
-    {
-      hid: 'og:description',
-      property: 'og:description',
-      content: seoDesc.value,
-    },
-    { hid: 'og:url', property: 'og:url', content: articleCanonicalUrl },
-    { hid: 'og:image', property: 'og:image', content: ogImage.value },
+      // Open Graph
+      { hid: 'og:type', property: 'og:type', content: 'article' },
+      { hid: 'og:site_name', property: 'og:site_name', content: 'BeAbot' },
+      { hid: 'og:title', property: 'og:title', content: seoTitle.value },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content: seoDesc.value,
+      },
+      { hid: 'og:url', property: 'og:url', content: articleCanonicalUrl },
+      { hid: 'og:image', property: 'og:image', content: ogImage.value },
 
-    // Twitter
-    {
-      hid: 'twitter:card',
-      name: 'twitter:card',
-      content: 'summary_large_image',
-    },
-    { hid: 'twitter:title', name: 'twitter:title', content: seoTitle.value },
-    {
-      hid: 'twitter:description',
-      name: 'twitter:description',
-      content: seoDesc.value,
-    },
-    { hid: 'twitter:image', name: 'twitter:image', content: ogImage.value },
-  ],
+      // Twitter
+      {
+        hid: 'twitter:card',
+        name: 'twitter:card',
+        content: 'summary_large_image',
+      },
+      { hid: 'twitter:title', name: 'twitter:title', content: seoTitle.value },
+      {
+        hid: 'twitter:description',
+        name: 'twitter:description',
+        content: seoDesc.value,
+      },
+      { hid: 'twitter:image', name: 'twitter:image', content: ogImage.value },
+    ],
 
-  link: [{ hid: 'canonical', rel: 'canonical', href: articleCanonicalUrl }],
+    link: [{ hid: 'canonical', rel: 'canonical', href: articleCanonicalUrl }],
 
-  script: [
-    {
-      type: 'application/ld+json',
-      children: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@graph': [
-          ...(isFaq.value
-            ? [faqStructuredData.value, breadcrumbList.value]
-            : [blogPostingStructuredData.value, breadcrumbList.value]),
-        ],
-      }),
-    },
-  ],
-})
+    script: [
+      {
+        type: 'application/ld+json',
+        children: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@graph': [
+            ...(isFaq.value
+              ? [faqStructuredData.value, breadcrumbList.value]
+              : [blogPostingStructuredData.value, breadcrumbList.value]),
+          ],
+        }),
+      },
+    ],
+  })),
+)
 </script>
 
 <style lang="scss" scoped>
