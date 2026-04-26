@@ -25,8 +25,8 @@
       <div class="article-body">
         <div class="project-main">
           <header class="project-header">
-            <h2 class="project-title">{{ titre }}</h2>
-            <h3 class="project-subtitle">{{ sousTitre }}</h3>
+            <h3 class="project-title">{{ titre }}</h3>
+            <p class="project-subtitle">{{ sousTitre }}</p>
           </header>
 
           <!-- Badge éco-conception -->
