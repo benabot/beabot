@@ -35,7 +35,7 @@
         <h1 id="portfolio-hero-title" class="hero__title">
           <span class="hero__name">Benoît Abot</span>
           <span class="hero__role">
-            Développeur web &amp; designer spécialisé en éco&#8209;conception
+            Développeur web & designer spécialisé en éco‑conception
           </span>
         </h1>
         <p class="hero__lead">
