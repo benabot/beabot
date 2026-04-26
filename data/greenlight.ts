@@ -233,6 +233,26 @@ export const buildGreenlightProductSchema = (
     name: 'BeAbot',
     url: siteUrl,
   },
+  offers: [
+    {
+      '@type': 'Offer',
+      name: 'Greenlight-free',
+      price: '0',
+      priceCurrency: 'EUR',
+      availability: 'https://schema.org/InStock',
+      url: pageUrl,
+      description:
+        'Version légère, propre, personnalisable avec Gutenberg, pour démarrer simplement.',
+    },
+    {
+      '@type': 'Offer',
+      name: 'Greenlight premium',
+      availability: 'https://schema.org/PreOrder',
+      url: `${siteUrl}/contact/`,
+      description:
+        'Version premium avec SEO natif avancé et personnalisation avancée.',
+    },
+  ],
   additionalProperty: [
     {
       '@type': 'PropertyValue',
