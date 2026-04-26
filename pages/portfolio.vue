@@ -298,6 +298,7 @@ useSeoMeta({
     'Développeur web et designer spécialisé en éco-conception. Sites performants, accessibles et sobres.',
   ogType: 'profile',
   ogUrl: portfolioCanonicalUrl,
+  ogImage: `${config.public.siteUrl}/beabot.png`,
   twitterCard: 'summary_large_image',
   twitterTitle: 'Portfolio — Benoît Abot, développeur web',
   twitterDescription:
