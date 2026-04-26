@@ -30,7 +30,7 @@ export const withTrailingSlash = (path = ''): string => {
 export const canonicalUrl = (siteUrl: string, path = '/'): string => {
   const base = stripTrailingSlash(String(siteUrl || '').trim())
   const normalizedPath = withTrailingSlash(path)
-  if (normalizedPath === '/') return base || '/'
+  if (normalizedPath === '/') return `${base}/`
   return `${base}${normalizedPath}`
 }
 
