@@ -143,7 +143,7 @@ export const appsIndexContent = {
   seo: {
     title: 'Apps iOS & macOS — BeAbot',
     description:
-      "DuoSpend, Meeting Mode et Siturem : des apps natives Swift, sans tracking ni SDK tiers. D'autres apps à venir, certaines gratuites, certaines avec abonnement.",
+      'DuoSpend, Meeting Mode et Siturem : apps natives Swift sans tracking ni SDK tiers. Certaines gratuites, certaines avec abonnement. Autres apps en préparation.',
     image: '/img/apps/duospend-vignette-apps.webp',
   },
 }

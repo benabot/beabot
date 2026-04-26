@@ -5,7 +5,7 @@ chapo: Avant d'optimiser un site, encore faut-il savoir ce qu'on mesure et pourq
 tag: ['Éco-conception', 'Audit', 'Performance', 'WebDesign']
 seo:
   title: "Audit éco-conception web — par où commencer"
-  description: Méthode, outils et indicateurs pour auditer l'impact environnemental d'un site web. Un point de départ concret avant toute démarche d'optimisation.
+  description: "Méthode, outils et indicateurs pour auditer un site web éco-conçu. Guide complet : EcoIndex, PageSpeed, poids de page. Point de départ pour toute optimisation."
   ogImage: /beabot.png
   robots: index,follow
 date: 2026-03-26
