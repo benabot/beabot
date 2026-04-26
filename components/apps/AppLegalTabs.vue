@@ -1,6 +1,11 @@
 <template>
   <div class="legal-tabs">
-    <div class="legal-tabs__list" role="tablist" :aria-label="label">
+    <div
+      class="legal-tabs__list"
+      role="tablist"
+      :aria-label="label"
+      :style="{ gridTemplateColumns: `repeat(${tabs.length}, minmax(0, 1fr))` }"
+    >
       <button
         v-for="(tab, index) in tabs"
         :id="`${baseId}-tab-${tab.key}`"
@@ -29,10 +34,16 @@
       :aria-labelledby="`${baseId}-tab-${tab.key}`"
       :hidden="activeIndex !== index"
     >
-      <h3 v-if="tab.content.title" class="legal-tabs__title">
+      <h3
+        v-if="tab.content.title"
+        class="legal-tabs__title"
+      >
         {{ tab.content.title }}
       </h3>
-      <p v-for="paragraph in tab.content.paragraphs" :key="paragraph">
+      <p
+        v-for="paragraph in tab.content.paragraphs"
+        :key="paragraph"
+      >
         {{ paragraph }}
       </p>
     </section>
@@ -64,6 +75,24 @@ const tabs = computed(() => [
     label: 'English',
     content: props.content.en,
   },
+  ...(props.content.es
+    ? [
+        {
+          key: 'es',
+          label: 'Español',
+          content: props.content.es,
+        },
+      ]
+    : []),
+  ...(props.content.de
+    ? [
+        {
+          key: 'de',
+          label: 'Deutsch',
+          content: props.content.de,
+        },
+      ]
+    : []),
 ])
 
 function setTabRef(element: Element | null, index: number) {
@@ -104,7 +133,6 @@ function onKeydown(event: KeyboardEvent, index: number) {
 
 .legal-tabs__list {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.35rem;
   padding: 0.35rem;
   background: rgba(243, 244, 246, 0.88);

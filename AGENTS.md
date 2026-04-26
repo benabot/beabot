@@ -266,6 +266,7 @@ node scripts/seo-check.mjs  # Vérification SEO
 | `PORTFOLIO_REDESIGN.md` | Specs refonte portfolio |
 | `PORTFOLIO_VISUAL_IMPROVEMENTS.md` | Améliorations visuelles portfolio |
 | `data/portfolio.ts` | Données structurées projets |
+| `docs/HOMEPAGE_REDESIGN_V3.md` | DDesign V3 |
 
 ---
 
@@ -318,6 +319,52 @@ node scripts/seo-check.mjs  # Vérification SEO
 - **Timeline dots** : Points d'ancrage verts avec halo
 - **Badges éco** : Fond vert clair, bordure verte
 - **Pills filtres** : État actif vert
+
+---
+
+## 🤖 DOSSIER `.codex/` RECOMMANDÉ
+
+### Arborescence cible
+
+```text
+beabot/
+├── .codex/
+│   ├── README.md
+│   ├── skills/
+│   │   ├── eco-conception.md
+│   │   ├── vue-nuxt.md
+│   │   ├── design-front.md
+│   │   ├── planning.md
+│   │   ├── quick-start.md
+│   │   └── playwright.md
+│   └── templates/
+│       ├── audit-eco.md
+│       ├── spec-page.md
+│       └── plan-tache.md
+└── AGENTS.md
+```
+
+### Rôle des skills
+
+- **`eco-conception.md`** : principes, méthodes, checklist éco-conception web.
+- **`vue-nuxt.md`** : bonnes pratiques Vue 3 + Nuxt 3, composition API, SSR, SSG.
+- **`design-front.md`** : conventions UI, accessibilité, responsive, design tokens.
+- **`planning.md`** : organisation des tâches, estimation temps, phases projet.
+- **`quick-start.md`** : rappel du contexte projet, commandes utiles, garde-fous, checks avant merge.
+- **`playwright.md`** : conventions de tests E2E, parcours critiques, assertions robustes, contrôle console/a11y/SEO visible, non-régression UI légère.
+
+### Convention d'usage
+
+- Ajouter `design-front.md` pour toute modification UI.
+- Ajouter `playwright.md` pour toute tâche impliquant des tests E2E, des parcours critiques ou une vérification de régression visuelle légère.
+- Ajouter `planning.md` pour toute tâche > 30 minutes ou multi-fichiers.
+
+### Notes importantes
+
+- Ne pas ajouter de scripts tiers, web fonts externes ou librairies lourdes sans justification forte.
+- Préférer les composants réutilisables, les pages statiques, les images optimisées et le lazy loading.
+- Les tests Playwright doivent rester ciblés : peu de scénarios, forte valeur métier, sélecteurs robustes, pas de `waitForTimeout` inutile, pas de snapshots massifs.
+- Toute proposition doit tenir compte des objectifs du site : **blog statique + portfolio orienté éco-conception, SEO et crédibilité professionnelle**.
 
 ---
 

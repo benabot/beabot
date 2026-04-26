@@ -1,128 +1,130 @@
 <template>
-  <section>
-    <aside>
-      <Oeuf class="oeuf oeuf--1" width="60%" fill="#f2a81d" />
-      <Oeuf
-        class="oeuf oeuf--2"
-        width="40%"
-        transform="rotate(-115)"
-        fill="#04d94f"
-      />
-      <div class="boite--aside">
-        <div class="breadcrumb">
-          <ul class="selector text-gris1">
-            <li class="svg-baseline svg-icon">
-              <AppLink to="/" aria-label="Retour à l'accueil">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path
-                    fill="currentColor"
-                    d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"
-                  /></svg
-              ></AppLink>
-            </li>
-            |
-            <li><AppLink to="/eco-conception/">Blog</AppLink></li>
-            |
-            <li class="text-gris3">{{ article?.title }}</li>
-          </ul>
-          <hr />
-          <span
-            v-for="tag in article?.tag"
-            :key="tag"
-            class="petit-text lettre-smcp"
-            @click="updateTag(tag)"
-            ><AppLink to="/eco-conception/">
-              <span class="text-vert"> #</span>{{ tag }}
-            </AppLink></span
-          >
-        </div>
-        <div class="chapitres text-gris1">
-          <div class="svg-baseline svg-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path
-                fill="currentColor"
-                d="M19 1L14 6V17L19 12.5V1M21 5V18.5C19.9 18.15 18.7 18 17.5 18C15.8 18 13.35 18.65 12 19.5V6C10.55 4.9 8.45 4.5 6.5 4.5C4.55 4.5 2.45 4.9 1 6V20.65C1 20.9 1.25 21.15 1.5 21.15C1.6 21.15 1.65 21.1 1.75 21.1C3.1 20.45 5.05 20 6.5 20C8.45 20 10.55 20.4 12 21.5C13.35 20.65 15.8 20 17.5 20C19.15 20 20.85 20.3 22.25 21.05C22.35 21.1 22.4 21.1 22.5 21.1C22.75 21.1 23 20.85 23 20.6V6C22.4 5.55 21.75 5.25 21 5M10 18.41C8.75 18.09 7.5 18 6.5 18C5.44 18 4.18 18.19 3 18.5V7.13C3.91 6.73 5.14 6.5 6.5 6.5C7.86 6.5 9.09 6.73 10 7.13V18.41Z"
-              />
-            </svg>
-            &ensp;Chapitres
-          </div>
-          <hr />
-          <ul class="text-fin petit-text2">
-            <li
-              v-for="link of article?.body?.toc?.links"
-              :key="link.id"
-              :class="{
-                'text-normal ml-1': link.depth === 2,
-                'text-fin ml-2': link.depth === 3,
-              }"
-            >
-              <a
-                :class="{
-                  'text-encours': link.id === currentlyActiveToc,
-                  '': link.id !== currentlyActiveToc,
-                }"
-                role="button"
-                class=""
-                :href="`#${link.id}`"
-                >{{ link.text === 'Footnotes' ? 'Références' : link.text }}</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div class="prevnext text-gris1">
-          <div class="svg-baseline svg-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path
-                fill="currentColor"
-                d="M22,3H5A2,2 0 0,0 3,5V9H5V5H22V19H5V15H3V19A2,2 0 0,0 5,21H22A2,2 0 0,0 24,19V5A2,2 0 0,0 22,3M7,15V13H0V11H7V9L11,12L7,15M20,13H13V11H20V13M20,9H13V7H20V9M17,17H13V15H17V17Z"
-              />
-            </svg>
-            &ensp;À voir également
-          </div>
-          <hr />
-          <ArticleNavigation class="petit-text2" :prev="prev" :next="next" />
-        </div>
-      </div>
-    </aside>
-    <article>
-      <h1 class="text-black h3 text-gris1">
-        {{ article?.title }}
-      </h1>
-
-      <p class="text-gris1 text-normal">{{ chapoText }}</p>
-      <p class="petit-text text-gris3 infos">
-        Publié le : {{ formatDate(article?.date) }}
-        <span v-if="showUpdatedAt">
-          — Mis à jour le : {{ formatDate(article?.updatedAt) }}
-        </span>
-        — Par : Benoît Abot
-        <span v-if="article?.temps">
-          — Temps de lecture : {{ article.temps }}mn</span
-        >
-      </p>
-      <hr />
-
-      <ContentRenderer
-        v-if="article"
-        ref="contentEl"
-        class="text-gris2 mt-2"
-        :value="article"
-      />
-      <svg
-        viewBox="0 0 100 100"
-        width="33%"
-        aria-hidden="true"
-        focusable="false"
-      >
-        <path
+  <main class="eco-article-main">
+    <section class="eco-article-section">
+      <aside>
+        <Oeuf class="oeuf oeuf--1" width="60%" fill="#f2a81d" />
+        <Oeuf
+          class="oeuf oeuf--2"
+          width="40%"
+          transform="rotate(-115)"
           fill="#04d94f"
-          d="M75,97.8c3.7-1.1,7.4-1.6,11.1-2c1.9-0.2,3.7-0.3,5.6-0.4c0.5,0,0.9,0,1.4,0l1.3,0c0.3,0,0.5-0.1,0.6-0.3
+        />
+        <div class="boite--aside">
+          <div class="breadcrumb">
+            <ul class="selector text-gris1">
+              <li class="svg-baseline svg-icon">
+                <AppLink to="/" aria-label="Retour à l'accueil">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path
+                      fill="currentColor"
+                      d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"
+                    /></svg
+                ></AppLink>
+              </li>
+              |
+              <li><AppLink to="/eco-conception/">Blog</AppLink></li>
+              |
+              <li class="text-gris3">{{ article?.title }}</li>
+            </ul>
+            <hr />
+            <span
+              v-for="tag in article?.tag"
+              :key="tag"
+              class="petit-text lettre-smcp"
+              @click="updateTag(tag)"
+              ><AppLink :to="articleTagLink(tag)">
+                <span class="text-vert"> #</span>{{ tag }}
+              </AppLink></span
+            >
+          </div>
+          <div class="chapitres text-gris1">
+            <div class="svg-baseline svg-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M19 1L14 6V17L19 12.5V1M21 5V18.5C19.9 18.15 18.7 18 17.5 18C15.8 18 13.35 18.65 12 19.5V6C10.55 4.9 8.45 4.5 6.5 4.5C4.55 4.5 2.45 4.9 1 6V20.65C1 20.9 1.25 21.15 1.5 21.15C1.6 21.15 1.65 21.1 1.75 21.1C3.1 20.45 5.05 20 6.5 20C8.45 20 10.55 20.4 12 21.5C13.35 20.65 15.8 20 17.5 20C19.15 20 20.85 20.3 22.25 21.05C22.35 21.1 22.4 21.1 22.5 21.1C22.75 21.1 23 20.85 23 20.6V6C22.4 5.55 21.75 5.25 21 5M10 18.41C8.75 18.09 7.5 18 6.5 18C5.44 18 4.18 18.19 3 18.5V7.13C3.91 6.73 5.14 6.5 6.5 6.5C7.86 6.5 9.09 6.73 10 7.13V18.41Z"
+                />
+              </svg>
+              &ensp;Chapitres
+            </div>
+            <hr />
+            <ul class="text-fin petit-text2">
+              <li
+                v-for="link of article?.body?.toc?.links"
+                :key="link.id"
+                :class="{
+                  'text-normal ml-1': link.depth === 2,
+                  'text-fin ml-2': link.depth === 3,
+                }"
+              >
+                <a
+                  :class="{
+                    'text-encours': link.id === currentlyActiveToc,
+                    '': link.id !== currentlyActiveToc,
+                  }"
+                  role="button"
+                  class=""
+                  :href="`#${link.id}`"
+                  >{{ link.text === 'Footnotes' ? 'Références' : link.text }}</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="prevnext text-gris1">
+            <div class="svg-baseline svg-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M22,3H5A2,2 0 0,0 3,5V9H5V5H22V19H5V15H3V19A2,2 0 0,0 5,21H22A2,2 0 0,0 24,19V5A2,2 0 0,0 22,3M7,15V13H0V11H7V9L11,12L7,15M20,13H13V11H20V13M20,9H13V7H20V9M17,17H13V15H17V17Z"
+                />
+              </svg>
+              &ensp;À voir également
+            </div>
+            <hr />
+            <ArticleNavigation class="petit-text2" :prev="prev" :next="next" />
+          </div>
+        </div>
+      </aside>
+      <article>
+        <h1 class="text-black h3 text-gris1">
+          {{ article?.title }}
+        </h1>
+
+        <p class="text-gris1 text-normal">{{ chapoText }}</p>
+        <p class="petit-text text-gris3 infos">
+          Publié le : {{ formatDate(article?.date) }}
+          <span v-if="showUpdatedAt">
+            — Mis à jour le : {{ formatDate(article?.updatedAt) }}
+          </span>
+          — Par : Benoît Abot
+          <span v-if="article?.temps">
+            — Temps de lecture : {{ article.temps }}mn</span
+          >
+        </p>
+        <hr />
+
+        <ContentRenderer
+          v-if="article"
+          ref="contentEl"
+          class="text-gris2 mt-2"
+          :value="article"
+        />
+        <svg
+          viewBox="0 0 100 100"
+          width="33%"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            fill="#04d94f"
+            d="M75,97.8c3.7-1.1,7.4-1.6,11.1-2c1.9-0.2,3.7-0.3,5.6-0.4c0.5,0,0.9,0,1.4,0l1.3,0c0.3,0,0.5-0.1,0.6-0.3
 		c0.2-0.2,0.3-0.4,0.3-0.6l0-1.3c0-0.5,0-0.9,0.1-1.4c0.1-1.9,0.2-3.7,0.4-5.6c0.4-3.7,0.9-7.4,2-11.1h0.3c0.1,3.7,0.1,7.4,0.1,11.1
 		l0,5.6l0,2.8c0,1-0.4,2-1.1,2.7c-0.7,0.7-1.7,1.1-2.7,1.1l-2.8,0l-5.6,0c-3.7,0-7.4,0-11.1-0.1V97.8z"
-        />
-      </svg>
-    </article>
-  </section>
+          />
+        </svg>
+      </article>
+    </section>
+  </main>
 </template>
 
 <script setup>
@@ -155,7 +157,7 @@ const { data: surroundArticles } = await useAsyncData(
 const transformArticleLink = (article) => {
   if (!article || !article._path) return null
   const normalizedPath = withTrailingSlash(
-    article._path.replace(/^\/articles\//, '/eco-conception/')
+    article._path.replace(/^\/articles\//, '/eco-conception/'),
   )
   return {
     ...article,
@@ -178,12 +180,12 @@ const showUpdatedAt = computed(() => {
   return new Date(updatedAt) > new Date(publishedAt)
 })
 const chapoText = computed(
-  () => article.value?.chapo || article.value?.description || ''
+  () => article.value?.chapo || article.value?.description || '',
 )
 
 const isFaq = computed(() => article.value?.schema === 'FAQPage')
 const faqItems = computed(() =>
-  buildFaqItems(article.value?.body?.children || [])
+  buildFaqItems(article.value?.body?.children || []),
 )
 
 // Format date helper
@@ -196,6 +198,14 @@ function formatDate(date) {
 // Update tag in store
 function updateTag(tag) {
   tagsStore.setTag(tag)
+}
+
+function articleTagLink(tag) {
+  return {
+    path: '/eco-conception/',
+    query: { tag },
+    hash: '#eco-archive',
+  }
 }
 
 function getTagName(node) {
@@ -235,7 +245,10 @@ function extractPlainText(node) {
   if (tagName === 'p') return childText.join('').trim()
   if (tagName === 'li') return childText.join('').trim()
   if (tagName === 'ul' || tagName === 'ol') {
-    return childText.map((item) => item.trim()).filter(Boolean).join('\n')
+    return childText
+      .map((item) => item.trim())
+      .filter(Boolean)
+      .join('\n')
   }
 
   return childText.join('')
@@ -356,27 +369,25 @@ onBeforeUnmount(() => {
 const config = useRuntimeConfig()
 const articleCanonicalUrl = canonicalUrl(
   config.public.siteUrl,
-  `/eco-conception/${route.params.slug}`
+  `/eco-conception/${route.params.slug}`,
 )
 const hubCanonicalUrl = canonicalUrl(config.public.siteUrl, '/eco-conception')
 const homeCanonicalUrl = canonicalUrl(config.public.siteUrl, '/')
 const seoTitle = computed(
-  () => article.value?.seo?.title || article.value?.title || ''
+  () => article.value?.seo?.title || article.value?.title || '',
 )
 const seoDesc = computed(
   () =>
     article.value?.seo?.description ||
     article.value?.description ||
-    `Article sur l’éco-conception web : ${article.value?.title || ''}`.trim()
+    `Article sur l’éco-conception web : ${article.value?.title || ''}`.trim(),
 )
 const ogImage = computed(() => {
   const image = article.value?.seo?.ogImage || article.value?.img
   if (!image) {
     return `${config.public.siteUrl}/beabot.png`
   }
-  return image.startsWith('http')
-    ? image
-    : `${config.public.siteUrl}${image}`
+  return image.startsWith('http') ? image : `${config.public.siteUrl}${image}`
 })
 const robots = computed(() => article.value?.seo?.robots || 'index,follow')
 const breadcrumbList = computed(() => ({
@@ -453,20 +464,30 @@ useHead({
     { hid: 'og:type', property: 'og:type', content: 'article' },
     { hid: 'og:site_name', property: 'og:site_name', content: 'BeAbot' },
     { hid: 'og:title', property: 'og:title', content: seoTitle.value },
-    { hid: 'og:description', property: 'og:description', content: seoDesc.value },
+    {
+      hid: 'og:description',
+      property: 'og:description',
+      content: seoDesc.value,
+    },
     { hid: 'og:url', property: 'og:url', content: articleCanonicalUrl },
     { hid: 'og:image', property: 'og:image', content: ogImage.value },
 
     // Twitter
-    { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
+    {
+      hid: 'twitter:card',
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    },
     { hid: 'twitter:title', name: 'twitter:title', content: seoTitle.value },
-    { hid: 'twitter:description', name: 'twitter:description', content: seoDesc.value },
+    {
+      hid: 'twitter:description',
+      name: 'twitter:description',
+      content: seoDesc.value,
+    },
     { hid: 'twitter:image', name: 'twitter:image', content: ogImage.value },
   ],
 
-  link: [
-    { hid: 'canonical', rel: 'canonical', href: articleCanonicalUrl },
-  ],
+  link: [{ hid: 'canonical', rel: 'canonical', href: articleCanonicalUrl }],
 
   script: [
     {
@@ -482,12 +503,18 @@ useHead({
     },
   ],
 })
-
 </script>
 
 <style lang="scss" scoped>
 h1 {
   margin: 0.95em 0;
+}
+
+.eco-article-main {
+  padding-bottom: clamp(10rem, 16vw, 16rem);
+}
+.eco-article-section {
+  padding-top: clamp(1rem, 4vw, 2rem);
 }
 
 section {
@@ -759,3 +786,5 @@ section {
   background-size: 20px 20px;
 }
 </style>
+
+<style src="~/assets/css/article-content.scss" lang="scss"></style>

@@ -192,6 +192,8 @@ NUXT_PUBLIC_SITE_URL=https://dev-beabot.netlify.app  # Dev
 
 | Fichier | Description |
 |---------|-------------|
+| `AGENTS.md` | Contexte global du projet pour les assistants de code |
+| `.codex/README.md` | Point d'entrée des skills et templates locaux du projet |
 | `CLAUDE.md` | Contexte pour Claude AI |
 | `TODO.md` | Tâches et roadmap |
 | `PROJECT_STATE.md` | État du projet |

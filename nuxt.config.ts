@@ -100,15 +100,6 @@ export default defineNuxtConfig({
           sizes: '32x32',
           href: '/favicon-32x32.png',
         },
-        // Preconnect to own domain for faster resource loading (uses runtime config)
-        {
-          rel: 'preconnect',
-          href: siteUrl,
-        },
-        {
-          rel: 'dns-prefetch',
-          href: siteUrl,
-        },
       ],
     },
     // Désactive la transition globale pour éviter CSS/JS supplémentaires
@@ -119,8 +110,13 @@ export default defineNuxtConfig({
   css: [
     // System font stack only (retire Montserrat webfonts)
     '~/assets/css/main.scss',
-    '~/assets/css/article-content.scss', // Article typography styles
   ],
+
+  routeRules: {
+    // Static editorial pages do not need Nuxt hydration on first load.
+    '/': { prerender: true, noScripts: true },
+    '/mentions-legales/': { prerender: true, noScripts: true },
+  },
 
   // Vite configuration for SCSS
   vite: {
@@ -141,7 +137,7 @@ export default defineNuxtConfig({
       },
     },
     build: {
-      cssCodeSplit: false, // Bundle all CSS in one file to reduce HTTP requests
+      cssCodeSplit: true, // Keep page CSS scoped to avoid shipping all styles on static pages
       minify: 'terser', // Use terser for better minification
       terserOptions: {
         compress: {
@@ -310,5 +306,10 @@ export default defineNuxtConfig({
     // payloadExtraction: true, // Disabled - causes #app-manifest errors in dev mode
     // componentIslands: true, // Disabled - causes #app-manifest errors in current version
     inlineSSRStyles: false, // Disable inline CSS for better caching and smaller HTML
+    defaults: {
+      nuxtLink: {
+        prefetch: false,
+      },
+    },
   },
 })

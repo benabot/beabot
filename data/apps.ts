@@ -44,6 +44,8 @@ export interface AppLegalContent {
 export interface AppLegalTabsContent {
   fr: AppLegalContent
   en: AppLegalContent
+  es?: AppLegalContent
+  de?: AppLegalContent
 }
 
 export interface AppCta {
@@ -134,14 +136,14 @@ export const appsIndexContent = {
   title: 'Applications iOS & macOS',
   intro: [
     "Des applications iOS et macOS pensées pour aller à l'essentiel.",
-    "Chaque app est conçue de la même façon que mes sites : sobre, sans couche inutile. Pas de compte imposé, pas de tracking. Vos données vous appartiennent.",
+    'Chaque app est conçue de la même façon que mes sites : sobre, sans couche inutile. Pas de compte imposé, pas de tracking. Vos données vous appartiennent.',
     "Certaines sont gratuites ou à achat unique, d'autres proposeront un abonnement optionnel. Dans tous les cas : un usage clair, une valeur réelle.",
   ],
   meta: '',
   seo: {
     title: 'Apps iOS & macOS — BeAbot',
     description:
-      "DuoSpend et Meeting Mode : deux apps natives Swift, sans tracking, sans SDK tiers. D'autres apps à venir, certaines gratuites, certaines avec abonnement.",
+      "DuoSpend, Meeting Mode et Siturem : des apps natives Swift, sans tracking ni SDK tiers. D'autres apps à venir, certaines gratuites, certaines avec abonnement.",
     image: '/img/apps/duospend-vignette-apps.webp',
   },
 }
@@ -152,7 +154,8 @@ export const appsIndexEntries: AppIndexEntry[] = [
     name: 'DuoSpend',
     platform: 'iOS',
     stage: 'Prépublication',
-    summary: "Une app pour couple ou tous ceux qui ont des projets à deux. Qui doit combien à qui\u00a0? Un coup d'œil suffit.\nVoyage, mariage, emménagement — chaque projet a son solde.",
+    summary:
+      "Une app pour couple ou tous ceux qui ont des projets à deux. Qui doit combien à qui\u00a0? Un coup d'œil suffit.\nVoyage, mariage, emménagement — chaque projet a son solde.",
     href: '/apps/duo-spend/',
     featured: true,
     preview: {
@@ -168,12 +171,30 @@ export const appsIndexEntries: AppIndexEntry[] = [
     name: 'Meeting Mode',
     platform: 'macOS',
     stage: 'Prépublication',
-    summary: 'Préparez votre Mac avant une réunion en un clic. Ouvrez le bon, masquez le reste.',
+    summary:
+      'Préparez votre Mac avant une réunion en un clic. Ouvrez le bon, masquez le reste.',
     href: '/apps/meeting-mode/',
     featured: false,
     preview: {
       src: '/img/apps/meeting-mode_vignette-apps.webp',
       alt: 'Aperçu de Meeting Mode sur macOS',
+      available: true,
+      label: 'Capture actuelle',
+      fit: 'cover',
+    },
+  },
+  {
+    slug: 'siturem',
+    name: 'Siturem',
+    platform: 'iOS',
+    stage: 'Prépublication',
+    summary:
+      'Méditation timer pour pratiquants avancés. Objectif : fournir un cadre stable pour pratiquer régulièrement, sans friction et sans distraction.',
+    href: '/apps/siturem/',
+    featured: false,
+    preview: {
+      src: '/img/siturem/siturem-landing.webp',
+      alt: 'Aperçu de Siturem sur iPhone',
       available: true,
       label: 'Capture actuelle',
       fit: 'cover',
@@ -197,7 +218,8 @@ const duoSpendFaqSections: AppFaqSection[] = [
       },
       {
         question: 'Faut-il créer un compte ?',
-        answer: 'Non. Pas de compte, pas d’email, pas de mot de passe. Vous ouvrez l’app et vous commencez.',
+        answer:
+          'Non. Pas de compte, pas d’email, pas de mot de passe. Vous ouvrez l’app et vous commencez.',
       },
       {
         question: "L'app fonctionne-t-elle sans connexion ?",
@@ -275,7 +297,8 @@ const duoSpendFaqSections: AppFaqSection[] = [
     title: 'Widgets',
     items: [
       {
-        question: 'Comment ajouter un widget DuoSpend sur mon écran d’accueil ?',
+        question:
+          'Comment ajouter un widget DuoSpend sur mon écran d’accueil ?',
         answer:
           'Maintenez votre doigt sur l’écran d’accueil → mode édition → appuyez sur + → cherchez "DuoSpend" → choisissez la taille (petit, moyen ou grand) → ajoutez. DuoSpend Pro est requis.',
       },
@@ -296,7 +319,8 @@ const duoSpendFaqSections: AppFaqSection[] = [
     items: [
       {
         question: 'Mes données sont-elles envoyées sur un serveur ?',
-        answer: 'Non. DuoSpend ne dispose d’aucun serveur. Vos données vous appartiennent.',
+        answer:
+          'Non. DuoSpend ne dispose d’aucun serveur. Vos données vous appartiennent.',
       },
       {
         question: "L'app contient-elle des trackers ou de la pub ?",
@@ -337,6 +361,75 @@ const duoSpendFaqSections: AppFaqSection[] = [
         question: 'Comment signaler un bug ou suggérer une fonctionnalité ?',
         answer:
           'Via la page support : beabot.fr/apps/duo-spend/. L’app est développée par une seule personne - les retours sont lus et pris en compte.',
+      },
+    ],
+  },
+]
+
+const situremFaqSections: AppFaqSection[] = [
+  {
+    title: 'Positionnement',
+    items: [
+      {
+        question: 'Pour qui Siturem est-elle conçue ?',
+        answer:
+          'Siturem s’adresse d’abord aux pratiquants qui savent déjà méditer et qui recherchent un cadre stable, discret et répétable. Elle n’est pas pensée comme une app de découverte ou de relaxation guidée.',
+      },
+      {
+        question: 'Est-ce une app de méditation guidée ?',
+        answer:
+          'Non, pas au sens classique. Siturem ne propose ni bibliothèque de contenus ni programmes progressifs. Elle structure une séance avec peu d’options pour laisser plus de place à la pratique elle-même.',
+      },
+      {
+        question:
+          'Pourquoi ne pas utiliser simplement le minuteur natif de l’iPhone ?',
+        answer:
+          'Parce que le minuteur donne un temps, mais pas un cadre. Siturem ajoute une structure stable avec une introduction, une phase de pratique et un retour au calme, tout en restant beaucoup plus sobre qu’une app de contenu.',
+      },
+    ],
+  },
+  {
+    title: 'Fonctionnement',
+    items: [
+      {
+        question: 'Comment se déroule une séance ?',
+        answer:
+          'Chaque séance suit une structure en trois phases : une introduction de 2 min 30 pour s’installer, une phase de méditation dont la durée dépend du temps total choisi, puis un retour au calme de 1 min 32 pour sortir progressivement.',
+      },
+      {
+        question: 'Quelle est la durée minimale ?',
+        answer:
+          'La durée minimale prévue est de 6 minutes. Cela laisse suffisamment de place pour les trois temps de la séance sans réduire la pratique à un simple minuteur.',
+      },
+      {
+        question: 'Quelles options sont prévues ?',
+        answer:
+          'Siturem reste volontairement limitée : durée totale, mode d’accompagnement, gong final, ambiance sonore optionnelle, rappels discrets pendant la séance et suivi de pratique sobre.',
+      },
+      {
+        question: 'L’app enregistre-t-elle les séances dans Apple Health ?',
+        answer:
+          'Oui, l’intégration HealthKit est prévue comme option. Elle sert à inscrire vos séances dans l’écosystème Santé d’Apple, sans être nécessaire au fonctionnement de base de l’app.',
+      },
+    ],
+  },
+  {
+    title: 'Confidentialité et sortie',
+    items: [
+      {
+        question: 'Faut-il créer un compte ?',
+        answer:
+          'Non. Siturem est pensée comme un outil natif, sans compte imposé, sans publicité et sans logique de plateforme.',
+      },
+      {
+        question: 'Y a-t-il du tracking ou des SDK tiers ?',
+        answer:
+          'La page de présentation est conçue autour d’une logique sobre : pas de tracking invasif, pas de profilage marketing et une collecte de données limitée à ce qui est utile au fonctionnement de l’app et aux intégrations Apple activées par l’utilisateur.',
+      },
+      {
+        question: 'Siturem est-elle déjà publiée ?',
+        answer:
+          'Pas encore. La page présente le produit, ses principes et sa politique de confidentialité. Vous pouvez laisser votre adresse pour être prévenu à l’ouverture.',
       },
     ],
   },
@@ -451,11 +544,12 @@ export const meetingModeContent: AppDetailContent = {
     {
       question: 'À quoi sert Meeting Mode ?',
       answer:
-        "Meeting Mode sert à préparer rapidement votre Mac avant une réunion, une démo, un entretien ou un partage d’écran. L’app peut ouvrir vos apps, liens et fichiers utiles, masquer certaines apps visibles, afficher un écran propre, puis proposer un restore simple à la fin.",
+        'Meeting Mode sert à préparer rapidement votre Mac avant une réunion, une démo, un entretien ou un partage d’écran. L’app peut ouvrir vos apps, liens et fichiers utiles, masquer certaines apps visibles, afficher un écran propre, puis proposer un restore simple à la fin.',
     },
     {
       question: 'Sur quel système l’app fonctionne-t-elle ?',
-      answer: 'Meeting Mode est une app macOS. Elle a été pensée comme une app de barre de menu.',
+      answer:
+        'Meeting Mode est une app macOS. Elle a été pensée comme une app de barre de menu.',
     },
     {
       question: 'Qu’est-ce qu’un preset ?',
@@ -478,7 +572,8 @@ export const meetingModeContent: AppDetailContent = {
         'Non. Meeting Mode reste volontairement prudent. Le restore est best effort et limité au scope réel de la session. L’app ne promet pas de refermer parfaitement chaque fenêtre, chaque onglet ou chaque document.',
     },
     {
-      question: 'Est-ce que Meeting Mode gère les fenêtres, les Spaces ou les onglets du navigateur ?',
+      question:
+        'Est-ce que Meeting Mode gère les fenêtres, les Spaces ou les onglets du navigateur ?',
       answer:
         'Non. Ce n’est pas le but du produit. Meeting Mode ne cherche pas à devenir un gestionnaire avancé du bureau macOS.',
     },
@@ -499,7 +594,8 @@ export const meetingModeContent: AppDetailContent = {
     },
     {
       question: 'Puis-je créer plusieurs presets ?',
-      answer: 'Oui. Vous pouvez créer, modifier et supprimer plusieurs presets.',
+      answer:
+        'Oui. Vous pouvez créer, modifier et supprimer plusieurs presets.',
     },
     {
       question: 'L’app fonctionne-t-elle hors connexion ?',
@@ -580,8 +676,8 @@ export const duoSpendContent: AppDetailContent = {
   intro: 'Conçue sans tracking, sans compte imposé, sans SDK tiers.',
   summary: 'Gérez vos dépenses communes à deux, avec un suivi simple et clair.',
   overview: [
-    "Vous organisez un voyage, un mariage, des travaux ou un emménagement. L’un avance les frais, l’autre rembourse — mais le solde n’est jamais évident à suivre.",
-    "DuoSpend est conçue pour deux. Créez un projet, ajoutez vos dépenses, choisissez qui paie quoi et en quelle proportion. L’app calcule le solde net en temps réel, sans tracking, sans compte imposé, sans SDK tiers.",
+    'Vous organisez un voyage, un mariage, des travaux ou un emménagement. L’un avance les frais, l’autre rembourse — mais le solde n’est jamais évident à suivre.',
+    'DuoSpend est conçue pour deux. Créez un projet, ajoutez vos dépenses, choisissez qui paie quoi et en quelle proportion. L’app calcule le solde net en temps réel, sans tracking, sans compte imposé, sans SDK tiers.',
   ],
   detailPoints: [
     {
@@ -601,11 +697,13 @@ export const duoSpendContent: AppDetailContent = {
     },
     {
       label: 'Local',
-      value: 'Vos données vous appartiennent. Pas de tracking, pas de SDK tiers.',
+      value:
+        'Vos données vous appartiennent. Pas de tracking, pas de SDK tiers.',
     },
     {
       label: 'Technologie',
-      value: 'Swift natif, sans dépendance externe. Support assuré directement par son auteur.',
+      value:
+        'Swift natif, sans dépendance externe. Support assuré directement par son auteur.',
     },
   ],
   preview: {
@@ -711,7 +809,8 @@ export const duoSpendContent: AppDetailContent = {
   },
   cta: {
     title: 'Soyez le premier à savoir.',
-    description: "DuoSpend arrive bientôt. Laissez votre adresse — je vous préviens dès l'ouverture.",
+    description:
+      "DuoSpend arrive bientôt. Laissez votre adresse — je vous préviens dès l'ouverture.",
     secondaryLabel: 'Une question ? Contactez-moi',
     secondaryTo: '/contact/',
   },
@@ -720,6 +819,186 @@ export const duoSpendContent: AppDetailContent = {
     description:
       'DuoSpend calcule qui doit combien à qui, sur chaque projet commun. Hors ligne, sans compte, sans pub. Achat unique 6,99 €.',
     image: '/img/apps/duospend-vignette-apps.webp',
+  },
+}
+
+export const situremContent: AppDetailContent = {
+  slug: 'siturem',
+  name: 'Siturem',
+  platform: 'iOS',
+  stage: 'Prépublication',
+  href: '/apps/siturem/',
+  intro: 'Conçue pour offrir un cadre stable, régulier et sans distraction.',
+  summary:
+    'Un timer de méditation iOS pensé pour les pratiquants avancés, avec une structure de séance claire et un suivi discret.',
+  overview: [
+    "La plupart des apps de méditation misent sur le contenu guidé, les programmes, les notifications et la gamification. Pour un pratiquant déjà autonome, cela crée souvent plus de bruit que d'aide.",
+    "Siturem prend la direction inverse : une séance prête à l'emploi, structurée en trois temps, avec peu d'options, peu de friction et aucune surcharge éditoriale. L'app ne cherche pas à enseigner la méditation. Elle sert à installer un cadre fiable et à s'effacer derrière la pratique.",
+  ],
+  detailPoints: [
+    {
+      label: 'Structure',
+      value: '3 phases fixes : introduction, pratique, retour.',
+      description:
+        "Le cœur de Siturem repose sur une séance stable et reproductible. Vous lancez l'app, vous entrez dans le cadre, puis vous laissez la pratique prendre le relais.",
+      featured: true,
+    },
+    {
+      label: 'Durée minimale',
+      value: '6 minutes pour préserver la cohérence de la séance.',
+    },
+    {
+      label: 'Accompagnement',
+      value:
+        'Silencieux, structuré ou guidé léger, avec gong et rappels discrets.',
+    },
+    {
+      label: 'Suivi',
+      value:
+        'Temps total, historique 7 / 30 jours et streak discret, sans gamification agressive.',
+    },
+    {
+      label: 'Données',
+      value:
+        'Approche locale, sans compte imposé. Intégration HealthKit optionnelle.',
+    },
+  ],
+  preview: {
+    src: '/img/siturem/siturem-landing.webp',
+    alt: 'Écran principal de Siturem sur iPhone',
+    available: true,
+    label: "Aperçu de l'app",
+    fit: 'contain',
+  },
+  showVisual: true,
+  gallery: [
+    {
+      src: '/img/siturem/siturem-meditation-screen.webp',
+      alt: 'Séance de méditation en cours dans Siturem',
+      title: 'Séance',
+      subtitle: 'Le timer s’efface derrière la pratique',
+    },
+    {
+      src: '/img/siturem/siturem-interface.webp',
+      alt: 'Réglages de séance dans Siturem',
+      title: 'Réglages',
+      subtitle: 'Durée, ambiance, gong et rappels',
+    },
+    {
+      src: '/img/siturem/siturem-intro-1.webp',
+      alt: 'Première étape d’introduction dans Siturem',
+      title: 'Introduction',
+      subtitle: 'Entrer dans la séance sans friction',
+    },
+    {
+      src: '/img/siturem/siturem-intro-2.webp',
+      alt: 'Deuxième écran d’introduction dans Siturem',
+      title: 'Cadre',
+      subtitle: 'Une structure stable, sans surcharge',
+    },
+    {
+      src: '/img/siturem/siturem-intro-3.webp',
+      alt: 'Troisième écran d’introduction dans Siturem',
+      title: 'Retour',
+      subtitle: 'Sortir progressivement de la pratique',
+    },
+  ],
+  faq: situremFaqSections.flatMap((section) => section.items),
+  faqSections: situremFaqSections,
+  legal: {
+    fr: {
+      title: 'Politique de confidentialité',
+      paragraphs: [
+        'Dernière mise à jour : 22 avril 2026.',
+        'Cette politique décrit comment Siturem traite les données personnelles lorsque vous utilisez l’application iOS et la page associée publiée sur beabot.fr.',
+        'Responsable du traitement : beabot.fr. Projet concerné : Siturem. Contact : hello@beabot.fr.',
+        'Selon votre usage, Siturem peut traiter des préférences de séance, la durée choisie, des réglages audio, les paramètres de gong ou de rappels, la langue de l’interface et des statistiques locales de pratique.',
+        'Les données de séance peuvent inclure la date et l’heure, la durée prévue, la durée réalisée, le nombre de séances et des statistiques agrégées comme le temps total, les périodes de 7 ou 30 jours, le streak actuel ou le meilleur streak.',
+        'Si vous activez l’intégration Apple Health / HealthKit, Siturem peut écrire des données liées à vos séances dans l’app Santé. Aucun accès à HealthKit n’a lieu sans votre consentement explicite.',
+        'Comme toute app, Siturem peut aussi traiter certaines informations techniques strictement nécessaires à son fonctionnement, à sa sécurité, à la résolution d’erreurs ou à sa distribution via l’écosystème Apple.',
+        'Par principe, Siturem n’a pas vocation à imposer un compte utilisateur, vendre vos données, exploiter vos séances à des fins publicitaires, publier vos données de pratique ni imposer un suivi analytique invasif.',
+        'Les données servent uniquement à faire fonctionner l’app, mémoriser vos réglages, calculer vos statistiques, enregistrer une séance dans Apple Health si vous avez activé cette option, améliorer la stabilité et répondre à vos demandes.',
+        'Les traitements reposent selon les cas sur l’exécution du service, votre consentement pour les fonctions optionnelles comme HealthKit, l’intérêt légitime pour la sécurité et la maintenance, ou une obligation légale.',
+        'Une partie importante des données est conçue pour être stockée localement sur votre appareil. Si certains traitements impliquent Apple ou des prestataires strictement nécessaires, ils restent soumis à leurs propres conditions et politiques.',
+        'Les données ne sont pas revendues. Elles peuvent être partagées avec Apple si cela est nécessaire au fonctionnement de l’app, à HealthKit, aux achats intégrés, au support ou à la distribution, avec des prestataires techniques indispensables au site, ou si la loi l’exige.',
+        'Les préférences et statistiques locales restent stockées tant que vous utilisez l’application ou jusqu’à leur suppression. Les messages envoyés au support peuvent être conservés le temps nécessaire au traitement de la demande.',
+        'Des mesures raisonnables sont mises en œuvre pour protéger les données. Selon votre pays et le droit applicable, vous pouvez disposer de droits d’accès, de rectification, d’effacement, de limitation, d’opposition, de portabilité et de retrait du consentement.',
+        'Cette politique peut être mise à jour pour refléter une évolution de l’application, un changement de prestataire ou une modification légale. Pour toute question relative à la confidentialité : hello@beabot.fr.',
+      ],
+    },
+    en: {
+      title: 'Privacy policy',
+      paragraphs: [
+        'Last updated: April 22, 2026.',
+        'This policy explains how Siturem processes personal data when you use the iOS application and the related page published on beabot.fr.',
+        'Data controller: beabot.fr. Project: Siturem. Contact: hello@beabot.fr.',
+        'Depending on how you use the app, Siturem may process session preferences, selected duration, audio settings, gong or reminder settings, interface language, and local practice statistics.',
+        'Session data may include date and time, planned duration, completed duration, number of sessions, and aggregated statistics such as total practice time, 7-day or 30-day activity, current streak, or best streak.',
+        'If you enable Apple Health / HealthKit integration, Siturem may write data related to your sessions to Apple Health. Siturem does not access HealthKit without your explicit consent.',
+        'Like any application, Siturem may also process limited technical information strictly necessary for operation, security, error resolution, or distribution through Apple’s ecosystem.',
+        'By design, Siturem is not intended to require a mandatory account, sell your data, use your sessions for advertising, publish your practice data, or impose invasive analytics tracking.',
+        'Your data is used only to operate the app, save settings, calculate practice statistics, record a session in Apple Health if enabled, improve stability and compatibility, and respond to your requests.',
+        'Processing relies, depending on the situation, on performance of the requested service, your consent for optional features such as HealthKit, legitimate interest for maintenance and security, or legal obligation.',
+        'A significant part of Siturem data is designed to remain stored locally on your device. If Apple or strictly necessary technical providers are involved, their own terms and policies apply.',
+        'Your data is not sold. It may be shared with Apple when necessary for app operation, HealthKit, in-app purchases, support, or App Store distribution, with essential technical providers, or where required by law.',
+        'Local preferences and statistics remain stored as long as you use the app or until they are deleted. Support messages may be retained for the time needed to process your request and any follow-up.',
+        'Reasonable safeguards are implemented to protect data. Depending on applicable law, you may have rights of access, rectification, erasure, restriction, objection, portability, and withdrawal of consent.',
+        'This policy may be updated to reflect changes in the app, providers, or legal requirements. For any privacy-related question: hello@beabot.fr.',
+      ],
+    },
+    es: {
+      title: 'Política de privacidad',
+      paragraphs: [
+        'Última actualización: 22 de abril de 2026.',
+        'Esta política explica cómo Siturem trata los datos personales cuando utiliza la aplicación iOS y la página relacionada publicada en beabot.fr.',
+        'Responsable del tratamiento: beabot.fr. Proyecto: Siturem. Contacto: hello@beabot.fr.',
+        'Según el uso que haga de la aplicación, Siturem puede tratar preferencias de sesión, duración seleccionada, ajustes de audio, configuración de gong o recordatorios, idioma de la interfaz y estadísticas locales de práctica.',
+        'Los datos de sesión pueden incluir fecha y hora, duración prevista, duración realizada, número de sesiones y estadísticas agregadas como tiempo total practicado, actividad de 7 o 30 días, racha actual o mejor racha.',
+        'Si activa Apple Health / HealthKit, Siturem puede escribir datos relacionados con sus sesiones en Apple Health. Siturem no accede a HealthKit sin su consentimiento explícito.',
+        'Como cualquier aplicación, Siturem también puede tratar información técnica mínima estrictamente necesaria para su funcionamiento, seguridad, resolución de errores o distribución a través del ecosistema Apple.',
+        'Por principio, Siturem no está pensada para exigir una cuenta obligatoria, vender sus datos, utilizar sus sesiones con fines publicitarios, publicar sus datos de práctica ni imponer un seguimiento analítico invasivo.',
+        'Los datos se usan únicamente para hacer funcionar la aplicación, guardar sus ajustes, calcular estadísticas, registrar una sesión en Apple Health si la opción está activada, mejorar la estabilidad y responder a sus solicitudes.',
+        'El tratamiento se basa, según el caso, en la ejecución del servicio, su consentimiento para funciones opcionales como HealthKit, el interés legítimo para mantenimiento y seguridad, o una obligación legal.',
+        'Una parte importante de los datos está diseñada para almacenarse localmente en su dispositivo. Si intervienen Apple o proveedores técnicos estrictamente necesarios, se aplican sus propias condiciones y políticas.',
+        'Sus datos no se venden. Solo pueden compartirse con Apple cuando sea necesario para el funcionamiento de la app, HealthKit, compras integradas, soporte o distribución, con proveedores técnicos esenciales o cuando la ley lo exija.',
+        'Las preferencias y estadísticas locales permanecen almacenadas mientras utilice la aplicación o hasta que se eliminen. Los mensajes enviados al soporte pueden conservarse el tiempo necesario para tramitar su solicitud.',
+        'Se aplican medidas razonables para proteger los datos. Según la legislación aplicable, puede tener derechos de acceso, rectificación, supresión, limitación, oposición, portabilidad y retirada del consentimiento.',
+        'Esta política puede actualizarse para reflejar cambios en la aplicación, en los proveedores o en los requisitos legales. Para cualquier cuestión de privacidad: hello@beabot.fr.',
+      ],
+    },
+    de: {
+      title: 'Datenschutzerklärung',
+      paragraphs: [
+        'Letzte Aktualisierung: 22. April 2026.',
+        'Diese Erklärung erläutert, wie Siturem personenbezogene Daten verarbeitet, wenn Sie die iOS-App und die zugehörige Seite auf beabot.fr nutzen.',
+        'Verantwortlicher: beabot.fr. Projekt: Siturem. Kontakt: hello@beabot.fr.',
+        'Je nach Nutzung kann Siturem Sitzungseinstellungen, ausgewählte Dauer, Audioeinstellungen, Gong- oder Erinnerungseinstellungen, Sprache der Benutzeroberfläche und lokale Praxisstatistiken verarbeiten.',
+        'Zu den Sitzungsdaten können Datum und Uhrzeit, geplante Dauer, tatsächliche Dauer, Anzahl der Sitzungen sowie aggregierte Statistiken wie gesamte Praxiszeit, Aktivität über 7 oder 30 Tage, aktuelle Serie oder beste Serie gehören.',
+        'Wenn Sie Apple Health / HealthKit aktivieren, kann Siturem Daten zu Ihren Sitzungen in Apple Health schreiben. Ein Zugriff auf HealthKit erfolgt nicht ohne Ihre ausdrückliche Einwilligung.',
+        'Wie jede App kann Siturem außerdem minimale technische Informationen verarbeiten, die für Betrieb, Sicherheit, Fehlerbehebung oder die Verteilung über das Apple-Ökosystem unbedingt erforderlich sind.',
+        'Grundsätzlich ist Siturem nicht darauf ausgelegt, ein Pflichtkonto zu verlangen, Daten zu verkaufen, Sitzungen für Werbung zu nutzen, Praxisdaten zu veröffentlichen oder invasives Tracking einzusetzen.',
+        'Die Daten werden nur verwendet, um die App zu betreiben, Einstellungen zu speichern, Praxisstatistiken zu berechnen, eine Sitzung in Apple Health zu erfassen, die Stabilität zu verbessern und auf Anfragen zu antworten.',
+        'Die Verarbeitung stützt sich je nach Fall auf die Erbringung des Dienstes, Ihre Einwilligung für optionale Funktionen wie HealthKit, das berechtigte Interesse an Wartung und Sicherheit oder auf gesetzliche Pflichten.',
+        'Ein wesentlicher Teil der Daten ist dafür vorgesehen, lokal auf Ihrem Gerät gespeichert zu bleiben. Wenn Apple oder unbedingt notwendige technische Dienstleister beteiligt sind, gelten deren eigene Bedingungen und Richtlinien.',
+        'Ihre Daten werden nicht verkauft. Sie können nur mit Apple geteilt werden, wenn dies für den Betrieb der App, HealthKit, In-App-Käufe, Support oder die Verteilung erforderlich ist, mit essenziellen technischen Dienstleistern oder wenn das Gesetz es verlangt.',
+        'Lokale Einstellungen und Statistiken bleiben gespeichert, solange Sie die Anwendung nutzen oder bis sie gelöscht werden. An den Support gesendete Nachrichten können für die Bearbeitung Ihrer Anfrage aufbewahrt werden.',
+        'Es werden angemessene Schutzmaßnahmen umgesetzt. Je nach anwendbarem Recht können Ihnen Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Widerspruch, Datenübertragbarkeit und Widerruf der Einwilligung zustehen.',
+        'Diese Erklärung kann aktualisiert werden, um Änderungen der App, der Dienstleister oder der rechtlichen Anforderungen abzubilden. Bei Fragen zum Datenschutz: hello@beabot.fr.',
+      ],
+    },
+  },
+  cta: {
+    title: 'Soyez le premier à savoir.',
+    description:
+      "Siturem est en prépublication. Laissez votre adresse — je vous préviens dès l'ouverture.",
+    secondaryLabel: 'Une question ? Contactez-moi',
+    secondaryTo: '/contact/',
+  },
+  seo: {
+    title: 'Siturem — méditation timer iOS pour pratiquants avancés | BeAbot',
+    description:
+      'Siturem est un timer de méditation iOS conçu pour offrir un cadre stable, régulier et sans distraction aux pratiquants avancés.',
+    image: '/img/siturem/siturem-landing.webp',
   },
 }
 
@@ -773,7 +1052,10 @@ export const buildFaqSchema = (items: AppFaqItem[]) => ({
   })),
 })
 
-export const buildItemListSchema = (siteUrl: string, items: AppIndexEntry[]) => ({
+export const buildItemListSchema = (
+  siteUrl: string,
+  items: AppIndexEntry[],
+) => ({
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   itemListElement: items.map((item, index) => ({

@@ -25,8 +25,8 @@
       <div class="article-body">
         <div class="project-main">
           <header class="project-header">
-            <h2 class="project-title">{{ titre }}</h2>
-            <h3 class="project-subtitle">{{ sousTitre }}</h3>
+            <h3 class="project-title">{{ titre }}</h3>
+            <p class="project-subtitle">{{ sousTitre }}</p>
           </header>
 
           <!-- Badge éco-conception -->
@@ -490,7 +490,7 @@ const onMoreKeydown = (event) => {
       bottom: -6px;
       left: -6px;
       right: -6px;
-      background: $fondClair;
+      background: #F6F7F5;
       z-index: 30;
       // clip-path appliqué via :style pour ID unique par instance
     }

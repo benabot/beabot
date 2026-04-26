@@ -33,14 +33,28 @@ export const projects: Project[] = [
     id: 'chasse-patate',
     title: 'BORDUR',
     subtitle: 'jeu de plateau cycliste',
-    image: 'chasse-patate.png',
-    url: 'https://bordur.fr/',
+    image: 'chasse-patate.webp',
+    url: 'https://bordur.fr',
     featured: false,
     tags: ['WebDesign', 'VueJs', 'SQL'],
     context: 'Jeu de plateau cycliste accessible en ligne.',
     role: 'Webdesign, développement front et gestion des données',
     stack: ['Vue.js', 'SQL'],
-    githubLink: 'https://github.com/benabot/cycling-sim-game-game-code'
+    githubLink: 'https://github.com/benabot/cycling-sim-game-game-code',
+  },
+  {
+    id: 'siturem',
+    title: 'Siturem',
+    subtitle: 'Méditation timer pour pratiquants avancés',
+    image: '/img/siturem/siturem-landing.webp',
+    url: '/apps/siturem/',
+    featured: false,
+    tags: ['iOS', 'Swift'],
+    context:
+      'Application iOS de meditation avec minuterie pensée pour des pratiquants avancés.',
+    role: "Conception produit, design d'interface et développement iOS natif",
+    stack: ['Swift', 'SwiftUI'],
+    githubLink: 'https://github.com/benabot/siturem',
   },
 
   // === APPS iOS (Swift) ===
@@ -52,23 +66,25 @@ export const projects: Project[] = [
     url: '',
     featured: false,
     tags: ['iOS', 'Swift'],
-    context: 'Application de suivi des dépenses communes sur des projets partagés (voyage, mariage, colocation…). Une question, une réponse : "Qui doit combien à qui ?"',
+    context:
+      'Application de suivi des dépenses communes sur des projets partagés (voyage, mariage, colocation…). Une question, une réponse : "Qui doit combien à qui ?"',
     role: 'Conception, architecture MVVM, développement Swift',
     stack: ['Swift 6', 'SwiftUI', 'SwiftData', 'iCloud'],
-    githubLink: 'https://github.com/benabot/DuoSpend'
+    githubLink: 'https://github.com/benabot/DuoSpend',
   },
   {
     id: 'focusone',
     title: 'FocusOne',
-    subtitle: 'App iOS de suivi d\'une micro-habitude quotidienne',
+    subtitle: "App iOS de suivi d'une micro-habitude quotidienne",
     image: 'focusone.webp',
     url: '',
     featured: false,
     tags: ['iOS', 'Swift'],
-    context: 'Un tap par jour pour suivre une habitude. Streak engine, widget Home Screen & Lock Screen, sync iCloud. Simple, sobre, local-first.',
+    context:
+      'Un tap par jour pour suivre une habitude. Streak engine, widget Home Screen & Lock Screen, sync iCloud. Simple, sobre, local-first.',
     role: 'Conception, développement Swift',
     stack: ['Swift', 'SwiftUI', 'Core Data', 'CloudKit', 'WidgetKit'],
-    githubLink: 'https://github.com/benabot/focusone'
+    githubLink: 'https://github.com/benabot/focusone',
   },
 
   // === PROJETS ÉCO-CONÇUS (featured) ===
@@ -87,38 +103,39 @@ export const projects: Project[] = [
       ecoIndex: 'A',
       requests: 4,
       pageWeight: '< 200 Ko',
-      lighthouse: 95
-    }
+      lighthouse: 95,
+    },
   },
   {
     id: 'petite-boucle',
     title: 'La petite boucle',
     subtitle: 'Refonte éco-conçue pour une collecte solidaire en triporteur',
     image: 'lpb.webp',
-    url: '',
+    url: 'https://web.archive.org/web/20220310203707/https://www.lapetiteboucle.fr/',
     featured: true,
     tags: ['WordPress', 'Éco-conçu', 'WebDesign'],
-    context: 'Refonte éco-conçue du site d\'une association de collecte en triporteur.',
+    context:
+      "Refonte éco-conçue du site d'une association de collecte en triporteur.",
     role: 'Audit du site existant, refonte design, développement WordPress',
     stack: ['WordPress', 'PHP', 'CSS', 'Thème sur-mesure'],
     metrics: {
       ecoIndex: 'A',
-      improvement: 'EcoIndex C → A, -60% poids'
+      improvement: 'EcoIndex C → A, -60% poids',
     },
     articleLink: '/eco-conception/theme-wordpress-eco-conception/',
-    githubLink: 'https://github.com/benabot/lapetiteboucle'
+    githubLink: 'https://github.com/benabot/lapetiteboucle',
   },
   {
     id: 'aave',
     title: 'AAVE',
-    subtitle: 'Site associatif pour la vallée de l\'Esches',
+    subtitle: "Site associatif pour la vallée de l'Esches",
     image: 'aave.webp',
     url: 'https://vallee-esches.fr/',
     featured: false,
     tags: ['WordPress', 'WebDesign'],
     context: 'Site vitrine pour une association environnementale locale.',
     role: 'Design, développement WordPress',
-    stack: ['WordPress', 'PHP', 'CSS']
+    stack: ['WordPress', 'PHP', 'CSS'],
   },
 
   // === PROJETS VUE.JS / NUXT ===
@@ -133,7 +150,7 @@ export const projects: Project[] = [
     context: 'Catalogue produits moderne pour une PME industrielle.',
     role: 'Design, développement front Nuxt, intégration API WordPress headless',
     stack: ['Nuxt', 'Vue.js', 'WordPress Headless', 'API REST'],
-    objectPosition: 'center top'
+    objectPosition: 'center top',
   },
   {
     id: 'guide-rse-carte',
@@ -143,11 +160,11 @@ export const projects: Project[] = [
     url: 'https://web.archive.org/web/20200920085252/https://www.guide-rse.banquepopulaire.fr/actions-rse',
     featured: false,
     tags: ['VueJs', 'WebDesign'],
-    context: 'Carte interactive des actions RSE d\'une banque.',
+    context: "Carte interactive des actions RSE d'une banque.",
     role: 'Développement front, intégration cartographique',
     stack: ['Vue.js', 'Bootstrap', 'Leaflet'],
     githubLink: 'https://github.com/benabot/svgMapVuejs',
-    objectPosition: 'center top'
+    objectPosition: 'center top',
   },
   {
     id: 'guide-rse-dataviz',
@@ -160,52 +177,81 @@ export const projects: Project[] = [
     context: 'Dataviz des résultats RSE annuels.',
     role: 'Développement front, data visualization',
     stack: ['Vue.js', 'Bootstrap', 'Chart.js'],
-    objectPosition: 'center top'
+    objectPosition: 'center top',
   },
   {
     id: 'app-noel',
     title: 'App Noël',
-    subtitle: 'Application pédagogique d\'apprentissage informatique',
+    subtitle: "Application pédagogique d'apprentissage informatique",
     image: 'appNoel.webp',
     url: 'https://app-noel.netlify.app',
     featured: false,
     tags: ['VueJs', 'WebDesign'],
-    context: 'Application pédagogique d\'initiation à l\'informatique.',
+    context: "Application pédagogique d'initiation à l'informatique.",
     role: 'Conception, design, développement',
-    stack: ['Vue.js']
-  }
+    stack: ['Vue.js'],
+  },
 ]
 
 // Filtres disponibles
 export const filters = [
   { id: 'all', label: 'Tous', count: projects.length },
-  { id: 'vjs', label: 'Vue.js', count: projects.filter(p => p.tags.includes('VueJs') || p.tags.includes('Nuxt')).length },
-  { id: 'wp', label: 'WordPress', count: projects.filter(p => p.tags.includes('WordPress')).length },
-  { id: 'eco', label: 'Éco-conçu', count: projects.filter(p => p.tags.includes('Éco-conçu')).length },
-  { id: 'design', label: 'WebDesign', count: projects.filter(p => p.tags.includes('WebDesign')).length },
-  { id: 'ios', label: 'iOS', count: projects.filter(p => p.tags.includes('iOS')).length }
+  {
+    id: 'vjs',
+    label: 'Vue.js',
+    count: projects.filter(
+      (p) => p.tags.includes('VueJs') || p.tags.includes('Nuxt'),
+    ).length,
+  },
+  {
+    id: 'wp',
+    label: 'WordPress',
+    count: projects.filter((p) => p.tags.includes('WordPress')).length,
+  },
+  {
+    id: 'eco',
+    label: 'Éco-conçu',
+    count: projects.filter((p) => p.tags.includes('Éco-conçu')).length,
+  },
+  {
+    id: 'design',
+    label: 'WebDesign',
+    count: projects.filter((p) => p.tags.includes('WebDesign')).length,
+  },
+  {
+    id: 'ios',
+    label: 'iOS',
+    count: projects.filter((p) => p.tags.includes('iOS')).length,
+  },
 ]
 
 // Compétences techniques
 export const skills = {
   frontend: {
     title: 'Front-end',
-    items: ['HTML/CSS', 'JavaScript', 'Vue.js', 'Nuxt', 'Svelte']
+    items: ['HTML/CSS', 'JavaScript', 'Vue.js', 'Nuxt', 'Svelte'],
   },
   backend: {
     title: 'Back-end / CMS',
-    items: ['PHP', 'SQL', 'API REST', 'WordPress (thèmes & plugins)']
+    items: ['PHP', 'SQL', 'API REST', 'WordPress (thèmes & plugins)'],
   },
   quality: {
     title: 'Éco-conception / Qualité',
-    items: ['Sobriété numérique', 'Performance', 'Accessibilité', 'SEO']
+    items: ['Sobriété numérique', 'Performance', 'Accessibilité', 'SEO'],
   },
   devops: {
     title: 'DevOps',
-    items: ['Git', 'Docker', 'Nginx', 'Bash', 'CI/CD']
+    items: ['Git', 'Docker', 'Nginx', 'Bash', 'CI/CD'],
   },
   mobile: {
     title: 'iOS / Mobile',
-    items: ['Swift', 'SwiftUI', 'SwiftData', 'Core Data', 'CloudKit', 'WidgetKit']
-  }
+    items: [
+      'Swift',
+      'SwiftUI',
+      'SwiftData',
+      'Core Data',
+      'CloudKit',
+      'WidgetKit',
+    ],
+  },
 }

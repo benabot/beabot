@@ -1,467 +1,528 @@
-/* eslint-disable vue/multi-word-component-names */
 <template>
-  <main>
-    <section class="container container-1">
-      <!-- <Oeuf fill="pink" width="5%" transform="rotate(15)" /> -->
-      <h1 class="title">beAbot</h1>
-      <div id="boite-logo">
-        <Oeuf width="35%" class="fixe oeuf-intro" />
+  <main class="home-v3">
+    <section class="home-hero" aria-labelledby="home-hero-title">
+      <div class="home-wrap home-hero__grid">
+        <div class="home-hero__copy">
+          <p class="home-kicker">beAbot</p>
+          <h1 id="home-hero-title" class="home-title">
+            Développement web spécialisé en
+            <span>éco-conception</span>
+          </h1>
+          <p class="home-subtitle">
+            Sites WordPress et interfaces JavaScript sobres, rapides et
+            durables. 15 ans d’expérience, spécialiste du numérique responsable.
+          </p>
+          <p class="home-lead">
+            Je conçois des sites et des applications web avec une attention
+            particulière portée à la performance, à l’accessibilité, à la
+            sobriété technique et à la qualité du code. Résultat : des projets
+            plus légers, plus lisibles, plus faciles à maintenir.
+          </p>
+          <div class="home-actions">
+            <AppLink class="button button--primary" to="/portfolio/">
+              Voir mes réalisations
+            </AppLink>
+            <AppLink class="button button--secondary" to="/contact/">
+              Me contacter
+            </AppLink>
+            <AppLink class="text-link" to="/greenlight/">
+              Découvrir Greenlight
+            </AppLink>
+          </div>
+        </div>
+
+        <aside class="home-hero__proof" aria-label="Signature de la page">
+          <div class="proof-blob">
+            <span class="proof-blob__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" focusable="false">
+                <path
+                  d="M34.2 10.4c-8.7.5-16 5.5-18.9 12.6-2 5.1-1.1 10.1 2.4 14.2 2.6 3 5.9 4.6 10 4.8 8 .3 14.1-4.1 16.9-11.7 1.9-5 1.2-10-1.8-14.4-2.1-3.1-5.2-5-8.6-5.5Zm-9.9 22.2c-.2-2.4.9-4.8 2.9-6.5 1.5-1.2 3.5-2.1 6.3-2.6-1 4.9-4.4 8.2-9.2 9.1Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+            <p class="proof-blob__value">Éco-conception</p>
+            <p class="proof-blob__meta">
+              Performance, accessibilité et sobriété technique dès le départ.
+            </p>
+          </div>
+        </aside>
       </div>
-      <h2 class="links text-gris2 text-normal titre3">Éco-conception web</h2>
-      <p class="links lettre-smcp titre-sub h4 text-fin">
-        Performance, accessibilité, sobriété : un web durable et beau
-      </p>
-
-      <!-- Flèche de scroll -->
-      <button
-        @click="scrollToNext"
-        class="scroll-indicator"
-        aria-label="Aller à la section suivante : impacts du numérique"
-      >
-        <svg viewBox="0 0 32.8 27.3" xmlns="http://www.w3.org/2000/svg">
-          <path
-            fill="#04d94f"
-            d="M.4 12.7c3.5 1.7 6.5 3.8 9.5 6 1.5 1.1 2.9 2.3 4.4 3.5.4.3.7.6 1 .9l1 .9c.2.2.4.3.6.2.3 0 .5-.1.6-.2l.9-1c.3-.4.6-.7 1-1 1.4-1.3 2.7-2.6 4.1-3.9 2.8-2.5 5.7-4.8 9-6.8l.2.2c-2.4 2.8-4.9 5.5-7.4 8.2L21.6 24l-1.9 2c-.7.8-1.7 1.2-2.7 1.3-1 0-2-.3-2.7-1l-2.1-1.9-4.1-3.8c-2.7-2.5-5.4-5-8.1-7.6l.4-.3z"
-          />
-          <path
-            fill="#04d94f"
-            d="M.4 1.3c3.5 1.7 6.5 3.8 9.5 6 1.5 1.1 2.9 2.3 4.4 3.5.4.3.7.6 1 .9l1 .9c.2.2.4.3.6.2.3 0 .5-.1.6-.2l.9-1c.3-.4.6-.7 1-1 1.4-1.3 2.7-2.6 4.1-3.9 2.8-2.5 5.7-4.8 9-6.8l.2.2c-2.4 2.8-4.9 5.5-7.4 8.2l-3.8 4.1-1.9 2.1c-.6.9-1.6 1.3-2.6 1.4-1 0-2-.3-2.7-1L12.2 13 8.1 9.2C5.4 6.7 2.7 4.2 0 1.6l.4-.3z"
-          />
-        </svg>
-      </button>
     </section>
-    <section class="container container-2 fond-gris">
-      <!-- <LazyOeufImage /> -->
-      <p class="text-gris5 h4">
-        <span class="text-black"
-          >Les émissions de gaz à effet de serre liées à la technologie
-          numérique dépassent celles de l'aviation</span
-        >. <br />Cependant, il y a une bonne nouvelle<span class="insec"
-          >&thinsp;</span
-        >:
-        <span class="text-black"
-          >votre site web a le pouvoir de contribuer à la solution</span
-        >.
-        <br />
-        <br />
-        Un site web conçu de manière écoresponsable nécessite
-        <span class="text-black"
-          >moins de ressources, se charge plus rapidement, sollicite moins les
-          téléphones sans renoncer à l’esthétique</span
-        ><span class="insec">&thinsp;</span>: c'est non seulement possible, et
-        c'est aussi ce que je fais...
 
-        <!-- <span class="text-black">Le numérique pèse plus lourd que l'aviation</span> dans nos émissions de CO2. La bonne nouvelle<span class="insec">&thinsp;</span>? <span class="text-black">Chaque site peut faire partie de la solution</span>. Un site éco-conçu consomme moins de ressources, charge plus vite, use moins les téléphones et reste beau : c'est possible, et c'est ce que je fais... -->
-      </p>
-      <!-- <p class="text-gris5 h4">
-        Vous avez sans doute entendu dire que le
-        <span class="text-black"
-          >numérique émettrait plus de CO2 que le transport aérien</span
-        ><span class="insec">&thinsp;</span>? C’est vrai. <br />Peut-être
-        pensez-vous que les <span class="text-black">data centers</span> sont la
-        source principale de cette <span class="text-black">pollution</span
-        ><span class="insec">&thinsp;</span>? Pas tout à fait. <br />Peut-être
-        vous a-t-on dit qu’un site éco-conçu c’était le modèle amish en noir et
-        blanc<span class="insec">&thinsp;</span>?
-        <span class="text-black"
-          >Pas du tout<span class="insec">&thinsp;</span>!</span
-        >
-      </p> -->
-    </section>
-    <section class="container--space-between fond-gris">
-      <div class="impact">
-        <div class="impact--col impact--col__centre">
-          <div class="impact--titre">
-            <h2 class="h3 text-black text-gris6">
-              Les impacts du numérique sur l'environnement&nbsp;:
+    <section
+      class="home-section home-section--alt"
+      aria-labelledby="home-metrics-title"
+    >
+      <div class="home-wrap">
+        <header class="section-heading">
+          <div>
+            <p class="section-kicker">Preuves chiffrées</p>
+            <h2 id="home-metrics-title" class="section-title">
+              Ce site applique ce que je vends
             </h2>
-            <div class="lettre-smcp titre-sub">En quelques mots</div>
           </div>
-        </div>
-        <div class="impact--col impact--col__1">
-          <div class="impact--chiffre impact-card">
-            <div class="bg-gris bg-gris__bleu">
-              <p class="para-gros">
-                1 Le numérique génère des effets environnementaux mesurables :
-                émissions de CO₂, consommation d’énergie et extraction de
-                ressources.
-              </p>
+          <p class="section-intro">
+            Pas de démonstration théorique : les chiffres ci-dessous sont
+            mesurés sur beabot.fr.
+          </p>
+        </header>
+
+        <div class="metrics-grid">
+          <article class="metric-card">
+            <p class="metric-card__label">EcoIndex</p>
+            <p class="metric-card__value metric-card__value--accent">A</p>
+            <p class="metric-card__meta">
+              Performance environnementale pilotée.
+            </p>
+          </article>
+
+          <article class="metric-card">
+            <p class="metric-card__label">Lighthouse</p>
+            <div
+              class="metric-card__scores"
+              aria-label="Scores Lighthouse : performance 100, accessibilité 96, bonnes pratiques 100, SEO 100"
+            >
+              <span>
+                100
+                <small>Perf.</small>
+              </span>
+              <span>
+                96
+                <small>A11y</small>
+              </span>
+              <span>
+                100
+                <small>BP</small>
+              </span>
+              <span>
+                100
+                <small>SEO</small>
+              </span>
             </div>
-          </div>
-          <div class="impact--chiffre impact-card">
-            <div class="bg-gris bg-gris__vert">
-              <p class="para-gros">
-                2 Ces effets se répartissent entre les centres de données, les
-                réseaux et surtout les équipements des utilisateurs.
-              </p>
-            </div>
-          </div>
+          </article>
+
+          <article class="metric-card">
+            <p class="metric-card__label">Poids page</p>
+            <p class="metric-card__value">~140 Ko</p>
+            <p class="metric-card__meta">Un site léger qui reste durable.</p>
+          </article>
         </div>
 
-        <div class="impact--col impact--col__2">
-          <div class="impact--chiffre impact-card">
-            <div class="bg-gris bg-gris__jaune">
-              <p class="para-gros">
-                3 La fabrication et l’usage des terminaux concentrent
-                l’essentiel de l’empreinte environnementale.
-              </p>
-            </div>
-          </div>
-          <div class="impact--chiffre impact-card">
-            <div class="bg-gris bg-gris__gris">
-              <p class="para-gros">
-                4 Cette empreinte débute dès la production des appareils, bien
-                avant leur première utilisation.
-              </p>
-            </div>
-          </div>
+        <div class="section-footer">
+          <AppLink class="text-link" to="/eco-conception/">
+            Méthode de mesure
+          </AppLink>
         </div>
       </div>
-      <p class="text-gris5 h4 mt-n10">
-        Comprendre ces impacts permet de concevoir autrement.
-      </p>
-      <div class="sct-footer mt-n10">
-        <AppLink
-          class="sct-footer--btn"
-          to="/eco-conception/la-consommation-energetique-du-numerique/"
-          >en savoir plus</AppLink
-        >
-        <div class="fleche">
-          <svg
-            x="0"
-            y="0"
-            viewBox="0 0 32.8 27.3"
-            xml:space="preserve"
-            aria-hidden="true"
-            focusable="false"
+    </section>
+
+    <section class="home-section" aria-labelledby="home-services-title">
+      <div class="home-wrap">
+        <header class="section-heading">
+          <div>
+            <p class="section-kicker">Services</p>
+            <h2 id="home-services-title" class="section-title">
+              Ce que je fais
+            </h2>
+          </div>
+          <p class="section-intro">
+            Trois types de missions, une même approche : faire mieux avec moins
+            de complexité inutile.
+          </p>
+        </header>
+
+        <div class="service-grid">
+          <article
+            v-for="service in services"
+            :key="service.title"
+            class="service-card"
           >
-            <path
-              fill="#04d94f"
-              d="M.4 12.7c3.5 1.7 6.5 3.8 9.5 6 1.5 1.1 2.9 2.3 4.4 3.5.4.3.7.6 1 .9l1 .9c.2.2.4.3.6.2.3 0 .5-.1.6-.2l.9-1c.3-.4.6-.7 1-1 1.4-1.3 2.7-2.6 4.1-3.9 2.8-2.5 5.7-4.8 9-6.8l.2.2c-2.4 2.8-4.9 5.5-7.4 8.2L21.6 24l-1.9 2c-.7.8-1.7 1.2-2.7 1.3-1 0-2-.3-2.7-1l-2.1-1.9-4.1-3.8c-2.7-2.5-5.4-5-8.1-7.6l.4-.3z"
-            />
-            <path
-              fill="#04d94f"
-              d="M.4 1.3c3.5 1.7 6.5 3.8 9.5 6 1.5 1.1 2.9 2.3 4.4 3.5.4.3.7.6 1 .9l1 .9c.2.2.4.3.6.2.3 0 .5-.1.6-.2l.9-1c.3-.4.6-.7 1-1 1.4-1.3 2.7-2.6 4.1-3.9 2.8-2.5 5.7-4.8 9-6.8l.2.2c-2.4 2.8-4.9 5.5-7.4 8.2l-3.8 4.1-1.9 2.1c-.6.9-1.6 1.3-2.6 1.4-1 0-2-.3-2.7-1L12.2 13 8.1 9.2C5.4 6.7 2.7 4.2 0 1.6l.4-.3z"
-            />
-          </svg>
+            <p class="service-card__eyebrow">
+              {{ service.kicker }}
+            </p>
+            <h3>{{ service.title }}</h3>
+            <p>{{ service.description }}</p>
+          </article>
+        </div>
+
+        <div class="section-footer">
+          <AppLink class="text-link" to="/contact/">
+            Discuter d’un projet
+          </AppLink>
         </div>
       </div>
     </section>
 
-    <section class="container container-3">
-      <div class="container-3__titre">
-        <LazyOeuf
-          class="container-3__titre__oeuf-1"
-          width="40%"
-          transform="rotate(-115)"
-          fill="#04d94f"
-        />
-        <LazyOeuf
-          class="container-3__titre__oeuf-2"
-          width="40%"
-          transform="rotate(45)"
-          fill=" #0439d9"
-        />
-        <LazyOeuf
-          class="container-3__titre__oeuf-3"
-          width="40%"
-          transform="rotate(-65)"
-          fill=" #0439d9"
-        />
-        <LazyOeuf
-          class="container-3__titre__oeuf-4"
-          width="40%"
-          transform=""
-          fill="#f2a81d"
-        />
-        <h2 class="titre2 text-gris2 text-black">
-          Qu'est-ce que l'éco-conception web<span class="insec">&thinsp;</span>?
-        </h2>
-        <div class="container-3__titre__sub lettre-smcp">En quelques mots</div>
-      </div>
-      <div class="boite-para">
-        <div class="boite-para__para">
-          <!-- <BaseHeading gris numero="1" titre="Durabilité" /> -->
-          <div class="pt-titre h3 text-black chiffre-onum text-gris2">
-            1<span class="text-vert">.</span>
+    <section
+      class="home-section home-section--alt"
+      aria-labelledby="home-work-title"
+    >
+      <div class="home-wrap">
+        <header class="section-heading section-heading--split">
+          <div>
+            <p class="section-kicker">Portfolio</p>
+            <h2 id="home-work-title" class="section-title">Réalisations</h2>
           </div>
-          <div class="ligne ligne__verte"></div>
-          <p class="text-gris3 text-black lettre-smcp">
-            Allonger la durée de vie
-          </p>
-          <h3 class="pt-titre text-black text-gris2">Durabilité</h3>
-
-          <p class="text-gris2">
-            Un site allégé (≈ 500 Ko au lieu de plusieurs mégaoctets) reste
-            utilisable sur des smartphones anciens, limitant leur renouvellement
-            prématuré.
-          </p>
-        </div>
-        <div class="boite-para__para mt-2">
-          <!-- <BaseHeading gris numero="2" titre="Efficience" /> -->
-          <div class="pt-titre h3 text-black chiffre-onum text-gris2">
-            2<span class="text-vert">.</span>
+          <div class="section-heading__actions">
+            <p class="section-intro">
+              Extraits de 15 ans de web. Projets WordPress et front-end conçus
+              avec la même logique de sobriété technique.
+            </p>
+            <AppLink class="text-link" to="/portfolio/">
+              Voir le portfolio complet
+            </AppLink>
           </div>
-          <div class="ligne ligne__verte"></div>
-          <p class="text-gris3 text-black lettre-smcp">
-            Faire mieux avec moins
-          </p>
-          <h3 class="pt-titre text-black text-gris2">Efficience</h3>
+        </header>
 
-          <p class="text-gris2">
-            Réduire de 60 à 70 % le poids d’un site à fonctionnalités
-            équivalentes, sans dégrader l’expérience utilisateur.
-          </p>
-        </div>
-      </div>
-    </section>
-    <section class="container container-4 fond-gris">
-      <LazyOeuf
-        class="oeuf container-4__oeuf-1"
-        width="30%"
-        transform=""
-        fill="#0439d9"
-      />
-      <LazyOeuf
-        class="oeuf container-4__oeuf-2"
-        width="24%"
-        transform="rotate(-45)"
-        fill="#04d94f"
-      />
-      <LazyOeuf
-        class="oeuf container-4__oeuf-3"
-        width="27%"
-        transform="rotate(-85)"
-        fill="#04d94f"
-      />
-      <LazyOeuf
-        class="oeuf container-4__oeuf-4"
-        width="21%"
-        transform="rotate(-95)"
-        fill="#f2a81d"
-      />
-      <div class="container-4__boite-para">
-        <div class="container-4__boite-para--para">
-          <!-- <BaseHeading couleur="white" numero="3" titre="Sobriété" /> -->
-          <div class="pt-titre h3 text-black chiffre-onum text-gris5">
-            3<span class="text-blanc">.</span>
-          </div>
-          <div class="ligne"></div>
-          <p class="text-gris4 text-black lettre-smcp">
-            Répondre à l’essentiel
-          </p>
-          <h3 class="pt-titre text-black text-gris5">Sobriété</h3>
-
-          <p class="text-gris5">
-            Proposer un service répondant à un besoin avéré, avec des
-            fonctionnalités ciblées et pertinentes. Faire des choix
-            technologiques sobres afin de réduire l’empreinte carbone du site,
-            sans compromettre la qualité du service rendu.
-          </p>
-        </div>
-        <div class="container-4__boite-para--para">
-          <!-- <BaseHeading couleur="white" numero="4" titre="Transversalité" /> -->
-          <div class="pt-titre h3 text-black chiffre-onum text-gris5">
-            4<span class="text-blanc">.</span>
-          </div>
-          <div class="ligne"></div>
-          <p class="text-gris4 text-black lettre-smcp">Une démarche continue</p>
-          <h3 class="pt-titre text-black text-gris5">Transversalité</h3>
-
-          <p class="text-gris5">
-            Du recueil des besoins au développement du site, jusqu’à
-            l’accompagnement des usagers, la préoccupation environnementale est
-            au cœur du projet et guide chaque choix.
-          </p>
-        </div>
-      </div>
-      <p class="text-gris5 lettre-smcp para-trans">
-        Cette approche permet de concevoir des sites à la fois plus légers, plus
-        rapides et plus durables, sans renoncer à la qualité graphique ni à
-        l’expérience utilisateur.
-      </p>
-
-      <div class="sct-footer">
-        <!-- <button class="sct-footer--btn">en savoir plus</button> -->
-        <AppLink class="sct-footer--btn" :to="faqLink">en savoir plus</AppLink>
-        <div class="fleche">
-          <svg
-            x="0"
-            y="0"
-            viewBox="0 0 32.8 27.3"
-            xml:space="preserve"
-            aria-hidden="true"
-            focusable="false"
+        <div class="project-grid">
+          <AppLink
+            v-for="project in featuredProjects"
+            :key="project.id"
+            :to="projectPortfolioLink(project.id)"
+            class="project-card"
+            :class="project.layoutClass"
+            :aria-label="`Voir ${project.title} dans le portfolio`"
           >
-            <path
-              fill="#04d94f"
-              d="M.4 12.7c3.5 1.7 6.5 3.8 9.5 6 1.5 1.1 2.9 2.3 4.4 3.5.4.3.7.6 1 .9l1 .9c.2.2.4.3.6.2.3 0 .5-.1.6-.2l.9-1c.3-.4.6-.7 1-1 1.4-1.3 2.7-2.6 4.1-3.9 2.8-2.5 5.7-4.8 9-6.8l.2.2c-2.4 2.8-4.9 5.5-7.4 8.2L21.6 24l-1.9 2c-.7.8-1.7 1.2-2.7 1.3-1 0-2-.3-2.7-1l-2.1-1.9-4.1-3.8c-2.7-2.5-5.4-5-8.1-7.6l.4-.3z"
+            <img
+              class="project-card__image"
+              :src="projectImageSrc(project.image)"
+              :alt="project.title"
+              loading="lazy"
+              decoding="async"
+              :style="{ objectPosition: project.objectPosition || 'center' }"
+              width="1200"
+              height="900"
             />
-            <path
-              fill="#04d94f"
-              d="M.4 1.3c3.5 1.7 6.5 3.8 9.5 6 1.5 1.1 2.9 2.3 4.4 3.5.4.3.7.6 1 .9l1 .9c.2.2.4.3.6.2.3 0 .5-.1.6-.2l.9-1c.3-.4.6-.7 1-1 1.4-1.3 2.7-2.6 4.1-3.9 2.8-2.5 5.7-4.8 9-6.8l.2.2c-2.4 2.8-4.9 5.5-7.4 8.2l-3.8 4.1-1.9 2.1c-.6.9-1.6 1.3-2.6 1.4-1 0-2-.3-2.7-1L12.2 13 8.1 9.2C5.4 6.7 2.7 4.2 0 1.6l.4-.3z"
-            />
-          </svg>
+            <div class="project-card__overlay" />
+            <div class="project-card__content">
+              <p class="project-card__tags">
+                {{ projectPreviewTags(project).join(' • ') }}
+              </p>
+              <h3>{{ project.title }}</h3>
+              <p>{{ project.subtitle }}</p>
+              <span class="project-card__cta">Voir dans le portfolio</span>
+            </div>
+          </AppLink>
         </div>
       </div>
     </section>
-    <section class="container container-5">
-      <div class="container-5__boite-titre container-5__boite-titre__titre">
-        <h3 class="text-black text-gris2 h2">
-          Un site bon pour la planete et bon pour&nbsp;:
-        </h3>
 
-        <div class="container-5__boite-titre__oeuf">
-          <LazyOeuf
-            class="oeuf"
-            width="60%"
-            transform="rotate(5)"
-            fill="#f2a81d"
-          />
-        </div>
-      </div>
-      <div class="boite-para">
-        <div class="boite-para__para fond-oeuf fond-oeuf__vert">
-          <!--  <div class="boite-para--titre">
-            <LazyOeuf
-              class="oeuf superpo"
-              width="60%"
-              transform="rotate(5)"
-              fill="#f2a81d"
-            /> -->
-          <h3 class="boite-para__titre text-black text-gris2">
-            Ses utilisateurs
-          </h3>
-          <!-- </div> -->
-
-          <p class="text-gris2">
-            L’économie de moyens mis en œuvre ne se fait pas au détriment de la
-            qualité graphique du site. Au contraire, toutes les fonctionnalités
-            du site sont pensées pour garantir la meilleure expérience
-            utilisateur (UX design). Élaborer des interfaces pertinentes pour
-            l’utilisateur et sobres énergétiquement c’est une démarche
-            rigoureuse de webdesign avec un soin particulièrement prononcé pour
-            le détails typographique et la mise en page léchée.
+    <section class="home-section" aria-labelledby="home-greenlight-title">
+      <div class="home-wrap home-greenlight">
+        <div class="home-greenlight__copy">
+          <p class="section-kicker">Produit</p>
+          <h2 id="home-greenlight-title" class="section-title">Greenlight</h2>
+          <p class="section-intro section-intro--stacked">
+            Mon thème WordPress éco-conçu, en version gratuite et premium.
           </p>
-        </div>
-        <div class="boite-para__para fond-oeuf fond-oeuf__bleu">
-          <!-- <div class="boite-para--titre">
-            <LazyOeuf
-              class="oeuf superpo"
-              width="30%"
-              transform="rotate(-95)"
-              fill="#2561d9"
-            /> -->
-          <h3 class="boite-para__titre text-black text-gris2">
-            Le référencement
-          </h3>
-          <!-- </div> -->
-
-          <p class="text-gris2">
-            L’expérience utilisateur finement étudiée et la sobriété des moyens
-            employés permettent à un site éco-conçu de répondre naturellement
-            aux principaux critères d’un bon référencement. Votre site possédera
-            les atouts les plus pertinents pour figurer en bonne position dans
-            les moteurs de recherche.
+          <p class="home-greenlight__lead">
+            Greenlight est un socle WordPress sobre, rapide, accessible et
+            durable, pensé pour produire des sites plus crédibles, plus lisibles
+            et plus faciles à maintenir.
           </p>
+          <AppLink class="button button--primary" to="/greenlight/">
+            Découvrir Greenlight
+          </AppLink>
+        </div>
+
+        <div class="product-grid">
+          <article
+            v-for="product in greenlightVersions"
+            :key="product.title"
+            class="product-card"
+          >
+            <p class="product-card__badge">
+              {{ product.badge }}
+            </p>
+            <h3>{{ product.title }}</h3>
+            <p>{{ product.description }}</p>
+            <ul class="product-card__list">
+              <li v-for="feature in product.features" :key="feature">
+                {{ feature }}
+              </li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
-    <section class="section-faq-home" aria-labelledby="faq-home">
-      <div class="home-faq-card__inner">
-        <h2 id="faq-home" class="h3 text-gris2 text-black home-faq-card__title">
-          FAQ — Éco-conception web
+
+    <section
+      class="home-section home-approach"
+      aria-labelledby="home-approach-title"
+    >
+      <div class="home-wrap home-approach__inner">
+        <p class="section-kicker">Approche</p>
+        <h2 id="home-approach-title" class="section-title">
+          Une approche sobre, sans sacrifier la qualité
         </h2>
-        <p class="text-gris3 text-fin home-faq-card__lead">
-          L’essentiel en questions-réponses, pour comprendre vite et décider
-          mieux.
+        <p class="section-intro section-intro--centered">
+          Performance, accessibilité, sobriété : une méthode de conception, pas
+          un argument décoratif.
         </p>
-        <ul class="home-faq-card__list text-gris2">
-          <li>
-            SEO : est-ce compatible (et pourquoi)<span class="insec"
-              >&thinsp;</span
-            >?
-          </li>
-          <li>
-            Design : sobriété veut-elle dire moins esthétique<span class="insec"
-              >&thinsp;</span
-            >?
-          </li>
-          <li>
-            Fonctionnalités : que faut-il garder, que faut-il éviter<span
-              class="insec"
-              >&thinsp;</span
-            >?
-          </li>
-          <li>
-            WordPress : peut-on faire léger et durable<span class="insec"
-              >&thinsp;</span
-            >?
-          </li>
-        </ul>
-        <BaseButton text="Comprendre l’essentiel" :to="faqLink" />
+        <p class="home-approach__text">
+          L’éco-conception n’est pas une couche marketing ajoutée après coup.
+          C’est une manière de concevoir le projet dès le départ : limiter le
+          superflu, garder ce qui sert réellement l’usage, construire des sites
+          plus légers, plus rapides et plus durables.
+        </p>
+        <div class="principles" aria-label="Principes de travail">
+          <span>Performance</span>
+          <span>Accessibilité</span>
+          <span>Sobriété</span>
+        </div>
+        <AppLink class="text-link" to="/eco-conception/">
+          Comprendre l’éco-conception web
+        </AppLink>
       </div>
     </section>
-    <LazyHomeEcoArticles />
-    <LazyHomePortfolioLatest />
+
+    <section class="home-section" aria-labelledby="home-articles-title">
+      <div class="home-wrap">
+        <header class="section-heading section-heading--split">
+          <div>
+            <p class="section-kicker">Éditorial</p>
+            <h2 id="home-articles-title" class="section-title">Articles</h2>
+          </div>
+          <div class="section-heading__actions">
+            <p class="section-intro">
+              Notes, retours d’expérience et analyses autour de l’éco-conception
+              web, de WordPress et des choix techniques durables.
+            </p>
+            <AppLink class="text-link" to="/eco-conception/">
+              Voir le blog
+            </AppLink>
+          </div>
+        </header>
+
+        <div class="article-grid">
+          <article
+            v-for="article in latestArticles"
+            :key="article._path"
+            class="article-card"
+          >
+            <p class="article-card__tags">
+              {{ articlePreviewTags(article).join(' • ') }}
+            </p>
+            <h3>
+              <AppLink :to="articleLink(article)">
+                {{ article.title || 'Article' }}
+              </AppLink>
+            </h3>
+            <p>{{ article.description || '' }}</p>
+            <AppLink class="text-link" :to="articleLink(article)">
+              Lire l’article
+            </AppLink>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="home-section home-section--compact"
+      aria-labelledby="home-cta-title"
+    >
+      <div class="home-wrap">
+        <div class="final-cta">
+          <p class="section-kicker">Prise de contact</p>
+          <h2 id="home-cta-title" class="section-title">
+            Un site WordPress plus propre, plus rapide, plus durable ?
+          </h2>
+          <p class="final-cta__text">
+            Je peux intervenir sur la conception, le développement,
+            l’optimisation ou la mise en place d’une base technique sobre.
+          </p>
+          <div class="home-actions home-actions--centered">
+            <AppLink class="button button--primary" to="/contact/">
+              Me contacter
+            </AppLink>
+            <AppLink class="button button--secondary" to="/portfolio/">
+              Voir mes réalisations
+            </AppLink>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { computed } from 'vue'
+import { projects } from '~/data/portfolio'
 import { canonicalUrl, withTrailingSlash } from '~/utils/seo-url'
+
+type HomeArticle = {
+  title?: string
+  description?: string
+  tag?: string[]
+  _path?: string
+  date?: string
+}
+
+const services = [
+  {
+    kicker: 'WordPress',
+    title: 'Sites WordPress éco-conçus',
+    description:
+      'Thèmes sur mesure, refonte, allègement d’existant et optimisation des performances. L’objectif : un site plus léger, plus maintenable et réellement utile.',
+  },
+  {
+    kicker: 'JavaScript',
+    title: 'Interfaces et applications JavaScript sobres',
+    description:
+      'Vue, Nuxt et JavaScript vanilla pour des interfaces lisibles, rapides et sans dépendance superflue. La sobriété fait partie de l’architecture, pas d’une couche ajoutée après coup.',
+  },
+  {
+    kicker: 'Audit',
+    title: 'Audits et optimisation éco-conception',
+    description:
+      'Diagnostic de l’existant, plan d’action priorisé et accompagnement de mise en œuvre avec des métriques concrètes : EcoIndex, Lighthouse, poids de page et requêtes.',
+  },
+] as const
+
+const greenlightVersions = [
+  {
+    badge: 'Free',
+    title: 'Greenlight-free',
+    description:
+      'Base légère, propre, personnalisable avec Gutenberg. Pour démarrer simplement sans alourdir le site.',
+    features: [
+      'Socle WordPress sobre',
+      'Structure lisible',
+      'Personnalisation simple',
+    ],
+  },
+  {
+    badge: 'Premium',
+    title: 'Greenlight',
+    description:
+      'Version premium avec SEO natif avancé et personnalisation avancée pour les projets professionnels.',
+    features: [
+      'SEO natif avancé',
+      'Réglages étendus',
+      'Base plus robuste pour les sites éditoriaux',
+    ],
+  },
+] as const
+
+const featuredProjectOrder = [
+  { id: 'cycloplomberie', layoutClass: 'project-card--tall' },
+  { id: 'petite-boucle', layoutClass: 'project-card--tall' },
+  { id: 'chasse-patate', layoutClass: 'project-card--wide' },
+  {
+    id: 'amc2',
+    layoutClass: 'project-card--wide project-card--wide-secondary',
+  },
+] as const
+
+const featuredProjects = computed(() =>
+  featuredProjectOrder.flatMap((entry) => {
+    const project = projects.find((item) => item.id === entry.id)
+    return project ? [{ ...project, layoutClass: entry.layoutClass }] : []
+  }),
+)
+
+const { data: articles } = await useAsyncData<HomeArticle[]>(
+  'home-v3-latest-articles',
+  () =>
+    queryContent('articles')
+      .only(['title', 'description', 'tag', '_path', 'date'])
+      .sort({ date: -1 })
+      .limit(2)
+      .find(),
+)
+
+const latestArticles = computed(() => articles.value || [])
 
 const config = useRuntimeConfig()
 const homeCanonicalUrl = canonicalUrl(config.public.siteUrl, '/')
-const faqLink = withTrailingSlash('/eco-conception/faq-eco-conception')
+const homeTitle = 'Benoît Abot - Développeur web spécialisé en éco-conception'
+const homeDescription =
+  'Développeur web WordPress et JavaScript spécialisé en éco-conception. Sites sobres, rapides, durables. Portfolio, thème Greenlight, articles.'
 
-// Fonction de scroll smooth vers la section suivante
-const scrollToNext = () => {
-  const container2 = document.querySelector('.container-2')
-  if (container2) {
-    container2.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    })
-  }
+function projectImageSrc(image: string) {
+  return `/img/${image}`
 }
 
-// Schema Organization pour la page d'accueil
-const organizationSchema = {
+function projectPortfolioLink(projectId: string) {
+  return `${withTrailingSlash('/portfolio')}#${projectId}`
+}
+
+function projectPreviewTags(project: { tags: string[] }) {
+  return project.tags.slice(0, 2)
+}
+
+function articleLink(article: HomeArticle) {
+  if (!article || !article._path) return '/eco-conception/'
+  return withTrailingSlash(
+    article._path.replace(/^\/articles\//, '/eco-conception/'),
+  )
+}
+
+function articlePreviewTags(article: HomeArticle) {
+  if (!article?.tag?.length) return ['Éco-conception']
+  return article.tag.slice(0, 2)
+}
+
+const structuredData = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'BeAbot',
-  url: config.public.siteUrl,
-  logo: `${config.public.siteUrl}/beabot.png`,
-  description:
-    'Développeur web spécialisé en éco-conception. Sites performants, accessibles et sobres.',
-  founder: {
-    '@type': 'Person',
-    name: 'Benoît Abot',
-    jobTitle: 'Développeur web & designer',
-    url: `${config.public.siteUrl}/portfolio/`,
-  },
-  sameAs: [
-    'https://github.com/benabot',
-    'https://www.linkedin.com/in/benoit-abot/',
-    'https://twitter.com/AbotBenoit',
-  ],
-  contactPoint: {
-    '@type': 'ContactPoint',
-    contactType: 'customer service',
-    url: `${config.public.siteUrl}/contact/`,
-  },
-}
-
-useHead({
-  title: 'Accueil - éco-conception web',
-  meta: [
+  '@graph': [
     {
-      hid: 'description',
-      name: 'description',
-      content:
-        "L'éco-conception web, c'est concilier respect de l'environnement et technologies numériques de pointe pour un internet durable.",
+      '@type': 'Organization',
+      '@id': `${config.public.siteUrl}/#organization`,
+      name: 'BeAbot',
+      url: config.public.siteUrl,
+      logo: `${config.public.siteUrl}/beabot.png`,
+      description: homeDescription,
+      founder: {
+        '@id': `${config.public.siteUrl}/#person`,
+      },
+      sameAs: [
+        'https://github.com/benabot',
+        'https://www.linkedin.com/in/benoit-abot/',
+        'https://twitter.com/AbotBenoit',
+      ],
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'customer service',
+        url: `${config.public.siteUrl}/contact/`,
+      },
+    },
+    {
+      '@type': 'Person',
+      '@id': `${config.public.siteUrl}/#person`,
+      name: 'Benoît Abot',
+      jobTitle: 'Développeur web spécialisé en éco-conception',
+      description:
+        'Développeur web spécialisé en éco-conception. Sites WordPress et interfaces JavaScript sobres, rapides et durables.',
+      url: `${config.public.siteUrl}/portfolio/`,
+      worksFor: {
+        '@id': `${config.public.siteUrl}/#organization`,
+      },
+      sameAs: [
+        'https://github.com/benabot',
+        'https://www.linkedin.com/in/benoit-abot/',
+      ],
     },
   ],
+}
+
+useSeoMeta({
+  title: homeTitle,
+  description: homeDescription,
+  ogTitle: homeTitle,
+  ogDescription: homeDescription,
+  ogType: 'website',
+  ogUrl: homeCanonicalUrl,
+  ogImage: `${config.public.siteUrl}/beabot.png`,
+  twitterCard: 'summary_large_image',
+  twitterTitle: homeTitle,
+  twitterDescription: homeDescription,
+  twitterImage: `${config.public.siteUrl}/beabot.png`,
+})
+
+useHead({
+  titleTemplate: '%s',
   link: [
     {
       hid: 'canonical',
@@ -472,1025 +533,701 @@ useHead({
   script: [
     {
       type: 'application/ld+json',
-      innerHTML: JSON.stringify(organizationSchema),
+      children: JSON.stringify(structuredData),
     },
   ],
 })
 </script>
 
 <style lang="scss" scoped>
-// Désactiver la césure sur les titres (mobile)
-@media (max-width: $breakpoint-tablet) {
-  h1,
-  h2,
-  h3,
-  h4 {
-    hyphens: none;
-    -webkit-hyphens: none;
-    -ms-hyphens: none;
-  }
+@use 'sass:color';
+
+.home-v3 {
+  --surface: #0f0f0f;
+  --surface-soft: #171717;
+  --surface-strong: #202020;
+  --surface-elevated: #272727;
+  --text-primary: #f2f0f0;
+  --text-secondary: rgba(242, 240, 240, 0.72);
+  --text-muted: rgba(242, 240, 240, 0.56);
+  --ghost: rgba(242, 240, 240, 0.08);
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(0, 168, 62, 0.16),
+      transparent 26rem
+    ),
+    linear-gradient(180deg, #121212 0%, #0f0f0f 100%);
+  color: var(--text-primary);
 }
 
-// 1. Amélioration taille des numéros (1,2,3,4) sur mobile
-@media (max-width: $breakpoint-tablet) {
-  .pt-titre.h3 {
-    font-size: clamp(2.5rem, 10vw, 3.5rem); // Beaucoup plus visible sur mobile
-    font-weight: $black;
-    line-height: 1;
-  }
-}
-
-// 2. Amélioration visibilité des labels catégorie (petites capitales)
-@media (max-width: $breakpoint-tablet) {
-  .lettre-smcp {
-    font-size: clamp(0.75rem, 3.5vw, 0.9rem);
-    font-weight: 600; // Semi-bold pour meilleure lisibilité
-    letter-spacing: 0.08em; // Meilleur espacement
-    opacity: 0.85; // Légère opacité pour distinction visuelle
-  }
-
-  // Labels spécifiques au-dessus des titres (Durabilité, Efficience, etc.)
-  .text-gris3.lettre-smcp {
-    margin-bottom: 0.5rem;
-    display: block;
-  }
-}
-
-// 5. Amélioration layout mobile pour numéro + titre (pillars)
-@media (max-width: $breakpoint-tablet) {
-  .boite-para__para {
-    .pt-titre.h3 {
-      margin-bottom: 1rem; // Espace après le numéro
-    }
-
-    .ligne {
-      margin: 1rem 0; // Espacement autour de la ligne verte
-    }
-
-    .pt-titre:not(.h3) {
-      margin-top: 0.75rem; // Espace avant le titre principal
-      margin-bottom: 1rem; // Espace après le titre
-    }
-
-    // Meilleur flow vertical global
-    > * + * {
-      margin-top: 0.75rem; // Espacement vertical cohérent
-    }
-
-    // Espace supplémentaire après le paragraphe de chaque pilier
-    > p:last-of-type {
-      margin-bottom: 2rem;
-    }
-  }
-
-  .container-4__boite-para--para {
-    .pt-titre.h3 {
-      margin-bottom: 1rem;
-    }
-
-    .ligne {
-      margin: 1rem 0;
-    }
-
-    .pt-titre:not(.h3) {
-      margin-top: 0.75rem;
-      margin-bottom: 1rem;
-    }
-
-    > * + * {
-      margin-top: 0.75rem;
-    }
-  }
-}
-
-section {
-  position: relative;
-  z-index: 3;
-  &:first-child {
-    z-index: 1;
-  }
-}
-
-.container-1 {
-  h2 {
-    margin-bottom: 0.1rem;
-  }
-  @media (max-width: $breakpoint-tablet) {
-    padding-bottom: 4rem;
-
-    // Hiérarchie typographique mobile - h1 plus gros
-    .title {
-      font-size: clamp(3.5rem, 14vw, 5rem); // Plus gros qu'avant
-      margin-bottom: 0;
-      line-height: 1;
-    }
-
-    h2 {
-      font-size: clamp(1.5rem, 5.5vw, 2rem);
-      font-weight: $black;
-      margin-top: 1.5rem;
-      margin-bottom: 0.5rem;
-      line-height: 1.2;
-    }
-
-    .titre-sub {
-      font-size: clamp(0.9rem, 3.8vw, 1.05rem); // Plus petit
-      font-weight: 300; // Plus fin (text-fin override)
-      line-height: 1.5;
-      margin-top: 0.75rem;
-      max-width: 90%;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  }
-}
-.container-2 {
-  min-height: 100vh; // 100vh sur tous les écrans
-  @media (max-width: $breakpoint-tablet) {
-    padding: 5rem 0; // Plus de padding pour respirer
-    margin-top: 0; // Retrait margin-top pour laisser respirer
-  }
-  p {
-    width: 90vw;
-    line-height: 1.75; // Plus d'espace entre les lignes (desktop)
-    letter-spacing: 0.015em; // Légère aération globale
-
-    // Desktop : justifié avec césure
-    @media (min-width: $breakpoint-tablet) {
-      width: 50vw;
-      text-align: justify;
-      hyphens: auto;
-      -webkit-hyphens: auto;
-      -ms-hyphens: auto;
-    }
-
-    // Mobile : centré sans césure
-    @media (max-width: $breakpoint-tablet) {
-      text-align: center;
-      hyphens: none;
-      -webkit-hyphens: none;
-      -ms-hyphens: none;
-      font-size: clamp(1.05rem, 4.2vw, 1.2rem); // Légèrement plus petit
-      line-height: 1.8; // Encore plus d'espace vertical
-      letter-spacing: 0.02em; // Plus d'aération entre les lettres
-      max-width: 85vw; // Marges latérales plus généreuses
-      margin-left: auto;
-      margin-right: auto;
-    }
-  }
-}
-.section-faq-home {
-  margin-top: 4rem;
-  margin-bottom: 4rem;
-  @media (max-width: $breakpoint-tablet) {
-    margin-top: 5rem;
-    margin-bottom: 5rem;
-  }
-}
-.home-faq-card__inner {
-  max-width: 960px;
+.home-wrap {
+  width: min(100%, 72rem);
   margin: 0 auto;
-  border: 1px solid $vert;
-  background: rgba($vert, 0.04);
-  border-radius: 0.6rem;
-  padding: 2rem 2.5rem;
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
 }
-.home-faq-card__title {
-  margin: 0 0 1.5rem;
-  font-weight: $bold;
-  letter-spacing: 0.02em;
+
+.home-hero,
+.home-section {
+  padding-top: clamp(3.5rem, 7vw, 6rem);
+  padding-bottom: clamp(3.5rem, 7vw, 6rem);
 }
-.home-faq-card__lead {
-  margin: 0 0 1.5rem;
-  font-size: 0.95rem;
-  line-height: 1.5;
+
+.home-section--compact {
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  padding-bottom: clamp(4rem, 7vw, 6rem);
 }
-.home-faq-card__list {
-  list-style: none;
-  padding-left: 0;
-  margin: 0 0 2rem;
+
+.home-section--alt {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.home-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: clamp(6rem, 10vw, 9rem);
+  padding-bottom: clamp(4rem, 7vw, 5rem);
+  // Couvre la nav fixée tant que le hero est à l'écran.
+  position: relative;
+  z-index: 1001;
+  background: #0f0f0f;
+}
+
+.home-hero__grid {
   display: grid;
-  gap: 0.5rem 1.6rem;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center;
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: minmax(0, 1.1fr) minmax(16rem, 0.7fr);
+  }
+}
+
+.home-kicker,
+.section-kicker,
+.service-card__eyebrow,
+.product-card__badge,
+.project-card__tags,
+.article-card__tags,
+.metric-card__label {
+  margin: 0;
+  font-size: 0.76rem;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.home-kicker,
+.section-kicker {
+  margin-bottom: 0.9rem;
+}
+
+.home-title,
+.section-title {
+  margin: 0;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+  color: var(--text-primary);
+}
+
+.home-title {
+  max-width: 12ch;
+  font-size: clamp(2.9rem, 5.8vw, 5.4rem);
+}
+
+.home-title span {
+  color: color.adjust($vert, $lightness: 12%);
+}
+
+.section-title {
+  max-width: 12ch;
+  font-size: clamp(2.15rem, 4vw, 3.4rem);
+}
+
+.home-subtitle,
+.home-lead,
+.section-intro,
+.service-card p,
+.product-card p,
+.article-card p,
+.final-cta__text,
+.home-greenlight__lead,
+.home-approach__text {
+  color: var(--text-secondary);
+}
+
+.home-subtitle {
+  max-width: 36rem;
+  margin: 1.35rem 0 0;
+  font-size: clamp(1.08rem, 1.4vw, 1.35rem);
+  line-height: 1.45;
+}
+
+.home-lead {
+  max-width: 40rem;
+  margin: 1.5rem 0 0;
+  font-size: clamp(1rem, 1.2vw, 1.12rem);
+}
+
+.home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.home-actions--centered {
+  justify-content: center;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.85rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1;
+  transition:
+    transform 0.18s ease,
+    background-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-1px);
+}
+
+.button--primary {
+  background: linear-gradient(
+    135deg,
+    color.adjust($vert, $lightness: 12%),
+    $vert 70%
+  );
+  color: $gris1;
+}
+
+.button--secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: linear-gradient(currentColor, currentColor) left bottom / 0 0.12em
+    no-repeat;
+  transition: background-size 0.25s ease;
+}
+
+.text-link:hover,
+.text-link:focus-visible {
+  background-size: 100% 0.12em;
+}
+
+.home-hero__proof {
+  display: flex;
+  justify-content: center;
+
+  @media (min-width: $breakpoint-tablet) {
+    justify-content: flex-end;
+  }
+}
+
+.proof-blob {
+  width: min(100%, 18rem);
+  aspect-ratio: 1;
+  padding: 2rem;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background:
+    radial-gradient(circle at center, rgba(0, 168, 62, 0.16), transparent 55%),
+    rgba(255, 255, 255, 0.05);
+  border-radius: 58% 42% 52% 48% / 42% 58% 42% 58%;
+  box-shadow:
+    0 1.5rem 4rem rgba(0, 0, 0, 0.22),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.proof-blob__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 999px;
+  background: rgba(0, 168, 62, 0.16);
+  color: color.adjust($vert, $lightness: 18%);
+}
+
+.proof-blob__icon svg {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.proof-blob__value {
+  margin: 1rem 0 0;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
+.proof-blob__meta {
+  margin: 0.7rem 0 0;
+  max-width: 13rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.section-heading {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 26rem);
+    align-items: end;
+  }
+}
+
+.section-heading--split {
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+}
+
+.section-heading__actions {
+  display: grid;
+  gap: 1rem;
+  justify-items: start;
+
+  @media (min-width: $breakpoint-tablet) {
+    justify-items: end;
+  }
+}
+
+.section-intro {
+  margin: 0;
+  max-width: 36rem;
+  font-size: 1rem;
+}
+
+.section-intro--stacked,
+.section-intro--centered {
+  max-width: 42rem;
+}
+
+.section-intro--centered {
+  text-align: center;
+}
+
+.metrics-grid,
+.service-grid,
+.article-grid {
+  display: grid;
+  gap: 1rem;
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.metric-card,
+.service-card,
+.product-card,
+.article-card {
+  padding: 1.35rem;
+  border-radius: 1.6rem;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.metric-card {
+  display: grid;
+  gap: 1rem;
+  min-height: 100%;
+}
+
+.metric-card__value {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  color: var(--text-primary);
+}
+
+.metric-card__value--accent {
+  color: color.adjust($vert, $lightness: 14%);
+}
+
+.metric-card__meta {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.metric-card__scores {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.metric-card__scores span {
+  display: grid;
+  gap: 0.2rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+}
+
+.metric-card__scores small {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color.adjust($vert, $lightness: 12%);
+}
+
+.section-footer {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 1.4rem;
+}
+
+.service-card {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.service-card h3,
+.product-card h3,
+.project-card h3,
+.article-card h3 {
+  margin: 0;
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+.service-card p,
+.product-card p,
+.article-card p {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+.project-grid {
+  display: grid;
+  gap: 1rem;
 
   @media (min-width: $breakpoint-tablet) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  li {
-    position: relative;
-    padding-left: 1.2rem;
-  }
-
-  li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.6em;
-    width: 0.4rem;
-    height: 0.4rem;
-    border-radius: 999px;
-    background: $vert;
-  }
-}
-.impact {
-  height: 87vh;
-  display: flex;
-  align-items: stretch;
-  flex-direction: column;
-  justify-content: space-evenly;
-  hyphens: none;
-  @media (max-width: 1200px) {
-    height: auto;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 1rem;
-  }
-  @media (max-width: $breakpoint-tablet) {
-    gap: 1rem;
-  }
-  @media (min-width: $breakpoint-tablet) {
-    flex-direction: row;
-  }
-  // margin-top: -3rem;
-  &--col {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 33vh;
-    @media (max-width: 1200px) {
-      height: auto;
-      gap: 1rem;
-    }
-    @media (max-width: $breakpoint-tablet) {
-      gap: 1rem;
-    }
-    @media (min-width: $breakpoint-tablet) {
-      height: auto;
-      &__1 {
-        order: 1;
-        width: 35%;
-      }
-      &__2 {
-        order: 3;
-        width: 35%;
-      }
-    }
-
-    &__centre {
-      justify-content: center;
-      align-items: flex-start;
-      @media (min-width: $breakpoint-tablet) {
-        order: 2;
-      }
-    }
-  }
-  &--titre {
-    width: 100%;
-    margin: 0 auto;
-    text-align: left;
-    @media (min-width: $breakpoint-tablet) {
-      width: 80%;
-    }
-  }
-  &--chiffre {
-    border: 5px solid $gris1;
-    min-height: 31.8%;
-    display: flex;
-    align-items: stretch;
-    @media (max-width: 1200px) {
-      min-height: auto;
-    }
-    @media (max-width: $breakpoint-tablet) {
-      min-height: auto;
-    }
-    .bg-gris {
-      background: $gris6;
-      padding: 0.5rem 1rem;
-      display: flex;
-      align-items: center;
-      width: 100%;
-
-      &__bleu {
-        border-left: 15px solid $bleu2;
-      }
-      &__vert {
-        border-left: 15px solid $vert;
-      }
-      &__jaune {
-        border-right: 15px solid $jaune;
-      }
-      &__gris {
-        border-left: 15px solid $gris2;
-      }
-    }
-  }
-  .titre-sub {
-    display: inline-block;
-    color: $gris4;
-    text-align: left;
-    margin-left: 1rem;
-    border-top: 2px solid $gris4;
-  }
 }
 
-// .impact-card {
-//   display: flex;
-//   width: 100%;
-//   min-height: auto;
-//   aspect-ratio: 1 / 1;
-//   box-sizing: border-box;
-//   max-width: 100%;
-//   @media (max-width: 1200px) {
-//     aspect-ratio: auto;
-//     min-height: 220px;
-//   }
-//   @media (max-width: $breakpoint-tablet) {
-//     min-height: 180px;
-//   }
-// }
-/* 1) Stopper les césures moches dans les cartes (nu-mé-rique / environnemen-tale)
-   Tu as hyphens: none sur .impact (conteneur), mais ça ne suffit pas toujours si d’autres règles s’appliquent aux <p>.
-   On force sur le texte des cartes. */
-.impact .impact--chiffre .para-gros {
-  hyphens: none;
-  -webkit-hyphens: none;
-  word-break: normal;
-  overflow-wrap: normal;
-}
-
-/* 2) Rendre les cartes moins “lourdes” visuellement : padding responsive + confort de lecture
-   (sans changer le layout, ça améliore immédiatement desktop + mobile). */
-.impact .impact--chiffre .bg-gris {
-  padding: clamp(10px, 1.2vw, 18px) clamp(12px, 1.6vw, 22px);
-}
-
-.impact .impact--chiffre .para-gros {
-  line-height: 1.35;
-}
-
-/* 3) Stabiliser les hauteurs : éviter l’aspect-ratio 1/1 sur desktop (trop rigide) et réduire les min-height mobiles
-   → On garde le “carré” uniquement sur très grand écran si tu y tiens, sinon on privilégie une hauteur souple.
-   Impact : meilleure homogénéité des 4 blocs + moins de vide inutile. */
-/* Base : comportement fluide par défaut (mobile + tablette + laptop) */
-.impact-card {
-  display: flex;
-  width: 100%;
-  box-sizing: border-box;
-  aspect-ratio: auto;
-  min-height: 180px;
-
-  @media (min-width: $breakpoint-tablet) {
-    min-height: 220px;
-  }
-
-  @media (min-width: 1200px) {
-    aspect-ratio: 1 / 1;
-    min-height: 0;
-  }
-}
-.impact--titre {
-  @media (max-width: $breakpoint-tablet) {
-    padding-top: 3rem;
-  }
-}
-
-.container-3 {
+.project-card {
+  position: relative;
+  min-height: 18rem;
   display: flex;
   overflow: hidden;
-  @media (max-width: $breakpoint-tablet) {
-    padding-top: 3rem;
-  }
+  border-radius: 1.9rem;
+  background: var(--surface-soft);
+  isolation: isolate;
+  transform: translateZ(0);
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.18);
+  transition:
+    transform 0.85s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.85s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.project-card--wide {
   @media (min-width: $breakpoint-tablet) {
-    padding-top: 10rem;
-    padding-bottom: 5rem;
-  }
-  &__titre {
-    width: 90%;
-    margin-left: 10%;
-    margin-bottom: 1.6rem;
-    margin-top: 2rem;
-    position: relative;
-    @media (min-width: $breakpoint-tablet) {
-      width: 60%;
-      margin-top: 0;
-      margin-bottom: 0;
-      margin-left: 40%;
-      min-height: 45vh;
-    }
-
-    h2 {
-      position: relative;
-      text-align: left;
-      z-index: 2;
-    }
-    &__oeuf-1 {
-      position: absolute;
-      z-index: 1;
-      top: -45%;
-      left: -2%;
-    }
-    &__oeuf-2 {
-      position: absolute;
-      z-index: 1;
-      top: -43%;
-      right: -18%;
-    }
-    &__oeuf-3 {
-      position: absolute;
-      z-index: 1;
-      top: 24%;
-      left: -35%;
-    }
-    &__oeuf-4 {
-      position: absolute;
-      z-index: 1;
-      top: 52%;
-    }
-    &__sub {
-      color: $vert;
-      text-align: center;
-      width: 60%;
-      position: relative;
-      z-index: 2;
-      border-top: 2px solid $vert;
-      @media (min-width: $breakpoint-tablet) {
-        // width: 20%;
-        // width: 100%;
-        width: auto;
-        display: inline-block;
-        text-align: left;
-      }
-      // div {
-      //   &:first-child {
-      //     width: 9.8ex;
-      //     // width: 61.8%;
-      //     height: 0.5em;
-      //     border-top: 2px solid $vert;
-      //   }
-      // }
-    }
-  }
-}
-.container-4 {
-  position: relative;
-  justify-content: space-between;
-  @media (max-width: $breakpoint-tablet) {
-    padding-top: 3rem;
-  }
-  &__boite-para {
-    width: 100%;
-    min-height: 80vh;
-    position: relative;
-    z-index: 3;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    @media (min-width: $breakpoint-tablet) {
-      width: 66%;
-      flex-direction: row;
-      min-height: 65vh;
-      margin-top: 5%;
-    }
-    &--para {
-      width: 100%;
-      @media (min-width: $breakpoint-tablet) {
-        width: 50%;
-        align-self: flex-end;
-        &:first-child {
-          align-self: flex-start;
-        }
-      }
-
-      p {
-        text-align: justify;
-        margin-right: 2rem;
-      }
-    }
-  }
-  .para-trans {
-    position: relative;
-    z-index: 10;
-    width: 55%;
-    margin: 3rem auto 0 auto;
-  }
-  .oeuf {
-    position: absolute;
-    z-index: 2;
-  }
-  &__oeuf-1 {
-    left: 10%;
-    top: 5%;
-  }
-  &__oeuf-2 {
-    right: 9%;
-    top: 8%;
-  }
-  &__oeuf-3 {
-    left: 10%;
-    top: 78%;
-    @media (min-width: $breakpoint-tablet) {
-      top: 56%;
-    }
-  }
-  &__oeuf-4 {
-    right: 10%;
-    top: 80%;
-    @media (min-width: $breakpoint-tablet) {
-      top: 60%;
-    }
-  }
-}
-.container-5 {
-  margin-bottom: 6rem;
-  @media (max-width: $breakpoint-tablet) {
-    padding-top: 3rem;
-  }
-  &__boite-titre {
-    display: flex;
-    width: 100%;
-    padding-top: 10%;
-
-    &__titre {
-      position: relative;
-      display: flex;
-      align-items: center;
-      width: 100%;
-      height: 40vh;
-      @media (min-width: $breakpoint-tablet) {
-        width: 60%;
-        height: 90vh;
-      }
-      h3 {
-        // color: white;
-        // margin: 1px 4px;
-        z-index: +1;
-        @media (min-width: $breakpoint-tablet) {
-          // margin: 0 3rem;
-        }
-      }
-      div {
-        position: absolute;
-        width: 100%;
-        &:first-child {
-          z-index: +1;
-        }
-      }
-    }
-    &__oeuf {
-      width: 35%;
-      height: 40vh;
-      display: flex;
-      align-items: flex-start;
-      @media (min-width: $breakpoint-tablet) {
-        height: 80vh;
-      }
-      .oeuf {
-        position: sticky;
-        top: 0;
-      }
-    }
-  }
-  .fond-oeuf {
-    background-repeat: no-repeat;
-    background-size: 80%;
-    overflow: visible;
-    position: relative;
-    // retrait des inline data URI décoratives
-    &__vert {
-      &::before {
-        content: '';
-        display: inline-block;
-        width: 65%;
-        min-height: 66%;
-        background-image: url('/img/oeuf-vert.svg');
-        background-repeat: no-repeat;
-        position: absolute;
-        left: -15%;
-        z-index: -1;
-        opacity: 0.8;
-      }
-    }
-    &__bleu {
-      &::after {
-        content: '';
-        display: inline-block;
-        width: 65%;
-        min-height: 66%;
-        background-image: url('/img/oeuf-bleu.svg');
-        background-repeat: no-repeat;
-        position: absolute;
-        right: -15%;
-        bottom: 0;
-        z-index: -1;
-        opacity: 0.6;
-      }
-    }
-  }
-}
-:deep(.container-blog) {
-  hr {
-    // color: $vert;
-    width: 66%;
-    border: 0.6px solid $vert;
-    border-radius: 500px;
-    opacity: 0.7;
-    margin-bottom: 1.6rem;
-    @media (min-width: $breakpoint-tablet) {
-      display: none;
-    }
-  }
-
-  // 3. Amélioration distinction titres verts (derniers articles)
-  h3 {
-    span {
-      color: $vert;
-
-      // Meilleure distinction sur mobile
-      @media (max-width: $breakpoint-tablet) {
-        font-weight: $black; // Poids plus prononcé
-        font-size: 1.05em; // Légèrement plus grand
-      }
-    }
-  }
-  .a {
-    order: 1;
-  }
-  .b {
-    order: 3;
-    @media (min-width: $breakpoint-tablet) {
-      order: 2;
-    }
-  }
-  .c {
-    order: 2;
-    margin-top: 1.6rem;
-    @media (min-width: $breakpoint-tablet) {
-      order: 3;
-      margin-top: 0;
-    }
-  }
-}
-:deep(.container-blog--bleu) {
-  h3 {
-    span {
-      color: $bleu1;
-    }
-  }
-  hr {
-    border: 0.6px solid $bleu1;
+    min-height: 19rem;
+    grid-column: 1 / -1;
   }
 }
 
-:deep(.container-blog__box) {
-  display: flex;
-  align-items: stretch;
-  flex-direction: column;
-  @media (min-width: $breakpoint-tablet) {
-    flex-direction: row;
-  }
-  .oeuf {
-    position: relative;
-    z-index: 12;
-    height: 25vh;
-    width: 33%;
-    margin-left: 33%;
-    @media (min-width: $breakpoint-tablet) {
-      align-self: center;
-      position: sticky;
-      top: 200px;
-      margin-left: 0;
-    }
-    a,
-    .fond {
-      position: absolute;
-      height: 90px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    a {
-      z-index: +1;
-      color: $fondClair;
-      height: auto;
-      opacity: 0.8;
-      width: 60%;
-      transition: all 500ms ease;
-      &:hover {
-        opacity: 1;
-        width: 70%;
-      }
-    }
-    .fond {
-      height: auto;
-    }
-    // &::before {
-    //   content: '+';
-    //   font-size: 8rem;
-    //   height: 82px;
-    //   line-height: 0.58;
-    //   position: absolute;
-    //   top: 50%;
-    //   left: 50%;
-    //   transform: translate(-50%, -50%);
-    //   z-index: 1;
-    //   color: $fondClair;
-    //   font-weight: $bold;
-    //   opacity: 0.9;
-    //   transition: ease-in 0.1s;
-    // }
-    // &:hover::before {
-    //   font-size: 8.4rem;
-    //   opacity: 1;
-    // }
-  }
-  & > div {
-    width: 100%;
-    @media (min-width: $breakpoint-tablet) {
-      width: 33%;
-    }
-  }
+.project-card--wide-secondary {
+  min-height: 16rem;
 }
-:deep(.boite-para) {
+
+.project-card__image {
+  position: absolute;
+  inset: 0;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.001);
+  transform-origin: center center;
+  will-change: transform, filter;
+  transition:
+    transform 1.45s cubic-bezier(0.16, 0.84, 0.22, 1),
+    filter 1.3s cubic-bezier(0.16, 0.84, 0.22, 1);
+}
+
+.project-card__overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.92;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.72)),
+    linear-gradient(135deg, rgba(15, 15, 15, 0.05), rgba(15, 15, 15, 0.4));
+  transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.project-card__content {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: 3rem; // Espacement entre les deux blocs sur mobile
-
-  @media (min-width: $breakpoint-tablet) {
-    width: 66%;
-    flex-direction: row;
-    gap: 0; // Pas de gap sur desktop (on utilise margin-right)
-  }
-}
-:deep(.boite-para__para) {
+  justify-content: flex-end;
+  gap: 0.75rem;
   width: 100%;
-  @media (min-width: $breakpoint-tablet) {
-    width: 50%;
-  }
-  p {
-    text-align: justify;
-  }
-  &:first-of-type {
-    margin-right: 0; // Pas de margin-right sur mobile (inutile en column)
-    @media (min-width: $breakpoint-tablet) {
-      margin-right: 2rem; // Uniquement sur desktop
-    }
-  }
+  padding: 1.4rem;
 }
-:deep(.boite-para__titre) {
-  text-align: left;
-  word-break: keep-all;
-  margin-bottom: 0.75rem; // Espacement entre titre et paragraphe
 
-  @media (min-width: $breakpoint-tablet) {
-    margin-bottom: 0;
-  }
+.project-card__tags {
+  color: rgba(242, 240, 240, 0.76);
 }
-#boite-logo {
-  position: relative;
-  width: 66%;
-  height: auto;
-  min-height: 48vh;
-  background: url('/img/forme-flou.svg') no-repeat center;
-  background-size: 100%;
-  // background: url('/img/forme-flou.svg') no-repeat center,
-  //   url('/img/forme.svg') no-repeat center;
-  // background-size: 90%, 100%;
-  // filter: drop-shadow(14px);
-  // filter: blur(14.187px);
-  display: flex;
+
+.project-card p {
+  margin: 0;
+  max-width: 26rem;
+  color: rgba(242, 240, 240, 0.88);
+}
+
+.project-card__cta {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 2.2rem;
   align-items: center;
-  justify-content: center;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.project-card:focus-visible {
+  transform: translateY(-0.08rem);
+  box-shadow: 0 1.15rem 2.8rem rgba(0, 0, 0, 0.22);
+}
+
+.project-card:focus-visible .project-card__image {
+  transform: scale(1.016);
+  filter: saturate(1.015) brightness(1.01);
+}
+
+.project-card:focus-visible .project-card__overlay {
+  opacity: 0.84;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover {
+    transform: translateY(-0.08rem);
+    box-shadow: 0 1.15rem 2.8rem rgba(0, 0, 0, 0.22);
+  }
+
+  .project-card:hover .project-card__image {
+    transform: scale(1.016);
+    filter: saturate(1.015) brightness(1.01);
+  }
+
+  .project-card:hover .project-card__overlay {
+    opacity: 0.84;
+  }
+}
+
+.home-greenlight {
+  display: grid;
+  gap: 1.25rem;
 
   @media (min-width: $breakpoint-tablet) {
-    background-size: 90%;
-    width: 33%;
-  }
-
-  &::before {
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    height: 100px;
-    background-color: blue;
-    background: url('/img/forme.svg') no-repeat center;
-    background-size: 100%;
-  }
-  @keyframes hideshow {
-    0% {
-      scale: 0;
-    }
-    100% {
-      scale: 1;
-    }
-  }
-  .oeuf-intro {
-    padding: 5%;
-    filter: blur(1px);
-    z-index: 2;
-    animation: hideshow 1.5s ease;
-    position: fixed;
-    //top: 33%;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    align-items: start;
   }
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-  position: relative;
-  z-index: 3;
-}
-
-.para-gros {
-  &::first-letter {
-    font-weight: 900;
-    color: $gris1;
-    // margin-right: 100%;
-    line-height: 0;
-  }
-  @media (min-width: $breakpoint-tablet) {
-    &::first-letter {
-      font-size: 3rem;
-    }
-  }
-  @media (min-width: 1920px) {
-    font-size: 1.68rem;
-  }
-}
-
-.mt-n10 {
-  margin-top: -10%;
-  @media (max-width: $breakpoint-tablet) {
-    margin-top: 2rem;
-  }
-}
-
-// Désactiver la césure sur les paragraphes avec mt-n10
-p.mt-n10 {
-  hyphens: none;
-  -webkit-hyphens: none;
-  -ms-hyphens: none;
-}
-.sct-footer {
-  @media (max-width: $breakpoint-tablet) {
-    margin-top: 3rem;
-  }
-  &--btn {
-    color: $gris5;
-    background: linear-gradient($gris1, $gris1) right bottom / 80% 0.55em
-      no-repeat;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 0.86rem;
-    font-weight: 500; // 4. Cohérence poids de police pour tous les CTAs
-    letter-spacing: 0.05em; // 4. Cohérence espacement pour tous les CTAs
-    border: none;
-    // padding-left: 20px;
-    // width: 200px;
-    transition: background-size 0.4s;
-    cursor: pointer;
-    // margin-left: 5px;
-    // margin-bottom: 2.5rem;
-
-    &:hover {
-      background-size: 100% 0.6em;
-    }
-  }
-  .fleche {
-    width: 33px;
-    margin: 0 auto;
-    padding: 1rem 0;
-  }
-}
-
-// CTAs Hero
-.hero-ctas {
-  display: flex;
+.home-greenlight__copy {
+  display: grid;
   gap: 1rem;
+}
+
+.home-greenlight__copy .section-title,
+.home-greenlight__copy .section-intro {
+  max-width: 34rem;
+}
+
+.home-greenlight__lead {
+  margin: 0;
+  max-width: 34rem;
+  font-size: 1rem;
+}
+
+.product-grid {
+  display: grid;
+  gap: 1rem;
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.product-card {
+  display: grid;
+  gap: 0.85rem;
+  min-height: 100%;
+}
+
+.product-card__badge {
+  color: color.adjust($vert, $lightness: 14%);
+}
+
+.product-card__list {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--text-muted);
+}
+
+.product-card__list li::before {
+  content: '•';
+  color: color.adjust($vert, $lightness: 12%);
+  margin-right: 0.45rem;
+}
+
+.home-approach {
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(0, 168, 62, 0.12),
+      transparent 34rem
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0));
+}
+
+.home-approach__inner {
+  max-width: 46rem;
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  text-align: center;
+}
+
+.home-approach__inner .section-title {
+  max-width: 11ch;
+}
+
+.home-approach__text {
+  margin: 0;
+  max-width: 38rem;
+}
+
+.principles {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 0.7rem;
+}
+
+.principles span {
+  display: inline-flex;
   align-items: center;
-  margin-top: 2rem;
-  position: relative;
-  z-index: 3;
+  min-height: 2.3rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
 
-  @media (max-width: $breakpoint-tablet) {
-    flex-direction: column;
-    gap: 0.8rem;
+.article-grid {
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-.hero-cta {
-  font-size: 0.95rem;
-  font-weight: 500;
-  padding: 0.75rem 1.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  text-decoration: none;
-  display: inline-block;
+.article-card {
+  display: grid;
+  gap: 0.85rem;
+}
 
-  span {
-    position: relative;
-    z-index: 1;
-    transition: 0.3s;
+.article-card h3 a {
+  background: none;
+}
+
+.final-cta {
+  padding: clamp(1.8rem, 4vw, 3rem);
+  border-radius: 2rem;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(0, 168, 62, 0.28),
+      transparent 18rem
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.03)
+    );
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  text-align: center;
+}
+
+.final-cta .section-title {
+  max-width: 12ch;
+}
+
+.final-cta__text {
+  margin: 0;
+  max-width: 36rem;
+}
+
+a:focus-visible {
+  outline: 2px solid color.adjust($vert, $lightness: 16%);
+  outline-offset: 4px;
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .home-hero,
+  .home-section,
+  .home-section--compact {
+    padding-top: 3.25rem;
+    padding-bottom: 3.25rem;
   }
 
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    transform: translateX(-50%);
-    transition: width 0.3s ease;
+  .home-hero {
+    min-height: auto;
+    padding-top: 6rem;
   }
 
-  &--primary {
-    color: $vert;
-    background: transparent;
-
-    &::before {
-      background: $vert;
-    }
-
-    &:hover {
-      color: darken($vert, 10%);
-
-      &::before {
-        width: 80%;
-      }
-
-      span::after {
-        content: ' →';
-        margin-left: 0.3rem;
-      }
-    }
-  }
-
-  &--secondary {
-    color: $bleu2;
-    background: transparent;
-
-    &::before {
-      background: $bleu2;
-    }
-
-    &:hover {
-      color: darken($bleu2, 10%);
-
-      &::before {
-        width: 80%;
-      }
-    }
+  .project-card,
+  .project-card--wide,
+  .project-card--wide-secondary {
+    min-height: 16rem;
   }
 }
 
-.scroll-indicator {
-  width: 40px;
-  margin: 2.5rem auto 0;
-  animation: bounce 2s infinite;
-  cursor: pointer;
-  opacity: 0.7;
-  transition: opacity 0.3s;
-  border: none;
-  background: transparent;
-
-  &:hover {
-    opacity: 1;
-  }
-
-  svg {
-    width: 100%;
-    height: auto;
-  }
-}
-
-@keyframes bounce {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-10px);
-  }
-  60% {
-    transform: translateY(-5px);
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .text-link,
+  .project-card__image {
+    transition: none;
   }
 }
 </style>
