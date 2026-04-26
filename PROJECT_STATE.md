@@ -76,8 +76,7 @@ SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stabl
 - ✅ Hero repositionné sur l’offre de développement web éco-conçu
 - ✅ Sections preuves chiffrées, services, réalisations, Greenlight, approche, articles et CTA final reconstruites
 - ✅ Effets hover des cartes projets adoucis et limités à l’image
-- ✅ Navigation desktop masquée sur `.home-hero`, claire ensuite
-**SEO Apps (26 mars 2026)** — Hardening SEO des pages `/apps/`, `/apps/duo-spend/` et `/apps/meeting-mode/`, avec alignement des métadonnées, des données structurées et des fichiers d’indexation.
+- ✅ Navigation desktop masquée sur `.home-hero`, claire ensuite **SEO Apps (26 mars 2026)** — Hardening SEO des pages `/apps/`, `/apps/duo-spend/` et `/apps/meeting-mode/`, avec alignement des métadonnées, des données structurées et des fichiers d’indexation.
 
 - ✅ Titles corrigés pour supprimer le préfixe redondant `BeAbot -` quand le suffixe porte déjà la marque
 - ✅ Meta descriptions vérifiées et conservées quand pertinentes, avec resserrage du texte Meeting Mode

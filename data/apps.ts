@@ -995,7 +995,7 @@ export const situremContent: AppDetailContent = {
     secondaryTo: '/contact/',
   },
   seo: {
-    title: 'Siturem — méditation timer iOS pour pratiquants avancés',
+    title: 'Siturem — méditation timer iOS pour pratiquants avancés | BeAbot',
     description:
       'Siturem est un timer de méditation iOS conçu pour offrir un cadre stable, régulier et sans distraction aux pratiquants avancés.',
     image: '/img/siturem/siturem-landing.webp',

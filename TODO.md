@@ -197,6 +197,7 @@ MétriqueValeurStatut**Framework**Nuxt 3.14✅**URLs**Trailing slash normalisé�
 - \[x\] **PF-14-18** : CTA final compact avec œufs (symétrie avec Hero)
 - \[x\] **PF-14-19** : Lien GitHub intégré dans section Compétences
 - \[x\] **PF-14-20** : Ajustements finaux (CTA height, object-position images, spacing)
+
 #### Portfolio - SEO et accessibilité
 
 - \[x\] **PF-14-09** : Meta description orientée recrutement
