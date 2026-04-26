@@ -8,10 +8,7 @@
 
 ### Site en production
 
-| Site            | URL                            | Stack     | Branch | État      |
-| --------------- | ------------------------------ | --------- | ------ | --------- |
-| **Production**  | https://beabot.fr              | Nuxt 3.14 | master | ✅ Stable |
-| **Dev Preview** | https://dev-beabot.netlify.app | Nuxt 3.14 | dev    | ✅ Tests  |
+SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stable**Dev Preview**<https://dev-beabot.netlify.app>Nuxt 3.14dev✅ Tests
 
 ### Dernière mise à jour
 
@@ -80,7 +77,6 @@
 - ✅ Sections preuves chiffrées, services, réalisations, Greenlight, approche, articles et CTA final reconstruites
 - ✅ Effets hover des cartes projets adoucis et limités à l’image
 - ✅ Navigation desktop masquée sur `.home-hero`, claire ensuite
-
 **SEO Apps (26 mars 2026)** — Hardening SEO des pages `/apps/`, `/apps/duo-spend/` et `/apps/meeting-mode/`, avec alignement des métadonnées, des données structurées et des fichiers d’indexation.
 
 - ✅ Titles corrigés pour supprimer le préfixe redondant `BeAbot -` quand le suffixe porte déjà la marque
