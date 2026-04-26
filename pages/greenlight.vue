@@ -4,20 +4,21 @@
       <div class="greenlight-shell greenlight-hero__grid">
         <div class="greenlight-hero__copy">
           <p class="greenlight-eyebrow">Thème WordPress Gutenberg</p>
-          <h1 id="greenlight-hero-title" class="greenlight-title">
-            Greenlight, un socle WordPress sobre et crédible
-          </h1>
-          <p class="greenlight-subtitle">
-            Greenlight-free est déjà extrêmement léger. Greenlight premium
-            prolonge ce socle pour les projets qui demandent plus d'édition,
-            de SEO et de contrôle.
-          </p>
-          <p class="greenlight-lead">
-            C'est un thème pensé pour faire des sites propres, rapides et
-            simples à maintenir. Ici, la preuve est visible tout de suite :
-            captures produit, mesures concrètes et séparation nette entre la
-            base free et la version premium.
-          </p>
+<h1 id="greenlight-hero-title" class="greenlight-title">
+  Greenlight, le thème WordPress Gutenberg sobre, rapide et éco-conçu
+</h1>
+<p class="greenlight-subtitle">
+  Greenlight-free est un thème WordPress minimaliste, mesurable et libre.
+  La version premium ajoute le contrôle de l'optimisation, le SEO avancé
+  et la personnalisation fine — et vous évite d'installer une pile de
+  plugins superflus pour y arriver.
+</p>
+<p class="greenlight-lead">
+  Un thème WordPress pensé pour durer : rapide à charger, simple à
+  maintenir, indépendant des mises à jour de plugins tiers. Les métriques
+  affichées — EcoIndex A, moins de 115 ko, 6 requêtes HTTP — sont
+  mesurées sur la version free, sans optimisation supplémentaire.
+</p>
           <div class="greenlight-actions">
             <a
               class="greenlight-button greenlight-button--primary"

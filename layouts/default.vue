@@ -386,7 +386,7 @@ a.nuxt-link-active {
         position: absolute;
         padding-top: 3rem;
         width: 114vw;
-        height: 60vh;
+        height: 70vh;
         background: $vert;
         clip-path: ellipse(87% 91% at 0% 8%);
         ul {
