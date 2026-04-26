@@ -13,27 +13,13 @@
 
 ### 🔴 Critique — bugs à corriger immédiatement
 
-- [ ] **C1** — Meta description `[object Object]` sur `/eco-conception/comment-reduire-le-poids-d-un-site-web/` — corriger le frontmatter YAML ou le `useSeoMeta()`
-- [ ] **C2** — Meta description `L` (1 car.) sur `/mentions-legales/` — apostrophe non échappée dans le frontmatter
-- [ ] **C3** — Descriptions tronquées sur `/apps/`, `/portfolio/`, `/eco-conception/audit-eco-conception/`, `/contact/` — apostrophes cassant le YAML
-- [ ] **C4** — Canonical homepage incorrecte : `canonicalUrl()` dans `utils/seo-url.ts`
-      retourne `https://beabot.fr` (sans trailing slash) pour `path = '/'` — corriger
-      le cas spécial : `return \`${base}/\`` au lieu de `return base || '/'`
-      ⚠️ Claude Code indique que le trailing slash est enforced globalement — vérifier
-      en inspectant le DOM rendu avant de patcher
-- [ ] **C5** — `/404/` répond HTTP 200 au lieu de 404 — ajouter dans `netlify.toml` :
-      ```toml
-      [[redirects]]
-        from = "/404/"
-        to = "/404/"
-        status = 404
-        force = true
-      ```
-- [ ] **C6** — `/404/` présente dans le sitemap — l'exclure dans `nuxt.config.ts`
-- [ ] **C7** — `pages/portfolio.vue` utilise `useHead()` au lieu de `useSeoMeta()` →
-      twitter:card, twitter:title, twitter:image restent sur les valeurs globales
-      ("BeAbot : éco-conception web") lors d'un partage social — migrer vers
-      `useSeoMeta()` comme les autres pages — `pages/portfolio.vue:292`
+- [x] **C1** — ~~Meta description `[object Object]` sur `/eco-conception/comment-reduire-le-poids-d-un-site-web/`~~ — `seo.description` YAML quoté ✓
+- [x] **C2** — ~~Meta description `L` sur `/mentions-legales/`~~ — `useSeoMeta({ description })` ajouté ✓
+- [x] **C3** — ~~Descriptions tronquées sur `/apps/`, `/portfolio/`, `/eco-conception/audit-eco-conception/`, `/contact/`~~ — apostrophes supprimées des descriptions ✓
+- [x] **C4** — ~~Canonical homepage sans trailing slash~~ — faux positif confirmé : `canonicalUrl()` déjà correct (`utils/seo-url.ts:33`) ✓
+- [x] **C5** — ~~`/404/` répond HTTP 200~~ — redirect Netlify `status = 404` ajouté dans `netlify.toml` ✓
+- [x] **C6** — ~~`/404/` dans le sitemap~~ — exclue via `sitemap.exclude` dans `nuxt.config.ts` ✓
+- [x] **C7** — ~~`pages/portfolio.vue` utilise `useHead()`~~ — migré vers `useSeoMeta()` avec twitter:card, twitter:title, twitter:description ✓
 
 ---
 
