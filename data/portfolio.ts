@@ -111,7 +111,7 @@ export const projects: Project[] = [
     title: 'La petite boucle',
     subtitle: 'Refonte éco-conçue pour une collecte solidaire en triporteur',
     image: 'lpb.webp',
-    url: '',
+    url: 'https://web.archive.org/web/20220310203707/https://www.lapetiteboucle.fr/',
     featured: true,
     tags: ['WordPress', 'Éco-conçu', 'WebDesign'],
     context:
