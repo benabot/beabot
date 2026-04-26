@@ -16,10 +16,11 @@
 - [ ] **C1** — Meta description `[object Object]` sur `/eco-conception/comment-reduire-le-poids-d-un-site-web/` — corriger le frontmatter YAML ou le `useSeoMeta()`
 - [ ] **C2** — Meta description `L` (1 car.) sur `/mentions-legales/` — apostrophe non échappée dans le frontmatter
 - [ ] **C3** — Descriptions tronquées sur `/apps/`, `/portfolio/`, `/eco-conception/audit-eco-conception/`, `/contact/` — apostrophes cassant le YAML
-- [ ] **C4** — Canonical homepage incorrecte : `canonicalUrl()` dans `utils/seo-url.ts` 
-      retourne `https://beabot.fr` (sans trailing slash) pour `path = '/'` alors que 
-      Google a indexé `https://beabot.fr/` — corriger le cas spécial ligne 33 : 
-      `return \`${base}/\`` au lieu de `return base || '/'`
+- [ ] **C4** — Canonical homepage incorrecte : `canonicalUrl()` dans `utils/seo-url.ts`
+      retourne `https://beabot.fr` (sans trailing slash) pour `path = '/'` — corriger
+      le cas spécial : `return \`${base}/\`` au lieu de `return base || '/'`
+      ⚠️ Claude Code indique que le trailing slash est enforced globalement — vérifier
+      en inspectant le DOM rendu avant de patcher
 - [ ] **C5** — `/404/` répond HTTP 200 au lieu de 404 — ajouter dans `netlify.toml` :
       ```toml
       [[redirects]]
@@ -29,6 +30,10 @@
         force = true
       ```
 - [ ] **C6** — `/404/` présente dans le sitemap — l'exclure dans `nuxt.config.ts`
+- [ ] **C7** — `pages/portfolio.vue` utilise `useHead()` au lieu de `useSeoMeta()` →
+      twitter:card, twitter:title, twitter:image restent sur les valeurs globales
+      ("BeAbot : éco-conception web") lors d'un partage social — migrer vers
+      `useSeoMeta()` comme les autres pages — `pages/portfolio.vue:292`
 
 ---
 
@@ -38,10 +43,12 @@
 - [ ] **I1** — Entités HTML (`&amp;`, `&#x27;`) non décodées dans les titles et H1 — vérifier le double-encoding dans les templates Vue
 - [ ] **I2** — Uniformiser le pattern des titles articles : `Titre — Mot-clé | BeAbot` au lieu de `BeAbot - Titre`
 - [ ] **I3** — Title `/images-eco-conception/` trop long (78 car.) — raccourcir à <70
-- [ ] **I4** — JSON-LD `@type: ?` sur homepage et tous les articles — corriger la structure (probablement un `@graph` mal imbriqué)
+- [x] **I4** — ~~JSON-LD `@type: ?`~~ — faux positif de l'audit Python, confirmé ✓ par Claude Code (JSON-LD complet et valide sur toutes les pages)
 - [ ] **I5** — `og:title` de `/mentions-legales/` désynchronisé (affiche l'ancien titre)
 - [ ] **I6** — Descriptions >160 car. sur 5 articles éco-conception — tronquer dans le frontmatter
 - [ ] **I7** — Ajouter le schéma JSON-LD `Article` (`author`, `datePublished`, `dateModified`) sur tous les articles via un composable partagé
+- [ ] **I8** — `og:image` non défini explicitement sur `/portfolio/` — rely sur le fallback global `beabot.png` — ajouter `ogImage` dans `useSeoMeta()` — `pages/portfolio.vue`
+- [ ] **I9** — Title articles : `useHead({ title: seoTitle.value })` statique à setup time — si le fetch de l'article échoue, le titre est vide — remplacer par `watchEffect` ou `computed head` — `pages/eco-conception/[slug].vue:456`
 
 #### Repositionnement freelance
 - [ ] **A1** — Ajouter "freelance" dans le H1 ou le sous-titre hero de la homepage
@@ -57,12 +64,15 @@
 ### 🟡 Mineur / Backlog
 
 #### SEO technique
-- [ ] **M1** — `twitter:card` absente sur `/mentions-legales/` et `/portfolio/`
-- [ ] **M2** — `og:image` spécifiques par section (articles éco-conception utilisent `beabot.png` générique)
+- [ ] **M1** — `twitter:card` absente sur `/mentions-legales/` et `/portfolio/` (résolu partiellement par C7 pour le portfolio)
+- [ ] **M2** — `og:image` spécifiques par section (articles éco-conception utilisent `beabot.png` générique) — priorité aux 3 articles les plus vus
 - [ ] **M3** — H1 trop courts sur les pages apps (`DuoSpend`, `Meeting Mode`, `Siturem`) — enrichir avec une description courte
-- [ ] **M4** — JSON-LD `WebSite` / `Person` manquant sur la homepage (distinctement de I4)
+- [x] **M4** — ~~JSON-LD `Person` / `WebSite` manquant homepage~~ — confirmé ✓ présent par Claude Code
 - [ ] **M5** — JSON-LD `ContactPage` manquant sur `/contact/`
 - [ ] **M6** — Titles trop courts sur certains articles (`/typographie-ecoconception/` 38 car., `/wordpress-eco-conception/` 40 car.)
+- [ ] **M7** — Images Markdown sans `width`/`height` → risque de CLS — `assets/css/article-content.scss` impose `height: auto` mais sans dimensions intrinsèques — documenter la convention dans le guide de contribution
+- [ ] **M8** — `og:image:width` / `og:image:height` absents sur toutes les pages — ajouter `ogImageWidth: 1200, ogImageHeight: 630` dans tous les `useSeoMeta()`
+- [ ] **M9** — Meta description homepage à 142 car. — allonger de ~10 car. pour atteindre 150–160 — `pages/index.vue:441`
 
 #### Contenu & conversion freelance
 - [ ] **B1** — Créer une page `/services/` avec types de missions, zones, tarifs indicatifs
