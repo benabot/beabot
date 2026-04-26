@@ -269,6 +269,13 @@ useHead({
     },
   ],
 })
+
+useSeoMeta({
+  description: 'Mentions légales du site beabot.fr : éditeur, hébergeur, propriété intellectuelle, données personnelles et conditions d\'utilisation.',
+  ogTitle: 'Mentions légales — BeAbot',
+  ogDescription: 'Mentions légales du site beabot.fr : éditeur, hébergeur, propriété intellectuelle, données personnelles et conditions d\'utilisation.',
+  ogUrl: mentionsCanonicalUrl,
+})
 </script>
 
 <style scoped lang="scss">
