@@ -92,25 +92,25 @@
 ### 🟡 Mineur / Backlog
 
 #### SEO technique
-- [ ] **M1** — `twitter:card` absente sur `/mentions-legales/` et `/portfolio/` (résolu partiellement par C7 pour le portfolio)
-- [ ] **M2** — `og:image` spécifiques par section (articles éco-conception utilisent `beabot.png` générique) — priorité aux 3 articles les plus vus
-- [ ] **M3** — H1 trop courts sur les pages apps (`DuoSpend`, `Meeting Mode`, `Siturem`) — enrichir avec une description courte
+- [x] **M1** — ~~`twitter:card` absente sur `/mentions-legales/`~~ — `twitterCard`, `twitterTitle`, `twitterImage` ajoutés dans `useSeoMeta()` ✓
+- [x] **M2** — ~~`og:image` générique sur les articles~~ — champ `seo.ogImage` ajouté dans le frontmatter des 3 articles les plus récents (`typographie`, `wordpress`, `theme-wordpress`) ✓
+- [x] **M3** — ~~H1 trop courts sur les pages apps~~ — DuoSpend (68 car.) ✓, Meeting Mode (68 car.) ✓, `/apps/` index (51 car.) ✓
 - [x] **M4** — ~~JSON-LD `Person` / `WebSite` manquant homepage~~ — confirmé ✓ présent par Claude Code
-- [ ] **M5** — JSON-LD `ContactPage` manquant sur `/contact/`
-- [ ] **M6** — Titles trop courts sur certains articles (`/typographie-ecoconception/` 38 car., `/wordpress-eco-conception/` 40 car.)
-- [ ] **M7** — Images Markdown sans `width`/`height` → risque de CLS — `assets/css/article-content.scss` impose `height: auto` mais sans dimensions intrinsèques — documenter la convention dans le guide de contribution
-- [ ] **M8** — `og:image:width` / `og:image:height` absents sur toutes les pages — ajouter `ogImageWidth: 1200, ogImageHeight: 630` dans tous les `useSeoMeta()`
-- [ ] **M9** — Meta description homepage à 142 car. — allonger de ~10 car. pour atteindre 150–160 — `pages/index.vue:441`
+- [x] **M5** — ~~JSON-LD `ContactPage` manquant sur `/contact/`~~ — schéma `ContactPage` ajouté dans `useHead()` ✓
+- [x] **M6** — ~~Titles trop courts sur 2 articles~~ — `seo.title` enrichis : "...polices système vs web fonts" et "...thèmes sobres et performants" ✓
+- [x] **M7** — ~~Convention images Markdown non documentée~~ — section ajoutée dans `AGENTS.md` ✓
+- [x] **M8** — ~~`og:image:width` / `og:image:height` absents~~ — `ogImageWidth: 1200, ogImageHeight: 630` ajoutés sur 8 fichiers ✓
+- [x] **M9** — ~~Meta description homepage à 142 car.~~ — 154 car. avec dimension freelance + géo ✓
 
 #### Contenu & conversion freelance
-- [ ] **B1** — Créer une page `/services/` avec types de missions, zones, tarifs indicatifs
+- [x] **B1** — Créer une page `/services/` avec types de missions, zones, tarifs indicatifs
 <!-- - [ ] **B2** — Portfolio : ajouter la localisation des clients là où applicable
 - [ ] **B3** — Portfolio : réduire la visibilité des apps iOS (section séparée ou masquée par défaut) -->
-- [ ] **B4** — Ajouter CTA freelance en bas de `/eco-conception/`
-- [ ] **B5** — Ajouter encart "Faire faire son site sur Greenlight" sur `/greenlight/`
+- [x] **B4** — Ajouter CTA freelance en bas de `/eco-conception/`
+- [x] **B5** — Ajouter encart "Faire faire son site sur Greenlight" sur `/greenlight/`
 
 #### Articles à écrire (SEO longue traîne local)
-- [ ] Mettre à jour les 4 articles de 2021-2022 (`dateModified` + note éditoriale + CTA freelance en conclusion)
+- [x] Mettre à jour les 4 articles de 2021-2022 (`updatedAt: 2026-04-27` + note éditoriale + CTA freelance en conclusion) + afficher date modif dans cartes /eco-conception/ ✓
 - [ ] Article : "Développeur WordPress freelance à Lille : comment choisir ?" → `/eco-conception/wordpress-freelance-lille/`
 - [ ] Article : "Refonte de site éco-conçu : méthode et budget" → `/eco-conception/refonte-site-eco-concu/`
 - [ ] Article : "Audit de site web : ce que j'analyse et ce que ça coûte" → `/eco-conception/audit-site-web/`
