@@ -209,6 +209,24 @@ useHead({
       href: contactCanonicalUrl,
     },
   ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'ContactPage',
+        name: 'Contact — Benoît Abot',
+        url: contactCanonicalUrl,
+        description: 'Formulaire de contact pour projets web éco-conçus.',
+        mainEntity: {
+          '@type': 'Person',
+          name: 'Benoît Abot',
+          email: 'hello@beabot.fr',
+          url: `${config.public.siteUrl}/portfolio/`,
+        },
+      }),
+    },
+  ],
 })
 
 const loading = ref(false)
