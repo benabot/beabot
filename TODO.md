@@ -7,7 +7,47 @@
 
 ## Backlog — Migration Nuxt 4
 
-- [ ] Vérifier que `getSiteMeta.js` (vestige Nuxt 2, marqué `deprecated`) n'est plus importé dans aucun composant — le supprimer avant la migration Nuxt 4
+> Prérequis à compléter dans l'ordre avant d'ouvrir une branche de migration.
+
+### Étape 0 — Tests & couverture
+- [ ] Lancer la suite de tests existante et s'assurer qu'elle passe à 100% sur `dev` avant toute migration
+- [ ] Documenter les tests manquants critiques (pages, composants, utils SEO) et les ajouter si nécessaire
+
+### Étape 1 — Performance (PageSpeed Insights : 99 → 100 mobile)
+> Source : audit PSI du 27 avril 2026 (screenshot)
+- [ ] **PSI-1** — Éliminer les 3 CSS render-blocking (`/_nuxt/entry.css`, `/_nuxt/index.css`, `/_nuxt/default.css`) — économie estimée : 270 ms LCP/FCP
+  - Option A : `inlineSSRStyles: true` (déjà désactivé intentionnellement — réévaluer)
+  - Option B : charger les CSS non-critiques en `<link rel="preload">` + swap
+  - Option C : CSS critique inline via plugin Vite Extract Critical
+- [ ] **PSI-2** — Réduire la chaîne critique maximale (444 ms sur `entry.css`) — envisager un split CSS plus fin ou un lazy-load des styles de pages non-homepage
+- [ ] **PSI-3** — Valider le score PSI mobile = 100 après corrections
+
+### Étape 2 — Audit fichiers inutiles
+- [ ] Lister et supprimer les fichiers orphelins : composants non importés, images inutilisées dans `/public/img/`, scripts de la racine sans appelant
+- [ ] Vérifier que `getSiteMeta.js` (vestige Nuxt 2, marqué `deprecated`) n'est plus importé dans aucun composant — le supprimer
+- [ ] Auditer les dépendances `package.json` non utilisées (`npm-check` ou équivalent)
+- [ ] Vérifier les routes générées (81 actuellement) : confirmer qu'aucune page fantôme n'est incluse dans le build
+
+### Étape 2b — Refactor SCSS → CSS moderne
+
+> **Contexte :** le projet utilise `sass` avec l'API `modern-compiler` (déjà configurée dans `vite.css.preprocessorOptions`). Les warnings de dépréciation `if-function` dans `assets/css/vars/_typo.scss` ont été **corrigés le 27 avril 2026** (remplacement des `if()` Sass par `@if`/`@else`). Le refactor complet est une étape séparée.
+
+**Objectif :** migrer les variables SCSS vers des custom properties CSS (`--var`) là où c'est pertinent, pour bénéficier de la cascade native, réduire la dépendance à SCSS et préparer la migration Nuxt 4.
+
+- [ ] **SCSS-1** — Inventaire : lister toutes les variables SCSS (`$var`) utilisées dans les composants scoped vs les fichiers globaux (`vars/`, `main.scss`)
+- [ ] **SCSS-2** — Migrer les variables de couleurs (`$vert`, `$gris1`…) de `vars/_colors.scss` vers des custom properties CSS dans `:root` — garder les aliases SCSS pour la période de transition
+- [ ] **SCSS-3** — Migrer les variables de typographie (`$breakpoint-tablet`, tailles fluides) vers des custom properties ou des `@layer` CSS
+- [ ] **SCSS-4** — Remplacer les `@use` globaux injectés via `vite.css.preprocessorOptions.additionalData` par des imports explicites dans chaque fichier qui en a besoin (meilleure traçabilité, compatible Nuxt 4)
+- [ ] **SCSS-5** — Valider l'éco-impact : vérifier que le CSS généré n'a pas grossi (poids `/_nuxt/*.css` avant/après)
+- [ ] **SCSS-6** — Supprimer SCSS entièrement si la migration est complète et que tous les composants utilisent CSS natif + custom properties
+
+### Étape 3 — Migration Nuxt 4
+- [ ] Lire le guide de migration officiel Nuxt 4 et lister les breaking changes impactant le projet
+- [ ] Créer la branche `chore/nuxt4-migration` depuis `dev` à jour
+- [ ] Mettre à jour `nuxt`, `@nuxt/content`, `@nuxt/image`, `@nuxtjs/sitemap` vers les versions compatibles Nuxt 4
+- [ ] Corriger les breaking changes identifiés (Composition API, `useHead`, routeur, Content v3 si applicable)
+- [ ] Valider `npm run generate` + suite de tests + PSI après migration
+- [ ] Merger sur `dev` puis `master` après validation complète
 
 ---
 
@@ -37,13 +77,13 @@
 - [x] **I9** — ~~`useHead` statique à setup time~~ — remplacé par `useHead(computed(() => ...))` pour réactivité client ✓
 
 #### Repositionnement freelance
-- [ ] **A1** — Ajouter "freelance" dans le H1 ou le sous-titre hero de la homepage
-- [ ] **A2** — Ajouter la zone géographique (Lille · Compiègne · Amiens · Paris · remote) dans le hero
-- [ ] **A3** — Ajouter un badge ou bandeau "Disponible pour missions" sur la homepage
-- [ ] **A4** — Réécrire le `<title>` homepage : `Développeur WordPress freelance Lille — Benoît Abot`
-- [ ] **A5** — Page `/contact/` : ajouter zone géographique + mode de travail (remote / présentiel)
-- [ ] **A6** — Ajouter Lille/région dans le footer (signal géo sur toutes les pages)
-- [ ] **B6** — Ajouter JSON-LD `Person` sur homepage avec `workLocation` et `areaServed` (Lille, Compiègne, Amiens, Paris, Hauts-de-France)
+- [x] **A1** — ~~"freelance" absent du H1~~ — H1 : "Développeur web freelance spécialisé en éco-conception" ✓
+- [x] **A2** — ~~Zone géo absente du hero~~ — `Lille · Hauts-de-France · Remote` sous le subtitle ✓
+- [x] **A3** — ~~Badge disponibilité absent~~ — pastille verte animée "Disponible pour missions" avant le H1 ✓
+- [x] **A4** — ~~`<title>` homepage générique~~ — `Benoît Abot — Développeur web freelance WordPress & Nuxt | Lille` ✓
+- [x] **A5** — ~~Contact sans zone géo~~ — `Basé à Lille · Disponible en remote et en présentiel (Hauts-de-France)` ✓
+- [x] **A6** — ~~Footer sans mention géo~~ — `Benoît Abot · Développeur web freelance · Lille` dans le footer ✓
+- [x] **B6** — ~~JSON-LD `Person` sans localisation~~ — `workLocation`, `areaServed`, `availableChannel` ajoutés ✓
 
 ---
 
