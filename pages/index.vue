@@ -5,7 +5,7 @@
         <div class="home-hero__copy">
           <p class="home-kicker">beAbot</p>
           <h1 id="home-hero-title" class="home-title">
-            Développement web spécialisé en
+            Développeur web freelance spécialisé en
             <span>éco-conception</span>
           </h1>
           <p class="home-subtitle">
