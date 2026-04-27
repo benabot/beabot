@@ -60,6 +60,8 @@
 - [x] **C5** — ~~`/404/` répond HTTP 200~~ — redirect Netlify `status = 404` ajouté dans `netlify.toml` ✓
 - [x] **C6** — ~~`/404/` dans le sitemap~~ — exclue via `sitemap.exclude` dans `nuxt.config.ts` ✓
 - [x] **C7** — ~~`pages/portfolio.vue` utilise `useHead()`~~ — migré vers `useSeoMeta()` avec twitter:card, twitter:title, twitter:description ✓
+- [x] **C8** — ~~Chapô affiché en JSON brut sur `theme-wordpress` et `typographie`~~ — `:` non quoté dans le frontmatter YAML causait le parse en objet — frontmatters corrigés ✓
+- [x] **C9** — ~~Erreur `#app-manifest` en mode dev~~ — artefact de cache `.nuxt` local — résolu par `rm -rf .nuxt && npm run dev` — rien à committer ✓
 
 ---
 
@@ -102,8 +104,8 @@
 
 #### Contenu & conversion freelance
 - [ ] **B1** — Créer une page `/services/` avec types de missions, zones, tarifs indicatifs
-- [ ] **B2** — Portfolio : ajouter la localisation des clients là où applicable
-- [ ] **B3** — Portfolio : réduire la visibilité des apps iOS (section séparée ou masquée par défaut)
+<!-- - [ ] **B2** — Portfolio : ajouter la localisation des clients là où applicable
+- [ ] **B3** — Portfolio : réduire la visibilité des apps iOS (section séparée ou masquée par défaut) -->
 - [ ] **B4** — Ajouter CTA freelance en bas de `/eco-conception/`
 - [ ] **B5** — Ajouter encart "Faire faire son site sur Greenlight" sur `/greenlight/`
 
