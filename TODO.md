@@ -26,15 +26,15 @@
 ### 🟠 Important — corriger dans la semaine
 
 #### SEO technique
-- [ ] **I1** — Entités HTML (`&amp;`, `&#x27;`) non décodées dans les titles et H1 — vérifier le double-encoding dans les templates Vue
-- [ ] **I2** — Uniformiser le pattern des titles articles : `Titre — Mot-clé | BeAbot` au lieu de `BeAbot - Titre`
-- [ ] **I3** — Title `/images-eco-conception/` trop long (78 car.) — raccourcir à <70
+- [x] **I1** — ~~Entités HTML `&amp;` et `&#8209;` dans le H1 portfolio~~ — remplacés par caractères Unicode directs dans `pages/portfolio.vue` ✓
+- [x] **I2** — ~~Pattern titles articles `BeAbot - Titre`~~ — `titleTemplate: '%s | BeAbot'` dans `[slug].vue` ; `| BeAbot` retiré du frontmatter `comment-reduire...` ✓
+- [x] **I3** — ~~Title `/images-eco-conception/` trop long (78 car.)~~ — seo.title raccourci à 59 car. → 68 avec suffixe ✓
 - [x] **I4** — ~~JSON-LD `@type: ?`~~ — faux positif de l'audit Python, confirmé ✓ par Claude Code (JSON-LD complet et valide sur toutes les pages)
-- [ ] **I5** — `og:title` de `/mentions-legales/` désynchronisé (affiche l'ancien titre)
-- [ ] **I6** — Descriptions >160 car. sur 5 articles éco-conception — tronquer dans le frontmatter
-- [ ] **I7** — Ajouter le schéma JSON-LD `Article` (`author`, `datePublished`, `dateModified`) sur tous les articles via un composable partagé
-- [ ] **I8** — `og:image` non défini explicitement sur `/portfolio/` — rely sur le fallback global `beabot.png` — ajouter `ogImage` dans `useSeoMeta()` — `pages/portfolio.vue`
-- [ ] **I9** — Title articles : `useHead({ title: seoTitle.value })` statique à setup time — si le fetch de l'article échoue, le titre est vide — remplacer par `watchEffect` ou `computed head` — `pages/eco-conception/[slug].vue:456`
+- [x] **I5** — ~~`og:title` de `/mentions-legales/` désynchronisé~~ — résolu par C2 (`ogTitle: 'Mentions légales — BeAbot'` dans `useSeoMeta()`) ✓
+- [x] **I6** — ~~Descriptions >160 car. sur 5 articles~~ — reformulées à ≤155 car. dans 4 frontmatters ✓
+- [x] **I7** — ~~JSON-LD `Article` manquant~~ — `BlogPosting` déjà présent avec `author.url`, `datePublished`, `dateModified` ; `author.url` ajouté ✓
+- [x] **I8** — ~~`og:image` absent sur `/portfolio/`~~ — `ogImage` ajouté dans `useSeoMeta()` ✓
+- [x] **I9** — ~~`useHead` statique à setup time~~ — remplacé par `useHead(computed(() => ...))` pour réactivité client ✓
 
 #### Repositionnement freelance
 - [ ] **A1** — Ajouter "freelance" dans le H1 ou le sous-titre hero de la homepage
