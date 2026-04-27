@@ -1,7 +1,7 @@
 ---
 title: Typographie et éco-conception
-description: La typographie joue un rôle central dans l’éco-conception web, comme composant graphique et source de consommation. Polices système ou web fonts : impacts et choix sobres.
-chapo: La typographie joue un rôle central dans l’éco-conception web, comme composant graphique et source de consommation. Polices système ou web fonts : impacts et choix sobres.
+description: "La typographie joue un rôle central dans l’éco-conception web, comme composant graphique et source de consommation. Polices système ou web fonts : impacts et choix sobres."
+chapo: "La typographie joue un rôle central dans l’éco-conception web, comme composant graphique et source de consommation. Polices système ou web fonts : impacts et choix sobres."
 seo:
   title: Typographie et éco-conception
   description: "Polices système ou web fonts : impacts sur performances et empreinte numérique. Choix typographiques sobres pour l’éco-conception web."
