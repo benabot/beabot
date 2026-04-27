@@ -7,6 +7,7 @@
         <nav id="footer--nav">
           <ul>
             <li><AppLink to="/" no-prefetch>Accueil</AppLink></li>
+            <li><AppLink to="/services/" no-prefetch>Services</AppLink></li>
             <li><AppLink to="/portfolio/" no-prefetch>Portfolio</AppLink></li>
             <li><AppLink to="/greenlight/" no-prefetch>Greenlight</AppLink></li>
             <li>

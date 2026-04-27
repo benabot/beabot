@@ -193,6 +193,7 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 
 const navigationItems = [
+  { label: 'Services', to: '/services/', variant: 'nav-link--services' },
   { label: 'Portfolio', to: '/portfolio/', variant: 'nav-link--portfolio' },
   { label: 'Greenlight', to: '/greenlight/', variant: 'nav-link--greenlight' },
   { label: 'Éco-conception', to: '/eco-conception/', variant: 'nav-link--eco' },
@@ -500,6 +501,11 @@ a.nuxt-link-active {
 
       .nav-link.couleur-none {
         display: none;
+      }
+
+      .nav-link--services {
+        background: linear-gradient(#f59e0b, #f59e0b) left bottom / 0 0.1em
+          no-repeat;
       }
 
       .nav-link--eco {
