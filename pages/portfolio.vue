@@ -299,6 +299,8 @@ useSeoMeta({
   ogType: 'profile',
   ogUrl: portfolioCanonicalUrl,
   ogImage: `${config.public.siteUrl}/beabot.png`,
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
   twitterCard: 'summary_large_image',
   twitterTitle: 'Portfolio — Benoît Abot, développeur web',
   twitterDescription:

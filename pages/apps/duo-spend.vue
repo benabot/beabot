@@ -348,6 +348,8 @@ useSeoMeta({
   ogSiteName: 'BeAbot',
   ogUrl: pageUrl,
   ogImage,
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
   twitterTitle: duoSpendContent.seo.title,
   twitterDescription: duoSpendContent.seo.description,
   twitterCard: 'summary_large_image',

@@ -319,6 +319,8 @@ useSeoMeta({
   ogSiteName: 'BeAbot',
   ogUrl: pageUrl,
   ogImage,
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
   twitterTitle: meetingModeContent.seo.title,
   twitterDescription: meetingModeContent.seo.description,
   twitterCard: 'summary_large_image',

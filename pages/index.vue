@@ -536,6 +536,8 @@ useSeoMeta({
   ogType: 'website',
   ogUrl: homeCanonicalUrl,
   ogImage: `${config.public.siteUrl}/beabot.png`,
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
   twitterCard: 'summary_large_image',
   twitterTitle: homeTitle,
   twitterDescription: homeDescription,

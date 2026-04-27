@@ -196,6 +196,8 @@ useSeoMeta({
     'Développeur web éco-conception disponible pour vos projets. Site à créer, refondre ou optimiser ? Contactez-moi, réponse sous 48h.',
   ogType: 'website',
   ogUrl: contactCanonicalUrl,
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
   twitterTitle: 'Contact — Benoît Abot',
   twitterDescription:
     'Développeur web éco-conception. Contactez-moi pour votre projet web sobre et performant.',
