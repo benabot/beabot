@@ -54,8 +54,10 @@
         <a href="/rss.xml" class="rss">RSS</a>
       </div>
       <div class="item d">
+        <span class="footer-geo">Benoît Abot · Développeur web freelance · Lille</span>
+        —
         <a href="/mentions-legales/">Mentions légales</a>
-        - beAbot {{ annee }}
+        · beAbot {{ annee }}
       </div>
     </div>
   </footer>
