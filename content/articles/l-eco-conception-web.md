@@ -6,10 +6,12 @@ seo:
   title: Qu’est-ce que l’éco-conception web
   description: "L’éco-conception web : définition précise, limites du concept et enjeux concrets, loin des raccourcis habituels sur la sobriété numérique."
 date: 2021-12-17
-updatedAt: 2021-12-17
+updatedAt: 2026-04-27
 temps: 15
 tag: ['WebDesign', 'WordPress', 'Eco-conception']
 ---
+
+> *Article publié en 2021, mis à jour en avril 2026. Les chiffres et recommandations ont été vérifiés et complétés.*
 
 L'urgence climatique nous impose de penser notre modèle de développement. Le numérique en tant qu'émetteur de gaz à effet de serre tout autant que vecteur d'une transformation de nos modes de vie est au cœur des changements contemporains. S'interroger sur la finalité du numérique, ses enjeux et ses <a  href="/eco-conception/la-consommation-energetique-du-numerique/" class="lien--vert">impacts sur l'environnement</a> c'est aussi comprendre notre monde et se donner les moyens d'agir.
 Plusieurs possibilités s’offrent à nous pour dépeindre l’éco-conception numérique, des plus techniques aux plus superficielles. J’ai choisi ici une approche ouverte et généraliste, accessible sans connaissance en programmation.
@@ -185,3 +187,6 @@ Bon pour la planète, bon pour les utilisateurs, bon pour le référencement, vo
 ### Ressources
 
 [^1]: [https://www.greenit.fr/2020/11/25/pourquoi-changeons-nous-de-smartphone/](https://www.greenit.fr/2020/11/25/pourquoi-changeons-nous-de-smartphone/)
+---
+
+Vous avez un projet de site éco-conçu ? Je suis développeur web freelance à Lille — [contactez-moi](/contact/) ou [découvrez mes réalisations](/portfolio/).

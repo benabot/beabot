@@ -7,10 +7,12 @@ seo:
   description: "Retour d’expérience sur un thème WordPress éco-conçu pour un site réel : choix techniques, graphiques et résultats mesurés."
   ogImage: /img/og/theme-wordpress-eco-conception.png
 date: 2022-02-28
-updatedAt: 2022-02-28
+updatedAt: 2026-04-27
 temps: 3
 tag: ['WebDesign', 'WordPress', 'Eco-conception']
 ---
+
+> *Article publié en 2022, mis à jour en avril 2026. Les chiffres et recommandations ont été vérifiés et complétés.*
 
 ## Demande/besoins
 *[la petite boucle](https://www.lapetiteboucle.fr)* est une association qui collecte des cartouches d’encre et de toner usagés à l’aide d’un triporteur électrique.
@@ -83,3 +85,6 @@ Le site, éco-conçu, répond d'avantage aux besoins et à l’identité du clie
 > Découvrir le site de [la petite boucle](https://www.lapetiteboucle.fr)
 > 
 > Explorer le [thème WordPress sur GitHub](https://github.com/benabot/lapetiteboucle)
+---
+
+Vous avez un projet de site éco-conçu ? Je suis développeur web freelance à Lille — [contactez-moi](/contact/) ou [découvrez mes réalisations](/portfolio/).

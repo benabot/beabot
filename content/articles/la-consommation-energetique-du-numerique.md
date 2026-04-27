@@ -6,10 +6,12 @@ seo:
   title: Les impacts environnementaux du numérique
   description: "Le numérique repose sur des infrastructures énergivores. Panorama chiffré des impacts environnementaux : CO2, électricité, fabrication des appareils."
 date: 2022-02-28
-updatedAt: 2022-02-28
+updatedAt: 2026-04-27
 tag: ['WebDesign', 'WordPress']
 temps: 4
 ---
+
+> *Article publié en 2022, mis à jour en avril 2026. Les chiffres et recommandations ont été vérifiés et complétés.*
 
 Rapide tour d'horizon des retombés environnementales d'internet et du numérique, préalable à une <a  href="/eco-conception/l-eco-conception-web/" class="lien--vert">éco-conception de sites web</a> efficace, car agissant sur les principales sources d'impacts.
 Les chiffres que j’utilise ici proviennent de [GreenIt.fr](https://www.greenit.fr/), c’est la communauté des acteurs du numérique responsable en France. 
@@ -89,3 +91,7 @@ Agir sur les équipements en limitant leur durée de vie est le principal levier
 > - [Les chiffres clé de l'énergie - ministère du Développement Durable - 2020](https://www.statistiques.developpement-durable.gouv.fr/sites/default/files/2020-09/datalab_70_chiffres_cles_energie_edition_2020_septembre2020.pdf)
 > - [Article du monde sur les minerais utilisés dans les téléphones portables - 2016](https://www.lemonde.fr/planete/article/2016/10/01/le-sulfureux-parcours-du-telephone-portable-des-mines-aux-filieres-clandestines-de-dechets_5006655_3244.html)
 
+
+---
+
+Vous avez un projet de site éco-conçu ? Je suis développeur web freelance à Lille — [contactez-moi](/contact/) ou [découvrez mes réalisations](/portfolio/).
