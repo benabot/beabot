@@ -5,6 +5,7 @@ chapo: "La typographie joue un rôle central dans l’éco-conception web, comme
 seo:
   title: Typographie et éco-conception
   description: "Polices système ou web fonts : impacts sur performances et empreinte numérique. Choix typographiques sobres pour l’éco-conception web."
+  ogImage: /img/og/typographie-ecoconception.png
 date: 2025-12-15
 updatedAt: 2025-12-15
 temps: 10

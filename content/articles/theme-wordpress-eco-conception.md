@@ -5,6 +5,7 @@ chapo: Exemple concret sur la conception d’un thème WordPress éco-conçu pou
 seo:
   title: La petite boucle, éco-conception d’un thème WordPress
   description: "Retour d’expérience sur un thème WordPress éco-conçu pour un site réel : choix techniques, graphiques et résultats mesurés."
+  ogImage: /img/og/theme-wordpress-eco-conception.png
 date: 2022-02-28
 updatedAt: 2022-02-28
 temps: 3
