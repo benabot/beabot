@@ -12,6 +12,7 @@
             Sites WordPress et interfaces JavaScript sobres, rapides et
             durables. 15 ans d’expérience, spécialiste du numérique responsable.
           </p>
+          <p class="home-geo">Lille · Hauts-de-France · Remote</p>
           <p class="home-lead">
             Je conçois des sites et des applications web avec une attention
             particulière portée à la performance, à l’accessibilité, à la
@@ -671,6 +672,13 @@ useHead({
 .home-greenlight__lead,
 .home-approach__text {
   color: var(--text-secondary);
+}
+
+.home-geo {
+  margin: 0.35rem 0 0.9rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
 }
 
 .home-subtitle {
