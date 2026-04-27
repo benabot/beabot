@@ -7,6 +7,7 @@
         <div class="apps-hero__left">
           <p class="apps-hero__eyebrow">Apps</p>
           <h1>
+            DuoSpend & Meeting Mode —
             Applications <span class="apps-hero__platform">iOS</span> &
             <span class="apps-hero__platform">macOS</span>
           </h1>

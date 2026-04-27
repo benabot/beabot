@@ -6,7 +6,7 @@
       <section class="app-hero">
         <div class="app-hero__content">
           <p class="app-meta">{{ duoSpendContent.stage }}</p>
-          <h1>{{ duoSpendContent.name }}</h1>
+          <h1>{{ duoSpendContent.name }} — {{ duoSpendContent.intro }}</h1>
           <p class="app-intro">{{ duoSpendContent.intro }}</p>
           <p class="app-summary">{{ duoSpendContent.summary }}</p>
 
