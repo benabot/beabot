@@ -4,6 +4,10 @@
       <div class="home-wrap home-hero__grid">
         <div class="home-hero__copy">
           <p class="home-kicker">beAbot</p>
+          <span class="availability-badge" aria-label="Disponibilité : ouvert aux missions">
+            <span class="availability-dot" aria-hidden="true"></span>
+            Disponible pour missions
+          </span>
           <h1 id="home-hero-title" class="home-title">
             Développeur web freelance spécialisé en
             <span>éco-conception</span>
@@ -638,6 +642,41 @@ useHead({
 .home-kicker,
 .section-kicker {
   margin-bottom: 0.9rem;
+}
+
+.availability-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  margin-bottom: 0.85rem;
+  padding: 0.28em 0.75em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: $vert;
+  background: rgba(4, 217, 79, 0.08);
+  border: 1px solid rgba(4, 217, 79, 0.22);
+  border-radius: 100px;
+}
+
+.availability-dot {
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: $vert;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(0.8);
+  }
 }
 
 .home-title,
