@@ -26,6 +26,10 @@
           </p>
         </div>
 
+        <p class="contact-geo">
+          Basé à Lille · Disponible en remote et en présentiel (Hauts-de-France)
+        </p>
+
         <div class="contact-links">
           <button
             type="button"
@@ -390,6 +394,13 @@ h1 {
   opacity: 0.6;
   cursor: not-allowed;
   transform: none;
+}
+
+.contact-geo {
+  font-size: 0.82rem;
+  color: $gris3;
+  letter-spacing: 0.04em;
+  margin: 0 0 1rem;
 }
 
 .contact-links {
