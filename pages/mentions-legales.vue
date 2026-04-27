@@ -275,6 +275,11 @@ useSeoMeta({
   ogTitle: 'Mentions légales — BeAbot',
   ogDescription: 'Mentions légales du site beabot.fr : éditeur, hébergeur, propriété intellectuelle, données personnelles et conditions d\'utilisation.',
   ogUrl: mentionsCanonicalUrl,
+  ogImage: `${config.public.siteUrl}/beabot.png`,
+  twitterCard: 'summary_large_image',
+  twitterTitle: 'Mentions légales — BeAbot',
+  twitterDescription: 'Mentions légales du site beabot.fr : éditeur, hébergeur, propriété intellectuelle, données personnelles.',
+  twitterImage: `${config.public.siteUrl}/beabot.png`,
 })
 </script>
 
