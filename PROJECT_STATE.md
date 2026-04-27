@@ -1,15 +1,15 @@
 # 📊 ÉTAT DU PROJET - BeAbot
 
-> **Récapitulatif de l'état du projet au 27 avril 2026**
+> **Récapitulatif de l'état du projet au 27 avril 2026 (màj 27/04 soir)**
 
 ---
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
-1. **Repositionnement freelance** (en cours, branche `feat/seo-for-freelance-v1`) — items A1–A6, B6 dans `TODO.md`
+1. **Articles longue traîne** (branche `feat/seo-for-freelance-v1`) — 4 nouveaux articles SEO à écrire (plans proposés, non validés) : WordPress freelance Lille, refonte éco-conçue, audit site web, WordPress vs Nuxt (voir `TODO.md`)
 2. **Tests** — Lancer la suite de tests existante sur `dev` ; combler les manques critiques avant migration
 3. **Performance PSI mobile 99 → 100** — Éliminer les 3 CSS render-blocking identifiés dans l'audit PageSpeed Insights du 27 avril 2026 (`/_nuxt/entry.css` 444ms, `/_nuxt/default.css` 389ms, `/_nuxt/index.css` 441ms) — économie estimée 270ms LCP/FCP. Options détaillées dans `TODO.md` (Backlog Nuxt 4 / Étape 1)
-4. **Refactor SCSS → CSS moderne** — Warnings Sass `if-function` corrigés le 27 avril 2026 dans `assets/css/vars/_typo.scss` (2 `if()` dépréciés → `@if`/`@else`). Refactor complet planifié (Étape 2b dans `TODO.md`) : migration des variables SCSS vers CSS custom properties, suppression de la dépendance globale `additionalData`
+4. **Refactor SCSS → CSS moderne** — Warnings Sass `if-function` corrigés le 27 avril 2026 dans `assets/css/vars/_typo.scss` (2 `if()` dépréciés → `@if`/`@else`) et `darken()` dans `BoiteArticle.vue` (→ `color.adjust()`). Refactor complet planifié (Étape 2b dans `TODO.md`)
 5. **Migration Nuxt 4** — Branche `chore/nuxt4-migration` après validation des étapes 2–4 ; roadmap complète dans `TODO.md`
 
 ---
@@ -21,6 +21,16 @@
 SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stable**Dev Preview**<https://dev-beabot.netlify.app>Nuxt 3.14dev✅ Tests
 
 ### Dernière mise à jour
+
+**SEO & Repositionnement freelance — phase 1 (27 avril 2026)** — Branche `feat/seo-for-freelance-v1`.
+
+- ✅ Page `/services/` créée (H1 : "Missions freelance — WordPress, JavaScript (Vue.js), éco-conception") avec hero, 3 sections missions, zone géo, tarifs indicatifs, CTA final — JSON-LD `ProfessionalService` + `BreadcrumbList`
+- ✅ Navigation principale et footer enrichis avec l’entrée `Services`
+- ✅ CTA freelance ajouté en bas de `/eco-conception/` (eyebrow "Freelance disponible", signal Lille/HDF/remote)
+- ✅ Encart "Faire faire son site Greenlight" ajouté sur `/greenlight/`
+- ✅ 4 articles 2021-2022 mis à jour : `updatedAt: 2026-04-27`, note éditoriale en début de body, CTA freelance en conclusion
+- ✅ Page `/eco-conception/` : les cartes affichent maintenant `updatedAt` quand plus récent que `date`
+- ✅ `npm run generate` validé (84 routes)
 
 **Formulaire d’intérêt apps (24 avril 2026)** — Mise à niveau du composant partagé `AppReleaseInterestForm` sur la branche `fix/app-release-interest-form`.
 
