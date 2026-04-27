@@ -85,11 +85,16 @@ $base-unitless: math.div($type-base-size, ($type-base-size * 0 + 1));
       // Set minimum size to a percentage less than $level-size
       // Reduction is greater for large font sizes (> 4rem) to help
       // prevent overflow due to font-size on mobile devices
-      $fluid-reduction: if($level-size > 4, 0.5, 0.33);
+      $fluid-reduction: 0.33; // valeur par défaut
+      @if $level-size > 4 {
+        $fluid-reduction: 0.5;
+      }
       $fluid-min: $level-unitless - ($fluid-reduction * $level-unitless);
 
       // Prevent dropping lower than 1rem (body font-size)
-      $fluid-min: if($fluid-min > $base-unitless, $fluid-min, $base-unitless);
+      @if $fluid-min <= $base-unitless {
+        $fluid-min: $base-unitless;
+      }
 
       // Adjust max modifier slightly per level to prevent "same" size
       // or lower levels appaering larger than higher levels

@@ -1,6 +1,16 @@
 # 📊 ÉTAT DU PROJET - BeAbot
 
-> **Récapitulatif de l'état du projet au 24 avril 2026**
+> **Récapitulatif de l'état du projet au 27 avril 2026**
+
+---
+
+## 🔜 PROCHAINES ÉTAPES (ordonnées)
+
+1. **Repositionnement freelance** (en cours, branche `feat/seo-for-freelance-v1`) — items A1–A6, B6 dans `TODO.md`
+2. **Tests** — Lancer la suite de tests existante sur `dev` ; combler les manques critiques avant migration
+3. **Performance PSI mobile 99 → 100** — Éliminer les 3 CSS render-blocking identifiés dans l'audit PageSpeed Insights du 27 avril 2026 (`/_nuxt/entry.css` 444ms, `/_nuxt/default.css` 389ms, `/_nuxt/index.css` 441ms) — économie estimée 270ms LCP/FCP. Options détaillées dans `TODO.md` (Backlog Nuxt 4 / Étape 1)
+4. **Refactor SCSS → CSS moderne** — Warnings Sass `if-function` corrigés le 27 avril 2026 dans `assets/css/vars/_typo.scss` (2 `if()` dépréciés → `@if`/`@else`). Refactor complet planifié (Étape 2b dans `TODO.md`) : migration des variables SCSS vers CSS custom properties, suppression de la dépendance globale `additionalData`
+5. **Migration Nuxt 4** — Branche `chore/nuxt4-migration` après validation des étapes 2–4 ; roadmap complète dans `TODO.md`
 
 ---
 
