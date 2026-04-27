@@ -503,6 +503,22 @@ const structuredData = {
         'https://github.com/benabot',
         'https://www.linkedin.com/in/benoit-abot/',
       ],
+      workLocation: {
+        '@type': 'Place',
+        name: 'Lille, Hauts-de-France, France',
+      },
+      areaServed: [
+        'Lille',
+        'Compiègne',
+        'Amiens',
+        'Paris',
+        'Hauts-de-France',
+        'France',
+      ],
+      availableChannel: {
+        '@type': 'ServiceChannel',
+        serviceType: 'remote',
+      },
     },
   ],
 }
