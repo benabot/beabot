@@ -373,7 +373,7 @@
               class="eco-archive-card"
             >
               <p class="eco-archive-card__meta">
-                {{ formatDate(article.date) }}
+                {{ formatDate((article.updatedAt && article.updatedAt > (article.date ?? '')) ? article.updatedAt : article.date) }}
               </p>
               <h3>
                 <AppLink :to="articleLink(article)">
@@ -523,6 +523,7 @@ type EcoArticle = {
   tag?: string[]
   _path?: string
   date?: string
+  updatedAt?: string
 }
 
 type FaqArticle = EcoArticle & {
@@ -648,7 +649,7 @@ const { data: articles } = await useAsyncData<EcoArticle[]>(
   'eco-pillar-articles',
   () =>
     queryContent('articles')
-      .only(['title', 'description', 'tag', '_path', 'date'])
+      .only(['title', 'description', 'tag', '_path', 'date', 'updatedAt'])
       .sort({ date: -1 })
       .find(),
 )
