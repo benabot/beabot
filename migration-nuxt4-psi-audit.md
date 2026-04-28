@@ -172,3 +172,18 @@ Seule la ligne `inlineSSRStyles` a été modifiée. Aucune option Nuxt 4 supplé
   - Aucune réduction concrète, stable et peu risquée de la chaîne critique n'a été identifiée au-delà de `inlineSSRStyles`.
   - Les pistes restantes relèvent plutôt de l'étape 2b (`SCSS → CSS moderne`) ou d'une analyse post-déploiement avec PSI réel.
   - Aucun refactor SCSS global n'a été effectué.
+
+## Validation locale finale
+
+- `npm test` : succès
+  - pré-build : 49 checks passés, 0 warning, 0 erreur
+  - `test:content` : OK
+  - `test:node` : 18 tests passés
+- `npm run generate` : succès
+  - 100 routes prerendered
+- `SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : succès
+  - `OK SEO checks passed.`
+
+## Limite
+
+Le score PSI mobile 100 ne peut être validé qu'après déploiement preview ou production et relance PageSpeed Insights.
