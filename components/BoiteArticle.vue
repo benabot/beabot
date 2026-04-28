@@ -409,7 +409,7 @@ const onMoreKeydown = (event) => {
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: color.adjust($vert, $lightness: -10%);
+  color: color.adjust($vert-raw, $lightness: -10%);
   opacity: 0.75;
 }
 

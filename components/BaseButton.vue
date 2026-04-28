@@ -49,7 +49,7 @@ defineProps({
 }
 .bleu {
   color: $bleu2;
-  background: linear-gradient(color.adjust($bleu2, $lightness: 25%), color.adjust($bleu2, $lightness: 25%)) right
+  background: linear-gradient(color.adjust($bleu2-raw, $lightness: 25%), color.adjust($bleu2-raw, $lightness: 25%)) right
     bottom / 0 0.1em no-repeat;
   transition: background-size 0.4s;
   &:hover {

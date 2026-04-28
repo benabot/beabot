@@ -515,8 +515,8 @@ a.nuxt-link-active {
 
       .nav-link--portfolio {
         background: linear-gradient(
-            color.adjust($bleu2, $lightness: 10%),
-            color.adjust($bleu2, $lightness: 10%)
+            color.adjust($bleu2-raw, $lightness: 10%),
+            color.adjust($bleu2-raw, $lightness: 10%)
           )
           left bottom / 0 0.1em no-repeat;
       }

@@ -103,7 +103,12 @@
   - Rapport : `migration-nuxt4-scss-inventory.md`
   - Sorties : `scss-inventory-*.txt`
   - Aucun style modifié ; aucune variable migrée ; aucune dépendance modifiée.
-- [ ] **SCSS-2** — Migrer les variables de couleurs (`$vert`, `$gris1`…) de `vars/_colors.scss` vers des custom properties CSS dans `:root` — garder les aliases SCSS pour la période de transition
+- [x] **SCSS-2** — Migrer les variables de couleurs (`$vert`, `$gris1`…) de `vars/_colors.scss` vers des custom properties CSS dans `:root` — garder les aliases SCSS pour la période de transition
+  - Rapport : `migration-nuxt4-scss-colors.md`
+  - Les aliases SCSS sont conservés pour transition.
+  - Les usages `color.adjust()` conservent des valeurs Sass raw (`*-raw`) pour éviter de casser la compilation.
+  - Les custom properties sont déclarées une seule fois dans le CSS global pour éviter la duplication liée à `additionalData`.
+  - Éco-impact mesuré dans `scss-colors-assets-bytes-diff.txt`.
 - [ ] **SCSS-3** — Migrer les variables de typographie (`$breakpoint-tablet`, tailles fluides) vers des custom properties ou des `@layer` CSS
 - [ ] **SCSS-4** — Remplacer les `@use` globaux injectés via `vite.css.preprocessorOptions.additionalData` par des imports explicites dans chaque fichier qui en a besoin (meilleure traçabilité, compatible Nuxt 4)
 - [ ] **SCSS-5** — Valider l'éco-impact : vérifier que le CSS généré n'a pas grossi (poids `/_nuxt/*.css` avant/après)

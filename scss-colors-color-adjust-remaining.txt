@@ -1,0 +1,23 @@
+layouts/default.vue:518:            color.adjust($bleu2-raw, $lightness: 10%),
+layouts/default.vue:519:            color.adjust($bleu2-raw, $lightness: 10%)
+pages/services.vue:788:  background: color.adjust($vert-raw, $lightness: 6%);
+pages/services.vue:879:  color: color.adjust($vert-raw, $lightness: -16%);
+pages/index.vue:694:  color: color.adjust($vert-raw, $lightness: 12%);
+pages/index.vue:770:    color.adjust($vert-raw, $lightness: 12%),
+pages/index.vue:831:  color: color.adjust($vert-raw, $lightness: 18%);
+pages/index.vue:930:  color: color.adjust($vert-raw, $lightness: 14%);
+pages/index.vue:958:  color: color.adjust($vert-raw, $lightness: 12%);
+pages/index.vue:1154:  color: color.adjust($vert-raw, $lightness: 14%);
+pages/index.vue:1168:  color: color.adjust($vert-raw, $lightness: 12%);
+pages/index.vue:1263:  outline: 2px solid color.adjust($vert-raw, $lightness: 16%);
+components/BoiteArticle.vue:412:  color: color.adjust($vert-raw, $lightness: -10%);
+components/BaseButton.vue:52:  background: linear-gradient(color.adjust($bleu2-raw, $lightness: 25%), color.adjust($bleu2-raw, $lightness: 25%)) right
+pages/eco-conception/index.vue:1235:  color: color.adjust($vert-raw, $lightness: 6%);
+pages/eco-conception/index.vue:1309:    color.adjust($vert-raw, $lightness: 14%),
+pages/eco-conception/index.vue:1477:    color.adjust($vert-raw, $lightness: 8%),
+pages/eco-conception/index.vue:1649:  color: color.adjust($vert-raw, $lightness: 2%);
+pages/eco-conception/index.vue:1760:  background: color.adjust($vert-raw, $lightness: 4%);
+pages/eco-conception/index.vue:1803:  color: color.adjust($vert-raw, $lightness: 10%);
+pages/eco-conception/index.vue:1992:  color: color.adjust($vert-raw, $lightness: -6%);
+pages/eco-conception/index.vue:2130:  color: color.adjust($vert-raw, $lightness: -2%);
+pages/eco-conception/index.vue:2239:  outline: 2px solid color.adjust($vert-raw, $lightness: 8%);
