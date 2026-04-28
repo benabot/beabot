@@ -77,3 +77,31 @@ Les lignes restantes dans `scss-colors-color-adjust-remaining.txt` utilisent dé
   - fait
 - Étape suivante recommandée :
   - `SCSS-3` typographie sur branche séparée.
+
+## Correction avant merge — déduplication des custom properties
+
+### Problème
+
+Le premier passage plaçait le bloc `:root` dans `_colors.scss`, fichier injecté via `additionalData`, ce qui dupliquait les custom properties dans plusieurs chunks CSS.
+
+### Correction
+
+- `_colors.scss` conserve uniquement les valeurs raw et aliases SCSS de transition.
+- Les custom properties sont déclarées une seule fois dans `assets/css/vars/_color-custom-properties.scss`.
+- `assets/css/vars/_color-custom-properties.scss` est importé uniquement dans `assets/css/main.scss`.
+
+### Mesure après correction
+
+- CSS avant SCSS-2 : 203 540 octets
+- CSS après première implémentation : 224 089 octets
+- CSS après déduplication : 206 807 octets
+- Écart final : +3 267 octets par rapport à l’avant SCSS-2, soit -17 282 octets par rapport à la première implémentation.
+- Occurrences `:root` :
+  - voir `scss-colors-root-occurrences.txt`
+- Occurrences `--color-green` :
+  - voir `scss-colors-custom-properties-occurrences.txt`
+  - note : le fichier peut être vide car le CSS généré est minifié sur une seule ligne ; `scss-colors-root-occurrences.txt` confirme que le bloc est présent dans un seul chunk CSS.
+
+### Décision
+
+Conserver la correction : les custom properties couleur restent disponibles, les aliases SCSS restent compatibles, et la duplication liée à `additionalData` est supprimée.

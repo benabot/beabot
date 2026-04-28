@@ -1,0 +1,23 @@
+@use './colors' as *;
+
+:root {
+  --color-green: #{$vert-raw};
+  --color-blue-1: #{$bleu1-raw};
+  --color-blue-2: #{$bleu2-raw};
+  --color-yellow: #{$jaune-raw};
+
+  --color-gray-1: #{$gris1-raw};
+  --color-gray-2: #{$gris2-raw};
+  --color-gray-3: #{$gris3-raw};
+  --color-gray-4: #{$gris4-raw};
+  --color-gray-5: #{$gris5-raw};
+  --color-gray-6: #{$gris6-raw};
+
+  --color-background-gray: #{$fondGris-raw};
+  --color-background-light: #{$fondClair-raw};
+
+  --gradient-green-blue: linear-gradient(var(--color-green) 20.76%, var(--color-blue-1) 89.73%);
+  --gradient-blue: linear-gradient(var(--color-blue-2) 30%, var(--color-blue-1) 80%);
+  --gradient-yellow: linear-gradient(var(--color-yellow) 23.78%, #f6b721 49.3%, #ffd329 100%);
+  --gradient-green: linear-gradient(var(--color-green) 44.84%, #18ea62 68%, #30ff79 90.89%);
+}
