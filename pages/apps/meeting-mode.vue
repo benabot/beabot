@@ -6,7 +6,7 @@
       <section class="app-hero">
         <div class="app-hero__content">
           <p class="app-meta">{{ meetingModeContent.stage }}</p>
-          <h1>{{ meetingModeContent.name }}</h1>
+          <h1>{{ meetingModeContent.name }} — {{ meetingModeContent.summary }}</h1>
           <p class="app-intro">{{ meetingModeContent.intro }}</p>
           <p class="app-summary">{{ meetingModeContent.summary }}</p>
 
@@ -319,6 +319,8 @@ useSeoMeta({
   ogSiteName: 'BeAbot',
   ogUrl: pageUrl,
   ogImage,
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
   twitterTitle: meetingModeContent.seo.title,
   twitterDescription: meetingModeContent.seo.description,
   twitterCard: 'summary_large_image',

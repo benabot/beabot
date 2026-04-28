@@ -93,6 +93,13 @@
   status = 301
   force = true
 
+# Serve /404/ with correct HTTP 404 status
+[[redirects]]
+  from = "/404/"
+  to = "/404/"
+  status = 404
+  force = true
+
 # Temporarily disabled - investigating redirect loop
 # [[redirects]]
 #   from = "https://beabot.netlify.com/*"

@@ -122,7 +122,7 @@ beabot/
 | Phase | Description |
 |-------|-------------|
 | 13 | SEO avancé & Contenu |
-| 15 | Side Projects JS |
+
 
 ### Branche en attente de merge
 
@@ -169,21 +169,6 @@ Externalisées dans `data/portfolio.ts` avec interface TypeScript :
 - `optim/*` : Optimisations
 - `docs/*` : Documentation
 
-### Branche active
-
-**`feature/portfolio-redesign`** — Prêt pour merge
-
-```bash
-# Workflow de merge
-git checkout dev
-git merge feature/portfolio-redesign --no-ff -m "feat: Phase 14 Portfolio redesign"
-git push origin dev
-
-# Après validation
-git checkout master
-git merge dev --no-ff -m "feat: Phase 12 SEO + Phase 14 Portfolio"
-git push origin master
-```
 
 ### Règle importante
 
@@ -222,18 +207,6 @@ node scripts/seo-check.mjs  # Vérification SEO
 
 ---
 
-## 📊 MÉTRIQUES
-
-| Métrique | Score | Outil |
-|----------|-------|-------|
-| EcoIndex | A | ecoindex.fr |
-| Lighthouse Perf | 99 | PageSpeed Insights |
-| Lighthouse A11y | 96 | PageSpeed Insights |
-| Lighthouse SEO | 100 | PageSpeed Insights |
-| Lighthouse BP | 100 | PageSpeed Insights |
-
----
-
 ## 🚨 GARDE-FOUS
 
 ### ❌ NE JAMAIS FAIRE
@@ -263,25 +236,11 @@ node scripts/seo-check.mjs  # Vérification SEO
 | `PROJECT_STATE.md` | État du projet |
 | `CLAUDE.md` | Ce fichier |
 | `BRANCHING_STRATEGY.md` | Stratégie Git |
-| `PORTFOLIO_REDESIGN.md` | Specs refonte portfolio |
-| `PORTFOLIO_VISUAL_IMPROVEMENTS.md` | Améliorations visuelles portfolio |
 | `data/portfolio.ts` | Données structurées projets |
 
 ---
 
-## 📚 CONVENTIONS SEO
 
-### URLs
-
-- **Trailing slash** : Toutes les URLs internes finissent par `/` (sauf racine)
-- **Utilitaire** : `utils/seo-url.ts` pour normalisation
-- **Composant** : `AppLink.vue` pour liens internes
-
-### Canonicals
-
-- Racine : `https://beabot.fr` (sans slash)
-- Pages : `https://beabot.fr/page/` (avec slash)
-- og:url = canonical
 
 ### JSON-LD par type de page
 
@@ -324,3 +283,69 @@ node scripts/seo-check.mjs  # Vérification SEO
 **📝 Maintenu par** : Claude
 **📅 Dernière MAJ** : 23 décembre 2025
 **🎯 Prochaine action** : Push dev, merge dev → master pour production
+
+# CLAUDE.md
+
+Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
+
+**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
+
+## 1. Think Before Coding
+
+**Don't assume. Don't hide confusion. Surface tradeoffs.**
+
+Before implementing:
+- State your assumptions explicitly. If uncertain, ask.
+- If multiple interpretations exist, present them - don't pick silently.
+- If a simpler approach exists, say so. Push back when warranted.
+- If something is unclear, stop. Name what's confusing. Ask.
+
+## 2. Simplicity First
+
+**Minimum code that solves the problem. Nothing speculative.**
+
+- No features beyond what was asked.
+- No abstractions for single-use code.
+- No "flexibility" or "configurability" that wasn't requested.
+- No error handling for impossible scenarios.
+- If you write 200 lines and it could be 50, rewrite it.
+
+Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
+
+## 3. Surgical Changes
+
+**Touch only what you must. Clean up only your own mess.**
+
+When editing existing code:
+- Don't "improve" adjacent code, comments, or formatting.
+- Don't refactor things that aren't broken.
+- Match existing style, even if you'd do it differently.
+- If you notice unrelated dead code, mention it - don't delete it.
+
+When your changes create orphans:
+- Remove imports/variables/functions that YOUR changes made unused.
+- Don't remove pre-existing dead code unless asked.
+
+The test: Every changed line should trace directly to the user's request.
+
+## 4. Goal-Driven Execution
+
+**Define success criteria. Loop until verified.**
+
+Transform tasks into verifiable goals:
+- "Add validation" → "Write tests for invalid inputs, then make them pass"
+- "Fix the bug" → "Write a test that reproduces it, then make it pass"
+- "Refactor X" → "Ensure tests pass before and after"
+
+For multi-step tasks, state a brief plan:
+```
+1. [Step] → verify: [check]
+2. [Step] → verify: [check]
+3. [Step] → verify: [check]
+```
+
+Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
+
+---
+
+**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.

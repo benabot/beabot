@@ -373,7 +373,7 @@
               class="eco-archive-card"
             >
               <p class="eco-archive-card__meta">
-                {{ formatDate(article.date) }}
+                {{ formatDate((article.updatedAt && article.updatedAt > (article.date ?? '')) ? article.updatedAt : article.date) }}
               </p>
               <h3>
                 <AppLink :to="articleLink(article)">
@@ -489,24 +489,22 @@
             transform="rotate(-82)"
             fill="#04d94f"
           />
-          <p class="eco-eyebrow eco-eyebrow--light">Projet</p>
+          <p class="eco-eyebrow eco-eyebrow--light">Freelance disponible</p>
           <h2 id="eco-cta-title" class="eco-final__title">
-            Un projet plus sobre, plus rapide, plus durable ?
+            Un projet web à éco-concevoir ? Je suis disponible.
           </h2>
           <p class="eco-final__text">
-            J’interviens sur la conception, le développement, l’optimisation ou
-            la mise en place d’une base WordPress sobre. L’objectif reste le
-            même : faire mieux avec moins de complexité inutile.
+            Développeur web freelance à Lille — je conçois et développe des
+            sites WordPress et Nuxt éco-conçus, et j’interviens sur des audits
+            de performance et d’empreinte numérique. Disponible en Hauts-de-France
+            et en remote.
           </p>
           <div class="eco-actions eco-actions--centered">
             <AppLink class="eco-button eco-button--primary" to="/contact/">
-              Échangeons
+              Discutons de votre projet
             </AppLink>
             <AppLink class="eco-button eco-button--ghost" to="/portfolio/">
               Voir mes réalisations
-            </AppLink>
-            <AppLink class="eco-link eco-link--light" to="/greenlight/">
-              Découvrir Greenlight
             </AppLink>
           </div>
         </div>
@@ -525,6 +523,7 @@ type EcoArticle = {
   tag?: string[]
   _path?: string
   date?: string
+  updatedAt?: string
 }
 
 type FaqArticle = EcoArticle & {
@@ -650,7 +649,7 @@ const { data: articles } = await useAsyncData<EcoArticle[]>(
   'eco-pillar-articles',
   () =>
     queryContent('articles')
-      .only(['title', 'description', 'tag', '_path', 'date'])
+      .only(['title', 'description', 'tag', '_path', 'date', 'updatedAt'])
       .sort({ date: -1 })
       .find(),
 )

@@ -334,6 +334,33 @@
     </section>
 
     <section
+      class="greenlight-section"
+      aria-labelledby="greenlight-mandate-title"
+    >
+      <div class="greenlight-shell">
+        <article class="greenlight-mandate">
+          <div class="greenlight-mandate__copy">
+            <p class="greenlight-eyebrow">Déléguer</p>
+            <h2 id="greenlight-mandate-title" class="greenlight-section__title">
+              Vous voulez un site Greenlight sans gérer le développement ?
+            </h2>
+            <p class="greenlight-section__lede">
+              Je m'occupe de l'installation, de la configuration et de l'optimisation
+              de votre site WordPress sur la base Greenlight. Vous recevez un site
+              prêt à l'emploi, sobre et performant — sans manipuler une ligne de code.
+            </p>
+            <AppLink
+              class="greenlight-button greenlight-button--primary"
+              to="/contact/"
+            >
+              Me contacter pour un devis
+            </AppLink>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section
       class="greenlight-section greenlight-section--alt"
       aria-labelledby="greenlight-cta-title"
     >
@@ -1321,6 +1348,28 @@ useHead({
 }
 
 .greenlight-choice .greenlight-button {
+  width: fit-content;
+}
+
+.greenlight-mandate {
+  display: grid;
+  gap: 1.35rem;
+  padding: clamp(1.8rem, 3.5vw, 2.8rem);
+  border-radius: 1.9rem;
+  border: 1px solid rgba(13, 199, 99, 0.22);
+  background:
+    radial-gradient(circle at top right, rgba(13, 199, 99, 0.1), transparent 18rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 251, 248, 0.92));
+  box-shadow: 0 1rem 2.2rem rgba(31, 33, 34, 0.08);
+}
+
+.greenlight-mandate__copy {
+  display: grid;
+  gap: 1rem;
+  max-width: 52rem;
+}
+
+.greenlight-mandate .greenlight-button {
   width: fit-content;
 }
 

@@ -11,9 +11,11 @@ seo:
 schema: FAQPage
 date: 2022-02-28
 temps: 4
-updatedAt: 2025-12-21
+updatedAt: 2026-04-27
 ---
 
+
+> *Article publié en 2022, mis à jour en avril 2026. Les chiffres et recommandations ont été vérifiés et complétés.*
 
 Cette foire aux questions répond aux interrogations les plus courantes autour de l'éco-conception web : ses principes, ses impacts concrets et sa mise en œuvre dans des projets réels.
 
@@ -168,3 +170,7 @@ L'éco-conception est avant tout une démarche de **qualité et de responsabilit
 > 
 > Sa large diffusion et sa longévité en font même un outil pertinent : agir sur des technologies largement utilisées a souvent plus d'impact que de viser des solutions marginales ou idéales sur le papier.
 > Voici mes [propositions pour optimiser et eco-concevoir un site WordPress](/eco-conception/wordpress-eco-conception/).
+
+---
+
+Vous avez un projet de site éco-conçu ? Je suis développeur web freelance à Lille — [contactez-moi](/contact/) ou [découvrez mes réalisations](/portfolio/).

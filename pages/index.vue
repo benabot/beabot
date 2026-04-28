@@ -4,14 +4,19 @@
       <div class="home-wrap home-hero__grid">
         <div class="home-hero__copy">
           <p class="home-kicker">beAbot</p>
+          <span class="availability-badge" aria-label="Disponibilité : ouvert aux missions">
+            <span class="availability-dot" aria-hidden="true"></span>
+            Disponible pour missions
+          </span>
           <h1 id="home-hero-title" class="home-title">
-            Développement web spécialisé en
+            Développeur web freelance spécialisé en
             <span>éco-conception</span>
           </h1>
           <p class="home-subtitle">
             Sites WordPress et interfaces JavaScript sobres, rapides et
             durables. 15 ans d’expérience, spécialiste du numérique responsable.
           </p>
+          <p class="home-geo">Lille · Hauts-de-France · Remote</p>
           <p class="home-lead">
             Je conçois des sites et des applications web avec une attention
             particulière portée à la performance, à l’accessibilité, à la
@@ -436,9 +441,9 @@ const latestArticles = computed(() => articles.value || [])
 
 const config = useRuntimeConfig()
 const homeCanonicalUrl = canonicalUrl(config.public.siteUrl, '/')
-const homeTitle = 'Benoît Abot - Développeur web spécialisé en éco-conception'
+const homeTitle = 'Benoît Abot — Développeur web freelance WordPress & Nuxt | Lille'
 const homeDescription =
-  'Développeur web WordPress et JavaScript spécialisé en éco-conception. Sites sobres, rapides, durables. Portfolio, thème Greenlight, articles.'
+  'Développeur web freelance WordPress et JavaScript, spécialisé en éco-conception à Lille. Sites sobres, rapides, durables. Portfolio, Greenlight, articles.'
 
 function projectImageSrc(image: string) {
   return `/img/${image}`
@@ -503,6 +508,22 @@ const structuredData = {
         'https://github.com/benabot',
         'https://www.linkedin.com/in/benoit-abot/',
       ],
+      workLocation: {
+        '@type': 'Place',
+        name: 'Lille, Hauts-de-France, France',
+      },
+      areaServed: [
+        'Lille',
+        'Compiègne',
+        'Amiens',
+        'Paris',
+        'Hauts-de-France',
+        'France',
+      ],
+      availableChannel: {
+        '@type': 'ServiceChannel',
+        serviceType: 'remote',
+      },
     },
   ],
 }
@@ -515,6 +536,8 @@ useSeoMeta({
   ogType: 'website',
   ogUrl: homeCanonicalUrl,
   ogImage: `${config.public.siteUrl}/beabot.png`,
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
   twitterCard: 'summary_large_image',
   twitterTitle: homeTitle,
   twitterDescription: homeDescription,
@@ -623,6 +646,41 @@ useHead({
   margin-bottom: 0.9rem;
 }
 
+.availability-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  margin-bottom: 0.85rem;
+  padding: 0.28em 0.75em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: $vert;
+  background: rgba(4, 217, 79, 0.08);
+  border: 1px solid rgba(4, 217, 79, 0.22);
+  border-radius: 100px;
+}
+
+.availability-dot {
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: $vert;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(0.8);
+  }
+}
+
 .home-title,
 .section-title {
   margin: 0;
@@ -655,6 +713,13 @@ useHead({
 .home-greenlight__lead,
 .home-approach__text {
   color: var(--text-secondary);
+}
+
+.home-geo {
+  margin: 0.35rem 0 0.9rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
 }
 
 .home-subtitle {

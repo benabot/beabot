@@ -6,7 +6,7 @@
       <section class="app-hero">
         <div class="app-hero__content">
           <p class="app-meta">{{ duoSpendContent.stage }}</p>
-          <h1>{{ duoSpendContent.name }}</h1>
+          <h1>{{ duoSpendContent.name }} — {{ duoSpendContent.intro }}</h1>
           <p class="app-intro">{{ duoSpendContent.intro }}</p>
           <p class="app-summary">{{ duoSpendContent.summary }}</p>
 
@@ -348,6 +348,8 @@ useSeoMeta({
   ogSiteName: 'BeAbot',
   ogUrl: pageUrl,
   ogImage,
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
   twitterTitle: duoSpendContent.seo.title,
   twitterDescription: duoSpendContent.seo.description,
   twitterCard: 'summary_large_image',

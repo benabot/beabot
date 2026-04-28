@@ -26,6 +26,10 @@
           </p>
         </div>
 
+        <p class="contact-geo">
+          Basé à Lille · Disponible en remote et en présentiel (Hauts-de-France)
+        </p>
+
         <div class="contact-links">
           <button
             type="button"
@@ -189,9 +193,11 @@ useSeoMeta({
     'Contactez Benoît Abot, développeur web spécialisé en éco-conception. Devis gratuit pour votre projet web sobre, performant et durable.',
   ogTitle: 'Contact — Benoît Abot, développeur éco-conception',
   ogDescription:
-    "Une question sur l'éco-conception web ? Un site à créer ou optimiser ? Écrivez-moi, je vous réponds sous 48h.",
+    'Développeur web éco-conception disponible pour vos projets. Site à créer, refondre ou optimiser ? Contactez-moi, réponse sous 48h.',
   ogType: 'website',
   ogUrl: contactCanonicalUrl,
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
   twitterTitle: 'Contact — Benoît Abot',
   twitterDescription:
     'Développeur web éco-conception. Contactez-moi pour votre projet web sobre et performant.',
@@ -203,6 +209,24 @@ useHead({
     {
       rel: 'canonical',
       href: contactCanonicalUrl,
+    },
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'ContactPage',
+        name: 'Contact — Benoît Abot',
+        url: contactCanonicalUrl,
+        description: 'Formulaire de contact pour projets web éco-conçus.',
+        mainEntity: {
+          '@type': 'Person',
+          name: 'Benoît Abot',
+          email: 'hello@beabot.fr',
+          url: `${config.public.siteUrl}/portfolio/`,
+        },
+      }),
     },
   ],
 })
@@ -390,6 +414,13 @@ h1 {
   opacity: 0.6;
   cursor: not-allowed;
   transform: none;
+}
+
+.contact-geo {
+  font-size: 0.82rem;
+  color: $gris3;
+  letter-spacing: 0.04em;
+  margin: 0 0 1rem;
 }
 
 .contact-links {

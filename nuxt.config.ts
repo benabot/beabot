@@ -260,6 +260,7 @@ export default defineNuxtConfig({
   sitemap: {
     hostname: siteUrl,
     gzip: true,
+    exclude: ['/404/', '/404'],
     routes: async () => {
       const { serverQueryContent } = await import('#content/server')
       const articles = await serverQueryContent('articles').find()

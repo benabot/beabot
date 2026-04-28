@@ -35,7 +35,7 @@
         <h1 id="portfolio-hero-title" class="hero__title">
           <span class="hero__name">Benoît Abot</span>
           <span class="hero__role">
-            Développeur web &amp; designer spécialisé en éco&#8209;conception
+            Développeur web & designer spécialisé en éco‑conception
           </span>
         </h1>
         <p class="hero__lead">
@@ -289,29 +289,25 @@ const onFilterKeydown = (event, index) => {
 const config = useRuntimeConfig()
 const portfolioCanonicalUrl = canonicalUrl(config.public.siteUrl, '/portfolio')
 
-useHead({
+useSeoMeta({
   title: 'Portfolio — Benoît Abot, développeur web éco-conception',
-  meta: [
-    {
-      hid: 'description',
-      name: 'description',
-      content:
-        "Portfolio de Benoît Abot, développeur web et designer spécialisé en éco-conception. 15 ans d'expérience, Vue.js, Nuxt, WordPress. Disponible en freelance et CDI.",
-    },
-    {
-      hid: 'og:title',
-      property: 'og:title',
-      content: 'Portfolio — Benoît Abot, développeur web - éco-conception',
-    },
-    {
-      hid: 'og:description',
-      property: 'og:description',
-      content:
-        'Développeur web et designer spécialisé en éco-conception. Sites performants, accessibles et sobres.',
-    },
-    { hid: 'og:type', property: 'og:type', content: 'profile' },
-    { hid: 'og:url', property: 'og:url', content: portfolioCanonicalUrl },
-  ],
+  description:
+    'Portfolio de Benoît Abot — développeur web, designer, éco-conception. Vue.js, Nuxt, WordPress, 15 ans de pratique. Disponible en freelance et CDI.',
+  ogTitle: 'Portfolio — Benoît Abot, développeur web éco-conception',
+  ogDescription:
+    'Développeur web et designer spécialisé en éco-conception. Sites performants, accessibles et sobres.',
+  ogType: 'profile',
+  ogUrl: portfolioCanonicalUrl,
+  ogImage: `${config.public.siteUrl}/beabot.png`,
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
+  twitterCard: 'summary_large_image',
+  twitterTitle: 'Portfolio — Benoît Abot, développeur web',
+  twitterDescription:
+    'Développeur web et designer, éco-conception, Vue.js, Nuxt, WordPress. 15 ans de pratique.',
+})
+
+useHead({
   link: [{ hid: 'canonical', rel: 'canonical', href: portfolioCanonicalUrl }],
   script: [
     {

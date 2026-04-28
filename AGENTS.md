@@ -270,6 +270,21 @@ node scripts/seo-check.mjs  # Vérification SEO
 
 ---
 
+## 📝 CONVENTIONS CONTENU
+
+### Images dans les articles Markdown
+
+Toujours inclure `width`, `height` et `alt` dans les balises img Markdown ou les composants image pour éviter le CLS (Cumulative Layout Shift).
+
+Syntaxe Markdown étendue :
+```markdown
+![description de l'image](src/image.webp){width=800 height=450}
+```
+
+Le CSS `height: auto` dans `article-content.scss` ne suffit pas sans dimensions intrinsèques déclarées — sans elles, le navigateur ne peut pas réserver l'espace avant le chargement.
+
+---
+
 ## 📚 CONVENTIONS SEO
 
 ### URLs

@@ -7,6 +7,7 @@
         <nav id="footer--nav">
           <ul>
             <li><AppLink to="/" no-prefetch>Accueil</AppLink></li>
+            <li><AppLink to="/services/" no-prefetch>Services</AppLink></li>
             <li><AppLink to="/portfolio/" no-prefetch>Portfolio</AppLink></li>
             <li><AppLink to="/greenlight/" no-prefetch>Greenlight</AppLink></li>
             <li>
@@ -54,8 +55,10 @@
         <a href="/rss.xml" class="rss">RSS</a>
       </div>
       <div class="item d">
+        <span class="footer-geo">Benoît Abot · Développeur web freelance · Lille</span>
+        —
         <a href="/mentions-legales/">Mentions légales</a>
-        - beAbot {{ annee }}
+        · beAbot {{ annee }}
       </div>
     </div>
   </footer>
