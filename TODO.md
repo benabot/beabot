@@ -36,6 +36,7 @@
 
 > Audit préparatoire réalisé le 28 avril 2026 sur `chore/nuxt-4-A` après activation de `future.compatibilityVersion: 4`.
 > À refaire explicitement sur `dev` avant toute branche de migration réelle.
+> Couverture préparatoire enrichie sur `chore/nuxt-4-A` : tests critiques ajoutés pour URLs SEO, `AppLink`, pages SSG, feeds et requêtes Content v2.
 
 - [x] **TEST-AUDIT-1** — Lancer la suite existante sur la branche d'audit : `npm test`
   - Résultat : ✅ 49 checks passés, 0 warning, 0 erreur
@@ -46,19 +47,19 @@
   - Sortie : `migration-nuxt4-seo-check.txt`
 - [x] **TEST-AUDIT-3** — Documenter les manques critiques avant migration Nuxt 4
   - Rapport : `migration-nuxt4-tests-coverage.md`
-- [ ] **TEST-1** — Ajouter des tests unitaires pour `utils/seo-url.ts`
+- [x] **TEST-1** — Ajouter des tests unitaires pour `utils/seo-url.ts`
   - Couvrir : `absoluteUrl`, `canonicalUrl`, `withTrailingSlash`, `normalizeInternalHref`
   - Critique : URLs canoniques, trailing slash, assets avec extension, query strings et ancres
-- [ ] **TEST-2** — Ajouter un test de rendu/comportement pour `components/AppLink.vue`
+- [x] **TEST-2** — Ajouter un test de rendu/comportement pour `components/AppLink.vue`
   - Couvrir : liens internes normalisés, liens externes inchangés, ancres et query strings
   - Critique : maillage interne et convention SEO trailing slash
-- [ ] **TEST-3** — Ajouter des smoke tests SSG pour les pages clés
+- [x] **TEST-3** — Ajouter des smoke tests SSG pour les pages clés
   - Pages : `/`, `/eco-conception/`, un article, `/portfolio/`, `/services/`, `/contact/`
   - Critique : build statique, balises SEO minimales, canonical et `og:url`
-- [ ] **TEST-4** — Ajouter des tests de non-régression pour `rss.xml` et `feed.json`
+- [x] **TEST-4** — Ajouter des tests de non-régression pour `rss.xml` et `feed.json`
   - Couvrir : génération sans erreur, URLs avec trailing slash, dates valides, échappement XML/JSON
   - Critique : endpoints serveur impactés par la migration Content v2 → v3
-- [ ] **TEST-5** — Ajouter un check ciblé sur les requêtes Content utilisées par les pages articles
+- [x] **TEST-5** — Ajouter un check ciblé sur les requêtes Content utilisées par les pages articles
   - Couvrir : liste articles, page article, navigation précédent/suivant, tags
   - Critique : APIs `queryContent`, `serverQueryContent`, `_path` identifiées comme cassantes en Nuxt/Content v3
 
