@@ -74,9 +74,9 @@
 
 #### 3.0 — Pré-migration : activer le mode compatibilité Nuxt 4
 
-- [ ] **COMPAT-1** — Ajouter `future: { compatibilityVersion: 4 }` dans `nuxt.config.ts`
-- [ ] **COMPAT-2** — Lancer `npm run generate` et documenter tous les warnings/erreurs dans `migration-nuxt4-warnings.md`
-- [ ] **COMPAT-3** — Lancer `npx codemod@0.18.7 nuxt/4/migration-recipe` pour identifier les transformations automatisables
+- [x] **COMPAT-1** — Ajouter `future: { compatibilityVersion: 4 }` dans `nuxt.config.ts`
+- [x] **COMPAT-2** — Lancer `npm run generate` et documenter tous les warnings/erreurs dans `migration-nuxt4-warnings.md`
+- [x] **COMPAT-3** — Lancer `npx codemod@0.18.7 nuxt/4/migration-recipe` pour identifier les transformations automatisables
 - [ ] **COMPAT-4** — Créer la branche `chore/nuxt4-migration` depuis `dev` à jour
 
 ---
@@ -394,7 +394,7 @@ import { SitemapStream, streamToPromise } from 'sitemap'
 
 Cet import est **inutilisé** (le RSS est généré manuellement en string). Le package `sitemap` n'est pas dans `package.json`.
 
-- [ ] **CLEAN-1** — Supprimer l'import mort `import { SitemapStream, streamToPromise } from 'sitemap'` dans `server/routes/rss.xml.ts`
+- [x] **CLEAN-1** — Supprimer l'import mort `import { SitemapStream, streamToPromise } from 'sitemap'` dans `server/routes/rss.xml.ts`
 
 ##### 3.5.7 — `useTags` composable (état partagé)
 
@@ -434,6 +434,30 @@ export const useTags = () => {
 - [ ] **VALID-11** — Navigation prev/next articles fonctionnelle
 - [ ] **VALID-12** — Filtres tags sur `/eco-conception/` fonctionnels
 - [ ] **VALID-13** — Merger sur `dev` puis `master` après validation complète
+
+---
+
+#### 3.8 — Warnings supplémentaires découverts (27 avril 2026)
+
+- [ ] **NEW-1** — Configuration npm utilisateur `python` inconnue
+  - Impact : 🟢
+  - Fichier : configuration npm utilisateur hors dépôt
+  - Ligne : `migration-nuxt4-warnings.txt:1` et `migration-nuxt4-warnings.txt:7`
+  - Message exact :
+    ```text
+    npm warn Unknown user config "python". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+    ```
+  - Note : warning npm émis avant les scripts, sans blocage du build statique.
+
+- [ ] **NEW-2** — Configuration npm environnement `python` inconnue
+  - Impact : 🟢
+  - Fichier : configuration npm environnement hors dépôt
+  - Ligne : `migration-nuxt4-warnings.txt:6`
+  - Message exact :
+    ```text
+    npm warn Unknown env config "python". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+    ```
+  - Note : warning npm émis pendant la chaîne `pregenerate`, sans blocage du build statique.
 
 ---
 
