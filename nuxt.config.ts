@@ -27,6 +27,9 @@ export default defineNuxtConfig({
 
   // Compatibility date for Nuxt 3
   compatibilityDate: '2024-12-06',
+  future: {
+    compatibilityVersion: 4,
+  },
 
   // Runtime configuration (accessible via useRuntimeConfig())
   runtimeConfig: {
@@ -306,7 +309,7 @@ export default defineNuxtConfig({
   experimental: {
     // payloadExtraction: true, // Disabled - causes #app-manifest errors in dev mode
     // componentIslands: true, // Disabled - causes #app-manifest errors in current version
-    inlineSSRStyles: false, // Disable inline CSS for better caching and smaller HTML
+    inlineSSRStyles: true, // Inline critical CSS to reduce render-blocking stylesheets
     defaults: {
       nuxtLink: {
         prefetch: false,

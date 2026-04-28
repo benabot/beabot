@@ -34,16 +34,49 @@
 - [ ] Lancer la suite de tests existante et s'assurer qu'elle passe à 100% sur `dev` avant toute migration
 - [ ] Documenter les tests manquants critiques (pages, composants, utils SEO) et les ajouter si nécessaire
 
+> Audit préparatoire réalisé le 28 avril 2026 sur `chore/nuxt-4-A` après activation de `future.compatibilityVersion: 4`.
+> À refaire explicitement sur `dev` avant toute branche de migration réelle.
+> Couverture préparatoire enrichie sur `chore/nuxt-4-A` : tests critiques ajoutés pour URLs SEO, `AppLink`, pages SSG, feeds et requêtes Content v2.
+
+- [x] **TEST-AUDIT-1** — Lancer la suite existante sur la branche d'audit : `npm test`
+  - Résultat : ✅ 49 checks passés, 0 warning, 0 erreur
+  - Sortie : `migration-nuxt4-tests.txt`
+- [x] **TEST-AUDIT-2** — Lancer le check SEO existant sur le build statique disponible
+  - Commande : `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs`
+  - Résultat : ✅ `OK SEO checks passed.`
+  - Sortie : `migration-nuxt4-seo-check.txt`
+- [x] **TEST-AUDIT-3** — Documenter les manques critiques avant migration Nuxt 4
+  - Rapport : `migration-nuxt4-tests-coverage.md`
+- [x] **TEST-1** — Ajouter des tests unitaires pour `utils/seo-url.ts`
+  - Couvrir : `absoluteUrl`, `canonicalUrl`, `withTrailingSlash`, `normalizeInternalHref`
+  - Critique : URLs canoniques, trailing slash, assets avec extension, query strings et ancres
+- [x] **TEST-2** — Ajouter un test de rendu/comportement pour `components/AppLink.vue`
+  - Couvrir : liens internes normalisés, liens externes inchangés, ancres et query strings
+  - Critique : maillage interne et convention SEO trailing slash
+- [x] **TEST-3** — Ajouter des smoke tests SSG pour les pages clés
+  - Pages : `/`, `/eco-conception/`, un article, `/portfolio/`, `/services/`, `/contact/`
+  - Critique : build statique, balises SEO minimales, canonical et `og:url`
+- [x] **TEST-4** — Ajouter des tests de non-régression pour `rss.xml` et `feed.json`
+  - Couvrir : génération sans erreur, URLs avec trailing slash, dates valides, échappement XML/JSON
+  - Critique : endpoints serveur impactés par la migration Content v2 → v3
+- [x] **TEST-5** — Ajouter un check ciblé sur les requêtes Content utilisées par les pages articles
+  - Couvrir : liste articles, page article, navigation précédent/suivant, tags
+  - Critique : APIs `queryContent`, `serverQueryContent`, `_path` identifiées comme cassantes en Nuxt/Content v3
+
 ### Étape 1 — Performance (PageSpeed Insights : 99 → 100 mobile)
 
 > Source : audit PSI du 27 avril 2026 (screenshot)
+> Audit local : `migration-nuxt4-psi-audit.md`
 
 - [ ] **PSI-1** — Éliminer les 3 CSS render-blocking (`/_nuxt/entry.css`, `/_nuxt/index.css`, `/_nuxt/default.css`) — économie estimée : 270 ms LCP/FCP
   - Option A : `inlineSSRStyles: true` (déjà désactivé intentionnellement — réévaluer)
   - Option B : charger les CSS non-critiques en `<link rel="preload">` + swap
   - Option C : CSS critique inline via plugin Vite Extract Critical
+  - Note : option A testée via `inlineSSRStyles`; validation PSI réelle requise après déploiement preview.
 - [ ] **PSI-2** — Réduire la chaîne critique maximale (444 ms sur `entry.css`) — envisager un split CSS plus fin ou un lazy-load des styles de pages non-homepage
+  - Note : analyse réalisée le 28 avril 2026 ; pas de split CSS supplémentaire retenu sans solution stable hors noms de chunks hashés.
 - [ ] **PSI-3** — Valider le score PSI mobile = 100 après corrections
+  - Note : à valider manuellement dans PageSpeed Insights après déploiement preview.
 
 ### Étape 2 — Audit fichiers inutiles
 
@@ -74,9 +107,9 @@
 
 #### 3.0 — Pré-migration : activer le mode compatibilité Nuxt 4
 
-- [ ] **COMPAT-1** — Ajouter `future: { compatibilityVersion: 4 }` dans `nuxt.config.ts`
-- [ ] **COMPAT-2** — Lancer `npm run generate` et documenter tous les warnings/erreurs dans `migration-nuxt4-warnings.md`
-- [ ] **COMPAT-3** — Lancer `npx codemod@0.18.7 nuxt/4/migration-recipe` pour identifier les transformations automatisables
+- [x] **COMPAT-1** — Ajouter `future: { compatibilityVersion: 4 }` dans `nuxt.config.ts`
+- [x] **COMPAT-2** — Lancer `npm run generate` et documenter tous les warnings/erreurs dans `migration-nuxt4-warnings.md`
+- [x] **COMPAT-3** — Lancer `npx codemod@0.18.7 nuxt/4/migration-recipe` pour identifier les transformations automatisables
 - [ ] **COMPAT-4** — Créer la branche `chore/nuxt4-migration` depuis `dev` à jour
 
 ---
@@ -394,7 +427,7 @@ import { SitemapStream, streamToPromise } from 'sitemap'
 
 Cet import est **inutilisé** (le RSS est généré manuellement en string). Le package `sitemap` n'est pas dans `package.json`.
 
-- [ ] **CLEAN-1** — Supprimer l'import mort `import { SitemapStream, streamToPromise } from 'sitemap'` dans `server/routes/rss.xml.ts`
+- [x] **CLEAN-1** — Supprimer l'import mort `import { SitemapStream, streamToPromise } from 'sitemap'` dans `server/routes/rss.xml.ts`
 
 ##### 3.5.7 — `useTags` composable (état partagé)
 
@@ -434,6 +467,30 @@ export const useTags = () => {
 - [ ] **VALID-11** — Navigation prev/next articles fonctionnelle
 - [ ] **VALID-12** — Filtres tags sur `/eco-conception/` fonctionnels
 - [ ] **VALID-13** — Merger sur `dev` puis `master` après validation complète
+
+---
+
+#### 3.8 — Warnings supplémentaires découverts (27 avril 2026)
+
+- [ ] **NEW-1** — Configuration npm utilisateur `python` inconnue
+  - Impact : 🟢
+  - Fichier : configuration npm utilisateur hors dépôt
+  - Ligne : `migration-nuxt4-warnings.txt:1` et `migration-nuxt4-warnings.txt:7`
+  - Message exact :
+    ```text
+    npm warn Unknown user config "python". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+    ```
+  - Note : warning npm émis avant les scripts, sans blocage du build statique.
+
+- [ ] **NEW-2** — Configuration npm environnement `python` inconnue
+  - Impact : 🟢
+  - Fichier : configuration npm environnement hors dépôt
+  - Ligne : `migration-nuxt4-warnings.txt:6`
+  - Message exact :
+    ```text
+    npm warn Unknown env config "python". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+    ```
+  - Note : warning npm émis pendant la chaîne `pregenerate`, sans blocage du build statique.
 
 ---
 
