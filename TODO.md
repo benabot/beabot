@@ -119,7 +119,13 @@
   - Les fichiers consommateurs déclarent explicitement leurs dépendances SCSS.
   - `api: modern-compiler` est conservé.
   - Éco-impact mesuré dans `scss-explicit-imports-assets-bytes-diff.txt`.
-- [ ] **SCSS-5** — Valider l'éco-impact : vérifier que le CSS généré n'a pas grossi (poids `/_nuxt/*.css` avant/après)
+- [x] **SCSS-5** — Valider l'éco-impact : vérifier que le CSS généré n'a pas grossi (poids `/_nuxt/*.css` avant/après)
+  - Rapport : `migration-nuxt4-scss-eco-impact.md`
+  - CSS total mesuré après SCSS-4/5 : 171 279 octets.
+  - Résultat : CSS réduit par rapport aux étapes précédentes.
+  - `TOTAL_DEPENDANCES_IMPLICITES=0` confirmé.
+  - Opportunités CSS moderne documentées : `var()`, `calc()`, `clamp()`, `min()`, `max()`, `color-mix()` et couleurs relatives CSS.
+  - Aucune suppression complète de SCSS dans cette étape.
 - [ ] **SCSS-6** — Supprimer SCSS entièrement si la migration est complète et que tous les composants utilisent CSS natif + custom properties
 
 ### Étape 3 — Migration Nuxt 4
