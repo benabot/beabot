@@ -248,3 +248,44 @@ Si l'objectif PSI mobile 100 reste prioritaire, ouvrir une branche exploratoire 
 - ajouter de dépendance ;
 - dégrader le poids HTML ;
 - casser le cache CSS.
+
+## Validation publique dev — PSI mobile 100 après revert
+
+Date : 28 avril 2026
+
+URL testée :
+
+`https://dev-beabot.netlify.app/`
+
+Rapport PageSpeed Insights :
+
+- Date du rapport : 28 avril 2026, 17:57:04
+- Contexte : branche `dev`, après revert de `experimental.inlineSSRStyles` à `false`
+
+### Résultats Mobile
+
+| Catégorie | Score |
+|---|---:|
+| Performance | 100 |
+| Accessibilité | 96 |
+| Bonnes pratiques | 100 |
+| SEO | 100 |
+
+### Interprétation
+
+L'objectif de score PageSpeed Insights mobile 100 est atteint sur l'environnement `dev`.
+
+Le résultat est obtenu après abandon de l'approche `inlineSSRStyles: true` et retour à :
+
+```ts
+experimental: {
+  inlineSSRStyles: false,
+}
+```
+
+Conclusion :
+
+- l'approche `inlineSSRStyles: true` n'est pas retenue ;
+- la stratégie CSS externe/cache reste préférable pour ce projet ;
+- `PSI-3` peut être considéré comme validé sur `dev` ;
+- `PSI-1` et `PSI-2` ne doivent être cochés que si les audits PageSpeed Insights correspondants ne signalent plus de problème.
