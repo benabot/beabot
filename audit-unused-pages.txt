@@ -1,0 +1,16 @@
+pages/.DS_Store
+pages/404.vue
+pages/README.md
+pages/apps/duo-spend.vue
+pages/apps/index.vue
+pages/apps/meeting-mode.vue
+pages/apps/siturem.vue
+pages/contact.vue
+pages/eco-conception.vue
+pages/eco-conception/[slug].vue
+pages/eco-conception/index.vue
+pages/greenlight.vue
+pages/index.vue
+pages/mentions-legales.vue
+pages/portfolio.vue
+pages/services.vue

@@ -1,0 +1,1 @@
+./TODO.md:88:- [ ] Vérifier que `getSiteMeta.js` (vestige Nuxt 2, marqué `deprecated`) n'est plus importé dans aucun composant — le supprimer

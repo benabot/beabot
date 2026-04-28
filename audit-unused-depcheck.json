@@ -1,0 +1,4 @@
+depcheck non exécuté : npx --no-install depcheck --version a échoué.
+npm warn Unknown user config "python". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm error npx canceled due to missing packages and no YES option: ["depcheck@1.4.7"]
+npm error A complete log of this run can be found in: /Users/benoitabot/.npm/_logs/2026-04-28T16_12_32_757Z-debug-0.log
