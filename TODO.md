@@ -138,9 +138,9 @@
 #### 3.0 — Pré-migration : activer le mode compatibilité Nuxt 4
 
 - [x] **COMPAT-1** — Ajouter `future: { compatibilityVersion: 4 }` dans `nuxt.config.ts`
-- [x] **COMPAT-2** — Lancer `npm run generate` et documenter tous les warnings/erreurs dans `migration-nuxt4-warnings.md`
-- [x] **COMPAT-3** — Lancer `npx codemod@0.18.7 nuxt/4/migration-recipe` pour identifier les transformations automatisables
-- [ ] **COMPAT-4** — Créer la branche `chore/nuxt4-migration` depuis `dev` à jour
+- [x] **COMPAT-2** — Lancer `npm run generate` et documenter tous les warnings/erreurs dans `migration-nuxt4-warnings.md`   - Refresh réalisé le 29 avril 2026 sur `chore/nuxt4-migration` après Étape 2b SCSS : `npm test` OK, `npm run generate` OK, 100 routes prerendered, aucun warning Nuxt 4 bloquant identifié.
+- [x] **COMPAT-3** — Lancer `npx codemod@0.18.7 nuxt/4/migration-recipe` pour identifier les transformations automatisables   - Refresh codemod réalisé le 29 avril 2026 : `npx --no-install codemod nuxt/4/migration-recipe --dry-run` échoue car `codemod@1.9.0` n'est pas installé localement. Aucun install interactif lancé.
+- [x] **COMPAT-4** — Créer la branche `chore/nuxt4-migration` depuis `dev` à jour
 
 ---
 
