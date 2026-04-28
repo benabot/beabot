@@ -4,10 +4,6 @@
       <div class="home-wrap home-hero__grid">
         <div class="home-hero__copy">
           <p class="home-kicker">beAbot</p>
-          <span class="availability-badge" aria-label="Disponibilité : ouvert aux missions">
-            <span class="availability-dot" aria-hidden="true"></span>
-            Disponible pour missions
-          </span>
           <h1 id="home-hero-title" class="home-title">
             Développeur web freelance spécialisé en
             <span>éco-conception</span>
