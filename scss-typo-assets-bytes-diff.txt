@@ -1,0 +1,25 @@
+--- scss-typo-assets-before-bytes.txt	2026-04-28 21:09:24
++++ scss-typo-assets-after-bytes.txt	2026-04-28 21:11:25
+@@ -1,10 +1,10 @@
+    25202 .output/public/_nuxt/index.NmCC34Pq.css
+    19532 .output/public/_nuxt/portfolio.BuWIZTtW.css
+-   15492 .output/public/_nuxt/default.lv3Qr7A2.css
+-   14916 .output/public/_nuxt/vendor-libs.DwGdJzEA.css
++   15513 .output/public/_nuxt/default.B3Gs__zV.css
++   15238 .output/public/_nuxt/vendor-libs.cdubJJ5D.css
++   14794 .output/public/_nuxt/_slug_.Bor3CmN6.css
+    14791 .output/public/_nuxt/AppReleaseInterestForm.CBEFHGSF.css
+    14733 .output/public/_nuxt/index.BXUsrQM_.css
+-   14732 .output/public/_nuxt/_slug_.BYogIV6u.css
+    14130 .output/public/_nuxt/greenlight.DQuuZj1I.css
+    13579 .output/public/_nuxt/duo-spend.BXRfz2Nz.css
+    13115 .output/public/_nuxt/services.B1LaReE6.css
+@@ -12,7 +12,7 @@
+    11414 .output/public/_nuxt/siturem.BJRyfqYU.css
+     8102 .output/public/_nuxt/index.BgxWPl11.css
+     5790 .output/public/_nuxt/contact.Bw1a-DgM.css
+-    3528 .output/public/_nuxt/404.BDjziVaW.css
++    3548 .output/public/_nuxt/404.D0dKsUDk.css
+     2796 .output/public/_nuxt/apps.B3UQHSQC.css
+     2210 .output/public/_nuxt/mentions-legales.CIFFSs87.css
+       46 .output/public/_nuxt/entry.B_fgAJq0.css
