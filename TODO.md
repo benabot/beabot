@@ -66,13 +66,17 @@
 ### Étape 1 — Performance (PageSpeed Insights : 99 → 100 mobile)
 
 > Source : audit PSI du 27 avril 2026 (screenshot)
+> Audit local : `migration-nuxt4-psi-audit.md`
 
 - [ ] **PSI-1** — Éliminer les 3 CSS render-blocking (`/_nuxt/entry.css`, `/_nuxt/index.css`, `/_nuxt/default.css`) — économie estimée : 270 ms LCP/FCP
   - Option A : `inlineSSRStyles: true` (déjà désactivé intentionnellement — réévaluer)
   - Option B : charger les CSS non-critiques en `<link rel="preload">` + swap
   - Option C : CSS critique inline via plugin Vite Extract Critical
+  - Note : option A testée via `inlineSSRStyles`; validation PSI réelle requise après déploiement preview.
 - [ ] **PSI-2** — Réduire la chaîne critique maximale (444 ms sur `entry.css`) — envisager un split CSS plus fin ou un lazy-load des styles de pages non-homepage
+  - Note : analyse réalisée le 28 avril 2026 ; pas de split CSS supplémentaire retenu sans solution stable hors noms de chunks hashés.
 - [ ] **PSI-3** — Valider le score PSI mobile = 100 après corrections
+  - Note : à valider manuellement dans PageSpeed Insights après déploiement preview.
 
 ### Étape 2 — Audit fichiers inutiles
 
