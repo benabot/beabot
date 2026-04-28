@@ -366,6 +366,7 @@ useHead({
 </script>
 
 <style lang="scss" scoped>
+@use "~/assets/css/vars/_colors.scss" as *;
 .sr-only {
   position: absolute;
   width: 1px;

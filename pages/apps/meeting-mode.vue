@@ -352,6 +352,8 @@ useHead({
 </script>
 
 <style lang="scss" scoped>
+@use "~/assets/css/vars/_colors.scss" as *;
+@use "~/assets/css/vars/_typo.scss" as *;
 .app-page {
   padding: clamp(2rem, 5vw, 3.5rem) 5% 5rem;
 

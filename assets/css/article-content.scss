@@ -1,6 +1,10 @@
 // Article content styles (ContentRenderer output)
 // These styles target the markdown content rendered in article pages
 
+@use "~/assets/css/vars/_colors.scss" as *;
+@use "~/assets/css/vars/_typo.scss" as *;
+@use "~/assets/css/vars/_spacing.scss" as *;
+
 article {
   // Paragraphs
   p {

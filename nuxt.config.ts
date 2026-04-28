@@ -133,8 +133,7 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData:
-            '@use "~/assets/css/vars/_colors.scss" as *; @use "~/assets/css/vars/_typo.scss" as *; @use "~/assets/css/vars/_spacing.scss" as *; @use "~/assets/css/mixins/mixins.scss" as *;',
+          additionalData: '',
           api: 'modern-compiler',
         },
       },

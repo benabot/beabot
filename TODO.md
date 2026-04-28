@@ -113,7 +113,12 @@
   - Rapport : `migration-nuxt4-scss-typography.md`
   - Migration partielle volontaire : tokens typographiques simples exposés en custom properties CSS ; `$breakpoint-tablet`, maps et calculs Sass conservés.
   - Les custom properties typo sont déclarées une seule fois dans le CSS global pour éviter la duplication liée à `additionalData`.
-- [ ] **SCSS-4** — Remplacer les `@use` globaux injectés via `vite.css.preprocessorOptions.additionalData` par des imports explicites dans chaque fichier qui en a besoin (meilleure traçabilité, compatible Nuxt 4)
+- [x] **SCSS-4** — Remplacer les `@use` globaux injectés via `vite.css.preprocessorOptions.additionalData` par des imports explicites dans chaque fichier qui en a besoin (meilleure traçabilité, compatible Nuxt 4)
+  - Rapport : `migration-nuxt4-scss-explicit-imports.md`
+  - Les imports SCSS globaux ne sont plus injectés via `additionalData`.
+  - Les fichiers consommateurs déclarent explicitement leurs dépendances SCSS.
+  - `api: modern-compiler` est conservé.
+  - Éco-impact mesuré dans `scss-explicit-imports-assets-bytes-diff.txt`.
 - [ ] **SCSS-5** — Valider l'éco-impact : vérifier que le CSS généré n'a pas grossi (poids `/_nuxt/*.css` avant/après)
 - [ ] **SCSS-6** — Supprimer SCSS entièrement si la migration est complète et que tous les composants utilisent CSS natif + custom properties
 

@@ -1,0 +1,531 @@
+Fichier : assets/css/article-content.scss
+Type : global-css
+Variables globales utilisées :
+  - $bold
+  - $gris1
+  - $gris2
+  - $gris3
+  - $gris4
+  - $gris6
+  - $normal
+  - $space-2xs
+  - $space-3xs
+  - $space-l
+  - $space-m
+  - $space-s
+  - $space-xl
+  - $vert
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+  - @use "~/assets/css/vars/_typo.scss" as *;
+  - @use "~/assets/css/vars/_spacing.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : assets/css/main.scss
+Type : global-css
+Variables globales utilisées :
+  - $black
+  - $bleu1
+  - $bleu2
+  - $bold
+  - $breakpoint-tablet
+  - $fondClair
+  - $fondGris
+  - $gris1
+  - $gris2
+  - $gris3
+  - $gris4
+  - $gris5
+  - $gris6
+  - $level-size
+  - $light
+  - $normal
+  - $type-base-size
+  - $type-base-size-raw
+  - $vert
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+  - @use "~/assets/css/vars/_typo.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : components/AppSearchInput.vue
+Type : component
+Variables globales utilisées :
+  - $gris3
+  - $vert
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : components/ArticleNavigation.vue
+Type : component
+Variables globales utilisées :
+  - $gris1
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : components/BaseButton.vue
+Type : component
+Variables globales utilisées :
+  - $bleu2
+  - $gris1
+  - $gris2
+  - $vert
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : components/BoiteArticle.vue
+Type : component
+Variables globales utilisées :
+  - $bleu2
+  - $breakpoint-tablet
+  - $gris1
+  - $gris2
+  - $gris3
+  - $vert
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+  - @use "~/assets/css/vars/_typo.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : components/Oeuf.vue
+Type : component
+Variables globales utilisées :
+  - $bleu1
+  - $bleu2
+  - $jaune
+  - $vert
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : components/TheFooter.vue
+Type : component
+Variables globales utilisées :
+  - $breakpoint-tablet
+  - $fondGris
+  - $gris4
+  - $vert
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+  - @use "~/assets/css/vars/_typo.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : components/apps/AppBreadcrumb.vue
+Type : component
+Variables globales utilisées :
+  - $gris1
+  - $gris3
+  - $vert
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : components/apps/AppCard.vue
+Type : component
+Variables globales utilisées :
+  - $gris1
+  - $gris2
+  - $gris3
+  - $vert
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : components/apps/AppFaqList.vue
+Type : component
+Variables globales utilisées :
+  - $gris1
+  - $gris2
+  - $vert
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : components/apps/AppLegalTabs.vue
+Type : component
+Variables globales utilisées :
+  - $gris1
+  - $gris2
+  - $gris3
+  - $vert
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : components/apps/AppReleaseInterestForm.vue
+Type : component
+Variables globales utilisées :
+  - $breakpoint-tablet
+  - $vert
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+  - @use "~/assets/css/vars/_typo.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : components/server/Oeuf.server.vue
+Type : component
+Variables globales utilisées :
+  - $bleu1
+  - $bleu2
+  - $jaune
+  - $vert
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : pages/404.vue
+Type : page
+Variables globales utilisées :
+  - $bold
+  - $breakpoint-tablet
+  - $gris2
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+  - @use "~/assets/css/vars/_typo.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : pages/apps/duo-spend.vue
+Type : page
+Variables globales utilisées :
+  - $breakpoint-tablet
+  - $gris1
+  - $gris2
+  - $gris3
+  - $vert
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+  - @use "~/assets/css/vars/_typo.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : pages/apps/index.vue
+Type : page
+Variables globales utilisées :
+  - $breakpoint-tablet
+  - $gris1
+  - $gris2
+  - $gris3
+  - $vert
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+  - @use "~/assets/css/vars/_typo.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : pages/apps/meeting-mode.vue
+Type : page
+Variables globales utilisées :
+  - $breakpoint-tablet
+  - $gris1
+  - $gris2
+  - $gris3
+  - $vert
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+  - @use "~/assets/css/vars/_typo.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : pages/apps/siturem.vue
+Type : page
+Variables globales utilisées :
+  - $breakpoint-tablet
+  - $gris1
+  - $gris2
+  - $gris3
+  - $vert
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+  - @use "~/assets/css/vars/_typo.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : pages/eco-conception/[slug].vue
+Type : page
+Variables globales utilisées :
+  - $bold
+  - $breakpoint-tablet
+  - $gris1
+  - $gris3
+  - $gris4
+  - $gris6
+  - $space-2xs
+  - $space-3xs
+  - $space-l
+  - $space-m
+  - $space-s
+  - $space-xl
+  - $vert
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+  - @use "~/assets/css/vars/_typo.scss" as *;
+  - @use "~/assets/css/vars/_spacing.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : pages/eco-conception/index.vue
+Type : page
+Variables globales utilisées :
+  - $breakpoint-tablet
+  - $gris1
+  - $vert
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+  - @use "~/assets/css/vars/_typo.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : pages/greenlight.vue
+Type : page
+Variables globales utilisées :
+  - $breakpoint-tablet
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_typo.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : pages/index.vue
+Type : page
+Variables globales utilisées :
+  - $breakpoint-tablet
+  - $gris1
+  - $vert
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+  - @use "~/assets/css/vars/_typo.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : pages/portfolio.vue
+Type : page
+Variables globales utilisées :
+  - $gris1
+  - $gris2
+  - $gris3
+  - $vert
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : pages/services.vue
+Type : page
+Variables globales utilisées :
+  - $breakpoint-tablet
+  - $vert
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+  - @use "~/assets/css/vars/_typo.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : layouts/default.vue
+Type : layout
+Variables globales utilisées :
+  - $bleu1
+  - $breakpoint-tablet
+  - $fondClair
+  - $gris1
+  - $jaune
+  - $light
+  - $vert
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+  - @use "~/assets/css/vars/_typo.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+Fichier : error.vue
+Type : root-vue
+Variables globales utilisées :
+  - $bold
+  - $breakpoint-tablet
+  - $gris2
+Mixins utilisés :
+  - aucun
+Imports SCSS explicites actuels :
+  - aucun
+Imports à ajouter :
+  - @use "~/assets/css/vars/_colors.scss" as *;
+  - @use "~/assets/css/vars/_typo.scss" as *;
+Dépendance implicite à additionalData :
+  - oui
+Décision :
+  - à modifier
+
+TOTAL_FICHIERS_ANALYSES=27
+TOTAL_DEPENDANCES_IMPLICITES=27

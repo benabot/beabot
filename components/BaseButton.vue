@@ -21,6 +21,7 @@ defineProps({
 
 <style lang="scss" scoped>
 @use 'sass:color';
+@use "~/assets/css/vars/_colors.scss" as *;
 
 .button_cont {
   text-align: right;

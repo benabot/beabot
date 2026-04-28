@@ -560,6 +560,8 @@ useHead({
 
 <style lang="scss" scoped>
 @use 'sass:color';
+@use "~/assets/css/vars/_colors.scss" as *;
+@use "~/assets/css/vars/_typo.scss" as *;
 
 .home-v3 {
   --surface: #0f0f0f;

@@ -75,6 +75,7 @@ const props = withDefaults(
 </script>
 
 <style lang="scss" scoped>
+@use "~/assets/css/vars/_colors.scss" as *;
 .app-card {
   display: grid;
   gap: 1rem;

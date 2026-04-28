@@ -1,0 +1,26 @@
+131-      },
+132-    },
+133-    css: {
+134-      preprocessorOptions: {
+135-        scss: {
+136:          additionalData:
+137-            '@use "~/assets/css/vars/_colors.scss" as *; @use "~/assets/css/vars/_typo.scss" as *; @use "~/assets/css/vars/_spacing.scss" as *; @use "~/assets/css/mixins/mixins.scss" as *;',
+138-          api: 'modern-compiler',
+139-        },
+140-      },
+141-    },
+142-    build: {
+143-      cssCodeSplit: true, // Keep page CSS scoped to avoid shipping all styles on static pages
+144-      minify: 'terser', // Use terser for better minification
+145-      terserOptions: {
+146-        compress: {
+147-          drop_console: true, // Remove console.logs in production
+148-          drop_debugger: true,
+149-        },
+150-      },
+151-      rollupOptions: {
+152-        output: {
+153-          manualChunks: (id) => {
+154-            // Group Vue core together
+155-            if (
+156-              id.includes('node_modules/vue') ||

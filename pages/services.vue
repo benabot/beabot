@@ -500,6 +500,8 @@ useHead({
 
 <style lang="scss" scoped>
 @use 'sass:color';
+@use "~/assets/css/vars/_colors.scss" as *;
+@use "~/assets/css/vars/_typo.scss" as *;
 
 .services-page {
   --services-surface: #f3f1ea;

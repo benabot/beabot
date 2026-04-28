@@ -29,6 +29,7 @@ defineProps<{
 </script>
 
 <style lang="scss" scoped>
+@use "~/assets/css/vars/_colors.scss" as *;
 .app-breadcrumb {
   position: static;
   inset: auto;

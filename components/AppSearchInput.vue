@@ -49,6 +49,7 @@ function articleHref(article) {
 }
 </script>
 <style lang="scss" scoped>
+@use "~/assets/css/vars/_colors.scss" as *;
 #search {
   display: flex;
   flex-direction: column;

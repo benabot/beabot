@@ -287,6 +287,8 @@ const onMoreKeydown = (event) => {
 
 <style lang="scss" scoped>
 @use 'sass:color';
+@use "~/assets/css/vars/_colors.scss" as *;
+@use "~/assets/css/vars/_typo.scss" as *;
 .boite-article {
   width: min(92vw, 1120px);
   margin: 0 auto;

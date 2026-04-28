@@ -354,6 +354,8 @@ onUnmounted(() => {
 </script>
 <style lang="scss">
 @use 'sass:color';
+@use "~/assets/css/vars/_colors.scss" as *;
+@use "~/assets/css/vars/_typo.scss" as *;
 
 a.nuxt-link-active {
   font-weight: bold;

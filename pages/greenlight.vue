@@ -702,6 +702,7 @@ useHead({
 </script>
 
 <style lang="scss" scoped>
+@use "~/assets/css/vars/_typo.scss" as *;
 .greenlight-page {
   background:
     radial-gradient(
