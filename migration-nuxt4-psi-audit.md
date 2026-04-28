@@ -96,3 +96,50 @@ Chaîne critique maximale : 444 ms sur `entry.css`.
   - Hors périmètre de cette étape.
 - Décision :
   - Non retenue, conformément aux règles de l'étape 1.
+
+## Modification testée
+
+### Option retenue
+
+Option A testée avec la modification minimale suivante dans `nuxt.config.ts` :
+
+```ts
+experimental: {
+  inlineSSRStyles: true,
+}
+```
+
+Seule la ligne `inlineSSRStyles` a été modifiée. Aucune option Nuxt 4 supplémentaire, aucun plugin et aucune dépendance n'ont été ajoutés.
+
+### Résultat local après modification
+
+- `npm run generate` : succès
+  - pré-build : 49 checks passés, 0 warning, 0 erreur
+  - `test:content` : OK
+  - `test:node` : 18 tests passés
+  - génération : 100 routes prerendered
+- CSS links homepage :
+  - voir `migration-nuxt4-psi-home-css-links-after.txt`
+  - résultat : 2 feuilles CSS externes restantes (`entry`, `vendor-libs`)
+- Styles inline homepage :
+  - voir `migration-nuxt4-psi-home-inline-styles-after.txt`
+  - résultat : styles page/layout inline présents, 35 396 octets dans le fichier de capture
+- Tailles HTML :
+  - voir `migration-nuxt4-psi-html-size-after.txt`
+  - homepage : 64 478 octets
+- Diff CSS links :
+  - voir `migration-nuxt4-psi-css-links-diff.txt`
+  - `default` et `index` ne sont plus exposés comme `<link rel="stylesheet">` sur la homepage
+- Diff tailles HTML :
+  - voir `migration-nuxt4-psi-html-size-diff.txt`
+  - total des 5 pages mesurées : 178 304 → 363 370 octets
+
+### Décision finale
+
+- Décision : conserver la modification.
+- Justification :
+  - La solution est native Nuxt 3, stable et indépendante des noms de chunks hashés.
+  - Deux CSS bloquants observés sur la homepage (`default`, `index`) sortent des `<link rel="stylesheet">`.
+  - Le compromis est explicite : HTML plus lourd et cache CSS moins efficace.
+  - PSI-1 n'est pas considéré comme totalement validé localement, car `entry` reste une feuille externe et `vendor-libs` reste également bloquant localement.
+  - La validation réelle du gain doit passer par un déploiement preview puis PageSpeed Insights mobile.

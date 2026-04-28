@@ -1,0 +1,15 @@
+--- migration-nuxt4-psi-html-size-before.txt	2026-04-28 17:10:58
++++ migration-nuxt4-psi-html-size-after.txt	2026-04-28 17:12:52
+@@ -1,6 +1,6 @@
+-   29221 .output/public/index.html
+-   58598 .output/public/eco-conception/index.html
+-   41456 .output/public/portfolio/index.html
+-   31197 .output/public/services/index.html
+-   17832 .output/public/contact/index.html
+-  178304 total
++   64478 .output/public/index.html
++  106471 .output/public/eco-conception/index.html
++   81263 .output/public/portfolio/index.html
++   66970 .output/public/services/index.html
++   44188 .output/public/contact/index.html
++  363370 total
