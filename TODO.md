@@ -109,7 +109,10 @@
   - Les usages `color.adjust()` conservent des valeurs Sass raw (`*-raw`) pour éviter de casser la compilation.
   - Les custom properties sont déclarées une seule fois dans le CSS global pour éviter la duplication liée à `additionalData`.
   - Éco-impact mesuré dans `scss-colors-assets-bytes-diff.txt`.
-- [ ] **SCSS-3** — Migrer les variables de typographie (`$breakpoint-tablet`, tailles fluides) vers des custom properties ou des `@layer` CSS
+- [x] **SCSS-3** — Migrer les variables de typographie (`$breakpoint-tablet`, tailles fluides) vers des custom properties ou des `@layer` CSS
+  - Rapport : `migration-nuxt4-scss-typography.md`
+  - Migration partielle volontaire : tokens typographiques simples exposés en custom properties CSS ; `$breakpoint-tablet`, maps et calculs Sass conservés.
+  - Les custom properties typo sont déclarées une seule fois dans le CSS global pour éviter la duplication liée à `additionalData`.
 - [ ] **SCSS-4** — Remplacer les `@use` globaux injectés via `vite.css.preprocessorOptions.additionalData` par des imports explicites dans chaque fichier qui en a besoin (meilleure traçabilité, compatible Nuxt 4)
 - [ ] **SCSS-5** — Valider l'éco-impact : vérifier que le CSS généré n'a pas grossi (poids `/_nuxt/*.css` avant/après)
 - [ ] **SCSS-6** — Supprimer SCSS entièrement si la migration est complète et que tous les composants utilisent CSS natif + custom properties
