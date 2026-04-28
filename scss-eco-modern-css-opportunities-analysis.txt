@@ -1,0 +1,58 @@
+## A — Déjà modernisé
+
+- Couleurs exposées en custom properties CSS :
+  - `--color-green`
+  - `--color-blue-1`
+  - `--color-blue-2`
+  - `--color-yellow`
+  - `--color-gray-*`
+  - `--color-background-*`
+  - `--gradient-*`
+- Typographie simple exposée en custom properties CSS :
+  - `--font-weight-light`
+  - `--font-weight-normal`
+  - `--font-weight-bold`
+  - `--font-weight-black`
+  - `--font-size-base`
+- Imports SCSS explicites :
+  - `TOTAL_DEPENDANCES_IMPLICITES=0`
+- Fonctions CSS natives déjà présentes :
+  - `clamp()` pour de nombreux espacements et tailles fluides ;
+  - `calc()` pour line-height, espacements et layout ;
+  - `min()` / `max()` pour dimensions, grilles et tailles responsives.
+
+## B — Candidats sûrs à une prochaine passe
+
+- Remplacer localement des usages simples `$vert`, `$gris*`, `$bleu*`, `$jaune`, `$fond*` par `var(--color-...)` quand cela permet de supprimer un import `_colors.scss` entier dans un fichier.
+- Remplacer localement `$bold`, `$normal`, `$light`, `$black` par `var(--font-weight-...)` quand cela permet de supprimer un import `_typo.scss` entier.
+- Migrer les espacements simples `$space-*` vers des custom properties CSS si une étape dédiée centralise les tokens d'espacement.
+- Convertir progressivement les usages `min(max(...), ...)` hérités en `clamp(...)` si le rendu compilé reste strictement identique.
+- Documenter les fichiers où l'import SCSS ne sert plus qu'à des aliases déjà exposés en CSS custom properties.
+
+## C — À garder côté Sass pour l'instant
+
+- `$breakpoint-tablet`, car utilisé dans les media queries classiques.
+- Maps et boucles typographiques dans `assets/css/vars/_typo.scss`.
+- Calculs Sass de génération de typographie fluide.
+- Helpers d'espacement dans `assets/css/vars/_spacing.scss`.
+- Usages `color.adjust()` reposant sur des valeurs raw Sass (`*-raw`) tant qu'un fallback CSS robuste n'est pas défini.
+
+## D — Expérimental / à tester plus tard
+
+- Relative color syntax :
+  - `rgb(from var(--color-green) r g b / 0.8)`
+  - `hsl(from var(--color-green) h s calc(l + 8%))`
+  - `oklch(from var(--color-green) calc(l * 0.9) c h)`
+- `color-mix()` pour certaines variantes de couleur simples, à tester avec fallback.
+- `@supports` autour des couleurs relatives si une branche dédiée remplace certains `color.adjust()`.
+- Vérification navigateur cible et contraste avant toute adoption large.
+
+## Décision SCSS-5
+
+Aucun micro-ajustement CSS applicatif n'a été effectué dans cette branche.
+
+Raison :
+- l'objectif SCSS-5 est la validation de l'éco-impact ;
+- le gain CSS est déjà confirmé par la suppression de `additionalData` ;
+- les conversions restantes méritent des branches ciblées pour éviter une régression visuelle ;
+- les couleurs relatives CSS doivent être testées avec fallback avant adoption.

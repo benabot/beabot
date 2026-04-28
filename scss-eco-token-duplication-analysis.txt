@@ -1,0 +1,17 @@
+Occurrences :root :
+  - 1 ligne CSS générée contient des blocs :root dans le chunk vendor-libs.
+  - Le CSS est minifié ; cette ligne contient 2 occurrences :root.
+  - Les custom properties couleur et typo sont regroupées dans le chunk global.
+
+Occurrences --color-green :
+  - scss-eco-color-token-occurrences.txt est vide car le grep ancré ne matche pas la ligne minifiée.
+  - scss-eco-root-occurrences.txt contient 11 occurrences de --color-green sur la ligne globale minifiée.
+
+Occurrences --font-weight-light :
+  - scss-eco-typo-token-occurrences.txt est vide car le grep ancré ne matche pas la ligne minifiée.
+  - scss-eco-root-occurrences.txt contient 2 occurrences de --font-weight-light sur la ligne globale minifiée.
+
+Conclusion :
+  - duplication absente à l'échelle des chunks.
+  - les tokens ne sont pas réémis dans chaque chunk de page.
+  - les occurrences multiples dans vendor-libs correspondent à la déclaration :root globale et aux usages compilés.
