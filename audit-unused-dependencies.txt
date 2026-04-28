@@ -1,0 +1,890 @@
+@nuxt/content
+  Type : dependencies
+  Références trouvées :
+    assets/css/article-content.scss:1:// Article content styles (ContentRenderer output)
+    assets/css/article-content.scss:2:// These styles target the markdown content rendered in article pages
+    assets/css/article-content.scss:124:content: '\201F';
+    assets/css/article-content.scss:217:content: attr(data-language);
+    assets/css/main.scss:74://   content: '\00a2';
+    assets/css/main.scss:197:justify-content: center;
+    assets/css/main.scss:203:justify-content: flex-start;
+    assets/css/main.scss:208:justify-content: flex-end;
+    assets/css/main.scss:213:justify-content: space-between;
+    assets/css/mixins/_mixins.scss:6://     justify-content: center;
+    components/AppSearchInput.vue:55:justify-content: center;
+    components/AppSearchInput.vue:139://         content: '';
+    components/ArticleNavigation.vue:39:justify-content: space-between;
+    components/BaseButton.vue:68:content: '\00bb';
+    components/BoiteArticle.vue:296:justify-content: center;
+    components/BoiteArticle.vue:332:// Override article-content.scss underline on image links
+    components/BoiteArticle.vue:593:justify-content: center;
+    components/BoiteArticle.vue:597:// Override article-content.scss underline styles
+    components/BoiteArticle.vue:612:justify-content: center;
+    components/BoiteArticle.vue:616:// Override article-content.scss underline styles
+    components/BoiteArticle.vue:633:// Override article-content.scss underline on hover
+    components/BoiteArticle.vue:666:// Override article-content.scss linear-gradient underline
+    components/BoiteArticle.vue:681:content: '';
+    components/TheFooter.vue:239:justify-content: center;
+    components/TheFooter.vue:261:justify-content: flex-start;
+    components/TheFooter.vue:276:content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><path d='M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 01-1.93.07 4.28 4.28 0 004 2.98 8.521 8.521 0 01-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z' fill='rgb(166,165,164)'/></svg>");
+    components/TheFooter.vue:286:content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><path d='M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z' fill='rgb(166,165,164)'/></svg>");
+    components/TheFooter.vue:296:content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><path d='M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z' fill='rgb(166,165,164)'/></svg>");
+    components/TheFooter.vue:306:content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'> <path d='M6.18,15.64A2.18,2.18 0 0,1 8.36,17.82C8.36,19 7.38,20 6.18,20C5,20 4,19 4,17.82A2.18,2.18 0 0,1 6.18,15.64M4,4.44A15.56,15.56 0 0,1 19.56,20H16.73A12.73,12.73 0 0,0 4,7.27V4.44M4,10.1A9.9,9.9 0 0,1 13.9,20H11.07A7.07,7.07 0 0,0 4,12.93V10.1Z' fill='rgb(166,165,164)'/></svg>");
+    components/TheFooter.vue:316:justify-content: flex-start;
+    components/TheFooter.vue:324:justify-content: flex-start;
+    components/TheFooter.vue:330:content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><path d='M17.25 18H6.75V4h10.5M14 21h-4v-1h4m2-19H8a3 3 0 00-3 3v16a3 3 0 003 3h8a3 3 0 003-3V4a3 3 0 00-3-3z' fill='rgb(166,165,164)'/></svg>");
+    components/TheFooter.vue:392:content: '•';
+    components/TheFooter.vue:432:content: '';
+    components/apps/AppBreadcrumb.vue:59:content: '›';
+    components/apps/AppCard.vue:185:width: fit-content;
+    components/apps/AppCard.vue:195:content: '→';
+    components/apps/AppFaqList.vue:75:justify-content: space-between;
+    components/apps/AppFaqList.vue:89:content: '+';
+    components/apps/AppFaqList.vue:95:content: '−';
+    components/apps/AppLegalTabs.vue:38:v-if="tab.content.title"
+    components/apps/AppLegalTabs.vue:41:{{ tab.content.title }}
+    components/apps/AppLegalTabs.vue:44:v-for="paragraph in tab.content.paragraphs"
+    components/apps/AppLegalTabs.vue:60:content: AppLegalTabsContent
+    components/apps/AppLegalTabs.vue:71:content: props.content.fr,
+    components/apps/AppLegalTabs.vue:76:content: props.content.en,
+    components/apps/AppLegalTabs.vue:78:...(props.content.es
+    components/apps/AppLegalTabs.vue:83:content: props.content.es,
+    components/apps/AppLegalTabs.vue:87:...(props.content.de
+    components/apps/AppLegalTabs.vue:92:content: props.content.de,
+    components/apps/AppReleaseInterestForm.vue:302:justify-content: center;
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:165:body .page .main-content article .article-body p.intro {
+    content/articles/images-eco-conception.md:221:add_image_size('content', 800, 0, false);
+    content/articles/wordpress-eco-conception.md:171:body .site-content .main-area article.post .entry-content p.intro {}
+    error.vue:13:<div class="error-content">
+    error.vue:50:content: `${props.error.statusCode} - BeAbot éco-conception web`,
+    error.vue:54:content: 'noindex, nofollow',
+    error.vue:65:justify-content: center;
+    error.vue:106:.error-content {
+    error.vue:168:.error-content {
+    layouts/default.vue:494:width: max-content;
+    nuxt.config.ts:61:{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    nuxt.config.ts:64:content:
+    nuxt.config.ts:68:{ name: 'theme-color', content: '#ffffff' },
+    nuxt.config.ts:72:content: 'BeAbot : éco-conception web',
+    nuxt.config.ts:76:content:
+    nuxt.config.ts:81:content: `${siteUrl}/beabot.png`,
+    nuxt.config.ts:86:content: 'BeAbot : éco-conception web',
+    nuxt.config.ts:90:content:
+    nuxt.config.ts:95:content: `${siteUrl}/beabot.png`,
+    nuxt.config.ts:168:// Group content/markdown related
+    nuxt.config.ts:172:id.includes('@nuxt/content')
+    nuxt.config.ts:174:return 'vendor-content'
+    nuxt.config.ts:196:modules: ['@nuxt/content', '@nuxt/image', '@nuxtjs/sitemap'],
+    nuxt.config.ts:199:content: {
+    nuxt.config.ts:268:const { serverQueryContent } = await import('#content/server')
+    nuxt.config.ts:284:// Ignore 404 errors on API content query routes (cache/surround queries)
+    pages/404.vue:12:<div class="error-content">
+    pages/404.vue:35:content: 'Page introuvable - BeAbot éco-conception web',
+    pages/404.vue:39:content: 'noindex, nofollow',
+    pages/404.vue:50:justify-content: center;
+    pages/404.vue:91:.error-content {
+    pages/404.vue:153:.error-content {
+    pages/apps/duo-spend.vue:7:<div class="app-hero__content">
+    pages/apps/duo-spend.vue:238::content="duoSpendContent.legal"
+    pages/apps/duo-spend.vue:409:.app-hero__content {
+    pages/apps/duo-spend.vue:471:justify-content: center;
+    pages/apps/duo-spend.vue:851:content: '';
+    pages/apps/duo-spend.vue:899:align-content: start;
+    pages/apps/duo-spend.vue:1011:content: '•';
+    pages/apps/duo-spend.vue:1041:width: fit-content;
+    pages/apps/meeting-mode.vue:7:<div class="app-hero__content">
+    pages/apps/meeting-mode.vue:209::content="meetingModeContent.legal"
+    pages/apps/meeting-mode.vue:380:.app-hero__content {
+    pages/apps/meeting-mode.vue:442:justify-content: center;
+    pages/apps/meeting-mode.vue:619:content: '';
+    pages/apps/meeting-mode.vue:631:content: '';
+    pages/apps/meeting-mode.vue:687:content: '';
+    pages/apps/meeting-mode.vue:829:align-content: start;
+    pages/apps/meeting-mode.vue:900:content: '+';
+    pages/apps/meeting-mode.vue:910:content: '−';
+    pages/apps/meeting-mode.vue:964:width: fit-content;
+    pages/apps/siturem.vue:7:<div class="app-hero__content">
+    pages/apps/siturem.vue:239::content="situremContent.legal"
+    pages/apps/siturem.vue:417:.app-hero__content {
+    pages/apps/siturem.vue:479:justify-content: center;
+    pages/apps/siturem.vue:805:align-content: start;
+    pages/apps/siturem.vue:865:justify-content: space-between;
+    pages/contact.vue:431:justify-content: center;
+    pages/contact.vue:552:place-content: center;
+    pages/contact.vue:561:content: '';
+    pages/eco-conception/[slug].vue:108:ref="contentEl"
+    pages/eco-conception/[slug].vue:173:const contentEl = ref(null)
+    pages/eco-conception/[slug].vue:273:'table of contents',
+    pages/eco-conception/[slug].vue:463:{ hid: 'description', name: 'description', content: seoDesc.value },
+    pages/eco-conception/[slug].vue:464:{ hid: 'robots', name: 'robots', content: robots.value },
+    pages/eco-conception/[slug].vue:467:{ hid: 'og:type', property: 'og:type', content: 'article' },
+    pages/eco-conception/[slug].vue:468:{ hid: 'og:site_name', property: 'og:site_name', content: 'BeAbot' },
+    pages/eco-conception/[slug].vue:469:{ hid: 'og:title', property: 'og:title', content: seoTitle.value },
+    pages/eco-conception/[slug].vue:473:content: seoDesc.value,
+    pages/eco-conception/[slug].vue:475:{ hid: 'og:url', property: 'og:url', content: articleCanonicalUrl },
+    pages/eco-conception/[slug].vue:476:{ hid: 'og:image', property: 'og:image', content: ogImage.value },
+    pages/eco-conception/[slug].vue:477:{ hid: 'og:image:width', property: 'og:image:width', content: '1200' },
+    pages/eco-conception/[slug].vue:478:{ hid: 'og:image:height', property: 'og:image:height', content: '630' },
+    pages/eco-conception/[slug].vue:484:content: 'summary_large_image',
+    pages/eco-conception/[slug].vue:486:{ hid: 'twitter:title', name: 'twitter:title', content: seoTitle.value },
+    pages/eco-conception/[slug].vue:490:content: seoDesc.value,
+    pages/eco-conception/[slug].vue:492:{ hid: 'twitter:image', name: 'twitter:image', content: ogImage.value },
+    pages/eco-conception/[slug].vue:656::deep(.nuxt-content) {
+    pages/eco-conception/[slug].vue:668:// Target article content directly (ContentRenderer outputs without wrapper class)
+    pages/eco-conception/[slug].vue:669:// ContentRenderer renders content directly inside <article>, so we need :deep() for each selector
+    pages/eco-conception/[slug].vue:762:content: '\201F';
+    pages/eco-conception/[slug].vue:796:<style src="~/assets/css/article-content.scss" lang="scss"></style>
+    pages/eco-conception/index.vue:441:<div class="eco-faq__content">
+    pages/eco-conception/index.vue:627:'Le site inspire davantage confiance quand le fond, la forme et les performances racontent la même chose.',
+    pages/eco-conception/index.vue:867:'table of contents',
+    pages/eco-conception/index.vue:1051:content: '';
+    pages/eco-conception/index.vue:1151:content: '';
+    pages/eco-conception/index.vue:1279:justify-content: center;
+    pages/eco-conception/index.vue:1285:justify-content: center;
+    pages/eco-conception/index.vue:1328:width: fit-content;
+    pages/eco-conception/index.vue:1469:content: '';
+    pages/eco-conception/index.vue:1621:align-content: space-between;
+    pages/eco-conception/index.vue:1731:align-content: end;
+    pages/eco-conception/index.vue:1740:content: counter(eco-benefits, decimal-leading-zero);
+    pages/eco-conception/index.vue:1751:content: '';
+    pages/eco-conception/index.vue:1776:align-content: end;
+    pages/eco-conception/index.vue:1821:align-content: space-between;
+    pages/eco-conception/index.vue:1826:content: '';
+    pages/eco-conception/index.vue:1917:content: '';
+    pages/eco-conception/index.vue:2014:width: fit-content;
+    pages/eco-conception/index.vue:2052:justify-content: space-between;
+    pages/eco-conception/index.vue:2079:.eco-faq__content {
+    pages/eco-conception/index.vue:2099:.eco-faq__content {
+    pages/eco-conception/index.vue:2123:content: '+';
+    pages/eco-conception/index.vue:2134:content: '–';
+    pages/greenlight.vue:845:justify-content: center;
+    pages/greenlight.vue:1252:justify-content: space-between;
+    pages/greenlight.vue:1266:content: '+';
+    pages/greenlight.vue:1272:content: '−';
+    pages/greenlight.vue:1351:width: fit-content;
+    pages/greenlight.vue:1373:width: fit-content;
+    pages/index.vue:203:<div class="project-card__content">
+    pages/index.vue:747:justify-content: center;
+    pages/index.vue:753:justify-content: center;
+    pages/index.vue:804:justify-content: center;
+    pages/index.vue:807:justify-content: flex-end;
+    pages/index.vue:830:justify-content: center;
+    pages/index.vue:967:justify-content: flex-start;
+    pages/index.vue:1053:.project-card__content {
+    pages/index.vue:1058:justify-content: flex-end;
+    pages/index.vue:1076:width: fit-content;
+    pages/index.vue:1171:content: '•';
+    pages/index.vue:1206:justify-content: center;
+    pages/portfolio.vue:33:<div class="hero__content">
+    pages/portfolio.vue:397:justify-content: center;
+    pages/portfolio.vue:497:.hero__content {
+    pages/portfolio.vue:549:justify-content: center;
+    pages/portfolio.vue:561:justify-content: center;
+    pages/portfolio.vue:618:justify-content: center;
+    pages/portfolio.vue:683:content: '';
+    pages/portfolio.vue:702:justify-content: center;
+    pages/services.vue:544:content: '';
+    pages/services.vue:753:justify-content: center;
+    pages/services.vue:759:justify-content: center;
+    pages/services.vue:822:align-content: start;
+    pages/services.vue:828:width: fit-content;
+    pages/services.vue:865:width: fit-content;
+    pages/services.vue:873:content: '→';
+    pages/services.vue:911:content: '';
+    scripts/add-chapo.mjs:6:const ARTICLES_DIR = path.join(ROOT, 'content', 'articles')
+    scripts/migrate-frontmatter-seo.mjs:5:const ARTICLES_DIR = path.join(ROOT, 'content', 'articles')
+    scripts/migrate-frontmatter-seo.mjs:46:const content = await fs.readFile(filePath, 'utf8')
+    scripts/migrate-frontmatter-seo.mjs:47:const match = content.match(FRONTMATTER_REGEX)
+    scripts/migrate-frontmatter-seo.mjs:133:let body = content.slice(frontmatterBlock.length)
+    scripts/migrate-frontmatter-seo.mjs:145:if (updatedContent !== content) {
+    scripts/normalize-md-links.mjs:7:const CONTENT_DIR = path.join(ROOT, 'content')
+    scripts/normalize-md-links.mjs:57:const normalizeMarkdownLinks = (content) =>
+    scripts/normalize-md-links.mjs:58:content.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, raw) => {
+    scripts/normalize-md-links.mjs:68:const normalizeHtmlLinks = (content) =>
+    scripts/normalize-md-links.mjs:69:content.replace(/href=(['"])(.*?)\1/g, (match, quote, href) => {
+    scripts/normalize-md-links.mjs:76:console.error('ERROR: content/ directory not found.')
+    scripts/pre-build-check.js:5:* Validates configuration, files, and content before building
+    scripts/pre-build-check.js:89:pkg.dependencies?.['@nuxt/content'],
+    scripts/pre-build-check.js:90:'❌ @nuxt/content not in dependencies',
+    scripts/pre-build-check.js:101:check(fileExists('content'), '❌ content/ directory is missing')
+    scripts/pre-build-check.js:173:console.log('📝 Checking content...')
+    scripts/pre-build-check.js:175:fileExists('content/articles'),
+    scripts/pre-build-check.js:176:'❌ content/articles/ directory is missing',
+    scripts/pre-build-check.js:181:// Filenames as stored in content/articles
+    scripts/pre-build-check.js:189:fileExists(`content/articles/${article}`),
+    scripts/seo-audit.mjs:53:new RegExp(`<meta\\s+name=["']${name}["']\\s+content=["']([^"']*)["']`, 'i'),
+    scripts/seo-audit.mjs:54:new RegExp(`<meta\\s+content=["']([^"']*)["']\\s+name=["']${name}["']`, 'i'),
+    scripts/seo-audit.mjs:55:new RegExp(`<meta\\s+property=["']${name}["']\\s+content=["']([^"']*)["']`, 'i'),
+    scripts/seo-audit.mjs:56:new RegExp(`<meta\\s+content=["']([^"']*)["']\\s+property=["']${name}["']`, 'i')
+    scripts/seo-audit.mjs:251:const content = readFileSync(robotsPath, 'utf-8');
+    scripts/seo-audit.mjs:252:console.log(content);
+    scripts/seo-audit.mjs:254:if (!content.includes('Sitemap:')) {
+    scripts/seo-audit.mjs:260:if (content.includes('Disallow: /')) {
+    scripts/seo-audit.mjs:275:const content = readFileSync(sitemapPath, 'utf-8');
+    scripts/seo-audit.mjs:276:const urls = content.match(/<loc>([^<]+)<\/loc>/g) || [];
+    scripts/seo-audit.mjs:287:const lastmods = content.match(/<lastmod>([^<]+)<\/lastmod>/g) || [];
+    scripts/seo-check.mjs:84:/<meta[^>]+property=["']og:url["'][^>]+content=["']([^"']+)["']/i
+    server/routes/feed.json.ts:1:import { serverQueryContent } from '#content/server'
+    server/routes/feed.json.ts:36:content_html: article.description || '',
+    server/routes/rss.xml.ts:1:import { serverQueryContent } from '#content/server'
+    server/routes/rss.xml.ts:26:<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    tests/app-link.test.mjs:29:assert.match(script.content, /normalizedTo/)
+    tests/app-link.test.mjs:30:assert.match(script.content, /useAttrs/)
+    tests/app-link.test.mjs:35:source: descriptor.template.content,
+    tests/feeds.test.mjs:61:assert.equal(typeof item.content_html, 'string')
+    tests/helpers/generated-site.mjs:49:return getAttr(tag, 'content')
+    tests/helpers/generated-site.mjs:59:assert.doesNotMatch(html, /<meta[^>]+name=["']description["'][^>]+content=["']\s*L\s*["']/i)
+    utils/getRoutes.js:2:const { $content } = require('@nuxt/content')
+    utils/getRoutes.js:3:const files = await $content({ deep: true }).only(['path']).fetch()
+    utils/getSiteMeta.js:14:content: (meta && meta.description) || description,
+    utils/getSiteMeta.js:19:content: (meta && meta.type) || type,
+    utils/getSiteMeta.js:24:content: (meta && meta.url) || url,
+    utils/getSiteMeta.js:29:content: (meta && meta.title) || title,
+    utils/getSiteMeta.js:34:content: (meta && meta.description) || description,
+    utils/getSiteMeta.js:39:content: (meta && meta.mainImage) || mainImage,
+    utils/getSiteMeta.js:44:content: (meta && meta.url) || url,
+    utils/getSiteMeta.js:49:content: (meta && meta.title) || title,
+    utils/getSiteMeta.js:54:content: (meta && meta.description) || description,
+    utils/getSiteMeta.js:59:content: (meta && meta.mainImage) || mainImage,
+  Décision :
+    utilisé
+  Action :
+    conserver
+
+@nuxt/image
+  Type : dependencies
+  Références trouvées :
+    components/BoiteArticle.vue:7:class="boite-image-link"
+    components/BoiteArticle.vue:9:<div class="boite-image">
+    components/BoiteArticle.vue:10:<div class="boite-image__calque" :style="calqueStyle"></div>
+    components/BoiteArticle.vue:13:class="boite-image__image"
+    components/BoiteArticle.vue:122:imageWidth: {
+    components/BoiteArticle.vue:126:imageHeight: {
+    components/BoiteArticle.vue:307:.boite-image__image:hover  {
+    components/BoiteArticle.vue:310:// .boite-article:hover .boite-image__image {
+    components/BoiteArticle.vue:325:.boite-image-link {
+    components/BoiteArticle.vue:332:// Override article-content.scss underline on image links
+    components/BoiteArticle.vue:334:background-image: none !important;
+    components/BoiteArticle.vue:338:background-image: none !important;
+    components/BoiteArticle.vue:450:.boite-image {
+    components/BoiteArticle.vue:456:&:hover .boite-image__image {
+    components/BoiteArticle.vue:466:&__image {
+    components/BoiteArticle.vue:598:background-image: none !important;
+    components/BoiteArticle.vue:617:background-image: none !important;
+    components/BoiteArticle.vue:634:background-image: none !important;
+    components/BoiteArticle.vue:668:background-image: none !important;
+    components/BoiteArticle.vue:676:background-image: none !important;
+    components/BoiteArticle.vue:697:background-image: none !important;
+    components/BoiteArticle.vue:717:.boite-article:nth-child(even) .boite-image-link {
+    components/OeufImage.vue:38:"url('https://www.cdc.gov/healthypets/images/pets/cute-dog-headshot.jpg')",
+    components/OeufImage.vue:48:/* background-image: url('~assets/img/profilFreakOut.jpg'); */
+    components/TheFooter.vue:102:-webkit-mask-image:
+    components/TheFooter.vue:103:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath fill='white' d='M0 78 C130 28 275 50 410 66 C555 84 690 50 820 70 C955 91 1060 93 1180 52 C1280 18 1365 58 1440 34 L1440 120 L0 120 Z'/%3E%3C/svg%3E"),
+    components/TheFooter.vue:105:mask-image:
+    components/TheFooter.vue:106:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath fill='white' d='M0 78 C130 28 275 50 410 66 C555 84 690 50 820 70 C955 91 1060 93 1180 52 C1280 18 1365 58 1440 34 L1440 120 L0 120 Z'/%3E%3C/svg%3E"),
+    components/TheFooter.vue:124:(mask-image: linear-gradient(#000, #000)) or
+    components/TheFooter.vue:125:(-webkit-mask-image: linear-gradient(#000, #000))
+    components/TheFooter.vue:147:-webkit-mask-image:
+    components/TheFooter.vue:148:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 720 120' preserveAspectRatio='none'%3E%3Cpath fill='white' d='M0 74 C70 36 140 54 212 65 C310 80 390 45 482 64 C576 83 648 56 720 38 L720 120 L0 120 Z'/%3E%3C/svg%3E"),
+    components/TheFooter.vue:150:mask-image:
+    components/TheFooter.vue:151:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 720 120' preserveAspectRatio='none'%3E%3Cpath fill='white' d='M0 74 C70 36 140 54 212 65 C310 80 390 45 482 64 C576 83 648 56 720 38 L720 120 L0 120 Z'/%3E%3C/svg%3E"),
+    components/TheFooter.vue:156:(mask-image: linear-gradient(#000, #000)) or
+    components/TheFooter.vue:157:(-webkit-mask-image: linear-gradient(#000, #000))
+    components/TheFooter.vue:276:content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><path d='M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 01-1.93.07 4.28 4.28 0 004 2.98 8.521 8.521 0 01-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z' fill='rgb(166,165,164)'/></svg>");
+    components/TheFooter.vue:286:content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><path d='M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z' fill='rgb(166,165,164)'/></svg>");
+    components/TheFooter.vue:296:content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><path d='M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z' fill='rgb(166,165,164)'/></svg>");
+    components/TheFooter.vue:306:content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'> <path d='M6.18,15.64A2.18,2.18 0 0,1 8.36,17.82C8.36,19 7.38,20 6.18,20C5,20 4,19 4,17.82A2.18,2.18 0 0,1 6.18,15.64M4,4.44A15.56,15.56 0 0,1 19.56,20H16.73A12.73,12.73 0 0,0 4,7.27V4.44M4,10.1A9.9,9.9 0 0,1 13.9,20H11.07A7.07,7.07 0 0,0 4,12.93V10.1Z' fill='rgb(166,165,164)'/></svg>");
+    components/TheFooter.vue:330:content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><path d='M17.25 18H6.75V4h10.5M14 21h-4v-1h4m2-19H8a3 3 0 00-3 3v16a3 3 0 003 3h8a3 3 0 003-3V4a3 3 0 00-3-3z' fill='rgb(166,165,164)'/></svg>");
+    components/apps/AppGalleryLightbox.vue:24:v-if="images.length > 1"
+    components/apps/AppGalleryLightbox.vue:50:v-if="images.length > 1"
+    components/apps/AppGalleryLightbox.vue:54::disabled="currentIndex === images.length - 1"
+    components/apps/AppGalleryLightbox.vue:74:images: LightboxImage[]
+    components/apps/AppGalleryLightbox.vue:80:const current = computed(() => props.images[currentIndex.value] ?? null)
+    components/apps/AppGalleryLightbox.vue:83:if (!props.images.length) {
+    components/apps/AppGalleryLightbox.vue:87:currentIndex.value = Math.min(Math.max(index, 0), props.images.length - 1)
+    components/apps/AppGalleryLightbox.vue:107:if (currentIndex.value < props.images.length - 1) {
+    content/articles/audit-eco-conception.md:29:- le **poids total des ressources** transférées (HTML, CSS, JS, images, fonts) ;
+    content/articles/audit-eco-conception.md:69:- des images non redimensionnées ou dans des formats non optimisés (JPEG là où du WebP suffirait) ;
+    content/articles/audit-eco-conception.md:96:La démarche d'éco-conception implique de remettre en question les fonctionnalités, pas seulement de les optimiser. Un carrousel lourd peut être remplacé par une image fixe. Une bibliothèque JS peut être remplacée par quelques lignes de CSS natif. Un service analytique complet peut être remplacé par des statistiques serveur agrégées.
+    content/articles/audit-eco-conception.md:102:Si vous voulez aller plus loin, les articles sur les <a href="/eco-conception/images-eco-conception/" class="lien--vert">images</a> et la <a href="/eco-conception/typographie-ecoconception/" class="lien--vert">typographie</a> de ce blog détaillent deux postes d'optimisation fréquemment négligés.
+    content/articles/audit-site-web.md:33:Au-delà des métriques Lighthouse, j'examine le poids total de la page, le nombre et la nature des ressources chargées, l'ordre de chargement (render-blocking CSS et JS), les images non optimisées et les polices web qui ralentissent le rendu. Chaque point bloquant est documenté avec sa cause et la correction recommandée.
+    content/articles/audit-site-web.md:53:Je n'effectue pas d'audit d'accessibilité complet (ce serait un audit à part entière). Mais j'identifie les points bloquants les plus courants : images sans alt, contrastes insuffisants, focus clavier non visible, éléments interactifs inaccessibles au clavier, formulaires mal labellisés. Ces problèmes représentent l'essentiel des barrières d'accessibilité rencontrées en pratique.
+    content/articles/audit-site-web.md:57:Un audit est pertinent dans ces situations : avant une refonte (pour savoir ce qui fonctionne et qu'il ne faut pas casser), après une migration (pour vérifier que rien n'a été cassé), quand le trafic organique baisse sans raison évidente, quand les scores Lighthouse se dégradent, ou quand vous voulez simplement avoir une image claire de l'état technique de votre site.
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:3:description: Réduire le poids d'un site web ne consiste pas seulement à compresser quelques images. C'est une démarche globale qui touche les contenus, le design, le code, les dépendances et la maintenance.
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:4:chapo: Réduire le poids d'un site web ne consiste pas seulement à compresser quelques images. C'est une démarche globale qui touche les contenus, le design, le code, les dépendances et la maintenance.
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:8:description: "Méthode concrète pour alléger une page web : images, CSS, JavaScript, polices, ressources tierces, WordPress et bonnes pratiques d'éco-conception."
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:32:- le poids des images ;
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:49:Quelques exemples concrets : un carrousel demande du JavaScript, des images supplémentaires et nuit à l'accessibilité. Une vidéo en hero peut peser plusieurs mégaoctets pour un contenu que personne ne regarde jusqu'au bout. Un script de tracking tiers ouvre une connexion vers un domaine externe à chaque visite. Une animation CSS légère peut souvent remplacer une bibliothèque JavaScript entière.
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:57:## Maîtriser les images
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:59:Les images sont souvent le premier poste de poids d'une page web.
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:67:La première règle est triviale : ne pas envoyer une image de 3000 pixels si elle s'affiche en 800 pixels. Le navigateur saura la réduire visuellement, mais l'utilisateur aura quand même téléchargé le fichier complet.
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:71:- redimensionner les images avant intégration ;
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:77:- utiliser `loading="lazy"` pour les images hors écran ;
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:78:- ne pas appliquer le lazy loading à l'image principale de la page.
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:84:<source srcset="/img/article.avif" type="image/avif">
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:85:<source srcset="/img/article.webp" type="image/webp">
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:88:alt="Description utile de l'image"
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:97:J'ai détaillé ce sujet dans <a href="/eco-conception/images-eco-conception/" class="lien--vert">Images et éco-conception web</a>. C'est généralement le chantier le plus rentable lorsqu'on veut alléger rapidement un site existant.
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:208:- images mal dimensionnées.
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:215:- images générées dans les bonnes tailles ;
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:229:- poids maximum des images ;
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:253:Un site sobre peut devenir lourd en quelques mois si les contenus sont ajoutés sans méthode : images trop grandes, PDF énormes, vidéos embarquées, duplications, pages jamais supprimées.
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:257:- ne pas importer d'image non redimensionnée ;
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:273:4. optimiser les images ;
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:281:Cet ordre est important. Il évite de commencer par des micro-optimisations alors qu'une seule image, une police externe ou un script tiers peut peser plus lourd que tout le reste.
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:287:Sur le site de Cycloplomberie, le résultat d'une démarche rigoureuse aboutit à une page qui tient sous 200 Ko, en 4 requêtes, avec un EcoIndex A. Pas parce que c'était une contrainte — parce que chaque choix a été posé : cette image est-elle nécessaire ? Ce script apporte-t-il quelque chose à l'utilisateur ?
+    content/articles/faq-eco-conception.md:78:## Quel est l'impact réel des images sur un site web ?
+    content/articles/faq-eco-conception.md:80:Les images représentent souvent une part importante du poids des pages.
+    content/articles/faq-eco-conception.md:84:L'éco-conception ne vise pas à supprimer les images, mais à les utiliser de manière pertinente et maîtrisée.
+    content/articles/images-eco-conception.md:3:description: Les images représentent la part la plus lourde d'une page web. Bien pensées, elles servent le contenu. Mal maîtrisées, elles dégradent les performances et alourdissent l'empreinte environnementale.
+    content/articles/images-eco-conception.md:4:chapo: Les images représentent la part la plus lourde d'une page web. Bien pensées, elles servent le contenu. Mal maîtrisées, elles dégradent les performances et alourdissent l'empreinte environnementale.
+    content/articles/images-eco-conception.md:8:description: Comment réduire le poids des images tout en préservant la qualité et la pertinence du contenu dans une démarche d’éco-conception numérique.
+    content/articles/images-eco-conception.md:17:Sur la majorité des sites actuels, **les images constituent la principale source de données transférées**. Très loin devant le HTML, le CSS ou même le JavaScript.
+    content/articles/images-eco-conception.md:23:- une image = un fichier à transférer, parfois décliné en plusieurs variantes ;
+    content/articles/images-eco-conception.md:28:Dans une démarche d'éco-conception, l'image n'est jamais neutre. Elle doit être **justifiée**, **maîtrisée**, et parfois **supprimée**.
+    content/articles/images-eco-conception.md:32:## Cette image est-elle réellement nécessaire ?
+    content/articles/images-eco-conception.md:36:### Image informative vs image décorative
+    content/articles/images-eco-conception.md:44:- les images informatives sont légitimes, mais doivent être strictement dimensionnées et optimisées ;
+    content/articles/images-eco-conception.md:45:- les images décoratives doivent être interrogées, voire éliminées.
+    content/articles/images-eco-conception.md:53:Réduire le recours aux images ne signifie pas renoncer à toute esthétique. Cela implique de **changer de leviers graphiques**.
+    content/articles/images-eco-conception.md:57:Une hiérarchie typographique solide permet souvent de remplacer un bandeau illustré, une image de titre ou un visuel d'introduction.
+    content/articles/images-eco-conception.md:67:Avantages : aucun transfert d'image, lisibilité renforcée, accessibilité améliorée.
+    content/articles/images-eco-conception.md:79:### CSS plutôt que fichiers image
+    content/articles/images-eco-conception.md:123:- [ImageOptim](https://imageoptim.com) (macOS)
+    content/articles/images-eco-conception.md:141:<source srcset="image.avif" type="image/avif">
+    content/articles/images-eco-conception.md:142:<source srcset="image.webp" type="image/webp">
+    content/articles/images-eco-conception.md:143:<img src="image.jpg"
+    content/articles/images-eco-conception.md:158:Toutes les images n'ont pas besoin d'être chargées immédiatement.
+    content/articles/images-eco-conception.md:162:Les images situées hors de l'écran initial peuvent être chargées à la demande :
+    content/articles/images-eco-conception.md:171:### Priorisation de l'image principale
+    content/articles/images-eco-conception.md:173:Pour l'image critique (souvent le hero), indiquer explicitement la priorité :
+    content/articles/images-eco-conception.md:179:alt="Description de l'image principale">
+    content/articles/images-eco-conception.md:182:**Attention :** ne jamais appliquer `loading="lazy"` à l'image LCP.
+    content/articles/images-eco-conception.md:212:Par défaut, WordPress génère de nombreuses tailles d'images à chaque upload. Chaque taille supplémentaire implique un fichier stocké, une variante dans le `srcset`, du poids potentiellement inutile.
+    content/articles/images-eco-conception.md:220:add_image_size('hero', 1600, 900, true);
+    content/articles/images-eco-conception.md:221:add_image_size('content', 800, 0, false);
+    content/articles/images-eco-conception.md:222:add_image_size('thumb', 400, 0, false);
+    content/articles/images-eco-conception.md:228:add_filter('intermediate_image_sizes_advanced', function ($sizes) {
+    content/articles/images-eco-conception.md:241:add_filter('max_srcset_image_width', function () {
+    content/articles/images-eco-conception.md:254:Le principal risque dans WordPress n'est pas technique mais éditorial : images ajoutées sans réflexion, médias jamais supprimés, accumulation progressive de dette.
+    content/articles/images-eco-conception.md:258:- une image = une intention claire,
+    content/articles/images-eco-conception.md:259:- pas d'image "par défaut" sur les articles,
+    content/articles/images-eco-conception.md:266:Les images influencent directement le référencement naturel.
+    content/articles/images-eco-conception.md:270:Dans la plupart des pages, l'élément LCP est une image. Si elle est trop lourde ou mal priorisée, le score chute.
+    content/articles/images-eco-conception.md:274:- Ne pas appliquer `loading="lazy"` à l'image LCP.
+    content/articles/images-eco-conception.md:275:- Utiliser `fetchpriority="high"` sur l'image principale.
+    content/articles/images-eco-conception.md:276:- Compresser agressivement l'image hero.
+    content/articles/images-eco-conception.md:280:Les images sans dimensions provoquent des décalages de mise en page. Toujours définir `width` et `height` dans le HTML.
+    content/articles/images-eco-conception.md:286:- Ne jamais enfermer de texte stratégique dans une image.
+    content/articles/images-eco-conception.md:290:Chaque image est une URL crawlable. Réduire le nombre d'images inutiles permet un crawl plus efficace, une indexation plus stable et une meilleure lisibilité globale du site.
+    content/articles/images-eco-conception.md:297:- [ ] Chaque image a un rôle informationnel clair
+    content/articles/images-eco-conception.md:298:- [ ] Aucune image décorative non justifiée
+    content/articles/images-eco-conception.md:313:- [ ] `loading="lazy"` hors images critiques
+    content/articles/images-eco-conception.md:314:- [ ] `fetchpriority="high"` sur l'image LCP
+    content/articles/images-eco-conception.md:326:Moins d'images inutiles, ce n'est pas moins de design. C'est **plus de sens**, **plus d'efficacité**, et un web plus sobre.
+    content/articles/l-eco-conception-web.md:111:Nos précédents objectifs couvraient l’ensemble de l’écosystème du web (serveurs, réseaux, terminaux), ce dernier se fixe presque exclusivement sur **les serveurs et leur consommation électrique**. Loin de l’image répandue d’un internet qui polluerait à cause de la multiplication des serveurs et services cloud, voici ce qu’on peut en dire.
+    content/articles/refonte-site-eco-concu.md:33:Un <a href="/eco-conception/audit-site-web/" class="lien--vert">audit éco-conception</a> sérieux couvre au minimum quatre dimensions : la performance technique (Core Web Vitals, LCP, CLS, poids de page), le SEO actuel (quelles pages ranke, quels backlinks existent, quelle structure d'URLs est indexée), l'expérience utilisateur (parcours réels, taux de rebond, pages d'entrée) et l'empreinte technique (nombre de requêtes, scripts tiers, images non optimisées).
+    content/articles/theme-wordpress-eco-conception.md:34:Notons que les images, le CSS et le JS étaient optimisés ( réduction du poids, minimisation et concaténation )
+    content/articles/theme-wordpress-eco-conception.md:44:Il s’agit de réduire au maximum les charges réseau tant en quantité qu’en nombre ( images, typos, styles, scripts ) et d’optimiser le traitement des ressources ( requêtes à la base de données, complexité du DOM, etc. ) afin de moins solliciter les terminaux. Le site s’affichera correctement sur un vieux terminal.
+    content/articles/theme-wordpress-eco-conception.md:67:Il est fait recours autant que possible aux images en svg. Celles-ci sont chargées grâce à un *sprite cheet* unique.
+    content/articles/theme-wordpress-eco-conception.md:68:Le choix d’images matricielles traité en duotone permet de réduire le poids initial des images et de pousser plus loin leur compression ( avec dégradation ) sans que cela soir visible dans le rendu final.
+    content/articles/typographie-ecoconception.md:15:Cette dernière décennie a vu l'émergence et la suprématie du recours aux polices web. En 2010, Google en mettant à disposition de chacun une multitude de polices gratuites a grandement contribué à un web graphiquement plus varié (relativisons : il y a 977 polices sur Google Fonts et la plupart des sites n'en utilisent que quelques-unes, la Roboto essentiellement). Cependant, ce service a un coût environnemental non négligeable. Chaque police nécessite une requête HTTP et pèse autant qu'une image optimisée (177 ko pour la Roboto non compressée). Certes, on pourra m'objecter que la plupart des sites sont réalisés avec les mêmes Google Fonts et que celles-ci sont en cache dans tous les navigateurs. Je préfère ne pas me reposer sur un élément qui ne dépend pas de moi. De plus, un cache de navigateur, peut-être (et doit être) vidé par l'internaute.
+    content/articles/wordpress-eco-conception.md:119:## Maîtriser les images
+    content/articles/wordpress-eco-conception.md:121:Les images représentent généralement la plus grande part du poids des pages.
+    content/articles/wordpress-eco-conception.md:125:- **Dimensionner avant d'uploader.** Une image de 4000 px pour un affichage de 800 px est un gaspillage.
+    content/articles/wordpress-eco-conception.md:128:- **Activer le lazy loading.** Les images hors écran ne doivent pas bloquer le chargement initial.
+    content/articles/wordpress-eco-conception.md:130:### Limiter les tailles d'images générées
+    content/articles/wordpress-eco-conception.md:132:WordPress génère automatiquement plusieurs tailles d'images. Il est possible de limiter ces tailles au strict nécessaire :
+    content/articles/wordpress-eco-conception.md:136:add_image_size('hero', 1600, 900, true);
+    content/articles/wordpress-eco-conception.md:137:add_image_size('card', 600, 400, true);
+    content/articles/wordpress-eco-conception.md:138:add_image_size('thumb', 300, 300, true);
+    content/articles/wordpress-eco-conception.md:141:add_filter('intermediate_image_sizes_advanced', function ($sizes) {
+    content/articles/wordpress-eco-conception.md:149:add_filter('max_srcset_image_width', function () {
+    content/articles/wordpress-eco-conception.md:154:Pour aller plus loin sur l'optimisation des images, voir [Images et éco-conception web](/eco-conception/images-eco-conception).
+    content/articles/wordpress-eco-conception.md:269:- [Images et éco-conception web](/eco-conception/images-eco-conception) — guide complet sur l'optimisation des images.
+    content/articles/wordpress-freelance-lille.md:49:Un site WordPress éco-conçu n'est pas juste un site "vert" qui compense son empreinte carbone avec des arbres plantés. C'est un site léger parce qu'il a été conçu pour l'être dès le départ : pas de code inutile, pas d'images surdimensionnées, pas de scripts tiers qui se chargent sans raison.
+    content/articles/wordpress-vs-nuxt.md:71:Pour un site vitrine professionnel — consultant, cabinet, artisan, PME — où le client met à jour ses textes et ses images mais ne restructure pas son site chaque semaine : **Nuxt SSG**. Les arguments sont simples : moins de surface de panne, moins de maintenance, meilleures performances, empreinte réduite. C'est ce que j'utilise pour mes propres projets, ce n'est pas anodin.
+    data/apps.ts:110:image?: string
+    data/apps.ts:127:image?: string
+    data/apps.ts:147:image: '/img/apps/duospend-vignette-apps.webp',
+    data/apps.ts:666:image: '/img/apps/meeting-mode_vignette-apps.webp',
+    data/apps.ts:821:image: '/img/apps/duospend-vignette-apps.webp',
+    data/apps.ts:1001:image: '/img/siturem/siturem-landing.webp',
+    data/apps.ts:1030:image,
+    data/apps.ts:1039:...(image ? { image } : {}),
+    data/greenlight.ts:106:"La version pensée pour les projets professionnels qui ont besoin de visibilité, de maîtrise éditoriale et d'une image plus nette.",
+    data/greenlight.ts:119:title: 'Une image de marque plus nette',
+    data/greenlight.ts:143:'Optimisation des images',
+    data/greenlight.ts:218:image?: string,
+    data/greenlight.ts:226:...(image ? { image } : {}),
+    data/portfolio.ts:18:image: string
+    data/portfolio.ts:36:image: 'chasse-patate.webp',
+    data/portfolio.ts:49:image: '/img/siturem/siturem-landing.webp',
+    data/portfolio.ts:65:image: 'duospend.webp',
+    data/portfolio.ts:79:image: 'focusone.webp',
+    data/portfolio.ts:95:image: 'cyclop.webp',
+    data/portfolio.ts:113:image: 'lpb.webp',
+    data/portfolio.ts:132:image: 'aave.webp',
+    data/portfolio.ts:146:image: 'amc2.webp',
+    data/portfolio.ts:159:image: 'guideBleu1.webp',
+    data/portfolio.ts:173:image: 'guideBleu2.webp',
+    data/portfolio.ts:186:image: 'appNoel.webp',
+    nuxt.config.ts:80:property: 'og:image',
+    nuxt.config.ts:94:name: 'twitter:image',
+    nuxt.config.ts:99:{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+    nuxt.config.ts:102:type: 'image/png',
+    nuxt.config.ts:196:modules: ['@nuxt/content', '@nuxt/image', '@nuxtjs/sitemap'],
+    nuxt.config.ts:233:image: {
+    nuxt.config.ts:234:// Default image optimization
+    pages/apps/duo-spend.vue:31:class="app-mockup__screen app-mockup__screen--image"
+    pages/apps/duo-spend.vue:85:<div class="app-capture app-capture--image">
+    pages/apps/duo-spend.vue:92:class="app-capture__screen app-capture__screen--image"
+    pages/apps/duo-spend.vue:136:<h2 id="duo-gallery-title">L'app en images</h2>
+    pages/apps/duo-spend.vue:142:v-for="(image, index) in duoSpendContent.gallery"
+    pages/apps/duo-spend.vue:143::key="image.src"
+    pages/apps/duo-spend.vue:147::aria-label="`Agrandir : ${image.title || image.alt}`"
+    pages/apps/duo-spend.vue:154::src="image.src"
+    pages/apps/duo-spend.vue:155::alt="image.alt"
+    pages/apps/duo-spend.vue:163:<span class="gallery-card__title">{{ image.title }}</span>
+    pages/apps/duo-spend.vue:164:<span class="gallery-card__subtitle">{{ image.subtitle }}</span>
+    pages/apps/duo-spend.vue:171::images="duoSpendContent.gallery"
+    pages/apps/duo-spend.vue:281:const ogImage = absoluteUrl(config.public.siteUrl, duoSpendContent.seo.image)
+    pages/apps/duo-spend.vue:304:image: ogImage,
+    pages/apps/duo-spend.vue:355:twitterCard: 'summary_large_image',
+    pages/apps/duo-spend.vue:558:.app-mockup__screen--image {
+    pages/apps/duo-spend.vue:566:.app-mockup__screen--image img,
+    pages/apps/duo-spend.vue:567:.app-capture__screen--image img {
+    pages/apps/duo-spend.vue:707:.app-capture__screen--image {
+    pages/apps/duo-spend.vue:711:.app-capture__screen--image img {
+    pages/apps/index.vue:55:const ogImage = absoluteUrl(config.public.siteUrl, appsIndexContent.seo.image)
+    pages/apps/index.vue:85:twitterCard: 'summary_large_image',
+    pages/apps/meeting-mode.vue:31:class="app-mockup__screen app-mockup__screen--image"
+    pages/apps/meeting-mode.vue:142:<h2 id="meeting-gallery-title">L'app en images</h2>
+    pages/apps/meeting-mode.vue:148:v-for="(image, index) in meetingModeContent.gallery"
+    pages/apps/meeting-mode.vue:149::key="image.src"
+    pages/apps/meeting-mode.vue:153::aria-label="`Agrandir : ${image.title || image.alt}`"
+    pages/apps/meeting-mode.vue:160::src="image.src"
+    pages/apps/meeting-mode.vue:161::alt="image.alt"
+    pages/apps/meeting-mode.vue:169:<span class="gallery-card__title">{{ image.title }}</span>
+    pages/apps/meeting-mode.vue:170:<span class="gallery-card__subtitle">{{ image.subtitle }}</span>
+    pages/apps/meeting-mode.vue:177::images="meetingModeContent.gallery"
+    pages/apps/meeting-mode.vue:252:const ogImage = absoluteUrl(config.public.siteUrl, meetingModeContent.seo.image)
+    pages/apps/meeting-mode.vue:275:image: ogImage,
+    pages/apps/meeting-mode.vue:326:twitterCard: 'summary_large_image',
+    pages/apps/meeting-mode.vue:529:.app-mockup__screen--image {
+    pages/apps/meeting-mode.vue:537:.app-mockup__screen--image img,
+    pages/apps/meeting-mode.vue:538:.app-capture__screen--image img {
+    pages/apps/siturem.vue:46:class="app-mockup__screen app-mockup__screen--image"
+    pages/apps/siturem.vue:144:L'app en images
+    pages/apps/siturem.vue:154:v-for="(image, index) in situremContent.gallery"
+    pages/apps/siturem.vue:155::key="image.src"
+    pages/apps/siturem.vue:159::aria-label="`Agrandir : ${image.title || image.alt}`"
+    pages/apps/siturem.vue:166::src="image.src"
+    pages/apps/siturem.vue:167::alt="image.alt"
+    pages/apps/siturem.vue:175:<span class="gallery-card__title">{{ image.title }}</span>
+    pages/apps/siturem.vue:176:<span class="gallery-card__subtitle">{{ image.subtitle }}</span>
+    pages/apps/siturem.vue:183::images="situremContent.gallery"
+    pages/apps/siturem.vue:291:const ogImage = absoluteUrl(config.public.siteUrl, situremContent.seo.image)
+    pages/apps/siturem.vue:314:image: ogImage,
+    pages/apps/siturem.vue:363:twitterCard: 'summary_large_image',
+    pages/apps/siturem.vue:566:.app-mockup__screen--image {
+    pages/apps/siturem.vue:574:.app-mockup__screen--image img,
+    pages/apps/siturem.vue:575:.app-capture__screen--image img {
+    pages/apps/siturem.vue:715:.app-capture__screen--image {
+    pages/apps/siturem.vue:719:.app-capture__screen--image img {
+    pages/contact.vue:204:twitterCard: 'summary_large_image',
+    pages/eco-conception/[slug].vue:386:const image = article.value?.seo?.ogImage || article.value?.img
+    pages/eco-conception/[slug].vue:387:if (!image) {
+    pages/eco-conception/[slug].vue:390:return image.startsWith('http') ? image : `${config.public.siteUrl}${image}`
+    pages/eco-conception/[slug].vue:441:image: [ogImage.value],
+    pages/eco-conception/[slug].vue:476:{ hid: 'og:image', property: 'og:image', content: ogImage.value },
+    pages/eco-conception/[slug].vue:477:{ hid: 'og:image:width', property: 'og:image:width', content: '1200' },
+    pages/eco-conception/[slug].vue:478:{ hid: 'og:image:height', property: 'og:image:height', content: '630' },
+    pages/eco-conception/[slug].vue:484:content: 'summary_large_image',
+    pages/eco-conception/[slug].vue:492:{ hid: 'twitter:image', name: 'twitter:image', content: ogImage.value },
+    pages/eco-conception/[slug].vue:788:background-image: url('/img/icon-hashtag.svg');
+    pages/eco-conception/index.vue:261:et des sujets plus ciblés sur les images, la typographie ou la
+    pages/eco-conception/index.vue:670:twitterCard: 'summary_large_image',
+    pages/eco-conception/index.vue:706:if (normalized === 'images') return 'Images'
+    pages/greenlight.vue:403:images, cache, minification quand c'est pertinent et
+    pages/greenlight.vue:503:'Greenlight premium reprend le socle sobre de Greenlight-free et l’étend avec une édition de thème avancée, du SEO, l’optimisation des images, le cache, la minification quand c’est pertinent et l’optimisation WordPress globale.',
+    pages/greenlight.vue:514:'Optimisation des images et du cache',
+    pages/greenlight.vue:521:'L’objectif n’est pas d’ajouter du gras, mais d’adapter un socle propre à un besoin réel sans empiler des plugins SEO, cache, image ou minification ajoutés sans cohérence.',
+    pages/greenlight.vue:606:'Greenlight-free donne la base la plus légère. Greenlight premium reprend ce socle sobre et ajoute l’édition de thème avancée, le SEO, l’optimisation des images, le cache, la minification quand c’est pertinent et l’optimisation WordPress globale.',
+    pages/greenlight.vue:611:'C’est l’objectif. Greenlight premium traite dans le thème ce qui doit être traité dans le thème, pour éviter de compenser la faiblesse d’une base par une accumulation de plugins SEO, image, cache ou minification ajoutés sans cohérence.',
+    pages/greenlight.vue:633:image: ogImage,
+    pages/greenlight.vue:676:twitterCard: 'summary_large_image',
+    pages/index.vue:193:class="project-card__image"
+    pages/index.vue:194::src="projectImageSrc(project.image)"
+    pages/index.vue:448:function projectImageSrc(image: string) {
+    pages/index.vue:449:return `/img/${image}`
+    pages/index.vue:541:twitterCard: 'summary_large_image',
+    pages/index.vue:1029:.project-card__image {
+    pages/index.vue:1091:.project-card:focus-visible .project-card__image {
+    pages/index.vue:1106:.project-card:hover .project-card__image {
+    pages/index.vue:1294:.project-card__image {
+    pages/mentions-legales.vue:91:notamment les textes, images, graphismes, logo, icônes, sons, logiciels.
+    pages/mentions-legales.vue:281:twitterCard: 'summary_large_image',
+    pages/portfolio.vue:115::background-url="project.image"
+    pages/portfolio.vue:304:twitterCard: 'summary_large_image',
+    pages/services.vue:407:image: ogImage,
+    pages/services.vue:486:twitterCard: 'summary_large_image',
+    scripts/seo-audit.mjs:100:// Extraire les images sans alt
+    scripts/seo-audit.mjs:186:const ogImage = extractMeta(html, 'og:image');
+    scripts/seo-audit.mjs:192:if (!ogImage) warnings.push('Pas de og:image');
+    scripts/seo-audit.mjs:224:const images = extractImagesWithoutAlt(html);
+    scripts/seo-audit.mjs:225:if (images.withoutAlt > 0) {
+    scripts/seo-audit.mjs:226:issues.push(`${images.withoutAlt}/${images.total} images sans alt`);
+    scripts/seo-audit.mjs:227:} else if (images.total > 0) {
+    scripts/seo-audit.mjs:228:info.push(`${images.total} images avec alt`);
+    utils/getSiteMeta.js:37:hid: 'og:image',
+    utils/getSiteMeta.js:38:property: 'og:image',
+    utils/getSiteMeta.js:57:hid: 'twitter:image',
+    utils/getSiteMeta.js:58:name: 'twitter:image',
+    utils/portfolioItems.ts:10:imageWidth?: number
+    utils/portfolioItems.ts:11:imageHeight?: number
+    utils/portfolioItems.ts:27:imageWidth: 644,
+    utils/portfolioItems.ts:28:imageHeight: 374,
+    utils/portfolioItems.ts:42:imageWidth: 650,
+    utils/portfolioItems.ts:43:imageHeight: 367,
+    utils/portfolioItems.ts:57:imageWidth: 612,
+    utils/portfolioItems.ts:58:imageHeight: 340,
+    utils/portfolioItems.ts:71:imageWidth: 2556,
+    utils/portfolioItems.ts:72:imageHeight: 1332,
+    utils/portfolioItems.ts:85:imageWidth: 2556,
+    utils/portfolioItems.ts:86:imageHeight: 1332,
+    utils/portfolioItems.ts:99:imageWidth: 2556,
+    utils/portfolioItems.ts:100:imageHeight: 1332,
+    utils/portfolioItems.ts:113:imageWidth: 510,
+    utils/portfolioItems.ts:114:imageHeight: 540,
+  Décision :
+    utilisé
+  Action :
+    conserver
+
+@nuxtjs/sitemap
+  Type : dependencies
+  Références trouvées :
+    content/articles/audit-site-web.md:45:J'examine la hiérarchie des titres (H1, H2, H3 et leur cohérence), les balises title et meta description (présence, longueur, unicité), les balises canonicals (pour éviter les problèmes de contenu dupliqué), le fichier sitemap et le robots.txt, les erreurs 404 et les redirections mal configurées, et le maillage interne — comment les pages se lient entre elles. Un bon maillage distribue le jus SEO là où il est utile et aide les utilisateurs à naviguer.
+    content/articles/wordpress-freelance-lille.md:25:Le SEO technique doit être maîtrisé sans reposer entièrement sur Yoast ou Rank Math. Ces outils aident, mais ils ne remplacent pas une structure HTML correcte, des balises méta bien renseignées, un fichier sitemap fonctionnel et une gestion propre des URLs. Un développeur qui ne sait faire du SEO qu'avec des plugins ne sait pas vraiment faire du SEO.
+    content/articles/wordpress-vs-nuxt.md:47:| SEO                                    | ✅ Mature (Yoast, sitemap auto)                | ✅ Complet si bien configuré                   |
+    nuxt.config.ts:196:modules: ['@nuxt/content', '@nuxt/image', '@nuxtjs/sitemap'],
+    nuxt.config.ts:263:sitemap: {
+    nuxt.config.ts:283:routes: ['/rss.xml', '/feed.json', '/sitemap.xml', '/robots.txt'],
+    nuxt.config.ts:288:'sitemap:resolved': (ctx) => {
+    nuxt.config.ts:294:'sitemap:output': (ctx) => {
+    nuxt.config.ts:295:ctx.sitemap = ctx.sitemap.replace(
+    pages/services.vue:301:'SEO technique : structure, balises, sitemap, robots.txt',
+    scripts/seo-audit.mjs:40:if (!['_nuxt', 'api', '__sitemap__', '_payload.json'].includes(item)) {
+    scripts/seo-audit.mjs:255:log.warn('Pas de référence au sitemap dans robots.txt');
+    scripts/seo-audit.mjs:257:log.success('Référence sitemap présente');
+    scripts/seo-audit.mjs:265:// Vérifier sitemap.xml
+    scripts/seo-audit.mjs:268:const sitemapPath = join(OUTPUT_DIR, 'sitemap.xml');
+    scripts/seo-audit.mjs:270:if (!existsSync(sitemapPath)) {
+    scripts/seo-audit.mjs:271:log.error('sitemap.xml manquant');
+    scripts/seo-audit.mjs:275:const content = readFileSync(sitemapPath, 'utf-8');
+    scripts/seo-audit.mjs:278:console.log(`${urls.length} URLs dans le sitemap:\n`);
+    scripts/seo-audit.mjs:289:log.warn('Pas de dates lastmod dans le sitemap');
+    scripts/seo-check.mjs:8:const sitemapPath = path.join(rootDir, '.output', 'public', 'sitemap.xml')
+    scripts/seo-check.mjs:21:ensure(fs.existsSync(sitemapPath), `Missing sitemap: ${sitemapPath}`)
+    scripts/seo-check.mjs:25:if (fs.existsSync(sitemapPath)) {
+    scripts/seo-check.mjs:26:const sitemapXml = fs.readFileSync(sitemapPath, 'utf8')
+    scripts/seo-check.mjs:27:locs = Array.from(sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)).map((m) => m[1].trim())
+    scripts/seo-check.mjs:28:ensure(locs.length > 0, 'No <loc> entries found in sitemap.xml.')
+    scripts/seo-check.mjs:48:const sitemapLine = robotsTxt
+    scripts/seo-check.mjs:51:.find((line) => line.toLowerCase().startsWith('sitemap:'))
+    scripts/seo-check.mjs:53:const expected = `Sitemap: ${siteUrl}/sitemap.xml`
+    scripts/seo-check.mjs:54:ensure(sitemapLine === expected, `robots.txt sitemap mismatch: expected "${expected}"`)
+    server/routes/robots.txt.ts:14:Sitemap: ${baseUrl}/sitemap.xml
+    tests/app-link.test.mjs:65:'/sitemap.xml',
+    tests/seo-url.test.mjs:67:'/sitemap.xml',
+  Décision :
+    utilisé
+  Action :
+    conserver
+
+nuxt
+  Type : dependencies
+  Références trouvées :
+    .eslintrc.cjs:1:const nuxtConfig = require('@nuxt/eslint-config')
+    .eslintrc.cjs:4:...nuxtConfig,
+    .eslintrc.cjs:7:...(nuxtConfig.rules || {}),
+    assets/README.md:7:More information about the usage of this directory in [the documentation](https://nuxtjs.org/guide/assets#webpacked).
+    content/articles/refonte-site-eco-concu.md:47:Le <a href="/eco-conception/wordpress-vs-nuxt/" class="lien--vert">comparatif WordPress vs Nuxt</a> détaille les critères de choix selon votre profil. Il n'y a pas de bonne réponse universelle — il y a une bonne réponse pour votre situation.
+    layouts/README.md:7:More information about the usage of this directory in [the documentation](https://nuxtjs.org/guide/views#layouts).
+    layouts/default.vue:358:a.nuxt-link-active {
+    nuxt.config.ts:1:// https://nuxt.com/docs/api/configuration/nuxt-config
+    nuxt.config.ts:25:// Nuxt 3 uses SSG by default with `nuxt generate`
+    nuxt.config.ts:163:id.includes('node_modules/@nuxt') ||
+    nuxt.config.ts:164:id.includes('node_modules/nuxt')
+    nuxt.config.ts:166:return 'vendor-nuxt'
+    nuxt.config.ts:172:id.includes('@nuxt/content')
+    nuxt.config.ts:189:linkPrefetchedClass: 'nuxt-link-prefetched',
+    nuxt.config.ts:196:modules: ['@nuxt/content', '@nuxt/image', '@nuxtjs/sitemap'],
+    nuxt.config.ts:314:nuxtLink: {
+    pages/README.md:6:More information about the usage of this directory in [the documentation](https://nuxtjs.org/guide/routing).
+    pages/eco-conception/[slug].vue:656::deep(.nuxt-content) {
+    pages/services.vue:331:to: '/eco-conception/wordpress-vs-nuxt/',
+    scripts/check-content-queries.mjs:41:file: 'nuxt.config.ts',
+    scripts/pre-build-check.js:49:check(fileExists('nuxt.config.ts'), '❌ nuxt.config.ts is missing')
+    scripts/pre-build-check.js:57:!fileExists('nuxt.config.js'),
+    scripts/pre-build-check.js:58:'❌ Old nuxt.config.js still exists - should be removed',
+    scripts/pre-build-check.js:72:pkg.dependencies?.nuxt?.startsWith('^3'),
+    scripts/pre-build-check.js:77:!pkg.dependencies?.['@nuxtjs/axios'],
+    scripts/pre-build-check.js:78:'❌ Obsolete @nuxtjs/axios still in dependencies',
+    scripts/pre-build-check.js:81:!pkg.dependencies?.['nuxt-precompress'],
+    scripts/pre-build-check.js:82:'❌ Obsolete nuxt-precompress still in dependencies',
+    scripts/pre-build-check.js:89:pkg.dependencies?.['@nuxt/content'],
+    scripts/pre-build-check.js:90:'❌ @nuxt/content not in dependencies',
+    scripts/seo-audit.mjs:40:if (!['_nuxt', 'api', '__sitemap__', '_payload.json'].includes(item)) {
+    utils/getRoutes.js:2:const { $content } = require('@nuxt/content')
+  Décision :
+    utilisé
+  Action :
+    conserver
+
+vue
+  Type : dependencies
+  Références trouvées :
+    .eslintrc.cjs:8:'vue/multi-word-component-names': [
+    components/AppLink.vue:8:import { computed, useAttrs } from 'vue'
+    components/AppSearchInput.vue:20:import { ref, watch } from 'vue'
+    components/BoiteArticle.vue:107:import { computed, ref } from 'vue'
+    components/BoiteArticle.vue:216:if (lower === 'vuejs') return 'Vue.js'
+    components/HomeEcoArticles.vue:46:import { computed } from 'vue'
+    components/HomePortfolioLatest.vue:45:import { computed } from 'vue'
+    components/TheFooter.vue:68:import { computed, ref } from 'vue'
+    components/apps/AppGalleryLightbox.vue:64:import { computed, ref } from 'vue'
+    components/apps/AppLegalTabs.vue:54:import { computed, ref } from 'vue'
+    components/apps/AppReleaseInterestForm.vue:93:import { computed, ref } from 'vue'
+    content/articles/l-eco-conception-web.md:53:D’un point de vue purement utilitariste, on pourrait résumer ainsi cette opération : dépenser de l’énergie d’une part pour en dépenser davantage d’autre part.
+    content/articles/l-eco-conception-web.md:163:L’efficience va au-delà de la simple efficacité apportée par l’optimisation. Son périmètre est plus large, car on parle ici de garantir une bonne expérience utilisateur et de communiquer convenablement un message tout en mesurant les ressources que cela implique. L’efficience est une économie de moyen utilisé en vue de délivrer une information, et ce, de la manière la plus optimale.
+    data/apps.ts:232:'Non. DuoSpend est une app iPhone uniquement, conçue avec les technologies Apple (Swift, SwiftUI). Une version Android n’est pas prévue.',
+    data/apps.ts:313:'Automatiquement le projet le plus récent. La possibilité de choisir le projet directement depuis le widget est prévue dans une prochaine version.',
+    data/apps.ts:343:'Pas en v1.0 - les données restent sur votre appareil. La synchronisation iCloud (même compte Apple, plusieurs appareils) est prévue pour la v1.1.',
+    data/apps.ts:356:question: 'Quelles fonctionnalités sont prévues ?',
+    data/apps.ts:402:'La durée minimale prévue est de 6 minutes. Cela laisse suffisamment de place pour les trois temps de la séance sans réduire la pratique à un simple minuteur.',
+    data/apps.ts:405:question: 'Quelles options sont prévues ?',
+    data/apps.ts:412:'Oui, l’intégration HealthKit est prévue comme option. Elle sert à inscrire vos séances dans l’écosystème Santé d’Apple, sans être nécessaire au fonctionnement de base de l’app.',
+    data/apps.ts:623:'Dans la version actuelle, les données sont stockées localement sur votre appareil. Une synchronisation iCloud optionnelle est prévue dans une prochaine version ; cette politique sera mise à jour en conséquence.',
+    data/apps.ts:785:'Dans la version actuelle, les projets que vous créez et les dépenses que vous enregistrez sont stockés localement sur votre iPhone avec SwiftData. Une synchronisation iCloud optionnelle est prévue dans une prochaine version ; cette politique sera mise à jour en conséquence.',
+    data/apps.ts:789:'La version actuelle fonctionne hors ligne. Une synchronisation iCloud optionnelle est prévue dans une prochaine version.',
+    data/apps.ts:916:'Les données de séance peuvent inclure la date et l’heure, la durée prévue, la durée réalisée, le nombre de séances et des statistiques agrégées comme le temps total, les périodes de 7 ou 30 jours, le streak actuel ou le meilleur streak.',
+    data/portfolio.ts:3:* Utilisées par la page portfolio.vue
+    layouts/default.vue:186:import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
+    layouts/default.vue:187:import { useRoute } from 'vue-router'
+    nuxt.config.ts:156:id.includes('node_modules/vue') ||
+    nuxt.config.ts:157:id.includes('node_modules/@vue')
+    nuxt.config.ts:159:return 'vendor-vue'
+    nuxt.config.ts:212:'vue',
+    pages/README.md:4:The framework reads all the `*.vue` files inside this directory and creates the router of your application.
+    pages/apps/duo-spend.vue:262:import { nextTick, onMounted, ref, watch } from 'vue'
+    pages/apps/duo-spend.vue:264:import AppBreadcrumb from '~/components/apps/AppBreadcrumb.vue'
+    pages/apps/duo-spend.vue:265:import AppGalleryLightbox from '~/components/apps/AppGalleryLightbox.vue'
+    pages/apps/duo-spend.vue:266:import AppFaqList from '~/components/apps/AppFaqList.vue'
+    pages/apps/duo-spend.vue:267:import AppLegalTabs from '~/components/apps/AppLegalTabs.vue'
+    pages/apps/duo-spend.vue:268:import AppReleaseInterestForm from '~/components/apps/AppReleaseInterestForm.vue'
+    pages/apps/index.vue:41:import AppBreadcrumb from '~/components/apps/AppBreadcrumb.vue'
+    pages/apps/index.vue:42:import AppCard from '~/components/apps/AppCard.vue'
+    pages/apps/meeting-mode.vue:233:import { nextTick, onMounted, ref, watch } from 'vue'
+    pages/apps/meeting-mode.vue:235:import AppBreadcrumb from '~/components/apps/AppBreadcrumb.vue'
+    pages/apps/meeting-mode.vue:236:import AppGalleryLightbox from '~/components/apps/AppGalleryLightbox.vue'
+    pages/apps/meeting-mode.vue:237:import AppFaqList from '~/components/apps/AppFaqList.vue'
+    pages/apps/meeting-mode.vue:238:import AppLegalTabs from '~/components/apps/AppLegalTabs.vue'
+    pages/apps/meeting-mode.vue:239:import AppReleaseInterestForm from '~/components/apps/AppReleaseInterestForm.vue'
+    pages/apps/siturem.vue:272:import { nextTick, onMounted, ref, watch } from 'vue'
+    pages/apps/siturem.vue:274:import AppBreadcrumb from '~/components/apps/AppBreadcrumb.vue'
+    pages/apps/siturem.vue:275:import AppGalleryLightbox from '~/components/apps/AppGalleryLightbox.vue'
+    pages/apps/siturem.vue:276:import AppFaqList from '~/components/apps/AppFaqList.vue'
+    pages/apps/siturem.vue:277:import AppLegalTabs from '~/components/apps/AppLegalTabs.vue'
+    pages/apps/siturem.vue:278:import AppReleaseInterestForm from '~/components/apps/AppReleaseInterestForm.vue'
+    pages/contact.vue:1:<!-- eslint-disable vue/multi-word-component-names -->
+    pages/contact.vue:156:import { ref, reactive } from 'vue'
+    pages/eco-conception/[slug].vue:131:import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
+    pages/eco-conception/index.vue:517:import { computed, ref, watch } from 'vue'
+    pages/greenlight.vue:273:Quelques vues suffisent pour juger la base, la lecture du front, la
+    pages/greenlight.vue:568:alt: 'Capture d’une autre vue de Greenlight-free',
+    pages/index.vue:355:import { computed } from 'vue'
+    pages/portfolio.vue:203:import { computed, ref } from 'vue'
+    scripts/check-content-queries.mjs:13:file: 'pages/index.vue',
+    scripts/check-content-queries.mjs:17:file: 'pages/eco-conception/index.vue',
+    scripts/check-content-queries.mjs:21:file: 'pages/eco-conception/[slug].vue',
+    scripts/check-content-queries.mjs:25:file: 'components/HomeEcoArticles.vue',
+    scripts/check-content-queries.mjs:29:file: 'components/AppSearchInput.vue',
+    scripts/pre-build-check.js:75:check(pkg.dependencies?.vue?.startsWith('^3'), '❌ Vue 3 not in dependencies')
+    scripts/pre-build-check.js:113:check(fileExists('pages/index.vue'), '❌ pages/index.vue is missing')
+    scripts/pre-build-check.js:114:check(fileExists('pages/portfolio.vue'), '❌ pages/portfolio.vue is missing')
+    scripts/pre-build-check.js:115:check(fileExists('pages/contact.vue'), '❌ pages/contact.vue is missing')
+    scripts/pre-build-check.js:117:fileExists('pages/eco-conception/index.vue'),
+    scripts/pre-build-check.js:118:'❌ pages/eco-conception/index.vue is missing',
+    scripts/pre-build-check.js:121:fileExists('pages/eco-conception/[slug].vue'),
+    scripts/pre-build-check.js:122:'❌ pages/eco-conception/[slug].vue is missing',
+    scripts/pre-build-check.js:125:!fileExists('pages/eco-conception/_slug.vue'),
+    scripts/pre-build-check.js:126:'❌ Old _slug.vue syntax still exists - should be [slug].vue',
+    scripts/pre-build-check.js:134:'TheLogo.vue',
+    scripts/pre-build-check.js:135:'TheFooter.vue',
+    scripts/pre-build-check.js:136:'BaseButton.vue',
+    scripts/pre-build-check.js:137:'BaseHeading.vue',
+    scripts/pre-build-check.js:138:'ArticleNavigation.vue',
+    scripts/pre-build-check.js:139:'BoiteArticle.vue',
+    scripts/pre-build-check.js:140:'AppSearchInput.vue',
+    scripts/pre-build-check.js:149:!fileExists('components/Footer.vue'),
+    scripts/pre-build-check.js:150:'⚠️ Old Footer.vue exists - should be TheFooter.vue',
+    scripts/pre-build-check.js:153:!fileExists('components/Boutoncta.vue'),
+    scripts/pre-build-check.js:154:'⚠️ Old Boutoncta.vue exists - should be BaseButton.vue',
+    scripts/pre-build-check.js:157:!fileExists('components/Petittitre.vue'),
+    scripts/pre-build-check.js:158:'⚠️ Old Petittitre.vue exists - should be BaseHeading.vue',
+    tests/app-link.test.mjs:5:import { compileScript, compileTemplate, parse } from '@vue/compiler-sfc'
+    tests/app-link.test.mjs:9:const filename = 'components/AppLink.vue'
+    utils/portfolioItems.ts:19:// Anchors must stay in sync with the id attributes of projects in pages/portfolio.vue
+  Décision :
+    utilisé
+  Action :
+    conserver
+
+vue-router
+  Type : dependencies
+  Références trouvées :
+    layouts/default.vue:187:import { useRoute } from 'vue-router'
+  Décision :
+    utilisé
+  Action :
+    conserver
+
+@nuxt/eslint
+  Type : devDependencies
+  Références trouvées :
+    .eslintrc.cjs:1:const nuxtConfig = require('@nuxt/eslint-config')
+    pages/contact.vue:1:<!-- eslint-disable vue/multi-word-component-names -->
+  Décision :
+    utilisé
+  Action :
+    conserver
+
+eslint
+  Type : devDependencies
+  Références trouvées :
+    .eslintrc.cjs:1:const nuxtConfig = require('@nuxt/eslint-config')
+    pages/contact.vue:1:<!-- eslint-disable vue/multi-word-component-names -->
+  Décision :
+    utilisé
+  Action :
+    conserver
+
+eslint-config-prettier
+  Type : devDependencies
+  Références trouvées :
+    aucune référence directe hors package.json
+  Décision :
+    utilisé implicitement / à vérifier
+  Action :
+    conserver
+
+eslint-plugin-vue
+  Type : devDependencies
+  Références trouvées :
+    aucune référence directe hors package.json
+  Décision :
+    utilisé implicitement / à vérifier
+  Action :
+    conserver
+
+gray-matter
+  Type : devDependencies
+  Références trouvées :
+    scripts/add-chapo.mjs:3:import matter from 'gray-matter'
+  Décision :
+    utilisé
+  Action :
+    conserver
+
+prettier
+  Type : devDependencies
+  Références trouvées :
+    aucune référence directe hors package.json
+  Décision :
+    utilisé implicitement / à vérifier
+  Action :
+    conserver
+
+sass
+  Type : devDependencies
+  Références trouvées :
+    assets/css/vars/_spacing.scss:5:@use 'sass:math';
+    assets/css/vars/_typo.scss:12:@use 'sass:map';
+    assets/css/vars/_typo.scss:13:@use 'sass:math';
+    components/BaseButton.vue:23:@use 'sass:color';
+    components/BoiteArticle.vue:289:@use 'sass:color';
+    layouts/default.vue:356:@use 'sass:color';
+    pages/eco-conception/index.vue:1005:@use 'sass:color';
+    pages/index.vue:566:@use 'sass:color';
+    pages/services.vue:502:@use 'sass:color';
+  Décision :
+    utilisé
+  Action :
+    conserver
+
+sass-loader
+  Type : devDependencies
+  Références trouvées :
+    aucune référence directe hors package.json
+  Décision :
+    utilisé implicitement / à vérifier
+  Action :
+    conserver
+
+vite
+  Type : devDependencies
+  Références trouvées :
+    components/TheFooter.vue:369:max-width: 26ch; /* limite “graphique” : évite que ça parte trop large */
+    content/articles/audit-eco-conception.md:24:Ces deux leviers ont un impact direct sur la consommation électrique du poste client pendant la navigation, et indirectement sur l'usure des équipements. Rappelons que la fabrication des terminaux représente les trois quarts des émissions de gaz à effet de serre du numérique — tout ce qui évite de solliciter inutilement un appareil vieillissant contribue à prolonger sa durée de vie.
+    content/articles/audit-eco-conception.md:47:<a href="/eco-conception/l-eco-conception-web/" class="lien--vert">Éco-conception et optimisation des performances</a> partagent de nombreuses techniques, mais ne poursuivent pas exactement les mêmes objectifs. Lighthouse mesure la vitesse perçue par l'utilisateur — LCP, FID, CLS (les Core Web Vitals). Ces métriques sont corrélées à l'impact environnemental sans s'y superposer parfaitement.
+    content/articles/audit-eco-conception.md:49:Un score Lighthouse de 90+ en performance est un bon signal. Ce n'est pas une garantie d'éco-conception : un site peut charger vite avec des scripts lourds mis en cache et peser lourd dès la deuxième visite.
+    content/articles/audit-site-web.md:45:J'examine la hiérarchie des titres (H1, H2, H3 et leur cohérence), les balises title et meta description (présence, longueur, unicité), les balises canonicals (pour éviter les problèmes de contenu dupliqué), le fichier sitemap et le robots.txt, les erreurs 404 et les redirections mal configurées, et le maillage interne — comment les pages se lient entre elles. Un bon maillage distribue le jus SEO là où il est utile et aide les utilisateurs à naviguer.
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:76:- ajouter `width` et `height` pour éviter les décalages de mise en page ;
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:103:Une famille typographique avec plusieurs graisses peut vite représenter plusieurs centaines de kilo-octets. Et dans beaucoup de cas, elle n'apporte pas une valeur proportionnelle à son coût.
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:135:- éviter les animations JavaScript lorsque CSS suffit ;
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:155:- éviter les sélecteurs trop complexes ;
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:162:Exemple à éviter :
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:258:- éviter les PDF lourds quand une page HTML suffit ;
+    content/articles/comment-reduire-le-poids-d-un-site-web.md:281:Cet ordre est important. Il évite de commencer par des micro-optimisations alors qu'une seule image, une police externe ou un script tiers peut peser plus lourd que tout le reste.
+    content/articles/faq-eco-conception.md:50:Elle invite surtout à **questionner leur utilité réelle**.
+    content/articles/faq-eco-conception.md:72:L'éco-conception ne bannit pas les animations ou les effets graphiques, mais invite à les utiliser avec parcimonie et discernement.
+    content/articles/faq-eco-conception.md:125:L'éco-conception agit en amont : elle intègre la sobriété dès les choix fonctionnels, graphiques et techniques. Elle vise à **éviter les problèmes** plutôt qu'à les corriger.
+    content/articles/images-eco-conception.md:152:Les attributs `width` et `height` sont essentiels : ils permettent au navigateur de réserver l'espace et d'éviter les décalages de mise en page (CLS).
+    content/articles/l-eco-conception-web.md:40:Nous savons concrètement quels sont les impacts du numérique sur l’environnement : consommation énergétique des infrastructures d’internet (les serveurs, les réseaux et les terminaux) et surtout la fabrication de ces différents équipements. Afin de limiter les impacts environnementaux d’internet, on peut se fixer l’objectif, plus concret, de restreindre les échanges (électriques) — en nombre et en taille — entre les différents composants du réseau et de limiter les traitements complexes qui vont sursolliciter nos machines. **On limite ainsi la consommation électrique de nos appareils durant leur phase d’usage et surtout leur usure et donc leur remplacement prématuré, car le principal levier pour limiter les impacts environnementaux du numérique c’est d’éviter l’obsolescence des appareils/équipements (3/4 des émissions de gaz à effet de serre en équivalent carbone provient de la fabrication des équipements)**.
+    content/articles/l-eco-conception-web.md:77:La réutilisabilité, c’est aussi éviter la dette technologique. Produire un site en choisissant des technos à la mode comme le dernier framework du moment peut être tentant, mais on risque de s’enfermer dans une dépendance à l’égard d’une technologie spécifique. C’est problématique. Le site risque de ne pas pouvoir évoluer en dehors de ce cadre ou sinon au prix de beaucoup de travail. Qu’est-ce qui se passe si cette technologie n’est plus mise à jour ? J’ai passé beaucoup de temps à apprendre cette techno, donc je ne veux pas en sortir, etc. Afin d’éviter cette impasse, il est préférable de :
+    content/articles/l-eco-conception-web.md:85:Le Webdesign à son tour participe à la réutilisabilité. Tout comme les technos, il évolue sans cesse. Sans vouloir tuer le métier, il me paraît judicieux de faire des choix pérennes dans ce domaine également. Ne pas céder aux sirènes des tendances d’UI éphémères, c’est éviter l’obsolescence graphique de son site à court terme.
+    content/articles/l-eco-conception-web.md:108:Si le projet de site comprend de nombreuses fonctionnalités, graphiques, notamment, à l’utilité peu évidente, leur mise en œuvre technique économe en énergie risque de s’avérer ardue. C’est pour cela que le web design est fondamental dans le cadre d’une démarche d’éco-conception. Recueillir les besoins du client et les traduire graphiquement avec pertinence, c’est déjà éviter de recourir à des solutions trop couteuses lors du développement.
+    content/articles/l-eco-conception-web.md:149:Prise en compte dès le recueil des besoins du client, la sobriété fonctionnelle est un levier majeur de l’éco-conception. C’est **éviter, lors du développement, l’élaboration de code inutile** ; autant de ressources économisées.
+    content/articles/l-eco-conception-web.md:170:D’autres outils, dédiés à la performance web et à la vitesse, peuvent nous renseigner sur d’autres paramètres comme les éléments qui bloquent le rendu de la page. Enfin, des outils plus spécifiques à l’éco-conception apportent un bon complément et d’autres mesures : nombre de requêtes, taille du DOM, bonnes pratiques, etc.
+    content/articles/l-eco-conception-web.md:180:L’UX est un des critères d’un bon positionnement dans les moteurs de recherche. La vitesse de chargement du site, un autre. Or, en privilégiant des solutions sobres et efficientes, un site éco-conçu augmente ses chances d’être parmi les plus rapides.
+    content/articles/la-consommation-energetique-du-numerique.md:80:Cependant, **c’est la fabrication de ces équipements qui a le plus d’impact sur l’environnement** : 40 % des gaz à effet de serre du secteur, 75 % de son utilisation d’eau et 76 % de minerais lui sont imputables. Ainsi, lorsque vous achetez un équipement, avant m^me de l’utiliser, il a déjà produit les 3/4 des ses impacts sur l’environnement. Évitez de les renouveler trop fréquemment !
+    content/articles/refonte-site-eco-concu.md:19:Ce guide ne vous explique pas comment choisir une palette de couleurs. Il vous explique comment éviter ce scénario.
+    content/articles/typographie-ecoconception.md:25:Nous avons donc une première requête HTTP pour le CSS puis d'autres pour chacune des polices activées et absentes de l'ordinateur du client. À cela, il convient d'ajouter le poids de la police. Google Fonts est un service vraiment intéressant à condition de se fixer des limites et de faire un solide travail de maquettage graphique en amont afin d'utiliser uniquement ce qui est nécessaire. Remarquons que Google, soucieux de la vitesse de chargement des pages comme critère de référencement, a mis en place une jauge pour vous indiquer l'impact de vos choix en termes de rapidité.
+    content/articles/wordpress-eco-conception.md:83:- **Une extension = un besoin précis.** Éviter les plugins "couteau suisse" qui font tout.
+    content/articles/wordpress-eco-conception.md:165:- Éviter les styles inline répétitifs.
+    content/articles/wordpress-eco-conception.md:169:/* Éviter la surcharge de sélecteurs */
+    content/articles/wordpress-freelance-lille.md:3:chapo: "Trouver un développeur WordPress à Lille, c'est facile. En trouver un bon, c'est une autre affaire. Voici les critères concrets pour éviter les erreurs classiques."
+    content/articles/wordpress-freelance-lille.md:31:**Les thèmes usine (Avada, Divi, Elementor en mode agence).** Ils promettent tout, ils pèsent une tonne. Un site basé sur Divi charge systématiquement des dizaines de fichiers CSS et JS inutiles. C'est un choix qui privilégie la vitesse de production du freelance sur la qualité du résultat final.
+    content/articles/wordpress-freelance-lille.md:57:Le travail à distance fonctionne bien pour le développement en lui-même. Mais le brief initial — comprendre vos enjeux, vos utilisateurs, vos contraintes — gagne à se faire en face à face, au moins une fois. La nuance passe mieux, les malentendus se détectent plus tôt, et la relation de confiance s'installe plus vite.
+    content/articles/wordpress-vs-nuxt.md:19:Je vais répondre directement, avec les avantages et les limites réels des deux, et une recommandation claire à la fin. Ce que j'essaie d'éviter ici, c'est le comparatif mou qui se termine par "ça dépend de votre contexte" sans jamais dire à quoi ça ressemble concrètement.
+    content/articles/wordpress-vs-nuxt.md:67:Ce que j'évite de dire ici : "les deux peuvent fonctionner". Techniquement vrai, pratiquement inutile. Pour un site vitrine de 5 à 10 pages avec un contenu qui ne change pas tous les jours, Nuxt SSG est objectivement plus simple à maintenir, plus performant et moins coûteux à long terme. Le seul frein sérieux, c'est l'autonomie client sur la structure — et c'est un frein réel qu'il faut nommer.
+    data/greenlight.ts:38:'Une base plus légère pour charger vite, rester lisible et mieux tenir dans le temps.',
+    nuxt.config.ts:108:// Désactive la transition globale pour éviter CSS/JS supplémentaires
+    nuxt.config.ts:125:vite: {
+    pages/contact.vue:54:✓ Message envoyé ! Je vous recontacte très vite.
+    pages/eco-conception/index.vue:584:'Le service répond à un besoin clair. On évite les fonctionnalités décoratives qui alourdissent sans améliorer l’usage.',
+    pages/eco-conception/index.vue:607:'Des pages plus légères se chargent plus vite et donnent une impression de fluidité plus nette.',
+    pages/greenlight.vue:13:et la personnalisation fine — et vous évite d'installer une pile de
+    pages/greenlight.vue:609:question: 'Le premium évite-t-il une pile de plugins superflus ?',
+    pages/greenlight.vue:611:'C’est l’objectif. Greenlight premium traite dans le thème ce qui doit être traité dans le thème, pour éviter de compenser la faiblesse d’une base par une accumulation de plugins SEO, image, cache ou minification ajoutés sans cohérence.',
+  Décision :
+    utilisé
+  Action :
+    conserver
+
+Notes outil :
+  - npm ls exécuté dans audit-unused-npm-ls.txt.
+  - depcheck non exécuté car npx --no-install depcheck --version demande le paquet depcheck absent du projet.
+  - Aucun changement package.json/package-lock.json réalisé.

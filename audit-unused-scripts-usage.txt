@@ -1,0 +1,168 @@
+nuxt.config.ts
+  Appel package.json :
+    non
+  Références documentation :
+    AGENTS.md:96:├── nuxt.config.ts
+    ARCHIVES/AUDIT_BEABOT.md:37:├── nuxt_config.js ✅ (à renommer nuxt.config.ts)
+    ARCHIVES/AUDIT_BEABOT.md:122:// APRÈS (nuxt.config.ts)
+    ARCHIVES/AUDIT_BEABOT.md:538:3. ⚙️ Conversion `nuxt.config.js` → `nuxt.config.ts`
+    ARCHIVES/AUDIT_BEABOT.md:571:- [ ] `nuxt.config.ts` (conversion depuis .js)
+    ARCHIVES/MIGRATION_PLAN_NUXT3.md:215:### Étape 1D : Créer nuxt.config.ts (nouvelle syntaxe)
+    ARCHIVES/MIGRATION_PLAN_NUXT3.md:217:**Créer `nuxt.config.ts` :**
+    ARCHIVES/MIGRATION_PLAN_NUXT3.md:391:- [ ] `nuxt.config.ts` créé
+    ARCHIVES/MIGRATION_PLAN_NUXT3.md:402:- Create nuxt.config.ts
+    ARCHIVES/MIGRATION_PLAN_NUXT3.md:846:**nuxt.config.ts :**
+    ARCHIVES/MIGRATION_PLAN_NUXT3.md:1039:**Importer dans `nuxt.config.ts` :**
+    ARCHIVES/MIGRATION_PLAN_NUXT3.md:1106:// nuxt.config.ts
+    ARCHIVES/MIGRATION_PLAN_NUXT3.md:1212:// nuxt.config.ts
+    AUDITS/ECO_AUDIT_2025-12.md:174:# Dans app.vue ou nuxt.config.ts
+    AUDITS/ECO_AUDIT_2025-12.md:210:// nuxt.config.ts
+    AUDITS/ECO_AUDIT_2025-12.md:240:// nuxt.config.ts
+    AUDITS/ECO_AUDIT_2025-12.md:565:- ✅ `nitro.minify: true` dans nuxt.config.ts
+    AUDITS/ECO_AUDIT_PHASE_9.md:44:// nuxt.config.ts
+    AUDITS/ECO_AUDIT_PHASE_9.md:128:| `nuxt.config.ts` | 56-57 | preconnect/dns-prefetch beabot.fr | OK (déjà prêt) |
+    AUDITS/ECO_AUDIT_PHASE_9.md:129:| `nuxt.config.ts` | 37, 44, 49 | og:image beabot.fr | OK |
+    AUDITS/ECO_AUDIT_PHASE_9.md:134:| `sitemap.hostname` | nuxt.config.ts | beabot.fr | OK |
+    AUDITS/MIGRATION_STATUS.md:44:- [x] Création nuxt.config.ts : Configuration Nuxt 3 complète
+    AUDITS/MIGRATION_STATUS.md:184:- Configuration nuxt.config.ts prerender.failOnError: false
+    AUDITS/MIGRATION_STATUS.md:410:- [x] nuxt.config.ts créé
+    AUDITS/audit-seo-2026-04-26.md:248:| C6 | `/404/` présente dans le sitemap | `nuxt.config.ts` → exclusion sitemap |
+    BRANCHING_STRATEGY.md:62:- Remove jsdelivr external script from nuxt.config.ts
+    BRANCHING_STRATEGY.md:99:| `nuxt.config.ts` | sitemap.hostname | Déjà `https://beabot.fr` ✅ |
+    BRANCHING_STRATEGY.md:100:| `nuxt.config.ts` | og:image | Déjà `https://beabot.fr` ✅ |
+    CLAUDE.md:96:├── nuxt.config.ts
+    README.md:68:└── nuxt.config.ts       # Configuration Nuxt
+    TODO.md:114:- [x] **COMPAT-1** — Ajouter `future: { compatibilityVersion: 4 }` dans `nuxt.config.ts`
+    TODO.md:169:| `nuxt.config.ts`       | Config racine                                       |
+    TODO.md:216:| `nuxt.config.ts`             | 265    | `const { serverQueryContent } = await import('#content/server')` dans `sitemap.routes`                                           |
+    TODO.md:220:- [ ] **CONTENT-5** — Réécrire `sitemap.routes` dans `nuxt.config.ts` sans `serverQueryContent` — ⚠️ vérifier si `@nuxtjs/sitemap` 7.x génère les routes automatiquement depuis Content v3
+    TODO.md:244:| `nuxt.config.ts`                  | `article._path` dans `sitemap.routes` (ligne 267) |
+    TODO.md:256:##### 3.3.7 — Configuration `content:` dans `nuxt.config.ts`
+    TODO.md:284:#### 3.4 — Breaking changes `nuxt.config.ts`
+    TODO.md:289:// Actuel (nuxt.config.ts:309)
+    TODO.md:305:// Actuel (nuxt.config.ts:311-313)
+    TODO.md:320:// Actuel (nuxt.config.ts:184-189)
+    TODO.md:334:// Actuel (nuxt.config.ts:117-118)
+    TODO.md:346:// Actuel (nuxt.config.ts:285-297)
+    TODO.md:508:- [x] **C6** — ~~`/404/` dans le sitemap~~ — exclue via `sitemap.exclude` dans `nuxt.config.ts` ✓
+    migration-nuxt4-psi-audit.md:27:- CSS globaux déclarés dans `nuxt.config.ts` :
+    migration-nuxt4-psi-audit.md:104:Option A testée avec la modification minimale suivante dans `nuxt.config.ts` :
+    migration-nuxt4-psi-audit.md:152:- `nuxt.config.ts` déclare uniquement `~/assets/css/main.scss`.
+    migration-nuxt4-tests-coverage.md:185:- fichiers critiques surveillés : `pages/index.vue`, `pages/eco-conception/index.vue`, `pages/eco-conception/[slug].vue`, `components/HomeEcoArticles.vue`, `components/AppSearchInput.vue`, `server/routes/rss.xml.ts`, `server/routes/feed.json.ts`, `nuxt.config.ts`
+  Références code :
+    scripts/check-content-queries.mjs:41:file: 'nuxt.config.ts',
+    scripts/pre-build-check.js:49:check(fileExists('nuxt.config.ts'), '❌ nuxt.config.ts is missing')
+  Décision :
+    utilisé
+
+nuxt.paths.mjs
+  Appel package.json :
+    non
+  Références documentation :
+    TODO.md:144:- [ ] **DEP-6** — Supprimer `"#internal/nuxt/paths": "./nuxt.paths.mjs"` de `package.json` `imports` — override interne Nuxt 3 probablement incompatible avec Nuxt 4
+    package.json:7:"#internal/nuxt/paths": "./nuxt.paths.mjs"
+  Références code :
+    aucune
+  Décision :
+    utilisé
+
+scripts/add-chapo.mjs
+  Appel package.json :
+    non
+  Références documentation :
+    aucune
+  Références code :
+    aucune
+  Décision :
+    potentiellement orphelin
+
+scripts/check-content-queries.mjs
+  Appel package.json :
+    oui - test:content: node scripts/check-content-queries.mjs
+  Références documentation :
+    migration-nuxt4-tests-coverage.md:182:- `scripts/check-content-queries.mjs`
+    package.json:16:"test:content": "node scripts/check-content-queries.mjs",
+  Références code :
+    aucune
+  Décision :
+    utilisé
+
+scripts/check-routes.mjs
+  Appel package.json :
+    non
+  Références documentation :
+    AGENTS.md:90:│   └── check-routes.mjs    # Debug routes
+    CLAUDE.md:90:│   └── check-routes.mjs    # Debug routes
+  Références code :
+    aucune
+  Décision :
+    utilisé
+
+scripts/migrate-frontmatter-seo.mjs
+  Appel package.json :
+    oui - migrate:frontmatter: node scripts/migrate-frontmatter-seo.mjs
+  Références documentation :
+    package.json:24:"migrate:frontmatter": "node scripts/migrate-frontmatter-seo.mjs"
+  Références code :
+    aucune
+  Décision :
+    utilisé
+
+scripts/normalize-md-links.mjs
+  Appel package.json :
+    non
+  Références documentation :
+    aucune
+  Références code :
+    aucune
+  Décision :
+    potentiellement orphelin
+
+scripts/pre-build-check.js
+  Appel package.json :
+    oui - test: node scripts/pre-build-check.js && npm run test:content && npm run test:node
+  Références documentation :
+    AUDITS/MIGRATION_STATUS.md:119:- [x] **Script de validation pré-build** : `scripts/pre-build-check.js` ✅
+    AUDITS/NETLIFY_CONFIG.md:253:Le script `scripts/pre-build-check.js` valide la configuration Netlify :
+    migration-nuxt4-tests-coverage.md:30:- `scripts/pre-build-check.js`
+    package.json:15:"test": "node scripts/pre-build-check.js && npm run test:content && npm run test:node",
+  Références code :
+    aucune
+  Décision :
+    utilisé
+
+scripts/seo-audit.mjs
+  Appel package.json :
+    non
+  Références documentation :
+    aucune
+  Références code :
+    aucune
+  Décision :
+    potentiellement orphelin
+
+scripts/seo-check.mjs
+  Appel package.json :
+    non
+  Références documentation :
+    .codex/skills/quick-start.md:23:node scripts/seo-check.mjs
+    AGENTS.md:89:│   ├── seo-check.mjs       # Validation SEO post-build
+    AGENTS.md:220:node scripts/seo-check.mjs  # Vérification SEO
+    CLAUDE.md:89:│   ├── seo-check.mjs       # Validation SEO post-build
+    CLAUDE.md:205:node scripts/seo-check.mjs  # Vérification SEO
+    TODO.md:45:- Commande : `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs`
+    TODO.md:462:- [ ] **VALID-2** — `node scripts/seo-check.mjs` — toutes les vérifications SEO passent
+    TODO.md:579:- \[x\] Validation `npm run generate` + `NUXT_PUBLIC_SITE_URL=https://beabot.fr node scripts/seo-check.mjs`
+    TODO.md:594:- \[x\] Validation `npm run generate` + `NUXT_PUBLIC_SITE_URL=https://beabot.fr node scripts/seo-check.mjs`
+    docs/prompts/PROMPT_CODEX_greenlight.md:444:5. Si un script SEO léger existe (`node scripts/seo-check.mjs`),
+    docs/prompts/PROMPT_CODEX_home_v3.md:214:(`node scripts/seo-check.mjs` ou équivalent), lance-le et corrige
+    migration-nuxt4-psi-audit.md:184:- `SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : succès
+    migration-nuxt4-tests-coverage.md:16:NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs 2>&1 | tee migration-nuxt4-seo-check.txt
+    migration-nuxt4-tests-coverage.md:25:- `seo-check.mjs` : succès
+    migration-nuxt4-tests-coverage.md:36:- `scripts/seo-check.mjs`
+    migration-nuxt4-tests-coverage.md:203:- `SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : succès
+  Références code :
+    aucune
+  Décision :
+    utilisé
+

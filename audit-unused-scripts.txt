@@ -1,0 +1,8 @@
+scripts/add-chapo.mjs
+scripts/check-content-queries.mjs
+scripts/check-routes.mjs
+scripts/migrate-frontmatter-seo.mjs
+scripts/normalize-md-links.mjs
+scripts/pre-build-check.js
+scripts/seo-audit.mjs
+scripts/seo-check.mjs

@@ -1,0 +1,413 @@
+public/img/.DS_Store
+  Références trouvées :
+    aucune
+  Décision :
+    orphelin prouvé
+
+public/img/4DF4126CEDA88CAD.jpg
+  Références trouvées :
+    aucune
+  Décision :
+    orphelin prouvé
+
+public/img/4DF4126CEDA88CAE.jpg
+  Références trouvées :
+    aucune
+  Décision :
+    orphelin prouvé
+
+public/img/4DF4126CEDA88CAF.png
+  Références trouvées :
+    aucune
+  Décision :
+    orphelin prouvé
+
+public/img/aave.webp
+  Références trouvées :
+    data/portfolio.ts:132:image: 'aave.webp',
+  Décision :
+    utilisé
+
+public/img/amc2.webp
+  Références trouvées :
+    data/portfolio.ts:146:image: 'amc2.webp',
+  Décision :
+    utilisé
+
+public/img/appNoel.webp
+  Références trouvées :
+    data/portfolio.ts:186:image: 'appNoel.webp',
+  Décision :
+    utilisé
+
+public/img/apps/duospend-ajout-depense.webp
+  Références trouvées :
+    data/apps.ts:737:src: '/img/apps/duospend-ajout-depense.webp',
+  Décision :
+    utilisé
+
+public/img/apps/duospend-depense1.webp
+  Références trouvées :
+    data/apps.ts:725:src: '/img/apps/duospend-depense1.webp',
+  Décision :
+    utilisé
+
+public/img/apps/duospend-depense2.webp
+  Références trouvées :
+    data/apps.ts:731:src: '/img/apps/duospend-depense2.webp',
+  Décision :
+    utilisé
+
+public/img/apps/duospend-export-pdf.webp
+  Références trouvées :
+    data/apps.ts:743:src: '/img/apps/duospend-export-pdf.webp',
+  Décision :
+    utilisé
+
+public/img/apps/duospend-hero.webp
+  Références trouvées :
+    TODO.md:620:- \[x\] Référence `preview.src` de DuoSpend alignée sur `duospend-hero.webp`
+    data/apps.ts:710:src: '/img/apps/duospend-hero.webp',
+  Décision :
+    utilisé
+
+public/img/apps/duospend-nouveau-projet.webp
+  Références trouvées :
+    data/apps.ts:749:src: '/img/apps/duospend-nouveau-projet.webp',
+  Décision :
+    utilisé
+
+public/img/apps/duospend-resume.webp
+  Références trouvées :
+    data/apps.ts:719:src: '/img/apps/duospend-resume.webp',
+  Décision :
+    utilisé
+
+public/img/apps/duospend-tuto1.webp
+  Références trouvées :
+    aucune
+  Décision :
+    orphelin prouvé
+
+public/img/apps/duospend-tuto2.webp
+  Références trouvées :
+    aucune
+  Décision :
+    orphelin prouvé
+
+public/img/apps/duospend-tuto3.webp
+  Références trouvées :
+    aucune
+  Décision :
+    orphelin prouvé
+
+public/img/apps/duospend-vignette-apps.webp
+  Références trouvées :
+    data/apps.ts:147:image: '/img/apps/duospend-vignette-apps.webp',
+    data/apps.ts:162:src: '/img/apps/duospend-vignette-apps.webp',
+    data/apps.ts:821:image: '/img/apps/duospend-vignette-apps.webp',
+  Décision :
+    utilisé
+
+public/img/apps/meeting-mode_actif.webp
+  Références trouvées :
+    data/apps.ts:511:src: '/img/apps/meeting-mode_actif.webp',
+  Décision :
+    utilisé
+
+public/img/apps/meeting-mode_apres.webp
+  Références trouvées :
+    data/apps.ts:523:src: '/img/apps/meeting-mode_apres.webp',
+    data/apps.ts:536:src: '/img/apps/meeting-mode_apres.webp',
+  Décision :
+    utilisé
+
+public/img/apps/meeting-mode_avant.webp
+  Références trouvées :
+    data/apps.ts:499:src: '/img/apps/meeting-mode_avant.webp',
+    data/apps.ts:531:src: '/img/apps/meeting-mode_avant.webp',
+  Décision :
+    utilisé
+
+public/img/apps/meeting-mode_hero.webp
+  Références trouvées :
+    data/apps.ts:490:src: '/img/apps/meeting-mode_hero.webp',
+  Décision :
+    utilisé
+
+public/img/apps/meeting-mode_preset_1.webp
+  Références trouvées :
+    data/apps.ts:505:src: '/img/apps/meeting-mode_preset_1.webp',
+  Décision :
+    utilisé
+
+public/img/apps/meeting-mode_reglages.webp
+  Références trouvées :
+    data/apps.ts:517:src: '/img/apps/meeting-mode_reglages.webp',
+  Décision :
+    utilisé
+
+public/img/apps/meeting-mode_vignette-apps.webp
+  Références trouvées :
+    data/apps.ts:179:src: '/img/apps/meeting-mode_vignette-apps.webp',
+    data/apps.ts:666:image: '/img/apps/meeting-mode_vignette-apps.webp',
+  Décision :
+    utilisé
+
+public/img/beabot.svg
+  Références trouvées :
+    layouts/default.vue:167:<!-- <img src="/beabot.svg" alt="beabot" /> -->
+  Décision :
+    utilisé
+
+public/img/beabot.webp
+  Références trouvées :
+    aucune
+  Décision :
+    orphelin prouvé
+
+public/img/chasse-patate.png
+  Références trouvées :
+    aucune
+  Décision :
+    orphelin prouvé
+
+public/img/chasse-patate.webp
+  Références trouvées :
+    data/portfolio.ts:36:image: 'chasse-patate.webp',
+  Décision :
+    utilisé
+
+public/img/cyclop.webp
+  Références trouvées :
+    data/portfolio.ts:95:image: 'cyclop.webp',
+  Décision :
+    utilisé
+
+public/img/duospend.webp
+  Références trouvées :
+    data/portfolio.ts:65:image: 'duospend.webp',
+  Décision :
+    utilisé
+
+public/img/focusone.webp
+  Références trouvées :
+    data/portfolio.ts:79:image: 'focusone.webp',
+  Décision :
+    utilisé
+
+public/img/forme-flou.svg
+  Références trouvées :
+    aucune
+  Décision :
+    orphelin prouvé
+
+public/img/forme.svg
+  Références trouvées :
+    aucune
+  Décision :
+    orphelin prouvé
+
+public/img/formeOLD.svg
+  Références trouvées :
+    aucune
+  Décision :
+    orphelin prouvé
+
+public/img/greenlight-free/.DS_Store
+  Références trouvées :
+    aucune
+  Décision :
+    orphelin prouvé
+
+public/img/greenlight-free/greenlight-free_front-1.webp
+  Références trouvées :
+    pages/greenlight.vue:433:'/img/greenlight-free/greenlight-free_front-1.webp',
+    pages/greenlight.vue:444:src: '/img/greenlight-free/greenlight-free_front-1.webp',
+  Décision :
+    utilisé
+
+public/img/greenlight-free/greenlight-free_front-2.webp
+  Références trouvées :
+    pages/greenlight.vue:474:src: '/img/greenlight-free/greenlight-free_front-2.webp',
+  Décision :
+    utilisé
+
+public/img/greenlight-free/greenlight-free_front-3.webp
+  Références trouvées :
+    pages/greenlight.vue:559:src: '/img/greenlight-free/greenlight-free_front-3.webp',
+  Décision :
+    utilisé
+
+public/img/greenlight-free/greenlight-free_front-4.webp
+  Références trouvées :
+    pages/greenlight.vue:567:src: '/img/greenlight-free/greenlight-free_front-4.webp',
+  Décision :
+    utilisé
+
+public/img/greenlight-free/greenlight-free_network.webp
+  Références trouvées :
+    pages/greenlight.vue:458:src: '/img/greenlight-free/greenlight-free_network.webp',
+    pages/greenlight.vue:531:src: '/img/greenlight-free/greenlight-free_network.webp',
+  Décision :
+    utilisé
+
+public/img/greenlight/.DS_Store
+  Références trouvées :
+    aucune
+  Décision :
+    orphelin prouvé
+
+public/img/greenlight/greenlight-admin-1.webp
+  Références trouvées :
+    pages/greenlight.vue:583:src: '/img/greenlight/greenlight-admin-1.webp',
+  Décision :
+    utilisé
+
+public/img/greenlight/greenlight-admin-2.webp
+  Références trouvées :
+    pages/greenlight.vue:505:src: '/img/greenlight/greenlight-admin-2.webp',
+  Décision :
+    utilisé
+
+public/img/greenlight/greenlight-admin-3.webp
+  Références trouvées :
+    aucune
+  Décision :
+    orphelin prouvé
+
+public/img/greenlight/greenlight-admin-4.webp
+  Références trouvées :
+    aucune
+  Décision :
+    orphelin prouvé
+
+public/img/greenlight/greenlight-customizer-1.webp
+  Références trouvées :
+    aucune
+  Décision :
+    orphelin prouvé
+
+public/img/greenlight/greenlight-customizer-2.webp
+  Références trouvées :
+    pages/greenlight.vue:451:src: '/img/greenlight/greenlight-customizer-2.webp',
+  Décision :
+    utilisé
+
+public/img/greenlight/greenlight-customizer-3.webp
+  Références trouvées :
+    pages/greenlight.vue:575:src: '/img/greenlight/greenlight-customizer-3.webp',
+  Décision :
+    utilisé
+
+public/img/greenlight/greenlight-front-1.webp
+  Références trouvées :
+    aucune
+  Décision :
+    orphelin prouvé
+
+public/img/greenlight/greenlight-front-2.webp
+  Références trouvées :
+    aucune
+  Décision :
+    orphelin prouvé
+
+public/img/greenlight/greenlight-front-3.webp
+  Références trouvées :
+    aucune
+  Décision :
+    orphelin prouvé
+
+public/img/guideBleu1.webp
+  Références trouvées :
+    data/portfolio.ts:159:image: 'guideBleu1.webp',
+  Décision :
+    utilisé
+
+public/img/guideBleu2.webp
+  Références trouvées :
+    data/portfolio.ts:173:image: 'guideBleu2.webp',
+  Décision :
+    utilisé
+
+public/img/icon-hashtag.svg
+  Références trouvées :
+    pages/eco-conception/[slug].vue:788:background-image: url('/img/icon-hashtag.svg');
+  Décision :
+    utilisé
+
+public/img/lpb-new.jpeg
+  Références trouvées :
+    content/articles/theme-wordpress-eco-conception.md:39:<v-img src="lpb-new.jpeg" alt="la petite boucle nouveau site"></v-img>
+  Décision :
+    utilisé
+
+public/img/lpb.jpeg
+  Références trouvées :
+    content/articles/theme-wordpress-eco-conception.md:22:<v-img src="lpb.jpeg" alt="la petite boucle ancien site"></v-img>
+  Décision :
+    utilisé
+
+public/img/lpb.webp
+  Références trouvées :
+    data/portfolio.ts:113:image: 'lpb.webp',
+  Décision :
+    utilisé
+
+public/img/oeuf-bleu.svg
+  Références trouvées :
+    aucune
+  Décision :
+    orphelin prouvé
+
+public/img/oeuf-vert.svg
+  Références trouvées :
+    aucune
+  Décision :
+    orphelin prouvé
+
+public/img/oeuf.svg
+  Références trouvées :
+    aucune
+  Décision :
+    orphelin prouvé
+
+public/img/siturem/siturem-interface.webp
+  Références trouvées :
+    data/apps.ts:882:src: '/img/siturem/siturem-interface.webp',
+  Décision :
+    utilisé
+
+public/img/siturem/siturem-intro-1.webp
+  Références trouvées :
+    data/apps.ts:888:src: '/img/siturem/siturem-intro-1.webp',
+  Décision :
+    utilisé
+
+public/img/siturem/siturem-intro-2.webp
+  Références trouvées :
+    data/apps.ts:894:src: '/img/siturem/siturem-intro-2.webp',
+  Décision :
+    utilisé
+
+public/img/siturem/siturem-intro-3.webp
+  Références trouvées :
+    data/apps.ts:900:src: '/img/siturem/siturem-intro-3.webp',
+  Décision :
+    utilisé
+
+public/img/siturem/siturem-landing.webp
+  Références trouvées :
+    data/apps.ts:196:src: '/img/siturem/siturem-landing.webp',
+    data/apps.ts:867:src: '/img/siturem/siturem-landing.webp',
+    data/apps.ts:1001:image: '/img/siturem/siturem-landing.webp',
+    data/portfolio.ts:49:image: '/img/siturem/siturem-landing.webp',
+  Décision :
+    utilisé
+
+public/img/siturem/siturem-meditation-screen.webp
+  Références trouvées :
+    data/apps.ts:876:src: '/img/siturem/siturem-meditation-screen.webp',
+  Décision :
+    utilisé
+

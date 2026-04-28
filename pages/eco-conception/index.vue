@@ -76,6 +76,7 @@
 
     <section
       class="eco-section eco-section--dark eco-section--promise"
+      data-nav-theme="light"
       aria-labelledby="eco-promise-title"
     >
       <Oeuf
@@ -161,6 +162,7 @@
     <section
       id="eco-principles"
       class="eco-section eco-section--dark eco-section--principles"
+      data-nav-theme="light"
       aria-labelledby="eco-principles-title"
     >
       <Oeuf
@@ -470,7 +472,7 @@
       aria-labelledby="eco-cta-title"
     >
       <div class="eco-shell">
-        <div class="eco-final">
+        <div class="eco-final" data-nav-theme="light">
           <Oeuf
             class="eco-oeuf eco-oeuf--cta-1"
             width="16%"
