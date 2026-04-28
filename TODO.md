@@ -31,8 +31,8 @@
 
 ### Étape 0 — Tests & couverture
 
-- [ ] Lancer la suite de tests existante et s'assurer qu'elle passe à 100% sur `dev` avant toute migration
-- [ ] Documenter les tests manquants critiques (pages, composants, utils SEO) et les ajouter si nécessaire
+- [x] Lancer la suite de tests existante et s'assurer qu'elle passe à 100% sur `dev` avant toute migration
+- [x] Documenter les tests manquants critiques (pages, composants, utils SEO) et les ajouter si nécessaire
 
 > Audit préparatoire réalisé le 28 avril 2026 sur `chore/nuxt-4-A` après activation de `future.compatibilityVersion: 4`.
 > À refaire explicitement sur `dev` avant toute branche de migration réelle.
