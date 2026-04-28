@@ -1,32 +1,64 @@
 <template>
   <main class="services-page">
     <section class="services-hero" aria-labelledby="services-hero-title">
-      <div class="services-shell">
-        <p class="services-eyebrow">
-          <span class="services-dot" aria-hidden="true"></span>
-          Développeur web freelance · Disponible
-        </p>
-        <h1 id="services-hero-title" class="services-title">
-          Missions freelance — WordPress, JavaScript (Vue.js), éco-conception
-        </h1>
-        <p class="services-subtitle">
-          15 ans d'expérience web. Je prends en charge les projets WordPress,
-          les sites statiques Vue.js et Nuxt, et les audits éco-conception — de
-          la conception au déploiement.
-        </p>
-        <p class="services-geo">Basé à Lille · Hauts-de-France · Remote</p>
-        <div class="services-actions">
-          <AppLink class="services-btn services-btn--primary" to="/contact/">
-            Discutons de votre projet
-          </AppLink>
-          <AppLink class="services-btn services-btn--secondary" to="/portfolio/">
-            Voir mes réalisations
-          </AppLink>
+      <Oeuf
+        class="services-oeuf services-oeuf--hero-1"
+        width="23%"
+        transform="rotate(-34)"
+        fill="#04d94f"
+      />
+      <Oeuf
+        class="services-oeuf services-oeuf--hero-2"
+        width="18%"
+        transform="rotate(28)"
+        fill="#0439d9"
+      />
+      <div class="services-shell services-hero__grid">
+        <div class="services-hero__copy">
+          <p class="services-eyebrow">
+            <span class="services-dot" aria-hidden="true"></span>
+            Développeur web freelance · Disponible
+          </p>
+          <h1 id="services-hero-title" class="services-title">
+            Missions freelance — WordPress, JavaScript (Vue.js), éco-conception
+          </h1>
+          <p class="services-subtitle">
+            15 ans d'expérience web. Je prends en charge les projets WordPress,
+            les sites statiques Vue.js et Nuxt, et les audits éco-conception —
+            de la conception au déploiement.
+          </p>
+          <p class="services-geo">Basé à Lille · Hauts-de-France · Remote</p>
+          <div class="services-actions">
+            <AppLink class="services-btn services-btn--primary" to="/contact/">
+              Discutons de votre projet
+            </AppLink>
+            <AppLink
+              class="services-btn services-btn--secondary"
+              to="/portfolio/"
+            >
+              Voir mes réalisations
+            </AppLink>
+          </div>
         </div>
+
+        <aside class="services-hero__panel" aria-label="Repères de mission">
+          <p class="services-panel__kicker">Ce que je relie</p>
+          <div class="services-panel__grid">
+            <p>Offre claire</p>
+            <p>Technique sobre</p>
+            <p>Contenus utiles</p>
+          </div>
+          <AppLink class="services-text-link" to="/eco-conception/">
+            Explorer les contenus éco-conception
+          </AppLink>
+        </aside>
       </div>
     </section>
 
-    <section class="services-section" aria-labelledby="services-wp-title">
+    <section
+      class="services-section services-section--mission services-section--wp"
+      aria-labelledby="services-wp-title"
+    >
       <div class="services-shell">
         <div class="services-mission">
           <div class="services-mission__header">
@@ -38,6 +70,19 @@
               Création, migration, refonte et optimisation de sites WordPress
               Gutenberg — sobres, rapides et administrables sans aide technique.
             </p>
+            <div
+              class="services-mission__links"
+              aria-label="Ressources WordPress"
+            >
+              <AppLink
+                v-for="link in wpLinks"
+                :key="link.to"
+                class="services-text-link"
+                :to="link.to"
+              >
+                {{ link.label }}
+              </AppLink>
+            </div>
           </div>
           <ul class="services-mission__list">
             <li v-for="item in wpItems" :key="item">{{ item }}</li>
@@ -47,7 +92,7 @@
     </section>
 
     <section
-      class="services-section services-section--alt"
+      class="services-section services-section--mission services-section--alt services-section--js"
       aria-labelledby="services-js-title"
     >
       <div class="services-shell">
@@ -62,6 +107,19 @@
               Vue.js et Nuxt 3 — performants, éco-conçus, déployables sur un
               hébergement statique.
             </p>
+            <div
+              class="services-mission__links"
+              aria-label="Ressources Vue.js et Nuxt"
+            >
+              <AppLink
+                v-for="link in jsLinks"
+                :key="link.to"
+                class="services-text-link"
+                :to="link.to"
+              >
+                {{ link.label }}
+              </AppLink>
+            </div>
           </div>
           <ul class="services-mission__list">
             <li v-for="item in jsItems" :key="item">{{ item }}</li>
@@ -70,7 +128,16 @@
       </div>
     </section>
 
-    <section class="services-section" aria-labelledby="services-audit-title">
+    <section
+      class="services-section services-section--mission services-section--audit"
+      aria-labelledby="services-audit-title"
+    >
+      <Oeuf
+        class="services-oeuf services-oeuf--audit"
+        width="17%"
+        transform="rotate(-18)"
+        fill="#f2a81d"
+      />
       <div class="services-shell">
         <div class="services-mission">
           <div class="services-mission__header">
@@ -83,6 +150,16 @@
               technique de votre site — rapport écrit avec recommandations
               priorisées.
             </p>
+            <div class="services-mission__links" aria-label="Ressources audit">
+              <AppLink
+                v-for="link in auditLinks"
+                :key="link.to"
+                class="services-text-link"
+                :to="link.to"
+              >
+                {{ link.label }}
+              </AppLink>
+            </div>
           </div>
           <ul class="services-mission__list">
             <li v-for="item in auditItems" :key="item">{{ item }}</li>
@@ -92,13 +169,22 @@
     </section>
 
     <section
-      class="services-section services-section--alt"
+      class="services-section services-section--zone"
       aria-labelledby="services-zone-title"
     >
+      <Oeuf
+        class="services-oeuf services-oeuf--zone"
+        width="18%"
+        transform="rotate(22)"
+        fill="#04d94f"
+      />
       <div class="services-shell">
-        <h2 id="services-zone-title" class="services-section__title">
-          Zone d'intervention
-        </h2>
+        <div class="services-section__intro">
+          <p class="services-eyebrow services-eyebrow--light">Terrain</p>
+          <h2 id="services-zone-title" class="services-section__title">
+            Zone d'intervention
+          </h2>
+        </div>
         <div class="services-zone-grid">
           <article
             v-for="zone in zones"
@@ -116,11 +202,12 @@
       <div class="services-shell">
         <div class="services-tarifs__intro">
           <h2 id="services-tarifs-title" class="services-section__title">
-            Tarifs indicatifs
+            Fourchettes habituelles
           </h2>
           <p class="services-tarifs__note">
-            Ces fourchettes sont indicatives. Le périmètre exact et le tarif
-            final sont définis ensemble au moment du brief.
+            Ces montants donnent un ordre de grandeur réaliste. Le budget final
+            dépend du périmètre, du volume de contenu, des intégrations et de la
+            complexité réelle du projet.
           </p>
         </div>
         <div class="services-tarifs-grid">
@@ -143,6 +230,18 @@
     >
       <div class="services-shell">
         <div class="services-cta">
+          <Oeuf
+            class="services-oeuf services-oeuf--cta-1"
+            width="18%"
+            transform="rotate(-40)"
+            fill="#04d94f"
+          />
+          <Oeuf
+            class="services-oeuf services-oeuf--cta-2"
+            width="14%"
+            transform="rotate(24)"
+            fill="#0439d9"
+          />
           <p class="services-eyebrow services-eyebrow--light">Contact</p>
           <h2 id="services-cta-title" class="services-cta__title">
             Un projet à démarrer ?
@@ -155,11 +254,14 @@
             <AppLink class="services-btn services-btn--primary" to="/contact/">
               Me contacter
             </AppLink>
+            <AppLink class="services-btn services-btn--ghost" to="/portfolio/">
+              Voir mes réalisations
+            </AppLink>
             <AppLink
               class="services-btn services-btn--ghost"
-              to="/portfolio/"
+              to="/eco-conception/"
             >
-              Voir mes réalisations
+              Lire les contenus
             </AppLink>
           </div>
         </div>
@@ -190,6 +292,21 @@ const wpItems = [
   "Formation à l'administration WordPress",
 ] as const
 
+const wpLinks = [
+  {
+    label: 'Choisir un freelance WordPress à Lille',
+    to: '/eco-conception/wordpress-freelance-lille/',
+  },
+  {
+    label: 'Préparer une refonte éco-conçue',
+    to: '/eco-conception/refonte-site-eco-concu/',
+  },
+  {
+    label: 'Voir Greenlight pour WordPress',
+    to: '/greenlight/',
+  },
+] as const
+
 const jsItems = [
   'Site statique (SSG) avec Nuxt 3, déployable sur Netlify ou Vercel',
   'Landing page ou site vitrine Vue.js',
@@ -198,12 +315,34 @@ const jsItems = [
   'Composants Vue.js sur mesure',
 ] as const
 
+const jsLinks = [
+  {
+    label: 'Comparer WordPress et Nuxt',
+    to: '/eco-conception/wordpress-vs-nuxt/',
+  },
+  {
+    label: 'Voir des réalisations',
+    to: '/portfolio/',
+  },
+] as const
+
 const auditItems = [
   'Performance : Lighthouse, PageSpeed Insights, Core Web Vitals',
   'Empreinte numérique : EcoIndex, poids de page, requêtes HTTP, DOM',
   'SEO technique : balises, canonicals, données structurées, maillage',
   'Accessibilité : hiérarchie, contrastes, navigation clavier',
   'Rapport écrit avec recommandations priorisées',
+] as const
+
+const auditLinks = [
+  {
+    label: "Comprendre l'audit de site web",
+    to: '/eco-conception/audit-site-web/',
+  },
+  {
+    label: 'Décider avant une refonte',
+    to: '/eco-conception/refonte-site-eco-concu/',
+  },
 ] as const
 
 const zones = [
@@ -350,10 +489,18 @@ useHead({
 @use 'sass:color';
 
 .services-page {
+  --services-surface: #f3f1ea;
+  --services-surface-soft: #faf8f2;
+  --services-text: #12130f;
+  --services-muted: rgba(18, 19, 15, 0.68);
   background:
-    radial-gradient(circle at top right, rgba(13, 199, 99, 0.1), transparent 28rem),
+    radial-gradient(
+      circle at top right,
+      rgba(13, 199, 99, 0.1),
+      transparent 28rem
+    ),
     linear-gradient(180deg, #f6f4ee 0%, #faf9f5 45%, #f3f1eb 100%);
-  color: #12130f;
+  color: var(--services-text);
 }
 
 .services-shell {
@@ -362,16 +509,150 @@ useHead({
 }
 
 .services-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   padding: clamp(7rem, 12vw, 9.5rem) 0 clamp(4rem, 7vw, 6rem);
+  background:
+    radial-gradient(
+      circle at 82% 20%,
+      rgba(4, 57, 217, 0.07),
+      transparent 18rem
+    ),
+    radial-gradient(
+      circle at 10% 90%,
+      rgba(13, 199, 99, 0.12),
+      transparent 18rem
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.34), transparent 82%);
+}
+
+.services-hero::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(18, 19, 15, 0),
+    rgba(18, 19, 15, 0.14),
+    rgba(18, 19, 15, 0)
+  );
+}
+
+.services-hero__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: minmax(0, 1.12fr) minmax(17rem, 0.54fr);
+    align-items: end;
+  }
+}
+
+.services-hero__copy {
+  max-width: 52rem;
+}
+
+.services-hero__panel {
+  display: grid;
+  gap: 1rem;
+  padding: 1.35rem;
+  border: 1px solid rgba(18, 19, 15, 0.08);
+  border-radius: 1.5rem;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(13, 199, 99, 0.12),
+      transparent 11rem
+    ),
+    rgba(255, 255, 255, 0.68);
+  box-shadow:
+    0 1.2rem 2.5rem rgba(18, 19, 15, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.services-panel__kicker {
+  margin: 0;
+  color: rgba(18, 19, 15, 0.54);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.services-panel__grid {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.services-panel__grid p {
+  margin: 0;
+  padding: 0.85rem 0.95rem;
+  border-left: 0.25rem solid $vert;
+  border-radius: 0.8rem;
+  background: rgba(255, 255, 255, 0.68);
+  color: rgba(18, 19, 15, 0.78);
+  font-weight: 700;
 }
 
 .services-section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   padding: clamp(3.5rem, 7vw, 6rem) 0;
 }
 
 .services-section--alt {
-  background: rgba(255, 255, 255, 0.5);
+  background:
+    linear-gradient(90deg, rgba(4, 57, 217, 0.04), rgba(13, 199, 99, 0.035)),
+    rgba(255, 255, 255, 0.5);
   border-block: 1px solid rgba(18, 19, 15, 0.07);
+}
+
+.services-section--mission .services-shell,
+.services-section--zone .services-shell,
+.services-cta > :not(.services-oeuf) {
+  position: relative;
+  z-index: 1;
+}
+
+.services-section--wp {
+  background:
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(242, 168, 29, 0.08),
+      transparent 16rem
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.44), rgba(244, 242, 236, 0));
+}
+
+.services-section--audit {
+  background:
+    radial-gradient(
+      circle at 84% 20%,
+      rgba(13, 199, 99, 0.08),
+      transparent 17rem
+    ),
+    linear-gradient(180deg, rgba(244, 242, 236, 0), rgba(255, 255, 255, 0.34));
+}
+
+.services-section--zone {
+  background:
+    radial-gradient(
+      circle at 86% 12%,
+      rgba(13, 199, 99, 0.16),
+      transparent 21rem
+    ),
+    radial-gradient(
+      circle at 10% 88%,
+      rgba(4, 57, 217, 0.1),
+      transparent 17rem
+    ),
+    linear-gradient(180deg, #10110d 0%, #171712 100%);
+  color: #f7f5ef;
 }
 
 .services-eyebrow {
@@ -404,8 +685,15 @@ useHead({
 }
 
 @keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(0.85); }
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.85);
+  }
 }
 
 .services-title {
@@ -510,6 +798,7 @@ useHead({
 .services-mission__header {
   display: grid;
   gap: 0.85rem;
+  align-content: start;
 }
 
 .services-mission__tag {
@@ -542,6 +831,35 @@ useHead({
   line-height: 1.72;
 }
 
+.services-mission__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 0.9rem;
+  margin-top: 0.2rem;
+}
+
+.services-text-link {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  color: #0a6d36;
+  font-size: 0.92rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.services-text-link::after {
+  content: '→';
+  margin-left: 0.35rem;
+}
+
+.services-text-link:hover,
+.services-text-link:focus-visible {
+  color: color.adjust($vert, $lightness: -16%);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
 .services-mission__list {
   display: grid;
   gap: 0.7rem;
@@ -553,12 +871,19 @@ useHead({
 
 .services-mission__list li {
   padding: 0.95rem 1.1rem 0.95rem 1.4rem;
-  border-radius: 1.1rem;
+  border-radius: 1rem;
   border: 1px solid rgba(18, 19, 15, 0.07);
-  background: rgba(255, 255, 255, 0.82);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.94),
+      rgba(255, 255, 255, 0.74)
+    ),
+    rgba(255, 255, 255, 0.82);
   color: rgba(18, 19, 15, 0.8);
   line-height: 1.55;
   position: relative;
+  box-shadow: 0 0.7rem 1.5rem rgba(18, 19, 15, 0.035);
 }
 
 .services-mission__list li::before {
@@ -581,6 +906,14 @@ useHead({
   color: #0f110c;
 }
 
+.services-section__intro {
+  margin-bottom: 1.4rem;
+}
+
+.services-section--zone .services-section__title {
+  color: #f7f5ef;
+}
+
 .services-zone-grid {
   display: grid;
   gap: 1rem;
@@ -594,12 +927,16 @@ useHead({
   display: grid;
   gap: 0.6rem;
   padding: 1.3rem;
-  border-radius: 1.5rem;
-  border: 1px solid rgba(13, 199, 99, 0.16);
+  border-radius: 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.09);
   background:
-    radial-gradient(circle at top right, rgba(13, 199, 99, 0.08), transparent 10rem),
-    rgba(255, 255, 255, 0.86);
-  box-shadow: 0 0.8rem 1.8rem rgba(18, 19, 15, 0.05);
+    radial-gradient(
+      circle at top right,
+      rgba(13, 199, 99, 0.1),
+      transparent 10rem
+    ),
+    rgba(255, 255, 255, 0.055);
+  box-shadow: 0 0.8rem 1.8rem rgba(8, 8, 7, 0.16);
 }
 
 .services-zone-card__label {
@@ -607,12 +944,12 @@ useHead({
   font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #0f110c;
+  color: #f7f5ef;
 }
 
 .services-zone-card p:last-child {
   margin: 0;
-  color: rgba(18, 19, 15, 0.68);
+  color: rgba(247, 245, 239, 0.72);
   line-height: 1.65;
 }
 
@@ -644,9 +981,15 @@ useHead({
   display: grid;
   gap: 0.55rem;
   padding: 1.3rem;
-  border-radius: 1.5rem;
+  border-radius: 1rem;
   border: 1px solid rgba(18, 19, 15, 0.08);
-  background: rgba(255, 255, 255, 0.88);
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(242, 168, 29, 0.08),
+      transparent 9rem
+    ),
+    rgba(255, 255, 255, 0.88);
   box-shadow: 0 0.8rem 1.8rem rgba(18, 19, 15, 0.05);
 }
 
@@ -680,12 +1023,23 @@ useHead({
 }
 
 .services-cta {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   padding: clamp(2.2rem, 5vw, 4rem);
   border-radius: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background:
-    radial-gradient(circle at top right, rgba(13, 199, 99, 0.16), transparent 20rem),
-    radial-gradient(circle at bottom left, rgba(4, 57, 217, 0.1), transparent 18rem),
+    radial-gradient(
+      circle at top right,
+      rgba(13, 199, 99, 0.16),
+      transparent 20rem
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(4, 57, 217, 0.1),
+      transparent 18rem
+    ),
     linear-gradient(135deg, #10110d 0%, #171712 100%);
   color: #f7f5ef;
   display: grid;
@@ -709,6 +1063,49 @@ useHead({
   line-height: 1.7;
 }
 
+.services-oeuf {
+  position: absolute;
+  z-index: 0;
+  opacity: 0.13;
+  pointer-events: none;
+}
+
+.services-oeuf--hero-1 {
+  top: 10%;
+  right: -5%;
+  opacity: 0.12;
+}
+
+.services-oeuf--hero-2 {
+  bottom: 6%;
+  left: -4%;
+  opacity: 0.08;
+}
+
+.services-oeuf--audit {
+  right: -5%;
+  bottom: -12%;
+  opacity: 0.16;
+}
+
+.services-oeuf--zone {
+  left: -4%;
+  bottom: -20%;
+  opacity: 0.14;
+}
+
+.services-oeuf--cta-1 {
+  top: -18%;
+  right: -5%;
+  opacity: 0.18;
+}
+
+.services-oeuf--cta-2 {
+  bottom: -18%;
+  left: -4%;
+  opacity: 0.12;
+}
+
 @media (max-width: $breakpoint-tablet) {
   .services-hero {
     padding-top: 5.8rem;
@@ -719,9 +1116,25 @@ useHead({
     padding: 3rem 0;
   }
 
+  .services-hero__panel {
+    border-radius: 1.25rem;
+  }
+
   .services-zone-grid,
   .services-tarifs-grid {
     grid-template-columns: 1fr;
+  }
+
+  .services-oeuf--hero-1 {
+    right: -18%;
+    opacity: 0.08;
+  }
+
+  .services-oeuf--hero-2,
+  .services-oeuf--audit,
+  .services-oeuf--zone,
+  .services-oeuf--cta-2 {
+    display: none;
   }
 }
 

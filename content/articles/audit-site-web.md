@@ -3,8 +3,8 @@ title: "Audit de site web : ce que j'analyse et ce que ça coûte"
 chapo: "Un audit, c'est une radiographie. Pas une liste de reproches. Voici ce que j'examine et pourquoi ça change quelque chose."
 description: "Ce qu'un audit de site web comprend : performance, SEO, éco-conception, accessibilité. Méthode et tarif d'un développeur web freelance."
 seo:
-  title: "Audit de site web éco-conception : méthode et tarif"
-  description: "Audit de site web par un développeur freelance : analyse de performance, SEO, éco-conception et accessibilité. Ce que ça comprend et ce que ça coûte."
+  title: 'Audit de site web éco-conception : méthode et tarif'
+  description: 'Audit de site web par un développeur freelance : analyse de performance, SEO, éco-conception et accessibilité. Ce que ça comprend et ce que ça coûte.'
 date: 2026-04-27
 updatedAt: 2026-04-27
 temps: 5
@@ -72,17 +72,18 @@ Si l'audit révèle qu'une <a href="/eco-conception/refonte-site-eco-concu/" cla
 
 La durée dépend de la taille du site et de sa complexité technique. Pour un site vitrine de 5 à 20 pages, comptez 2 à 3 jours de travail. Pour un site plus important (e-commerce, site multi-sections avec fonctionnalités sur-mesure), 4 à 5 jours.
 
-| Type de site | Durée indicative | Fourchette |
-|---|---|---|
-| Site vitrine (5-20 pages) | 2-3 jours | 900 – 1 800 € |
-| Site moyen (20-50 pages) | 3-4 jours | 1 800 – 2 600 € |
-| Site complexe (50+ pages, e-commerce) | 4-5 jours | 2 600 – 3 500 € |
+| Type de site                          | Durée indicative | Fourchette      |
+| ------------------------------------- | ---------------- | --------------- |
+| Site vitrine (5-20 pages)             | 2-3 jours        | 900 – 1 800 €   |
+| Site moyen (20-50 pages)              | 3-4 jours        | 1 800 – 2 600 € |
+| Site complexe (50+ pages, e-commerce) | 4-5 jours        | 2 600 – 3 500 € |
 
 Ces fourchettes correspondent à un TJM de 450 €/j. Le rapport est livré dans les délais convenus, le point de restitution est inclus.
 
 L'audit peut être déduit d'une future prestation de développement si vous décidez de travailler avec moi sur la suite.
 
-Le détail de mes prestations est sur la <a href="/services/" class="lien--vert">page services</a>. Si vous avez une question sur le périmètre avant de vous décider, un échange de 20 minutes suffit à clarifier.
+Pour cadrer ce type d'intervention, vous pouvez <a href="/services/" class="lien--vert">voir mes services d'audit et de développement web</a>. Si vous avez une question sur le périmètre avant de vous décider, un échange de 20 minutes suffit à clarifier.
 
 ---
-Besoin d'un audit de site web à Lille ? J'interviens sur des audits performance, SEO et éco-conception. [Voir mes services](/services/) ou [me contacter directement](/contact/).
+
+Besoin d'un audit de site web à Lille ? J'interviens sur des audits performance, SEO et éco-conception. [Me confier ce type de mission](/services/) ou [me contacter directement](/contact/).

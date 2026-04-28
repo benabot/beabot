@@ -1,10 +1,10 @@
 ---
-title: "Développeur WordPress freelance à Lille : comment choisir ?"
+title: 'Développeur WordPress freelance à Lille : comment choisir ?'
 chapo: "Trouver un développeur WordPress à Lille, c'est facile. En trouver un bon, c'est une autre affaire. Voici les critères concrets pour éviter les erreurs classiques."
-description: "Comment choisir un développeur WordPress freelance à Lille : critères techniques, références, tarifs indicatifs. Guide pratique par un développeur web basé à Lille."
+description: 'Comment choisir un développeur WordPress freelance à Lille : critères techniques, références, tarifs indicatifs. Guide pratique par un développeur web basé à Lille.'
 seo:
-  title: "Développeur WordPress freelance Lille — comment choisir ?"
-  description: "Choisir un développeur WordPress freelance à Lille : critères techniques, références, tarifs indicatifs. Guide pratique par un développeur web basé à Lille."
+  title: 'Développeur WordPress freelance Lille — comment choisir ?'
+  description: 'Choisir un développeur WordPress freelance à Lille : critères techniques, références, tarifs indicatifs. Guide pratique par un développeur web basé à Lille.'
 date: 2026-04-27
 updatedAt: 2026-04-27
 temps: 6
@@ -62,13 +62,13 @@ Travailler avec un développeur basé à Lille ou dans les Hauts-de-France, c'es
 
 Les fourchettes ci-dessous sont des ordres de grandeur honnêtes pour la région Lille / Hauts-de-France. Elles varient en fonction de la complexité, du niveau d'expérience et du type de prestataire.
 
-| Type de projet | Fourchette indicative |
-|---|---|
-| Site vitrine simple (5-8 pages) | 2 000 – 4 500 € |
-| Site vitrine avec fonctionnalités sur-mesure | 4 500 – 8 000 € |
-| Site e-commerce WordPress/WooCommerce | 6 000 – 15 000 € |
-| Refonte complète avec audit préalable | 5 000 – 12 000 € |
-| TJM freelance expérimenté (Lille) | 400 – 650 €/j |
+| Type de projet                               | Fourchette indicative |
+| -------------------------------------------- | --------------------- |
+| Site vitrine simple (5-8 pages)              | 2 000 – 4 500 €       |
+| Site vitrine avec fonctionnalités sur-mesure | 4 500 – 8 000 €       |
+| Site e-commerce WordPress/WooCommerce        | 6 000 – 15 000 €      |
+| Refonte complète avec audit préalable        | 5 000 – 12 000 €      |
+| TJM freelance expérimenté (Lille)            | 400 – 650 €/j         |
 
 Ces chiffres supposent un travail sérieux : analyse du besoin, développement propre, tests, formation à la prise en main. Un devis très en dessous de ces fourchettes doit appeler des questions précises sur ce qui est inclus — et ce qui ne l'est pas.
 
@@ -76,8 +76,8 @@ Notez que ces tarifs ne comprennent généralement pas l'hébergement, les licen
 
 ---
 
-Vous cherchez un développeur WordPress freelance basé à Lille ? Je propose des prestations WordPress sur-mesure, orientées performance et durabilité, sans dépendances inutiles. Découvrez le détail de mes [services](/services/) pour voir si mon profil correspond à ce que vous cherchez.
+Vous cherchez un développeur WordPress freelance basé à Lille ? Je propose des prestations WordPress sur-mesure, orientées performance et durabilité, sans dépendances inutiles. Découvrez le détail de mes [services WordPress freelance](/services/) pour voir si mon profil correspond à ce que vous cherchez.
 
 ---
 
-Besoin d'un développeur WordPress freelance à Lille ? J'interviens sur des projets WordPress, Vue.js/Nuxt et audits éco-conception. [Voir mes services](/services/) ou [me contacter directement](/contact/).
+Besoin d'un développeur WordPress freelance à Lille ? [Me confier ce type de mission](/services/) ou [me contacter directement](/contact/).

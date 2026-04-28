@@ -5,16 +5,37 @@
 
 ---
 
+## Phase 20 — Services freelance : relief visuel & maillage (28 avril 2026)
+
+> Branche : `feat/design-services`
+
+- [x] Retravailler `/services/` sans changer le fond général ni casser la logique commerciale existante
+- [x] Ajouter du relief visuel inspiré de `/eco-conception/` : œufs décoratifs, accents colorés, bande sombre, rythme entre sections
+- [x] Conserver les familles d'offres WordPress, Vue.js / Nuxt et audit éco-conception & performance
+- [x] Renommer `Tarifs indicatifs` en **Fourchettes habituelles** et clarifier le rôle d'ordre de grandeur budgétaire
+- [x] Renforcer le maillage `/services/` → articles : audit site web, WordPress freelance Lille, refonte éco-conçue, WordPress vs Nuxt
+- [x] Renforcer le maillage `/services/` → `/portfolio/`, `/contact/`, `/eco-conception/` et `/greenlight/`
+- [x] Ajouter des liens retour sobres depuis les 4 articles longue traîne vers `/services/`
+- [x] Valider `npm run generate` : 100 routes générées
+- [x] Vérifier Prettier sur les fichiers modifiés
+- [x] Vérifier ESLint ciblé sur `pages/services.vue` : 0 erreur, warnings de style Vue uniquement
+- [ ] Lint global repo-wide à traiter séparément : `npm run lint` reste bloqué par des warnings/formatages historiques hors périmètre
+
+---
+
 ## Backlog — Migration Nuxt 4
 
 > Prérequis à compléter dans l'ordre avant d'ouvrir une branche de migration.
 
 ### Étape 0 — Tests & couverture
+
 - [ ] Lancer la suite de tests existante et s'assurer qu'elle passe à 100% sur `dev` avant toute migration
 - [ ] Documenter les tests manquants critiques (pages, composants, utils SEO) et les ajouter si nécessaire
 
 ### Étape 1 — Performance (PageSpeed Insights : 99 → 100 mobile)
+
 > Source : audit PSI du 27 avril 2026 (screenshot)
+
 - [ ] **PSI-1** — Éliminer les 3 CSS render-blocking (`/_nuxt/entry.css`, `/_nuxt/index.css`, `/_nuxt/default.css`) — économie estimée : 270 ms LCP/FCP
   - Option A : `inlineSSRStyles: true` (déjà désactivé intentionnellement — réévaluer)
   - Option B : charger les CSS non-critiques en `<link rel="preload">` + swap
@@ -23,6 +44,7 @@
 - [ ] **PSI-3** — Valider le score PSI mobile = 100 après corrections
 
 ### Étape 2 — Audit fichiers inutiles
+
 - [ ] Lister et supprimer les fichiers orphelins : composants non importés, images inutilisées dans `/public/img/`, scripts de la racine sans appelant
 - [ ] Vérifier que `getSiteMeta.js` (vestige Nuxt 2, marqué `deprecated`) n'est plus importé dans aucun composant — le supprimer
 - [ ] Auditer les dépendances `package.json` non utilisées (`npm-check` ou équivalent)
@@ -61,19 +83,19 @@
 
 Ordre recommandé (mettre à jour et tester une par une) :
 
-| # | Dépendance | Version actuelle | Version cible Nuxt 4 | Breaking changes | Impact |
-|---|-----------|-----------------|----------------------|-----------------|--------|
-| 1 | `nuxt` | ^3.14.1592 | ^4.x | Voir sections 3.2–3.5 | 🔴 |
-| 2 | `@nuxt/content` | ^2.13.2 | ^3.x | API entièrement refondue (voir 3.3) | 🔴 |
-| 3 | `vue` | ^3.5.12 | ^3.5+ | Aucun — compatible | 🟢 |
-| 4 | `vue-router` | ^4.4.5 | ^4.5+ | Aucun — compatible | 🟢 |
-| 5 | `@nuxt/image` | ^1.8.1 | ^1.9+ | ⚠️ Vérifier compatibilité Nuxt 4 — probablement compatible sans changement | 🟡 |
-| 6 | `@nuxtjs/sitemap` | ^6.1.1 | ^7.x ou ^6.4+ | ⚠️ Vérifier si v6 supporte Nuxt 4 ou si v7 est requis | 🟠 |
-| 7 | `@nuxt/eslint` | ^0.5.7 | ^1.x | Config flat ESLint, probablement cassant | 🟠 |
-| 8 | `eslint` | ^9.14.0 | ^9.x | Compatible | 🟢 |
-| 9 | `sass` | ^1.80.7 | ^1.80+ | Compatible | 🟢 |
-| 10 | `sass-loader` | ^16.0.3 | ^16+ | Compatible | 🟢 |
-| 11 | `vite` | ^6.0.1 | ^6+ | Nuxt 4 utilise Vite Environment API — géré par Nuxt | 🟢 |
+| #   | Dépendance        | Version actuelle | Version cible Nuxt 4 | Breaking changes                                                           | Impact |
+| --- | ----------------- | ---------------- | -------------------- | -------------------------------------------------------------------------- | ------ |
+| 1   | `nuxt`            | ^3.14.1592       | ^4.x                 | Voir sections 3.2–3.5                                                      | 🔴     |
+| 2   | `@nuxt/content`   | ^2.13.2          | ^3.x                 | API entièrement refondue (voir 3.3)                                        | 🔴     |
+| 3   | `vue`             | ^3.5.12          | ^3.5+                | Aucun — compatible                                                         | 🟢     |
+| 4   | `vue-router`      | ^4.4.5           | ^4.5+                | Aucun — compatible                                                         | 🟢     |
+| 5   | `@nuxt/image`     | ^1.8.1           | ^1.9+                | ⚠️ Vérifier compatibilité Nuxt 4 — probablement compatible sans changement | 🟡     |
+| 6   | `@nuxtjs/sitemap` | ^6.1.1           | ^7.x ou ^6.4+        | ⚠️ Vérifier si v6 supporte Nuxt 4 ou si v7 est requis                      | 🟠     |
+| 7   | `@nuxt/eslint`    | ^0.5.7           | ^1.x                 | Config flat ESLint, probablement cassant                                   | 🟠     |
+| 8   | `eslint`          | ^9.14.0          | ^9.x                 | Compatible                                                                 | 🟢     |
+| 9   | `sass`            | ^1.80.7          | ^1.80+               | Compatible                                                                 | 🟢     |
+| 10  | `sass-loader`     | ^16.0.3          | ^16+                 | Compatible                                                                 | 🟢     |
+| 11  | `vite`            | ^6.0.1           | ^6+                  | Nuxt 4 utilise Vite Environment API — géré par Nuxt                        | 🟢     |
 
 - [ ] **DEP-1** — Mettre à jour `nuxt` vers la dernière version 4.x
 - [ ] **DEP-2** — Mettre à jour `@nuxt/content` vers 3.x (après avoir migré les APIs — voir 3.3)
@@ -88,29 +110,29 @@ Ordre recommandé (mettre à jour et tester une par une) :
 
 Nuxt 4 déplace `srcDir` vers `app/` par défaut. Fichiers à déplacer :
 
-| Source (racine) | Destination (`app/`) |
-|----------------|---------------------|
-| `assets/` | `app/assets/` |
-| `components/` (20 fichiers .vue) | `app/components/` |
-| `composables/useTags.ts` | `app/composables/useTags.ts` |
-| `layouts/default.vue` | `app/layouts/default.vue` |
-| `layouts/error.vue` | `app/layouts/error.vue` |
-| `pages/` (14 fichiers .vue) | `app/pages/` |
-| `utils/seo-url.ts` | `app/utils/seo-url.ts` |
-| `utils/portfolioItems.ts` | `app/utils/portfolioItems.ts` |
-| `app.vue` | `app/app.vue` |
-| `error.vue` | `app/error.vue` |
+| Source (racine)                  | Destination (`app/`)          |
+| -------------------------------- | ----------------------------- |
+| `assets/`                        | `app/assets/`                 |
+| `components/` (20 fichiers .vue) | `app/components/`             |
+| `composables/useTags.ts`         | `app/composables/useTags.ts`  |
+| `layouts/default.vue`            | `app/layouts/default.vue`     |
+| `layouts/error.vue`              | `app/layouts/error.vue`       |
+| `pages/` (14 fichiers .vue)      | `app/pages/`                  |
+| `utils/seo-url.ts`               | `app/utils/seo-url.ts`        |
+| `utils/portfolioItems.ts`        | `app/utils/portfolioItems.ts` |
+| `app.vue`                        | `app/app.vue`                 |
+| `error.vue`                      | `app/error.vue`               |
 
 Fichiers qui **restent à la racine** (pas de déplacement) :
 
-| Fichier/Dossier | Raison |
-|----------------|--------|
-| `nuxt.config.ts` | Config racine |
-| `content/` | Répertoire content — résolu depuis rootDir |
-| `data/` | Pas un dossier Nuxt standard — vérifier les imports |
-| `public/` | Résolu depuis rootDir |
-| `server/` (3 fichiers) | `serverDir` reste `<rootDir>/server` |
-| `scripts/` | Pas un dossier Nuxt |
+| Fichier/Dossier        | Raison                                              |
+| ---------------------- | --------------------------------------------------- |
+| `nuxt.config.ts`       | Config racine                                       |
+| `content/`             | Répertoire content — résolu depuis rootDir          |
+| `data/`                | Pas un dossier Nuxt standard — vérifier les imports |
+| `public/`              | Résolu depuis rootDir                               |
+| `server/` (3 fichiers) | `serverDir` reste `<rootDir>/server`                |
+| `scripts/`             | Pas un dossier Nuxt                                 |
 
 - [ ] **DIR-1** — Créer `app/` et déplacer les dossiers listés ci-dessus
 - [ ] **DIR-2** — Mettre à jour les imports `~/` — ils pointeront vers `app/` automatiquement, mais vérifier :
@@ -128,31 +150,31 @@ Fichiers qui **restent à la racine** (pas de déplacement) :
 
 ##### 3.3.1 — `queryContent()` → `queryCollection()`
 
-| Fichier | Lignes | Code actuel | Migration |
-|---------|--------|------------|-----------|
-| `pages/index.vue` | 430-436 | `queryContent('articles').only([...]).sort({ date: -1 }).limit(2).find()` | `queryCollection('articles').select([...]).order('date', 'DESC').limit(2).all()` |
-| `pages/eco-conception/index.vue` | 651-654 | `queryContent('articles').only([...]).sort({ date: -1 }).find()` | `queryCollection('articles').select([...]).order('date', 'DESC').all()` |
-| `pages/eco-conception/index.vue` | 659 | `queryContent('articles', 'faq-eco-conception').findOne()` | `queryCollection('articles').where('stem', '=', 'faq-eco-conception').first()` |
-| `pages/eco-conception/[slug].vue` | 140 | `queryContent('articles', route.params.slug).findOne()` | `queryCollection('articles').where('stem', '=', slug).first()` |
-| `components/HomeEcoArticles.vue` | 50-54 | `queryContent('articles').only([...]).sort({ date: -1 }).limit(2).find()` | Idem index.vue |
+| Fichier                           | Lignes  | Code actuel                                                               | Migration                                                                        |
+| --------------------------------- | ------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `pages/index.vue`                 | 430-436 | `queryContent('articles').only([...]).sort({ date: -1 }).limit(2).find()` | `queryCollection('articles').select([...]).order('date', 'DESC').limit(2).all()` |
+| `pages/eco-conception/index.vue`  | 651-654 | `queryContent('articles').only([...]).sort({ date: -1 }).find()`          | `queryCollection('articles').select([...]).order('date', 'DESC').all()`          |
+| `pages/eco-conception/index.vue`  | 659     | `queryContent('articles', 'faq-eco-conception').findOne()`                | `queryCollection('articles').where('stem', '=', 'faq-eco-conception').first()`   |
+| `pages/eco-conception/[slug].vue` | 140     | `queryContent('articles', route.params.slug).findOne()`                   | `queryCollection('articles').where('stem', '=', slug).first()`                   |
+| `components/HomeEcoArticles.vue`  | 50-54   | `queryContent('articles').only([...]).sort({ date: -1 }).limit(2).find()` | Idem index.vue                                                                   |
 
 - [ ] **CONTENT-1** — Migrer les 5 appels `queryContent()` → `queryCollection()` dans les fichiers ci-dessus
 
 ##### 3.3.2 — `findSurround()` → `queryCollectionItemSurroundings()`
 
-| Fichier | Lignes | Code actuel |
-|---------|--------|------------|
+| Fichier                           | Lignes  | Code actuel                                                                                             |
+| --------------------------------- | ------- | ------------------------------------------------------------------------------------------------------- |
 | `pages/eco-conception/[slug].vue` | 149-152 | `queryContent('articles').only(['title', '_path']).sort({ date: 1 }).findSurround(article.value._path)` |
 
 - [ ] **CONTENT-2** — Migrer `findSurround()` → `queryCollectionItemSurroundings()` avec la nouvelle syntaxe
 
 ##### 3.3.3 — `serverQueryContent()` supprimé
 
-| Fichier | Lignes | Code actuel |
-|---------|--------|------------|
-| `server/routes/rss.xml.ts` | 1, 7 | `import { serverQueryContent } from '#content/server'` + `serverQueryContent(event, 'articles').sort({ $numeric: true }).find()` |
-| `server/routes/feed.json.ts` | 1, 6 | Idem |
-| `nuxt.config.ts` | 265 | `const { serverQueryContent } = await import('#content/server')` dans `sitemap.routes` |
+| Fichier                      | Lignes | Code actuel                                                                                                                      |
+| ---------------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------- |
+| `server/routes/rss.xml.ts`   | 1, 7   | `import { serverQueryContent } from '#content/server'` + `serverQueryContent(event, 'articles').sort({ $numeric: true }).find()` |
+| `server/routes/feed.json.ts` | 1, 6   | Idem                                                                                                                             |
+| `nuxt.config.ts`             | 265    | `const { serverQueryContent } = await import('#content/server')` dans `sitemap.routes`                                           |
 
 - [ ] **CONTENT-3** — Réécrire `rss.xml.ts` sans `serverQueryContent` — utiliser l'API server de Content v3
 - [ ] **CONTENT-4** — Réécrire `feed.json.ts` sans `serverQueryContent`
@@ -160,9 +182,9 @@ Fichiers qui **restent à la racine** (pas de déplacement) :
 
 ##### 3.3.4 — `.where()` query syntax refondu
 
-| Fichier | Lignes | Code actuel |
-|---------|--------|------------|
-| `components/AppSearchInput.vue` | 33-41 | `.where({ $or: [{ title: { $contains: newQuery } }, { description: { $contains: newQuery } }] })` |
+| Fichier                         | Lignes | Code actuel                                                                                       |
+| ------------------------------- | ------ | ------------------------------------------------------------------------------------------------- |
+| `components/AppSearchInput.vue` | 33-41  | `.where({ $or: [{ title: { $contains: newQuery } }, { description: { $contains: newQuery } }] })` |
 
 Content v3 utilise une syntaxe SQL-like : `.where('title', 'LIKE', '%query%')`. L'opérateur `$or` n'existe plus.
 
@@ -172,22 +194,22 @@ Content v3 utilise une syntaxe SQL-like : `.where('title', 'LIKE', '%query%')`. 
 
 Toutes les propriétés internes préfixées `_` sont renommées en Content v3.
 
-| Fichier | Occurrences |
-|---------|-------------|
-| `pages/eco-conception/[slug].vue` | `article.value._path` (lignes 147, 152, 158) |
-| `pages/eco-conception/index.vue` | `article._path` dans le template |
-| `pages/index.vue` | `article._path` dans le template |
-| `components/HomeEcoArticles.vue` | `article._path` dans le template |
-| `server/routes/rss.xml.ts` | `article._path` (ligne 37) |
-| `server/routes/feed.json.ts` | `article._path` (ligne 29) |
-| `nuxt.config.ts` | `article._path` dans `sitemap.routes` (ligne 267) |
+| Fichier                           | Occurrences                                       |
+| --------------------------------- | ------------------------------------------------- |
+| `pages/eco-conception/[slug].vue` | `article.value._path` (lignes 147, 152, 158)      |
+| `pages/eco-conception/index.vue`  | `article._path` dans le template                  |
+| `pages/index.vue`                 | `article._path` dans le template                  |
+| `components/HomeEcoArticles.vue`  | `article._path` dans le template                  |
+| `server/routes/rss.xml.ts`        | `article._path` (ligne 37)                        |
+| `server/routes/feed.json.ts`      | `article._path` (ligne 29)                        |
+| `nuxt.config.ts`                  | `article._path` dans `sitemap.routes` (ligne 267) |
 
 - [ ] **CONTENT-7** — Remplacer `._path` par `.path` dans tous les fichiers listés (7 fichiers, ~12 occurrences)
 
 ##### 3.3.6 — `<ContentRenderer>` — API modifiée
 
-| Fichier | Lignes | Code actuel |
-|---------|--------|------------|
+| Fichier                           | Lignes  | Code actuel                                           |
+| --------------------------------- | ------- | ----------------------------------------------------- |
 | `pages/eco-conception/[slug].vue` | 106-111 | `<ContentRenderer v-if="article" :value="article" />` |
 
 - [ ] **CONTENT-8** — Vérifier que `<ContentRenderer :value="article" />` fonctionne toujours avec Content v3 — ⚠️ à tester manuellement, le composant est conservé mais son API peut avoir changé
@@ -244,7 +266,9 @@ features: {
 // Actuel (nuxt.config.ts:311-313)
 experimental: {
   defaults: {
-    nuxtLink: { prefetch: false }
+    nuxtLink: {
+      prefetch: false
+    }
   }
 }
 ```
@@ -296,6 +320,7 @@ Ces hooks viennent de `@nuxtjs/sitemap`, pas de Nitro. Leur compatibilité dépe
 ##### 3.4.6 — Flags expérimentaux supprimés
 
 Ces flags n'existent plus en Nuxt 4 (valeur fixe) — les supprimer de la config si présents :
+
 - `experimental.treeshakeClientOnly` → toujours `true`
 - `experimental.configSchema` → toujours `true`
 - `experimental.polyfillVueUseHead` → toujours `false`
@@ -323,14 +348,14 @@ scss: {
 
 6 appels `useAsyncData` dans le projet. Vérifier les guards `if (!data.value)` vs `if (data.value === null)`.
 
-| Fichier | Pattern actuel | Impact |
-|---------|---------------|--------|
-| `pages/eco-conception/[slug].vue:138` | `article.value?._path` (optional chaining) | 🟢 OK |
-| `pages/eco-conception/[slug].vue:144` | `surroundArticles.value?.[0]` | 🟢 OK |
-| `pages/eco-conception/index.vue:648` | `articles.value` dans template avec `v-for` | 🟢 OK |
-| `pages/eco-conception/index.vue:657` | `faqArticle.value` dans template | 🟢 OK |
-| `pages/index.vue:430` | `articles` dans template | 🟢 OK |
-| `components/HomeEcoArticles.vue:49` | `articles` dans template | 🟢 OK |
+| Fichier                               | Pattern actuel                              | Impact |
+| ------------------------------------- | ------------------------------------------- | ------ |
+| `pages/eco-conception/[slug].vue:138` | `article.value?._path` (optional chaining)  | 🟢 OK  |
+| `pages/eco-conception/[slug].vue:144` | `surroundArticles.value?.[0]`               | 🟢 OK  |
+| `pages/eco-conception/index.vue:648`  | `articles.value` dans template avec `v-for` | 🟢 OK  |
+| `pages/eco-conception/index.vue:657`  | `faqArticle.value` dans template            | 🟢 OK  |
+| `pages/index.vue:430`                 | `articles` dans template                    | 🟢 OK  |
+| `components/HomeEcoArticles.vue:49`   | `articles` dans template                    | 🟢 OK  |
 
 - [ ] **ASYNC-1** — Valider que tous les guards utilisent optional chaining (`?.`) et non des comparaisons strictes à `null`
 
@@ -427,6 +452,7 @@ export const useTags = () => {
 ### 🟠 Important — corriger dans la semaine
 
 #### SEO technique
+
 - [x] **I1** — ~~Entités HTML `&amp;` et `&#8209;` dans le H1 portfolio~~ — remplacés par caractères Unicode directs dans `pages/portfolio.vue` ✓
 - [x] **I2** — ~~Pattern titles articles `BeAbot - Titre`~~ — `titleTemplate: '%s | BeAbot'` dans `[slug].vue` ; `| BeAbot` retiré du frontmatter `comment-reduire...` ✓
 - [x] **I3** — ~~Title `/images-eco-conception/` trop long (78 car.)~~ — seo.title raccourci à 59 car. → 68 avec suffixe ✓
@@ -438,6 +464,7 @@ export const useTags = () => {
 - [x] **I9** — ~~`useHead` statique à setup time~~ — remplacé par `useHead(computed(() => ...))` pour réactivité client ✓
 
 #### Repositionnement freelance
+
 - [x] **A1** — ~~"freelance" absent du H1~~ — H1 : "Développeur web freelance spécialisé en éco-conception" ✓
 - [x] **A2** — ~~Zone géo absente du hero~~ — `Lille · Hauts-de-France · Remote` sous le subtitle ✓
 - [x] **A3** — ~~Badge disponibilité absent~~ — pastille verte animée "Disponible pour missions" avant le H1 ✓
@@ -451,6 +478,7 @@ export const useTags = () => {
 ### 🟡 Mineur / Backlog
 
 #### SEO technique
+
 - [x] **M1** — ~~`twitter:card` absente sur `/mentions-legales/`~~ — `twitterCard`, `twitterTitle`, `twitterImage` ajoutés dans `useSeoMeta()` ✓
 - [x] **M2** — ~~`og:image` générique sur les articles~~ — champ `seo.ogImage` ajouté dans le frontmatter des 3 articles les plus récents (`typographie`, `wordpress`, `theme-wordpress`) ✓
 - [x] **M3** — ~~H1 trop courts sur les pages apps~~ — DuoSpend (68 car.) ✓, Meeting Mode (68 car.) ✓, `/apps/` index (51 car.) ✓
@@ -462,6 +490,7 @@ export const useTags = () => {
 - [x] **M9** — ~~Meta description homepage à 142 car.~~ — 154 car. avec dimension freelance + géo ✓
 
 #### Contenu & conversion freelance
+
 - [x] **B1** — Créer une page `/services/` avec types de missions, zones, tarifs indicatifs
 <!-- - [ ] **B2** — Portfolio : ajouter la localisation des clients là où applicable
 - [ ] **B3** — Portfolio : réduire la visibilité des apps iOS (section séparée ou masquée par défaut) -->
@@ -469,6 +498,7 @@ export const useTags = () => {
 - [x] **B5** — Ajouter encart "Faire faire son site sur Greenlight" sur `/greenlight/`
 
 #### Articles à écrire (SEO longue traîne local)
+
 - [x] Mettre à jour les 4 articles de 2021-2022 (`updatedAt: 2026-04-27` + note éditoriale + CTA freelance en conclusion) + afficher date modif dans cartes /eco-conception/ ✓
 - [x] Article : "Développeur WordPress freelance à Lille : comment choisir ?" → `/eco-conception/wordpress-freelance-lille/`
 - [x] Article : "Refonte de site éco-conçu : méthode et budget" → `/eco-conception/refonte-site-eco-concu/`

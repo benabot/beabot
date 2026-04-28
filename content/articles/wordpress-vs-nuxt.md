@@ -1,9 +1,9 @@
 ---
-title: "WordPress vs Nuxt pour un site vitrine éco-conçu"
-chapo: "Deux outils sérieux, deux philosophies différentes. Lequel choisir pour un site vitrine sobre et maintenable ?"
+title: 'WordPress vs Nuxt pour un site vitrine éco-conçu'
+chapo: 'Deux outils sérieux, deux philosophies différentes. Lequel choisir pour un site vitrine sobre et maintenable ?'
 description: "Comparatif WordPress vs Nuxt pour un site vitrine éco-conçu : performance, maintenabilité, coût et cas d'usage."
 seo:
-  title: "WordPress vs Nuxt pour un site vitrine éco-conçu"
+  title: 'WordPress vs Nuxt pour un site vitrine éco-conçu'
   description: "WordPress ou Nuxt pour un site vitrine éco-conçu ? Comparatif honnête : performance, coût, maintenabilité et cas d'usage pour choisir la bonne stack."
 date: 2026-04-27
 updatedAt: 2026-04-27
@@ -40,23 +40,25 @@ Pour une <a href="/eco-conception/refonte-site-eco-concu/" class="lien--vert">re
 
 ## Tableau comparatif
 
-| Critère | WordPress | Nuxt SSG |
-|---|---|---|
-| Performance brute | ⚠️ Variable selon configuration | ✅ Excellente par défaut |
-| Éco-conception | ⚠️ Possible mais demande rigueur | ✅ Naturellement sobre |
-| SEO | ✅ Mature (Yoast, sitemap auto) | ✅ Complet si bien configuré |
-| Coût total (hébergement + maintenance) | ⚠️ Hébergement PHP requis + maintenance active | ✅ Hébergement statique gratuit ou quasi |
-| Autonomie client | ✅ Interface admin complète | ❌ Limité au contenu Markdown |
-| Maintenance technique | ❌ Mises à jour fréquentes, risques sécurité | ✅ Dépendances stables, déploiement automatisé |
+| Critère                                | WordPress                                      | Nuxt SSG                                       |
+| -------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| Performance brute                      | ⚠️ Variable selon configuration                | ✅ Excellente par défaut                       |
+| Éco-conception                         | ⚠️ Possible mais demande rigueur               | ✅ Naturellement sobre                         |
+| SEO                                    | ✅ Mature (Yoast, sitemap auto)                | ✅ Complet si bien configuré                   |
+| Coût total (hébergement + maintenance) | ⚠️ Hébergement PHP requis + maintenance active | ✅ Hébergement statique gratuit ou quasi       |
+| Autonomie client                       | ✅ Interface admin complète                    | ❌ Limité au contenu Markdown                  |
+| Maintenance technique                  | ❌ Mises à jour fréquentes, risques sécurité   | ✅ Dépendances stables, déploiement automatisé |
 
 ## Cas d'usage — quand WordPress, quand Nuxt
 
 **Choisir WordPress quand :**
+
 - Le client doit pouvoir modifier lui-même la structure des pages (menus, blocs, sections) sans passer par un développeur.
 - Le projet inclut un WooCommerce ou un système de gestion de contenu complexe (annuaires, listings, formulaires avancés).
 - Le budget maintenance est limité et le client préfère un écosystème où il peut trouver facilement de l'aide.
 
 **Choisir Nuxt SSG quand :**
+
 - Le site est relativement stable dans sa structure (portfolio, vitrine, landing page, blog).
 - La performance et la sobriété numérique sont des critères prioritaires — pas juste des arguments marketing.
 - Le client fait confiance à un développeur pour les évolutions structurelles et veut un site durable, maintenable, sans dette technique accumulée.
@@ -70,9 +72,10 @@ Pour un site vitrine professionnel — consultant, cabinet, artisan, PME — où
 
 Pour un site qui doit vraiment être géré par le client sans passer par un développeur pour les modifications structurelles : **WordPress avec Gutenberg natif**, sans page builder, sans thème commercial chargé. Un thème sur-mesure léger, un hébergement avec cache serveur (Kinsta, WP Engine, ou un VPS bien configuré), et une liste de plugins courte et maîtrisée. C'est faisable et ça tient dans le temps, à condition de ne pas prendre de raccourcis au départ.
 
-Ce que je ne recommande pas : WordPress avec Elementor ou Divi pour un projet qui se réclame de l'éco-conception. C'est une contradiction dans les termes. Les <a href="/services/" class="lien--vert">prestations que je propose</a> dans les deux cas partent du même principe : pas de gras inutile, pas de dépendances superflues, un site qui fait exactement ce qu'il doit faire.
+Ce que je ne recommande pas : WordPress avec Elementor ou Divi pour un projet qui se réclame de l'éco-conception. C'est une contradiction dans les termes. Les <a href="/services/" class="lien--vert">services WordPress, Nuxt et audit que je propose</a> partent du même principe : pas de gras inutile, pas de dépendances superflues, un site qui fait exactement ce qu'il doit faire.
 
 Les deux stacks peuvent produire de bons résultats si elles sont utilisées avec rigueur. Aucune ne compense un brief flou. Le choix de la stack vient en deuxième — après avoir compris ce que le site doit réellement faire, pour qui, et sur quels critères de succès.
 
 ---
-Besoin d'aide pour choisir entre WordPress et Nuxt ? Je peux analyser votre projet et vous orienter. [Voir mes services](/services/) ou [me contacter directement](/contact/).
+
+Besoin d'aide pour choisir entre WordPress et Nuxt ? Je peux analyser votre projet et vous orienter. [Découvrir mes services WordPress / Nuxt](/services/) ou [me contacter directement](/contact/).
