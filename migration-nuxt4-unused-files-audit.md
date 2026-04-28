@@ -18,8 +18,8 @@ Traiter l'Étape 2 du backlog Nuxt 4 :
 - `getSiteMeta.js` : présent, sans usage code identifié
 - Dépendances auditées : `dependencies` et `devDependencies` de `package.json`
 - Routes générées observées : 100 routes annoncées par `npm run generate`, 28 routes HTML `index.html`
-- Suppressions réalisées : 0 dans le commit d'audit brut
-- Suppressions reportées : fichiers prouvés orphelins listés dans `audit-unused-delete-proof.txt`
+- Suppressions réalisées : 26 fichiers suivis Git supprimés, plus fichiers `.DS_Store` non suivis dans `public/img`
+- Suppressions reportées : aucune suppression de dépendance ; `gray-matter` et `sass-loader` restent à vérifier séparément
 
 ## getSiteMeta.js
 
@@ -37,7 +37,8 @@ Voir :
 
 | Fichier | Preuve | Validation |
 |---|---|---|
-| _À réaliser dans le commit de suppression_ | Voir `audit-unused-components-usage.txt` | _À valider après suppression_ |
+| `components/HomePortfolioLatest.vue` | Aucune référence trouvée dans `audit-unused-components-usage.txt` | `npm test`, `npm run generate`, check SEO OK |
+| `components/OeufImage.vue` | Aucune référence trouvée dans `audit-unused-components-usage.txt` | `npm test`, `npm run generate`, check SEO OK |
 
 ### Composants conservés malgré doute
 
@@ -55,7 +56,27 @@ Voir :
 
 | Fichier | Preuve | Validation |
 |---|---|---|
-| _À réaliser dans le commit de suppression_ | Voir `audit-unused-public-img-usage.txt` | _À valider après suppression_ |
+| `public/img/4DF4126CEDA88CAD.jpg` | Aucune référence trouvée | `npm test`, `npm run generate`, check SEO OK |
+| `public/img/4DF4126CEDA88CAE.jpg` | Aucune référence trouvée | `npm test`, `npm run generate`, check SEO OK |
+| `public/img/4DF4126CEDA88CAF.png` | Aucune référence trouvée | `npm test`, `npm run generate`, check SEO OK |
+| `public/img/apps/duospend-tuto1.webp` | Aucune référence trouvée | `npm test`, `npm run generate`, check SEO OK |
+| `public/img/apps/duospend-tuto2.webp` | Aucune référence trouvée | `npm test`, `npm run generate`, check SEO OK |
+| `public/img/apps/duospend-tuto3.webp` | Aucune référence trouvée | `npm test`, `npm run generate`, check SEO OK |
+| `public/img/beabot.webp` | Aucune référence trouvée | `npm test`, `npm run generate`, check SEO OK |
+| `public/img/chasse-patate.png` | Aucune référence trouvée | `npm test`, `npm run generate`, check SEO OK |
+| `public/img/forme-flou.svg` | Aucune référence trouvée | `npm test`, `npm run generate`, check SEO OK |
+| `public/img/forme.svg` | Aucune référence trouvée | `npm test`, `npm run generate`, check SEO OK |
+| `public/img/formeOLD.svg` | Aucune référence trouvée | `npm test`, `npm run generate`, check SEO OK |
+| `public/img/greenlight/greenlight-admin-3.webp` | Aucune référence trouvée | `npm test`, `npm run generate`, check SEO OK |
+| `public/img/greenlight/greenlight-admin-4.webp` | Aucune référence trouvée | `npm test`, `npm run generate`, check SEO OK |
+| `public/img/greenlight/greenlight-customizer-1.webp` | Aucune référence trouvée | `npm test`, `npm run generate`, check SEO OK |
+| `public/img/greenlight/greenlight-front-1.webp` | Aucune référence trouvée | `npm test`, `npm run generate`, check SEO OK |
+| `public/img/greenlight/greenlight-front-2.webp` | Aucune référence trouvée | `npm test`, `npm run generate`, check SEO OK |
+| `public/img/greenlight/greenlight-front-3.webp` | Aucune référence trouvée | `npm test`, `npm run generate`, check SEO OK |
+| `public/img/oeuf-bleu.svg` | Aucune référence trouvée | `npm test`, `npm run generate`, check SEO OK |
+| `public/img/oeuf-vert.svg` | Aucune référence trouvée | `npm test`, `npm run generate`, check SEO OK |
+| `public/img/oeuf.svg` | Aucune référence trouvée | `npm test`, `npm run generate`, check SEO OK |
+| `.DS_Store` dans `public/img` et sous-dossiers | Fichiers système, aucune référence | `npm test`, `npm run generate`, check SEO OK |
 
 ### Images conservées malgré doute
 
@@ -74,7 +95,9 @@ Voir :
 
 | Fichier | Preuve | Validation |
 |---|---|---|
-| _À réaliser dans le commit de suppression_ | Voir `audit-unused-scripts-usage.txt` | _À valider après suppression_ |
+| `scripts/add-chapo.mjs` | Aucun appel `package.json`, aucune référence doc/code | `npm test`, `npm run generate`, check SEO OK |
+| `scripts/normalize-md-links.mjs` | Aucun appel `package.json`, aucune référence doc/code | `npm test`, `npm run generate`, check SEO OK |
+| `scripts/seo-audit.mjs` | Aucun appel `package.json`, aucune référence doc/code | `npm test`, `npm run generate`, check SEO OK |
 
 ### Scripts conservés malgré doute
 
@@ -87,6 +110,7 @@ Voir :
 Voir :
 - `audit-unused-npm-ls.txt`
 - `audit-unused-dependencies.txt`
+- `audit-unused-dependencies-after-delete.txt`
 - `audit-unused-depcheck.json`
 
 ### Dépendances suspectes
@@ -95,6 +119,7 @@ Voir :
 |---|---|---|---|
 | `eslint-config-prettier` | devDependencies | Pas de référence directe hors `package.json` | Conserver, usage ESLint implicite possible |
 | `eslint-plugin-vue` | devDependencies | Pas de référence directe hors `package.json` | Conserver, usage ESLint implicite possible |
+| `gray-matter` | devDependencies | Devient sans référence après suppression de `scripts/add-chapo.mjs` | À vérifier/supprimer dans une branche dépendances séparée |
 | `prettier` | devDependencies | Utilisé via scripts `lint:prettier` et `lintfix` | Conserver |
 | `sass-loader` | devDependencies | Pas de référence directe hors `package.json` | À vérifier dans une branche séparée, ne pas modifier ici |
 
@@ -117,9 +142,9 @@ Voir :
 ## Validation
 
 Si suppressions réalisées :
-- `npm test` : à valider dans le commit de suppression
-- `npm run generate` : à valider dans le commit de suppression
-- check SEO : à valider dans le commit de suppression
+- `npm test` : succès, 49 checks, `test:content` OK, 18 tests Node OK
+- `npm run generate` : succès, 100 routes prerendered
+- check SEO : succès, `OK SEO checks passed.`
 
 Si aucune suppression :
 - `npm run generate` : succès pour l'audit initial
@@ -127,7 +152,8 @@ Si aucune suppression :
 
 ## Conclusion
 
-- Étape 2 validable : partiel à ce stade
+- Étape 2 validable : oui après validation finale
 - Points à traiter dans une branche séparée :
+  - vérifier `gray-matter` après suppression du script `add-chapo` ;
   - vérifier `sass-loader` sans modifier les dépendances dans cette branche ;
   - relancer un audit dédié si un outil type `depcheck` est ajouté au projet ultérieurement.
