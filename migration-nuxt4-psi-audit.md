@@ -143,3 +143,32 @@ Seule la ligne `inlineSSRStyles` a été modifiée. Aucune option Nuxt 4 supplé
   - Le compromis est explicite : HTML plus lourd et cache CSS moins efficace.
   - PSI-1 n'est pas considéré comme totalement validé localement, car `entry` reste une feuille externe et `vendor-libs` reste également bloquant localement.
   - La validation réelle du gain doit passer par un déploiement preview puis PageSpeed Insights mobile.
+
+## PSI-2 — Chaîne critique maximale
+
+### Analyse
+
+- CSS globaux :
+  - `nuxt.config.ts` déclare uniquement `~/assets/css/main.scss`.
+  - `assets/css/main.scss` pèse 5 557 octets source et contient des styles transverses : base typographique, helpers, layout et classes partagées.
+  - Après `inlineSSRStyles: true`, une partie de ces styles est inline dans la homepage.
+- CSS page-specific :
+  - Les pages et composants utilisent majoritairement des `<style scoped lang="scss">`, donc Nuxt/Vite peut déjà les associer aux chunks de pages.
+  - `assets/css/article-content.scss` est importé seulement depuis `pages/eco-conception/[slug].vue`.
+  - Les styles article ne sont donc pas un import global évident à déplacer.
+- CSS potentiellement déplaçables :
+  - Aucun import global inutilisé ou doublon n'a été identifié.
+  - `entry.B_fgAJq0.css` reste externe, mais il ne pèse que 46 octets localement (`pre code .line{...}`).
+  - `vendor-libs.p3LoGY6h.css` reste externe et contient des styles globaux/base. Son origine semble liée au découpage actuel et au CSS extrait, pas à un import page-specific évident.
+- Risques :
+  - Modifier `manualChunks` pour influencer `vendor-libs` serait une optimisation fragile et hors périmètre.
+  - Déplacer `main.scss` vers une page casserait les styles transverses et risquerait de dégrader les pages.
+  - Un preload/swap manuel dépendrait des chunks générés ou demanderait une logique plus large.
+
+### Décision
+
+- Statut : reporté.
+- Justification :
+  - Aucune réduction concrète, stable et peu risquée de la chaîne critique n'a été identifiée au-delà de `inlineSSRStyles`.
+  - Les pistes restantes relèvent plutôt de l'étape 2b (`SCSS → CSS moderne`) ou d'une analyse post-déploiement avec PSI réel.
+  - Aucun refactor SCSS global n'a été effectué.
