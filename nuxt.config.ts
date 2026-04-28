@@ -309,7 +309,7 @@ export default defineNuxtConfig({
   experimental: {
     // payloadExtraction: true, // Disabled - causes #app-manifest errors in dev mode
     // componentIslands: true, // Disabled - causes #app-manifest errors in current version
-    inlineSSRStyles: true, // Inline critical CSS to reduce render-blocking stylesheets
+    inlineSSRStyles: false, // Inline critical CSS to reduce render-blocking stylesheets
     defaults: {
       nuxtLink: {
         prefetch: false,
