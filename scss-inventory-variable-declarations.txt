@@ -1,0 +1,103 @@
+assets/css/vars/_colors.scss:1:$jaune : #f2a81d;
+assets/css/vars/_colors.scss:2:$vert: #00a83e; // WCAG AA compliant (was #04d94f, ratio 2.4:1 → now 4.5:1)
+assets/css/vars/_colors.scss:3:$bleu1: #2561d9;
+assets/css/vars/_colors.scss:4:$bleu2: #0439d9;
+assets/css/vars/_colors.scss:6:$gris1: #0D0D0D;
+assets/css/vars/_colors.scss:7:$gris2: #404040;
+assets/css/vars/_colors.scss:8:$gris3: #737272;
+assets/css/vars/_colors.scss:9:$gris4: #8B8A89; // WCAG AA compliant (was #A6A5A4, ratio 2.9:1 → now 4.6:1)
+assets/css/vars/_colors.scss:10:$gris5: #F2F0F0;
+assets/css/vars/_colors.scss:11:$gris6: #d9d9d9;
+assets/css/vars/_colors.scss:12:// $gris1: #262626;
+assets/css/vars/_colors.scss:13:// $gris2: #595959;
+assets/css/vars/_colors.scss:14:// $gris3: #a6a2a1;
+assets/css/vars/_colors.scss:15:// $gris4: #d9d9d9;
+assets/css/vars/_colors.scss:18:$fondGris: #4a4a4a;
+assets/css/vars/_colors.scss:19:$fondClair: #f2f2f2;
+assets/css/vars/_colors.scss:21:$deg1: linear-gradient($vert 20.76%, $bleu1 89.73%);
+assets/css/vars/_colors.scss:22:$deg2: linear-gradient($bleu2 30%, $bleu1 80%);
+assets/css/vars/_colors.scss:23:$deg3: linear-gradient($jaune 23.78%, #f6b721 49.3%, #ffd329 100%);
+assets/css/vars/_colors.scss:24:$deg4: linear-gradient($vert 44.84%, #18ea62 68%, #30ff79 90.89%);
+assets/css/vars/_typo.scss:1:// $font-size: 100%;
+assets/css/vars/_typo.scss:2:// $ratio: 1.333;
+assets/css/vars/_typo.scss:5:// $h6: $font-size * $ratio;
+assets/css/vars/_typo.scss:6:// $h5: $h6 * $ratio;
+assets/css/vars/_typo.scss:7:// $h4: $h5 * $ratio;
+assets/css/vars/_typo.scss:8:// $h3: $h4 * $ratio;
+assets/css/vars/_typo.scss:9:// $h2: $h3 * $ratio;
+assets/css/vars/_typo.scss:10:// $h1: $h2 * $ratio;
+assets/css/vars/_typo.scss:15:$breakpoint-tablet: 768px;
+assets/css/vars/_typo.scss:17:$light: 300;
+assets/css/vars/_typo.scss:18:$normal: 500;
+assets/css/vars/_typo.scss:19:$bold: 700;
+assets/css/vars/_typo.scss:20:$black: 900;
+assets/css/vars/_typo.scss:27:$type-ratios: ( // "minorSecond": 1.067,
+assets/css/vars/_typo.scss:41:$type-base-size: 1rem;
+assets/css/vars/_typo.scss:44:$type-size-ratio: type-ratio("goldenRatio");
+assets/css/vars/_typo.scss:48:$type-levels: 4,
+assets/css/vars/_typo.scss:55:$type-styles: ();
+assets/css/vars/_typo.scss:56:$level-size: $type-base-size;
+assets/css/vars/_typo.scss:57:$base-unitless: math.div($type-base-size, ($type-base-size * 0 + 1));
+assets/css/vars/_typo.scss:60:  $level-size: $level-size * $type-size-ratio;
+assets/css/vars/_typo.scss:61:  $type-styles: map.merge($type-styles, (#{"h"}$level: $level-size));
+assets/css/vars/_typo.scss:83:      $level-unitless: math.div($level-size, ($level-size * 0 + 1));
+assets/css/vars/_typo.scss:88:      $fluid-reduction: 0.33; // valeur par défaut
+assets/css/vars/_typo.scss:90:        $fluid-reduction: 0.5;
+assets/css/vars/_typo.scss:92:      $fluid-min: $level-unitless - ($fluid-reduction * $level-unitless);
+assets/css/vars/_typo.scss:96:        $fluid-min: $base-unitless;
+assets/css/vars/_typo.scss:102:      $fluid-scaler: ($level-unitless - $fluid-min) + 4vw;
+assets/css/vars/_spacing.scss:8:$space-base: 1rem; // 16px
+assets/css/vars/_spacing.scss:11:$space-ratio: 1.618;
+assets/css/vars/_spacing.scss:14:$space-min-width: 320px;
+assets/css/vars/_spacing.scss:15:$space-max-width: 1240px;
+assets/css/vars/_spacing.scss:21:  $min-width-rem: math.div($space-min-width, 16px);
+assets/css/vars/_spacing.scss:22:  $max-width-rem: math.div($space-max-width, 16px);
+assets/css/vars/_spacing.scss:25:  $slope: math.div(($max-size - $min-size), ($max-width-rem - $min-width-rem));
+assets/css/vars/_spacing.scss:28:  $y-intercept: $min-size - ($slope * $min-width-rem);
+assets/css/vars/_spacing.scss:38:$space-3xs: fluid-space(0.25, 0.375);    // 4px -> 6px
+assets/css/vars/_spacing.scss:41:$space-2xs: fluid-space(0.5, 0.625);     // 8px -> 10px
+assets/css/vars/_spacing.scss:44:$space-xs: fluid-space(0.75, 1);         // 12px -> 16px
+assets/css/vars/_spacing.scss:47:$space-s: fluid-space(1, 1.5);           // 16px -> 24px
+assets/css/vars/_spacing.scss:50:$space-m: fluid-space(1.5, 2.5);         // 24px -> 40px
+assets/css/vars/_spacing.scss:53:$space-l: fluid-space(2.5, 4);           // 40px -> 64px
+assets/css/vars/_spacing.scss:56:$space-xl: fluid-space(4, 6.5);          // 64px -> 104px
+assets/css/vars/_spacing.scss:59:$space-2xl: fluid-space(6.5, 10.5);      // 104px -> 168px
+assets/css/vars/_spacing.scss:62:$space-3xl: fluid-space(10.5, 17);       // 168px -> 272px
+assets/css/vars/_spacing.scss:66:$space-3xs-2xs: fluid-space(0.25, 0.625);   // 4px -> 10px
+assets/css/vars/_spacing.scss:67:$space-2xs-xs: fluid-space(0.5, 1);         // 8px -> 16px
+assets/css/vars/_spacing.scss:68:$space-xs-s: fluid-space(0.75, 1.5);        // 12px -> 24px
+assets/css/vars/_spacing.scss:69:$space-s-m: fluid-space(1, 2.5);            // 16px -> 40px
+assets/css/vars/_spacing.scss:70:$space-m-l: fluid-space(1.5, 4);            // 24px -> 64px
+assets/css/vars/_spacing.scss:71:$space-l-xl: fluid-space(2.5, 6.5);         // 40px -> 104px
+assets/css/vars/_spacing.scss:72:$space-xl-2xl: fluid-space(4, 10.5);        // 64px -> 168px
+assets/css/vars/_spacing.scss:73:$space-2xl-3xl: fluid-space(6.5, 17);       // 104px -> 272px
+components/TheFooter.vue:83:$width: 100vw;
+components/TheFooter.vue:85:  $width: 90vw;
+components/TheFooter.vue:87:$height: 90vh;
+components/TheFooter.vue:89:  $height: calc($width / 1.618);
+components/BaseButton.vue:52:  background: linear-gradient(color.adjust($bleu2, $lightness: 25%), color.adjust($bleu2, $lightness: 25%)) right
+components/AppSearchInput.vue:35:      $or: [
+components/AppSearchInput.vue:36:        { title: { $contains: newQuery } },
+components/AppSearchInput.vue:37:        { description: { $contains: newQuery } },
+components/BoiteArticle.vue:412:  color: color.adjust($vert, $lightness: -10%);
+pages/index.vue:694:  color: color.adjust($vert, $lightness: 12%);
+pages/index.vue:770:    color.adjust($vert, $lightness: 12%),
+pages/index.vue:831:  color: color.adjust($vert, $lightness: 18%);
+pages/index.vue:930:  color: color.adjust($vert, $lightness: 14%);
+pages/index.vue:958:  color: color.adjust($vert, $lightness: 12%);
+pages/index.vue:1154:  color: color.adjust($vert, $lightness: 14%);
+pages/index.vue:1168:  color: color.adjust($vert, $lightness: 12%);
+pages/index.vue:1263:  outline: 2px solid color.adjust($vert, $lightness: 16%);
+pages/services.vue:788:  background: color.adjust($vert, $lightness: 6%);
+pages/services.vue:879:  color: color.adjust($vert, $lightness: -16%);
+pages/eco-conception/index.vue:1235:  color: color.adjust($vert, $lightness: 6%);
+pages/eco-conception/index.vue:1309:    color.adjust($vert, $lightness: 14%),
+pages/eco-conception/index.vue:1477:    color.adjust($vert, $lightness: 8%),
+pages/eco-conception/index.vue:1649:  color: color.adjust($vert, $lightness: 2%);
+pages/eco-conception/index.vue:1760:  background: color.adjust($vert, $lightness: 4%);
+pages/eco-conception/index.vue:1803:  color: color.adjust($vert, $lightness: 10%);
+pages/eco-conception/index.vue:1992:  color: color.adjust($vert, $lightness: -6%);
+pages/eco-conception/index.vue:2130:  color: color.adjust($vert, $lightness: -2%);
+pages/eco-conception/index.vue:2239:  outline: 2px solid color.adjust($vert, $lightness: 8%);
+layouts/default.vue:518:            color.adjust($bleu2, $lightness: 10%),
+layouts/default.vue:519:            color.adjust($bleu2, $lightness: 10%)

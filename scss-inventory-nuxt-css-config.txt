@@ -1,0 +1,9 @@
+113:  css: [
+115:    '~/assets/css/main.scss',
+133:    css: {
+134:      preprocessorOptions: {
+135:        scss: {
+136:          additionalData:
+137:            '@use "~/assets/css/vars/_colors.scss" as *; @use "~/assets/css/vars/_typo.scss" as *; @use "~/assets/css/vars/_spacing.scss" as *; @use "~/assets/css/mixins/mixins.scss" as *;',
+138:          api: 'modern-compiler',
+210:        'scss',
