@@ -1,10 +1,10 @@
 ---
-title: "Refonte de site éco-conçu : méthode et budget"
-chapo: "Une refonte ne se résume pas à un nouveau design. Voici comment aborder ça sérieusement — et ce que ça coûte vraiment."
-description: "Méthode et budget pour une refonte de site éco-conçue : audit préalable, choix technique, livrables et fourchettes de prix."
+title: 'Refonte de site éco-conçu : méthode et budget'
+chapo: 'Une refonte ne se résume pas à un nouveau design. Voici comment aborder ça sérieusement — et ce que ça coûte vraiment.'
+description: 'Méthode et budget pour une refonte de site éco-conçue : audit préalable, choix technique, livrables et fourchettes de prix.'
 seo:
-  title: "Refonte de site web éco-conçu : méthode et budget"
-  description: "Comment planifier et budgéter une refonte de site web éco-conçue : audit, choix technique WordPress ou Nuxt, étapes et fourchettes de coût."
+  title: 'Refonte de site web éco-conçu : méthode et budget'
+  description: 'Comment planifier et budgéter une refonte de site web éco-conçue : audit, choix technique WordPress ou Nuxt, étapes et fourchettes de coût.'
 date: 2026-04-27
 updatedAt: 2026-04-27
 temps: 7
@@ -70,14 +70,14 @@ Le test simple : si l'audit révèle que plus de 60% des problèmes sont structu
 
 Ces fourchettes correspondent à un travail sérieux : audit préalable, développement propre, plan de redirection, tests et formation.
 
-| Type de projet | Fourchette indicative |
-|---|---|
-| Refonte partielle (design + optimisation) | 2 500 – 5 000 € |
-| Refonte complète site vitrine (WordPress) | 5 000 – 10 000 € |
-| Refonte complète site vitrine (Nuxt/statique) | 4 000 – 8 000 € |
-| Refonte e-commerce (WooCommerce) | 8 000 – 18 000 € |
-| Audit préalable seul | 800 – 2 500 € |
-| TJM freelance senior | 450 – 650 €/j |
+| Type de projet                                | Fourchette indicative |
+| --------------------------------------------- | --------------------- |
+| Refonte partielle (design + optimisation)     | 2 500 – 5 000 €       |
+| Refonte complète site vitrine (WordPress)     | 5 000 – 10 000 €      |
+| Refonte complète site vitrine (Nuxt/statique) | 4 000 – 8 000 €       |
+| Refonte e-commerce (WooCommerce)              | 8 000 – 18 000 €      |
+| Audit préalable seul                          | 800 – 2 500 €         |
+| TJM freelance senior                          | 450 – 650 €/j         |
 
 Un devis significativement en dessous de ces fourchettes doit appeler une question directe : qu'est-ce qui n'est pas inclus ? L'audit préalable ? Le plan de redirection ? Les tests cross-navigateurs ? La formation à la prise en main ? Ces omissions se paient toujours, en temps ou en argent, quelques mois après la mise en ligne.
 
@@ -95,7 +95,8 @@ Une refonte réussie ne se mesure pas à "c'est plus joli qu'avant". Elle se mes
 
 Ces critères doivent être formalisés dans le cahier des charges avant le démarrage du projet. Ce qui n'est pas défini au départ ne peut pas être vérifié à la fin.
 
-Vous voulez en savoir plus sur mes [services](/services/) de refonte et d'audit ? Les détails sont là.
+Vous voulez en savoir plus sur mes [services de refonte, WordPress, Nuxt et audit](/services/) ? Les détails sont là.
 
 ---
-Besoin d'un développeur web freelance à Lille pour votre refonte ? J'interviens sur des projets WordPress, Vue.js/Nuxt et audits éco-conception. [Voir mes services](/services/) ou [me contacter directement](/contact/).
+
+Besoin d'un développeur web freelance à Lille pour votre refonte ? [Me confier ce type de mission](/services/) ou [me contacter directement](/contact/).

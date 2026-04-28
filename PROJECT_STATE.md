@@ -1,16 +1,17 @@
 # 📊 ÉTAT DU PROJET - BeAbot
 
-> **Récapitulatif de l'état du projet au 27 avril 2026 (màj 27/04 soir)**
+> **Récapitulatif de l'état du projet au 28 avril 2026**
 
 ---
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
-1. **Articles longue traîne** (branche `feat/seo-for-freelance-v1`) — 4 nouveaux articles SEO à écrire (plans proposés, non validés) : WordPress freelance Lille, refonte éco-conçue, audit site web, WordPress vs Nuxt (voir `TODO.md`)
-2. **Tests** — Lancer la suite de tests existante sur `dev` ; combler les manques critiques avant migration
-3. **Performance PSI mobile 99 → 100** — Éliminer les 3 CSS render-blocking identifiés dans l'audit PageSpeed Insights du 27 avril 2026 (`/_nuxt/entry.css` 444ms, `/_nuxt/default.css` 389ms, `/_nuxt/index.css` 441ms) — économie estimée 270ms LCP/FCP. Options détaillées dans `TODO.md` (Backlog Nuxt 4 / Étape 1)
-4. **Refactor SCSS → CSS moderne** — Warnings Sass `if-function` corrigés le 27 avril 2026 dans `assets/css/vars/_typo.scss` (2 `if()` dépréciés → `@if`/`@else`) et `darken()` dans `BoiteArticle.vue` (→ `color.adjust()`). Refactor complet planifié (Étape 2b dans `TODO.md`)
-5. **Migration Nuxt 4** — Branche `chore/nuxt4-migration` après validation des étapes 2–4 ; roadmap complète dans `TODO.md`
+1. **Review visuelle `/services/` sur `dev`** — Vérifier le rendu desktop/mobile après merge de `feat/design-services`.
+2. **Lint global repo-wide** — `npm run lint` reste bloqué par des warnings/formatages historiques hors périmètre ; à traiter séparément avant les gros chantiers.
+3. **Tests** — Lancer la suite de tests existante sur `dev` ; combler les manques critiques avant migration.
+4. **Performance PSI mobile 99 → 100** — Éliminer les 3 CSS render-blocking identifiés dans l'audit PageSpeed Insights du 27 avril 2026 (`/_nuxt/entry.css` 444ms, `/_nuxt/default.css` 389ms, `/_nuxt/index.css` 441ms) — économie estimée 270ms LCP/FCP. Options détaillées dans `TODO.md` (Backlog Nuxt 4 / Étape 1).
+5. **Refactor SCSS → CSS moderne** — Warnings Sass `if-function` corrigés le 27 avril 2026 dans `assets/css/vars/_typo.scss` (2 `if()` dépréciés → `@if`/`@else`) et `darken()` dans `BoiteArticle.vue` (→ `color.adjust()`). Refactor complet planifié (Étape 2b dans `TODO.md`).
+6. **Migration Nuxt 4** — Branche `chore/nuxt4-migration` après validation des étapes 2–5 ; roadmap complète dans `TODO.md`.
 
 ---
 
@@ -21,6 +22,19 @@
 SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stable**Dev Preview**<https://dev-beabot.netlify.app>Nuxt 3.14dev✅ Tests
 
 ### Dernière mise à jour
+
+**Services freelance — relief visuel & maillage (28 avril 2026)** — Branche `feat/design-services`.
+
+- ✅ Page `/services/` retravaillée visuellement sans changer son positionnement commercial : hero enrichi, œufs décoratifs, accents colorés, bande sombre pour la zone d'intervention, CTA final plus incarné
+- ✅ Les 3 familles d'offres sont conservées : WordPress, Vue.js / Nuxt, audit éco-conception & performance
+- ✅ Section tarifs conservée et renommée **Fourchettes habituelles**, avec précision sur les ordres de grandeur selon périmètre, contenu, intégrations et complexité
+- ✅ Micro-copy ajustée pour rendre l'offre lisible par agences, entreprises, indépendants et petites structures sans jargon inutile
+- ✅ Navigation claire activée sur la section sombre `Zone d'intervention` via `data-nav-theme="light"`
+- ✅ Maillage `/services/` renforcé vers `/portfolio/`, `/contact/`, `/eco-conception/`, `/greenlight/` et les articles longue traîne
+- ✅ Liens retour sobres ajoutés ou contextualisés depuis `audit-site-web`, `wordpress-freelance-lille`, `refonte-site-eco-concu` et `wordpress-vs-nuxt` vers `/services/`
+- ✅ `npm run generate` validé (100 routes)
+- ✅ Prettier ciblé OK sur les fichiers modifiés ; ESLint ciblé sur `pages/services.vue` sans erreur
+- ⚠️ `npm run lint` global reste non bloquant avec warnings/formatages historiques repo-wide
 
 **SEO & Repositionnement freelance — phase 1 (27 avril 2026)** — Branche `feat/seo-for-freelance-v1`.
 
