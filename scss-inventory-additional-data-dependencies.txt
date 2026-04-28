@@ -1,0 +1,365 @@
+assets/css/article-content.scss
+  Variables globales utilisées :
+    - $bold
+    - $gris1
+    - $gris2
+    - $gris3
+    - $gris4
+    - $gris6
+    - $normal
+    - $space-2xs
+    - $space-3xs
+    - $space-l
+    - $space-m
+    - $space-s
+    - $space-xl
+    - $vert
+  Imports explicites présents :
+    - aucun
+  Dépendance à additionalData : oui
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+    - @use "~/assets/css/vars/_spacing.scss" as *;
+    - @use "~/assets/css/vars/_typo.scss" as *;
+
+assets/css/main.scss
+  Variables globales utilisées :
+    - $black
+    - $bleu1
+    - $bleu2
+    - $bold
+    - $breakpoint-tablet
+    - $fondClair
+    - $fondGris
+    - $gris1
+    - $gris2
+    - $gris3
+    - $gris4
+    - $gris5
+    - $gris6
+    - $level-size
+    - $light
+    - $normal
+    - $type-base-size
+    - $vert
+  Imports explicites présents :
+    - aucun
+  Dépendance à additionalData : oui
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+    - @use "~/assets/css/vars/_typo.scss" as *;
+
+components/AppSearchInput.vue
+  Variables globales utilisées :
+    - $vert
+  Imports explicites présents :
+    - aucun
+  Dépendance à additionalData : oui
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+
+components/ArticleNavigation.vue
+  Variables globales utilisées :
+    - $gris1
+  Imports explicites présents :
+    - aucun
+  Dépendance à additionalData : oui
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+
+components/BaseButton.vue
+  Variables globales utilisées :
+    - $bleu2
+    - $gris1
+    - $gris2
+    - $vert
+  Imports explicites présents :
+    - 24: @use 'sass:color';
+  Dépendance à additionalData : non / partielle
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+
+components/BoiteArticle.vue
+  Variables globales utilisées :
+    - $bleu2
+    - $breakpoint-tablet
+    - $gris1
+    - $gris2
+    - $gris3
+    - $vert
+  Imports explicites présents :
+    - 290: @use 'sass:color';
+  Dépendance à additionalData : non / partielle
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+    - @use "~/assets/css/vars/_typo.scss" as *;
+
+components/Oeuf.vue
+  Variables globales utilisées :
+    - $bleu1
+    - $bleu2
+    - $jaune
+    - $vert
+  Imports explicites présents :
+    - aucun
+  Dépendance à additionalData : oui
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+
+components/TheFooter.vue
+  Variables globales utilisées :
+    - $breakpoint-tablet
+    - $fondGris
+    - $gris4
+    - $vert
+  Imports explicites présents :
+    - aucun
+  Dépendance à additionalData : oui
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+    - @use "~/assets/css/vars/_typo.scss" as *;
+
+components/apps/AppBreadcrumb.vue
+  Variables globales utilisées :
+    - $gris1
+    - $gris3
+    - $vert
+  Imports explicites présents :
+    - aucun
+  Dépendance à additionalData : oui
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+
+components/apps/AppCard.vue
+  Variables globales utilisées :
+    - $gris1
+    - $gris2
+    - $gris3
+    - $vert
+  Imports explicites présents :
+    - aucun
+  Dépendance à additionalData : oui
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+
+components/apps/AppFaqList.vue
+  Variables globales utilisées :
+    - $gris1
+    - $gris2
+    - $vert
+  Imports explicites présents :
+    - aucun
+  Dépendance à additionalData : oui
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+
+components/apps/AppLegalTabs.vue
+  Variables globales utilisées :
+    - $gris1
+    - $gris2
+    - $gris3
+    - $vert
+  Imports explicites présents :
+    - aucun
+  Dépendance à additionalData : oui
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+
+components/apps/AppReleaseInterestForm.vue
+  Variables globales utilisées :
+    - $breakpoint-tablet
+    - $vert
+  Imports explicites présents :
+    - aucun
+  Dépendance à additionalData : oui
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+    - @use "~/assets/css/vars/_typo.scss" as *;
+
+components/server/Oeuf.server.vue
+  Variables globales utilisées :
+    - $bleu1
+    - $bleu2
+    - $jaune
+    - $vert
+  Imports explicites présents :
+    - aucun
+  Dépendance à additionalData : oui
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+
+error.vue
+  Variables globales utilisées :
+    - $bold
+    - $breakpoint-tablet
+    - $gris2
+  Imports explicites présents :
+    - aucun
+  Dépendance à additionalData : oui
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+    - @use "~/assets/css/vars/_typo.scss" as *;
+
+layouts/default.vue
+  Variables globales utilisées :
+    - $bleu1
+    - $bleu2
+    - $breakpoint-tablet
+    - $fondClair
+    - $gris1
+    - $jaune
+    - $light
+    - $vert
+  Imports explicites présents :
+    - 357: @use 'sass:color';
+  Dépendance à additionalData : non / partielle
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+    - @use "~/assets/css/vars/_typo.scss" as *;
+
+pages/404.vue
+  Variables globales utilisées :
+    - $bold
+    - $breakpoint-tablet
+    - $gris2
+  Imports explicites présents :
+    - aucun
+  Dépendance à additionalData : oui
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+    - @use "~/assets/css/vars/_typo.scss" as *;
+
+pages/apps/duo-spend.vue
+  Variables globales utilisées :
+    - $breakpoint-tablet
+    - $gris1
+    - $gris2
+    - $gris3
+    - $vert
+  Imports explicites présents :
+    - aucun
+  Dépendance à additionalData : oui
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+    - @use "~/assets/css/vars/_typo.scss" as *;
+
+pages/apps/index.vue
+  Variables globales utilisées :
+    - $breakpoint-tablet
+    - $gris1
+    - $gris2
+    - $gris3
+    - $vert
+  Imports explicites présents :
+    - aucun
+  Dépendance à additionalData : oui
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+    - @use "~/assets/css/vars/_typo.scss" as *;
+
+pages/apps/meeting-mode.vue
+  Variables globales utilisées :
+    - $breakpoint-tablet
+    - $gris1
+    - $gris2
+    - $gris3
+    - $vert
+  Imports explicites présents :
+    - aucun
+  Dépendance à additionalData : oui
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+    - @use "~/assets/css/vars/_typo.scss" as *;
+
+pages/apps/siturem.vue
+  Variables globales utilisées :
+    - $breakpoint-tablet
+    - $gris1
+    - $gris2
+    - $gris3
+    - $vert
+  Imports explicites présents :
+    - aucun
+  Dépendance à additionalData : oui
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+    - @use "~/assets/css/vars/_typo.scss" as *;
+
+pages/eco-conception/[slug].vue
+  Variables globales utilisées :
+    - $bold
+    - $breakpoint-tablet
+    - $gris1
+    - $gris3
+    - $gris4
+    - $gris6
+    - $space-2xs
+    - $space-3xs
+    - $space-l
+    - $space-m
+    - $space-s
+    - $space-xl
+    - $vert
+  Imports explicites présents :
+    - aucun
+  Dépendance à additionalData : oui
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+    - @use "~/assets/css/vars/_spacing.scss" as *;
+    - @use "~/assets/css/vars/_typo.scss" as *;
+
+pages/eco-conception/index.vue
+  Variables globales utilisées :
+    - $breakpoint-tablet
+    - $gris1
+    - $vert
+  Imports explicites présents :
+    - 1008: @use 'sass:color';
+  Dépendance à additionalData : non / partielle
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+    - @use "~/assets/css/vars/_typo.scss" as *;
+
+pages/greenlight.vue
+  Variables globales utilisées :
+    - $breakpoint-tablet
+  Imports explicites présents :
+    - aucun
+  Dépendance à additionalData : oui
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_typo.scss" as *;
+
+pages/index.vue
+  Variables globales utilisées :
+    - $breakpoint-tablet
+    - $gris1
+    - $vert
+  Imports explicites présents :
+    - 563: @use 'sass:color';
+  Dépendance à additionalData : non / partielle
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+    - @use "~/assets/css/vars/_typo.scss" as *;
+
+pages/portfolio.vue
+  Variables globales utilisées :
+    - $gris1
+    - $gris2
+    - $gris3
+    - $vert
+  Imports explicites présents :
+    - aucun
+  Dépendance à additionalData : oui
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+
+pages/services.vue
+  Variables globales utilisées :
+    - $breakpoint-tablet
+    - $vert
+  Imports explicites présents :
+    - 503: @use 'sass:color';
+  Dépendance à additionalData : non / partielle
+  Futur import explicite recommandé :
+    - @use "~/assets/css/vars/_colors.scss" as *;
+    - @use "~/assets/css/vars/_typo.scss" as *;
