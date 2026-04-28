@@ -27,6 +27,9 @@ export default defineNuxtConfig({
 
   // Compatibility date for Nuxt 3
   compatibilityDate: '2024-12-06',
+  future: {
+    compatibilityVersion: 4,
+  },
 
   // Runtime configuration (accessible via useRuntimeConfig())
   runtimeConfig: {
