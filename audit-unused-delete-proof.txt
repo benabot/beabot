@@ -1,0 +1,42 @@
+Suppressions prévues après audit large :
+
+- utils/getSiteMeta.js
+  Preuve : audit-unused-getSiteMeta-file.txt le trouve ; audit-unused-getSiteMeta-usage.txt ne contient qu'une mention TODO.md, aucun import/appel code.
+
+- components/HomePortfolioLatest.vue
+  Preuve : audit-unused-components-usage.txt indique aucune référence trouvée dans pages/components/layouts/app/error/content/data/nuxt/tests/scripts.
+
+- components/OeufImage.vue
+  Preuve : audit-unused-components-usage.txt indique aucune référence trouvée dans pages/components/layouts/app/error/content/data/nuxt/tests/scripts.
+
+- scripts/add-chapo.mjs
+- scripts/normalize-md-links.mjs
+- scripts/seo-audit.mjs
+  Preuve : audit-unused-scripts-usage.txt indique aucun appel package.json, aucune référence documentation, aucune référence code.
+
+- public/img/.DS_Store
+- public/img/greenlight-free/.DS_Store
+- public/img/greenlight/.DS_Store
+  Preuve : fichiers système macOS, aucune référence trouvée.
+
+- public/img/4DF4126CEDA88CAD.jpg
+- public/img/4DF4126CEDA88CAE.jpg
+- public/img/4DF4126CEDA88CAF.png
+- public/img/apps/duospend-tuto1.webp
+- public/img/apps/duospend-tuto2.webp
+- public/img/apps/duospend-tuto3.webp
+- public/img/beabot.webp
+- public/img/chasse-patate.png
+- public/img/forme-flou.svg
+- public/img/forme.svg
+- public/img/formeOLD.svg
+- public/img/greenlight/greenlight-admin-3.webp
+- public/img/greenlight/greenlight-admin-4.webp
+- public/img/greenlight/greenlight-customizer-1.webp
+- public/img/greenlight/greenlight-front-1.webp
+- public/img/greenlight/greenlight-front-2.webp
+- public/img/greenlight/greenlight-front-3.webp
+- public/img/oeuf-bleu.svg
+- public/img/oeuf-vert.svg
+- public/img/oeuf.svg
+  Preuve : audit-unused-public-img-usage.txt indique aucune référence trouvée dans pages/components/layouts/content/data/assets/public/server/nuxt/app/error/README/TODO.
