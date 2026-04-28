@@ -1,0 +1,66 @@
+npm warn Unknown user config "python". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> beabot@2.0.0 test
+> node scripts/pre-build-check.js && npm run test:content && npm run test:node
+
+🔍 Running pre-build checks...
+
+📋 Checking configuration files...
+📦 Validating package.json...
+📁 Checking critical directories...
+📄 Checking key pages...
+🧩 Checking components...
+⚡ Checking composables...
+📝 Checking content...
+🎨 Checking assets...
+🌐 Checking public files...
+☁️  Checking Netlify configuration...
+
+==================================================
+📊 RESULTS
+==================================================
+Total checks: 49
+✅ Passed: 49
+⚠️  Warnings: 0
+❌ Errors: 0
+
+✅ All checks passed! Ready to build.
+npm warn Unknown env config "python". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown user config "python". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> beabot@2.0.0 test:content
+> node scripts/check-content-queries.mjs
+
+OK Content v2 query checks passed.
+npm warn Unknown env config "python". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown user config "python". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> beabot@2.0.0 test:node
+> node --test tests/*.test.mjs
+
+✔ AppLink compiles with a NuxtLink, slot, and forwarded attributes (10.613584ms)
+✔ AppLink normalizes string links like normalizeInternalHref (0.299917ms)
+✔ AppLink leaves external, special, and file hrefs unchanged (0.074208ms)
+✔ AppLink normalizes object routes without dropping route fields (0.111958ms)
+✔ rss.xml exposes a non-empty RSS feed with stable article URLs (1.18725ms)
+✔ feed.json is parseable and exposes stable JSON Feed items (0.29575ms)
+✔ generated page / exposes minimal SEO tags (1.482ms)
+✔ generated page /eco-conception/ exposes minimal SEO tags (0.579791ms)
+✔ generated page /eco-conception/l-eco-conception-web/ exposes minimal SEO tags (1.674375ms)
+✔ generated page /portfolio/ exposes minimal SEO tags (0.278ms)
+✔ generated page /services/ exposes minimal SEO tags (0.281417ms)
+✔ generated page /contact/ exposes minimal SEO tags (0.168709ms)
+✔ absoluteUrl builds stable absolute URLs without double slashes (0.763875ms)
+✔ canonicalUrl keeps the root and internal pages canonical (0.09425ms)
+✔ withTrailingSlash normalizes internal paths only once (0.058542ms)
+✔ normalizeInternalHref normalizes internal links with suffixes (0.288792ms)
+✔ normalizeInternalHref preserves static assets and feed files (0.077208ms)
+✔ normalizeInternalHref leaves external and special hrefs unchanged (0.052ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 201.571958

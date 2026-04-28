@@ -785,7 +785,7 @@ useHead({
 }
 
 .services-btn--primary:hover {
-  background: color.adjust($vert, $lightness: 6%);
+  background: color.adjust($vert-raw, $lightness: 6%);
 }
 
 .services-btn--secondary {
@@ -876,7 +876,7 @@ useHead({
 
 .services-text-link:hover,
 .services-text-link:focus-visible {
-  color: color.adjust($vert, $lightness: -16%);
+  color: color.adjust($vert-raw, $lightness: -16%);
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }

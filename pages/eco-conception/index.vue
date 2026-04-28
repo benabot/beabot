@@ -1232,7 +1232,7 @@ useHead(() => {
 }
 
 .eco-title span {
-  color: color.adjust($vert, $lightness: 6%);
+  color: color.adjust($vert-raw, $lightness: 6%);
 }
 
 .eco-section__title,
@@ -1306,7 +1306,7 @@ useHead(() => {
 .eco-button--primary {
   background: linear-gradient(
     135deg,
-    color.adjust($vert, $lightness: 14%),
+    color.adjust($vert-raw, $lightness: 14%),
     $vert 72%
   );
   color: $gris1;
@@ -1474,7 +1474,7 @@ useHead(() => {
   height: 0.25rem;
   background: linear-gradient(
     90deg,
-    color.adjust($vert, $lightness: 8%),
+    color.adjust($vert-raw, $lightness: 8%),
     rgba(4, 57, 217, 0.42),
     rgba(242, 168, 29, 0.34)
   );
@@ -1646,7 +1646,7 @@ useHead(() => {
   font-size: clamp(1.8rem, 4vw, 2.6rem);
   line-height: 0.95;
   letter-spacing: -0.05em;
-  color: color.adjust($vert, $lightness: 2%);
+  color: color.adjust($vert-raw, $lightness: 2%);
 }
 
 .eco-impact-card h3,
@@ -1757,7 +1757,7 @@ useHead(() => {
   width: 2rem;
   height: 0.35rem;
   border-radius: 999px;
-  background: color.adjust($vert, $lightness: 4%);
+  background: color.adjust($vert-raw, $lightness: 4%);
 }
 
 .eco-benefit-card:nth-child(2),
@@ -1800,7 +1800,7 @@ useHead(() => {
 }
 
 .eco-section--dark .eco-impact-card__value {
-  color: color.adjust($vert, $lightness: 10%);
+  color: color.adjust($vert-raw, $lightness: 10%);
 }
 
 .eco-featured-grid {
@@ -1989,7 +1989,7 @@ useHead(() => {
 
 .eco-filter--active {
   background: rgba(0, 168, 62, 0.12);
-  color: color.adjust($vert, $lightness: -6%);
+  color: color.adjust($vert-raw, $lightness: -6%);
 }
 
 .eco-filter--active span {
@@ -2127,7 +2127,7 @@ useHead(() => {
   top: 50%;
   right: 1.25rem;
   transform: translateY(-50%);
-  color: color.adjust($vert, $lightness: -2%);
+  color: color.adjust($vert-raw, $lightness: -2%);
   font-size: 1.3rem;
   line-height: 1;
 }
@@ -2236,7 +2236,7 @@ a:focus-visible,
 button:focus-visible,
 summary:focus-visible,
 input:focus-visible {
-  outline: 2px solid color.adjust($vert, $lightness: 8%);
+  outline: 2px solid color.adjust($vert-raw, $lightness: 8%);
   outline-offset: 4px;
 }
 

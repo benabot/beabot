@@ -1,0 +1,37 @@
+--- scss-colors-assets-before-bytes.txt	2026-04-28 20:56:06
++++ scss-colors-assets-after-bytes.txt	2026-04-28 20:58:07
+@@ -1,18 +1,18 @@
+-   25179 .output/public/_nuxt/index.B9W0gSHR.css
+-   19227 .output/public/_nuxt/portfolio.B7B7A9Py.css
+-   15265 .output/public/_nuxt/default.B2j2dqAD.css
+-   14688 .output/public/_nuxt/index.DueLqJns.css
+-   14675 .output/public/_nuxt/AppReleaseInterestForm.BfzXbDI2.css
+-   14391 .output/public/_nuxt/_slug_.tU1W4KhI.css
+-   14130 .output/public/_nuxt/greenlight.DQuuZj1I.css
+-   13886 .output/public/_nuxt/vendor-libs.p3LoGY6h.css
+-   13229 .output/public/_nuxt/duo-spend.02JKKDHw.css
+-   13082 .output/public/_nuxt/services.Dw4oUbCl.css
+-   12361 .output/public/_nuxt/meeting-mode.CgT7963D.css
+-   11143 .output/public/_nuxt/siturem.DliDitYX.css
+-    7973 .output/public/_nuxt/index.WOoprrOM.css
++   25868 .output/public/_nuxt/index.Ew-hki6g.css
++   20864 .output/public/_nuxt/portfolio.CglkZeQB.css
++   17455 .output/public/_nuxt/AppReleaseInterestForm.98DCFE7Q.css
++   16914 .output/public/_nuxt/vendor-libs.CbZytJqB.css
++   16807 .output/public/_nuxt/default.B-EJOqjy.css
++   16713 .output/public/_nuxt/_slug_.CmiHxpCf.css
++   15399 .output/public/_nuxt/index.C028FR1q.css
++   14796 .output/public/_nuxt/greenlight.Oxs9w1QC.css
++   14245 .output/public/_nuxt/duo-spend.Cs0TGdgr.css
++   13781 .output/public/_nuxt/services.YfIX6iIN.css
++   13365 .output/public/_nuxt/meeting-mode.DFLRL17L.css
++   12080 .output/public/_nuxt/siturem.B12hsisQ.css
++    9434 .output/public/_nuxt/index.BXMwCVj-.css
+     5790 .output/public/_nuxt/contact.Bw1a-DgM.css
+-    3516 .output/public/_nuxt/404.CDyPyTEA.css
+-    2749 .output/public/_nuxt/apps.GhbkIvNU.css
+-    2210 .output/public/_nuxt/mentions-legales.CIFFSs87.css
++    4194 .output/public/_nuxt/404.CvuE3Ewk.css
++    3462 .output/public/_nuxt/apps.D0q7bhR1.css
++    2876 .output/public/_nuxt/mentions-legales.CAXM3Ojs.css
+       46 .output/public/_nuxt/entry.B_fgAJq0.css

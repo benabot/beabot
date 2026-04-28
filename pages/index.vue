@@ -691,7 +691,7 @@ useHead({
 }
 
 .home-title span {
-  color: color.adjust($vert, $lightness: 12%);
+  color: color.adjust($vert-raw, $lightness: 12%);
 }
 
 .section-title {
@@ -767,7 +767,7 @@ useHead({
 .button--primary {
   background: linear-gradient(
     135deg,
-    color.adjust($vert, $lightness: 12%),
+    color.adjust($vert-raw, $lightness: 12%),
     $vert 70%
   );
   color: $gris1;
@@ -828,7 +828,7 @@ useHead({
   height: 3.25rem;
   border-radius: 999px;
   background: rgba(0, 168, 62, 0.16);
-  color: color.adjust($vert, $lightness: 18%);
+  color: color.adjust($vert-raw, $lightness: 18%);
 }
 
 .proof-blob__icon svg {
@@ -927,7 +927,7 @@ useHead({
 }
 
 .metric-card__value--accent {
-  color: color.adjust($vert, $lightness: 14%);
+  color: color.adjust($vert-raw, $lightness: 14%);
 }
 
 .metric-card__meta {
@@ -955,7 +955,7 @@ useHead({
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: color.adjust($vert, $lightness: 12%);
+  color: color.adjust($vert-raw, $lightness: 12%);
 }
 
 .section-footer {
@@ -1151,7 +1151,7 @@ useHead({
 }
 
 .product-card__badge {
-  color: color.adjust($vert, $lightness: 14%);
+  color: color.adjust($vert-raw, $lightness: 14%);
 }
 
 .product-card__list {
@@ -1165,7 +1165,7 @@ useHead({
 
 .product-card__list li::before {
   content: '•';
-  color: color.adjust($vert, $lightness: 12%);
+  color: color.adjust($vert-raw, $lightness: 12%);
   margin-right: 0.45rem;
 }
 
@@ -1260,7 +1260,7 @@ useHead({
 }
 
 a:focus-visible {
-  outline: 2px solid color.adjust($vert, $lightness: 16%);
+  outline: 2px solid color.adjust($vert-raw, $lightness: 16%);
   outline-offset: 4px;
 }
 
