@@ -16,6 +16,8 @@
 - [x] Renforcer le maillage `/services/` → articles : audit site web, WordPress freelance Lille, refonte éco-conçue, WordPress vs Nuxt
 - [x] Renforcer le maillage `/services/` → `/portfolio/`, `/contact/`, `/eco-conception/` et `/greenlight/`
 - [x] Ajouter des liens retour sobres depuis les 4 articles longue traîne vers `/services/`
+- [x] Ajuster la micro-copy de `/services/` pour clarifier les personas : agences, entreprises, indépendants et petites structures
+- [x] Faire passer la navigation en clair sur la section sombre `Zone d'intervention` via le pattern existant `data-nav-theme="light"`
 - [x] Valider `npm run generate` : 100 routes générées
 - [x] Vérifier Prettier sur les fichiers modifiés
 - [x] Vérifier ESLint ciblé sur `pages/services.vue` : 0 erreur, warnings de style Vue uniquement

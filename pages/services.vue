@@ -20,14 +20,21 @@
             Développeur web freelance · Disponible
           </p>
           <h1 id="services-hero-title" class="services-title">
-            Missions freelance — WordPress, JavaScript (Vue.js), éco-conception
+            Missions freelance — WordPress, JavaScript, Vue.js, Nuxt &amp;
+            éco-conception
           </h1>
           <p class="services-subtitle">
-            15 ans d'expérience web. Je prends en charge les projets WordPress,
-            les sites statiques Vue.js et Nuxt, et les audits éco-conception —
-            de la conception au déploiement.
+            15 ans d’expérience web. Je prends en charge des projets WordPress,
+            JavaScript, Vue.js et Nuxt, ainsi que des audits éco-conception — de
+            la conception au déploiement.
           </p>
-          <p class="services-geo">Basé à Lille · Hauts-de-France · Remote</p>
+          <p class="services-personas">
+            J’interviens pour des agences, des entreprises et des indépendants
+            qui ont besoin d’un site plus propre, plus rapide ou plus durable.
+          </p>
+          <p class="services-geo">
+            Basé à Lille · Interventions en Hauts-de-France · Missions en remote
+          </p>
           <div class="services-actions">
             <AppLink class="services-btn services-btn--primary" to="/contact/">
               Discutons de votre projet
@@ -42,10 +49,10 @@
         </div>
 
         <aside class="services-hero__panel" aria-label="Repères de mission">
-          <p class="services-panel__kicker">Ce que je relie</p>
+          <p class="services-panel__kicker">Ce que j’apporte</p>
           <div class="services-panel__grid">
             <p>Offre claire</p>
-            <p>Technique sobre</p>
+            <p>Technique fiable</p>
             <p>Contenus utiles</p>
           </div>
           <AppLink class="services-text-link" to="/eco-conception/">
@@ -68,7 +75,8 @@
             </h2>
             <p class="services-mission__lede">
               Création, migration, refonte et optimisation de sites WordPress
-              Gutenberg — sobres, rapides et administrables sans aide technique.
+              Gutenberg — sobres, rapides et faciles à administrer sans dépendre
+              d’un prestataire au quotidien.
             </p>
             <div
               class="services-mission__links"
@@ -100,12 +108,12 @@
           <div class="services-mission__header">
             <p class="services-mission__tag">JavaScript</p>
             <h2 id="services-js-title" class="services-mission__title">
-              Développement Vue.js &amp; Nuxt
+              Développement JavaScript, Vue.js &amp; Nuxt
             </h2>
             <p class="services-mission__lede">
-              Sites statiques (SSG), landing pages et applications légères avec
-              Vue.js et Nuxt 3 — performants, éco-conçus, déployables sur un
-              hébergement statique.
+              Développement de sites, interfaces et applications légères en
+              JavaScript, Vue.js et Nuxt — performants, sobres et faciles à
+              déployer.
             </p>
             <div
               class="services-mission__links"
@@ -146,9 +154,9 @@
               Audit éco-conception &amp; performance
             </h2>
             <p class="services-mission__lede">
-              Analyse de l'empreinte numérique, de la performance et du SEO
-              technique de votre site — rapport écrit avec recommandations
-              priorisées.
+              Analyse de l’empreinte numérique, des performances et du SEO
+              technique de votre site — avec un rapport écrit et des
+              recommandations priorisées.
             </p>
             <div class="services-mission__links" aria-label="Ressources audit">
               <AppLink
@@ -171,6 +179,7 @@
     <section
       class="services-section services-section--zone"
       aria-labelledby="services-zone-title"
+      data-nav-theme="light"
     >
       <Oeuf
         class="services-oeuf services-oeuf--zone"
@@ -180,7 +189,7 @@
       />
       <div class="services-shell">
         <div class="services-section__intro">
-          <p class="services-eyebrow services-eyebrow--light">Terrain</p>
+          <p class="services-eyebrow services-eyebrow--light">Localisation</p>
           <h2 id="services-zone-title" class="services-section__title">
             Zone d'intervention
           </h2>
@@ -206,8 +215,8 @@
           </h2>
           <p class="services-tarifs__note">
             Ces montants donnent un ordre de grandeur réaliste. Le budget final
-            dépend du périmètre, du volume de contenu, des intégrations et de la
-            complexité réelle du projet.
+            dépend du périmètre, du volume de contenu, des intégrations, du
+            niveau de personnalisation et de la complexité réelle du projet.
           </p>
         </div>
         <div class="services-tarifs-grid">
@@ -244,11 +253,11 @@
           />
           <p class="services-eyebrow services-eyebrow--light">Contact</p>
           <h2 id="services-cta-title" class="services-cta__title">
-            Un projet à démarrer ?
+            Un projet à lancer, refaire ou alléger ?
           </h2>
           <p class="services-cta__text">
             Décrivez votre projet par formulaire ou par mail — je reviens vers
-            vous sous 48h.
+            vous sous 48 h avec un premier retour clair.
           </p>
           <div class="services-actions services-actions--centered">
             <AppLink class="services-btn services-btn--primary" to="/contact/">
@@ -261,7 +270,7 @@
               class="services-btn services-btn--ghost"
               to="/eco-conception/"
             >
-              Lire les contenus
+              Lire les articles liés à ces missions
             </AppLink>
           </div>
         </div>
@@ -278,17 +287,18 @@ const pageUrl = canonicalUrl(config.public.siteUrl, '/services')
 const ogImage = `${config.public.siteUrl}/beabot.png`
 
 const seo = {
-  title: 'Missions freelance — WordPress, Vue.js, éco-conception | BeAbot',
+  title:
+    'Missions freelance — WordPress, JavaScript, Vue.js, Nuxt & éco-conception | BeAbot',
   description:
-    "Développeur web freelance à Lille — sites WordPress éco-conçus, Vue.js/Nuxt et audit d'empreinte numérique. Missions en Hauts-de-France et en remote.",
+    "Développeur web freelance à Lille — projets WordPress, JavaScript, Vue.js/Nuxt et audits d'éco-conception. Missions en Hauts-de-France et en remote.",
 }
 
 const wpItems = [
-  'Création de site vitrine ou blog WordPress Gutenberg',
+  'Création de site vitrine ou de blog WordPress avec Gutenberg',
   "Migration, refonte et optimisation d'un site existant",
-  "Thème sur mesure ou personnalisation d'un thème sobre (Greenlight)",
-  'Optimisation performance : Lighthouse, Core Web Vitals, EcoIndex',
-  'SEO technique : structure, balises, sitemap, robots',
+  'Thème sur mesure ou personnalisation d’un thème léger comme Greenlight',
+  'Optimisation des performances : Lighthouse, Core Web Vitals, EcoIndex',
+  'SEO technique : structure, balises, sitemap, robots.txt',
   "Formation à l'administration WordPress",
 ] as const
 
@@ -308,11 +318,11 @@ const wpLinks = [
 ] as const
 
 const jsItems = [
-  'Site statique (SSG) avec Nuxt 3, déployable sur Netlify ou Vercel',
-  'Landing page ou site vitrine Vue.js',
+  'Site rapide avec Nuxt 3, déployable sur Netlify ou Vercel',
+  'Landing page, site vitrine ou interface légère en Vue.js',
   "Migration d'un site dynamique vers une architecture statique",
-  'Intégration Nuxt Content pour un CMS Markdown',
-  'Composants Vue.js sur mesure',
+  'Intégration de Nuxt Content pour gérer un site éditorial sobre et simple à maintenir',
+  'Application Vue.js sur mesure',
 ] as const
 
 const jsLinks = [
@@ -328,19 +338,19 @@ const jsLinks = [
 
 const auditItems = [
   'Performance : Lighthouse, PageSpeed Insights, Core Web Vitals',
-  'Empreinte numérique : EcoIndex, poids de page, requêtes HTTP, DOM',
+  'Empreinte numérique : EcoIndex, poids de page, requêtes HTTP, complexité du DOM',
   'SEO technique : balises, canonicals, données structurées, maillage',
   'Accessibilité : hiérarchie, contrastes, navigation clavier',
-  'Rapport écrit avec recommandations priorisées',
+  'Rapport écrit avec priorités d’action claires',
 ] as const
 
 const auditLinks = [
   {
-    label: "Comprendre l'audit de site web",
+    label: 'Comprendre ce qu’apporte un audit de site web',
     to: '/eco-conception/audit-site-web/',
   },
   {
-    label: 'Décider avant une refonte',
+    label: 'Décider avant une refonte de site',
     to: '/eco-conception/refonte-site-eco-concu/',
   },
 ] as const
@@ -349,39 +359,42 @@ const zones = [
   {
     label: 'Lille & métropole',
     description:
-      "Réunions en présentiel possibles pour les briefs, points d'avancement et bilans.",
+      'Présentiel possible pour les briefs, points d’avancement et bilans de mission.',
   },
   {
     label: 'Hauts-de-France',
-    description: 'Déplacements ponctuels selon les besoins du projet.',
+    description:
+      'Déplacements ponctuels possibles selon le projet et les temps d’échange nécessaires.',
   },
   {
     label: 'Remote',
     description:
-      'Collaboration entièrement à distance — visio, email, outils partagés.',
+      'Collaboration à distance fluide : visio, email, outils partagés et points de suivi réguliers.',
   },
 ] as const
 
 const tarifs = [
   {
-    label: 'Site WordPress vitrine',
+    label: 'Site vitrine WordPress',
     price: '1 500 – 4 500 €',
-    detail: 'Selon périmètre, contenu et niveau de personnalisation.',
+    detail:
+      'Selon le périmètre, le contenu à intégrer et le niveau de personnalisation.',
   },
   {
-    label: 'Site Nuxt / Vue.js SSG',
+    label: 'Site ou app légère en Vue.js / Nuxt',
     price: '2 500 – 7 000 €',
-    detail: 'Selon complexité, intégrations et volume de contenu.',
+    detail: 'Selon la complexité, les intégrations et le volume de contenu.',
   },
   {
-    label: 'Audit éco-conception',
+    label: 'Audit éco-conception & performance',
     price: '500 – 1 500 €',
-    detail: 'Rapport complet avec recommandations priorisées.',
+    detail: 'Rapport complet avec recommandations priorisées et plan d’action.',
   },
   {
-    label: 'Maintenance & suivi',
+    label: 'Maintenance & suivi courant',
     price: '100 – 300 € / mois',
-    detail: 'Mises à jour, monitoring, corrections mineures.',
+    detail:
+      'Mises à jour, surveillance, corrections mineures et accompagnement courant.',
   },
 ] as const
 
@@ -415,16 +428,16 @@ const jsonLd = {
           '@type': 'Service',
           name: 'Développement WordPress',
           description:
-            'Création, refonte et optimisation de sites WordPress Gutenberg éco-conçus.',
+            'Création, refonte et optimisation de sites WordPress Gutenberg sobres et administrables.',
         },
       },
       {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Développement Vue.js & Nuxt',
+          name: 'Développement JavaScript, Vue.js & Nuxt',
           description:
-            'Sites statiques SSG, landing pages et applications légères Vue.js/Nuxt 3.',
+            'Sites, interfaces et applications légères JavaScript, Vue.js et Nuxt.',
         },
       },
       {
@@ -433,7 +446,7 @@ const jsonLd = {
           '@type': 'Service',
           name: 'Audit éco-conception & performance',
           description:
-            'Analyse EcoIndex, Lighthouse, SEO technique et accessibilité — rapport écrit.',
+            'Analyse EcoIndex, Lighthouse, SEO technique et accessibilité avec recommandations priorisées.',
         },
       },
     ],
@@ -698,7 +711,7 @@ useHead({
 
 .services-title {
   margin: 0;
-  max-width: 18ch;
+  max-width: 20ch;
   font-size: clamp(2.2rem, 5vw, 4rem);
   line-height: 1.02;
   letter-spacing: -0.045em;
@@ -711,6 +724,14 @@ useHead({
   font-size: clamp(1.05rem, 1.35vw, 1.22rem);
   line-height: 1.62;
   color: rgba(18, 19, 15, 0.78);
+}
+
+.services-personas {
+  margin: 0.85rem 0 0;
+  max-width: 42rem;
+  color: rgba(18, 19, 15, 0.64);
+  font-size: 0.98rem;
+  line-height: 1.68;
 }
 
 .services-geo {
