@@ -1,0 +1,2 @@
+<link rel="stylesheet" href="/_nuxt/entry.B_fgAJq0.css" crossorigin>
+<link rel="stylesheet" href="/_nuxt/vendor-libs.p3LoGY6h.css" crossorigin>

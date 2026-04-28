@@ -1,0 +1,7 @@
+--- migration-nuxt4-psi-home-css-links-before.txt	2026-04-28 17:10:58
++++ migration-nuxt4-psi-home-css-links-after.txt	2026-04-28 17:12:52
+@@ -1,4 +1,2 @@
+ <link rel="stylesheet" href="/_nuxt/entry.B_fgAJq0.css" crossorigin>
+-<link rel="stylesheet" href="/_nuxt/default.B2j2dqAD.css" crossorigin>
+ <link rel="stylesheet" href="/_nuxt/vendor-libs.p3LoGY6h.css" crossorigin>
+-<link rel="stylesheet" href="/_nuxt/index.ByhGl-Hn.css" crossorigin>
