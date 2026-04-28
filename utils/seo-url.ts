@@ -1,4 +1,13 @@
-const FILE_EXTENSIONS = new Set(['.pdf', '.png', '.jpg', '.jpeg', '.svg', '.webp'])
+const FILE_EXTENSIONS = new Set([
+  '.pdf',
+  '.xml',
+  '.json',
+  '.png',
+  '.jpg',
+  '.jpeg',
+  '.svg',
+  '.webp',
+])
 
 const stripTrailingSlash = (value: string) => value.replace(/\/+$/, '')
 
