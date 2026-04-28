@@ -150,6 +150,11 @@ Si aucune suppression :
 - `npm run generate` : succès pour l'audit initial
 - `npm test` : succès via `pregenerate`
 
+Validation finale :
+- `audit-unused-tests-final.txt`
+- `audit-unused-generate-final.txt`
+- `audit-unused-seo-check-final.txt`
+
 ## Conclusion
 
 - Étape 2 validable : oui après validation finale

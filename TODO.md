@@ -84,10 +84,14 @@
 
 ### Étape 2 — Audit fichiers inutiles
 
-- [ ] Lister et supprimer les fichiers orphelins : composants non importés, images inutilisées dans `/public/img/`, scripts de la racine sans appelant
-- [ ] Vérifier que `getSiteMeta.js` (vestige Nuxt 2, marqué `deprecated`) n'est plus importé dans aucun composant — le supprimer
-- [ ] Auditer les dépendances `package.json` non utilisées (`npm-check` ou équivalent)
-- [ ] Vérifier les routes générées (81 actuellement) : confirmer qu'aucune page fantôme n'est incluse dans le build
+> Audit réalisé le 28 avril 2026 sur `chore/nuxt4-unused-files-audit`.
+> Rapport : `migration-nuxt4-unused-files-audit.md`.
+
+- [x] Lister les fichiers orphelins potentiels ; supprimer uniquement ceux prouvés inutilisés
+- [x] Vérifier que `getSiteMeta.js` (vestige Nuxt 2, marqué `deprecated`) n'est plus importé dans aucun composant — le supprimer si présent et inutilisé
+- [x] Auditer les dépendances `package.json` non utilisées (`npm-check` ou équivalent)
+  - Note : aucune dépendance modifiée ; `gray-matter` et `sass-loader` restent à vérifier dans une branche séparée.
+- [x] Vérifier les routes générées : documenter le nombre observé et confirmer qu'aucune page fantôme n'est incluse dans le build
 
 ### Étape 2b — Refactor SCSS → CSS moderne
 
