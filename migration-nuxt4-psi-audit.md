@@ -187,3 +187,64 @@ Seule la ligne `inlineSSRStyles` a été modifiée. Aucune option Nuxt 4 supplé
 ## Limite
 
 Le score PSI mobile 100 ne peut être validé qu'après déploiement preview ou production et relance PageSpeed Insights.
+
+## Décision après validation PSI publique — revert `inlineSSRStyles`
+
+Date : 28 avril 2026
+
+### Comparaison des scores
+
+| Environnement | URL | Performance mobile | Accessibilité | Bonnes pratiques | SEO |
+|---|---|---:|---:|---:|---:|
+| Production `master` avant intervention | `https://beabot.fr/` | 99 | 96 | 100 | 100 |
+| Dev après `inlineSSRStyles: true` | `https://dev-beabot.netlify.app/` | 98 | 96 | 100 | 100 |
+
+### Problème constaté sur `dev`
+
+PageSpeed Insights mobile signale encore deux CSS bloquants :
+
+| Ressource | Taille de transfert | Durée |
+|---|---:|---:|
+| `/_nuxt/vendor-libs.p3LoGY6h.css` | 3,2 KiB | 540 ms |
+| `/_nuxt/entry.B_fgAJq0.css` | 0,6 KiB | 240 ms |
+
+Économies estimées restantes : 360 ms.
+
+Chaîne critique maximale : 837 ms.
+
+### Décision
+
+Le changement `experimental.inlineSSRStyles: true` est reverté.
+
+Justification :
+
+- le score PSI mobile public régresse de 99 à 98 par rapport à la production `master` ;
+- le problème de CSS render-blocking n'est pas résolu ;
+- le HTML généré est fortement alourdi ;
+- le bénéfice local Lighthouse ne se confirme pas sur PageSpeed Insights public.
+
+### État après revert local
+
+- `npm test` : succès
+  - pré-build : 49 checks passés, 0 warning, 0 erreur
+  - `test:content` : OK
+  - `test:node` : 18 tests passés
+- `npm run generate` : succès
+  - 100 routes prerendered
+- check SEO : succès
+  - `OK SEO checks passed.`
+- CSS links homepage :
+  - voir `migration-nuxt4-psi-revert-home-css-links.txt`
+- Tailles HTML :
+  - voir `migration-nuxt4-psi-revert-html-size.txt`
+  - total des 5 pages mesurées : 178 302 octets
+
+### Suite recommandée
+
+Ne pas poursuivre l'approche `inlineSSRStyles`.
+
+Si l'objectif PSI mobile 100 reste prioritaire, ouvrir une branche exploratoire dédiée pour analyser `vendor-libs.css` et `entry.css`, sans :
+- s'appuyer sur les noms de chunks hashés ;
+- ajouter de dépendance ;
+- dégrader le poids HTML ;
+- casser le cache CSS.
