@@ -1,0 +1,3 @@
+@nuxt/image@1.11.0
+node_modules/@nuxt/image
+  @nuxt/image@"^1.8.1" from the root project

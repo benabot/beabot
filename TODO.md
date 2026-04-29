@@ -146,6 +146,16 @@
 
 #### 3.1 — Mise à jour des dépendances
 
+> DEP-AUDIT réalisé le 29 avril 2026 sur `chore/nuxt4-migration`.
+> Objectif : comparer versions déclarées, versions installées et ordre réel de mise à jour avant `DEP-1`.
+> Rapports :
+> - `dep-audit-declared-versions.txt`
+> - `dep-audit-installed-versions.txt`
+> - `dep-audit-peer-risks.txt`
+> - `dep-audit-target-versions.txt`
+> - `dep-audit-update-order.md`
+> Aucun changement de dépendance effectué dans cette étape.
+
 Ordre recommandé (mettre à jour et tester une par une) :
 
 | #   | Dépendance        | Version actuelle | Version cible Nuxt 4 | Breaking changes                                                           | Impact |

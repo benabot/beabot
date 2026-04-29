@@ -1,0 +1,363 @@
+
+> beabot@2.0.0 pregenerate
+> npm run test
+
+
+> beabot@2.0.0 test
+> node scripts/pre-build-check.js && npm run test:content && npm run test:node
+
+🔍 Running pre-build checks...
+
+📋 Checking configuration files...
+📦 Validating package.json...
+📁 Checking critical directories...
+📄 Checking key pages...
+🧩 Checking components...
+⚡ Checking composables...
+📝 Checking content...
+🎨 Checking assets...
+🌐 Checking public files...
+☁️  Checking Netlify configuration...
+
+==================================================
+📊 RESULTS
+==================================================
+Total checks: 49
+✅ Passed: 49
+⚠️  Warnings: 0
+❌ Errors: 0
+
+✅ All checks passed! Ready to build.
+
+> beabot@2.0.0 test:content
+> node scripts/check-content-queries.mjs
+
+OK Content v2 query checks passed.
+
+> beabot@2.0.0 test:node
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: AppLink compiles with a NuxtLink, slot, and forwarded attributes
+ok 1 - AppLink compiles with a NuxtLink, slot, and forwarded attributes
+  ---
+  duration_ms: 16.633333
+  type: 'test'
+  ...
+# Subtest: AppLink normalizes string links like normalizeInternalHref
+ok 2 - AppLink normalizes string links like normalizeInternalHref
+  ---
+  duration_ms: 0.531
+  type: 'test'
+  ...
+# Subtest: AppLink leaves external, special, and file hrefs unchanged
+ok 3 - AppLink leaves external, special, and file hrefs unchanged
+  ---
+  duration_ms: 0.105084
+  type: 'test'
+  ...
+# Subtest: AppLink normalizes object routes without dropping route fields
+ok 4 - AppLink normalizes object routes without dropping route fields
+  ---
+  duration_ms: 0.161334
+  type: 'test'
+  ...
+# Subtest: rss.xml exposes a non-empty RSS feed with stable article URLs
+ok 5 - rss.xml exposes a non-empty RSS feed with stable article URLs
+  ---
+  duration_ms: 1.267375
+  type: 'test'
+  ...
+# Subtest: feed.json is parseable and exposes stable JSON Feed items
+ok 6 - feed.json is parseable and exposes stable JSON Feed items
+  ---
+  duration_ms: 1.406333
+  type: 'test'
+  ...
+# Subtest: generated page / exposes minimal SEO tags
+ok 7 - generated page / exposes minimal SEO tags
+  ---
+  duration_ms: 2.158833
+  type: 'test'
+  ...
+# Subtest: generated page /eco-conception/ exposes minimal SEO tags
+ok 8 - generated page /eco-conception/ exposes minimal SEO tags
+  ---
+  duration_ms: 0.68425
+  type: 'test'
+  ...
+# Subtest: generated page /eco-conception/l-eco-conception-web/ exposes minimal SEO tags
+ok 9 - generated page /eco-conception/l-eco-conception-web/ exposes minimal SEO tags
+  ---
+  duration_ms: 0.918125
+  type: 'test'
+  ...
+# Subtest: generated page /portfolio/ exposes minimal SEO tags
+ok 10 - generated page /portfolio/ exposes minimal SEO tags
+  ---
+  duration_ms: 0.360625
+  type: 'test'
+  ...
+# Subtest: generated page /services/ exposes minimal SEO tags
+ok 11 - generated page /services/ exposes minimal SEO tags
+  ---
+  duration_ms: 1.010417
+  type: 'test'
+  ...
+# Subtest: generated page /contact/ exposes minimal SEO tags
+ok 12 - generated page /contact/ exposes minimal SEO tags
+  ---
+  duration_ms: 0.228167
+  type: 'test'
+  ...
+# Subtest: absoluteUrl builds stable absolute URLs without double slashes
+ok 13 - absoluteUrl builds stable absolute URLs without double slashes
+  ---
+  duration_ms: 0.780334
+  type: 'test'
+  ...
+# Subtest: canonicalUrl keeps the root and internal pages canonical
+ok 14 - canonicalUrl keeps the root and internal pages canonical
+  ---
+  duration_ms: 0.139042
+  type: 'test'
+  ...
+# Subtest: withTrailingSlash normalizes internal paths only once
+ok 15 - withTrailingSlash normalizes internal paths only once
+  ---
+  duration_ms: 0.15925
+  type: 'test'
+  ...
+# Subtest: normalizeInternalHref normalizes internal links with suffixes
+ok 16 - normalizeInternalHref normalizes internal links with suffixes
+  ---
+  duration_ms: 0.475083
+  type: 'test'
+  ...
+# Subtest: normalizeInternalHref preserves static assets and feed files
+ok 17 - normalizeInternalHref preserves static assets and feed files
+  ---
+  duration_ms: 0.109666
+  type: 'test'
+  ...
+# Subtest: normalizeInternalHref leaves external and special hrefs unchanged
+ok 18 - normalizeInternalHref leaves external and special hrefs unchanged
+  ---
+  duration_ms: 0.076542
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 229.23175
+
+> beabot@2.0.0 generate
+> nuxt generate
+
+┌  Building Nuxt for production...
+│
+●  Nuxt 3.20.2 (with Nitro 2.12.9, Vite 6.4.1 and Vue 3.5.26)
+[nuxt] ℹ Running with compatibility version 4
+│
+●  Nitro preset: static
+ℹ Building client...
+ℹ vite v7.3.0 building client environment for production...
+ℹ transforming...
+ℹ ✓ 396 modules transformed.
+ℹ rendering chunks...
+ℹ computing gzip size...
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/manifest.json                                7.56 kB │ gzip:  1.15 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/entry.B_fgAJq0.css                     0.05 kB │ gzip:  0.07 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/mentions-legales.5A8bndUj.css          0.29 kB │ gzip:  0.15 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/apps.7YhmZt2x.css                      0.88 kB │ gzip:  0.43 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/404.CHVsaqk2.css                       2.40 kB │ gzip:  0.77 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/index.KLadovww.css                     5.04 kB │ gzip:  1.44 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/contact.Bw1a-DgM.css                   5.79 kB │ gzip:  1.67 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/AppReleaseInterestForm.qp4wLmWt.css    7.89 kB │ gzip:  2.05 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/vendor-libs.Df1OGHDb.css               9.33 kB │ gzip:  2.67 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/siturem.DueYsy34.css                  10.27 kB │ gzip:  2.31 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/meeting-mode.XuDulx2x.css             11.55 kB │ gzip:  2.56 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/services.DIWFrDpm.css                 11.97 kB │ gzip:  2.82 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/duo-spend.B6AOkePa.css                12.43 kB │ gzip:  2.69 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/_slug_.Jm5wvyWv.css                   12.88 kB │ gzip:  2.51 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/greenlight.Bfoj1z8L.css               12.98 kB │ gzip:  2.65 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/default.SEYJ-Rxi.css                  13.44 kB │ gzip:  3.72 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/index.1qW8q2Sl.css                    13.59 kB │ gzip:  3.15 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/portfolio.CBpEqOvY.css                16.47 kB │ gzip:  3.56 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/index.CbiT0l6m.css                    24.06 kB │ gzip:  4.58 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/DV1CcSc8.js                            0.15 kB │ gzip:  0.14 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/COz7Q2BC.js                            0.22 kB │ gzip:  0.18 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/CFfjRVT4.js                            0.86 kB │ gzip:  0.49 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/B9eggDj1.js                            1.21 kB │ gzip:  0.68 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/CsLQhzSA.js                            4.31 kB │ gzip:  1.77 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/BjJEn2ww.js                            5.66 kB │ gzip:  2.03 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/BZBohT9-.js                            5.95 kB │ gzip:  2.72 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/BOFrOZhF.js                            6.93 kB │ gzip:  2.73 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/DqE9-ZUq.js                            7.89 kB │ gzip:  2.87 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/CVCOdUxY.js                            8.31 kB │ gzip:  3.00 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/BhPopUNk.js                            8.31 kB │ gzip:  3.31 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/DjiU7hZb.js                           10.06 kB │ gzip:  4.32 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/CnKkZJ2b.js                           12.14 kB │ gzip:  3.82 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/C6SOZycL.js                           12.54 kB │ gzip:  4.13 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/8EggBNRc.js                           12.93 kB │ gzip:  4.13 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/ClIOHcga.js                           13.23 kB │ gzip:  5.05 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/mtfoYJ6w.js                           14.85 kB │ gzip:  5.16 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/BsWmMMaH.js                           20.11 kB │ gzip:  5.74 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/guShnho9.js                           21.07 kB │ gzip:  7.28 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/CO0zkkuP.js                           45.09 kB │ gzip: 15.28 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/C90ZGbU6.js                           75.59 kB │ gzip: 27.61 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/4tM7E7fC.js                          106.58 kB │ gzip: 33.77 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/C7mneEXn.js                          109.88 kB │ gzip: 41.34 kB
+ℹ ✓ built in 12.05s
+✔ Client built in 12068ms
+ℹ Building server...
+ℹ vite v7.3.0 building ssr environment for production...
+ℹ transforming...
+ℹ ✓ 310 modules transformed.
+ℹ rendering chunks...
+ℹ ✓ built in 5.64s
+✔ Server built in 5660ms
+[nitro] ℹ Initializing prerenderer
+[nitro] ℹ Prerendering 9 initial routes with crawler
+[nitro]   ├─ /__sitemap__/style.xsl (85ms)
+[nitro]   ├─ /404.html (86ms)
+[nitro]   ├─ /200.html (86ms)
+[nitro]   ├─ /robots.txt (86ms)
+[nitro]   ├─ /mentions-legales/ (90ms)
+[nitro]   ├─ /mentions-legales/_payload.json (155ms)
+[nitro]   ├─ /services (432ms)
+[nitro]   ├─ /portfolio/ (431ms)
+[nitro]   ├─ /services/_payload.json?408d3c2a-20b7-4f1e-83e4-5af67f30cdee (37ms) (skipped)
+[nitro]   ├─ /portfolio/_payload.json?408d3c2a-20b7-4f1e-83e4-5af67f30cdee (12ms) (skipped)
+[nitro]   ├─ /apps/ (680ms)
+[nitro]   ├─ /contact/ (681ms)
+[nitro]   ├─ /greenlight/ (679ms)
+[nitro]   ├─ /404 (682ms)
+[nitro]   ├─ /apps/duo-spend (682ms)
+[nitro]   ├─ /apps/siturem (683ms)
+[nitro]   ├─ /services/ (434ms)
+[nitro]   ├─ /greenlight (680ms)
+[nitro]   ├─ /apps/_payload.json?408d3c2a-20b7-4f1e-83e4-5af67f30cdee (58ms) (skipped)
+[nitro]   ├─ /contact/_payload.json?408d3c2a-20b7-4f1e-83e4-5af67f30cdee (39ms) (skipped)
+[nitro]   ├─ /greenlight/_payload.json?408d3c2a-20b7-4f1e-83e4-5af67f30cdee (36ms) (skipped)
+[nitro]   ├─ /404/_payload.json?408d3c2a-20b7-4f1e-83e4-5af67f30cdee (33ms) (skipped)
+[nitro]   ├─ /apps/duo-spend/_payload.json?408d3c2a-20b7-4f1e-83e4-5af67f30cdee (22ms) (skipped)
+[nitro]   ├─ /apps/siturem/_payload.json?408d3c2a-20b7-4f1e-83e4-5af67f30cdee (11ms) (skipped)
+[nitro]   ├─ /portfolio (679ms)
+[nitro]   ├─ /contact (682ms)
+[nitro]   ├─ /apps (681ms)
+[nitro]   ├─ /services/_payload.json (37ms)
+[nitro]   ├─ /portfolio/_payload.json (12ms)
+[nitro]   ├─ /apps/_payload.json (59ms)
+[nitro]   ├─ /contact/_payload.json (44ms)
+[nitro]   ├─ /apps/duo-spend/_payload.json (15ms)
+[nitro]   ├─ /404/_payload.json (28ms)
+[nitro]   ├─ /greenlight/_payload.json (36ms)
+[nitro]   ├─ /apps/siturem/_payload.json (18ms)
+[nitro]   ├─ /apps/meeting-mode/ (79ms)
+[nitro]   ├─ /apps/siturem/ (90ms)
+[nitro]   ├─ /apps/meeting-mode/_payload.json?408d3c2a-20b7-4f1e-83e4-5af67f30cdee (6ms) (skipped)
+[nitro]   ├─ /apps/duo-spend/ (80ms)
+[nitro]   ├─ /mentions-legales (64ms)
+[nitro]   ├─ /apps/meeting-mode (25ms)
+[nitro]   ├─ /apps/meeting-mode/_payload.json (6ms)
+[nitro]   ├─ /eco-conception/theme-wordpress-eco-conception/ (318ms)
+[nitro]   ├─ /eco-conception/theme-wordpress-eco-conception/_payload.json?408d3c2a-20b7-4f1e-83e4-5af67f30cdee (30ms) (skipped)
+[nitro]   ├─ /eco-conception/faq-eco-conception/ (1099ms)
+[nitro]   ├─ /eco-conception/faq-eco-conception/_payload.json?408d3c2a-20b7-4f1e-83e4-5af67f30cdee (38ms) (skipped)
+[nitro]   ├─ /eco-conception/wordpress-freelance-lille/ (340ms)
+[nitro]   ├─ /eco-conception/wordpress-vs-nuxt/ (341ms)
+[nitro]   ├─ /eco-conception/refonte-site-eco-concu/ (341ms)
+[nitro]   ├─ /eco-conception/audit-site-web/ (342ms)
+[nitro]   ├─ /eco-conception/wordpress-freelance-lille/_payload.json?408d3c2a-20b7-4f1e-83e4-5af67f30cdee (41ms) (skipped)
+[nitro]   ├─ /eco-conception/wordpress-vs-nuxt/_payload.json?408d3c2a-20b7-4f1e-83e4-5af67f30cdee (35ms) (skipped)
+[nitro]   ├─ /eco-conception/refonte-site-eco-concu/_payload.json?408d3c2a-20b7-4f1e-83e4-5af67f30cdee (27ms) (skipped)
+[nitro]   ├─ /eco-conception/audit-site-web/_payload.json?408d3c2a-20b7-4f1e-83e4-5af67f30cdee (17ms) (skipped)
+[nitro]   ├─ /eco-conception/theme-wordpress-eco-conception/_payload.json (30ms)
+[nitro]   ├─ /eco-conception/faq-eco-conception/_payload.json (39ms)
+[nitro]   ├─ /api/_content/query/RKQnRkuyN9.1777449937930.json (44ms)
+[nitro]   ├─ /api/_content/query/UB0z9gfeZT.1777449937930.json (44ms)
+[nitro]   ├─ /api/_content/query/lV07LGPbyd.1777449937930.json (37ms)
+[nitro]   ├─ /api/_content/query/EuEZ8ihcVZ.1777449937930.json (37ms)
+[nitro]   ├─ /eco-conception/wordpress-vs-nuxt/_payload.json (37ms)
+[nitro]   ├─ /eco-conception/wordpress-freelance-lille/_payload.json (44ms)
+[nitro]   ├─ /api/_content/query/v5CVCdhzwp.1777449937930.json (32ms)
+[nitro]   ├─ /api/_content/query/hVGV6xlGcj.1777449937930.json (39ms)
+[nitro]   ├─ /api/_content/query/2zfKW8xaUU.1777449937930.json (25ms)
+[nitro]   ├─ /eco-conception/refonte-site-eco-concu/_payload.json (19ms)
+[nitro]   ├─ /eco-conception/wordpress-eco-conception/ (162ms)
+[nitro]   ├─ /eco-conception/wordpress-eco-conception/_payload.json?408d3c2a-20b7-4f1e-83e4-5af67f30cdee (36ms) (skipped)
+[nitro]   ├─ /api/_content/query/bvRjH0mBTJ.1777449937930.json (39ms)
+[nitro]   ├─ /eco-conception/la-consommation-energetique-du-numerique/ (164ms)
+[nitro]   ├─ /api/_content/cache.1777449937930.json (1394ms)
+[nitro]   ├─ /eco-conception/la-consommation-energetique-du-numerique/_payload.json?408d3c2a-20b7-4f1e-83e4-5af67f30cdee (35ms) (skipped)
+[nitro]   ├─ /eco-conception/?tag=WordPress (326ms) (skipped)
+[nitro]   ├─ /eco-conception/?tag=Éco-conception (298ms) (skipped)
+[nitro]   ├─ /eco-conception/?tag=Eco-conception (359ms) (skipped)
+[nitro]   ├─ /eco-conception/?tag=Audit (230ms) (skipped)
+[nitro]   ├─ /eco-conception/?tag=SEO (327ms) (skipped)
+[nitro]   ├─ /eco-conception/?tag=WebDesign (373ms) (skipped)
+[nitro]   ├─ /eco-conception/?tag=Performance (337ms) (skipped)
+[nitro]   ├─ /eco-conception/l-eco-conception-web/ (143ms)
+[nitro]   ├─ /api/_content/query/CKzsgBIUv7.1777449937930.json (30ms)
+[nitro]   ├─ /rss.xml (1422ms)
+[nitro]   ├─ /api/_content/query/IZV56vWyZL.1777449937930.json (18ms)
+[nitro]   ├─ /feed.json (1422ms)
+[nitro]   ├─ /eco-conception/_payload.json?408d3c2a-20b7-4f1e-83e4-5af67f30cdee (64ms) (skipped)
+[nitro]   ├─ /eco-conception/l-eco-conception-web/_payload.json?408d3c2a-20b7-4f1e-83e4-5af67f30cdee (10ms) (skipped)
+[nitro]   ├─ /api/_content/query/EHYR63fUxQ.1777449937930.json (30ms)
+[nitro]   ├─ /api/_content/query/eYJPTLDmgA.1777449937930.json (46ms)
+[nitro]   ├─ /eco-conception/audit-site-web/_payload.json (42ms)
+[nitro]   ├─ /eco-conception/comment-reduire-le-poids-d-un-site-web/ (127ms)
+[nitro]   ├─ /eco-conception/comment-reduire-le-poids-d-un-site-web/_payload.json?408d3c2a-20b7-4f1e-83e4-5af67f30cdee (12ms) (skipped)
+[nitro]   ├─ /api/_content/query/uUzvtHQfMA.1777449937930.json (37ms)
+[nitro]   ├─ /api/_content/query/uKgMluG04W.1777449937930.json (37ms)
+[nitro]   ├─ /eco-conception/wordpress-eco-conception/_payload.json (37ms)
+[nitro]   ├─ / (1522ms)
+[nitro]   ├─ /api/_content/query/AD7YOylvPP.1777449937930.json (35ms)
+[nitro]   ├─ /eco-conception/la-consommation-energetique-du-numerique/_payload.json (36ms)
+[nitro]   ├─ /api/_content/query/JoFJ7ERolv.1777449937930.json (36ms)
+[nitro]   ├─ /eco-conception (1509ms)
+[nitro]   ├─ /eco-conception/ (1522ms)
+[nitro]   ├─ /eco-conception/_payload.json (64ms)
+[nitro]   ├─ /api/_content/query/eVzQFfLrPe.1777449937930.json (11ms)
+[nitro]   ├─ /api/_content/query/U0bDXBs15E.1777449937930.json (10ms)
+[nitro]   ├─ /eco-conception/l-eco-conception-web/_payload.json (11ms)
+[nitro]   ├─ /eco-conception/l-eco-conception-web (165ms)
+[nitro]   ├─ /eco-conception/images-eco-conception (184ms)
+[nitro]   ├─ /eco-conception/typographie-ecoconception (183ms)
+[nitro]   ├─ /eco-conception/theme-wordpress-eco-conception (165ms)
+[nitro]   ├─ /eco-conception/images-eco-conception/_payload.json?408d3c2a-20b7-4f1e-83e4-5af67f30cdee (32ms) (skipped)
+[nitro]   ├─ /eco-conception/typographie-ecoconception/_payload.json?408d3c2a-20b7-4f1e-83e4-5af67f30cdee (16ms) (skipped)
+[nitro]   ├─ /eco-conception/images-eco-conception/ (80ms)
+[nitro]   ├─ /eco-conception/typographie-ecoconception/ (186ms)
+[nitro]   ├─ /eco-conception/comment-reduire-le-poids-d-un-site-web/_payload.json (13ms)
+[nitro]   ├─ /api/_content/query/PlQXqE4eCP.1777449937930.json (13ms)
+[nitro]   ├─ /api/_content/query/iHnLuBOubj.1777449937930.json (13ms)
+[nitro]   ├─ /eco-conception/audit-eco-conception/ (107ms)
+[nitro]   ├─ /_payload.json (9ms)
+[nitro]   ├─ /eco-conception/audit-eco-conception/_payload.json?408d3c2a-20b7-4f1e-83e4-5af67f30cdee (8ms) (skipped)
+[nitro]   ├─ /eco-conception/?tag=Images (60ms) (skipped)
+[nitro]   ├─ /eco-conception/?tag=Typographie (47ms) (skipped)
+[nitro]   ├─ /api/_content/query/ntgsa4UUdQ.1777449937930.json (33ms)
+[nitro]   ├─ /eco-conception/images-eco-conception/_payload.json (34ms)
+[nitro]   ├─ /api/_content/query/EQDCCnlNst.1777449937930.json (33ms)
+[nitro]   ├─ /eco-conception/typographie-ecoconception/_payload.json (16ms)
+[nitro]   ├─ /api/_content/query/ySl3cuTKlN.1777449937930.json (4ms)
+[nitro]   ├─ /api/_content/query/JBfF7ktcAT.1777449937930.json (5ms)
+[nitro]   ├─ /api/_content/query/b4mdpJOsFm.1777449937930.json (9ms)
+[nitro]   ├─ /api/_content/query/ecFgxUe4eM.1777449937930.json (8ms)
+[nitro]   ├─ /eco-conception/audit-eco-conception/_payload.json (9ms)
+[nitro]   ├─ /api/_content/query/4aACO0z5ni.1777449937930.json (118ms)
+[nitro]   ├─ /api/_content/query/4MSvWnG1Xk.1777449937930.json (103ms)
+[nitro]   ├─ /sitemap.xml (11ms)
+[nitro] ℹ Prerendered 100 routes in 10.082 seconds
+[nitro] ✔ Generated public .output/public
+[nitro] ✔ You can preview this build using npx serve .output/public
+│
+└  ✨ You can now deploy .output/public to any static hosting!

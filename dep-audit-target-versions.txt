@@ -1,0 +1,27 @@
+DEP-AUDIT — versions cibles verifiees sans installation
+Date : 29 avril 2026
+
+Source :
+- npm metadata via `npm view`, sans `npm install` ni `npm update`.
+- Sorties completes : `dep-audit-npm-view-targets.txt`, `dep-audit-npm-view-vue-router-4.txt`, `dep-audit-npm-view-eslint-9.txt`.
+
+Package          Version actuelle reelle      Version cible proposee      Source      Decision
+nuxt             3.20.2                       4.4.2                       npm view    DEP-1 seul
+@nuxt/content    2.13.4                       3.13.0                      npm view    apres migration API Content v3
+@nuxt/image      1.11.0                       2.0.0                       npm view    DEP-4 separe, compat a verifier
+@nuxtjs/sitemap  6.1.5                        8.0.14                      npm view    DEP-3 separe ou lot feeds/sitemap
+@nuxt/eslint     0.5.7                        1.15.2                      npm view    DEP-5 separe, probablement dernier
+vue              3.5.26                       3.5.33                      npm view    laisser Nuxt piloter sauf besoin
+vue-router       4.6.4                        4.6.4 pour v4              npm view    ne pas passer a v5 sans validation Nuxt
+vite             6.4.1 direct                 Nuxt-managed                npm view    ne pas mettre a jour seul
+eslint           9.39.2                       9.39.4 maintenance          npm view    avec DEP-5 si necessaire
+sass             1.97.1                       1.99.0                      npm view    pas prioritaire
+sass-loader      16.0.6                       16.0.7                      npm view    pas prioritaire
+
+Notes :
+- `nuxt@4.4.2` declare `engines.node` : `^20.19.0 || >=22.12.0`.
+- Node local observe : v22.21.1, compatible.
+- `@nuxt/content@3.13.0` declare `engines.node` : `>= 20.19.0`.
+- `@nuxtjs/sitemap` latest npm est 8.0.14, pas 7.x ; le TODO devra probablement etre ajuste au moment de DEP-3.
+- `vue-router` latest npm est 5.0.6, mais la derniere v4 observee est 4.6.4 ; rester en v4 tant que Nuxt ne demande pas autre chose.
+- `vite` latest npm est 8.0.10, mais Nuxt doit piloter Vite.

@@ -1,0 +1,114 @@
+DEP-AUDIT — peer dependencies et risques
+Date : 29 avril 2026
+
+nuxt
+  Risque : eleve
+  Pourquoi :
+    - passage 3.20.2 -> 4.x ;
+    - Nuxt 4 change des comportements de repertoires, config et build ;
+    - le package Nuxt 4.4.2 declare Node ^20.19.0 || >=22.12.0.
+  Dependances liees :
+    - @nuxt/nitro-server
+    - @nuxt/vite-builder
+    - vue
+    - vue-router
+    - vite
+  A mettre a jour seul : oui
+
+@nuxt/content
+  Risque : tres eleve
+  Pourquoi :
+    - migration API v2 -> v3 ;
+    - 7 appels applicatifs queryContent ;
+    - 6 occurrences applicatives serverQueryContent ;
+    - 1 findSurround ;
+    - 32 occurrences applicatives _path ;
+    - necessite content.config.ts et une migration des requetes.
+  Dependances liees :
+    - @vueuse/nuxt via Content v2 actuel ;
+    - moteur de stockage / validation selon Content v3 a confirmer.
+  A mettre a jour seul : oui, apres preparation API et avec lots Content v3.
+
+@nuxtjs/sitemap
+  Risque : moyen/eleve
+  Pourquoi :
+    - `nuxt.config.ts` utilise `sitemap.routes` avec `serverQueryContent` ;
+    - les routes articles sont critiques pour SEO/trailing slash ;
+    - npm latest observe : 8.0.14, au-dela de la cible historique v7.
+  Dependances liees :
+    - zod >=3 en peer selon npm metadata latest ;
+    - Content routes ;
+    - scripts/seo-check.mjs.
+  A mettre a jour seul : oui
+
+@nuxt/image
+  Risque : moyen
+  Pourquoi :
+    - npm latest observe : 2.0.0 ;
+    - module lie au rendu image et generation statique ;
+    - compat Nuxt 4 a verifier au moment de migrer.
+  Dependances liees :
+    - assets images ;
+    - pages portfolio/articles si NuxtImg est utilise.
+  A mettre a jour seul : oui, plutot apres Nuxt.
+
+@nuxt/eslint
+  Risque : moyen/eleve
+  Pourquoi :
+    - passage 0.5.7 -> 1.15.2 ;
+    - peer eslint ^9 || ^10 ;
+    - projet utilise encore `ESLINT_USE_FLAT_CONFIG=false` dans `lint:js` ;
+    - lint global deja connu comme bloque par warnings/formatages historiques hors perimetre.
+  Dependances liees :
+    - eslint 9.39.2 actuel ;
+    - eslint-plugin-vue ;
+    - eslint-config-prettier ;
+    - scripts lint.
+  A mettre a jour separement : oui, probablement en dernier.
+
+vue
+  Risque : faible
+  Pourquoi :
+    - version installee 3.5.26 deja compatible avec Nuxt 3.20.2 ;
+    - npm latest observe 3.5.33.
+  A mettre a jour seul : non, laisser Nuxt piloter sauf besoin explicite.
+
+vue-router
+  Risque : faible/moyen
+  Pourquoi :
+    - version installee 4.6.4 ;
+    - npm latest est 5.0.6 mais la derniere v4 observee est 4.6.4 ;
+    - ne pas forcer v5 sans validation Nuxt.
+  A mettre a jour seul : non, laisser Nuxt piloter.
+
+vite
+  Risque : moyen
+  Pourquoi :
+    - version directe 6.4.1 ;
+    - npm latest observe 8.0.10, mais Nuxt gere sa pile Vite ;
+    - un Vite 7.3.0 existe deja en transitive dans le builder.
+  A mettre a jour seul : non, sauf demande Nuxt/documentation.
+
+eslint
+  Risque : faible/moyen
+  Pourquoi :
+    - version installee 9.39.2 ;
+    - maintenance npm 9.39.4, latest 10.2.1 ;
+    - @nuxt/eslint 1.x accepte ^9 || ^10.
+  A mettre a jour seul : non, traiter avec DEP-5 si necessaire.
+
+sass
+  Risque : faible
+  Pourquoi :
+    - version installee 1.97.1 ;
+    - latest observe 1.99.0 ;
+    - audit SCSS recent OK.
+  A mettre a jour seul : non.
+
+sass-loader
+  Risque : faible
+  Pourquoi :
+    - version installee 16.0.6 ;
+    - latest observe 16.0.7 ;
+    - compatible selon peer sass ^1.3.0.
+  A mettre a jour seul : non.
