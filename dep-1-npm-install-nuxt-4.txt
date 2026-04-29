@@ -1,0 +1,17 @@
+npm warn deprecated unplugin-vue-router@0.19.2: Merged into vuejs/router. Migrate: https://router.vuejs.org/guide/migration/v4-to-v5.html
+npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+
+added 101 packages, removed 62 packages, changed 219 packages, and audited 1193 packages in 45s
+
+342 packages are looking for funding
+  run `npm fund` for details
+
+19 vulnerabilities (2 low, 7 moderate, 8 high, 2 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.

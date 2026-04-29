@@ -173,6 +173,10 @@ Ordre recommandé (mettre à jour et tester une par une) :
 | 11  | `vite`            | ^6.0.1           | ^6+                  | Nuxt 4 utilise Vite Environment API — géré par Nuxt                        | 🟢     |
 
 - [ ] **DEP-1** — Mettre à jour `nuxt` vers la dernière version 4.x
+  - DEP-1 tenté le 29 avril 2026, bloqué par `scripts/pre-build-check.js` qui vérifie encore `pkg.dependencies?.nuxt?.startsWith('^3')`.
+  - Rapport : `migration-nuxt4-dep-1.md`
+  - Prochaine action : adapter le garde-fou de test pour Nuxt 4, puis retenter `DEP-1`.
+  - La tentative `nuxt@4.4.2` n'est pas conservée dans `package.json` / `package-lock.json` afin de garder la branche dans un état documentaire cohérent.
 - [ ] **DEP-2** — Mettre à jour `@nuxt/content` vers 3.x (après avoir migré les APIs — voir 3.3)
 - [ ] **DEP-3** — Vérifier compatibilité `@nuxtjs/sitemap` 6.x avec Nuxt 4 ; mettre à jour vers 7.x si requis
 - [ ] **DEP-4** — Vérifier compatibilité `@nuxt/image` ; mettre à jour si nécessaire

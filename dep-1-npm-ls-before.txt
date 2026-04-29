@@ -1,0 +1,72 @@
+beabot@2.0.0 /Users/benoitabot/Sites/beabot
+├─┬ @nuxt/content@2.13.4
+│ ├─┬ @vueuse/core@11.3.0
+│ │ ├─┬ @vueuse/shared@11.3.0
+│ │ │ └─┬ vue-demi@0.14.10
+│ │ │   └── vue@3.5.26 deduped
+│ │ └─┬ vue-demi@0.14.10
+│ │   └── vue@3.5.26 deduped
+│ ├─┬ @vueuse/head@2.0.0
+│ │ ├─┬ @unhead/vue@1.11.20
+│ │ │ └── vue@3.5.26 deduped
+│ │ └── vue@3.5.26 deduped
+│ └─┬ @vueuse/nuxt@11.3.0
+│   ├── nuxt@3.20.2 deduped
+│   └─┬ vue-demi@0.14.10
+│     └── vue@3.5.26 deduped
+├─┬ @nuxt/eslint@0.5.7
+│ └─┬ @nuxt/devtools-kit@1.7.0
+│   └── vite@6.4.1 deduped
+├── @nuxt/image@1.11.0
+├─┬ @nuxtjs/sitemap@6.1.5
+│ └─┬ site-config-stack@2.2.21
+│   └── vue@3.5.26 deduped
+├─┬ nuxt@3.20.2
+│ ├─┬ @nuxt/devtools@3.1.1
+│ │ ├─┬ @nuxt/devtools-kit@3.1.1
+│ │ │ └── vite@6.4.1 deduped
+│ │ ├─┬ @vue/devtools-core@8.0.5
+│ │ │ ├─┬ vite-hot-client@2.1.0
+│ │ │ │ └── vite@6.4.1 deduped
+│ │ │ └── vue@3.5.26 deduped
+│ │ ├─┬ vite-plugin-inspect@11.3.3
+│ │ │ ├─┬ vite-dev-rpc@1.1.0
+│ │ │ │ └── vite@6.4.1 deduped
+│ │ │ └── vite@6.4.1 deduped
+│ │ ├─┬ vite-plugin-vue-tracer@1.2.0
+│ │ │ ├── vite@6.4.1 deduped
+│ │ │ └── vue@3.5.26 deduped
+│ │ └── vite@6.4.1 deduped
+│ ├─┬ @nuxt/nitro-server@3.20.2
+│ │ ├─┬ @unhead/vue@2.0.19
+│ │ │ └── vue@3.5.26 deduped
+│ │ ├── nuxt@3.20.2 deduped
+│ │ └── vue@3.5.26 deduped
+│ ├─┬ @nuxt/vite-builder@3.20.2
+│ │ ├─┬ @vitejs/plugin-vue-jsx@5.1.2
+│ │ │ ├── vite@6.4.1 deduped
+│ │ │ └── vue@3.5.26 deduped
+│ │ ├─┬ @vitejs/plugin-vue@6.0.3
+│ │ │ ├── vite@6.4.1 deduped
+│ │ │ └── vue@3.5.26 deduped
+│ │ ├── nuxt@3.20.2 deduped
+│ │ ├─┬ vite-node@5.2.0
+│ │ │ └── vite@7.3.0
+│ │ ├─┬ vite-plugin-checker@0.12.0
+│ │ │ └── vite@6.4.1 deduped
+│ │ ├── vite@7.3.0
+│ │ └── vue@3.5.26 deduped
+│ ├─┬ @unhead/vue@2.0.19
+│ │ └── vue@3.5.26 deduped
+│ ├─┬ unplugin-vue-router@0.19.1
+│ │ ├─┬ @vue-macros/common@3.1.1
+│ │ │ └── vue@3.5.26 deduped
+│ │ └── vue-router@4.6.4 deduped
+│ ├── vue-router@4.6.4 deduped
+│ └── vue@3.5.26 deduped
+├── vite@6.4.1
+├─┬ vue-router@4.6.4
+│ └── vue@3.5.26 deduped
+└─┬ vue@3.5.26
+  └─┬ @vue/server-renderer@3.5.26
+    └── vue@3.5.26 deduped

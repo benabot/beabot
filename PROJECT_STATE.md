@@ -6,8 +6,8 @@
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
-1. **DEP-6 — Supprimer l'override interne Nuxt 3** — `"#internal/nuxt/paths": "./nuxt.paths.mjs"` est présent dans `package.json`. À traiter dans un commit dédié avant ou pendant `DEP-1`, avec `npm test`, `npm run generate` et check SEO.
-2. **DEP-1 — Mettre à jour Nuxt seul vers 4.x** — Version cible vérifiée sans installation : `nuxt@4.4.2`. Ne pas mélanger avec Content, sitemap, image, ESLint ou déplacement vers `app/`.
+1. **TEST-GUARD Nuxt 4 — Adapter `scripts/pre-build-check.js`** — DEP-1 est bloqué car le garde-fou attend encore `nuxt` en `^3`. Corriger ce point minimalement avant de retenter l'installation Nuxt 4.
+2. **DEP-1 — Retenter Nuxt seul vers 4.x** — Version cible vérifiée : `nuxt@4.4.2`. Ne pas mélanger avec Content, sitemap, image, ESLint ou déplacement vers `app/`.
 3. **CONFIG-* / DIR-* selon erreurs Nuxt 4** — Corriger uniquement ce que `DEP-1` révèle : config Nuxt 4 minimale, puis restructuration `app/` dans un lot séparé si nécessaire.
 4. **Content v3** — Consulter la documentation officielle, puis suivre l'ordre documenté : `content.config.ts`, listes articles, page article/navigation, recherche, feeds/sitemap, nettoyage `_path`, tests.
 5. **Sitemap / Image / ESLint** — Traiter séparément après Nuxt et Content : `@nuxtjs/sitemap`, `@nuxt/image`, puis `@nuxt/eslint` probablement en dernier.
@@ -33,6 +33,33 @@ SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stabl
   - `75d9207` — `docs: rafraichir baseline compat Nuxt 4`
   - `e1e6b6a` — `docs: cartographier migration Content v3`
   - `9e8423a` — `docs: auditer dependances avant Nuxt 4`
+  - `bbe2924` — `chore: supprimer override interne Nuxt paths`
+
+## Migration Nuxt 4 — état courant
+
+Branche : `chore/nuxt4-migration`
+
+Dernière décision :
+- DEP-1 tenté le 29 avril 2026.
+- Résultat : bloqué par `scripts/pre-build-check.js`, qui vérifie encore que `package.json` déclare `nuxt` en `^3`.
+- Version Nuxt :
+  - avant : `3.20.2` installée réellement, `^3.14.1592` déclarée ;
+  - après tentative : `nuxt@4.4.2` installé temporairement puis non conservé dans `package.json` / `package-lock.json`.
+- Validation :
+  - baseline `npm test` : OK ;
+  - baseline `npm run generate` : OK, 100 routes prerendered ;
+  - baseline check SEO : OK ;
+  - `npm test` après tentative Nuxt 4 : KO, `❌ Nuxt 3 not in dependencies` ;
+  - `npm run generate` après tentative Nuxt 4 : non lancé ;
+  - check SEO après tentative Nuxt 4 : non lancé.
+- Prochaine étape :
+  - adapter minimalement le garde-fou `scripts/pre-build-check.js` pour Nuxt 4, puis retenter `DEP-1`.
+
+Contraintes maintenues :
+- Content v2 non migré dans DEP-1.
+- Aucun déplacement vers `app/` dans DEP-1.
+- Modules sitemap/image/eslint non migrés dans DEP-1.
+- `package.json` et `package-lock.json` ne conservent pas la tentative Nuxt 4.
 
 ### Dernière mise à jour
 
