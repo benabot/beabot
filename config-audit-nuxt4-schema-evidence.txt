@@ -1,0 +1,8 @@
+node_modules/@nuxt/schema/dist/index.mjs:568:		inlineStyles: { async $resolve(_val, get) {
+node_modules/@nuxt/schema/dist/index.mjs:569:			const val = typeof _val === "boolean" || typeof _val === "function" ? _val : await get("experimental").then((e) => e?.inlineSSRStyles);
+node_modules/@nuxt/schema/dist/index.mjs:578:		noScripts: { async $resolve(val, get) {
+node_modules/@nuxt/schema/dist/index.mjs:582:			return val === true ? "production" : val === false || isValidLiteral(val) ? val : await get("experimental").then((e) => e?.noScripts && "production") ?? false;
+node_modules/@nuxt/schema/dist/index.mjs:646:			nuxtLink: {
+node_modules/@nuxt/schema/dist/index.d.mts:1877:    inlineStyles: boolean | ((id?: string) => boolean);
+node_modules/@nuxt/schema/dist/index.d.mts:1889:    noScripts: "production" | "all" | boolean;
+node_modules/@nuxt/schema/dist/index.d.mts:2135:      nuxtLink: NuxtLinkOptions;

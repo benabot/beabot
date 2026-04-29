@@ -6,10 +6,10 @@
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
-1. **CONFIG-AUDIT Nuxt 4** — Examiner les warnings et options Nuxt 4 restantes (`features.inlineStyles`, prefetch, `router.options`, `routeRules.noScripts`, sitemap hooks), sans migrer Content.
-2. **CONFIG-* / DIR-* selon erreurs Nuxt 4** — Corriger uniquement ce que l'audit révèle : config Nuxt 4 minimale, puis restructuration `app/` dans un lot séparé si nécessaire.
-3. **Content v3** — Consulter la documentation officielle, puis suivre l'ordre documenté : `content.config.ts`, listes articles, page article/navigation, recherche, feeds/sitemap, nettoyage `_path`, tests.
-4. **Sitemap / Image / ESLint** — Traiter séparément après Nuxt et Content : `@nuxtjs/sitemap`, `@nuxt/image`, puis `@nuxt/eslint` probablement en dernier.
+1. **Content v3 / DEP-2** — Consulter la documentation officielle, puis suivre l'ordre documenté : `content.config.ts`, listes articles, page article/navigation, recherche, feeds/sitemap, nettoyage `_path`, tests.
+2. **Sitemap / Image / ESLint** — Traiter séparément après Nuxt et Content : `@nuxtjs/sitemap`, `@nuxt/image`, puis `@nuxt/eslint` probablement en dernier.
+3. **CONFIG-* restants selon besoin** — Les options Nuxt 4 ont ete auditees ; ne corriger que si un warning futur ou une mise a jour de module l'exige.
+4. **DIR-* app directory** — Ne pas deplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dedie si besoin.
 5. **Lint global repo-wide** — `npm run lint` reste bloqué par des warnings/formatages historiques hors périmètre ; à traiter séparément.
 6. **SCSS-6** — Ne pas supprimer SCSS tout de suite. Ouvrir une branche dédiée uniquement si un lot CSS moderne sûr est identifié.
 
@@ -39,13 +39,16 @@ SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stabl
 Branche : `chore/nuxt4-migration`
 
 Dernière décision :
-- DEP-1 retry réalisé le 29 avril 2026.
+- CONFIG-AUDIT Nuxt 4 réalisé le 29 avril 2026.
 - Résultat : succès.
-- Version Nuxt :
-  - avant manifest : `^3.14.1592` dans `package.json` et `package-lock.json` root ;
-  - avant `npm ls` : `nuxt@4.4.2 invalid`, car `node_modules` contenait déjà Nuxt 4 avant la mise à jour persistée ;
-  - après manifest : `4.4.2` dans `package.json` et `package-lock.json` root ;
-  - version réelle `npm ls` : `nuxt@4.4.2`.
+- Version Nuxt : `4.4.2`.
+- Changement applique :
+  - `experimental.inlineSSRStyles: false` remplace par `features.inlineStyles: false`.
+- Options conservees :
+  - `experimental.defaults.nuxtLink.prefetch` ;
+  - `router.options.prefetchLinks` et `router.options.linkPrefetchedClass` ;
+  - `routeRules.noScripts` ;
+  - hooks sitemap `sitemap:resolved` et `sitemap:output`.
 - Validation :
   - `npm test` : OK ;
   - `npm run generate` : OK, 100 routes prerendered ;
@@ -55,13 +58,13 @@ Dernière décision :
   - sourcemap `nuxt:module-preload-polyfill` ;
   - circular chunk `vendor-nuxt -> vendor-libs -> vendor-nuxt`.
 - Prochaine étape :
-  - CONFIG-AUDIT Nuxt 4, sans migrer Content.
+  - consulter la documentation officielle Content v3 puis traiter `DEP-2` / `CONTENT-*` en lots dedies.
 
 Contraintes maintenues :
-- Content v2 non migré dans DEP-1.
-- Aucun déplacement vers `app/` dans DEP-1.
-- Modules sitemap/image/eslint non migrés dans DEP-1.
-- Aucune migration API Content faite dans DEP-1.
+- Content v2 non migré dans CONFIG-AUDIT.
+- Aucun déplacement vers `app/` dans CONFIG-AUDIT.
+- Modules sitemap/image/eslint non migrés dans CONFIG-AUDIT.
+- Aucune migration API Content faite dans CONFIG-AUDIT.
 
 ### Dernière mise à jour
 

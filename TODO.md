@@ -343,6 +343,12 @@ Content v3 trie alphabétiquement par défaut (au lieu de numériquement). Véri
 
 #### 3.4 — Breaking changes `nuxt.config.ts`
 
+> CONFIG-AUDIT Nuxt 4 réalisé le 29 avril 2026 sur `chore/nuxt4-migration`.
+> Rapport : `migration-nuxt4-config-audit.md`
+> Changement appliqué : `experimental.inlineSSRStyles` → `features.inlineStyles`.
+> Options auditées et conservées sans changement : `experimental.defaults.nuxtLink.prefetch`, `router.options`, `routeRules.noScripts`, hooks sitemap.
+> Aucun changement de dépendance, aucune migration Content, aucun déplacement vers `app/`.
+
 ##### 3.4.1 — `experimental.inlineSSRStyles` → `features.inlineStyles`
 
 ```ts
@@ -357,7 +363,10 @@ features: {
 }
 ```
 
-- [ ] **CONFIG-1** — Migrer `experimental.inlineSSRStyles` → `features.inlineStyles` et réévaluer la valeur (`false` était choisi pour meilleur cache — le comportement par défaut Nuxt 4 est déjà plus granulaire)
+- [x] **CONFIG-1** — Migrer `experimental.inlineSSRStyles` → `features.inlineStyles` et réévaluer la valeur (`false` était choisi pour meilleur cache — le comportement par défaut Nuxt 4 est déjà plus granulaire)
+  - Rapport : `migration-nuxt4-config-audit.md`
+  - `features.inlineStyles: false` appliqué.
+  - `npm test`, `npm run generate` et check SEO validés.
 
 ##### 3.4.2 — `experimental.defaults.nuxtLink.prefetch`
 
@@ -373,6 +382,7 @@ experimental: {
 ```
 
 - [ ] **CONFIG-2** — Vérifier si `experimental.defaults.nuxtLink.prefetch` est toujours au même chemin en Nuxt 4 — ⚠️ à vérifier manuellement
+  - CONFIG-AUDIT : option conservée, car le schéma local Nuxt 4 la référence encore et `npm run generate` ne signale aucun warning.
 
 ##### 3.4.3 — `router.options.prefetchLinks` et `linkPrefetchedClass`
 
@@ -387,6 +397,7 @@ router: {
 ```
 
 - [ ] **CONFIG-3** — Vérifier que `router.options` est inchangé en Nuxt 4 — ⚠️ à vérifier manuellement
+  - CONFIG-AUDIT : `prefetchLinks` et `linkPrefetchedClass` conservés, aucun warning observé.
 
 ##### 3.4.4 — `routeRules.noScripts`
 
@@ -399,6 +410,7 @@ routeRules: {
 ```
 
 - [ ] **CONFIG-4** — Vérifier que `noScripts: true` est toujours supporté en Nuxt 4 — ⚠️ à vérifier manuellement
+  - CONFIG-AUDIT : `routeRules.noScripts` conservé, validation `generate` et check SEO OK.
 
 ##### 3.4.5 — Nitro hooks sitemap
 
@@ -415,6 +427,7 @@ nitro: {
 Ces hooks viennent de `@nuxtjs/sitemap`, pas de Nitro. Leur compatibilité dépend de la version de `@nuxtjs/sitemap` utilisée avec Nuxt 4.
 
 - [ ] **CONFIG-5** — Tester les hooks `sitemap:resolved` et `sitemap:output` après mise à jour de `@nuxtjs/sitemap`
+  - CONFIG-AUDIT : hooks présents dans `@nuxtjs/sitemap` 6.1.5 et generate OK ; à revalider pendant `DEP-3`.
 
 ##### 3.4.6 — Flags expérimentaux supprimés
 
@@ -426,6 +439,7 @@ Ces flags n'existent plus en Nuxt 4 (valeur fixe) — les supprimer de la config
 - `experimental.respectNoSSRHeader` → toujours `false`
 
 - [ ] **CONFIG-6** — Supprimer les flags expérimentaux obsolètes (aucun n'est actuellement défini → pas d'action, mais vérifier après `compatibilityVersion: 4`)
+  - CONFIG-AUDIT : aucun des flags listés n'est présent dans `nuxt.config.ts`.
 
 ##### 3.4.7 — `vite.css.preprocessorOptions.scss`
 

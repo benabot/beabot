@@ -1,0 +1,5 @@
+node_modules/@nuxtjs/sitemap/dist/module.mjs:794:    'sitemap:resolved': (ctx: import('${typesPath}').SitemapRenderCtx) => void | Promise<void>
+node_modules/@nuxtjs/sitemap/dist/module.mjs:795:    'sitemap:output': (ctx: import('${typesPath}').SitemapOutputHookCtx) => void | Promise<void>
+node_modules/@nuxtjs/sitemap/dist/runtime/nitro/routes/sitemap_index.xml.js:23:  await nitro.hooks.callHook("sitemap:output", ctx);
+node_modules/@nuxtjs/sitemap/dist/runtime/nitro/sitemap/nitro.js:70:  await nitro.hooks.callHook("sitemap:resolved", resolvedCtx);
+node_modules/@nuxtjs/sitemap/dist/runtime/nitro/sitemap/nitro.js:76:  await nitro.hooks.callHook("sitemap:output", ctx);

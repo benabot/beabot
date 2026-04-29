@@ -30,6 +30,9 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4,
   },
+  features: {
+    inlineStyles: false,
+  },
 
   // Runtime configuration (accessible via useRuntimeConfig())
   runtimeConfig: {
@@ -308,7 +311,6 @@ export default defineNuxtConfig({
   experimental: {
     // payloadExtraction: true, // Disabled - causes #app-manifest errors in dev mode
     // componentIslands: true, // Disabled - causes #app-manifest errors in current version
-    inlineSSRStyles: false, // Inline critical CSS to reduce render-blocking stylesheets
     defaults: {
       nuxtLink: {
         prefetch: false,

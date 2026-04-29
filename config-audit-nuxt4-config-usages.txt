@@ -1,0 +1,9 @@
+33:  features: {
+34:    inlineStyles: false,
+123:    '/': { prerender: true, noScripts: true },
+124:    '/mentions-legales/': { prerender: true, noScripts: true },
+191:      linkPrefetchedClass: 'nuxt-link-prefetched',
+193:      prefetchLinks: false,
+290:      'sitemap:resolved': (ctx) => {
+296:      'sitemap:output': (ctx) => {
+314:    defaults: {
