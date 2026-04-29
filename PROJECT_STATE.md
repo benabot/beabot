@@ -6,7 +6,7 @@
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
-1. **Content v3 / DEP-2** — Consulter la documentation officielle, puis suivre l'ordre documenté : `content.config.ts`, listes articles, page article/navigation, recherche, feeds/sitemap, nettoyage `_path`, tests.
+1. **DEP-2 / Content v3 Lot 1** — Installer uniquement `@nuxt/content@3`, puis creer `content.config.ts` avec la collection `articles` documentee (`articles/**/*.md`, prefix `/eco-conception`) ; ne pas migrer sitemap/image/eslint.
 2. **Sitemap / Image / ESLint** — Traiter séparément après Nuxt et Content : `@nuxtjs/sitemap`, `@nuxt/image`, puis `@nuxt/eslint` probablement en dernier.
 3. **CONFIG-* restants selon besoin** — Les options Nuxt 4 ont ete auditees ; ne corriger que si un warning futur ou une mise a jour de module l'exige.
 4. **DIR-* app directory** — Ne pas deplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dedie si besoin.
@@ -33,38 +33,37 @@ SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stabl
   - `e1e6b6a` — `docs: cartographier migration Content v3`
   - `9e8423a` — `docs: auditer dependances avant Nuxt 4`
   - `bbe2924` — `chore: supprimer override interne Nuxt paths`
+  - `7761c77` — `chore: auditer configuration Nuxt 4`
 
 ## Migration Nuxt 4 — état courant
 
 Branche : `chore/nuxt4-migration`
 
 Dernière décision :
-- CONFIG-AUDIT Nuxt 4 réalisé le 29 avril 2026.
+- CONTENT-DOCS / DEP-2-PREP réalisé le 29 avril 2026.
 - Résultat : succès.
 - Version Nuxt : `4.4.2`.
-- Changement applique :
-  - `experimental.inlineSSRStyles: false` remplace par `features.inlineStyles: false`.
-- Options conservees :
-  - `experimental.defaults.nuxtLink.prefetch` ;
-  - `router.options.prefetchLinks` et `router.options.linkPrefetchedClass` ;
-  - `routeRules.noScripts` ;
-  - hooks sitemap `sitemap:resolved` et `sitemap:output`.
+- Rapport : `migration-nuxt4-content-v3-docs-audit.md`.
+- Documentation officielle Nuxt Content v3 consultee :
+  - collections, `content.config.ts`, sources, schema, `queryCollection`, API serveur, recherche, `<ContentRenderer>`, static hosting.
+- Decisions preparees :
+  - collection cible `articles` en `type: 'page'` ;
+  - source cible `{ include: 'articles/**/*.md', prefix: '/eco-conception' }` ;
+  - `queryContent()` -> `queryCollection()` ;
+  - `findSurround()` -> `queryCollectionItemSurroundings()` ;
+  - `serverQueryContent()` -> `queryCollection(event, ...)` pour les routes Nitro ;
+  - `_path` -> `path`.
 - Validation :
-  - `npm test` : OK ;
-  - `npm run generate` : OK, 100 routes prerendered ;
-  - check SEO : OK ;
-  - routes prerendered : 100.
-- Warnings non bloquants :
-  - sourcemap `nuxt:module-preload-polyfill` ;
-  - circular chunk `vendor-nuxt -> vendor-libs -> vendor-nuxt`.
+  - documentation only, aucune validation runtime necessaire.
 - Prochaine étape :
-  - consulter la documentation officielle Content v3 puis traiter `DEP-2` / `CONTENT-*` en lots dedies.
+  - lancer `DEP-2 / Content v3 Lot 1` uniquement quand l'installation `@nuxt/content@3` est explicitement demandee, avec decision prealable sur le validateur de schema.
 
 Contraintes maintenues :
-- Content v2 non migré dans CONFIG-AUDIT.
-- Aucun déplacement vers `app/` dans CONFIG-AUDIT.
-- Modules sitemap/image/eslint non migrés dans CONFIG-AUDIT.
-- Aucune migration API Content faite dans CONFIG-AUDIT.
+- Content v2 non migré dans CONTENT-DOCS.
+- Aucun `content.config.ts` cree dans CONTENT-DOCS.
+- Aucun déplacement vers `app/` dans CONTENT-DOCS.
+- Modules sitemap/image/eslint non migrés dans CONTENT-DOCS.
+- Aucune migration API Content faite dans CONTENT-DOCS.
 
 ### Dernière mise à jour
 
@@ -102,6 +101,12 @@ Contraintes maintenues :
 - ✅ Aucune migration API Content faite
 - ✅ Aucun `content.config.ts` créé
 - ✅ Aucun fichier déplacé vers `app/`
+- ✅ CONTENT-DOCS / DEP-2-PREP réalisé :
+  - documentation officielle Nuxt Content v3 consultee
+  - source cible recommandee : `{ include: 'articles/**/*.md', prefix: '/eco-conception' }`
+  - API server cible pour RSS/JSON Feed : `queryCollection(event, 'articles')`
+  - recherche cible documentee : `.where(...).orWhere(...)` ou `queryCollectionSearchSections()`
+  - point a decider avant DEP-2 : validateur de schema (`zod`) non installe en dependance directe aujourd'hui
 
 **Services freelance — relief visuel & maillage (28 avril 2026)** — Branche `feat/design-services`.
 

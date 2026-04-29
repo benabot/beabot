@@ -185,6 +185,8 @@ Ordre recommandé (mettre à jour et tester une par une) :
   - Warnings non bloquants documentés : sourcemap `nuxt:module-preload-polyfill`, circular chunk `vendor-nuxt -> vendor-libs -> vendor-nuxt`.
   - `@nuxt/content`, `@nuxt/image`, `@nuxtjs/sitemap` et `@nuxt/eslint` non migrés dans cette étape.
 - [ ] **DEP-2** — Mettre à jour `@nuxt/content` vers 3.x (après avoir migré les APIs — voir 3.3)
+  - CONTENT-DOCS réalisé : `migration-nuxt4-content-v3-docs-audit.md`.
+  - Ne pas lancer avant décision explicite sur le schéma `content.config.ts` et le validateur requis par la documentation officielle.
 - [ ] **DEP-3** — Vérifier compatibilité `@nuxtjs/sitemap` 6.x avec Nuxt 4 ; mettre à jour vers 7.x si requis
 - [ ] **DEP-4** — Vérifier compatibilité `@nuxt/image` ; mettre à jour si nécessaire
 - [ ] **DEP-5** — Mettre à jour `@nuxt/eslint` vers 1.x si requis par Nuxt 4
@@ -246,6 +248,22 @@ Fichiers qui **restent à la racine** (pas de déplacement) :
 > - `content-prep-migration-order.md`
 > - `content-prep-tests-plan.md`
 > Aucun changement de dépendance, aucune migration API, aucun déplacement vers `app/`.
+>
+> CONTENT-DOCS / DEP-2-PREP réalisé le 29 avril 2026 avec documentation officielle Nuxt Content v3.
+> Rapport : `migration-nuxt4-content-v3-docs-audit.md`
+> Décisions préparatoires :
+> - collection cible `articles` en `type: 'page'` ;
+> - source cible `{ include: 'articles/**/*.md', prefix: '/eco-conception' }` ;
+> - `queryContent()` → `queryCollection()` ;
+> - `findSurround()` → `queryCollectionItemSurroundings()` ;
+> - `serverQueryContent()` → `queryCollection(event, ...)` pour routes Nitro ;
+> - `_path` → `path`.
+> Aucun `npm install`, aucun `content.config.ts`, aucune migration API.
+
+- [x] **CONTENT-DOCS** — Auditer la documentation officielle Nuxt Content v3 avant `DEP-2`
+  - Rapport : `migration-nuxt4-content-v3-docs-audit.md`
+  - Documentation only, aucune validation runtime nécessaire.
+  - Points critiques documentés : source de collection, schéma minimal, API server, recherche, RSS/JSON Feed, sitemap, TOC, trailing slashes.
 
 ##### 3.3.1 — `queryContent()` → `queryCollection()`
 
