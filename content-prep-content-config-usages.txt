@@ -1,0 +1,10 @@
+nuxt.config.ts:61:        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+nuxt.config.ts:64:          content:
+nuxt.config.ts:68:        { name: 'theme-color', content: '#ffffff' },
+nuxt.config.ts:72:          content: 'BeAbot : éco-conception web',
+nuxt.config.ts:76:          content:
+nuxt.config.ts:81:          content: `${siteUrl}/beabot.png`,
+nuxt.config.ts:86:          content: 'BeAbot : éco-conception web',
+nuxt.config.ts:90:          content:
+nuxt.config.ts:95:          content: `${siteUrl}/beabot.png`,
+nuxt.config.ts:198:  content: {

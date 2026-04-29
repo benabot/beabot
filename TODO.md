@@ -213,6 +213,15 @@ Fichiers qui **restent à la racine** (pas de déplacement) :
 
 **C'est le changement le plus impactant de la migration.** L'API est entièrement refondue.
 
+> CONTENT-PREP réalisé le 29 avril 2026 sur `chore/nuxt4-migration`.
+> Rapports :
+> - `content-prep-query-map.md`
+> - `content-prep-v2-v3-mapping.md`
+> - `content-prep-content-config-plan.md`
+> - `content-prep-migration-order.md`
+> - `content-prep-tests-plan.md`
+> Aucun changement de dépendance, aucune migration API, aucun déplacement vers `app/`.
+
 ##### 3.3.1 — `queryContent()` → `queryCollection()`
 
 | Fichier                           | Lignes  | Code actuel                                                               | Migration                                                                        |

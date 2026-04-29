@@ -1,0 +1,9 @@
+server/routes/feed.json.ts:1:import { serverQueryContent } from '#content/server'
+server/routes/feed.json.ts:6:    const articles = await serverQueryContent(event, 'articles')
+server/routes/rss.xml.ts:1:import { serverQueryContent } from '#content/server'
+server/routes/rss.xml.ts:6:    const articles = await serverQueryContent(event, 'articles')
+nuxt.config.ts:267:      const { serverQueryContent } = await import('#content/server')
+nuxt.config.ts:268:      const articles = await serverQueryContent('articles').find()
+scripts/check-content-queries.mjs:34:    patterns: [/serverQueryContent/, /_path/, /article\.tag/],
+scripts/check-content-queries.mjs:38:    patterns: [/serverQueryContent/, /_path/, /article\.tag/],
+scripts/check-content-queries.mjs:42:    patterns: [/serverQueryContent/, /_path/, /\/eco-conception\/\$\{slug\}\//],

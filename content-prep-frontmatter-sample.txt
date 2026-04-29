@@ -1,0 +1,248 @@
+--- content/articles/audit-eco-conception.md
+---
+title: "Audit éco-conception web : par où commencer"
+description: Avant d'optimiser un site, encore faut-il savoir ce qu'on mesure et pourquoi. Cet article pose les bases d'un audit éco-conception sérieux, des outils aux indicateurs, sans se perdre dans des chiffres décontextualisés.
+chapo: Avant d'optimiser un site, encore faut-il savoir ce qu'on mesure et pourquoi. Cet article pose les bases d'un audit éco-conception sérieux, des outils aux indicateurs, sans se perdre dans des chiffres décontextualisés.
+tag: ['Éco-conception', 'Audit', 'Performance', 'WebDesign']
+seo:
+  title: "Audit éco-conception web — par où commencer"
+  description: "Méthode, outils et indicateurs pour auditer un site web éco-conçu. Guide complet : EcoIndex, PageSpeed, poids de page. Point de départ pour toute optimisation."
+  ogImage: /beabot.png
+  robots: index,follow
+date: 2026-03-26
+updatedAt: 2026-03-26
+temps: 8
+---
+
+--- content/articles/audit-site-web.md
+---
+title: "Audit de site web : ce que j'analyse et ce que ça coûte"
+chapo: "Un audit, c'est une radiographie. Pas une liste de reproches. Voici ce que j'examine et pourquoi ça change quelque chose."
+description: "Ce qu'un audit de site web comprend : performance, SEO, éco-conception, accessibilité. Méthode et tarif d'un développeur web freelance."
+seo:
+  title: 'Audit de site web éco-conception : méthode et tarif'
+  description: 'Audit de site web par un développeur freelance : analyse de performance, SEO, éco-conception et accessibilité. Ce que ça comprend et ce que ça coûte.'
+date: 2026-04-27
+updatedAt: 2026-04-27
+temps: 5
+tag: ['Audit', 'Performance', 'SEO', 'Eco-conception']
+conversion:
+  service: audit
+  cta: true
+---
+---
+
+--- content/articles/comment-reduire-le-poids-d-un-site-web.md
+---
+title: "Comment réduire le poids d'un site web"
+description: Réduire le poids d'un site web ne consiste pas seulement à compresser quelques images. C'est une démarche globale qui touche les contenus, le design, le code, les dépendances et la maintenance.
+chapo: Réduire le poids d'un site web ne consiste pas seulement à compresser quelques images. C'est une démarche globale qui touche les contenus, le design, le code, les dépendances et la maintenance.
+tag: ['Éco-conception', 'Performance', 'WebDesign', 'SEO']
+seo:
+  title: "Réduire le poids d'un site web : méthode complète"
+  description: "Méthode concrète pour alléger une page web : images, CSS, JavaScript, polices, ressources tierces, WordPress et bonnes pratiques d'éco-conception."
+  ogImage: /beabot.png
+  robots: index,follow
+date: 2026-04-26
+updatedAt: 2026-04-26
+temps: 7
+---
+
+--- content/articles/faq-eco-conception.md
+---
+title: FAQ — Éco-conception web
+description: Réponses aux questions fréquentes sur l'éco-conception web, ses principes, ses impacts concrets et sa mise en œuvre dans des projets réels.
+chapo: Réponses aux questions fréquentes sur l'éco-conception web, ses principes, ses impacts concrets et sa mise en œuvre dans des projets réels.
+tag: ['Éco-conception', 'SEO', 'WebDesign', 'Performance']
+seo:
+  title: FAQ éco-conception web — réponses essentielles
+  description: Questions clés sur l’éco-conception web, ses principes, ses impacts et les bonnes pratiques pour agir concrètement.
+  ogImage: /beabot.png
+  robots: index,follow
+schema: FAQPage
+date: 2022-02-28
+temps: 4
+updatedAt: 2026-04-27
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+
+--- content/articles/images-eco-conception.md
+---
+title: Images et éco-conception web
+description: Les images représentent la part la plus lourde d'une page web. Bien pensées, elles servent le contenu. Mal maîtrisées, elles dégradent les performances et alourdissent l'empreinte environnementale.
+chapo: Les images représentent la part la plus lourde d'une page web. Bien pensées, elles servent le contenu. Mal maîtrisées, elles dégradent les performances et alourdissent l'empreinte environnementale.
+tag: ['Éco-conception', 'Images', 'WebDesign', 'SEO']
+seo:
+  title: Images & éco-conception web — guide pratique d'optimisation
+  description: Comment réduire le poids des images tout en préservant la qualité et la pertinence du contenu dans une démarche d’éco-conception numérique.
+  ogImage: /beabot.png
+  robots: index,follow
+date: 2025-12-19
+updatedAt: 2025-12-21
+temps: 4
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+
+--- content/articles/l-eco-conception-web.md
+---
+title: Qu'est-ce que l'éco-conception web
+description: L’éco-conception web est un sujet repris au prix de nombreux raccourcis. Cet article propose une définition claire du concept et en précise les limites.
+chapo: L’éco-conception web est un sujet repris au prix de nombreux raccourcis. Cet article propose une définition claire du concept et en précise les limites.
+seo:
+  title: Qu’est-ce que l’éco-conception web
+  description: "L’éco-conception web : définition précise, limites du concept et enjeux concrets, loin des raccourcis habituels sur la sobriété numérique."
+date: 2021-12-17
+updatedAt: 2026-04-27
+temps: 15
+tag: ['WebDesign', 'WordPress', 'Eco-conception']
+---
+---
+
+--- content/articles/la-consommation-energetique-du-numerique.md
+---
+title: Les impacts environnementaux du numérique
+description: Le numérique repose sur des infrastructures lourdes et énergivores. Tour d’horizon des impacts environnementaux et des ordres de grandeur à connaître.
+chapo: Le numérique repose sur des infrastructures lourdes et énergivores. Tour d’horizon des impacts environnementaux et des ordres de grandeur à connaître.
+seo:
+  title: Les impacts environnementaux du numérique
+  description: "Le numérique repose sur des infrastructures énergivores. Panorama chiffré des impacts environnementaux : CO2, électricité, fabrication des appareils."
+date: 2022-02-28
+updatedAt: 2026-04-27
+tag: ['WebDesign', 'WordPress']
+temps: 4
+---
+---
+
+--- content/articles/refonte-site-eco-concu.md
+---
+title: 'Refonte de site éco-conçu : méthode et budget'
+chapo: 'Une refonte ne se résume pas à un nouveau design. Voici comment aborder ça sérieusement — et ce que ça coûte vraiment.'
+description: 'Méthode et budget pour une refonte de site éco-conçue : audit préalable, choix technique, livrables et fourchettes de prix.'
+seo:
+  title: 'Refonte de site web éco-conçu : méthode et budget'
+  description: 'Comment planifier et budgéter une refonte de site web éco-conçue : audit, choix technique WordPress ou Nuxt, étapes et fourchettes de coût.'
+date: 2026-04-27
+updatedAt: 2026-04-27
+temps: 7
+tag: ['Eco-conception', 'WordPress', 'Performance']
+conversion:
+  service: wordpress
+  cta: true
+---
+---
+
+--- content/articles/theme-wordpress-eco-conception.md
+---
+title: La petite boucle, éco-conception d'un thème WordPress
+description: "Retour d’expérience sur un thème WordPress éco-conçu pour un site réel : choix techniques, graphiques et résultats mesurés."
+chapo: Exemple concret sur la conception d’un thème WordPress éco-conçu pour la mise à jour d’un site. Choix techniques et graphiques pour réduire l’impact environnemental.
+seo:
+  title: La petite boucle, éco-conception d’un thème WordPress
+  description: "Retour d’expérience sur un thème WordPress éco-conçu pour un site réel : choix techniques, graphiques et résultats mesurés."
+  ogImage: /img/og/theme-wordpress-eco-conception.png
+date: 2022-02-28
+updatedAt: 2026-04-27
+temps: 3
+tag: ['WebDesign', 'WordPress', 'Eco-conception']
+---
+---
+
+--- content/articles/typographie-ecoconception.md
+---
+title: Typographie et éco-conception
+description: "La typographie joue un rôle central dans l’éco-conception web, comme composant graphique et source de consommation. Polices système ou web fonts : impacts et choix sobres."
+chapo: "La typographie joue un rôle central dans l’éco-conception web, comme composant graphique et source de consommation. Polices système ou web fonts : impacts et choix sobres."
+seo:
+  title: Typographie et éco-conception — polices système vs web fonts
+  description: "Polices système ou web fonts : impacts sur performances et empreinte numérique. Choix typographiques sobres pour l’éco-conception web."
+  ogImage: /img/og/typographie-ecoconception.png
+date: 2025-12-15
+updatedAt: 2025-12-15
+temps: 10
+tag: ['WebDesign', 'Typographie', 'Eco-conception']
+---
+
+--- content/articles/wordpress-eco-conception.md
+---
+title: Éco-concevoir un site WordPress
+description: Guide pratique pour concevoir un site WordPress sobre, performant et durable. Méthode, choix techniques et bonnes pratiques.
+chapo: Guide pratique pour concevoir un site WordPress sobre, performant et durable. Méthode, choix techniques et bonnes pratiques.
+seo:
+  title: WordPress et éco-conception web — thèmes sobres et performants
+  description: Guide pratique pour concevoir un site WordPress sobre, performant et durable. Méthode, choix techniques et bonnes pratiques.
+  ogImage: /img/og/wordpress-eco-conception.png
+tag: ['WordPress', 'Éco-conception', 'WebDesign', 'Performance']
+date: 2025-10-28
+updatedAt: 2025-10-28
+temps: 5
+---
+---
+---
+---
+---
+---
+---
+---
+---
+
+--- content/articles/wordpress-freelance-lille.md
+---
+title: 'Développeur WordPress freelance à Lille : comment choisir ?'
+chapo: "Trouver un développeur WordPress à Lille, c'est facile. En trouver un bon, c'est une autre affaire. Voici les critères concrets pour éviter les erreurs classiques."
+description: 'Comment choisir un développeur WordPress freelance à Lille : critères techniques, références, tarifs indicatifs. Guide pratique par un développeur web basé à Lille.'
+seo:
+  title: 'Développeur WordPress freelance Lille — comment choisir ?'
+  description: 'Choisir un développeur WordPress freelance à Lille : critères techniques, références, tarifs indicatifs. Guide pratique par un développeur web basé à Lille.'
+date: 2026-04-27
+updatedAt: 2026-04-27
+temps: 6
+tag: ['WordPress', 'Eco-conception']
+conversion:
+  service: wordpress
+  cta: true
+---
+---
+---
+
+--- content/articles/wordpress-vs-nuxt.md
+---
+title: 'WordPress vs Nuxt pour un site vitrine éco-conçu'
+chapo: 'Deux outils sérieux, deux philosophies différentes. Lequel choisir pour un site vitrine sobre et maintenable ?'
+description: "Comparatif WordPress vs Nuxt pour un site vitrine éco-conçu : performance, maintenabilité, coût et cas d'usage."
+seo:
+  title: 'WordPress vs Nuxt pour un site vitrine éco-conçu'
+  description: "WordPress ou Nuxt pour un site vitrine éco-conçu ? Comparatif honnête : performance, coût, maintenabilité et cas d'usage pour choisir la bonne stack."
+date: 2026-04-27
+updatedAt: 2026-04-27
+temps: 8
+tag: ['WordPress', 'Eco-conception', 'Performance']
+conversion:
+  service: wordpress
+  cta: true
+---
+---

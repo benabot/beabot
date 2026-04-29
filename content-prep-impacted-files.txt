@@ -1,0 +1,313 @@
+Fichier : pages/index.vue
+Role : homepage, derniers articles
+APIs Content v2 utilisees :
+  - queryContent('articles')
+  - .only(['title', 'description', 'tag', '_path', 'date'])
+  - .sort({ date: -1 })
+  - .limit(2)
+  - .find()
+Champs utilises :
+  - title
+  - description
+  - tag
+  - date
+  - _path
+Migration Content v3 probable :
+  - queryCollection('articles')
+  - .select(...)
+  - .order('date', 'DESC')
+  - .limit(2)
+  - .all()
+Risques :
+  - remplacement _path -> path
+  - conserver la transformation /articles/* -> /eco-conception/*
+  - verifier le nom du champ tags si la collection v3 garde tag ou migre vers tags
+Tests existants :
+  - generated page /
+  - scripts/check-content-queries.mjs
+Tests a ajouter ou verifier :
+  - ordre des deux derniers articles
+  - URLs avec trailing slash
+
+Fichier : pages/eco-conception/index.vue
+Role : page pilier eco-conception, archive articles, filtres, recherche locale et FAQ extraite
+APIs Content v2 utilisees :
+  - queryContent('articles')
+  - .only(['title', 'description', 'tag', '_path', 'date', 'updatedAt'])
+  - .sort({ date: -1 })
+  - .find()
+  - queryContent('articles', 'faq-eco-conception').findOne()
+Champs utilises :
+  - title
+  - description
+  - tag
+  - date
+  - updatedAt
+  - _path
+  - faqArticle.body.children
+Migration Content v3 probable :
+  - queryCollection('articles')
+  - .select(...)
+  - .order('date', 'DESC')
+  - .all()
+  - queryCollection('articles').where('stem', '=', 'faq-eco-conception').first()
+Risques :
+  - featuredResourcePaths reference des chemins /articles/*
+  - remplacement _path -> path
+  - extraction FAQ depuis body.children a confirmer
+  - tags actuels sous champ tag, pas tags
+Tests existants :
+  - generated page /eco-conception/
+  - scripts/check-content-queries.mjs
+Tests a ajouter ou verifier :
+  - filtres par tag
+  - recherche locale
+  - ressources mises en avant
+  - FAQ visible et JSON-LD coherent si applicable
+
+Fichier : pages/eco-conception/[slug].vue
+Role : page article, rendu markdown, TOC, prev/next, tags, SEO Article/FAQ
+APIs Content v2 utilisees :
+  - queryContent('articles', route.params.slug).findOne()
+  - queryContent('articles').only(['title', '_path']).sort({ date: 1 }).findSurround(article.value._path)
+  - <ContentRenderer :value="article" />
+Champs utilises :
+  - title
+  - description
+  - chapo
+  - tag
+  - date
+  - updatedAt
+  - temps
+  - schema
+  - seo.title
+  - seo.description
+  - seo.ogImage
+  - seo.robots
+  - img
+  - body.children
+  - body.toc.links
+  - _path
+Migration Content v3 probable :
+  - queryCollection('articles').where('stem', '=', slug).first()
+  - queryCollectionItemSurroundings('articles', path ou stem, ...)
+  - verifier <ContentRenderer :value="article" />
+Risques :
+  - fichier le plus sensible : rendu article, TOC, FAQPage, BlogPosting, prev/next
+  - API surroundings et parametre path/stem a confirmer
+  - disponibilite body.toc.links et forme body.children a confirmer
+  - remplacement _path -> path dans ArticleNavigation
+Tests existants :
+  - generated page /eco-conception/l-eco-conception-web/
+  - scripts/check-content-queries.mjs
+Tests a ajouter ou verifier :
+  - TOC h2/h3
+  - navigation precedent/suivant
+  - JSON-LD Article
+  - JSON-LD FAQ pour faq-eco-conception
+  - tag links avec query + hash
+
+Fichier : components/HomeEcoArticles.vue
+Role : composant derniers articles eco-conception historique
+APIs Content v2 utilisees :
+  - queryContent('articles')
+  - .only(['title', 'description', 'tag', '_path', 'date'])
+  - .sort({ date: -1 })
+  - .limit(2)
+  - .find()
+Champs utilises :
+  - title
+  - description
+  - tag
+  - date
+  - _path
+Migration Content v3 probable :
+  - queryCollection('articles')
+  - .select(...)
+  - .order('date', 'DESC')
+  - .limit(2)
+  - .all()
+Risques :
+  - meme contrat que pages/index.vue
+  - verifier si le composant est encore monte sur une page active
+Tests existants :
+  - scripts/check-content-queries.mjs
+Tests a ajouter ou verifier :
+  - rendu des deux cartes et liens
+
+Fichier : components/AppSearchInput.vue
+Role : recherche client d'articles via Content
+APIs Content v2 utilisees :
+  - queryContent('articles')
+  - .where({ $or: [{ title: { $contains: newQuery } }, { description: { $contains: newQuery } }] })
+  - .limit(6)
+  - .find()
+Champs utilises :
+  - slug
+  - title
+  - description
+Migration Content v3 probable :
+  - queryCollection('articles').where(...) avec syntaxe v3
+  - ou queryCollectionSearchSections() si plus adapte
+Risques :
+  - syntaxe $or/$contains supprimee ou differente
+  - composant client : verifier comportement SSR/hydratation
+  - slug vs path/stem a confirmer
+Tests existants :
+  - scripts/check-content-queries.mjs
+Tests a ajouter ou verifier :
+  - recherche par titre
+  - recherche par description
+  - aucun crash avec requete vide
+
+Fichier : components/ArticleNavigation.vue
+Role : rendu liens precedent/suivant
+APIs Content v2 utilisees :
+  - aucune requete directe
+Champs utilises :
+  - prev._path
+  - next._path
+Migration Content v3 probable :
+  - consommer prev.path / next.path apres transformation dans [slug].vue
+Risques :
+  - fichier oublie si le nettoyage _path est fait uniquement dans les pages
+Tests existants :
+  - scripts/check-content-queries.mjs verifie la sortie article
+Tests a ajouter ou verifier :
+  - liens precedent/suivant presents et trailing slash
+
+Fichier : server/routes/rss.xml.ts
+Role : flux RSS XML
+APIs Content v2 utilisees :
+  - import { serverQueryContent } from '#content/server'
+  - serverQueryContent(event, 'articles')
+  - .sort({ $numeric: true })
+  - .find()
+Champs utilises :
+  - title
+  - description
+  - date
+  - createdAt
+  - tag
+  - _path
+Migration Content v3 probable :
+  - API server Content v3 a confirmer sur documentation officielle
+  - queryCollection('articles').select(...).order(...).all() si disponible cote server
+Risques :
+  - serverQueryContent supprime
+  - tri actuel $numeric peu explicite
+  - construction slug depuis _path
+  - echappement XML a conserver
+Tests existants :
+  - tests/feeds.test.mjs
+  - scripts/check-content-queries.mjs
+Tests a ajouter ou verifier :
+  - ordre du flux
+  - URLs trailing slash
+  - dates valides
+
+Fichier : server/routes/feed.json.ts
+Role : JSON Feed
+APIs Content v2 utilisees :
+  - import { serverQueryContent } from '#content/server'
+  - serverQueryContent(event, 'articles')
+  - .sort({ $numeric: true })
+  - .find()
+Champs utilises :
+  - title
+  - description
+  - date
+  - createdAt
+  - tag
+  - _path
+Migration Content v3 probable :
+  - API server Content v3 a confirmer sur documentation officielle
+Risques :
+  - serverQueryContent supprime
+  - slug depuis _path
+  - dates ISO et tags a conserver
+Tests existants :
+  - tests/feeds.test.mjs
+  - scripts/check-content-queries.mjs
+Tests a ajouter ou verifier :
+  - JSON parseable
+  - item.id == item.url
+  - tags tableau
+
+Fichier : nuxt.config.ts
+Role : config Nuxt, module Content, sitemap dynamique
+APIs Content v2 utilisees :
+  - modules: ['@nuxt/content', ...]
+  - content: { highlight, markdown }
+  - import dynamique #content/server
+  - serverQueryContent('articles').find()
+  - article._path
+Migration Content v3 probable :
+  - conserver le module @nuxt/content
+  - deplacer/adapter la configuration dans content.config.ts
+  - reecrire sitemap.routes sans serverQueryContent ou s'appuyer sur l'integration sitemap/content si disponible
+Risques :
+  - migration config v3 a faire avant les requetes
+  - sitemap dynamique critique SEO
+  - ne pas toucher aux optimisations Vite/Nitro hors perimetre
+Tests existants :
+  - npm run generate
+  - scripts/seo-check.mjs
+Tests a ajouter ou verifier :
+  - /sitemap.xml contient les articles avec trailing slash
+
+Fichier : scripts/check-content-queries.mjs
+Role : garde-fou Content v2 et smoke checks de sortie generee
+APIs Content v2 utilisees :
+  - patterns queryContent/serverQueryContent/findSurround/_path
+Champs utilises :
+  - contrats textuels Content v2
+  - sortie archive/article generee
+Migration Content v3 probable :
+  - inverser le garde-fou : interdire les usages v2 restants
+  - verifier absence de _path
+  - ajouter les patterns v3 attendus
+Risques :
+  - ce test echouera volontairement pendant la migration si non adapte au bon moment
+Tests existants :
+  - npm run test:content
+Tests a ajouter ou verifier :
+  - contrats Content v3 cible
+
+Fichier : tests/feeds.test.mjs
+Role : validation flux RSS et JSON Feed generes
+APIs Content v2 utilisees :
+  - aucune directe
+Champs utilises :
+  - URLs articles
+  - dates
+  - tags JSON Feed
+Migration Content v3 probable :
+  - conserver et etendre
+Risques :
+  - ne detecte pas l'ordre des articles
+Tests existants :
+  - rss.xml expose URLs stables
+  - feed.json parseable
+Tests a ajouter ou verifier :
+  - ordre date descendant si attendu
+
+Fichier : tests/generated-pages.test.mjs
+Role : smoke tests SEO sur pages generees
+APIs Content v2 utilisees :
+  - aucune directe
+Champs utilises :
+  - HTML article genere
+  - canonical
+  - og:url
+Migration Content v3 probable :
+  - conserver et etendre pour TOC/JSON-LD
+Risques :
+  - couverture encore minimale pour ContentRenderer et body.toc
+Tests existants :
+  - homepage
+  - archive eco-conception
+  - article
+Tests a ajouter ou verifier :
+  - JSON-LD BlogPosting/FAQPage
+  - TOC visible

@@ -1,0 +1,2 @@
+pages/eco-conception/[slug].vue:152:      .findSurround(article.value._path)
+scripts/check-content-queries.mjs:22:    patterns: [/queryContent\('articles', route\.params\.slug\)/, /findSurround/, /_path/, /tag/],

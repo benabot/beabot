@@ -1,0 +1,55 @@
+pages/index.vue:302:            :key="article._path"
+pages/index.vue:359:  _path?: string
+pages/index.vue:430:      .only(['title', 'description', 'tag', '_path', 'date'])
+pages/index.vue:457:  if (!article || !article._path) return '/eco-conception/'
+pages/index.vue:459:    article._path.replace(/^\/articles\//, '/eco-conception/'),
+pages/eco-conception/index.vue:280:            :key="article._path"
+pages/eco-conception/index.vue:374:              :key="article._path"
+pages/eco-conception/index.vue:390:                    :key="`${article._path}-${tag}`"
+pages/eco-conception/index.vue:526:  _path?: string
+pages/eco-conception/index.vue:654:      .only(['title', 'description', 'tag', '_path', 'date', 'updatedAt'])
+pages/eco-conception/index.vue:685:  if (!article || !article._path) return '/eco-conception/'
+pages/eco-conception/index.vue:687:    article._path.replace(/^\/articles\//, '/eco-conception/'),
+pages/eco-conception/index.vue:761:    const article = allArticles.value.find((entry) => entry._path === path)
+pages/eco-conception/[slug].vue:147:    if (!article.value?._path) return Promise.resolve([null, null])
+pages/eco-conception/[slug].vue:150:      .only(['title', '_path'])
+pages/eco-conception/[slug].vue:152:      .findSurround(article.value._path)
+pages/eco-conception/[slug].vue:158:  if (!article || !article._path) return null
+pages/eco-conception/[slug].vue:160:    article._path.replace(/^\/articles\//, '/eco-conception/'),
+pages/eco-conception/[slug].vue:164:    _path: normalizedPath,
+components/HomeEcoArticles.vue:13:        :key="article._path || index"
+components/HomeEcoArticles.vue:51:    .only(['title', 'description', 'tag', '_path', 'date'])
+components/HomeEcoArticles.vue:60:  if (!article || !article._path) return '/eco-conception/'
+components/HomeEcoArticles.vue:62:    article._path.replace(/^\/articles\//, '/eco-conception/')
+components/TheFooter.vue:75:    route.path === '/apps/' ||
+components/TheFooter.vue:76:    route.path === '/apps' ||
+components/TheFooter.vue:77:    route.path.startsWith('/apps/')
+components/ArticleNavigation.vue:4:      v-if="prev && prev._path"
+components/ArticleNavigation.vue:5:      :to="prev._path"
+components/ArticleNavigation.vue:12:      v-if="next && next._path"
+components/ArticleNavigation.vue:13:      :to="next._path"
+components/AppLink.vue:25:  if (props.to && typeof props.to === 'object' && typeof props.to.path === 'string') {
+components/AppLink.vue:26:    return { ...props.to, path: normalizeInternalHref(props.to.path) }
+components/apps/AppReleaseInterestForm.vue:100:const actionPath = computed(() => route.path || '/')
+layouts/default.vue:204:const isHomeRoute = computed(() => route.path === '/' || route.path === '')
+layouts/default.vue:207:    route.path === '/greenlight/' ||
+layouts/default.vue:208:    route.path === '/greenlight' ||
+layouts/default.vue:209:    route.path === '/green-light/' ||
+layouts/default.vue:210:    route.path === '/green-light',
+layouts/default.vue:322:  const normalizedCurrentPath = route.path.endsWith('/')
+layouts/default.vue:323:    ? route.path
+layouts/default.vue:324:    : `${route.path}/`
+server/routes/feed.json.ts:28:        // Extraire le slug depuis _path (format: /articles/slug) et convertir en minuscules
+server/routes/feed.json.ts:29:        const slug = article._path?.split('/').pop()?.toLowerCase() || ''
+server/routes/rss.xml.ts:35:        // Extraire le slug depuis _path (format: /articles/slug) et convertir en minuscules
+server/routes/rss.xml.ts:36:        const slug = article._path?.split('/').pop()?.toLowerCase() || ''
+nuxt.config.ts:270:        .map((article) => article._path?.split('/').pop())
+scripts/check-content-queries.mjs:14:    patterns: [/queryContent\('articles'\)/, /_path/, /tag/],
+scripts/check-content-queries.mjs:18:    patterns: [/queryContent\('articles'\)/, /queryContent\('articles', 'faq-eco-conception'\)/, /_path/, /tag/],
+scripts/check-content-queries.mjs:22:    patterns: [/queryContent\('articles', route\.params\.slug\)/, /findSurround/, /_path/, /tag/],
+scripts/check-content-queries.mjs:26:    patterns: [/queryContent\('articles'\)/, /_path/, /tag/],
+scripts/check-content-queries.mjs:34:    patterns: [/serverQueryContent/, /_path/, /article\.tag/],
+scripts/check-content-queries.mjs:38:    patterns: [/serverQueryContent/, /_path/, /article\.tag/],
+scripts/check-content-queries.mjs:42:    patterns: [/serverQueryContent/, /_path/, /\/eco-conception\/\$\{slug\}\//],
+tests/app-link.test.mjs:18:  if (to && typeof to === 'object' && typeof to.path === 'string') {
+tests/app-link.test.mjs:19:    return { ...to, path: normalizeInternalHref(to.path) }

@@ -1,0 +1,3 @@
+pages/eco-conception/[slug].vue:106:        <ContentRenderer
+pages/eco-conception/[slug].vue:671:    // Target article content directly (ContentRenderer outputs without wrapper class)
+pages/eco-conception/[slug].vue:672:    // ContentRenderer renders content directly inside <article>, so we need :deep() for each selector

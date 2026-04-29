@@ -1,0 +1,7 @@
+server/routes/feed.json.ts:1:import { serverQueryContent } from '#content/server'
+server/routes/rss.xml.ts:1:import { serverQueryContent } from '#content/server'
+nuxt.config.ts:171:              id.includes('@nuxt/content')
+nuxt.config.ts:195:  modules: ['@nuxt/content', '@nuxt/image', '@nuxtjs/sitemap'],
+nuxt.config.ts:267:      const { serverQueryContent } = await import('#content/server')
+scripts/pre-build-check.js:89:    pkg.dependencies?.['@nuxt/content'],
+scripts/pre-build-check.js:90:    '❌ @nuxt/content not in dependencies',
