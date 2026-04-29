@@ -187,6 +187,12 @@ Ordre recommandé (mettre à jour et tester une par une) :
 - [ ] **DEP-2** — Mettre à jour `@nuxt/content` vers 3.x (après avoir migré les APIs — voir 3.3)
   - CONTENT-DOCS réalisé : `migration-nuxt4-content-v3-docs-audit.md`.
   - Ne pas lancer avant décision explicite sur le schéma `content.config.ts` et le validateur requis par la documentation officielle.
+  - DEP-2-A réalisé partiellement : `migration-nuxt4-dep-2-a.md`.
+  - Version installée : `@nuxt/content@3.13.0`.
+  - `content.config.ts` minimal créé pour `articles`.
+  - `npm test` OK.
+  - `npm run generate` bloqué par les imports v2 `#content/server` dans RSS/JSON Feed et `@nuxtjs/sitemap` v6.
+  - Ne pas cocher `DEP-2` avant migration des APIs v2 restantes.
 - [ ] **DEP-3** — Vérifier compatibilité `@nuxtjs/sitemap` 6.x avec Nuxt 4 ; mettre à jour vers 7.x si requis
 - [ ] **DEP-4** — Vérifier compatibilité `@nuxt/image` ; mettre à jour si nécessaire
 - [ ] **DEP-5** — Mettre à jour `@nuxt/eslint` vers 1.x si requis par Nuxt 4
@@ -294,8 +300,11 @@ Fichiers qui **restent à la racine** (pas de déplacement) :
 | `nuxt.config.ts`             | 265    | `const { serverQueryContent } = await import('#content/server')` dans `sitemap.routes`                                           |
 
 - [ ] **CONTENT-3** — Réécrire `rss.xml.ts` sans `serverQueryContent` — utiliser l'API server de Content v3
+  - DEP-2-A : blocage generate confirme sur `#content/server`.
 - [ ] **CONTENT-4** — Réécrire `feed.json.ts` sans `serverQueryContent`
+  - DEP-2-A : blocage generate confirme sur `#content/server`.
 - [ ] **CONTENT-5** — Réécrire `sitemap.routes` dans `nuxt.config.ts` sans `serverQueryContent` — ⚠️ vérifier si `@nuxtjs/sitemap` 7.x génère les routes automatiquement depuis Content v3
+  - DEP-2-A : blocage generate confirme aussi dans `@nuxtjs/sitemap` v6, qui importe encore `#content/server`.
 
 ##### 3.3.4 — `.where()` query syntax refondu
 
@@ -343,8 +352,16 @@ content: {
 
 Content v3 utilise un fichier `content.config.ts` séparé pour définir les collections et les sources.
 
-- [ ] **CONTENT-9** — Créer `content.config.ts` avec la définition de la collection `articles`
-- [ ] **CONTENT-10** — Migrer la config `highlight` et `markdown` vers le nouveau format Content v3
+- [x] **CONTENT-9** — Créer `content.config.ts` avec la définition de la collection `articles`
+  - Rapport : `migration-nuxt4-dep-2-a.md`
+  - Collection minimale `articles` créée en `type: 'page'`.
+  - Source : `{ include: 'articles/**/*.md', prefix: '/eco-conception' }`.
+  - Schéma custom reporté pour ne pas ajouter de dépendance directe hors `@nuxt/content`.
+- [x] **CONTENT-10** — Migrer la config `highlight` et `markdown` vers le nouveau format Content v3
+  - Rapport : `migration-nuxt4-dep-2-a.md`
+  - Config déplacée vers `content.build.markdown`.
+  - `highlight.preload` remplacé par `highlight.langs`.
+  - `content.experimental.sqliteConnector: 'native'` ajouté pour éviter `better-sqlite3`.
 - [ ] **CONTENT-11** — Vérifier que `article.body.toc.links` (utilisé dans `[slug].vue` pour le sommaire) est toujours disponible en v3
 
 ##### 3.3.8 — Composants supprimés

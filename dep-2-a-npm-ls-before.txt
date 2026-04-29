@@ -1,0 +1,14 @@
+beabot@2.0.0 /Users/benoitabot/Sites/beabot
+├─┬ @nuxt/content@2.13.4
+│ └─┬ @vueuse/nuxt@11.3.0
+│   └─┬ nuxt@3.21.2
+│     ├─┬ @nuxt/nitro-server@3.21.2
+│     │ └── nuxt@3.21.2 deduped
+│     └─┬ @nuxt/vite-builder@3.21.2
+│       └── nuxt@3.21.2 deduped
+└─┬ nuxt@4.4.2
+  ├─┬ @nuxt/nitro-server@4.4.2
+  │ └── nuxt@4.4.2 deduped
+  └─┬ @nuxt/vite-builder@4.4.2
+    └── nuxt@4.4.2 deduped
+

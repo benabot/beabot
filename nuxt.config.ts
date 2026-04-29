@@ -199,35 +199,40 @@ export default defineNuxtConfig({
 
   // Content module configuration
   content: {
-    highlight: {
-      // Use VS Code Dark+ theme for better code readability
-      theme: 'dark-plus',
-      // Preload common languages for blog articles
-      preload: [
-        'javascript',
-        'js',
-        'typescript',
-        'ts',
-        'css',
-        'scss',
-        'html',
-        'vue',
-        'bash',
-        'shell',
-        'json',
-        'yaml',
-        'markdown',
-        'md',
-      ],
+    experimental: {
+      sqliteConnector: 'native',
     },
-    markdown: {
-      toc: {
-        depth: 3,
-        searchDepth: 3,
+    build: {
+      markdown: {
+        toc: {
+          depth: 3,
+          searchDepth: 3,
+        },
+        highlight: {
+          // Use VS Code Dark+ theme for better code readability
+          theme: 'dark-plus',
+          // Load common languages for blog articles
+          langs: [
+            'javascript',
+            'js',
+            'typescript',
+            'ts',
+            'css',
+            'scss',
+            'html',
+            'vue',
+            'bash',
+            'shell',
+            'json',
+            'yaml',
+            'markdown',
+            'md',
+          ],
+        },
+        // Enable code block meta (for filename, line numbers, etc.)
+        remarkPlugins: {},
+        rehypePlugins: {},
       },
-      // Enable code block meta (for filename, line numbers, etc.)
-      remarkPlugins: [],
-      rehypePlugins: [],
     },
   },
 

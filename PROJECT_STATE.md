@@ -6,12 +6,13 @@
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
-1. **DEP-2 / Content v3 Lot 1** — Installer uniquement `@nuxt/content@3`, puis creer `content.config.ts` avec la collection `articles` documentee (`articles/**/*.md`, prefix `/eco-conception`) ; ne pas migrer sitemap/image/eslint.
-2. **Sitemap / Image / ESLint** — Traiter séparément après Nuxt et Content : `@nuxtjs/sitemap`, `@nuxt/image`, puis `@nuxt/eslint` probablement en dernier.
-3. **CONFIG-* restants selon besoin** — Les options Nuxt 4 ont ete auditees ; ne corriger que si un warning futur ou une mise a jour de module l'exige.
-4. **DIR-* app directory** — Ne pas deplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dedie si besoin.
-5. **Lint global repo-wide** — `npm run lint` reste bloqué par des warnings/formatages historiques hors périmètre ; à traiter séparément.
-6. **SCSS-6** — Ne pas supprimer SCSS tout de suite. Ouvrir une branche dédiée uniquement si un lot CSS moderne sûr est identifié.
+1. **DEP-2-B / Content server APIs** — Remplacer `serverQueryContent` dans RSS/JSON Feed et traiter le blocage `#content/server` de `@nuxtjs/sitemap` v6 avant de migrer les pages.
+2. **Content v3 pages** — Migrer ensuite les listes, la page article, `findSurround`, recherche, `_path` et garde-fous.
+3. **Sitemap / Image / ESLint** — Traiter séparément après le blocage Content/sitemap : `@nuxtjs/sitemap`, `@nuxt/image`, puis `@nuxt/eslint` probablement en dernier.
+4. **CONFIG-* restants selon besoin** — Les options Nuxt 4 ont ete auditees ; ne corriger que si un warning futur ou une mise a jour de module l'exige.
+5. **DIR-* app directory** — Ne pas deplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dedie si besoin.
+6. **Lint global repo-wide** — `npm run lint` reste bloqué par des warnings/formatages historiques hors périmètre ; à traiter séparément.
+7. **SCSS-6** — Ne pas supprimer SCSS tout de suite. Ouvrir une branche dédiée uniquement si un lot CSS moderne sûr est identifié.
 
 ---
 
@@ -40,30 +41,32 @@ SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stabl
 Branche : `chore/nuxt4-migration`
 
 Dernière décision :
-- CONTENT-DOCS / DEP-2-PREP réalisé le 29 avril 2026.
-- Résultat : succès.
+- DEP-2-A réalisé le 29 avril 2026.
+- Résultat : partiel, arret documente au premier blocage applicatif Content v2.
 - Version Nuxt : `4.4.2`.
-- Rapport : `migration-nuxt4-content-v3-docs-audit.md`.
-- Documentation officielle Nuxt Content v3 consultee :
-  - collections, `content.config.ts`, sources, schema, `queryCollection`, API serveur, recherche, `<ContentRenderer>`, static hosting.
-- Decisions preparees :
-  - collection cible `articles` en `type: 'page'` ;
-  - source cible `{ include: 'articles/**/*.md', prefix: '/eco-conception' }` ;
-  - `queryContent()` -> `queryCollection()` ;
-  - `findSurround()` -> `queryCollectionItemSurroundings()` ;
-  - `serverQueryContent()` -> `queryCollection(event, ...)` pour les routes Nitro ;
-  - `_path` -> `path`.
+- Version Content : `@nuxt/content@3.13.0`.
+- Rapport : `migration-nuxt4-dep-2-a.md`.
+- Changements appliques :
+  - une seule dependance directe modifiee : `@nuxt/content` ;
+  - `content.config.ts` minimal cree avec la collection `articles` ;
+  - source `articles/**/*.md` avec prefix `/eco-conception` ;
+  - configuration Content v3 de `nuxt.config.ts` adaptee ;
+  - `content.experimental.sqliteConnector: 'native'` utilise pour eviter `better-sqlite3`.
 - Validation :
-  - documentation only, aucune validation runtime necessaire.
+  - `npm test` : OK ;
+  - `npm run generate` : bloque apres parsing Content v3, sur `#content/server`.
+- Erreur bloquante :
+  - `Package import specifier "#content/server" is not defined` ;
+  - sources : `server/routes/rss.xml.ts`, `server/routes/feed.json.ts`, integration `@nuxtjs/sitemap` v6.
 - Prochaine étape :
-  - lancer `DEP-2 / Content v3 Lot 1` uniquement quand l'installation `@nuxt/content@3` est explicitement demandee, avec decision prealable sur le validateur de schema.
+  - ouvrir `DEP-2-B / Content server APIs` pour migrer RSS/JSON Feed et traiter le blocage sitemap avant les pages.
 
 Contraintes maintenues :
-- Content v2 non migré dans CONTENT-DOCS.
-- Aucun `content.config.ts` cree dans CONTENT-DOCS.
-- Aucun déplacement vers `app/` dans CONTENT-DOCS.
-- Modules sitemap/image/eslint non migrés dans CONTENT-DOCS.
-- Aucune migration API Content faite dans CONTENT-DOCS.
+- Pages et composants non migres dans DEP-2-A.
+- Endpoints serveur non migres dans DEP-2-A.
+- Aucun déplacement vers `app/` dans DEP-2-A.
+- Modules image/eslint non migres dans DEP-2-A.
+- Aucune correction globale lint ou chunks faite dans DEP-2-A.
 
 ### Dernière mise à jour
 
@@ -107,6 +110,12 @@ Contraintes maintenues :
   - API server cible pour RSS/JSON Feed : `queryCollection(event, 'articles')`
   - recherche cible documentee : `.where(...).orWhere(...)` ou `queryCollectionSearchSections()`
   - point a decider avant DEP-2 : validateur de schema (`zod`) non installe en dependance directe aujourd'hui
+- ✅ DEP-2-A realise :
+  - `@nuxt/content@3.13.0` installe
+  - `content.config.ts` cree avec collection minimale `articles`
+  - config Content v3 adaptee dans `nuxt.config.ts`
+  - `npm test` OK
+  - `npm run generate` bloque par `#content/server`, documente sans migration en vrac
 
 **Services freelance — relief visuel & maillage (28 avril 2026)** — Branche `feat/design-services`.
 
