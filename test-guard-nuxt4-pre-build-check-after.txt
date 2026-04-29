@@ -1,0 +1,73 @@
+37-    return JSON.parse(readFileSync(join(rootDir, path), 'utf-8'))
+38-  } catch {
+39-    return null
+40-  }
+41-}
+42-
+43-console.log('🔍 Running pre-build checks...\n')
+44-
+45-// ================================
+46-// 1. CONFIGURATION FILES
+47-// ================================
+48-console.log('📋 Checking configuration files...')
+49:check(fileExists('nuxt.config.ts'), '❌ nuxt.config.ts is missing')
+50-check(fileExists('package.json'), '❌ package.json is missing')
+51-check(
+52-  fileExists('tsconfig.json'),
+53-  '❌ tsconfig.json is missing',
+54-  '⚠️ tsconfig.json is missing (optional)',
+55-)
+56-check(
+57:  !fileExists('nuxt.config.js'),
+58:  '❌ Old nuxt.config.js still exists - should be removed',
+59-)
+60-check(
+61-  !fileExists('store'),
+62-  '❌ Vuex store/ directory still exists - should be removed',
+63-)
+64-
+65-// ================================
+66-// 2. PACKAGE.JSON VALIDATION
+67-// ================================
+68-console.log('📦 Validating package.json...')
+69-const pkg = readJSON('package.json')
+70-if (pkg) {
+71:  const nuxtVersion = pkg.dependencies?.nuxt || ''
+72-  const isSupportedNuxtVersion =
+73:    nuxtVersion.startsWith('^3') ||
+74:    nuxtVersion.startsWith('3') ||
+75:    nuxtVersion.startsWith('^4') ||
+76:    nuxtVersion.startsWith('4')
+77-
+78-  check(
+79-    isSupportedNuxtVersion,
+80:    `❌ Nuxt 3/4 not in dependencies: ${nuxtVersion || 'missing'}`,
+81-  )
+82:  check(pkg.dependencies?.vue?.startsWith('^3'), '❌ Vue 3 not in dependencies')
+83-  check(
+84:    !pkg.dependencies?.['@nuxtjs/axios'],
+85:    '❌ Obsolete @nuxtjs/axios still in dependencies',
+86-  )
+87-  check(
+88:    !pkg.dependencies?.['nuxt-precompress'],
+89:    '❌ Obsolete nuxt-precompress still in dependencies',
+90-  )
+91-  check(
+92-    !pkg.dependencies?.['@ax2/lozad-module'],
+93-    '❌ Obsolete @ax2/lozad-module still in dependencies',
+94-  )
+95-  check(
+96:    pkg.dependencies?.['@nuxt/content'],
+97:    '❌ @nuxt/content not in dependencies',
+98-  )
+99-}
+100-
+101-// ================================
+102-// 3. CRITICAL DIRECTORIES
+103-// ================================
+104-console.log('📁 Checking critical directories...')
+105-check(fileExists('pages'), '❌ pages/ directory is missing')
+106-check(fileExists('components'), '❌ components/ directory is missing')
+107-check(fileExists('composables'), '❌ composables/ directory is missing')
+108-check(fileExists('content'), '❌ content/ directory is missing')
+109-check(fileExists('public'), '❌ public/ directory is missing')

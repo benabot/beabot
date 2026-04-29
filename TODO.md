@@ -172,10 +172,15 @@ Ordre recommandé (mettre à jour et tester une par une) :
 | 10  | `sass-loader`     | ^16.0.3          | ^16+                 | Compatible                                                                 | 🟢     |
 | 11  | `vite`            | ^6.0.1           | ^6+                  | Nuxt 4 utilise Vite Environment API — géré par Nuxt                        | 🟢     |
 
+- [x] **TEST-GUARD Nuxt 4** — Adapter `scripts/pre-build-check.js` pour accepter Nuxt 3 et Nuxt 4 pendant la migration
+  - Rapport : `migration-nuxt4-test-guard.md`
+  - Raison : `DEP-1` était bloqué par le message `Nuxt 3 not in dependencies`.
+  - Le garde-fou refuse toujours l'absence de `nuxt` et les majors autres que 3 ou 4.
+  - `npm test`, `npm run generate` et check SEO validés.
 - [ ] **DEP-1** — Mettre à jour `nuxt` vers la dernière version 4.x
   - DEP-1 tenté le 29 avril 2026, bloqué par `scripts/pre-build-check.js` qui vérifie encore `pkg.dependencies?.nuxt?.startsWith('^3')`.
   - Rapport : `migration-nuxt4-dep-1.md`
-  - Prochaine action : adapter le garde-fou de test pour Nuxt 4, puis retenter `DEP-1`.
+  - Prochaine action : retenter `DEP-1`, le garde-fou de test Nuxt 4 étant maintenant adapté.
   - La tentative `nuxt@4.4.2` n'est pas conservée dans `package.json` / `package-lock.json` afin de garder la branche dans un état documentaire cohérent.
 - [ ] **DEP-2** — Mettre à jour `@nuxt/content` vers 3.x (après avoir migré les APIs — voir 3.3)
 - [ ] **DEP-3** — Vérifier compatibilité `@nuxtjs/sitemap` 6.x avec Nuxt 4 ; mettre à jour vers 7.x si requis

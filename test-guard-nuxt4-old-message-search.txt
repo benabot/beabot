@@ -1,0 +1,4 @@
+./migration-nuxt4-dep-1.md:77:- `❌ Nuxt 3 not in dependencies`
+./PROJECT_STATE.md:52:  - `npm test` après tentative Nuxt 4 : KO, `❌ Nuxt 3 not in dependencies` ;
+./dep-1-tests-after-install.txt:27:  ❌ Nuxt 3 not in dependencies
+./test-guard-nuxt4-pre-build-check-before.txt:37:73:    '❌ Nuxt 3 not in dependencies',
