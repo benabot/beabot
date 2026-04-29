@@ -1,17 +1,18 @@
 # 📊 ÉTAT DU PROJET - BeAbot
 
-> **Récapitulatif de l'état du projet au 28 avril 2026**
+> **Récapitulatif de l'état du projet au 29 avril 2026**
 
 ---
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
-1. **Review visuelle `/services/` sur `dev`** — Vérifier le rendu desktop/mobile après merge de `feat/design-services`.
-2. **Lint global repo-wide** — `npm run lint` reste bloqué par des warnings/formatages historiques hors périmètre ; à traiter séparément avant les gros chantiers.
-3. **Tests** — Lancer la suite de tests existante sur `dev` ; combler les manques critiques avant migration.
-4. **Performance PSI mobile 99 → 100** — Éliminer les 3 CSS render-blocking identifiés dans l'audit PageSpeed Insights du 27 avril 2026 (`/_nuxt/entry.css` 444ms, `/_nuxt/default.css` 389ms, `/_nuxt/index.css` 441ms) — économie estimée 270ms LCP/FCP. Options détaillées dans `TODO.md` (Backlog Nuxt 4 / Étape 1).
-5. **Refactor SCSS → CSS moderne** — Warnings Sass `if-function` corrigés le 27 avril 2026 dans `assets/css/vars/_typo.scss` (2 `if()` dépréciés → `@if`/`@else`) et `darken()` dans `BoiteArticle.vue` (→ `color.adjust()`). Refactor complet planifié (Étape 2b dans `TODO.md`).
-6. **Migration Nuxt 4** — Branche `chore/nuxt4-migration` après validation des étapes 2–5 ; roadmap complète dans `TODO.md`.
+1. **DEP-6 — Supprimer l'override interne Nuxt 3** — `"#internal/nuxt/paths": "./nuxt.paths.mjs"` est présent dans `package.json`. À traiter dans un commit dédié avant ou pendant `DEP-1`, avec `npm test`, `npm run generate` et check SEO.
+2. **DEP-1 — Mettre à jour Nuxt seul vers 4.x** — Version cible vérifiée sans installation : `nuxt@4.4.2`. Ne pas mélanger avec Content, sitemap, image, ESLint ou déplacement vers `app/`.
+3. **CONFIG-* / DIR-* selon erreurs Nuxt 4** — Corriger uniquement ce que `DEP-1` révèle : config Nuxt 4 minimale, puis restructuration `app/` dans un lot séparé si nécessaire.
+4. **Content v3** — Consulter la documentation officielle, puis suivre l'ordre documenté : `content.config.ts`, listes articles, page article/navigation, recherche, feeds/sitemap, nettoyage `_path`, tests.
+5. **Sitemap / Image / ESLint** — Traiter séparément après Nuxt et Content : `@nuxtjs/sitemap`, `@nuxt/image`, puis `@nuxt/eslint` probablement en dernier.
+6. **Lint global repo-wide** — `npm run lint` reste bloqué par des warnings/formatages historiques hors périmètre ; à traiter séparément.
+7. **SCSS-6** — Ne pas supprimer SCSS tout de suite. Ouvrir une branche dédiée uniquement si un lot CSS moderne sûr est identifié.
 
 ---
 
@@ -21,7 +22,54 @@
 
 SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stable**Dev Preview**<https://dev-beabot.netlify.app>Nuxt 3.14dev✅ Tests
 
+### Branche active de migration
+
+**`chore/nuxt4-migration`** — branche documentaire et préparatoire Nuxt 4.
+
+- Base actuelle validée : Nuxt `3.20.2`, Nitro `2.12.9`, Vue `3.5.26`, Vite direct `6.4.1`
+- `future.compatibilityVersion: 4` actif
+- Génération statique validée : 100 routes prerendered
+- Derniers commits documentaires :
+  - `75d9207` — `docs: rafraichir baseline compat Nuxt 4`
+  - `e1e6b6a` — `docs: cartographier migration Content v3`
+  - `9e8423a` — `docs: auditer dependances avant Nuxt 4`
+
 ### Dernière mise à jour
+
+**Migration Nuxt 4 — audits préparatoires & ordre d'exécution (28–29 avril 2026)** — Branche `chore/nuxt4-migration`.
+
+- ✅ Étape 0 tests renforcée : tests unitaires SEO URL, contrat `AppLink`, smoke tests pages générées, tests RSS/JSON Feed, garde-fou Content v2 via `scripts/check-content-queries.mjs`
+- ✅ Étape 2 fichiers inutiles traitée : 26 fichiers suivis Git supprimés, dont composants/images/scripts orphelins ; `getSiteMeta.js` supprimé ; aucune dépendance modifiée
+- ✅ Étape 2b SCSS avancée :
+  - couleurs SCSS exposées en custom properties CSS avec aliases de transition
+  - tokens typographiques simples exposés en custom properties CSS
+  - imports SCSS explicites ajoutés dans 27 fichiers
+  - `additionalData` vidé
+  - dépendances implicites SCSS restantes : 0
+  - CSS généré stabilisé à 171 279 octets, soit -35 953 octets après suppression de l'injection globale
+- ✅ Refresh compatibilité Nuxt 4 après SCSS :
+  - `npm test` OK : 49 pre-build checks, Content v2 query checks OK, 18 tests Node OK
+  - `npm run generate` OK : 100 routes prerendered
+  - aucun warning Nuxt 4 bloquant identifié
+  - codemod non lancé avec installation : `npx --no-install codemod ...` documenté comme indisponible localement
+- ✅ CONTENT-PREP réalisé :
+  - 12 fichiers impactés cartographiés
+  - 7 appels applicatifs `queryContent()`
+  - 6 occurrences applicatives `serverQueryContent`
+  - 1 usage `findSurround()`
+  - 32 occurrences applicatives `_path`
+  - fichiers les plus risqués : `pages/eco-conception/[slug].vue`, `server/routes/rss.xml.ts`, `server/routes/feed.json.ts`, `nuxt.config.ts`, `components/AppSearchInput.vue`
+  - rapports : `migration-nuxt4-content-prep.md`, `content-prep-query-map.md`, `content-prep-v2-v3-mapping.md`, `content-prep-content-config-plan.md`, `content-prep-migration-order.md`, `content-prep-tests-plan.md`
+- ✅ DEP-AUDIT réalisé :
+  - `package.json` comparé au lock et à `npm ls`
+  - versions cibles vérifiées via `npm view` sans installation : `nuxt@4.4.2`, `@nuxt/content@3.13.0`, `@nuxt/image@2.0.0`, `@nuxtjs/sitemap@8.0.14`, `@nuxt/eslint@1.15.2`
+  - override interne `#internal/nuxt/paths` confirmé présent
+  - ordre recommandé : `DEP-6` → `DEP-1` → `CONFIG-*`/`DIR-*` si nécessaire → `DEP-2` Content → `DEP-3` sitemap → `DEP-4` image → `DEP-5` eslint
+  - rapports : `migration-nuxt4-dep-audit.md`, `dep-audit-update-order.md`, `dep-audit-target-versions.txt`, `dep-audit-peer-risks.txt`
+- ✅ Aucune dépendance modifiée dans les audits `CONTENT-PREP` et `DEP-AUDIT`
+- ✅ Aucune migration API Content faite
+- ✅ Aucun `content.config.ts` créé
+- ✅ Aucun fichier déplacé vers `app/`
 
 **Services freelance — relief visuel & maillage (28 avril 2026)** — Branche `feat/design-services`.
 
