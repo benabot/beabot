@@ -1,0 +1,8 @@
+5-  "type": "module",
+6-  "imports": {
+7:    "#internal/nuxt/paths": "./nuxt.paths.mjs"
+8-  },
+9-  "scripts": {
+10-    "dev": "nuxt dev",
+11-    "build": "nuxt build",
+12-    "generate": "nuxt generate",

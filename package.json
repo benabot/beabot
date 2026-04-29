@@ -3,9 +3,6 @@
   "version": "2.0.0",
   "private": true,
   "type": "module",
-  "imports": {
-    "#internal/nuxt/paths": "./nuxt.paths.mjs"
-  },
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",

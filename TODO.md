@@ -177,7 +177,11 @@ Ordre recommandé (mettre à jour et tester une par une) :
 - [ ] **DEP-3** — Vérifier compatibilité `@nuxtjs/sitemap` 6.x avec Nuxt 4 ; mettre à jour vers 7.x si requis
 - [ ] **DEP-4** — Vérifier compatibilité `@nuxt/image` ; mettre à jour si nécessaire
 - [ ] **DEP-5** — Mettre à jour `@nuxt/eslint` vers 1.x si requis par Nuxt 4
-- [ ] **DEP-6** — Supprimer `"#internal/nuxt/paths": "./nuxt.paths.mjs"` de `package.json` `imports` — override interne Nuxt 3 probablement incompatible avec Nuxt 4
+- [x] **DEP-6** — Supprimer `"#internal/nuxt/paths": "./nuxt.paths.mjs"` de `package.json` `imports` — override interne Nuxt 3 probablement incompatible avec Nuxt 4
+  - Rapport : `migration-nuxt4-dep-6.md`
+  - Suppression réalisée avant `DEP-1`.
+  - `npm test`, `npm run generate` et check SEO validés.
+  - Aucune dépendance modifiée ; `package-lock.json` inchangé.
 
 ---
 
