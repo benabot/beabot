@@ -6,8 +6,8 @@
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
-1. **DEP-1 — Retenter Nuxt seul vers 4.x** — Le garde-fou `scripts/pre-build-check.js` accepte maintenant Nuxt 3 et Nuxt 4. Retenter `npm install nuxt@4.4.2 --save-exact`, sans migrer Content, sitemap, image ou ESLint.
-2. **CONFIG-* / DIR-* selon erreurs Nuxt 4** — Corriger uniquement ce que `DEP-1` révèle : config Nuxt 4 minimale, puis restructuration `app/` dans un lot séparé si nécessaire.
+1. **CONFIG-AUDIT Nuxt 4** — Examiner les warnings et options Nuxt 4 restantes (`features.inlineStyles`, prefetch, `router.options`, `routeRules.noScripts`, sitemap hooks), sans migrer Content.
+2. **CONFIG-* / DIR-* selon erreurs Nuxt 4** — Corriger uniquement ce que l'audit révèle : config Nuxt 4 minimale, puis restructuration `app/` dans un lot séparé si nécessaire.
 3. **Content v3** — Consulter la documentation officielle, puis suivre l'ordre documenté : `content.config.ts`, listes articles, page article/navigation, recherche, feeds/sitemap, nettoyage `_path`, tests.
 4. **Sitemap / Image / ESLint** — Traiter séparément après Nuxt et Content : `@nuxtjs/sitemap`, `@nuxt/image`, puis `@nuxt/eslint` probablement en dernier.
 5. **Lint global repo-wide** — `npm run lint` reste bloqué par des warnings/formatages historiques hors périmètre ; à traiter séparément.
@@ -25,7 +25,7 @@ SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stabl
 
 **`chore/nuxt4-migration`** — branche documentaire et préparatoire Nuxt 4.
 
-- Base actuelle validée : Nuxt `3.20.2`, Nitro `2.12.9`, Vue `3.5.26`, Vite direct `6.4.1`
+- Base actuelle validée : Nuxt `4.4.2`, Nitro `2.13.3`, Vue `3.5.33`, Vite direct `6.4.1` (`7.3.2` côté builder Nuxt)
 - `future.compatibilityVersion: 4` actif
 - Génération statique validée : 100 routes prerendered
 - Derniers commits documentaires :
@@ -39,21 +39,29 @@ SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stabl
 Branche : `chore/nuxt4-migration`
 
 Dernière décision :
-- TEST-GUARD Nuxt 4 réalisé le 29 avril 2026.
-- `scripts/pre-build-check.js` accepte désormais Nuxt 3 et Nuxt 4 pendant la migration.
-- `package.json` et `package-lock.json` restent inchangés.
+- DEP-1 retry réalisé le 29 avril 2026.
+- Résultat : succès.
+- Version Nuxt :
+  - avant manifest : `^3.14.1592` dans `package.json` et `package-lock.json` root ;
+  - avant `npm ls` : `nuxt@4.4.2 invalid`, car `node_modules` contenait déjà Nuxt 4 avant la mise à jour persistée ;
+  - après manifest : `4.4.2` dans `package.json` et `package-lock.json` root ;
+  - version réelle `npm ls` : `nuxt@4.4.2`.
 - Validation :
   - `npm test` : OK ;
   - `npm run generate` : OK, 100 routes prerendered ;
-  - check SEO : OK.
+  - check SEO : OK ;
+  - routes prerendered : 100.
+- Warnings non bloquants :
+  - sourcemap `nuxt:module-preload-polyfill` ;
+  - circular chunk `vendor-nuxt -> vendor-libs -> vendor-nuxt`.
 - Prochaine étape :
-  - retenter `DEP-1` avec `npm install nuxt@4.4.2 --save-exact`.
+  - CONFIG-AUDIT Nuxt 4, sans migrer Content.
 
 Contraintes maintenues :
-- Content v2 non migré.
-- Aucun déplacement vers `app/`.
-- Modules sitemap/image/eslint non migrés.
-- `package.json` et `package-lock.json` inchangés dans TEST-GUARD.
+- Content v2 non migré dans DEP-1.
+- Aucun déplacement vers `app/` dans DEP-1.
+- Modules sitemap/image/eslint non migrés dans DEP-1.
+- Aucune migration API Content faite dans DEP-1.
 
 ### Dernière mise à jour
 

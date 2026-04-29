@@ -1,0 +1,33 @@
+DEP-1 RETRY — assets generated after Nuxt 4
+Date : 29 avril 2026
+
+Build:
+- Nuxt: 4.4.2
+- Nitro: 2.13.3
+- Vite: 7.3.2 in Nuxt builder output
+- Vue: 3.5.33
+- Routes prerendered: 100
+
+CSS:
+- Files: 18
+- Total bytes: 171292
+- Historical SCSS-5 total: 171279 bytes
+- Qualitative comparison: +13 bytes versus SCSS-5 reference, negligible and not optimized in DEP-1.
+
+JS:
+- Files: 23
+- Total bytes: 513677
+
+Homepage CSS links:
+- <link rel="stylesheet" href="/_nuxt/entry.B_fgAJq0.css" crossorigin>
+- <link rel="stylesheet" href="/_nuxt/default.BRi-74ve.css" crossorigin>
+- <link rel="stylesheet" href="/_nuxt/vendor-libs.Df1OGHDb.css" crossorigin>
+- <link rel="stylesheet" href="/_nuxt/index.nsxJHImi.css" crossorigin>
+
+Warnings observed:
+- [plugin nuxt:module-preload-polyfill] Sourcemap is likely to be incorrect: a plugin (nuxt:module-preload-polyfill) was used to transform files, but didn't generate a sourcemap for the transformation.
+- Circular chunk: vendor-nuxt -> vendor-libs -> vendor-nuxt. Please adjust the manual chunk logic for these chunks.
+
+Decision:
+- Warnings documented as non-blocking.
+- No PSI or chunk optimization attempted in DEP-1.

@@ -160,7 +160,7 @@ Ordre recommandé (mettre à jour et tester une par une) :
 
 | #   | Dépendance        | Version actuelle | Version cible Nuxt 4 | Breaking changes                                                           | Impact |
 | --- | ----------------- | ---------------- | -------------------- | -------------------------------------------------------------------------- | ------ |
-| 1   | `nuxt`            | ^3.14.1592       | ^4.x                 | Voir sections 3.2–3.5                                                      | 🔴     |
+| 1   | `nuxt`            | 4.4.2            | 4.4.2                | Voir sections 3.2–3.5                                                      | 🔴     |
 | 2   | `@nuxt/content`   | ^2.13.2          | ^3.x                 | API entièrement refondue (voir 3.3)                                        | 🔴     |
 | 3   | `vue`             | ^3.5.12          | ^3.5+                | Aucun — compatible                                                         | 🟢     |
 | 4   | `vue-router`      | ^4.4.5           | ^4.5+                | Aucun — compatible                                                         | 🟢     |
@@ -177,11 +177,13 @@ Ordre recommandé (mettre à jour et tester une par une) :
   - Raison : `DEP-1` était bloqué par le message `Nuxt 3 not in dependencies`.
   - Le garde-fou refuse toujours l'absence de `nuxt` et les majors autres que 3 ou 4.
   - `npm test`, `npm run generate` et check SEO validés.
-- [ ] **DEP-1** — Mettre à jour `nuxt` vers la dernière version 4.x
-  - DEP-1 tenté le 29 avril 2026, bloqué par `scripts/pre-build-check.js` qui vérifie encore `pkg.dependencies?.nuxt?.startsWith('^3')`.
-  - Rapport : `migration-nuxt4-dep-1.md`
-  - Prochaine action : retenter `DEP-1`, le garde-fou de test Nuxt 4 étant maintenant adapté.
-  - La tentative `nuxt@4.4.2` n'est pas conservée dans `package.json` / `package-lock.json` afin de garder la branche dans un état documentaire cohérent.
+- [x] **DEP-1** — Mettre à jour `nuxt` vers la dernière version 4.x
+  - Rapport : `migration-nuxt4-dep-1-retry.md`
+  - Version installée : `nuxt@4.4.2`
+  - `npm test`, `npm run generate` et check SEO validés.
+  - Routes prerendered : 100.
+  - Warnings non bloquants documentés : sourcemap `nuxt:module-preload-polyfill`, circular chunk `vendor-nuxt -> vendor-libs -> vendor-nuxt`.
+  - `@nuxt/content`, `@nuxt/image`, `@nuxtjs/sitemap` et `@nuxt/eslint` non migrés dans cette étape.
 - [ ] **DEP-2** — Mettre à jour `@nuxt/content` vers 3.x (après avoir migré les APIs — voir 3.3)
 - [ ] **DEP-3** — Vérifier compatibilité `@nuxtjs/sitemap` 6.x avec Nuxt 4 ; mettre à jour vers 7.x si requis
 - [ ] **DEP-4** — Vérifier compatibilité `@nuxt/image` ; mettre à jour si nécessaire
