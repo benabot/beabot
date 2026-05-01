@@ -69,13 +69,13 @@
         </summary>
         <ul class="menu-mobile">
           <li>
-            <AppLink to="/" class="title title--menu h2">Accueil</AppLink>
+            <AppLink to="/" class="nav-mobile__link">Accueil</AppLink>
           </li>
           <li
             v-for="item in navigationItems"
             :key="`mobile-${item.to}`"
           >
-            <AppLink :to="item.to" class="title title--menu h2">
+            <AppLink :to="item.to" class="nav-mobile__link">
               {{ item.label }}
             </AppLink>
           </li>
@@ -444,6 +444,15 @@ a.nuxt-link-active {
         height: 70vh;
         background: $vert;
         clip-path: ellipse(87% 91% at 0% 8%);
+        .nav-mobile__link {
+          display: block;
+          width: max-content;
+          padding: 0.6rem 0;
+          font-size: clamp(2rem, 8vw, 3.5rem);
+          line-height: 1.08;
+          color: $gris1;
+          text-decoration: none;
+        }
         ul {
           list-style-type: none;
         }
@@ -454,7 +463,7 @@ a.nuxt-link-active {
           background: linear-gradient(180deg, #1b1f20 0%, #111414 100%);
         }
 
-        .menu-mobile .title {
+        .menu-mobile .nav-mobile__link {
           color: $fondClair;
         }
       }
