@@ -161,11 +161,11 @@ Ordre recommandé (mettre à jour et tester une par une) :
 | #   | Dépendance        | Version actuelle | Version cible Nuxt 4 | Breaking changes                                                           | Impact |
 | --- | ----------------- | ---------------- | -------------------- | -------------------------------------------------------------------------- | ------ |
 | 1   | `nuxt`            | 4.4.2            | 4.4.2                | Voir sections 3.2–3.5                                                      | 🔴     |
-| 2   | `@nuxt/content`   | ^2.13.2          | ^3.x                 | API entièrement refondue (voir 3.3)                                        | 🔴     |
+| 2   | `@nuxt/content`   | 3.13.0           | 3.13.0               | API entièrement refondue (voir 3.3)                                        | 🔴     |
 | 3   | `vue`             | ^3.5.12          | ^3.5+                | Aucun — compatible                                                         | 🟢     |
 | 4   | `vue-router`      | ^4.4.5           | ^4.5+                | Aucun — compatible                                                         | 🟢     |
 | 5   | `@nuxt/image`     | ^1.8.1           | ^1.9+                | ⚠️ Vérifier compatibilité Nuxt 4 — probablement compatible sans changement | 🟡     |
-| 6   | `@nuxtjs/sitemap` | ^6.1.1           | ^7.x ou ^6.4+        | ⚠️ Vérifier si v6 supporte Nuxt 4 ou si v7 est requis                      | 🟠     |
+| 6   | `@nuxtjs/sitemap` | 8.0.15           | 8.0.15               | v6 incompatible avec Content v3 via import interne `#content/server`       | 🟠     |
 | 7   | `@nuxt/eslint`    | ^0.5.7           | ^1.x                 | Config flat ESLint, probablement cassant                                   | 🟠     |
 | 8   | `eslint`          | ^9.14.0          | ^9.x                 | Compatible                                                                 | 🟢     |
 | 9   | `sass`            | ^1.80.7          | ^1.80+               | Compatible                                                                 | 🟢     |
@@ -196,9 +196,18 @@ Ordre recommandé (mettre à jour et tester une par une) :
   - DEP-2-B réalisé partiellement : `migration-nuxt4-dep-2-b.md`.
   - RSS et JSON Feed migrés vers `queryCollection(event, 'articles')`.
   - `npm test` OK.
-  - `npm run generate` encore bloqué par l'intégration interne Content de `@nuxtjs/sitemap` v6.
-- [ ] **DEP-3** — Vérifier compatibilité `@nuxtjs/sitemap` 6.x avec Nuxt 4 ; mettre à jour vers 7.x si requis
+  - Blocage `@nuxtjs/sitemap` v6 traité ensuite dans `DEP-3`.
+  - Reste à migrer : pages Vue `queryContent`, `findSurround`, recherche, `_path`, schema Content complet et validation RSS/JSON Feed.
+- [x] **DEP-3** — Vérifier compatibilité `@nuxtjs/sitemap` 6.x avec Nuxt 4 ; mettre à jour vers 7.x si requis
   - DEP-2-B : nécessaire avant validation complète, car `@nuxtjs/sitemap` v6 importe encore `#content/server`.
+  - Rapport : `migration-nuxt4-dep-3-sitemap.md`.
+  - Version installée : `@nuxtjs/sitemap@8.0.15`.
+  - `npm test` OK.
+  - `npm run generate` termine avec `.output/public` généré et `/sitemap.xml` présent.
+  - Check SEO OK.
+  - Routes articles sitemap vérifiées : 14 URLs `/eco-conception/` dans `.output/public/sitemap.xml`.
+  - Warnings/erreurs non corrigés dans ce lot : warning `zeroRuntime`, sourcemap `nuxt:module-preload-polyfill`, circular chunk, pages Vue encore en `queryContent`, RSS/JSON Feed bloqués par le champ Content `date` non déclaré.
+  - Prochaine étape : `DEP-2-C / Content pages APIs` et schéma Content complet.
 - [ ] **DEP-4** — Vérifier compatibilité `@nuxt/image` ; mettre à jour si nécessaire
 - [ ] **DEP-5** — Mettre à jour `@nuxt/eslint` vers 1.x si requis par Nuxt 4
 - [x] **DEP-6** — Supprimer `"#internal/nuxt/paths": "./nuxt.paths.mjs"` de `package.json` `imports` — override interne Nuxt 3 probablement incompatible avec Nuxt 4
@@ -310,9 +319,10 @@ Fichiers qui **restent à la racine** (pas de déplacement) :
 - [x] **CONTENT-4** — Réécrire `feed.json.ts` sans `serverQueryContent`
   - DEP-2-A : blocage generate confirme sur `#content/server`.
   - DEP-2-B : migré vers `queryCollection(event, 'articles')`, `_path` remplacé par `path`, `npm test` OK.
-- [ ] **CONTENT-5** — Réécrire `sitemap.routes` dans `nuxt.config.ts` sans `serverQueryContent` — ⚠️ vérifier si `@nuxtjs/sitemap` 7.x génère les routes automatiquement depuis Content v3
+- [x] **CONTENT-5** — Réécrire `sitemap.routes` dans `nuxt.config.ts` sans `serverQueryContent` — ⚠️ vérifier si `@nuxtjs/sitemap` 7.x génère les routes automatiquement depuis Content v3
   - DEP-2-A : blocage generate confirme aussi dans `@nuxtjs/sitemap` v6, qui importe encore `#content/server`.
   - DEP-2-B : import `#content/server` supprimé du projet et routes articles remplacées par `urls: getArticleSitemapRoutes`; blocage restant dans le handler interne `@nuxtjs/sitemap` v6, à traiter en `DEP-3`.
+  - DEP-3 : `@nuxtjs/sitemap@8.0.15` installé, handler Content v3 disponible, `/sitemap.xml` généré avec 14 URLs articles.
 
 ##### 3.3.4 — `.where()` query syntax refondu
 

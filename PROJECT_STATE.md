@@ -6,8 +6,8 @@
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
-1. **DEP-3 / Sitemap Content v3** — Migrer ou adapter `@nuxtjs/sitemap`, car la v6 importe encore `#content/server` via sa route interne `nuxt-content-urls`.
-2. **DEP-2-C / Content pages APIs** — Une fois sitemap debloque, migrer les listes, la page article, `findSurround`, recherche, `_path` et garde-fous.
+1. **DEP-2-C / Content pages APIs** — Sitemap debloque ; migrer les listes, la page article, `findSurround`, recherche, `_path` et garde-fous. Inclure le schema Content complet necessaire aux champs frontmatter (`date`, `updatedAt`, tags, SEO) avant de revalider RSS/JSON Feed.
+2. **DEP-2-D / RSS et JSON Feed Content v3** — Revalider `/rss.xml` et `/feed.json` apres schema/requetes Content complets, car DEP-3 a revele `no such column: "date"` pendant le prerender.
 3. **Image / ESLint** — Traiter séparément après Content/sitemap : `@nuxt/image`, puis `@nuxt/eslint` probablement en dernier.
 4. **CONFIG-* restants selon besoin** — Les options Nuxt 4 ont ete auditees ; ne corriger que si un warning futur ou une mise a jour de module l'exige.
 5. **DIR-* app directory** — Ne pas deplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dedie si besoin.
@@ -41,33 +41,36 @@ SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stabl
 Branche : `chore/nuxt4-migration`
 
 Dernière décision :
-- DEP-2-B réalisé le 2 mai 2026.
-- Résultat : partiel, arret documente au blocage `@nuxtjs/sitemap` v6.
+- DEP-3 réalisé le 2 mai 2026.
+- Résultat : sitemap debloque, validation globale Content encore partielle.
 - Version Nuxt : `4.4.2`.
 - Version Content : `@nuxt/content@3.13.0`.
-- Rapport : `migration-nuxt4-dep-2-b.md`.
+- Version sitemap : `@nuxtjs/sitemap@8.0.15`.
+- Rapport : `migration-nuxt4-dep-3-sitemap.md`.
 - Changements appliques :
-  - `server/routes/rss.xml.ts` migre vers `queryCollection(event, 'articles')` ;
-  - `server/routes/feed.json.ts` migre vers `queryCollection(event, 'articles')` ;
-  - `_path` remplace par `path` dans RSS/JSON Feed ;
-  - routes articles sitemap generees depuis `content/articles/*.md` via `urls: getArticleSitemapRoutes` ;
-  - garde-fou Content adapte a l'etat mixte : pages v2, serveur v3.
+  - `@nuxtjs/sitemap` mis a jour de `^6.1.1` vers `8.0.15` ;
+  - integration interne Content v6 qui importait `#content/server` remplacee par l'integration Content v3 du module ;
+  - configuration `nuxt.config.ts` conservee, avec `urls: getArticleSitemapRoutes` et hooks sitemap existants ;
+  - `/sitemap.xml` genere avec les URLs articles `/eco-conception/`.
 - Validation :
   - `npm test` : OK ;
-  - `npm run generate` : bloque apres build client/server, sur l'integration interne Content de `@nuxtjs/sitemap` v6 ;
-  - check SEO : non lance, car `generate` ne termine pas.
-- Erreur bloquante :
-  - `Package import specifier "#content/server" is not defined` ;
-  - source restante : `node_modules/@nuxtjs/sitemap/dist/runtime/nitro/routes/__sitemap__/nuxt-content-urls.js`.
+  - `npm run generate` : termine avec code 0 et `.output/public` genere, mais affiche encore des erreurs Content hors perimetre DEP-3 ;
+  - check SEO : OK ;
+  - routes prerendered : 55 ;
+  - sitemap articles : 14 URLs `/eco-conception/`.
+- Erreurs restantes documentees :
+  - `queryContent is not defined` sur les pages Vue non migrees ;
+  - `no such column: "date"` sur les requetes RSS/JSON Feed Content v3 avec collection encore sans schema frontmatter complet ;
+  - `.output/public/rss.xml` et `.output/public/feed.json` non generes dans ce lot.
 - Prochaine étape :
-  - ouvrir `DEP-3 / Sitemap Content v3` avant de migrer les pages.
+  - ouvrir `DEP-2-C / Content pages APIs` et enrichir le schema Content avant de revalider RSS/JSON Feed.
 
 Contraintes maintenues :
-- Pages et composants non migres dans DEP-2-B.
-- Aucun déplacement vers `app/` dans DEP-2-B.
-- Modules image/eslint non migres dans DEP-2-B.
-- Aucune correction globale lint ou chunks faite dans DEP-2-B.
-- Aucune dependance ajoutee ou mise a jour dans DEP-2-B.
+- Pages et composants non migres dans DEP-3.
+- Aucun déplacement vers `app/` dans DEP-3.
+- Modules image/eslint non migres dans DEP-3.
+- Aucune correction globale lint ou chunks faite dans DEP-3.
+- `npm audit fix` non lance.
 
 ### Dernière mise à jour
 
@@ -123,6 +126,13 @@ Contraintes maintenues :
   - `npm test` OK
   - `npm run generate` bloque uniquement par l'integration interne `@nuxtjs/sitemap` v6 qui importe encore `#content/server`
   - prochaine etape : `DEP-3 / Sitemap Content v3`
+- ✅ DEP-3 realise :
+  - `@nuxtjs/sitemap@8.0.15` installe car v6 n'offrait pas d'option locale pour desactiver uniquement la route Content obsolete
+  - `/sitemap.xml` genere et contient 14 URLs articles `/eco-conception/`
+  - `npm test` OK
+  - `npm run generate` termine avec `.output/public`, mais revele les prochaines erreurs Content : pages `queryContent` et champ SQL `date` absent pour RSS/JSON Feed
+  - check SEO OK
+  - prochaine etape : `DEP-2-C / Content pages APIs`
 
 **Services freelance — relief visuel & maillage (28 avril 2026)** — Branche `feat/design-services`.
 

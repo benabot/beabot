@@ -1,0 +1,30 @@
+node_modules/@nuxtjs/sitemap/package.json:74:    "@nuxt/content": "^3.13.0",
+node_modules/@nuxtjs/sitemap/dist/content.mjs:60:        `[sitemap] Zod 3 detected but @nuxt/content v3 expects Zod 4.`,
+node_modules/@nuxtjs/sitemap/dist/module.mjs:492:    "@nuxt/content": {
+node_modules/@nuxtjs/sitemap/dist/module.mjs:789:        logger.warn("You have loaded `@nuxt/content` before `@nuxtjs/sitemap`, this may cause issues with the integration. Please ensure `@nuxtjs/sitemap` is loaded first.");
+node_modules/@nuxtjs/sitemap/dist/module.mjs:792:      const needsCustomAlias = await hasNuxtModuleCompatibility("@nuxt/content", "<3.6.0");
+node_modules/@nuxtjs/sitemap/dist/module.mjs:794:        nuxt.options.alias["#sitemap/content-v3-nitro-path"] = resolve(dirname(resolveModule("@nuxt/content")), "runtime/nitro");
+node_modules/@nuxtjs/sitemap/dist/module.mjs:795:        nuxt.options.alias["@nuxt/content/nitro"] = resolve("./runtime/server/content-compat");
+node_modules/@nuxtjs/sitemap/dist/module.mjs:856:        route: "/__sitemap__/nuxt-content-urls.json",
+node_modules/@nuxtjs/sitemap/dist/module.mjs:857:        handler: resolve("./runtime/server/routes/__sitemap__/nuxt-content-urls-v3")
+node_modules/@nuxtjs/sitemap/dist/module.mjs:860:        logger.warn("You have set `strictNuxtContentPaths: true` but are using @nuxt/content v3. This is not required, please remove it.");
+node_modules/@nuxtjs/sitemap/dist/module.mjs:864:          name: "@nuxt/content@v3:urls",
+node_modules/@nuxtjs/sitemap/dist/module.mjs:868:        fetch: "/__sitemap__/nuxt-content-urls.json"
+node_modules/@nuxtjs/sitemap/dist/module.mjs:871:      addServerPlugin(resolve("./runtime/server/plugins/nuxt-content-v2"));
+node_modules/@nuxtjs/sitemap/dist/module.mjs:873:        route: "/__sitemap__/nuxt-content-urls.json",
+node_modules/@nuxtjs/sitemap/dist/module.mjs:874:        handler: resolve("./runtime/server/routes/__sitemap__/nuxt-content-urls-v2")
+node_modules/@nuxtjs/sitemap/dist/module.mjs:878:        tips.push("Enabled because you're using `@nuxt/content` with `documentDriven: true`.");
+node_modules/@nuxtjs/sitemap/dist/module.mjs:885:          name: "@nuxt/content@v2:urls",
+node_modules/@nuxtjs/sitemap/dist/module.mjs:889:        fetch: "/__sitemap__/nuxt-content-urls.json"
+node_modules/@nuxtjs/sitemap/dist/module.mjs:1067:      /* @nuxt/content */
+node_modules/@nuxtjs/sitemap/dist/runtime/types.d.ts:196:export type AppSourceContext = 'nuxt:pages' | 'nuxt:prerender' | 'nuxt:route-rules' | '@nuxtjs/i18n:pages' | 'nuxt-i18n-micro:pages' | '@nuxt/content@v2:urls' | '@nuxt/content@v3:urls';
+node_modules/@nuxtjs/sitemap/dist/content.d.mts:1:import { PageCollectionItemBase, Collection } from '@nuxt/content';
+node_modules/@nuxtjs/sitemap/dist/content.d.ts:1:import { PageCollectionItemBase, Collection } from '@nuxt/content';
+node_modules/@nuxtjs/sitemap/dist/runtime/server/content-compat.js:1:import { queryCollectionWithEvent } from "#sitemap/content-v3-nitro-path";
+node_modules/@nuxtjs/sitemap/dist/runtime/server/content-compat.js:2:export const queryCollection = queryCollectionWithEvent;
+node_modules/@nuxtjs/sitemap/dist/runtime/server/content-compat.d.ts:1:export declare const queryCollection: any;
+node_modules/@nuxtjs/sitemap/dist/runtime/server/plugins/nuxt-content-v2.js:31:        console.warn(`[@nuxtjs/content] The @nuxt/content file \`${content._path}\` is missing a sitemap \`loc\`.`);
+node_modules/@nuxtjs/sitemap/dist/runtime/server/routes/__sitemap__/nuxt-content-urls-v2.js:2:import { serverQueryContent } from "#content/server";
+node_modules/@nuxtjs/sitemap/dist/runtime/server/routes/__sitemap__/nuxt-content-urls-v2.js:4:  const contentList = await serverQueryContent(e).find();
+node_modules/@nuxtjs/sitemap/dist/runtime/server/routes/__sitemap__/nuxt-content-urls-v3.js:1:import { queryCollection } from "@nuxt/content/server";
+node_modules/@nuxtjs/sitemap/dist/runtime/server/routes/__sitemap__/nuxt-content-urls-v3.js:15:    const query = queryCollection(e, collection).where("path", "IS NOT NULL").where("sitemap", "IS NOT NULL");

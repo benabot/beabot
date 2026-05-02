@@ -1,0 +1,125 @@
+      nuxt: ">=3.9.0",
+      bridge: false
+    },
+    configKey: "sitemap"
+  },
+  defaults: {
+    enabled: true,
+    credits: true,
+    cacheMaxAgeSeconds: 60 * 10,
+    // cache for 10 minutes
+    minify: false,
+    debug: false,
+    defaultSitemapsChunkSize: 1e3,
+    autoLastmod: false,
+    discoverImages: true,
+    discoverVideos: true,
+    dynamicUrlsApiEndpoint: "/api/_sitemap-urls",
+    urls: [],
+    sortEntries: true,
+    sitemapsPathPrefix: "/__sitemap__/",
+    xsl: "/__sitemap__/style.xsl",
+    xslTips: true,
+    strictNuxtContentPaths: false,
+    runtimeCacheStorage: true,
+    sitemapName: "sitemap.xml",
+    // cacheControlHeader: 'max-age=600, must-revalidate',
+    defaults: {},
+    // index sitemap options filtering
+    include: [],
+    exclude: ["/_nuxt/**", "/_**"],
+    // sources
+    sources: [],
+    excludeAppSources: [],
+    inferStaticPagesAsRoutes: true
+  },
+  async setup(config, nuxt) {
+    const { resolve } = createResolver(import.meta.url);
+    const { name, version } = await readPackageJSON(resolve("../package.json"));
+    const logger = useLogger(name);
+    logger.level = config.debug || nuxt.options.debug ? 4 : 3;
+    if (config.enabled === false) {
+        }
+      } else {
+        nuxt.options.nitro.routeRules[`/${config.sitemapName}`] = routeRules;
+      }
+    } else {
+      nuxt.options.nitro.routeRules[`/${config.sitemapName}`] = routeRules;
+    }
+    if (config.experimentalWarmUp)
+      addServerPlugin(resolve("./runtime/nitro/plugins/warm-up"));
+    if (config.experimentalCompression)
+      addServerPlugin(resolve("./runtime/nitro/plugins/compression"));
+    const isNuxtContentDocumentDriven = !!nuxt.options.content?.documentDriven || config.strictNuxtContentPaths;
+    if (hasNuxtModule("@nuxt/content")) {
+      addServerPlugin(resolve("./runtime/nitro/plugins/nuxt-content"));
+      addServerHandler({
+        route: "/__sitemap__/nuxt-content-urls.json",
+        handler: resolve("./runtime/nitro/routes/__sitemap__/nuxt-content-urls")
+      });
+      const tips = [];
+      if (nuxt.options.content?.documentDriven)
+        tips.push("Enabled because you're using `@nuxt/content` with `documentDriven: true`.");
+      else if (config.strictNuxtContentPaths)
+        tips.push("Enabled because you've set `config.strictNuxtContentPaths: true`.");
+      else
+        tips.push("You can provide a `sitemap` key in your markdown frontmatter to configure specific URLs. Make sure you include a `loc`.");
+      appGlobalSources.push({
+        context: {
+          name: "@nuxt/content:urls",
+          description: "Generated from your markdown files.",
+          tips
+        },
+        fetch: "/__sitemap__/nuxt-content-urls.json"
+      });
+    }
+    const hasLegacyDefaultApiSource = !!await findPath(resolve(nuxt.options.serverDir, "api/_sitemap-urls"));
+    if (
+          ...userGlobalSources.map((s) => {
+            if (typeof s === "string" || Array.isArray(s)) {
+              return {
+                sourceType: "user",
+                fetch: s
+              };
+            }
+            s.sourceType = "user";
+            return s;
+          }),
+          ...(config.excludeAppSources === true ? [] : [
+            ...appGlobalSources,
+            {
+              context: {
+                name: "nuxt:pages",
+                description: "Generated from your static page files.",
+                tips: [
+                  "Can be disabled with `{ excludeAppSources: ['nuxt:pages'] }`."
+                ]
+              },
+              urls: pageSource
+            },
+            {
+              context: {
+                name: "nuxt:route-rules",
+                description: "Generated from your route rules config.",
+                tips: [
+                  "Can be disabled with `{ excludeAppSources: ['nuxt:route-rules'] }`."
+                ]
+              },
+              urls: routeRules2
+            },
+            {
+              context: {
+                name: "nuxt:prerender",
+                description: "Generated at build time when prerendering.",
+                tips: [
+                  "Can be disabled with `{ excludeAppSources: ['nuxt:prerender'] }`."
+                ]
+              },
+              urls: prerenderUrlsFinal
+            }
+          ]).filter((s) => !config.excludeAppSources.includes(s.context.name) && (!!s.urls?.length || !!s.fetch)).map((s) => {
+            s.sourceType = "app";
+            return s;
+          })
+        ];
+        return `export const sources = ${JSON.stringify(globalSources, null, 4)}`;

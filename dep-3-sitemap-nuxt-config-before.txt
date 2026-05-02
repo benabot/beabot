@@ -1,0 +1,56 @@
+      xl: 1280,
+    },
+    presets: {
+      card: {
+        modifiers: {
+          format: 'webp',
+          fit: 'cover',
+          quality: 75,
+        },
+      },
+      portfolio: {
+        modifiers: {
+          format: 'webp',
+          fit: 'cover',
+          quality: 70, // Lower quality for portfolio thumbnails
+        },
+      },
+    },
+  },
+
+  // Sitemap configuration
+  sitemap: {
+    hostname: siteUrl,
+    gzip: true,
+    exclude: ['/404/', '/404'],
+    urls: getArticleSitemapRoutes,
+  },
+
+  // Fonts configuration - removed for now
+  // Will use local @fontsource instead
+
+  // Nitro configuration for RSS feed
+  nitro: {
+    prerender: {
+      routes: ['/rss.xml', '/feed.json', '/sitemap.xml', '/robots.txt'],
+      // Ignore 404 errors on API content query routes (cache/surround queries)
+      failOnError: false,
+    },
+    hooks: {
+      'sitemap:resolved': (ctx) => {
+        ctx.urls = ctx.urls.map((entry) => ({
+          ...entry,
+          loc: normalizeSitemapLoc(entry.loc),
+        }))
+      },
+      'sitemap:output': (ctx) => {
+        ctx.sitemap = ctx.sitemap.replace(
+          /<loc>([^<]+)<\/loc>/g,
+          (_match, loc) => `<loc>${normalizeSitemapLoc(loc)}</loc>`,
+        )
+      },
+    },
+    compressPublicAssets: true, // Enable Brotli/Gzip compression for better performance
+    minify: true, // Minify HTML output
+  },
+
