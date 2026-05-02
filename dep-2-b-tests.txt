@@ -1,0 +1,121 @@
+
+> beabot@2.0.0 test
+> node scripts/pre-build-check.js && npm run test:content && npm run test:node
+
+🔍 Running pre-build checks...
+
+📋 Checking configuration files...
+📦 Validating package.json...
+📁 Checking critical directories...
+📄 Checking key pages...
+🧩 Checking components...
+⚡ Checking composables...
+📝 Checking content...
+🎨 Checking assets...
+🌐 Checking public files...
+☁️  Checking Netlify configuration...
+
+==================================================
+📊 RESULTS
+==================================================
+Total checks: 49
+✅ Passed: 49
+⚠️  Warnings: 0
+❌ Errors: 0
+
+✅ All checks passed! Ready to build.
+
+> beabot@2.0.0 test:content
+> node scripts/check-content-queries.mjs
+
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: server/routes/rss.xml.ts should still match /serverQueryContent/
+    at checkStaticContentV2Contracts (file:///Users/benoitabot/Sites/beabot/scripts/check-content-queries.mjs:57:14)
+    at file:///Users/benoitabot/Sites/beabot/scripts/check-content-queries.mjs:116:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: "import { queryCollection } from '@nuxt/content/server'\n" +
+    '\n' +
+    'export default defineEventHandler(async (event) => {\n' +
+    '  try {\n' +
+    '    // Récupérer tous les articles, triés par date de publication\n' +
+    "    const articles = await queryCollection(event, 'articles')\n" +
+    "      .select('title', 'description', 'date', 'tag', 'path')\n" +
+    "      .order('date', 'DESC')\n" +
+    '      .all()\n' +
+    '\n' +
+    '    const config = useRuntimeConfig()\n' +
+    '    const baseUrl = config.public.siteUrl\n' +
+    '\n' +
+    '    // Échapper les caractères spéciaux pour XML\n' +
+    '    const escapeXml = (unsafe: string) => {\n' +
+    "      if (!unsafe) return ''\n" +
+    '      return unsafe\n' +
+    "        .replace(/&/g, '&amp;')\n" +
+    "        .replace(/</g, '&lt;')\n" +
+    "        .replace(/>/g, '&gt;')\n" +
+    `        .replace(/"/g, '&quot;')\n` +
+    "        .replace(/'/g, '&apos;')\n" +
+    '    }\n' +
+    '\n' +
+    '    const withTrailingSlash = (path: string) => {\n' +
+    "      if (!path) return '/eco-conception/'\n" +
+    "      return path.endsWith('/') ? path : `${path}/`\n" +
+    '    }\n' +
+    '\n' +
+    '    // Générer le contenu RSS 2.0\n' +
+    '    const rss = `<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">\n' +
+    '  <channel>\n' +
+    "    <title>BeAbot : blog de l'éco-conception web</title>\n" +
+    '    <link>${baseUrl}</link>\n' +
+    "    <description>J'écris à propos de l'éco-conception web et du numérique éco-responsable.</description>\n" +
+    '    <language>fr-FR</language>\n' +
+    '    <atom:link href="${baseUrl}/rss.xml" rel="self" type="application/rss+xml"/>\n' +
+    '    ${articles\n' +
+    '      .map((article) => {\n' +
+    '        const articleUrl = `${baseUrl}${withTrailingSlash(article.path)}`\n' +
+    '\n' +
+    '        return `\n' +
+    '    <item>\n' +
+    "      <title>${escapeXml(article.title || '')}</title>\n" +
+    '      <link>${articleUrl}</link>\n' +
+    '      <guid isPermaLink="true">${articleUrl}</guid>\n' +
+    "      <description>${escapeXml(article.description || '')}</description>\n" +
+    '      <pubDate>${new Date(article.date || Date.now()).toUTCString()}</pubDate>\n' +
+    '      ${\n' +
+    '        article.tag && Array.isArray(article.tag)\n' +
+    "          ? article.tag.map((t: string) => `<category>${escapeXml(t)}</category>`).join('\\n      ')\n" +
+    "          : ''\n" +
+    '      }\n' +
+    '    </item>`\n' +
+    '      })\n' +
+    "      .join('')}\n" +
+    '  </channel>\n' +
+    '</rss>`\n' +
+    '\n' +
+    '    // Définir les en-têtes de réponse\n' +
+    "    setResponseHeader(event, 'Content-Type', 'application/xml; charset=utf-8')\n" +
+    "    setResponseHeader(event, 'Cache-Control', 'public, max-age=3600, s-maxage=3600')\n" +
+    '\n' +
+    '    return rss\n' +
+    '  } catch (error) {\n' +
+    "    console.error('Error generating RSS feed:', error)\n" +
+    '    throw createError({\n' +
+    '      statusCode: 500,\n' +
+    "      statusMessage: 'Error generating RSS feed',\n" +
+    '    })\n' +
+    '  }\n' +
+    '})\n',
+  expected: /serverQueryContent/,
+  operator: 'match',
+  diff: 'simple'
+}
+
+Node.js v22.21.1

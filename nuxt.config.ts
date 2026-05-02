@@ -1,7 +1,10 @@
+import { readdir } from 'node:fs/promises'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://beabot.fr'
 const normalizedSiteUrl = siteUrl.replace(/\/+$/, '')
 const fileExtensionRegex = /\.[a-z0-9]+$/i
+const articleContentDir = new URL('./content/articles/', import.meta.url)
 
 const normalizeSitemapLoc = (loc: string): string => {
   if (!loc) return loc
@@ -19,6 +22,14 @@ const normalizeSitemapLoc = (loc: string): string => {
   }
 
   return loc
+}
+
+const getArticleSitemapRoutes = async (): Promise<string[]> => {
+  const files = await readdir(articleContentDir)
+  return files
+    .filter((file) => file.endsWith('.md'))
+    .map((file) => file.replace(/\.md$/, '').toLowerCase())
+    .map((slug) => `/eco-conception/${slug}/`)
 }
 
 export default defineNuxtConfig({
@@ -271,14 +282,7 @@ export default defineNuxtConfig({
     hostname: siteUrl,
     gzip: true,
     exclude: ['/404/', '/404'],
-    routes: async () => {
-      const { serverQueryContent } = await import('#content/server')
-      const articles = await serverQueryContent('articles').find()
-      return articles
-        .map((article) => article._path?.split('/').pop())
-        .filter(Boolean)
-        .map((slug) => `/eco-conception/${slug}/`)
-    },
+    urls: getArticleSitemapRoutes,
   },
 
   // Fonts configuration - removed for now

@@ -193,7 +193,12 @@ Ordre recommandé (mettre à jour et tester une par une) :
   - `npm test` OK.
   - `npm run generate` bloqué par les imports v2 `#content/server` dans RSS/JSON Feed et `@nuxtjs/sitemap` v6.
   - Ne pas cocher `DEP-2` avant migration des APIs v2 restantes.
+  - DEP-2-B réalisé partiellement : `migration-nuxt4-dep-2-b.md`.
+  - RSS et JSON Feed migrés vers `queryCollection(event, 'articles')`.
+  - `npm test` OK.
+  - `npm run generate` encore bloqué par l'intégration interne Content de `@nuxtjs/sitemap` v6.
 - [ ] **DEP-3** — Vérifier compatibilité `@nuxtjs/sitemap` 6.x avec Nuxt 4 ; mettre à jour vers 7.x si requis
+  - DEP-2-B : nécessaire avant validation complète, car `@nuxtjs/sitemap` v6 importe encore `#content/server`.
 - [ ] **DEP-4** — Vérifier compatibilité `@nuxt/image` ; mettre à jour si nécessaire
 - [ ] **DEP-5** — Mettre à jour `@nuxt/eslint` vers 1.x si requis par Nuxt 4
 - [x] **DEP-6** — Supprimer `"#internal/nuxt/paths": "./nuxt.paths.mjs"` de `package.json` `imports` — override interne Nuxt 3 probablement incompatible avec Nuxt 4
@@ -299,12 +304,15 @@ Fichiers qui **restent à la racine** (pas de déplacement) :
 | `server/routes/feed.json.ts` | 1, 6   | Idem                                                                                                                             |
 | `nuxt.config.ts`             | 265    | `const { serverQueryContent } = await import('#content/server')` dans `sitemap.routes`                                           |
 
-- [ ] **CONTENT-3** — Réécrire `rss.xml.ts` sans `serverQueryContent` — utiliser l'API server de Content v3
+- [x] **CONTENT-3** — Réécrire `rss.xml.ts` sans `serverQueryContent` — utiliser l'API server de Content v3
   - DEP-2-A : blocage generate confirme sur `#content/server`.
-- [ ] **CONTENT-4** — Réécrire `feed.json.ts` sans `serverQueryContent`
+  - DEP-2-B : migré vers `queryCollection(event, 'articles')`, `_path` remplacé par `path`, `npm test` OK.
+- [x] **CONTENT-4** — Réécrire `feed.json.ts` sans `serverQueryContent`
   - DEP-2-A : blocage generate confirme sur `#content/server`.
+  - DEP-2-B : migré vers `queryCollection(event, 'articles')`, `_path` remplacé par `path`, `npm test` OK.
 - [ ] **CONTENT-5** — Réécrire `sitemap.routes` dans `nuxt.config.ts` sans `serverQueryContent` — ⚠️ vérifier si `@nuxtjs/sitemap` 7.x génère les routes automatiquement depuis Content v3
   - DEP-2-A : blocage generate confirme aussi dans `@nuxtjs/sitemap` v6, qui importe encore `#content/server`.
+  - DEP-2-B : import `#content/server` supprimé du projet et routes articles remplacées par `urls: getArticleSitemapRoutes`; blocage restant dans le handler interne `@nuxtjs/sitemap` v6, à traiter en `DEP-3`.
 
 ##### 3.3.4 — `.where()` query syntax refondu
 

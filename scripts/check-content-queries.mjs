@@ -31,15 +31,30 @@ const criticalFiles = [
   },
   {
     file: 'server/routes/rss.xml.ts',
-    patterns: [/serverQueryContent/, /_path/, /article\.tag/],
+    patterns: [
+      /@nuxt\/content\/server/,
+      /queryCollection\(event, 'articles'\)/,
+      /\.order\('date', 'DESC'\)/,
+      /article\.path/,
+      /article\.tag/,
+    ],
+    forbiddenPatterns: [/serverQueryContent/, /#content\/server/, /_path/],
   },
   {
     file: 'server/routes/feed.json.ts',
-    patterns: [/serverQueryContent/, /_path/, /article\.tag/],
+    patterns: [
+      /@nuxt\/content\/server/,
+      /queryCollection\(event, 'articles'\)/,
+      /\.order\('date', 'DESC'\)/,
+      /article\.path/,
+      /article\.tag/,
+    ],
+    forbiddenPatterns: [/serverQueryContent/, /#content\/server/, /_path/],
   },
   {
     file: 'nuxt.config.ts',
-    patterns: [/serverQueryContent/, /_path/, /\/eco-conception\/\$\{slug\}\//],
+    patterns: [/getArticleSitemapRoutes/, /urls: getArticleSitemapRoutes/],
+    forbiddenPatterns: [/serverQueryContent/, /#content\/server/, /_path/],
   },
 ]
 
@@ -50,11 +65,15 @@ function readProjectFile(file) {
 }
 
 function checkStaticContentV2Contracts() {
-  for (const { file, patterns } of criticalFiles) {
+  for (const { file, patterns, forbiddenPatterns = [] } of criticalFiles) {
     const source = readProjectFile(file)
 
     for (const pattern of patterns) {
       assert.match(source, pattern, `${file} should still match ${pattern}`)
+    }
+
+    for (const pattern of forbiddenPatterns) {
+      assert.doesNotMatch(source, pattern, `${file} should not match ${pattern}`)
     }
   }
 }
@@ -116,4 +135,4 @@ function checkGeneratedContentOutput() {
 checkStaticContentV2Contracts()
 checkGeneratedContentOutput()
 
-console.log('OK Content v2 query checks passed.')
+console.log('OK Content migration guard checks passed.')
