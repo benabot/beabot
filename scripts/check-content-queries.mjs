@@ -8,26 +8,31 @@ const rootDir = process.cwd()
 const publicDir = path.join(rootDir, '.output', 'public')
 const siteUrl = 'https://beabot.fr'
 
-const criticalFiles = [
+const migratedContentFiles = [
   {
     file: 'pages/index.vue',
-    patterns: [/queryContent\('articles'\)/, /_path/, /tag/],
+    patterns: [/queryCollection\('articles'\)/, /\.select\(/, /\.order\('date', 'DESC'\)/, /article\.path/, /tag/],
+    forbiddenPatterns: [/queryContent\(/, /findSurround/, /_path/, /\.only\(/],
   },
   {
     file: 'pages/eco-conception/index.vue',
-    patterns: [/queryContent\('articles'\)/, /queryContent\('articles', 'faq-eco-conception'\)/, /_path/, /tag/],
+    patterns: [/queryCollection\('articles'\)/, /\.path\('\/eco-conception\/faq-eco-conception'\)/, /article\.path/, /tag/],
+    forbiddenPatterns: [/queryContent\(/, /findSurround/, /_path/, /\.only\(/],
   },
   {
     file: 'pages/eco-conception/[slug].vue',
-    patterns: [/queryContent\('articles', route\.params\.slug\)/, /findSurround/, /_path/, /tag/],
+    patterns: [/queryCollection\('articles'\)/, /queryCollectionItemSurroundings\('articles'/, /article\.value\?\.path/, /tag/],
+    forbiddenPatterns: [/queryContent\(/, /findSurround/, /_path/, /\.only\(/],
   },
   {
     file: 'components/HomeEcoArticles.vue',
-    patterns: [/queryContent\('articles'\)/, /_path/, /tag/],
+    patterns: [/queryCollection\('articles'\)/, /\.select\(/, /\.order\('date', 'DESC'\)/, /article\.path/, /tag/],
+    forbiddenPatterns: [/queryContent\(/, /findSurround/, /_path/, /\.only\(/],
   },
   {
-    file: 'components/AppSearchInput.vue',
-    patterns: [/queryContent\('articles'\)/, /\.where\(/, /article\.slug/],
+    file: 'components/ArticleNavigation.vue',
+    patterns: [/prev\.path/, /next\.path/],
+    forbiddenPatterns: [/_path/],
   },
   {
     file: 'server/routes/rss.xml.ts',
@@ -56,6 +61,18 @@ const criticalFiles = [
     patterns: [/getArticleSitemapRoutes/, /urls: getArticleSitemapRoutes/],
     forbiddenPatterns: [/serverQueryContent/, /#content\/server/, /_path/],
   },
+  {
+    file: 'content.config.ts',
+    patterns: [/schema: z\.object/, /date: z\.coerce\.date\(\)\.optional\(\)/, /tag: z\.array\(z\.string\(\)\)\.default\(\[\]\)/],
+  },
+]
+
+const documentedV2Exceptions = [
+  {
+    file: 'components/AppSearchInput.vue',
+    reason: 'CONTENT-6 recherche Content v3 reportee dans un lot dedie',
+    patterns: [/queryContent\('articles'\)/, /\.where\(/, /article\.slug/],
+  },
 ]
 
 function readProjectFile(file) {
@@ -64,16 +81,53 @@ function readProjectFile(file) {
   return fs.readFileSync(filePath, 'utf8')
 }
 
-function checkStaticContentV2Contracts() {
-  for (const { file, patterns, forbiddenPatterns = [] } of criticalFiles) {
+function checkMigratedContentContracts() {
+  for (const { file, patterns, forbiddenPatterns = [] } of migratedContentFiles) {
     const source = readProjectFile(file)
 
     for (const pattern of patterns) {
-      assert.match(source, pattern, `${file} should still match ${pattern}`)
+      assert.match(source, pattern, `${file} should match migrated Content contract ${pattern}`)
     }
 
     for (const pattern of forbiddenPatterns) {
       assert.doesNotMatch(source, pattern, `${file} should not match ${pattern}`)
+    }
+  }
+
+  for (const { file, patterns } of documentedV2Exceptions) {
+    const source = readProjectFile(file)
+    for (const pattern of patterns) {
+      assert.match(source, pattern, `${file} should keep documented temporary exception ${pattern}`)
+    }
+  }
+}
+
+function walkFiles(entry) {
+  const entryPath = path.join(rootDir, entry)
+  if (!fs.existsSync(entryPath)) return []
+
+  const stat = fs.statSync(entryPath)
+  if (stat.isFile()) return [entryPath]
+
+  return fs.readdirSync(entryPath).flatMap((child) => {
+    const relative = path.join(entry, child)
+    return walkFiles(relative)
+  })
+}
+
+function checkNoUnexpectedContentV2Usage() {
+  const exceptionFiles = new Set(documentedV2Exceptions.map(({ file }) => file))
+  const scanEntries = ['pages', 'components', 'layouts', 'server', 'nuxt.config.ts', 'app.vue', 'error.vue']
+  const forbiddenPatterns = [/queryContent\(/, /serverQueryContent/, /findSurround\(/, /searchContent\(/, /\b_path\b/]
+
+  for (const absolutePath of scanEntries.flatMap(walkFiles)) {
+    const relativePath = path.relative(rootDir, absolutePath)
+    if (exceptionFiles.has(relativePath)) continue
+    if (!/\.(vue|ts|js|mjs)$/.test(relativePath)) continue
+
+    const source = fs.readFileSync(absolutePath, 'utf8')
+    for (const pattern of forbiddenPatterns) {
+      assert.doesNotMatch(source, pattern, `${relativePath} should not contain Content v2 usage ${pattern}`)
     }
   }
 }
@@ -132,7 +186,8 @@ function checkGeneratedContentOutput() {
   assert.doesNotMatch(articleHtml, /\[object Object\]/)
 }
 
-checkStaticContentV2Contracts()
+checkMigratedContentContracts()
+checkNoUnexpectedContentV2Usage()
 checkGeneratedContentOutput()
 
 console.log('OK Content migration guard checks passed.')

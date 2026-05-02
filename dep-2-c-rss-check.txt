@@ -1,0 +1,80 @@
+10:    <item>
+12:      <link>https://beabot.fr/eco-conception/audit-site-web/</link>
+13:      <guid isPermaLink="true">https://beabot.fr/eco-conception/audit-site-web/</guid>
+15:      <pubDate>Mon, 27 Apr 2026 00:00:00 GMT</pubDate>
+16:      <category>Audit</category>
+17:      <category>Performance</category>
+18:      <category>SEO</category>
+19:      <category>Eco-conception</category>
+21:    <item>
+23:      <link>https://beabot.fr/eco-conception/refonte-site-eco-concu/</link>
+24:      <guid isPermaLink="true">https://beabot.fr/eco-conception/refonte-site-eco-concu/</guid>
+26:      <pubDate>Mon, 27 Apr 2026 00:00:00 GMT</pubDate>
+27:      <category>Eco-conception</category>
+28:      <category>WordPress</category>
+29:      <category>Performance</category>
+31:    <item>
+33:      <link>https://beabot.fr/eco-conception/wordpress-freelance-lille/</link>
+34:      <guid isPermaLink="true">https://beabot.fr/eco-conception/wordpress-freelance-lille/</guid>
+36:      <pubDate>Mon, 27 Apr 2026 00:00:00 GMT</pubDate>
+37:      <category>WordPress</category>
+38:      <category>Eco-conception</category>
+40:    <item>
+42:      <link>https://beabot.fr/eco-conception/wordpress-vs-nuxt/</link>
+43:      <guid isPermaLink="true">https://beabot.fr/eco-conception/wordpress-vs-nuxt/</guid>
+45:      <pubDate>Mon, 27 Apr 2026 00:00:00 GMT</pubDate>
+46:      <category>WordPress</category>
+47:      <category>Eco-conception</category>
+48:      <category>Performance</category>
+50:    <item>
+52:      <link>https://beabot.fr/eco-conception/comment-reduire-le-poids-d-un-site-web/</link>
+53:      <guid isPermaLink="true">https://beabot.fr/eco-conception/comment-reduire-le-poids-d-un-site-web/</guid>
+55:      <pubDate>Sun, 26 Apr 2026 00:00:00 GMT</pubDate>
+56:      <category>Éco-conception</category>
+57:      <category>Performance</category>
+58:      <category>WebDesign</category>
+59:      <category>SEO</category>
+61:    <item>
+63:      <link>https://beabot.fr/eco-conception/audit-eco-conception/</link>
+64:      <guid isPermaLink="true">https://beabot.fr/eco-conception/audit-eco-conception/</guid>
+66:      <pubDate>Thu, 26 Mar 2026 00:00:00 GMT</pubDate>
+67:      <category>Éco-conception</category>
+68:      <category>Audit</category>
+69:      <category>Performance</category>
+70:      <category>WebDesign</category>
+72:    <item>
+74:      <link>https://beabot.fr/eco-conception/images-eco-conception/</link>
+75:      <guid isPermaLink="true">https://beabot.fr/eco-conception/images-eco-conception/</guid>
+77:      <pubDate>Fri, 19 Dec 2025 00:00:00 GMT</pubDate>
+78:      <category>Éco-conception</category>
+79:      <category>Images</category>
+80:      <category>WebDesign</category>
+81:      <category>SEO</category>
+83:    <item>
+85:      <link>https://beabot.fr/eco-conception/typographie-ecoconception/</link>
+86:      <guid isPermaLink="true">https://beabot.fr/eco-conception/typographie-ecoconception/</guid>
+88:      <pubDate>Mon, 15 Dec 2025 00:00:00 GMT</pubDate>
+89:      <category>WebDesign</category>
+90:      <category>Typographie</category>
+91:      <category>Eco-conception</category>
+93:    <item>
+95:      <link>https://beabot.fr/eco-conception/wordpress-eco-conception/</link>
+96:      <guid isPermaLink="true">https://beabot.fr/eco-conception/wordpress-eco-conception/</guid>
+98:      <pubDate>Tue, 28 Oct 2025 00:00:00 GMT</pubDate>
+99:      <category>WordPress</category>
+100:      <category>Éco-conception</category>
+101:      <category>WebDesign</category>
+102:      <category>Performance</category>
+104:    <item>
+106:      <link>https://beabot.fr/eco-conception/faq-eco-conception/</link>
+107:      <guid isPermaLink="true">https://beabot.fr/eco-conception/faq-eco-conception/</guid>
+109:      <pubDate>Mon, 28 Feb 2022 00:00:00 GMT</pubDate>
+110:      <category>Éco-conception</category>
+111:      <category>SEO</category>
+112:      <category>WebDesign</category>
+113:      <category>Performance</category>
+115:    <item>
+117:      <link>https://beabot.fr/eco-conception/la-consommation-energetique-du-numerique/</link>
+118:      <guid isPermaLink="true">https://beabot.fr/eco-conception/la-consommation-energetique-du-numerique/</guid>
+120:      <pubDate>Mon, 28 Feb 2022 00:00:00 GMT</pubDate>
+121:      <category>WebDesign</category>

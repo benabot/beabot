@@ -277,7 +277,7 @@
         <div class="eco-featured-grid">
           <article
             v-for="article in featuredArticles"
-            :key="article._path"
+            :key="article.path"
             class="eco-resource-card"
           >
             <p class="eco-resource-card__meta">
@@ -371,11 +371,11 @@
           <div class="eco-archive-grid">
             <article
               v-for="article in filteredArticles"
-              :key="article._path"
+              :key="article.path"
               class="eco-archive-card"
             >
               <p class="eco-archive-card__meta">
-                {{ formatDate((article.updatedAt && article.updatedAt > (article.date ?? '')) ? article.updatedAt : article.date) }}
+                {{ formatDate(displayDate(article)) }}
               </p>
               <h3>
                 <AppLink :to="articleLink(article)">
@@ -387,7 +387,7 @@
                 <div class="eco-tag-list" aria-label="Tags de l’article">
                   <span
                     v-for="tag in articlePreviewTags(article)"
-                    :key="`${article._path}-${tag}`"
+                    :key="`${article.path}-${tag}`"
                     class="eco-tag"
                   >
                     {{ tag }}
@@ -523,9 +523,9 @@ type EcoArticle = {
   title?: string
   description?: string
   tag?: string[]
-  _path?: string
-  date?: string
-  updatedAt?: string
+  path?: string
+  date?: string | Date
+  updatedAt?: string | Date
 }
 
 type FaqArticle = EcoArticle & {
@@ -636,9 +636,9 @@ const benefits = [
 ] as const
 
 const featuredResourcePaths = [
-  '/articles/audit-eco-conception',
-  '/articles/wordpress-eco-conception',
-  '/articles/theme-wordpress-eco-conception',
+  '/eco-conception/audit-eco-conception',
+  '/eco-conception/wordpress-eco-conception',
+  '/eco-conception/theme-wordpress-eco-conception',
 ] as const
 
 const config = useRuntimeConfig()
@@ -650,15 +650,18 @@ const pageDescription =
 const { data: articles } = await useAsyncData<EcoArticle[]>(
   'eco-pillar-articles',
   () =>
-    queryContent('articles')
-      .only(['title', 'description', 'tag', '_path', 'date', 'updatedAt'])
-      .sort({ date: -1 })
-      .find(),
+    queryCollection('articles')
+      .select('title', 'description', 'tag', 'path', 'date', 'updatedAt')
+      .order('date', 'DESC')
+      .all(),
 )
 
 const { data: faqArticle } = await useAsyncData<FaqArticle | null>(
   'eco-pillar-faq',
-  () => queryContent('articles', 'faq-eco-conception').findOne(),
+  () =>
+    queryCollection('articles')
+      .path('/eco-conception/faq-eco-conception')
+      .first(),
 )
 
 useSeoMeta({
@@ -682,10 +685,8 @@ const searchQuery = ref('')
 const allArticles = computed(() => articles.value || [])
 
 function articleLink(article: EcoArticle) {
-  if (!article || !article._path) return '/eco-conception/'
-  return withTrailingSlash(
-    article._path.replace(/^\/articles\//, '/eco-conception/'),
-  )
+  if (!article || !article.path) return '/eco-conception/'
+  return withTrailingSlash(article.path)
 }
 
 function normalizeSearchText(value = '') {
@@ -758,7 +759,7 @@ const availableTags = computed(() => {
 
 const featuredArticles = computed(() =>
   featuredResourcePaths.flatMap((path) => {
-    const article = allArticles.value.find((entry) => entry._path === path)
+    const article = allArticles.value.find((entry) => entry.path === path)
     return article ? [article] : []
   }),
 )
@@ -797,13 +798,20 @@ watch(
   { immediate: true },
 )
 
-function formatDate(date?: string) {
+function formatDate(date?: string | Date) {
   if (!date) return ''
   return new Date(date).toLocaleDateString('fr-FR', {
     day: 'numeric',
     month: 'short',
     year: 'numeric',
   })
+}
+
+function displayDate(article: EcoArticle) {
+  if (!article.updatedAt || !article.date) return article.updatedAt || article.date
+  return new Date(article.updatedAt) > new Date(article.date)
+    ? article.updatedAt
+    : article.date
 }
 
 function getTagName(node: any) {

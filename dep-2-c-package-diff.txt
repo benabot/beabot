@@ -1,0 +1,28 @@
+diff --git a/package-lock.json b/package-lock.json
+index 970f49c..7e217a3 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -14,7 +14,8 @@
+         "@nuxtjs/sitemap": "8.0.15",
+         "nuxt": "4.4.2",
+         "vue": "^3.5.12",
+-        "vue-router": "^4.4.5"
++        "vue-router": "^4.4.5",
++        "zod": "3.25.76"
+       },
+       "devDependencies": {
+         "@nuxt/eslint": "^0.5.7",
+diff --git a/package.json b/package.json
+index 4419be6..1e47c77 100644
+--- a/package.json
++++ b/package.json
+@@ -26,7 +26,8 @@
+     "@nuxtjs/sitemap": "8.0.15",
+     "nuxt": "4.4.2",
+     "vue": "^3.5.12",
+-    "vue-router": "^4.4.5"
++    "vue-router": "^4.4.5",
++    "zod": "3.25.76"
+   },
+   "devDependencies": {
+     "@nuxt/eslint": "^0.5.7",

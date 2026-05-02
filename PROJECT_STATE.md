@@ -6,8 +6,8 @@
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
-1. **DEP-2-C / Content pages APIs** — Sitemap debloque ; migrer les listes, la page article, `findSurround`, recherche, `_path` et garde-fous. Inclure le schema Content complet necessaire aux champs frontmatter (`date`, `updatedAt`, tags, SEO) avant de revalider RSS/JSON Feed.
-2. **DEP-2-D / RSS et JSON Feed Content v3** — Revalider `/rss.xml` et `/feed.json` apres schema/requetes Content complets, car DEP-3 a revele `no such column: "date"` pendant le prerender.
+1. **CONTENT-6 / Recherche Content v3** — Migrer `components/AppSearchInput.vue`, dernier usage applicatif documente de `queryContent('articles')` et `.where({ $or: ... })`.
+2. **DEP-2 final / Audit Content v3** — Apres la recherche, verifier qu'il ne reste plus d'API Content v2 applicative et decider si `DEP-2` peut etre cloture.
 3. **Image / ESLint** — Traiter séparément après Content/sitemap : `@nuxt/image`, puis `@nuxt/eslint` probablement en dernier.
 4. **CONFIG-* restants selon besoin** — Les options Nuxt 4 ont ete auditees ; ne corriger que si un warning futur ou une mise a jour de module l'exige.
 5. **DIR-* app directory** — Ne pas deplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dedie si besoin.
@@ -28,7 +28,7 @@ SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stabl
 
 - Base actuelle validée : Nuxt `4.4.2`, Nitro `2.13.3`, Vue `3.5.33`, Vite direct `6.4.1` (`7.3.2` côté builder Nuxt)
 - `future.compatibilityVersion: 4` actif
-- Génération statique validée : 100 routes prerendered
+- Génération statique validée après DEP-2-C : 72 routes prerendered
 - Derniers commits documentaires :
   - `75d9207` — `docs: rafraichir baseline compat Nuxt 4`
   - `e1e6b6a` — `docs: cartographier migration Content v3`
@@ -41,35 +41,43 @@ SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stabl
 Branche : `chore/nuxt4-migration`
 
 Dernière décision :
-- DEP-3 réalisé le 2 mai 2026.
-- Résultat : sitemap debloque, validation globale Content encore partielle.
+- DEP-2-C réalisé le 2 mai 2026.
+- Résultat : schéma Content enrichi et pages/composants principaux migrés vers Content v3.
 - Version Nuxt : `4.4.2`.
 - Version Content : `@nuxt/content@3.13.0`.
 - Version sitemap : `@nuxtjs/sitemap@8.0.15`.
-- Rapport : `migration-nuxt4-dep-3-sitemap.md`.
+- Rapport : `migration-nuxt4-dep-2-c-pages.md`.
 - Changements appliques :
-  - `@nuxtjs/sitemap` mis a jour de `^6.1.1` vers `8.0.15` ;
-  - integration interne Content v6 qui importait `#content/server` remplacee par l'integration Content v3 du module ;
-  - configuration `nuxt.config.ts` conservee, avec `urls: getArticleSitemapRoutes` et hooks sitemap existants ;
-  - `/sitemap.xml` genere avec les URLs articles `/eco-conception/`.
+  - `content.config.ts` enrichi avec un schema permissif pour les champs frontmatter articles ;
+  - `zod@3.25.76` ajoute en dependance directe pour supporter le schema Content ;
+  - homepage, archive `/eco-conception/`, page article `[slug]` et `HomeEcoArticles` migres vers `queryCollection` ;
+  - `findSurround()` remplace par `queryCollectionItemSurroundings()` ;
+  - `_path` remplace par `path` sur les surfaces migrees ;
+  - garde-fou `scripts/check-content-queries.mjs` adapte au contrat Content v3, avec exception documentee pour `AppSearchInput.vue`.
 - Validation :
   - `npm test` : OK ;
-  - `npm run generate` : termine avec code 0 et `.output/public` genere, mais affiche encore des erreurs Content hors perimetre DEP-3 ;
+  - `npm run generate` : OK ;
   - check SEO : OK ;
-  - routes prerendered : 55 ;
+  - routes prerendered : 72 ;
+  - RSS : `/rss.xml` genere ;
+  - JSON Feed : `/feed.json` genere ;
   - sitemap articles : 14 URLs `/eco-conception/`.
-- Erreurs restantes documentees :
-  - `queryContent is not defined` sur les pages Vue non migrees ;
-  - `no such column: "date"` sur les requetes RSS/JSON Feed Content v3 avec collection encore sans schema frontmatter complet ;
-  - `.output/public/rss.xml` et `.output/public/feed.json` non generes dans ce lot.
+- Erreur corrigee :
+  - `no such column: "date"` sur RSS/JSON Feed corrigee par le schema `date`.
+- Usage restant documente :
+  - `components/AppSearchInput.vue` conserve temporairement `queryContent('articles')` pour `CONTENT-6`.
+- Warnings non bloquants :
+  - warning sitemap `zeroRuntime` ;
+  - sourcemap `nuxt:module-preload-polyfill` ;
+  - circular chunk `vendor-nuxt -> vendor-libs -> vendor-nuxt`.
 - Prochaine étape :
-  - ouvrir `DEP-2-C / Content pages APIs` et enrichir le schema Content avant de revalider RSS/JSON Feed.
+  - ouvrir `CONTENT-6 / Recherche Content v3`, puis faire l'audit final Content avant cloture `DEP-2`.
 
 Contraintes maintenues :
-- Pages et composants non migres dans DEP-3.
-- Aucun déplacement vers `app/` dans DEP-3.
-- Modules image/eslint non migres dans DEP-3.
-- Aucune correction globale lint ou chunks faite dans DEP-3.
+- Aucun déplacement vers `app/` dans DEP-2-C.
+- Modules image/eslint non migres dans DEP-2-C.
+- Recherche avancee non migree dans DEP-2-C, sauf exception documentee pour le prochain lot.
+- Aucune correction globale lint, CSS ou chunks faite dans DEP-2-C.
 - `npm audit fix` non lance.
 
 ### Dernière mise à jour
@@ -133,6 +141,14 @@ Contraintes maintenues :
   - `npm run generate` termine avec `.output/public`, mais revele les prochaines erreurs Content : pages `queryContent` et champ SQL `date` absent pour RSS/JSON Feed
   - check SEO OK
   - prochaine etape : `DEP-2-C / Content pages APIs`
+- ✅ DEP-2-C realise :
+  - schema `articles` enrichi dans `content.config.ts` avec `zod@3.25.76` ajoute en dependance directe
+  - homepage, archive, page article, `HomeEcoArticles` et `ArticleNavigation` migres vers Content v3
+  - `findSurround()` remplace par `queryCollectionItemSurroundings()`
+  - RSS, JSON Feed et sitemap revalides apres correction du champ SQL `date`
+  - `npm test` OK, `npm run generate` OK, check SEO OK
+  - routes prerendered : 72
+  - reste : `CONTENT-6 / AppSearchInput.vue`, dernier usage applicatif Content v2 documente
 
 **Services freelance — relief visuel & maillage (28 avril 2026)** — Branche `feat/design-services`.
 

@@ -1,0 +1,22 @@
+node_modules/@nuxt/content/dist/module.mjs:3117:      { name: "queryCollectionItemSurroundings", from: resolver.resolve("./runtime/client") }
+node_modules/@nuxt/content/dist/module.mjs:3123:      { name: "queryCollectionItemSurroundings", from: resolver.resolve("./runtime/nitro") }
+node_modules/@nuxt/content/dist/runtime/client.d.ts:10:export declare function queryCollectionNavigation<T extends keyof PageCollections>(collection: T, fields?: Array<keyof PageCollections[T]>): ChainablePromise<T, ContentNavigationItem[]>;
+node_modules/@nuxt/content/dist/runtime/client.d.ts:11:export declare function queryCollectionItemSurroundings<T extends keyof PageCollections>(collection: T, path: string, opts?: SurroundOptions<keyof PageCollections[T]>): ChainablePromise<T, ContentNavigationItem[]>;
+node_modules/@nuxt/content/dist/runtime/client.d.ts:12:export declare function queryCollectionSearchSections<T extends keyof PageCollections>(collection: T, opts?: GenerateSearchSectionsOptions): ChainablePromise<T, {
+node_modules/@nuxt/content/dist/runtime/server.js:9:export function queryCollectionNavigation(event, collection, fields) {
+node_modules/@nuxt/content/dist/runtime/server.js:12:export function queryCollectionItemSurroundings(event, collection, path, opts) {
+node_modules/@nuxt/content/dist/runtime/server.js:15:export function queryCollectionSearchSections(event, collection, opts) {
+node_modules/@nuxt/content/dist/runtime/server.js:19:  const queryBuilder = queryCollection(event, collection);
+node_modules/@nuxt/content/dist/runtime/server.d.ts:11:export declare function queryCollectionNavigation<T extends keyof PageCollections>(event: H3Event, collection: T, fields?: Array<keyof PageCollections[T]>): ChainablePromise<T, ContentNavigationItem[]>;
+node_modules/@nuxt/content/dist/runtime/server.d.ts:12:export declare function queryCollectionItemSurroundings<T extends keyof PageCollections>(event: H3Event, collection: T, path: string, opts?: SurroundOptions<keyof PageCollections[T]>): ChainablePromise<T, ContentNavigationItem[]>;
+node_modules/@nuxt/content/dist/runtime/server.d.ts:13:export declare function queryCollectionSearchSections<T extends keyof PageCollections>(event: H3Event, collection: T, opts?: GenerateSearchSectionsOptions): ChainablePromise<T, {
+node_modules/@nuxt/content/dist/features/llms/runtime/server/routes/raw/[...slug].md.get.js:22:    page = await queryCollection(event, collection).path(path).first();
+node_modules/@nuxt/content/dist/runtime/client.js:11:export function queryCollectionNavigation(collection, fields) {
+node_modules/@nuxt/content/dist/runtime/client.js:14:export function queryCollectionItemSurroundings(collection, path, opts) {
+node_modules/@nuxt/content/dist/runtime/client.js:17:export function queryCollectionSearchSections(collection, opts) {
+node_modules/@nuxt/content/dist/runtime/client.js:32:  const queryBuilder = queryCollection(collection);
+node_modules/@nuxt/content/dist/runtime/nitro.js:3:  return server.queryCollection(event, collection);
+node_modules/@nuxt/content/dist/runtime/nitro.js:6:export const queryCollectionItemSurroundings = server.queryCollectionItemSurroundings;
+node_modules/@nuxt/content/dist/features/llms/runtime/server/content-llms.plugin.js:15:      const query = queryCollection(event, section.contentCollection).select("path", "title", "seo", "description").where("path", "NOT LIKE", "%/.navigation");
+node_modules/@nuxt/content/dist/features/llms/runtime/server/content-llms.plugin.js:46:      const query = queryCollection(event, section.contentCollection).where("path", "NOT LIKE", "%/.navigation");
+node_modules/@nuxt/content/dist/runtime/nitro.d.ts:19:export declare const queryCollectionItemSurroundings: typeof server.queryCollectionItemSurroundings;

@@ -197,7 +197,13 @@ Ordre recommandé (mettre à jour et tester une par une) :
   - RSS et JSON Feed migrés vers `queryCollection(event, 'articles')`.
   - `npm test` OK.
   - Blocage `@nuxtjs/sitemap` v6 traité ensuite dans `DEP-3`.
-  - Reste à migrer : pages Vue `queryContent`, `findSurround`, recherche, `_path`, schema Content complet et validation RSS/JSON Feed.
+  - DEP-2-C réalisé : `migration-nuxt4-dep-2-c-pages.md`.
+  - Schéma `articles` enrichi dans `content.config.ts` avec les champs frontmatter nécessaires (`date`, `updatedAt`, `tag`, SEO, images, conversion).
+  - `zod@3.25.76` ajouté en dépendance directe car le schéma Content l'importe explicitement.
+  - Pages et composants principaux migrés vers `queryCollection`, `queryCollectionItemSurroundings` et `path`.
+  - RSS, JSON Feed et sitemap revalidés après schéma complet.
+  - `npm test`, `npm run generate` et check SEO OK ; routes prerendered : 72.
+  - Reste à migrer avant clôture globale : recherche `AppSearchInput.vue` (`CONTENT-6`) et audit final des usages Content v2.
 - [x] **DEP-3** — Vérifier compatibilité `@nuxtjs/sitemap` 6.x avec Nuxt 4 ; mettre à jour vers 7.x si requis
   - DEP-2-B : nécessaire avant validation complète, car `@nuxtjs/sitemap` v6 importe encore `#content/server`.
   - Rapport : `migration-nuxt4-dep-3-sitemap.md`.
@@ -208,6 +214,7 @@ Ordre recommandé (mettre à jour et tester une par une) :
   - Routes articles sitemap vérifiées : 14 URLs `/eco-conception/` dans `.output/public/sitemap.xml`.
   - Warnings/erreurs non corrigés dans ce lot : warning `zeroRuntime`, sourcemap `nuxt:module-preload-polyfill`, circular chunk, pages Vue encore en `queryContent`, RSS/JSON Feed bloqués par le champ Content `date` non déclaré.
   - Prochaine étape : `DEP-2-C / Content pages APIs` et schéma Content complet.
+  - Les erreurs pages Vue et champ Content `date` ont été traitées ensuite dans `DEP-2-C`.
 - [ ] **DEP-4** — Vérifier compatibilité `@nuxt/image` ; mettre à jour si nécessaire
 - [ ] **DEP-5** — Mettre à jour `@nuxt/eslint` vers 1.x si requis par Nuxt 4
 - [x] **DEP-6** — Supprimer `"#internal/nuxt/paths": "./nuxt.paths.mjs"` de `package.json` `imports` — override interne Nuxt 3 probablement incompatible avec Nuxt 4
@@ -295,7 +302,9 @@ Fichiers qui **restent à la racine** (pas de déplacement) :
 | `pages/eco-conception/[slug].vue` | 140     | `queryContent('articles', route.params.slug).findOne()`                   | `queryCollection('articles').where('stem', '=', slug).first()`                   |
 | `components/HomeEcoArticles.vue`  | 50-54   | `queryContent('articles').only([...]).sort({ date: -1 }).limit(2).find()` | Idem index.vue                                                                   |
 
-- [ ] **CONTENT-1** — Migrer les 5 appels `queryContent()` → `queryCollection()` dans les fichiers ci-dessus
+- [x] **CONTENT-1** — Migrer les 5 appels `queryContent()` → `queryCollection()` dans les fichiers ci-dessus
+  - DEP-2-C : `pages/index.vue`, `pages/eco-conception/index.vue`, `pages/eco-conception/[slug].vue` et `components/HomeEcoArticles.vue` migrés.
+  - Exception restante hors liste : `components/AppSearchInput.vue`, reportée vers `CONTENT-6`.
 
 ##### 3.3.2 — `findSurround()` → `queryCollectionItemSurroundings()`
 
@@ -303,7 +312,8 @@ Fichiers qui **restent à la racine** (pas de déplacement) :
 | --------------------------------- | ------- | ------------------------------------------------------------------------------------------------------- |
 | `pages/eco-conception/[slug].vue` | 149-152 | `queryContent('articles').only(['title', '_path']).sort({ date: 1 }).findSurround(article.value._path)` |
 
-- [ ] **CONTENT-2** — Migrer `findSurround()` → `queryCollectionItemSurroundings()` avec la nouvelle syntaxe
+- [x] **CONTENT-2** — Migrer `findSurround()` → `queryCollectionItemSurroundings()` avec la nouvelle syntaxe
+  - DEP-2-C : page article migrée et `ArticleNavigation` adapté à `path`.
 
 ##### 3.3.3 — `serverQueryContent()` supprimé
 
@@ -348,7 +358,8 @@ Toutes les propriétés internes préfixées `_` sont renommées en Content v3.
 | `server/routes/feed.json.ts`      | `article._path` (ligne 29)                        |
 | `nuxt.config.ts`                  | `article._path` dans `sitemap.routes` (ligne 267) |
 
-- [ ] **CONTENT-7** — Remplacer `._path` par `.path` dans tous les fichiers listés (7 fichiers, ~12 occurrences)
+- [x] **CONTENT-7** — Remplacer `._path` par `.path` dans tous les fichiers listés (7 fichiers, ~12 occurrences)
+  - DEP-2-C : usages applicatifs listés remplacés ; les seules occurrences `_path` restantes sont des garde-fous ou historiques documentés dans les scripts.
 
 ##### 3.3.6 — `<ContentRenderer>` — API modifiée
 
@@ -356,7 +367,8 @@ Toutes les propriétés internes préfixées `_` sont renommées en Content v3.
 | --------------------------------- | ------- | ----------------------------------------------------- |
 | `pages/eco-conception/[slug].vue` | 106-111 | `<ContentRenderer v-if="article" :value="article" />` |
 
-- [ ] **CONTENT-8** — Vérifier que `<ContentRenderer :value="article" />` fonctionne toujours avec Content v3 — ⚠️ à tester manuellement, le composant est conservé mais son API peut avoir changé
+- [x] **CONTENT-8** — Vérifier que `<ContentRenderer :value="article" />` fonctionne toujours avec Content v3 — ⚠️ à tester manuellement, le composant est conservé mais son API peut avoir changé
+  - DEP-2-C : article généré vérifié, corps Markdown rendu et tests post-génération OK.
 
 ##### 3.3.7 — Configuration `content:` dans `nuxt.config.ts`
 
@@ -375,12 +387,14 @@ Content v3 utilise un fichier `content.config.ts` séparé pour définir les col
   - Collection minimale `articles` créée en `type: 'page'`.
   - Source : `{ include: 'articles/**/*.md', prefix: '/eco-conception' }`.
   - Schéma custom reporté pour ne pas ajouter de dépendance directe hors `@nuxt/content`.
+  - DEP-2-C : schéma enrichi ajouté avec `zod@3.25.76` en dépendance directe.
 - [x] **CONTENT-10** — Migrer la config `highlight` et `markdown` vers le nouveau format Content v3
   - Rapport : `migration-nuxt4-dep-2-a.md`
   - Config déplacée vers `content.build.markdown`.
   - `highlight.preload` remplacé par `highlight.langs`.
   - `content.experimental.sqliteConnector: 'native'` ajouté pour éviter `better-sqlite3`.
-- [ ] **CONTENT-11** — Vérifier que `article.body.toc.links` (utilisé dans `[slug].vue` pour le sommaire) est toujours disponible en v3
+- [x] **CONTENT-11** — Vérifier que `article.body.toc.links` (utilisé dans `[slug].vue` pour le sommaire) est toujours disponible en v3
+  - DEP-2-C : sommaire `Chapitres` vérifié dans la page article générée.
 
 ##### 3.3.8 — Composants supprimés
 
@@ -390,7 +404,8 @@ Content v3 utilise un fichier `content.config.ts` séparé pour définir les col
 
 Content v3 trie alphabétiquement par défaut (au lieu de numériquement). Vérifier que les `.sort({ date: -1 })` explicites suffisent.
 
-- [ ] **CONTENT-12** — Vérifier l'ordre de tri des articles après migration (les sorts explicites devraient suffire)
+- [x] **CONTENT-12** — Vérifier l'ordre de tri des articles après migration (les sorts explicites devraient suffire)
+  - DEP-2-C : requêtes migrées en `.order('date', 'DESC')`; RSS/JSON Feed vérifiés avec les articles les plus récents en tête.
 
 ---
 

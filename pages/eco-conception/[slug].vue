@@ -133,35 +133,31 @@ import { canonicalUrl, withTrailingSlash } from '~/utils/seo-url'
 
 const route = useRoute()
 const tagsStore = useTags()
+const articlePath = computed(() => `/eco-conception/${route.params.slug}`)
 
 // Fetch article data
 const { data: article } = await useAsyncData(
   `article-${route.params.slug}`,
-  () => queryContent('articles', route.params.slug).findOne(),
+  () => queryCollection('articles').path(articlePath.value).first(),
 )
 
 // Fetch prev/next articles
 const { data: surroundArticles } = await useAsyncData(
   `surround-${route.params.slug}`,
   () => {
-    if (!article.value?._path) return Promise.resolve([null, null])
+    if (!article.value?.path) return Promise.resolve([null, null])
 
-    return queryContent('articles')
-      .only(['title', '_path'])
-      .sort({ date: 1 })
-      .findSurround(article.value._path)
+    return queryCollectionItemSurroundings('articles', article.value.path, {
+      fields: ['title'],
+    }).order('date', 'ASC')
   },
 )
 
-// Transform article links from /articles/* to /eco-conception/*
 const transformArticleLink = (article) => {
-  if (!article || !article._path) return null
-  const normalizedPath = withTrailingSlash(
-    article._path.replace(/^\/articles\//, '/eco-conception/'),
-  )
+  if (!article || !article.path) return null
   return {
     ...article,
-    _path: normalizedPath,
+    path: withTrailingSlash(article.path),
   }
 }
 
