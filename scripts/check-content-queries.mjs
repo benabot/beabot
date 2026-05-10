@@ -16,7 +16,14 @@ const migratedContentFiles = [
   },
   {
     file: 'pages/eco-conception/index.vue',
-    patterns: [/queryCollection\('articles'\)/, /\.path\('\/eco-conception\/faq-eco-conception'\)/, /article\.path/, /tag/],
+    patterns: [
+      /queryCollection\('articles'\)/,
+      /\.path\('\/eco-conception\/faq-eco-conception'\)/,
+      /article\.path/,
+      /articleTags\(article\)/,
+      /body\.value/,
+      /faqBodyChildren/,
+    ],
     forbiddenPatterns: [/queryContent\(/, /findSurround/, /_path/, /\.only\(/],
   },
   {

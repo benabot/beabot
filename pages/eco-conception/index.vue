@@ -522,15 +522,18 @@ import { canonicalUrl, withTrailingSlash } from '~/utils/seo-url'
 type EcoArticle = {
   title?: string
   description?: string
-  tag?: string[]
+  tag?: string[] | string | null
   path?: string
   date?: string | Date
   updatedAt?: string | Date
 }
 
+type ContentNode = unknown
+
 type FaqArticle = EcoArticle & {
   body?: {
-    children?: any[]
+    children?: ContentNode[]
+    value?: ContentNode[]
   }
 }
 
@@ -714,8 +717,16 @@ function normalizeTagLabel(tag = '') {
   return tag.trim()
 }
 
+function articleTags(article: EcoArticle) {
+  const rawTags = article.tag
+
+  if (Array.isArray(rawTags)) return rawTags
+  if (typeof rawTags === 'string') return [rawTags]
+  return []
+}
+
 function articlePreviewTags(article: EcoArticle) {
-  return (article.tag || [])
+  return articleTags(article)
     .map((tag) => normalizeTagLabel(tag))
     .filter(Boolean)
 }
@@ -775,7 +786,7 @@ const filteredArticles = computed(() => {
     if (!query) return true
 
     const haystack = normalizeSearchText(
-      [article.title, article.description, ...(article.tag || [])]
+      [article.title, article.description, ...articlePreviewTags(article)]
         .filter(Boolean)
         .join(' '),
     )
@@ -814,30 +825,80 @@ function displayDate(article: EcoArticle) {
     : article.date
 }
 
-function getTagName(node: any) {
-  return node?.tag || node?.tagName || node?.name || ''
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value)
 }
 
-function isHeading(node: any, level: number) {
+function getTagName(node: ContentNode) {
+  if (Array.isArray(node) && typeof node[0] === 'string') return node[0]
+
+  if (!isRecord(node)) return ''
+
+  const tagName = node.tag || node.tagName || node.name
+  return typeof tagName === 'string' ? tagName : ''
+}
+
+function getNodeChildren(node: ContentNode): ContentNode[] {
+  if (!Array.isArray(node)) {
+    return isRecord(node) && Array.isArray(node.children) ? node.children : []
+  }
+
+  const [, maybeProps, ...children] = node
+  const hasProps = isRecord(maybeProps)
+
+  return hasProps ? children : node.slice(1)
+}
+
+function getNodeProps(node: ContentNode): Record<string, unknown> {
+  if (!Array.isArray(node)) {
+    return isRecord(node) && isRecord(node.props) ? node.props : {}
+  }
+
+  const maybeProps = node[1]
+  if (isRecord(maybeProps)) {
+    return maybeProps
+  }
+
+  return {}
+}
+
+function isHeading(node: ContentNode, level: number) {
   const tagName = getTagName(node)
   if (tagName === `h${level}`) return true
-  return node?.type === 'heading' && node?.depth === level
+  return isRecord(node) && node.type === 'heading' && node.depth === level
 }
 
-function extractPlainText(node: any): string {
+function extractPlainText(node: ContentNode): string {
   if (!node) return ''
   if (typeof node === 'string') return node
 
   if (Array.isArray(node)) {
-    return node.map((child) => extractPlainText(child)).join('')
+    const tagName = getTagName(node)
+    const childText = getNodeChildren(node).map((child) =>
+      extractPlainText(child),
+    )
+
+    if (tagName === 'br') return '\n'
+    if (tagName === 'p' || tagName === 'li') return childText.join('').trim()
+    if (tagName === 'ul' || tagName === 'ol') {
+      return childText
+        .map((item: string) => item.trim())
+        .filter(Boolean)
+        .join('\n')
+    }
+
+    return childText.join('')
   }
 
-  if (node.type === 'text') return node.value || ''
+  if (!isRecord(node)) return ''
+  if (node.type === 'text') {
+    return typeof node.value === 'string' ? node.value : ''
+  }
   if (node.type === 'comment') return ''
 
   const tagName = getTagName(node)
-  const children = node.children || []
-  const childText = children.map((child: any) => extractPlainText(child))
+  const children = getNodeChildren(node)
+  const childText = children.map((child) => extractPlainText(child))
 
   if (tagName === 'br') return '\n'
   if (tagName === 'p' || tagName === 'li') return childText.join('').trim()
@@ -855,12 +916,13 @@ function normalizeHeadingText(text: string) {
   return normalizeSearchText(text)
 }
 
-function shouldIgnoreNode(node: any) {
+function shouldIgnoreNode(node: ContentNode) {
   const tagName = getTagName(node)
   if (tagName === 'nav') return true
 
-  const className = node?.props?.class || ''
-  const id = node?.props?.id || ''
+  const props = getNodeProps(node)
+  const className = props.class || ''
+  const id = props.id || ''
 
   return (
     (typeof className === 'string' && className.includes('toc')) ||
@@ -878,7 +940,7 @@ const skippedFaqHeadings = new Set([
   'ressources',
 ])
 
-function buildFaqItems(bodyChildren: any[]) {
+function buildFaqItems(bodyChildren: ContentNode[]) {
   const items: Array<{ q: string; a: string }> = []
   let currentQuestion = ''
   let currentAnswerParts: string[] = []
@@ -935,8 +997,16 @@ function buildFaqItems(bodyChildren: any[]) {
   return items
 }
 
+function faqBodyChildren(article?: FaqArticle | null) {
+  const body = article?.body
+  if (!body) return []
+  if (Array.isArray(body.value)) return body.value
+  if (Array.isArray(body.children)) return body.children
+  return []
+}
+
 const faqPreviewItems = computed(() =>
-  buildFaqItems(faqArticle.value?.body?.children || []).slice(0, 4),
+  buildFaqItems(faqBodyChildren(faqArticle.value)).slice(0, 4),
 )
 
 function faqAnswerParagraphs(answer: string) {

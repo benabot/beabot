@@ -30,7 +30,7 @@ SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stabl
 
 - Base actuelle validée : Nuxt `4.4.2`, Nitro `2.13.3`, Vue `3.5.33`, Vite direct `6.4.1` (`7.3.2` côté builder Nuxt)
 - `future.compatibilityVersion: 4` actif
-- Génération statique validée après DEP-4 : 72 routes prerendered
+- Génération statique validée après FIX-PREVIEW éco-conception : 72 routes prerendered
 - Derniers commits documentaires :
   - `75d9207` — `docs: rafraichir baseline compat Nuxt 4`
   - `e1e6b6a` — `docs: cartographier migration Content v3`
@@ -43,29 +43,35 @@ SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stabl
 Branche : `chore/nuxt4-migration`
 
 Dernière décision :
-- NUXT4-DEV-READINESS réalisé le 10 mai 2026.
-- Résultat : correctifs hors périmètre classés avant merge `dev` / après preview / à exclure de la migration Nuxt 4.
+- FIX-PREVIEW éco-conception réalisé le 10 mai 2026.
+- Résultat : régressions visibles de `/eco-conception/` corrigées avant merge `dev`.
 - Version Nuxt : `4.4.2`.
 - Version Content : `@nuxt/content@3.13.0`.
 - Version Image : `@nuxt/image@2.0.0`.
 - Version sitemap : `@nuxtjs/sitemap@8.0.15`.
 - Version ESLint Nuxt : `@nuxt/eslint@1.15.2`.
-- Rapport : `migration-nuxt4-dev-readiness.md`.
+- Rapport : `migration-nuxt4-fix-eco-conception-page.md`.
 - Changements appliques :
-  - aucun changement applicatif ;
-  - décision documentaire sur les correctifs à traiter avant merge `dev` ;
-  - aucune correction opportuniste appliquee.
+  - normalisation locale de `article.tag` sur `pages/eco-conception/index.vue` ;
+  - recherche locale basée sur `title`, `description` et tags normalisés ;
+  - FAQ lue via Content v3 `body.value`, avec compatibilité `body.children` ;
+  - garde-fou Content ciblé dans `scripts/check-content-queries.mjs`.
 - Validation :
   - `npm test` : OK ;
   - `npm run generate` : OK ;
   - check SEO : OK ;
   - routes prerendered : 72 ;
-  - `npm run lint:js` : OK, 0 erreur, 101 warnings historiques ;
+  - `npm run lint:js` : OK, 0 erreur, 94 warnings historiques ;
   - `npm run lint` : bloque par `lint:prettier` sur formatages historiques et `audit-unused-depcheck.json` non JSON, non corrige dans DEP-5 ;
   - `npm audit --audit-level=moderate` : 11 vulnerabilites documentees, aucun `npm audit fix` lance ;
   - RSS : `/rss.xml` genere ;
   - JSON Feed : `/feed.json` genere ;
   - sitemap : 13 URLs articles + archive `/eco-conception/`.
+- Vérification navigateur `/eco-conception/` :
+  - filtres `Tout`, `Éco-conception`, `WordPress`, `Performance` OK ;
+  - recherches `WordPress`, `images` et sans résultat OK ;
+  - FAQ visible avec 4 items ;
+  - aucune URL `/articles/`, `[object Object]` ou `undefined` détectée.
 - Audit URLs :
   - aucune URL `/articles/`, `[object Object]` ou `undefined` dans les sorties Content generees ;
   - 5 liens Markdown internes sans slash final detectes dans un article existant, reportes hors DEP-2 car les changements editoriaux etaient exclus.
@@ -82,10 +88,11 @@ Dernière décision :
   - merger ensuite vers `dev` manuellement pour valider la preview Netlify.
 
 Contraintes maintenues :
-- Aucun déplacement vers `app/` dans NUXT4-DEV-READINESS.
-- Aucun changement CSS/design fait dans NUXT4-DEV-READINESS.
-- Aucune correction globale lint, Prettier ou chunks faite dans NUXT4-DEV-READINESS.
-- Aucun contenu editorial ni lien Markdown corrige dans NUXT4-DEV-READINESS.
+- Aucun déplacement vers `app/` dans FIX-PREVIEW.
+- Aucun changement CSS/design fait dans FIX-PREVIEW.
+- Aucune correction globale lint, Prettier ou chunks faite dans FIX-PREVIEW.
+- Aucun contenu editorial ni lien Markdown corrige dans FIX-PREVIEW.
+- Aucune dépendance modifiée dans FIX-PREVIEW.
 - Aucun merge vers `dev` ou `master`.
 - `npm audit fix` non lance.
 
@@ -202,6 +209,12 @@ Contraintes maintenues :
   - seul correctif recommande avant merge `dev` : documentation stack minimale pour `AGENTS.md`, `CLAUDE.md` et éventuellement `README.md`
   - peut attendre après preview : lint Prettier global, `audit-unused-depcheck.json`, audit sécurité npm, liens Markdown internes sans slash final, warnings ESLint historiques, warnings sourcemap/circular chunk, recherche UI, SCSS-6
   - à ne pas faire dans cette migration : `app/` sans incompatibilité réelle, refactor CSS/design, `npm audit fix`, correction lint globale, merge vers `master`
+- ✅ FIX-PREVIEW éco-conception realise :
+  - filtres par thème, recherche locale et FAQ de `/eco-conception/` réparés après Content v3
+  - `npm test` OK, `npm run generate` OK, check SEO OK, `npm run lint:js` OK
+  - routes prerendered : 72
+  - vérification navigateur locale OK sur les filtres, recherches, FAQ et URLs publiques
+  - aucune dépendance, aucun CSS/design, aucun contenu éditorial et aucun merge modifiés
 
 **Services freelance — relief visuel & maillage (28 avril 2026)** — Branche `feat/design-services`.
 

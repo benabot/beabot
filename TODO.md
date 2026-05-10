@@ -256,6 +256,13 @@ Ordre recommandé (mettre à jour et tester une par une) :
   - Décision avant merge `dev` : faire uniquement un lot documentaire minimal pour aligner `AGENTS.md`, `CLAUDE.md` et éventuellement `README.md` avec la stack Nuxt 4 réelle.
   - À reporter après preview : lint Prettier global, `audit-unused-depcheck.json`, audit sécurité npm, liens Markdown sans slash final, warnings ESLint historiques, warnings sourcemap/circular chunk, recherche UI, SCSS-6.
   - À ne pas faire dans la migration Nuxt 4 : déplacement `app/`, refactor CSS/design, `npm audit fix`, correction lint globale ou merge direct vers `master`.
+- [x] **FIX-PREVIEW éco-conception** — Réparer les régressions visibles de `/eco-conception/` après Content v3
+  - Rapport : `migration-nuxt4-fix-eco-conception-page.md`.
+  - Filtres par thème et recherche locale réparés via normalisation locale de `article.tag`.
+  - FAQ réparée via lecture Content v3 `body.value`, avec compatibilité `body.children`.
+  - `npm test`, `npm run generate`, check SEO et `npm run lint:js` validés ; routes prerendered : 72.
+  - Vérification navigateur locale effectuée sur `/eco-conception/` : filtres `Tout`, `Éco-conception`, `WordPress`, `Performance`, recherches avec/sans résultat, FAQ visible.
+  - Aucune dépendance modifiée ; aucun merge vers `dev` ou `master`.
 - [x] **DEP-6** — Supprimer `"#internal/nuxt/paths": "./nuxt.paths.mjs"` de `package.json` `imports` — override interne Nuxt 3 probablement incompatible avec Nuxt 4
   - Rapport : `migration-nuxt4-dep-6.md`
   - Suppression réalisée avant `DEP-1`.
