@@ -161,38 +161,6 @@ export default defineNuxtConfig({
           drop_debugger: true,
         },
       },
-      rollupOptions: {
-        output: {
-          manualChunks: (id) => {
-            // Group Vue core together
-            if (
-              id.includes('node_modules/vue') ||
-              id.includes('node_modules/@vue')
-            ) {
-              return 'vendor-vue'
-            }
-            // Group Nuxt core modules
-            if (
-              id.includes('node_modules/@nuxt') ||
-              id.includes('node_modules/nuxt')
-            ) {
-              return 'vendor-nuxt'
-            }
-            // Group content/markdown related
-            if (
-              id.includes('shiki') ||
-              id.includes('markdown') ||
-              id.includes('@nuxt/content')
-            ) {
-              return 'vendor-content'
-            }
-            // Group all other node_modules into vendor
-            if (id.includes('node_modules')) {
-              return 'vendor-libs'
-            }
-          },
-        },
-      },
     },
   },
 
