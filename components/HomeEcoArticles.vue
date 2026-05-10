@@ -10,7 +10,7 @@
     <div class="container-blog__box">
       <div
         v-for="(article, index) in latestArticles"
-        :key="article._path || index"
+        :key="article.path || index"
         class="boite-para__para"
         :class="articleCardClass(index)"
       >
@@ -47,20 +47,18 @@ import { computed } from 'vue'
 import { withTrailingSlash } from '~/utils/seo-url'
 
 const { data: articles } = await useAsyncData('home-latest-eco-articles', () =>
-  queryContent('articles')
-    .only(['title', 'description', 'tag', '_path', 'date'])
-    .sort({ date: -1 })
+  queryCollection('articles')
+    .select('title', 'description', 'tag', 'path', 'date')
+    .order('date', 'DESC')
     .limit(2)
-    .find()
+    .all()
 )
 
 const latestArticles = computed(() => articles.value || [])
 
 function articleLink(article) {
-  if (!article || !article._path) return '/eco-conception/'
-  return withTrailingSlash(
-    article._path.replace(/^\/articles\//, '/eco-conception/')
-  )
+  if (!article || !article.path) return '/eco-conception/'
+  return withTrailingSlash(article.path)
 }
 
 function articleSubtitle(article) {

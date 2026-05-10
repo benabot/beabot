@@ -68,9 +68,16 @@ check(
 console.log('📦 Validating package.json...')
 const pkg = readJSON('package.json')
 if (pkg) {
+  const nuxtVersion = pkg.dependencies?.nuxt || ''
+  const isSupportedNuxtVersion =
+    nuxtVersion.startsWith('^3') ||
+    nuxtVersion.startsWith('3') ||
+    nuxtVersion.startsWith('^4') ||
+    nuxtVersion.startsWith('4')
+
   check(
-    pkg.dependencies?.nuxt?.startsWith('^3'),
-    '❌ Nuxt 3 not in dependencies',
+    isSupportedNuxtVersion,
+    `❌ Nuxt 3/4 not in dependencies: ${nuxtVersion || 'missing'}`,
   )
   check(pkg.dependencies?.vue?.startsWith('^3'), '❌ Vue 3 not in dependencies')
   check(

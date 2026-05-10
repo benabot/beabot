@@ -277,7 +277,7 @@
         <div class="eco-featured-grid">
           <article
             v-for="article in featuredArticles"
-            :key="article._path"
+            :key="article.path"
             class="eco-resource-card"
           >
             <p class="eco-resource-card__meta">
@@ -371,11 +371,11 @@
           <div class="eco-archive-grid">
             <article
               v-for="article in filteredArticles"
-              :key="article._path"
+              :key="article.path"
               class="eco-archive-card"
             >
               <p class="eco-archive-card__meta">
-                {{ formatDate((article.updatedAt && article.updatedAt > (article.date ?? '')) ? article.updatedAt : article.date) }}
+                {{ formatDate(displayDate(article)) }}
               </p>
               <h3>
                 <AppLink :to="articleLink(article)">
@@ -387,7 +387,7 @@
                 <div class="eco-tag-list" aria-label="Tags de l’article">
                   <span
                     v-for="tag in articlePreviewTags(article)"
-                    :key="`${article._path}-${tag}`"
+                    :key="`${article.path}-${tag}`"
                     class="eco-tag"
                   >
                     {{ tag }}
@@ -522,15 +522,18 @@ import { canonicalUrl, withTrailingSlash } from '~/utils/seo-url'
 type EcoArticle = {
   title?: string
   description?: string
-  tag?: string[]
-  _path?: string
-  date?: string
-  updatedAt?: string
+  tag?: string[] | string | null
+  path?: string
+  date?: string | Date
+  updatedAt?: string | Date
 }
+
+type ContentNode = unknown
 
 type FaqArticle = EcoArticle & {
   body?: {
-    children?: any[]
+    children?: ContentNode[]
+    value?: ContentNode[]
   }
 }
 
@@ -636,9 +639,9 @@ const benefits = [
 ] as const
 
 const featuredResourcePaths = [
-  '/articles/audit-eco-conception',
-  '/articles/wordpress-eco-conception',
-  '/articles/theme-wordpress-eco-conception',
+  '/eco-conception/audit-eco-conception',
+  '/eco-conception/wordpress-eco-conception',
+  '/eco-conception/theme-wordpress-eco-conception',
 ] as const
 
 const config = useRuntimeConfig()
@@ -650,15 +653,18 @@ const pageDescription =
 const { data: articles } = await useAsyncData<EcoArticle[]>(
   'eco-pillar-articles',
   () =>
-    queryContent('articles')
-      .only(['title', 'description', 'tag', '_path', 'date', 'updatedAt'])
-      .sort({ date: -1 })
-      .find(),
+    queryCollection('articles')
+      .select('title', 'description', 'tag', 'path', 'date', 'updatedAt')
+      .order('date', 'DESC')
+      .all(),
 )
 
 const { data: faqArticle } = await useAsyncData<FaqArticle | null>(
   'eco-pillar-faq',
-  () => queryContent('articles', 'faq-eco-conception').findOne(),
+  () =>
+    queryCollection('articles')
+      .path('/eco-conception/faq-eco-conception')
+      .first(),
 )
 
 useSeoMeta({
@@ -682,10 +688,8 @@ const searchQuery = ref('')
 const allArticles = computed(() => articles.value || [])
 
 function articleLink(article: EcoArticle) {
-  if (!article || !article._path) return '/eco-conception/'
-  return withTrailingSlash(
-    article._path.replace(/^\/articles\//, '/eco-conception/'),
-  )
+  if (!article || !article.path) return '/eco-conception/'
+  return withTrailingSlash(article.path)
 }
 
 function normalizeSearchText(value = '') {
@@ -713,8 +717,16 @@ function normalizeTagLabel(tag = '') {
   return tag.trim()
 }
 
+function articleTags(article: EcoArticle) {
+  const rawTags = article.tag
+
+  if (Array.isArray(rawTags)) return rawTags
+  if (typeof rawTags === 'string') return [rawTags]
+  return []
+}
+
 function articlePreviewTags(article: EcoArticle) {
-  return (article.tag || [])
+  return articleTags(article)
     .map((tag) => normalizeTagLabel(tag))
     .filter(Boolean)
 }
@@ -758,7 +770,7 @@ const availableTags = computed(() => {
 
 const featuredArticles = computed(() =>
   featuredResourcePaths.flatMap((path) => {
-    const article = allArticles.value.find((entry) => entry._path === path)
+    const article = allArticles.value.find((entry) => entry.path === path)
     return article ? [article] : []
   }),
 )
@@ -774,7 +786,7 @@ const filteredArticles = computed(() => {
     if (!query) return true
 
     const haystack = normalizeSearchText(
-      [article.title, article.description, ...(article.tag || [])]
+      [article.title, article.description, ...articlePreviewTags(article)]
         .filter(Boolean)
         .join(' '),
     )
@@ -797,7 +809,7 @@ watch(
   { immediate: true },
 )
 
-function formatDate(date?: string) {
+function formatDate(date?: string | Date) {
   if (!date) return ''
   return new Date(date).toLocaleDateString('fr-FR', {
     day: 'numeric',
@@ -806,30 +818,87 @@ function formatDate(date?: string) {
   })
 }
 
-function getTagName(node: any) {
-  return node?.tag || node?.tagName || node?.name || ''
+function displayDate(article: EcoArticle) {
+  if (!article.updatedAt || !article.date) return article.updatedAt || article.date
+  return new Date(article.updatedAt) > new Date(article.date)
+    ? article.updatedAt
+    : article.date
 }
 
-function isHeading(node: any, level: number) {
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value)
+}
+
+function getTagName(node: ContentNode) {
+  if (Array.isArray(node) && typeof node[0] === 'string') return node[0]
+
+  if (!isRecord(node)) return ''
+
+  const tagName = node.tag || node.tagName || node.name
+  return typeof tagName === 'string' ? tagName : ''
+}
+
+function getNodeChildren(node: ContentNode): ContentNode[] {
+  if (!Array.isArray(node)) {
+    return isRecord(node) && Array.isArray(node.children) ? node.children : []
+  }
+
+  const [, maybeProps, ...children] = node
+  const hasProps = isRecord(maybeProps)
+
+  return hasProps ? children : node.slice(1)
+}
+
+function getNodeProps(node: ContentNode): Record<string, unknown> {
+  if (!Array.isArray(node)) {
+    return isRecord(node) && isRecord(node.props) ? node.props : {}
+  }
+
+  const maybeProps = node[1]
+  if (isRecord(maybeProps)) {
+    return maybeProps
+  }
+
+  return {}
+}
+
+function isHeading(node: ContentNode, level: number) {
   const tagName = getTagName(node)
   if (tagName === `h${level}`) return true
-  return node?.type === 'heading' && node?.depth === level
+  return isRecord(node) && node.type === 'heading' && node.depth === level
 }
 
-function extractPlainText(node: any): string {
+function extractPlainText(node: ContentNode): string {
   if (!node) return ''
   if (typeof node === 'string') return node
 
   if (Array.isArray(node)) {
-    return node.map((child) => extractPlainText(child)).join('')
+    const tagName = getTagName(node)
+    const childText = getNodeChildren(node).map((child) =>
+      extractPlainText(child),
+    )
+
+    if (tagName === 'br') return '\n'
+    if (tagName === 'p' || tagName === 'li') return childText.join('').trim()
+    if (tagName === 'ul' || tagName === 'ol') {
+      return childText
+        .map((item: string) => item.trim())
+        .filter(Boolean)
+        .join('\n')
+    }
+
+    return childText.join('')
   }
 
-  if (node.type === 'text') return node.value || ''
+  if (!isRecord(node)) return ''
+  if (node.type === 'text') {
+    return typeof node.value === 'string' ? node.value : ''
+  }
   if (node.type === 'comment') return ''
 
   const tagName = getTagName(node)
-  const children = node.children || []
-  const childText = children.map((child: any) => extractPlainText(child))
+  const children = getNodeChildren(node)
+  const childText = children.map((child) => extractPlainText(child))
 
   if (tagName === 'br') return '\n'
   if (tagName === 'p' || tagName === 'li') return childText.join('').trim()
@@ -847,12 +916,13 @@ function normalizeHeadingText(text: string) {
   return normalizeSearchText(text)
 }
 
-function shouldIgnoreNode(node: any) {
+function shouldIgnoreNode(node: ContentNode) {
   const tagName = getTagName(node)
   if (tagName === 'nav') return true
 
-  const className = node?.props?.class || ''
-  const id = node?.props?.id || ''
+  const props = getNodeProps(node)
+  const className = props.class || ''
+  const id = props.id || ''
 
   return (
     (typeof className === 'string' && className.includes('toc')) ||
@@ -870,7 +940,7 @@ const skippedFaqHeadings = new Set([
   'ressources',
 ])
 
-function buildFaqItems(bodyChildren: any[]) {
+function buildFaqItems(bodyChildren: ContentNode[]) {
   const items: Array<{ q: string; a: string }> = []
   let currentQuestion = ''
   let currentAnswerParts: string[] = []
@@ -927,8 +997,16 @@ function buildFaqItems(bodyChildren: any[]) {
   return items
 }
 
+function faqBodyChildren(article?: FaqArticle | null) {
+  const body = article?.body
+  if (!body) return []
+  if (Array.isArray(body.value)) return body.value
+  if (Array.isArray(body.children)) return body.children
+  return []
+}
+
 const faqPreviewItems = computed(() =>
-  buildFaqItems(faqArticle.value?.body?.children || []).slice(0, 4),
+  buildFaqItems(faqBodyChildren(faqArticle.value)).slice(0, 4),
 )
 
 function faqAnswerParagraphs(answer: string) {

@@ -299,7 +299,7 @@
         <div class="article-grid">
           <article
             v-for="article in latestArticles"
-            :key="article._path"
+            :key="article.path"
             class="article-card"
           >
             <p class="article-card__tags">
@@ -356,8 +356,8 @@ type HomeArticle = {
   title?: string
   description?: string
   tag?: string[]
-  _path?: string
-  date?: string
+  path?: string
+  date?: string | Date
 }
 
 const services = [
@@ -426,11 +426,11 @@ const featuredProjects = computed(() =>
 const { data: articles } = await useAsyncData<HomeArticle[]>(
   'home-v3-latest-articles',
   () =>
-    queryContent('articles')
-      .only(['title', 'description', 'tag', '_path', 'date'])
-      .sort({ date: -1 })
+    queryCollection('articles')
+      .select('title', 'description', 'tag', 'path', 'date')
+      .order('date', 'DESC')
       .limit(2)
-      .find(),
+      .all(),
 )
 
 const latestArticles = computed(() => articles.value || [])
@@ -454,10 +454,8 @@ function projectPreviewTags(project: { tags: string[] }) {
 }
 
 function articleLink(article: HomeArticle) {
-  if (!article || !article._path) return '/eco-conception/'
-  return withTrailingSlash(
-    article._path.replace(/^\/articles\//, '/eco-conception/'),
-  )
+  if (!article || !article.path) return '/eco-conception/'
+  return withTrailingSlash(article.path)
 }
 
 function articlePreviewTags(article: HomeArticle) {

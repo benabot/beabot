@@ -1,3 +1,0 @@
-server/routes/feed.json.ts
-server/routes/robots.txt.ts
-server/routes/rss.xml.ts

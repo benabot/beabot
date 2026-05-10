@@ -1,6 +1,0 @@
-   64478 .output/public/index.html
-  106471 .output/public/eco-conception/index.html
-   81263 .output/public/portfolio/index.html
-   66970 .output/public/services/index.html
-   44188 .output/public/contact/index.html
-  363370 total
