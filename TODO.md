@@ -251,6 +251,11 @@ Ordre recommandé (mettre à jour et tester une par une) :
   - Décision : branche cohérente pour validation preview ; ne pas merger directement dans `dev` ou `master` sans preview/revue.
   - Déplacement vers `app/` non requis avant preview tant que Nuxt 4 fonctionne avec l'arborescence actuelle.
   - Warnings restants reportés en lots séparés : sitemap `zeroRuntime`, sourcemap, circular chunk, lint Prettier, npm audit.
+- [x] **NUXT4-DEV-READINESS** — Décider les correctifs nécessaires avant merge vers `dev`
+  - Rapport : `migration-nuxt4-dev-readiness.md`.
+  - Décision avant merge `dev` : faire uniquement un lot documentaire minimal pour aligner `AGENTS.md`, `CLAUDE.md` et éventuellement `README.md` avec la stack Nuxt 4 réelle.
+  - À reporter après preview : lint Prettier global, `audit-unused-depcheck.json`, audit sécurité npm, liens Markdown sans slash final, warnings ESLint historiques, warnings sourcemap/circular chunk, recherche UI, SCSS-6.
+  - À ne pas faire dans la migration Nuxt 4 : déplacement `app/`, refactor CSS/design, `npm audit fix`, correction lint globale ou merge direct vers `master`.
 - [x] **DEP-6** — Supprimer `"#internal/nuxt/paths": "./nuxt.paths.mjs"` de `package.json` `imports` — override interne Nuxt 3 probablement incompatible avec Nuxt 4
   - Rapport : `migration-nuxt4-dep-6.md`
   - Suppression réalisée avant `DEP-1`.

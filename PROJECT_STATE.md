@@ -6,14 +6,15 @@
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
-1. **Preview Nuxt 4** — Déployer/valider une preview Netlify de `chore/nuxt4-migration` avant toute décision de merge vers `dev`.
-2. **Documentation stack Nuxt 4** — Mettre a jour dans un lot separe `README.md`, `AGENTS.md`, `CLAUDE.md` et les descriptions de skills qui mentionnent encore Nuxt 3 / Content v2 / sitemap v6.
-3. **Recherche UI / composant orphelin** — Si `AppSearchInput.vue` doit redevenir visible, choisir une page hote et faire une verification UX dediee ; sinon documenter son statut orphelin dans un lot separe.
-4. **URL hygiene articles Markdown** — Corriger dans un lot dedie les 5 liens internes d'article sans slash final detectes pendant `DEP-2-E`, sans melanger avec les migrations de dependances.
-5. **Lint global repo-wide** — `npm run lint:js` fonctionne avec la flat config Nuxt ESLint v1, mais `npm run lint` reste bloque par `lint:prettier` sur des formatages historiques et `audit-unused-depcheck.json` non JSON ; a traiter separement.
-6. **Audit securite npm** — `npm audit --audit-level=moderate` signale 11 vulnerabilites ; ne pas lancer `npm audit fix` sans lot dedie.
-7. **DIR-* app directory** — Ne pas deplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dedie uniquement si une incompatibilite reelle apparait.
-8. **SCSS-6** — Ne pas supprimer SCSS tout de suite. Ouvrir une branche dédiée uniquement si un lot CSS moderne sûr est identifié.
+1. **Documentation stack Nuxt 4 avant merge dev** — Mettre a jour minimalement `AGENTS.md`, `CLAUDE.md` et éventuellement `README.md` pour éviter que les agents travaillent encore avec la stack Nuxt 3 / Content v2 / sitemap v6.
+2. **Validation finale pre-merge dev** — Après le lot documentaire : `npm test`, `npm run generate`, check SEO et `npm run lint:js`, puis `git status --short`.
+3. **Preview Nuxt 4** — Merger ensuite vers `dev` manuellement pour déclencher/valider la preview Netlify ; ne pas merger vers `master` avant validation.
+4. **Recherche UI / composant orphelin** — Si `AppSearchInput.vue` doit redevenir visible, choisir une page hote et faire une verification UX dediee ; sinon documenter son statut orphelin dans un lot separe.
+5. **URL hygiene articles Markdown** — Corriger dans un lot dedie les 5 liens internes d'article sans slash final detectes pendant `DEP-2-E`, sans melanger avec les migrations de dependances.
+6. **Lint global repo-wide** — `npm run lint:js` fonctionne avec la flat config Nuxt ESLint v1, mais `npm run lint` reste bloque par `lint:prettier` sur des formatages historiques et `audit-unused-depcheck.json` non JSON ; a traiter separement.
+7. **Audit securite npm** — `npm audit --audit-level=moderate` signale 11 vulnerabilites ; ne pas lancer `npm audit fix` sans lot dedie.
+8. **DIR-* app directory** — Ne pas deplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dedie uniquement si une incompatibilite reelle apparait.
+9. **SCSS-6** — Ne pas supprimer SCSS tout de suite. Ouvrir une branche dédiée uniquement si un lot CSS moderne sûr est identifié.
 
 ---
 
@@ -42,17 +43,17 @@ SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stabl
 Branche : `chore/nuxt4-migration`
 
 Dernière décision :
-- NUXT4-FINAL-AUDIT réalisé le 10 mai 2026.
-- Résultat : branche `chore/nuxt4-migration` cohérente après DEP-1 à DEP-5, prête pour validation preview.
+- NUXT4-DEV-READINESS réalisé le 10 mai 2026.
+- Résultat : correctifs hors périmètre classés avant merge `dev` / après preview / à exclure de la migration Nuxt 4.
 - Version Nuxt : `4.4.2`.
 - Version Content : `@nuxt/content@3.13.0`.
 - Version Image : `@nuxt/image@2.0.0`.
 - Version sitemap : `@nuxtjs/sitemap@8.0.15`.
 - Version ESLint Nuxt : `@nuxt/eslint@1.15.2`.
-- Rapport : `migration-nuxt4-final-audit.md`.
+- Rapport : `migration-nuxt4-dev-readiness.md`.
 - Changements appliques :
   - aucun changement applicatif ;
-  - audit final des versions, anciennes APIs, config Nuxt, routes, feeds, SEO, lint JS, npm audit et documentation obsolète ;
+  - décision documentaire sur les correctifs à traiter avant merge `dev` ;
   - aucune correction opportuniste appliquee.
 - Validation :
   - `npm test` : OK ;
@@ -76,14 +77,15 @@ Dernière décision :
   - sourcemap `nuxt:module-preload-polyfill` ;
   - circular chunk `vendor-nuxt -> vendor-libs -> vendor-nuxt`.
 - Prochaine étape :
-  - valider une preview Netlify de `chore/nuxt4-migration` avant toute decision de merge ;
-  - ne pas deplacer vers `app/` avant preview, car aucune incompatibilite Nuxt 4 ne l'impose aujourd'hui.
+  - faire un lot documentaire minimal `AGENTS.md` / `CLAUDE.md` / éventuellement `README.md` avant merge `dev` ;
+  - relancer `npm test`, `npm run generate`, check SEO et `npm run lint:js` ;
+  - merger ensuite vers `dev` manuellement pour valider la preview Netlify.
 
 Contraintes maintenues :
-- Aucun déplacement vers `app/` dans NUXT4-FINAL-AUDIT.
-- Aucun changement CSS/design fait dans NUXT4-FINAL-AUDIT.
-- Aucune correction globale lint, Prettier ou chunks faite dans NUXT4-FINAL-AUDIT.
-- Aucun contenu editorial ni lien Markdown corrige dans NUXT4-FINAL-AUDIT.
+- Aucun déplacement vers `app/` dans NUXT4-DEV-READINESS.
+- Aucun changement CSS/design fait dans NUXT4-DEV-READINESS.
+- Aucune correction globale lint, Prettier ou chunks faite dans NUXT4-DEV-READINESS.
+- Aucun contenu editorial ni lien Markdown corrige dans NUXT4-DEV-READINESS.
 - Aucun merge vers `dev` ou `master`.
 - `npm audit fix` non lance.
 
@@ -196,6 +198,10 @@ Contraintes maintenues :
   - `npm audit --audit-level=moderate` documente 11 vulnerabilites, sans `npm audit fix`
   - decision : branche prete pour validation preview, mais pas pour merge direct sans preview/revue
   - decision : pas de deplacement vers `app/` avant preview tant que l'arborescence actuelle reste validee
+- ✅ NUXT4-DEV-READINESS realise :
+  - seul correctif recommande avant merge `dev` : documentation stack minimale pour `AGENTS.md`, `CLAUDE.md` et éventuellement `README.md`
+  - peut attendre après preview : lint Prettier global, `audit-unused-depcheck.json`, audit sécurité npm, liens Markdown internes sans slash final, warnings ESLint historiques, warnings sourcemap/circular chunk, recherche UI, SCSS-6
+  - à ne pas faire dans cette migration : `app/` sans incompatibilité réelle, refactor CSS/design, `npm audit fix`, correction lint globale, merge vers `master`
 
 **Services freelance — relief visuel & maillage (28 avril 2026)** — Branche `feat/design-services`.
 
