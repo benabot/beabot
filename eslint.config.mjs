@@ -1,0 +1,30 @@
+import { createConfigForNuxt } from '@nuxt/eslint-config/flat'
+
+export default createConfigForNuxt().append({
+  rules: {
+    'vue/multi-word-component-names': [
+      'error',
+      {
+        ignores: [
+          '404',
+          '[slug]',
+          'index',
+          'Boutoncta',
+          'Footer',
+          'Oeuf',
+          'Oeuf.server',
+          'Petittitre',
+          'default',
+          'error',
+          'greenlight',
+          'portfolio',
+          'services',
+          'siturem',
+        ],
+      },
+    ],
+    '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/no-unused-vars': 'warn',
+    'no-unused-vars': 'warn',
+  },
+})

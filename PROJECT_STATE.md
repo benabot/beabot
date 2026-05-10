@@ -8,11 +8,10 @@
 
 1. **Recherche UI / composant orphelin** — Si `AppSearchInput.vue` doit redevenir visible, choisir une page hote et faire une verification UX dediee ; sinon documenter son statut orphelin dans un lot separe.
 2. **URL hygiene articles Markdown** — Corriger dans un lot dedie les 5 liens internes d'article sans slash final detectes pendant `DEP-2-E`, sans melanger avec les migrations de dependances.
-3. **DEP-5 / ESLint** — Traiter `@nuxt/eslint` séparément, probablement en dernier parmi les dépendances sensibles.
+3. **Lint global repo-wide** — `npm run lint:js` fonctionne avec la flat config Nuxt ESLint v1, mais `npm run lint` reste bloque par `lint:prettier` sur des formatages historiques et `audit-unused-depcheck.json` non JSON ; a traiter separement.
 4. **CONFIG-* restants selon besoin** — Les options Nuxt 4 ont ete auditees ; ne corriger que si un warning futur ou une mise a jour de module l'exige.
 5. **DIR-* app directory** — Ne pas deplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dedie si besoin.
-6. **Lint global repo-wide** — `npm run lint` reste bloqué par des warnings/formatages historiques hors périmètre ; à traiter séparément.
-7. **SCSS-6** — Ne pas supprimer SCSS tout de suite. Ouvrir une branche dédiée uniquement si un lot CSS moderne sûr est identifié.
+6. **SCSS-6** — Ne pas supprimer SCSS tout de suite. Ouvrir une branche dédiée uniquement si un lot CSS moderne sûr est identifié.
 
 ---
 
@@ -41,45 +40,45 @@ SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stabl
 Branche : `chore/nuxt4-migration`
 
 Dernière décision :
-- DEP-4 réalisé le 10 mai 2026.
-- Résultat : `@nuxt/image` migré vers `2.0.0` pour Nuxt 4.
+- DEP-5 réalisé le 10 mai 2026.
+- Résultat : `@nuxt/eslint` migré vers `1.15.2` pour Nuxt 4.
 - Version Nuxt : `4.4.2`.
 - Version Content : `@nuxt/content@3.13.0`.
 - Version Image : `@nuxt/image@2.0.0`.
 - Version sitemap : `@nuxtjs/sitemap@8.0.15`.
-- Rapport : `migration-nuxt4-dep-4-image.md`.
+- Version ESLint Nuxt : `@nuxt/eslint@1.15.2`.
+- Rapport : `migration-nuxt4-dep-5-eslint.md`.
 - Changements appliques :
-  - seule dependance directe modifiee : `@nuxt/image` ;
-  - `image.provider: 'none'` ajoute dans `nuxt.config.ts` pour eviter la route IPX, car le projet n'utilise pas `NuxtImg` / `NuxtPicture` aujourd'hui ;
-  - configuration existante conservee : qualite, WebP, breakpoints et presets ;
-  - pages image cles verifiees dans la sortie statique.
+  - seule dependance directe cible modifiee : `@nuxt/eslint` ;
+  - migration minimale vers `eslint.config.mjs` ;
+  - ancienne `.eslintrc.cjs` supprimee car incompatible avec l'export ESM de `@nuxt/eslint-config` v1 ;
+  - script `lint:js` simplifie en `eslint .` ;
+  - regles projet conservees : exception `vue/multi-word-component-names` et warnings non bloquants pour les usages historiques `any` / variables inutilisees.
 - Validation :
   - `npm test` : OK ;
   - `npm run generate` : OK ;
   - check SEO : OK ;
   - routes prerendered : 72 ;
+  - `npm run lint:js` : OK, 0 erreur, 101 warnings historiques ;
+  - `npm run lint` : bloque par `lint:prettier` sur formatages historiques et `audit-unused-depcheck.json` non JSON, non corrige dans DEP-5 ;
   - RSS : `/rss.xml` genere ;
   - JSON Feed : `/feed.json` genere ;
   - sitemap : 13 URLs articles + archive `/eco-conception/`.
 - Audit URLs :
   - aucune URL `/articles/`, `[object Object]` ou `undefined` dans les sorties Content generees ;
   - 5 liens Markdown internes sans slash final detectes dans un article existant, reportes hors DEP-2 car les changements editoriaux etaient exclus.
-- Audit images :
-  - home, portfolio, `/apps/`, pages apps et Greenlight verifiees ;
-  - aucune image locale manquante detectee dans `.output/public` sur les pages controlees.
 - Warnings non bloquants :
   - warning sitemap `zeroRuntime` ;
   - sourcemap `nuxt:module-preload-polyfill` ;
   - circular chunk `vendor-nuxt -> vendor-libs -> vendor-nuxt`.
 - Prochaine étape :
-  - traiter `DEP-5 / @nuxt/eslint` dans un lot dedie, sans melanger avec `app/` ou les nettoyages opportunistes.
+  - traiter le lint global repo-wide dans un lot dedie si necessaire, sans melanger avec `app/` ou les optimisations CSS/chunks.
 
 Contraintes maintenues :
-- Aucun déplacement vers `app/` dans DEP-4.
-- Module ESLint non migre dans DEP-4.
-- Aucun changement CSS/design fait dans DEP-4.
-- Aucune correction globale lint ou chunks faite dans DEP-4.
-- Aucun contenu editorial ni lien Markdown corrige dans DEP-4.
+- Aucun déplacement vers `app/` dans DEP-5.
+- Aucun changement CSS/design fait dans DEP-5.
+- Aucune correction globale lint, Prettier ou chunks faite dans DEP-5.
+- Aucun contenu editorial ni lien Markdown corrige dans DEP-5.
 - `npm audit fix` non lance.
 
 ### Dernière mise à jour
@@ -174,6 +173,14 @@ Contraintes maintenues :
   - routes prerendered : 72
   - pages avec images verifiees dans `.output/public`
   - `@nuxt/eslint` non migre
+- ✅ DEP-5 realise :
+  - `@nuxt/eslint` migre de `0.5.7` reel / `^0.5.7` declare vers `1.15.2`
+  - config ESLint migree de `.eslintrc.cjs` vers `eslint.config.mjs`
+  - script `lint:js` simplifie en `eslint .`
+  - `npm test` OK, `npm run generate` OK, check SEO OK
+  - routes prerendered : 72
+  - `npm run lint:js` OK avec 0 erreur et 101 warnings historiques
+  - `npm run lint` reste bloque par `lint:prettier` sur formatages historiques et `audit-unused-depcheck.json` non JSON
 
 **Services freelance — relief visuel & maillage (28 avril 2026)** — Branche `feat/design-services`.
 

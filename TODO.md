@@ -166,7 +166,7 @@ Ordre recommandé (mettre à jour et tester une par une) :
 | 4   | `vue-router`      | ^4.4.5           | ^4.5+                | Aucun — compatible                                                         | 🟢     |
 | 5   | `@nuxt/image`     | 2.0.0            | 2.0.0                | Compatible Nuxt 4 ; provider `none` utilisé car aucun composant Nuxt Image n'est rendu aujourd'hui | 🟡     |
 | 6   | `@nuxtjs/sitemap` | 8.0.15           | 8.0.15               | v6 incompatible avec Content v3 via import interne `#content/server`       | 🟠     |
-| 7   | `@nuxt/eslint`    | ^0.5.7           | ^1.x                 | Config flat ESLint, probablement cassant                                   | 🟠     |
+| 7   | `@nuxt/eslint`    | 1.15.2           | 1.15.2               | Config flat ESLint minimale ; lint Prettier global reste hors périmètre    | 🟠     |
 | 8   | `eslint`          | ^9.14.0          | ^9.x                 | Compatible                                                                 | 🟢     |
 | 9   | `sass`            | ^1.80.7          | ^1.80+               | Compatible                                                                 | 🟢     |
 | 10  | `sass-loader`     | ^16.0.3          | ^16+                 | Compatible                                                                 | 🟢     |
@@ -233,7 +233,16 @@ Ordre recommandé (mettre à jour et tester une par une) :
   - `npm test`, `npm run generate` et check SEO OK ; routes prerendered : 72.
   - Pages avec images vérifiées dans `.output/public` : home, portfolio, apps, Greenlight, pages apps ; aucune image locale manquante détectée.
   - `@nuxt/eslint` non migré dans cette étape ; aucun déplacement vers `app/`, aucun changement CSS/design/chunks.
-- [ ] **DEP-5** — Mettre à jour `@nuxt/eslint` vers 1.x si requis par Nuxt 4
+- [x] **DEP-5** — Mettre à jour `@nuxt/eslint` vers 1.x si requis par Nuxt 4
+  - Rapport : `migration-nuxt4-dep-5-eslint.md`.
+  - Version installée : `@nuxt/eslint@1.15.2`.
+  - Seule dépendance directe cible modifiée : `@nuxt/eslint`.
+  - Configuration migrée vers `eslint.config.mjs`; ancienne `.eslintrc.cjs` supprimée car incompatible avec l'export ESM de `@nuxt/eslint-config` v1.
+  - Script `lint:js` simplifié en `eslint .`.
+  - `npm test`, `npm run generate` et check SEO OK ; routes prerendered : 72.
+  - `npm run lint:js` OK avec 0 erreur et 101 warnings historiques.
+  - `npm run lint` reste bloqué par `lint:prettier` sur des formatages repo-wide historiques et `audit-unused-depcheck.json` non JSON ; aucune correction globale lancée.
+  - `eslint-config-prettier`, `eslint-plugin-vue` et `prettier` conservés.
 - [x] **DEP-6** — Supprimer `"#internal/nuxt/paths": "./nuxt.paths.mjs"` de `package.json` `imports` — override interne Nuxt 3 probablement incompatible avec Nuxt 4
   - Rapport : `migration-nuxt4-dep-6.md`
   - Suppression réalisée avant `DEP-1`.

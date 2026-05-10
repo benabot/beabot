@@ -1,0 +1,5 @@
+@nuxt/eslint	^0.5.7	devDependencies
+eslint	^9.14.0	devDependencies
+eslint-config-prettier	^9.1.0	devDependencies
+eslint-plugin-vue	^9.29.1	devDependencies
+prettier	^3.3.3	devDependencies

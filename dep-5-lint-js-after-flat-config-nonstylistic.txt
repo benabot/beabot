@@ -1,0 +1,160 @@
+
+> beabot@2.0.0 lint:js
+> eslint .
+
+
+/Users/benoitabot/Sites/beabot/components/AppSearchInput.vue
+  8:5   warning  Disallow self-closing on HTML void elements (<input/>)  vue/html-self-closing
+  9:11  warning  Require self-closing on HTML elements (<span>)          vue/html-self-closing
+
+/Users/benoitabot/Sites/beabot/components/BaseHeading.vue
+  16:6  warning  Require self-closing on HTML elements (<div>)  vue/html-self-closing
+
+/Users/benoitabot/Sites/beabot/components/BoiteArticle.vue
+  10:65  warning  Require self-closing on HTML elements (<div>)         vue/html-self-closing
+  11:31  warning  Require self-closing on HTML elements (<div>)         vue/html-self-closing
+  21:11  warning  Disallow self-closing on HTML void elements (<img/>)  vue/html-self-closing
+
+/Users/benoitabot/Sites/beabot/components/HomeEcoArticles.vue
+  3:9   warning  Disallow self-closing on HTML void elements (<hr/>)  vue/html-self-closing
+  6:11  warning  Disallow self-closing on HTML void elements (<br/>)  vue/html-self-closing
+
+/Users/benoitabot/Sites/beabot/components/apps/AppCard.vue
+  19:9  warning  Disallow self-closing on HTML void elements (<img/>)  vue/html-self-closing
+
+/Users/benoitabot/Sites/beabot/components/apps/AppGalleryLightbox.vue
+  40:9  warning  Disallow self-closing on HTML void elements (<img/>)  vue/html-self-closing
+
+/Users/benoitabot/Sites/beabot/components/apps/AppReleaseInterestForm.vue
+  12:72  warning  Disallow self-closing on HTML void elements (<input/>)  vue/html-self-closing
+  13:54  warning  Disallow self-closing on HTML void elements (<input/>)  vue/html-self-closing
+  18:52  warning  Disallow self-closing on HTML void elements (<input/>)  vue/html-self-closing
+  37:9   warning  Disallow self-closing on HTML void elements (<input/>)  vue/html-self-closing
+  50:9   warning  Disallow self-closing on HTML void elements (<input/>)  vue/html-self-closing
+  54:74  warning  Disallow self-closing on HTML void elements (<input/>)  vue/html-self-closing
+
+/Users/benoitabot/Sites/beabot/components/server/Oeuf.server.vue
+  1:1  error  Component name "Oeuf.server" should always be multi-word  vue/multi-word-component-names
+
+/Users/benoitabot/Sites/beabot/error.vue
+  1:1  error  Component name "error" should always be multi-word  vue/multi-word-component-names
+
+/Users/benoitabot/Sites/beabot/layouts/error.vue
+   1:1   error    Component name "error" should always be multi-word                     vue/multi-word-component-names
+  15:11  warning  Prop "error" should define at least its type                           vue/require-prop-types
+  16:3   warning  The "layout" property should be above the "props" property on line 15  vue/order-in-components
+
+/Users/benoitabot/Sites/beabot/pages/404.vue
+  1:1  error  Component name "404" should always be multi-word  vue/multi-word-component-names
+
+/Users/benoitabot/Sites/beabot/pages/apps/duo-spend.vue
+   26:21  warning  Require self-closing on HTML elements (<span>)        vue/html-self-closing
+   27:21  warning  Require self-closing on HTML elements (<span>)        vue/html-self-closing
+   28:21  warning  Require self-closing on HTML elements (<span>)        vue/html-self-closing
+   42:15  warning  Disallow self-closing on HTML void elements (<img/>)  vue/html-self-closing
+   87:19  warning  Require self-closing on HTML elements (<span>)        vue/html-self-closing
+   88:19  warning  Require self-closing on HTML elements (<span>)        vue/html-self-closing
+   89:19  warning  Require self-closing on HTML elements (<span>)        vue/html-self-closing
+  103:13  warning  Disallow self-closing on HTML void elements (<img/>)  vue/html-self-closing
+  160:15  warning  Disallow self-closing on HTML void elements (<img/>)  vue/html-self-closing
+  232:71  warning  Require self-closing on HTML elements (<span>)        vue/html-self-closing
+  245:32  warning  Attribute "id" should go before "class"               vue/attributes-order
+
+/Users/benoitabot/Sites/beabot/pages/apps/meeting-mode.vue
+   26:21  warning  Require self-closing on HTML elements (<span>)        vue/html-self-closing
+   27:21  warning  Require self-closing on HTML elements (<span>)        vue/html-self-closing
+   28:21  warning  Require self-closing on HTML elements (<span>)        vue/html-self-closing
+   42:15  warning  Disallow self-closing on HTML void elements (<img/>)  vue/html-self-closing
+   89:15  warning  Disallow self-closing on HTML void elements (<img/>)  vue/html-self-closing
+  105:15  warning  Disallow self-closing on HTML void elements (<img/>)  vue/html-self-closing
+  166:15  warning  Disallow self-closing on HTML void elements (<img/>)  vue/html-self-closing
+  203:71  warning  Require self-closing on HTML elements (<span>)        vue/html-self-closing
+  216:32  warning  Attribute "id" should go before "class"               vue/attributes-order
+
+/Users/benoitabot/Sites/beabot/pages/apps/siturem.vue
+  1:1  error  Component name "siturem" should always be multi-word  vue/multi-word-component-names
+
+/Users/benoitabot/Sites/beabot/pages/contact.vue
+   12:50  warning  Disallow self-closing on HTML void elements (<br/>)     vue/html-self-closing
+   13:45  warning  Disallow self-closing on HTML void elements (<br/>)     vue/html-self-closing
+   38:13  warning  Attribute ":disabled" should go before "@click"         vue/attributes-order
+   70:65  warning  Disallow self-closing on HTML void elements (<input/>)  vue/html-self-closing
+   75:57  warning  Attribute "v-model" should go before "name"             vue/attributes-order
+   76:13  warning  Disallow self-closing on HTML void elements (<input/>)  vue/html-self-closing
+   83:15  warning  Attribute "v-model" should go before "name"             vue/attributes-order
+   86:13  warning  Disallow self-closing on HTML void elements (<input/>)  vue/html-self-closing
+   93:15  warning  Attribute "v-model" should go before "name"             vue/attributes-order
+   96:13  warning  Disallow self-closing on HTML void elements (<input/>)  vue/html-self-closing
+  104:15  warning  Attribute "v-model" should go before "name"             vue/attributes-order
+  107:13  warning  Disallow self-closing on HTML void elements (<input/>)  vue/html-self-closing
+  114:15  warning  Attribute "v-model" should go before "name"             vue/attributes-order
+  117:14  warning  Require self-closing on HTML elements (<textarea>)      vue/html-self-closing
+  124:15  warning  Attribute "v-model" should go before "name"             vue/attributes-order
+  126:13  warning  Disallow self-closing on HTML void elements (<input/>)  vue/html-self-closing
+  279:12  error    'e' is defined but never used                           @typescript-eslint/no-unused-vars
+
+/Users/benoitabot/Sites/beabot/pages/eco-conception/[slug].vue
+    1:1   error    Component name "[slug]" should always be multi-word  vue/multi-word-component-names
+   29:17  warning  Disallow self-closing on HTML void elements (<hr/>)  vue/html-self-closing
+   50:17  warning  Disallow self-closing on HTML void elements (<hr/>)  vue/html-self-closing
+   83:17  warning  Disallow self-closing on HTML void elements (<hr/>)  vue/html-self-closing
+  104:13  warning  Disallow self-closing on HTML void elements (<hr/>)  vue/html-self-closing
+
+/Users/benoitabot/Sites/beabot/pages/eco-conception/index.vue
+  358:15  warning  Disallow self-closing on HTML void elements (<input/>)  vue/html-self-closing
+  533:16  error    Unexpected any. Specify a different type                @typescript-eslint/no-explicit-any
+  817:27  error    Unexpected any. Specify a different type                @typescript-eslint/no-explicit-any
+  821:26  error    Unexpected any. Specify a different type                @typescript-eslint/no-explicit-any
+  827:33  error    Unexpected any. Specify a different type                @typescript-eslint/no-explicit-any
+  840:42  error    Unexpected any. Specify a different type                @typescript-eslint/no-explicit-any
+  858:33  error    Unexpected any. Specify a different type                @typescript-eslint/no-explicit-any
+  881:38  error    Unexpected any. Specify a different type                @typescript-eslint/no-explicit-any
+
+/Users/benoitabot/Sites/beabot/pages/greenlight.vue
+    1:1   error    Component name "greenlight" should always be multi-word  vue/multi-word-component-names
+   71:15  warning  Disallow self-closing on HTML void elements (<img/>)     vue/html-self-closing
+   89:15  warning  Disallow self-closing on HTML void elements (<img/>)     vue/html-self-closing
+  107:15  warning  Disallow self-closing on HTML void elements (<img/>)     vue/html-self-closing
+  154:17  warning  Disallow self-closing on HTML void elements (<img/>)     vue/html-self-closing
+  243:13  warning  Disallow self-closing on HTML void elements (<img/>)     vue/html-self-closing
+  300:15  warning  Disallow self-closing on HTML void elements (<img/>)     vue/html-self-closing
+
+/Users/benoitabot/Sites/beabot/pages/index.vue
+  197:13  warning  Disallow self-closing on HTML void elements (<img/>)  vue/html-self-closing
+
+/Users/benoitabot/Sites/beabot/pages/mentions-legales.vue
+   14:85  warning  Disallow self-closing on HTML void elements (<br/>)  vue/html-self-closing
+   15:50  warning  Disallow self-closing on HTML void elements (<br/>)  vue/html-self-closing
+   17:12  warning  Disallow self-closing on HTML void elements (<br/>)  vue/html-self-closing
+   19:26  warning  Disallow self-closing on HTML void elements (<br/>)  vue/html-self-closing
+   21:18  warning  Disallow self-closing on HTML void elements (<br/>)  vue/html-self-closing
+   22:69  warning  Disallow self-closing on HTML void elements (<br/>)  vue/html-self-closing
+   28:8   warning  Disallow self-closing on HTML void elements (<br/>)  vue/html-self-closing
+  149:10  warning  Disallow self-closing on HTML void elements (<br/>)  vue/html-self-closing
+  151:10  warning  Disallow self-closing on HTML void elements (<br/>)  vue/html-self-closing
+  153:4   warning  Disallow self-closing on HTML void elements (<br/>)  vue/html-self-closing
+
+/Users/benoitabot/Sites/beabot/pages/portfolio.vue
+   23:8   warning  Require self-closing on HTML elements (<span>)  vue/html-self-closing
+   27:8   warning  Require self-closing on HTML elements (<span>)  vue/html-self-closing
+   31:8   warning  Require self-closing on HTML elements (<span>)  vue/html-self-closing
+   92:13  warning  Attribute ":id" should go before "role"         vue/attributes-order
+  136:8   warning  Require self-closing on HTML elements (<span>)  vue/html-self-closing
+  140:8   warning  Require self-closing on HTML elements (<span>)  vue/html-self-closing
+  144:8   warning  Require self-closing on HTML elements (<span>)  vue/html-self-closing
+  148:8   warning  Require self-closing on HTML elements (<span>)  vue/html-self-closing
+  164:58  warning  Require self-closing on HTML elements (<span>)  vue/html-self-closing
+  171:38  warning  Require self-closing on HTML elements (<span>)  vue/html-self-closing
+  172:37  warning  Require self-closing on HTML elements (<span>)  vue/html-self-closing
+
+/Users/benoitabot/Sites/beabot/pages/services.vue
+   1:1   error    Component name "services" should always be multi-word  vue/multi-word-component-names
+  19:59  warning  Require self-closing on HTML elements (<span>)         vue/html-self-closing
+
+/Users/benoitabot/Sites/beabot/scripts/audit-scss-inventory.mjs
+    7:7  error  'rel' is assigned a value but never used               no-unused-vars
+  431:7  error  'globalUsageCount' is assigned a value but never used  no-unused-vars
+
+✖ 106 problems (18 errors, 88 warnings)
+  0 errors and 87 warnings potentially fixable with the `--fix` option.
+
