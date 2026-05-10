@@ -6,15 +6,14 @@
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
-1. **Documentation stack Nuxt 4 avant merge dev** — Mettre a jour minimalement `AGENTS.md`, `CLAUDE.md` et éventuellement `README.md` pour éviter que les agents travaillent encore avec la stack Nuxt 3 / Content v2 / sitemap v6.
-2. **Validation finale pre-merge dev** — Après le lot documentaire : `npm test`, `npm run generate`, check SEO et `npm run lint:js`, puis `git status --short`.
-3. **Preview Nuxt 4** — Merger ensuite vers `dev` manuellement pour déclencher/valider la preview Netlify ; ne pas merger vers `master` avant validation.
-4. **Recherche UI / composant orphelin** — Si `AppSearchInput.vue` doit redevenir visible, choisir une page hote et faire une verification UX dediee ; sinon documenter son statut orphelin dans un lot separe.
-5. **URL hygiene articles Markdown** — Corriger dans un lot dedie les 5 liens internes d'article sans slash final detectes pendant `DEP-2-E`, sans melanger avec les migrations de dependances.
-6. **Lint global repo-wide** — `npm run lint:js` fonctionne avec la flat config Nuxt ESLint v1, mais `npm run lint` reste bloque par `lint:prettier` sur des formatages historiques et `docs/migration/nuxt4/archive/audit-unused-depcheck.json` non JSON ; a traiter separement.
-7. **Audit securite npm** — `npm audit --audit-level=moderate` signale 11 vulnerabilites ; ne pas lancer `npm audit fix` sans lot dedie.
-8. **DIR-* app directory** — Ne pas deplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dedie uniquement si une incompatibilite reelle apparait.
-9. **SCSS-6** — Reporté après preview Nuxt 4. La sortie complète de SCSS demande une branche dédiée : 8 fichiers `.scss`, 28 fichiers Vue `lang="scss"`, helpers Sass et dépendances `sass` / `sass-loader` encore nécessaires.
+1. **Validation finale pre-merge dev** — Relancer `npm test`, `npm run generate`, check SEO et `npm run lint:js`, puis vérifier `git status --short`.
+2. **Preview Nuxt 4** — Merger ensuite vers `dev` manuellement pour déclencher/valider la preview Netlify ; ne pas merger vers `master` avant validation.
+3. **Recherche UI / composant orphelin** — Si `AppSearchInput.vue` doit redevenir visible, choisir une page hote et faire une verification UX dediee ; sinon documenter son statut orphelin dans un lot separe.
+4. **URL hygiene articles Markdown** — Corriger dans un lot dedie les 5 liens internes d'article sans slash final detectes pendant `DEP-2-E`, sans melanger avec les migrations de dependances.
+5. **Lint global repo-wide** — `npm run lint:js` fonctionne avec la flat config Nuxt ESLint v1, mais `npm run lint` reste bloque par `lint:prettier` sur des formatages historiques et `docs/migration/nuxt4/archive/audit-unused-depcheck.json` non JSON ; a traiter separement.
+6. **Audit securite npm** — `npm audit --audit-level=moderate` signale 11 vulnerabilites ; ne pas lancer `npm audit fix` sans lot dedie.
+7. **DIR-* app directory** — Ne pas deplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dedie uniquement si une incompatibilite reelle apparait.
+8. **SCSS-6** — Reporté après preview Nuxt 4. La sortie complète de SCSS demande une branche dédiée : 8 fichiers `.scss`, 28 fichiers Vue `lang="scss"`, helpers Sass et dépendances `sass` / `sass-loader` encore nécessaires.
 
 ---
 
@@ -43,29 +42,39 @@ SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stabl
 Branche : `chore/nuxt4-migration`
 
 Dernière décision :
-- SCSS-6-DECISION réalisé le 10 mai 2026.
-- Résultat : sortie complète de SCSS reportée après preview Nuxt 4.
+- DOCS-STACK-NUXT4 réalisé le 10 mai 2026.
+- Résultat : documentation stack agents/projet alignée sur la stack Nuxt 4 réelle avant merge `dev`.
 - Version Nuxt : `4.4.2`.
 - Version Content : `@nuxt/content@3.13.0`.
 - Version Image : `@nuxt/image@2.0.0`.
 - Version sitemap : `@nuxtjs/sitemap@8.0.15`.
 - Version ESLint Nuxt : `@nuxt/eslint@1.15.2`.
-- Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-scss-6-decision.md`.
-- Constats SCSS :
-  - 8 fichiers `.scss` restants ;
-  - 28 fichiers Vue avec `lang="scss"` ;
-  - 511 occurrences de variables Sass `$...` ;
-  - 6 fichiers utilisent encore `sass:color` / `color.adjust()` ;
-  - `sass:math`, `sass:map`, fonctions Sass, maps typo et espacements fluides restent actifs ;
-  - `pages/contact.vue` contient une valeur `$gris3` dans un bloc CSS non SCSS, à corriger dans le futur lot CSS.
-- Décision :
-  - ne pas faire `SCSS-6` avant merge `dev` ;
-  - conserver `sass`, `sass-loader` et `vite.css.preprocessorOptions.scss` tant que ces usages existent ;
-  - ouvrir une branche dédiée après preview Nuxt 4 validée.
+- Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-docs-stack.md`.
+- Documentation mise à jour :
+  - `AGENTS.md` ;
+  - `CLAUDE.md` ;
+  - `README.md` ;
+  - `TODO.md` ;
+  - `PROJECT_STATE.md`.
+- Stack documentée :
+  - Nuxt `4.4.2` ;
+  - Vue `3.5.33` ;
+  - Nitro `2.13.x` ;
+  - Vite `7.3.x` côté builder Nuxt, `6.4.x` direct ;
+  - `@nuxt/content@3.13.0` avec `content.config.ts` ;
+  - `@nuxtjs/sitemap@8.0.15` ;
+  - `@nuxt/image@2.0.0` ;
+  - `@nuxt/eslint@1.15.2` avec `eslint.config.mjs` ;
+  - `zod@3.25.76` pour le schéma Content.
+- Décision SCSS conservée :
+  - SCSS reste utilisé ;
+  - `SCSS-6` reste ouvert et reporté après preview Nuxt 4 ;
+  - `sass`, `sass-loader` et config SCSS Vite restent nécessaires.
 - Validation :
-  - validation runtime non relancée, lot documentaire uniquement ;
-  - dernière validation CLEANUP-ROOT conservée : `npm test` OK, `npm run generate` OK, check SEO OK, `npm run lint:js` OK ;
-  - routes prerendered lors de la dernière validation : 72 ;
+  - `npm test` : OK ;
+  - autres validations runtime non relancées dans ce lot documentaire ;
+  - dernière validation complète CLEANUP-ROOT conservée : `npm run generate` OK, check SEO OK, `npm run lint:js` OK ;
+  - routes prerendered lors de la dernière validation complète : 72 ;
   - `npm run lint` : bloque par `lint:prettier` sur formatages historiques et `docs/migration/nuxt4/archive/audit-unused-depcheck.json` non JSON, non corrige dans DEP-5 ;
   - `npm audit --audit-level=moderate` : 11 vulnerabilites documentees, aucun `npm audit fix` lance ;
   - RSS : `/rss.xml` genere ;
@@ -80,8 +89,8 @@ Dernière décision :
   - aucune URL `/articles/`, `[object Object]` ou `undefined` dans les sorties Content generees ;
   - 5 liens Markdown internes sans slash final detectes dans un article existant, reportes hors DEP-2 car les changements editoriaux etaient exclus.
 - Audit documentation :
-  - `README.md`, `AGENTS.md` et `CLAUDE.md` mentionnent encore l'ancienne stack Nuxt 3 / Content v2 / sitemap v6 ;
-  - mise a jour reportee dans un lot documentaire post-preview.
+  - `README.md`, `AGENTS.md` et `CLAUDE.md` sont alignés sur la stack Nuxt 4 réelle ;
+  - `SCSS-6` reste documenté comme reporté après preview Nuxt 4.
 - Rangement documentation :
   - rapports utiles conservés sous `docs/migration/nuxt4/reports/` ;
   - fichiers ambigus conservés sous `docs/migration/nuxt4/archive/` ;
@@ -91,17 +100,16 @@ Dernière décision :
   - sourcemap `nuxt:module-preload-polyfill` ;
   - circular chunk `vendor-nuxt -> vendor-libs -> vendor-nuxt`.
 - Prochaine étape :
-  - faire un lot documentaire minimal `AGENTS.md` / `CLAUDE.md` / éventuellement `README.md` avant merge `dev` ;
-  - relancer `npm test`, `npm run generate`, check SEO et `npm run lint:js` ;
+  - relancer `npm test`, `npm run generate`, check SEO et `npm run lint:js` pour la validation finale pre-merge ;
   - merger ensuite vers `dev` manuellement pour valider la preview Netlify.
 
 Contraintes maintenues :
-- Aucun déplacement vers `app/` dans CLEANUP-ROOT.
-- Aucun changement CSS/design fait dans SCSS-6-DECISION.
-- Aucune correction globale lint, Prettier ou chunks faite dans CLEANUP-ROOT.
-- Aucun contenu editorial ni lien Markdown corrige dans SCSS-6-DECISION.
-- Aucune dépendance modifiée dans SCSS-6-DECISION.
-- Aucun code applicatif modifié dans SCSS-6-DECISION.
+- Aucun déplacement vers `app/` dans DOCS-STACK-NUXT4.
+- Aucun changement CSS/design fait dans DOCS-STACK-NUXT4.
+- Aucune correction globale lint, Prettier ou chunks faite dans DOCS-STACK-NUXT4.
+- Aucun contenu editorial ni lien Markdown corrige dans DOCS-STACK-NUXT4.
+- Aucune dépendance modifiée dans DOCS-STACK-NUXT4.
+- Aucun code applicatif modifié dans DOCS-STACK-NUXT4.
 - Aucun merge vers `dev` ou `master`.
 - `npm audit fix` non lance.
 
@@ -235,6 +243,11 @@ Contraintes maintenues :
   - helpers Sass encore actifs : `sass:color`, `sass:math`, `sass:map`, fonctions, maps typo et espacements fluides
   - décision : ne pas supprimer SCSS avant merge `dev`, reporter après preview Nuxt 4 sur branche dédiée
   - aucun style, aucune dépendance et aucun code applicatif modifiés
+- ✅ DOCS-STACK-NUXT4 realise :
+  - `AGENTS.md`, `CLAUDE.md` et `README.md` alignés sur Nuxt 4, Content v3, sitemap v8, image v2 et Nuxt ESLint v1
+  - `content.config.ts`, `zod`, SCSS encore utilisé et absence de déplacement vers `app/` documentés
+  - `SCSS-6` conservé ouvert et reporté après preview Nuxt 4
+  - `npm test` OK ; aucun code applicatif, aucune dépendance et aucun CSS/SCSS modifiés
 
 **Services freelance — relief visuel & maillage (28 avril 2026)** — Branche `feat/design-services`.
 

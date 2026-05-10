@@ -31,16 +31,20 @@
 
 ```json
 {
-  "framework": "Nuxt 3.14+",
-  "vue": "3.5+",
-  "bundler": "Vite 6",
-  "cms": "@nuxt/content v2.13+",
-  "image": "@nuxt/image",
-  "sitemap": "@nuxtjs/sitemap v6.1.5",
+  "framework": "Nuxt 4.4.2",
+  "vue": "3.5.33",
+  "nitro": "2.13.x",
+  "bundler": "Vite 7.3.x côté builder Nuxt, Vite 6.4.x direct",
+  "cms": "@nuxt/content 3.13.0",
+  "image": "@nuxt/image 2.0.0",
+  "sitemap": "@nuxtjs/sitemap 8.0.15",
+  "eslint": "@nuxt/eslint 1.15.2 avec eslint.config.mjs",
+  "schema": "zod 3.25.76 pour content.config.ts",
   "fonts": "System font stack",
-  "node": "≥ 18",
+  "node": "local 22.21.1 validé, pas de champ engines dans package.json",
   "package-manager": "npm",
-  "hosting": "Netlify (SSG)"
+  "hosting": "Netlify (SSG)",
+  "styles": "SCSS encore utilisé ; sortie complète reportée après preview Nuxt 4"
 }
 ```
 
@@ -54,6 +58,9 @@
 - **CSS externe** : Meilleur cache (pas de inline)
 - **Trailing slash** : Convention URL avec `/` final
 - **Prefetch désactivé** : Économie bande passante
+- **Content v3** : collection `articles` déclarée dans `content.config.ts`
+- **Structure Nuxt 4** : projet validé sans déplacement vers `app/` pour le moment
+- **SCSS** : encore nécessaire (`sass`, `sass-loader`, config Vite SCSS) ; `SCSS-6` reporté après preview
 
 ---
 
@@ -74,6 +81,7 @@ beabot/
 │   └── useTags.ts
 ├── content/
 │   └── articles/           # Articles Markdown
+├── content.config.ts       # Collection Content v3 articles
 ├── data/
 │   └── portfolio.ts        # Données projets structurées
 ├── layouts/
@@ -126,7 +134,7 @@ beabot/
 
 ### Branche en attente de merge
 
-- **`feature/portfolio-redesign`** : Refonte complète portfolio (Phase 14)
+- **`chore/nuxt4-migration`** : Migration Nuxt 4 stabilisée, à valider en preview via merge manuel vers `dev`
 
 ---
 
@@ -201,7 +209,9 @@ npm run generate     # Génération statique
 npm run preview      # Preview du build
 
 # Validation
-npm run lint         # ESLint + Prettier
+npm test             # Garde-fous + tests Node
+npm run lint:js      # ESLint flat config Nuxt 4
+npm run lint         # ESLint + Prettier (peut rester bloqué par formatages historiques)
 node scripts/seo-check.mjs  # Vérification SEO
 ```
 
@@ -281,8 +291,8 @@ node scripts/seo-check.mjs  # Vérification SEO
 ---
 
 **📝 Maintenu par** : Claude
-**📅 Dernière MAJ** : 23 décembre 2025
-**🎯 Prochaine action** : Push dev, merge dev → master pour production
+**📅 Dernière MAJ** : 10 mai 2026
+**🎯 Prochaine action** : validation locale finale puis merge manuel vers `dev` pour preview Netlify ; ne pas merger `master` avant validation preview
 
 # CLAUDE.md
 

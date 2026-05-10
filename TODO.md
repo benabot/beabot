@@ -264,6 +264,11 @@ Ordre recommandé (mettre à jour et tester une par une) :
   - Décision : reporter `SCSS-6` après preview Nuxt 4.
   - La branche Nuxt 4 fonctionne avec SCSS ; `SCSS-4/5` ont déjà supprimé l'injection globale `additionalData` et validé l'éco-impact.
   - Aucun style, aucune dépendance, aucun fichier applicatif modifié.
+- [x] **DOCS-STACK-NUXT4** — Mettre à jour la documentation stack avant merge `dev`
+  - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-docs-stack.md`.
+  - `AGENTS.md`, `CLAUDE.md` et `README.md` alignés sur Nuxt `4.4.2`, Content `3.13.0`, sitemap `8.0.15`, image `2.0.0` et ESLint Nuxt `1.15.2`.
+  - SCSS documenté comme encore utilisé ; `SCSS-6` reste ouvert et reporté après preview.
+  - Aucun code applicatif, aucune dépendance, aucun CSS/SCSS modifié.
 - [x] **FIX-PREVIEW éco-conception** — Réparer les régressions visibles de `/eco-conception/` après Content v3
   - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-fix-eco-conception-page.md`.
   - Filtres par thème et recherche locale réparés via normalisation locale de `article.tag`.
@@ -848,7 +853,7 @@ export const useTags = () => {
 
 - \[x\] Liens projet mis à jour (topette.netlify.app → [bordur.fr](http://bordur.fr))
 
-MétriqueValeurStatut**Framework**Nuxt 3.14✅**URLs**Trailing slash normalisé✅**Portfolio**Refonte complète✅**Homepage**Améliorations mobile UX✅**Structured Data**Toutes pages principales✅**EcoIndex**A✅**Lighthouse**99 / 96 / 100 / 100✅
+MétriqueValeurStatut**Framework**Nuxt 4.4✅**URLs**Trailing slash normalisé✅**Portfolio**Refonte complète✅**Homepage**Améliorations mobile UX✅**Structured Data**Toutes pages principales✅**EcoIndex**A✅**Lighthouse**99 / 96 / 100 / 100✅
 
 ---
 
