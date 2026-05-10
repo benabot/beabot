@@ -6,8 +6,8 @@
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
-1. **Validation finale pre-merge dev** — Relancer `npm test`, `npm run generate`, check SEO et `npm run lint:js`, puis vérifier `git status --short`.
-2. **Preview Nuxt 4** — Merger ensuite vers `dev` manuellement pour déclencher/valider la preview Netlify ; ne pas merger vers `master` avant validation.
+1. **Merge manuel du correctif Netlify vers `dev`** — Merger `fix/netlify-eco-conception-runtime` dans `dev`, puis redéployer Netlify dev avec clear cache.
+2. **Preview Nuxt 4** — Vérifier `/eco-conception/` sur `https://dev-beabot.netlify.app/` : console sans erreur, filtres, recherche et FAQ OK ; ne pas merger vers `master` avant validation.
 3. **Recherche UI / composant orphelin** — Si `AppSearchInput.vue` doit redevenir visible, choisir une page hote et faire une verification UX dediee ; sinon documenter son statut orphelin dans un lot separe.
 4. **URL hygiene articles Markdown** — Corriger dans un lot dedie les 5 liens internes d'article sans slash final detectes pendant `DEP-2-E`, sans melanger avec les migrations de dependances.
 5. **Lint global repo-wide** — `npm run lint:js` fonctionne avec la flat config Nuxt ESLint v1, mais `npm run lint` reste bloque par `lint:prettier` sur des formatages historiques et `docs/migration/nuxt4/archive/audit-unused-depcheck.json` non JSON ; a traiter separement.
@@ -21,15 +21,15 @@
 
 ### Site en production
 
-SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stable**Dev Preview**<https://dev-beabot.netlify.app>Nuxt 3.14dev✅ Tests
+SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stable**Dev Preview**<https://dev-beabot.netlify.app>Nuxt 4.4dev⚠️ Correctif runtime `/eco-conception/` prêt à merger depuis `fix/netlify-eco-conception-runtime`
 
 ### Branche active de migration
 
-**`chore/nuxt4-migration`** — branche documentaire et préparatoire Nuxt 4.
+**`fix/netlify-eco-conception-runtime`** — branche de correctif issue de `dev` après merge Nuxt 4.
 
 - Base actuelle validée : Nuxt `4.4.2`, Nitro `2.13.3`, Vue `3.5.33`, Vite direct `6.4.1` (`7.3.2` côté builder Nuxt)
 - `future.compatibilityVersion: 4` actif
-- Génération statique validée après FIX-PREVIEW éco-conception : 72 routes prerendered
+- Génération statique validée après FIX-NETLIFY-RUNTIME éco-conception : 72 routes prerendered
 - Derniers commits documentaires :
   - `75d9207` — `docs: rafraichir baseline compat Nuxt 4`
   - `e1e6b6a` — `docs: cartographier migration Content v3`
@@ -39,23 +39,24 @@ SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stabl
 
 ## Migration Nuxt 4 — état courant
 
-Branche : `chore/nuxt4-migration`
+Branche : `fix/netlify-eco-conception-runtime`
 
 Dernière décision :
-- DOCS-STACK-NUXT4 réalisé le 10 mai 2026.
-- Résultat : documentation stack agents/projet alignée sur la stack Nuxt 4 réelle avant merge `dev`.
+- FIX-NETLIFY-RUNTIME réalisé le 10 mai 2026.
+- Résultat : correctif ciblé prêt pour merge manuel vers `dev`.
 - Version Nuxt : `4.4.2`.
 - Version Content : `@nuxt/content@3.13.0`.
 - Version Image : `@nuxt/image@2.0.0`.
 - Version sitemap : `@nuxtjs/sitemap@8.0.15`.
 - Version ESLint Nuxt : `@nuxt/eslint@1.15.2`.
-- Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-docs-stack.md`.
-- Documentation mise à jour :
-  - `AGENTS.md` ;
-  - `CLAUDE.md` ;
-  - `README.md` ;
-  - `TODO.md` ;
-  - `PROJECT_STATE.md`.
+- Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-fix-netlify-runtime.md`.
+- Cause racine :
+  - le chunking manuel `vite.build.rollupOptions.output.manualChunks` forçait les internals Nuxt et les dépendances dans des chunks `vendor-*` ;
+  - Netlify exposait une TDZ runtime dans le chunk Nuxt/router : `Cannot access 'e' before initialization` ;
+  - le warning local `Circular chunk: vendor-nuxt -> vendor-libs -> vendor-nuxt` confirmait le cycle de chunks.
+- Correction appliquée :
+  - suppression du bloc `manualChunks` custom dans `nuxt.config.ts` ;
+  - aucune modification de page, de Content, de dépendance, de CSS/SCSS ou de contenu éditorial.
 - Stack documentée :
   - Nuxt `4.4.2` ;
   - Vue `3.5.33` ;
@@ -72,9 +73,10 @@ Dernière décision :
   - `sass`, `sass-loader` et config SCSS Vite restent nécessaires.
 - Validation :
   - `npm test` : OK ;
-  - autres validations runtime non relancées dans ce lot documentaire ;
-  - dernière validation complète CLEANUP-ROOT conservée : `npm run generate` OK, check SEO OK, `npm run lint:js` OK ;
-  - routes prerendered lors de la dernière validation complète : 72 ;
+  - `npm run generate` : OK ;
+  - `NUXT_PUBLIC_SITE_URL=https://dev-beabot.netlify.app node scripts/seo-check.mjs` : OK après génération avec l'URL dev ;
+  - `npm run lint:js` : OK avec 94 warnings historiques, 0 erreur ;
+  - routes prerendered : 72 ;
   - `npm run lint` : bloque par `lint:prettier` sur formatages historiques et `docs/migration/nuxt4/archive/audit-unused-depcheck.json` non JSON, non corrige dans DEP-5 ;
   - `npm audit --audit-level=moderate` : 11 vulnerabilites documentees, aucun `npm audit fix` lance ;
   - RSS : `/rss.xml` genere ;
@@ -84,6 +86,7 @@ Dernière décision :
   - filtres `Tout`, `Éco-conception`, `WordPress`, `Performance` OK ;
   - recherches `WordPress`, `images` et sans résultat OK ;
   - FAQ visible avec 4 items ;
+  - console locale statique sans erreur runtime ;
   - aucune URL `/articles/`, `[object Object]` ou `undefined` détectée.
 - Audit URLs :
   - aucune URL `/articles/`, `[object Object]` ou `undefined` dans les sorties Content generees ;
@@ -98,18 +101,19 @@ Dernière décision :
 - Warnings non bloquants :
   - warning sitemap `zeroRuntime` ;
   - sourcemap `nuxt:module-preload-polyfill` ;
-  - circular chunk `vendor-nuxt -> vendor-libs -> vendor-nuxt`.
+  - warning esbuild `Duplicate key "provider"` dans le bundle serveur `ProseImg`.
 - Prochaine étape :
-  - relancer `npm test`, `npm run generate`, check SEO et `npm run lint:js` pour la validation finale pre-merge ;
-  - merger ensuite vers `dev` manuellement pour valider la preview Netlify.
+  - merger manuellement `fix/netlify-eco-conception-runtime` vers `dev` ;
+  - redéployer Netlify dev avec clear cache ;
+  - vérifier `/eco-conception/` sur la preview.
 
 Contraintes maintenues :
-- Aucun déplacement vers `app/` dans DOCS-STACK-NUXT4.
-- Aucun changement CSS/design fait dans DOCS-STACK-NUXT4.
-- Aucune correction globale lint, Prettier ou chunks faite dans DOCS-STACK-NUXT4.
-- Aucun contenu editorial ni lien Markdown corrige dans DOCS-STACK-NUXT4.
-- Aucune dépendance modifiée dans DOCS-STACK-NUXT4.
-- Aucun code applicatif modifié dans DOCS-STACK-NUXT4.
+- Aucun déplacement vers `app/` dans FIX-NETLIFY-RUNTIME.
+- Aucun changement CSS/design fait dans FIX-NETLIFY-RUNTIME.
+- Aucune correction globale lint ou Prettier faite dans FIX-NETLIFY-RUNTIME.
+- Aucun contenu editorial ni lien Markdown corrige dans FIX-NETLIFY-RUNTIME.
+- Aucune dépendance modifiée dans FIX-NETLIFY-RUNTIME.
+- Aucune page ni composant modifié dans FIX-NETLIFY-RUNTIME.
 - Aucun merge vers `dev` ou `master`.
 - `npm audit fix` non lance.
 

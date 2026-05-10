@@ -276,6 +276,13 @@ Ordre recommandé (mettre à jour et tester une par une) :
   - `npm test`, `npm run generate`, check SEO et `npm run lint:js` validés ; routes prerendered : 72.
   - Vérification navigateur locale effectuée sur `/eco-conception/` : filtres `Tout`, `Éco-conception`, `WordPress`, `Performance`, recherches avec/sans résultat, FAQ visible.
   - Aucune dépendance modifiée ; aucun merge vers `dev` ou `master`.
+- [x] **FIX-NETLIFY-RUNTIME éco-conception** — Réparer l'erreur runtime Netlify qui cassait l'hydratation de `/eco-conception/`
+  - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-fix-netlify-runtime.md`.
+  - Cause : découpage manuel `manualChunks` créant un cycle `vendor-nuxt -> vendor-libs -> vendor-nuxt` et une TDZ runtime dans le chunk Nuxt/router.
+  - Correction : suppression du chunking manuel Rollup dans `nuxt.config.ts`, sans modifier les pages ni les dépendances.
+  - `npm test`, `npm run generate`, check SEO dev et `npm run lint:js` validés.
+  - Vérification statique locale `/eco-conception/` validée : filtres, recherche, FAQ et console sans erreur.
+  - Aucun merge vers `dev` ou `master`.
 - [x] **CLEANUP-ROOT** — Ranger les rapports et sorties d'audit avant merge `dev`
   - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-cleanup-root.md`.
   - Rapports utiles déplacés vers `docs/migration/nuxt4/reports/`.
