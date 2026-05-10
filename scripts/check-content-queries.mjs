@@ -35,6 +35,20 @@ const migratedContentFiles = [
     forbiddenPatterns: [/_path/],
   },
   {
+    file: 'components/AppSearchInput.vue',
+    patterns: [
+      /queryCollection\('articles'\)/,
+      /\.select\('title', 'description', 'path'\)/,
+      /\.orWhere\(/,
+      /\.where\('title', 'LIKE'/,
+      /\.where\('description', 'LIKE'/,
+      /\.limit\(6\)/,
+      /\.all\(\)/,
+      /article\.path/,
+    ],
+    forbiddenPatterns: [/queryContent\(/, /\$contains/, /\$or/, /_path/, /article\.slug/],
+  },
+  {
     file: 'server/routes/rss.xml.ts',
     patterns: [
       /@nuxt\/content\/server/,
@@ -67,14 +81,6 @@ const migratedContentFiles = [
   },
 ]
 
-const documentedV2Exceptions = [
-  {
-    file: 'components/AppSearchInput.vue',
-    reason: 'CONTENT-6 recherche Content v3 reportee dans un lot dedie',
-    patterns: [/queryContent\('articles'\)/, /\.where\(/, /article\.slug/],
-  },
-]
-
 function readProjectFile(file) {
   const filePath = path.join(rootDir, file)
   assert.ok(fs.existsSync(filePath), `Missing critical file: ${file}`)
@@ -94,12 +100,6 @@ function checkMigratedContentContracts() {
     }
   }
 
-  for (const { file, patterns } of documentedV2Exceptions) {
-    const source = readProjectFile(file)
-    for (const pattern of patterns) {
-      assert.match(source, pattern, `${file} should keep documented temporary exception ${pattern}`)
-    }
-  }
 }
 
 function walkFiles(entry) {
@@ -116,13 +116,11 @@ function walkFiles(entry) {
 }
 
 function checkNoUnexpectedContentV2Usage() {
-  const exceptionFiles = new Set(documentedV2Exceptions.map(({ file }) => file))
   const scanEntries = ['pages', 'components', 'layouts', 'server', 'nuxt.config.ts', 'app.vue', 'error.vue']
   const forbiddenPatterns = [/queryContent\(/, /serverQueryContent/, /findSurround\(/, /searchContent\(/, /\b_path\b/]
 
   for (const absolutePath of scanEntries.flatMap(walkFiles)) {
     const relativePath = path.relative(rootDir, absolutePath)
-    if (exceptionFiles.has(relativePath)) continue
     if (!/\.(vue|ts|js|mjs)$/.test(relativePath)) continue
 
     const source = fs.readFileSync(absolutePath, 'utf8')

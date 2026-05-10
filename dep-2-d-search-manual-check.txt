@@ -1,0 +1,3 @@
+Recherche AppSearchInput dans le HTML genere :
+
+Conclusion : AppSearchInput.vue n'est pas monte dans les pages generees actuelles ; verification navigateur interactive non applicable pour ce composant sans page hote.

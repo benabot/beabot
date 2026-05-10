@@ -6,8 +6,8 @@
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
-1. **CONTENT-6 / Recherche Content v3** — Migrer `components/AppSearchInput.vue`, dernier usage applicatif documente de `queryContent('articles')` et `.where({ $or: ... })`.
-2. **DEP-2 final / Audit Content v3** — Apres la recherche, verifier qu'il ne reste plus d'API Content v2 applicative et decider si `DEP-2` peut etre cloture.
+1. **DEP-2 final / Audit Content v3** — Verifier qu'il ne reste plus d'API Content v2 applicative et decider si `DEP-2` peut etre cloture.
+2. **Recherche UI / composant orphelin** — Si `AppSearchInput.vue` doit redevenir visible, choisir une page hote et faire une verification UX dediee ; sinon documenter son statut orphelin dans un lot separe.
 3. **Image / ESLint** — Traiter séparément après Content/sitemap : `@nuxt/image`, puis `@nuxt/eslint` probablement en dernier.
 4. **CONFIG-* restants selon besoin** — Les options Nuxt 4 ont ete auditees ; ne corriger que si un warning futur ou une mise a jour de module l'exige.
 5. **DIR-* app directory** — Ne pas deplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dedie si besoin.
@@ -28,7 +28,7 @@ SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stabl
 
 - Base actuelle validée : Nuxt `4.4.2`, Nitro `2.13.3`, Vue `3.5.33`, Vite direct `6.4.1` (`7.3.2` côté builder Nuxt)
 - `future.compatibilityVersion: 4` actif
-- Génération statique validée après DEP-2-C : 72 routes prerendered
+- Génération statique validée après DEP-2-D : 72 routes prerendered
 - Derniers commits documentaires :
   - `75d9207` — `docs: rafraichir baseline compat Nuxt 4`
   - `e1e6b6a` — `docs: cartographier migration Content v3`
@@ -41,19 +41,17 @@ SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stabl
 Branche : `chore/nuxt4-migration`
 
 Dernière décision :
-- DEP-2-C réalisé le 2 mai 2026.
-- Résultat : schéma Content enrichi et pages/composants principaux migrés vers Content v3.
+- DEP-2-D réalisé le 10 mai 2026.
+- Résultat : recherche `AppSearchInput.vue` migrée vers Content v3.
 - Version Nuxt : `4.4.2`.
 - Version Content : `@nuxt/content@3.13.0`.
 - Version sitemap : `@nuxtjs/sitemap@8.0.15`.
-- Rapport : `migration-nuxt4-dep-2-c-pages.md`.
+- Rapport : `migration-nuxt4-dep-2-d-search.md`.
 - Changements appliques :
-  - `content.config.ts` enrichi avec un schema permissif pour les champs frontmatter articles ;
-  - `zod@3.25.76` ajoute en dependance directe pour supporter le schema Content ;
-  - homepage, archive `/eco-conception/`, page article `[slug]` et `HomeEcoArticles` migres vers `queryCollection` ;
-  - `findSurround()` remplace par `queryCollectionItemSurroundings()` ;
-  - `_path` remplace par `path` sur les surfaces migrees ;
-  - garde-fou `scripts/check-content-queries.mjs` adapte au contrat Content v3, avec exception documentee pour `AppSearchInput.vue`.
+  - `queryContent('articles')`, `$or`, `$contains`, `.find()` et `article.slug` supprimes de `AppSearchInput.vue` ;
+  - recherche remplacee par `queryCollection('articles')`, `LIKE`, `.orWhere(...)`, `.limit(6)` et `.all()` ;
+  - liens de resultats bases sur `article.path` avec trailing slash ;
+  - garde-fou `scripts/check-content-queries.mjs` durci : plus aucune exception applicative Content v2.
 - Validation :
   - `npm test` : OK ;
   - `npm run generate` : OK ;
@@ -63,21 +61,23 @@ Dernière décision :
   - JSON Feed : `/feed.json` genere ;
   - sitemap articles : 14 URLs `/eco-conception/`.
 - Erreur corrigee :
-  - `no such column: "date"` sur RSS/JSON Feed corrigee par le schema `date`.
-- Usage restant documente :
-  - `components/AppSearchInput.vue` conserve temporairement `queryContent('articles')` pour `CONTENT-6`.
+  - dernier usage applicatif documente de `queryContent()` corrige.
+- Verification manuelle :
+  - preview local de la home sans erreur console ;
+  - `AppSearchInput.vue` n'est pas monte dans les pages generees actuelles, donc pas de verification UX interactive applicable sans page hote.
 - Warnings non bloquants :
   - warning sitemap `zeroRuntime` ;
   - sourcemap `nuxt:module-preload-polyfill` ;
   - circular chunk `vendor-nuxt -> vendor-libs -> vendor-nuxt`.
 - Prochaine étape :
-  - ouvrir `CONTENT-6 / Recherche Content v3`, puis faire l'audit final Content avant cloture `DEP-2`.
+  - lancer `DEP-2 final / Audit Content v3`, puis cloturer `DEP-2` si l'audit confirme l'absence d'API Content v2 applicative.
 
 Contraintes maintenues :
-- Aucun déplacement vers `app/` dans DEP-2-C.
-- Modules image/eslint non migres dans DEP-2-C.
-- Recherche avancee non migree dans DEP-2-C, sauf exception documentee pour le prochain lot.
-- Aucune correction globale lint, CSS ou chunks faite dans DEP-2-C.
+- Aucun déplacement vers `app/` dans DEP-2-D.
+- Modules image/eslint non migres dans DEP-2-D.
+- Aucun changement CSS/design fait dans DEP-2-D.
+- Aucune correction globale lint ou chunks faite dans DEP-2-D.
+- `package.json` et `package-lock.json` inchanges dans DEP-2-D.
 - `npm audit fix` non lance.
 
 ### Dernière mise à jour
@@ -149,6 +149,13 @@ Contraintes maintenues :
   - `npm test` OK, `npm run generate` OK, check SEO OK
   - routes prerendered : 72
   - reste : `CONTENT-6 / AppSearchInput.vue`, dernier usage applicatif Content v2 documente
+- ✅ DEP-2-D realise :
+  - `components/AppSearchInput.vue` migre vers `queryCollection('articles')`, `LIKE`, `.orWhere(...)`, `.all()` et `path`
+  - garde-fou Content durci : plus aucune exception applicative `queryContent()`
+  - `npm test` OK, `npm run generate` OK, check SEO OK
+  - routes prerendered : 72
+  - `package.json` et `package-lock.json` inchanges
+  - prochaine etape : audit final Content v3 avant cloture `DEP-2`
 
 **Services freelance — relief visuel & maillage (28 avril 2026)** — Branche `feat/design-services`.
 

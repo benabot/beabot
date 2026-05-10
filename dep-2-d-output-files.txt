@@ -1,0 +1,8 @@
+Fichiers generes critiques :
+-rw-r--r--@ 1 benoitabot  staff  50615 May 10 10:51 .output/public/eco-conception/l-eco-conception-web/index.html
+-rw-r--r--@ 1 benoitabot  staff   8592 May 10 10:51 .output/public/feed.json
+-rw-r--r--@ 1 benoitabot  staff   8867 May 10 10:51 .output/public/rss.xml
+-rw-r--r--@ 1 benoitabot  staff   8780 May 10 10:51 .output/public/sitemap.xml
+
+Routes prerendered :
+342:[nitro] ℹ Prerendered 72 routes in 5.57 seconds

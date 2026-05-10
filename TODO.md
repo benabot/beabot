@@ -203,7 +203,10 @@ Ordre recommandé (mettre à jour et tester une par une) :
   - Pages et composants principaux migrés vers `queryCollection`, `queryCollectionItemSurroundings` et `path`.
   - RSS, JSON Feed et sitemap revalidés après schéma complet.
   - `npm test`, `npm run generate` et check SEO OK ; routes prerendered : 72.
-  - Reste à migrer avant clôture globale : recherche `AppSearchInput.vue` (`CONTENT-6`) et audit final des usages Content v2.
+  - DEP-2-D réalisé : `migration-nuxt4-dep-2-d-search.md`.
+  - Recherche `AppSearchInput.vue` migrée vers `queryCollection('articles')`, `LIKE`, `.orWhere(...)`, `.all()` et `path`.
+  - `npm test`, `npm run generate` et check SEO OK ; routes prerendered : 72.
+  - Reste avant clôture globale : audit final des usages Content v2 et décision de clôture `DEP-2`.
 - [x] **DEP-3** — Vérifier compatibilité `@nuxtjs/sitemap` 6.x avec Nuxt 4 ; mettre à jour vers 7.x si requis
   - DEP-2-B : nécessaire avant validation complète, car `@nuxtjs/sitemap` v6 importe encore `#content/server`.
   - Rapport : `migration-nuxt4-dep-3-sitemap.md`.
@@ -342,7 +345,11 @@ Fichiers qui **restent à la racine** (pas de déplacement) :
 
 Content v3 utilise une syntaxe SQL-like : `.where('title', 'LIKE', '%query%')`. L'opérateur `$or` n'existe plus.
 
-- [ ] **CONTENT-6** — Réécrire le search dans `AppSearchInput.vue` avec la nouvelle syntaxe `.where()` ou utiliser `queryCollectionSearchSections()` (remplaçant de `searchContent()`)
+- [x] **CONTENT-6** — Réécrire le search dans `AppSearchInput.vue` avec la nouvelle syntaxe `.where()` ou utiliser `queryCollectionSearchSections()` (remplaçant de `searchContent()`)
+  - DEP-2-D : migré vers `queryCollection('articles')`, `.orWhere(...)`, `LIKE`, `.limit(6)` et `.all()`.
+  - `queryCollectionSearchSections()` non utilisé : l'ancien comportement cherchait uniquement dans `title` et `description`.
+  - Garde-fou Content mis à jour : plus aucune exception applicative `queryContent()`.
+  - Note : le composant n'est pas monté dans les pages générées actuelles ; vérification UX interactive à traiter seulement si une page hôte est réintroduite.
 
 ##### 3.3.5 — `._path` → `.path` (underscore prefix supprimé)
 
