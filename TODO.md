@@ -243,6 +243,14 @@ Ordre recommandé (mettre à jour et tester une par une) :
   - `npm run lint:js` OK avec 0 erreur et 101 warnings historiques.
   - `npm run lint` reste bloqué par `lint:prettier` sur des formatages repo-wide historiques et `audit-unused-depcheck.json` non JSON ; aucune correction globale lancée.
   - `eslint-config-prettier`, `eslint-plugin-vue` et `prettier` conservés.
+- [x] **NUXT4-FINAL-AUDIT** — Auditer la stabilisation post DEP-1 à DEP-5 avant décision preview/merge
+  - Rapport : `migration-nuxt4-final-audit.md`.
+  - Versions finales confirmées : Nuxt `4.4.2`, Content `3.13.0`, sitemap `8.0.15`, image `2.0.0`, ESLint `1.15.2`.
+  - `npm test`, `npm run generate`, check SEO et `npm run lint:js` validés.
+  - Routes prerendered : 72.
+  - Décision : branche cohérente pour validation preview ; ne pas merger directement dans `dev` ou `master` sans preview/revue.
+  - Déplacement vers `app/` non requis avant preview tant que Nuxt 4 fonctionne avec l'arborescence actuelle.
+  - Warnings restants reportés en lots séparés : sitemap `zeroRuntime`, sourcemap, circular chunk, lint Prettier, npm audit.
 - [x] **DEP-6** — Supprimer `"#internal/nuxt/paths": "./nuxt.paths.mjs"` de `package.json` `imports` — override interne Nuxt 3 probablement incompatible avec Nuxt 4
   - Rapport : `migration-nuxt4-dep-6.md`
   - Suppression réalisée avant `DEP-1`.

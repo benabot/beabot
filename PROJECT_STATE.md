@@ -6,12 +6,14 @@
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
-1. **Recherche UI / composant orphelin** — Si `AppSearchInput.vue` doit redevenir visible, choisir une page hote et faire une verification UX dediee ; sinon documenter son statut orphelin dans un lot separe.
-2. **URL hygiene articles Markdown** — Corriger dans un lot dedie les 5 liens internes d'article sans slash final detectes pendant `DEP-2-E`, sans melanger avec les migrations de dependances.
-3. **Lint global repo-wide** — `npm run lint:js` fonctionne avec la flat config Nuxt ESLint v1, mais `npm run lint` reste bloque par `lint:prettier` sur des formatages historiques et `audit-unused-depcheck.json` non JSON ; a traiter separement.
-4. **CONFIG-* restants selon besoin** — Les options Nuxt 4 ont ete auditees ; ne corriger que si un warning futur ou une mise a jour de module l'exige.
-5. **DIR-* app directory** — Ne pas deplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dedie si besoin.
-6. **SCSS-6** — Ne pas supprimer SCSS tout de suite. Ouvrir une branche dédiée uniquement si un lot CSS moderne sûr est identifié.
+1. **Preview Nuxt 4** — Déployer/valider une preview Netlify de `chore/nuxt4-migration` avant toute décision de merge vers `dev`.
+2. **Documentation stack Nuxt 4** — Mettre a jour dans un lot separe `README.md`, `AGENTS.md`, `CLAUDE.md` et les descriptions de skills qui mentionnent encore Nuxt 3 / Content v2 / sitemap v6.
+3. **Recherche UI / composant orphelin** — Si `AppSearchInput.vue` doit redevenir visible, choisir une page hote et faire une verification UX dediee ; sinon documenter son statut orphelin dans un lot separe.
+4. **URL hygiene articles Markdown** — Corriger dans un lot dedie les 5 liens internes d'article sans slash final detectes pendant `DEP-2-E`, sans melanger avec les migrations de dependances.
+5. **Lint global repo-wide** — `npm run lint:js` fonctionne avec la flat config Nuxt ESLint v1, mais `npm run lint` reste bloque par `lint:prettier` sur des formatages historiques et `audit-unused-depcheck.json` non JSON ; a traiter separement.
+6. **Audit securite npm** — `npm audit --audit-level=moderate` signale 11 vulnerabilites ; ne pas lancer `npm audit fix` sans lot dedie.
+7. **DIR-* app directory** — Ne pas deplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dedie uniquement si une incompatibilite reelle apparait.
+8. **SCSS-6** — Ne pas supprimer SCSS tout de suite. Ouvrir une branche dédiée uniquement si un lot CSS moderne sûr est identifié.
 
 ---
 
@@ -40,20 +42,18 @@ SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stabl
 Branche : `chore/nuxt4-migration`
 
 Dernière décision :
-- DEP-5 réalisé le 10 mai 2026.
-- Résultat : `@nuxt/eslint` migré vers `1.15.2` pour Nuxt 4.
+- NUXT4-FINAL-AUDIT réalisé le 10 mai 2026.
+- Résultat : branche `chore/nuxt4-migration` cohérente après DEP-1 à DEP-5, prête pour validation preview.
 - Version Nuxt : `4.4.2`.
 - Version Content : `@nuxt/content@3.13.0`.
 - Version Image : `@nuxt/image@2.0.0`.
 - Version sitemap : `@nuxtjs/sitemap@8.0.15`.
 - Version ESLint Nuxt : `@nuxt/eslint@1.15.2`.
-- Rapport : `migration-nuxt4-dep-5-eslint.md`.
+- Rapport : `migration-nuxt4-final-audit.md`.
 - Changements appliques :
-  - seule dependance directe cible modifiee : `@nuxt/eslint` ;
-  - migration minimale vers `eslint.config.mjs` ;
-  - ancienne `.eslintrc.cjs` supprimee car incompatible avec l'export ESM de `@nuxt/eslint-config` v1 ;
-  - script `lint:js` simplifie en `eslint .` ;
-  - regles projet conservees : exception `vue/multi-word-component-names` et warnings non bloquants pour les usages historiques `any` / variables inutilisees.
+  - aucun changement applicatif ;
+  - audit final des versions, anciennes APIs, config Nuxt, routes, feeds, SEO, lint JS, npm audit et documentation obsolète ;
+  - aucune correction opportuniste appliquee.
 - Validation :
   - `npm test` : OK ;
   - `npm run generate` : OK ;
@@ -61,24 +61,30 @@ Dernière décision :
   - routes prerendered : 72 ;
   - `npm run lint:js` : OK, 0 erreur, 101 warnings historiques ;
   - `npm run lint` : bloque par `lint:prettier` sur formatages historiques et `audit-unused-depcheck.json` non JSON, non corrige dans DEP-5 ;
+  - `npm audit --audit-level=moderate` : 11 vulnerabilites documentees, aucun `npm audit fix` lance ;
   - RSS : `/rss.xml` genere ;
   - JSON Feed : `/feed.json` genere ;
   - sitemap : 13 URLs articles + archive `/eco-conception/`.
 - Audit URLs :
   - aucune URL `/articles/`, `[object Object]` ou `undefined` dans les sorties Content generees ;
   - 5 liens Markdown internes sans slash final detectes dans un article existant, reportes hors DEP-2 car les changements editoriaux etaient exclus.
+- Audit documentation :
+  - `README.md`, `AGENTS.md` et `CLAUDE.md` mentionnent encore l'ancienne stack Nuxt 3 / Content v2 / sitemap v6 ;
+  - mise a jour reportee dans un lot documentaire post-preview.
 - Warnings non bloquants :
   - warning sitemap `zeroRuntime` ;
   - sourcemap `nuxt:module-preload-polyfill` ;
   - circular chunk `vendor-nuxt -> vendor-libs -> vendor-nuxt`.
 - Prochaine étape :
-  - traiter le lint global repo-wide dans un lot dedie si necessaire, sans melanger avec `app/` ou les optimisations CSS/chunks.
+  - valider une preview Netlify de `chore/nuxt4-migration` avant toute decision de merge ;
+  - ne pas deplacer vers `app/` avant preview, car aucune incompatibilite Nuxt 4 ne l'impose aujourd'hui.
 
 Contraintes maintenues :
-- Aucun déplacement vers `app/` dans DEP-5.
-- Aucun changement CSS/design fait dans DEP-5.
-- Aucune correction globale lint, Prettier ou chunks faite dans DEP-5.
-- Aucun contenu editorial ni lien Markdown corrige dans DEP-5.
+- Aucun déplacement vers `app/` dans NUXT4-FINAL-AUDIT.
+- Aucun changement CSS/design fait dans NUXT4-FINAL-AUDIT.
+- Aucune correction globale lint, Prettier ou chunks faite dans NUXT4-FINAL-AUDIT.
+- Aucun contenu editorial ni lien Markdown corrige dans NUXT4-FINAL-AUDIT.
+- Aucun merge vers `dev` ou `master`.
 - `npm audit fix` non lance.
 
 ### Dernière mise à jour
@@ -181,6 +187,15 @@ Contraintes maintenues :
   - routes prerendered : 72
   - `npm run lint:js` OK avec 0 erreur et 101 warnings historiques
   - `npm run lint` reste bloque par `lint:prettier` sur formatages historiques et `audit-unused-depcheck.json` non JSON
+- ✅ NUXT4-FINAL-AUDIT realise :
+  - versions finales confirmees : Nuxt `4.4.2`, Content `3.13.0`, sitemap `8.0.15`, image `2.0.0`, ESLint `1.15.2`
+  - aucune dependance Nuxt 3 imbriquee inattendue detectee dans `npm ls`
+  - aucune API Content v2 applicative active restante
+  - `npm test` OK, `npm run generate` OK, check SEO OK, `npm run lint:js` OK
+  - routes prerendered : 72
+  - `npm audit --audit-level=moderate` documente 11 vulnerabilites, sans `npm audit fix`
+  - decision : branche prete pour validation preview, mais pas pour merge direct sans preview/revue
+  - decision : pas de deplacement vers `app/` avant preview tant que l'arborescence actuelle reste validee
 
 **Services freelance — relief visuel & maillage (28 avril 2026)** — Branche `feat/design-services`.
 

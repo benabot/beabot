@@ -1,0 +1,35 @@
+content.config.ts:21:        image: z.string().optional(),
+nuxt.config.ts:40:  compatibilityDate: '2024-12-06',
+nuxt.config.ts:41:  future: {
+nuxt.config.ts:44:  features: {
+nuxt.config.ts:45:    inlineStyles: false,
+nuxt.config.ts:75:        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+nuxt.config.ts:78:          content:
+nuxt.config.ts:82:        { name: 'theme-color', content: '#ffffff' },
+nuxt.config.ts:86:          content: 'BeAbot : éco-conception web',
+nuxt.config.ts:90:          content:
+nuxt.config.ts:95:          content: `${siteUrl}/beabot.png`,
+nuxt.config.ts:100:          content: 'BeAbot : éco-conception web',
+nuxt.config.ts:104:          content:
+nuxt.config.ts:109:          content: `${siteUrl}/beabot.png`,
+nuxt.config.ts:122:    // Désactive la transition globale pour éviter CSS/JS supplémentaires
+nuxt.config.ts:132:  routeRules: {
+nuxt.config.ts:134:    '/': { prerender: true, noScripts: true },
+nuxt.config.ts:135:    '/mentions-legales/': { prerender: true, noScripts: true },
+nuxt.config.ts:139:  vite: {
+nuxt.config.ts:166:          manualChunks: (id) => {
+nuxt.config.ts:200:  router: {
+nuxt.config.ts:204:      prefetchLinks: false,
+nuxt.config.ts:209:  modules: ['@nuxt/content', '@nuxt/image', '@nuxtjs/sitemap'],
+nuxt.config.ts:212:  content: {
+nuxt.config.ts:251:  image: {
+nuxt.config.ts:252:    provider: 'none',
+nuxt.config.ts:282:  sitemap: {
+nuxt.config.ts:293:  nitro: {
+nuxt.config.ts:294:    prerender: {
+nuxt.config.ts:295:      routes: ['/rss.xml', '/feed.json', '/sitemap.xml', '/robots.txt'],
+nuxt.config.ts:300:      'sitemap:resolved': (ctx) => {
+nuxt.config.ts:306:      'sitemap:output': (ctx) => {
+nuxt.config.ts:307:        ctx.sitemap = ctx.sitemap.replace(
+nuxt.config.ts:320:  // Experimental features
+nuxt.config.ts:325:      nuxtLink: {

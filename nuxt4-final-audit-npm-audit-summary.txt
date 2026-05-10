@@ -1,0 +1,12 @@
+Severity: moderate
+Severity: moderate
+Severity: high
+Severity: high
+Severity: high
+Severity: high
+Severity: high
+Severity: moderate
+Severity: high
+Severity: high
+Severity: moderate
+11 vulnerabilities (4 moderate, 7 high)

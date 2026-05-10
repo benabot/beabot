@@ -1,0 +1,24 @@
+CLAUDE.md:34:  "framework": "Nuxt 3.14+",
+CLAUDE.md:36:  "bundler": "Vite 6",
+CLAUDE.md:37:  "cms": "@nuxt/content v2.13+",
+CLAUDE.md:38:  "image": "@nuxt/image",
+CLAUDE.md:39:  "sitemap": "@nuxtjs/sitemap v6.1.5",
+CLAUDE.md:113:| 1-8 | Migration Nuxt 3 | Nov-Déc 2025 |
+AGENTS.md:34:  "framework": "Nuxt 3.14+",
+AGENTS.md:36:  "bundler": "Vite 6",
+AGENTS.md:37:  "cms": "@nuxt/content v2.13+",
+AGENTS.md:38:  "image": "@nuxt/image",
+AGENTS.md:39:  "sitemap": "@nuxtjs/sitemap v6.1.5",
+AGENTS.md:113:| 1-8 | Migration Nuxt 3 | Nov-Déc 2025 |
+AGENTS.md:365:- **`vue-nuxt.md`** : bonnes pratiques Vue 3 + Nuxt 3, composition API, SSR, SSG.
+README.md:18:| **@nuxt/content** | 2.13+ | Markdown CMS |
+README.md:19:| **@nuxt/image** | 1.8+ | Optimisation images |
+README.md:20:| **@nuxtjs/sitemap** | 6.1+ | Génération sitemap |
+README.md:104:### Migration Nuxt 2 → Nuxt 3 (Phases 1-8)
+README.md:108:- Migration @nuxt/content v1 → v2
+.codex/skills/vue-nuxt.md:1:# Skill — Vue.js / Nuxt 4
+.codex/skills/vue-nuxt.md:5:Projet Nuxt 4 en SSG / prerendering, maintenable, lisible, rapide et sobre.
+.codex/skills/vue-nuxt.md:20:## Principes Nuxt 4
+.codex/skills/vue-nuxt.md:24:- respecter la structure Nuxt 4 : `app/` pour l’interface, `server/` pour les endpoints, `content/` et `public/` à la racine si le projet les conserve ainsi
+.codex/skills/vue-nuxt.md:31:- documenter toute option Nuxt 4 incertaine avant de la changer
+.codex/skills/vue-nuxt.md:98:- changement de configuration Nuxt 4 sans mesure ni rapport
