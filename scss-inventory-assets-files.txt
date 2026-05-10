@@ -1,6 +1,0 @@
-assets/css/article-content.scss
-assets/css/main.scss
-assets/css/mixins/_mixins.scss
-assets/css/vars/_colors.scss
-assets/css/vars/_spacing.scss
-assets/css/vars/_typo.scss

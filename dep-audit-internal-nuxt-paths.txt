@@ -1,1 +1,0 @@
-7:    "#internal/nuxt/paths": "./nuxt.paths.mjs"

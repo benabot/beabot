@@ -1,2 +1,0 @@
-npm error No dependencies found matching ipx
-npm error A complete log of this run can be found in: /Users/benoitabot/.npm/_logs/2026-05-10T10_57_52_518Z-debug-0.log

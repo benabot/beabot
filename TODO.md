@@ -40,13 +40,13 @@
 
 - [x] **TEST-AUDIT-1** — Lancer la suite existante sur la branche d'audit : `npm test`
   - Résultat : ✅ 49 checks passés, 0 warning, 0 erreur
-  - Sortie : `migration-nuxt4-tests.txt`
+  - Sortie brute supprimée lors de `CLEANUP-ROOT` ; synthèse conservée dans `docs/migration/nuxt4/reports/migration-nuxt4-tests-coverage.md`.
 - [x] **TEST-AUDIT-2** — Lancer le check SEO existant sur le build statique disponible
   - Commande : `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs`
   - Résultat : ✅ `OK SEO checks passed.`
-  - Sortie : `migration-nuxt4-seo-check.txt`
+  - Sortie brute supprimée lors de `CLEANUP-ROOT` ; synthèse conservée dans `docs/migration/nuxt4/reports/migration-nuxt4-tests-coverage.md`.
 - [x] **TEST-AUDIT-3** — Documenter les manques critiques avant migration Nuxt 4
-  - Rapport : `migration-nuxt4-tests-coverage.md`
+  - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-tests-coverage.md`
 - [x] **TEST-1** — Ajouter des tests unitaires pour `utils/seo-url.ts`
   - Couvrir : `absoluteUrl`, `canonicalUrl`, `withTrailingSlash`, `normalizeInternalHref`
   - Critique : URLs canoniques, trailing slash, assets avec extension, query strings et ancres
@@ -66,7 +66,7 @@
 ### Étape 1 — Performance (PageSpeed Insights : 99 → 100 mobile)
 
 > Source : audit PSI du 27 avril 2026 (screenshot)
-> Audit local : `migration-nuxt4-psi-audit.md`
+> Audit local : `docs/migration/nuxt4/reports/migration-nuxt4-psi-audit.md`
 
 - [ ] **PSI-1** — Éliminer les 3 CSS render-blocking (`/_nuxt/entry.css`, `/_nuxt/index.css`, `/_nuxt/default.css`) — économie estimée : 270 ms LCP/FCP
   - Option A : `inlineSSRStyles: true` (déjà désactivé intentionnellement — réévaluer)
@@ -85,7 +85,7 @@
 ### Étape 2 — Audit fichiers inutiles
 
 > Audit réalisé le 28 avril 2026 sur `chore/nuxt4-unused-files-audit`.
-> Rapport : `migration-nuxt4-unused-files-audit.md`.
+> Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-unused-files-audit.md`.
 
 - [x] Lister les fichiers orphelins potentiels ; supprimer uniquement ceux prouvés inutilisés
 - [x] Vérifier que `getSiteMeta.js` (vestige Nuxt 2, marqué `deprecated`) n'est plus importé dans aucun composant — le supprimer si présent et inutilisé
@@ -100,27 +100,27 @@
 **Objectif :** migrer les variables SCSS vers des custom properties CSS (`--var`) là où c'est pertinent, pour bénéficier de la cascade native, réduire la dépendance à SCSS et préparer la migration Nuxt 4.
 
 - [x] **SCSS-1** — Inventaire : lister toutes les variables SCSS (`$var`) utilisées dans les composants scoped vs les fichiers globaux (`vars/`, `main.scss`)
-  - Rapport : `migration-nuxt4-scss-inventory.md`
-  - Sorties : `scss-inventory-*.txt`
+  - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-scss-inventory.md`
+  - Sorties brutes `scss-inventory-*.txt` supprimées lors de `CLEANUP-ROOT` ; synthèse conservée dans le rapport.
   - Aucun style modifié ; aucune variable migrée ; aucune dépendance modifiée.
 - [x] **SCSS-2** — Migrer les variables de couleurs (`$vert`, `$gris1`…) de `vars/_colors.scss` vers des custom properties CSS dans `:root` — garder les aliases SCSS pour la période de transition
-  - Rapport : `migration-nuxt4-scss-colors.md`
+  - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-scss-colors.md`
   - Les aliases SCSS sont conservés pour transition.
   - Les usages `color.adjust()` conservent des valeurs Sass raw (`*-raw`) pour éviter de casser la compilation.
   - Les custom properties sont déclarées une seule fois dans le CSS global pour éviter la duplication liée à `additionalData`.
-  - Éco-impact mesuré dans `scss-colors-assets-bytes-diff.txt`.
+  - Éco-impact résumé dans `docs/migration/nuxt4/reports/migration-nuxt4-scss-colors.md` ; sortie brute supprimée lors de `CLEANUP-ROOT`.
 - [x] **SCSS-3** — Migrer les variables de typographie (`$breakpoint-tablet`, tailles fluides) vers des custom properties ou des `@layer` CSS
-  - Rapport : `migration-nuxt4-scss-typography.md`
+  - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-scss-typography.md`
   - Migration partielle volontaire : tokens typographiques simples exposés en custom properties CSS ; `$breakpoint-tablet`, maps et calculs Sass conservés.
   - Les custom properties typo sont déclarées une seule fois dans le CSS global pour éviter la duplication liée à `additionalData`.
 - [x] **SCSS-4** — Remplacer les `@use` globaux injectés via `vite.css.preprocessorOptions.additionalData` par des imports explicites dans chaque fichier qui en a besoin (meilleure traçabilité, compatible Nuxt 4)
-  - Rapport : `migration-nuxt4-scss-explicit-imports.md`
+  - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-scss-explicit-imports.md`
   - Les imports SCSS globaux ne sont plus injectés via `additionalData`.
   - Les fichiers consommateurs déclarent explicitement leurs dépendances SCSS.
   - `api: modern-compiler` est conservé.
-  - Éco-impact mesuré dans `scss-explicit-imports-assets-bytes-diff.txt`.
+  - Éco-impact résumé dans `docs/migration/nuxt4/reports/migration-nuxt4-scss-explicit-imports.md` ; sortie brute supprimée lors de `CLEANUP-ROOT`.
 - [x] **SCSS-5** — Valider l'éco-impact : vérifier que le CSS généré n'a pas grossi (poids `/_nuxt/*.css` avant/après)
-  - Rapport : `migration-nuxt4-scss-eco-impact.md`
+  - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-scss-eco-impact.md`
   - CSS total mesuré après SCSS-4/5 : 171 279 octets.
   - Résultat : CSS réduit par rapport aux étapes précédentes.
   - `TOTAL_DEPENDANCES_IMPLICITES=0` confirmé.
@@ -138,7 +138,7 @@
 #### 3.0 — Pré-migration : activer le mode compatibilité Nuxt 4
 
 - [x] **COMPAT-1** — Ajouter `future: { compatibilityVersion: 4 }` dans `nuxt.config.ts`
-- [x] **COMPAT-2** — Lancer `npm run generate` et documenter tous les warnings/erreurs dans `migration-nuxt4-warnings.md`   - Refresh réalisé le 29 avril 2026 sur `chore/nuxt4-migration` après Étape 2b SCSS : `npm test` OK, `npm run generate` OK, 100 routes prerendered, aucun warning Nuxt 4 bloquant identifié.
+- [x] **COMPAT-2** — Lancer `npm run generate` et documenter tous les warnings/erreurs dans `docs/migration/nuxt4/reports/migration-nuxt4-warnings.md`   - Refresh réalisé le 29 avril 2026 sur `chore/nuxt4-migration` après Étape 2b SCSS : `npm test` OK, `npm run generate` OK, 100 routes prerendered, aucun warning Nuxt 4 bloquant identifié.
 - [x] **COMPAT-3** — Lancer `npx codemod@0.18.7 nuxt/4/migration-recipe` pour identifier les transformations automatisables   - Refresh codemod réalisé le 29 avril 2026 : `npx --no-install codemod nuxt/4/migration-recipe --dry-run` échoue car `codemod@1.9.0` n'est pas installé localement. Aucun install interactif lancé.
 - [x] **COMPAT-4** — Créer la branche `chore/nuxt4-migration` depuis `dev` à jour
 
@@ -149,11 +149,9 @@
 > DEP-AUDIT réalisé le 29 avril 2026 sur `chore/nuxt4-migration`.
 > Objectif : comparer versions déclarées, versions installées et ordre réel de mise à jour avant `DEP-1`.
 > Rapports :
-> - `dep-audit-declared-versions.txt`
-> - `dep-audit-installed-versions.txt`
-> - `dep-audit-peer-risks.txt`
-> - `dep-audit-target-versions.txt`
-> - `dep-audit-update-order.md`
+> - `docs/migration/nuxt4/reports/migration-nuxt4-dep-audit.md`
+> - `docs/migration/nuxt4/reports/dep-audit-update-order.md`
+> - sorties brutes `dep-audit-*.txt` supprimées lors de `CLEANUP-ROOT`
 > Aucun changement de dépendance effectué dans cette étape.
 
 Ordre recommandé (mettre à jour et tester une par une) :
@@ -173,40 +171,40 @@ Ordre recommandé (mettre à jour et tester une par une) :
 | 11  | `vite`            | ^6.0.1           | ^6+                  | Nuxt 4 utilise Vite Environment API — géré par Nuxt                        | 🟢     |
 
 - [x] **TEST-GUARD Nuxt 4** — Adapter `scripts/pre-build-check.js` pour accepter Nuxt 3 et Nuxt 4 pendant la migration
-  - Rapport : `migration-nuxt4-test-guard.md`
+  - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-test-guard.md`
   - Raison : `DEP-1` était bloqué par le message `Nuxt 3 not in dependencies`.
   - Le garde-fou refuse toujours l'absence de `nuxt` et les majors autres que 3 ou 4.
   - `npm test`, `npm run generate` et check SEO validés.
 - [x] **DEP-1** — Mettre à jour `nuxt` vers la dernière version 4.x
-  - Rapport : `migration-nuxt4-dep-1-retry.md`
+  - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-dep-1-retry.md`
   - Version installée : `nuxt@4.4.2`
   - `npm test`, `npm run generate` et check SEO validés.
   - Routes prerendered : 100.
   - Warnings non bloquants documentés : sourcemap `nuxt:module-preload-polyfill`, circular chunk `vendor-nuxt -> vendor-libs -> vendor-nuxt`.
   - `@nuxt/content`, `@nuxt/image`, `@nuxtjs/sitemap` et `@nuxt/eslint` non migrés dans cette étape.
 - [x] **DEP-2** — Mettre à jour `@nuxt/content` vers 3.x (après avoir migré les APIs — voir 3.3)
-  - CONTENT-DOCS réalisé : `migration-nuxt4-content-v3-docs-audit.md`.
+  - CONTENT-DOCS réalisé : `docs/migration/nuxt4/reports/migration-nuxt4-content-v3-docs-audit.md`.
   - Ne pas lancer avant décision explicite sur le schéma `content.config.ts` et le validateur requis par la documentation officielle.
-  - DEP-2-A réalisé partiellement : `migration-nuxt4-dep-2-a.md`.
+  - DEP-2-A réalisé partiellement : `docs/migration/nuxt4/reports/migration-nuxt4-dep-2-a.md`.
   - Version installée : `@nuxt/content@3.13.0`.
   - `content.config.ts` minimal créé pour `articles`.
   - `npm test` OK.
   - `npm run generate` bloqué par les imports v2 `#content/server` dans RSS/JSON Feed et `@nuxtjs/sitemap` v6.
   - Ne pas cocher `DEP-2` avant migration des APIs v2 restantes.
-  - DEP-2-B réalisé partiellement : `migration-nuxt4-dep-2-b.md`.
+  - DEP-2-B réalisé partiellement : `docs/migration/nuxt4/reports/migration-nuxt4-dep-2-b.md`.
   - RSS et JSON Feed migrés vers `queryCollection(event, 'articles')`.
   - `npm test` OK.
   - Blocage `@nuxtjs/sitemap` v6 traité ensuite dans `DEP-3`.
-  - DEP-2-C réalisé : `migration-nuxt4-dep-2-c-pages.md`.
+  - DEP-2-C réalisé : `docs/migration/nuxt4/reports/migration-nuxt4-dep-2-c-pages.md`.
   - Schéma `articles` enrichi dans `content.config.ts` avec les champs frontmatter nécessaires (`date`, `updatedAt`, `tag`, SEO, images, conversion).
   - `zod@3.25.76` ajouté en dépendance directe car le schéma Content l'importe explicitement.
   - Pages et composants principaux migrés vers `queryCollection`, `queryCollectionItemSurroundings` et `path`.
   - RSS, JSON Feed et sitemap revalidés après schéma complet.
   - `npm test`, `npm run generate` et check SEO OK ; routes prerendered : 72.
-  - DEP-2-D réalisé : `migration-nuxt4-dep-2-d-search.md`.
+  - DEP-2-D réalisé : `docs/migration/nuxt4/reports/migration-nuxt4-dep-2-d-search.md`.
   - Recherche `AppSearchInput.vue` migrée vers `queryCollection('articles')`, `LIKE`, `.orWhere(...)`, `.all()` et `path`.
   - `npm test`, `npm run generate` et check SEO OK ; routes prerendered : 72.
-  - DEP-2-E audit final réalisé : `migration-nuxt4-dep-2-final-audit.md`.
+  - DEP-2-E audit final réalisé : `docs/migration/nuxt4/reports/migration-nuxt4-dep-2-final-audit.md`.
   - Plus aucune API Content v2 applicative détectée dans `pages/`, `components/`, `composables/`, `layouts/`, `server/`, `utils/`, `scripts/`, `nuxt.config.ts`, `app.vue` et `error.vue`.
   - `utils/getRoutes.js`, utilitaire orphelin Nuxt Content v2 documenté par les audits précédents, supprimé pendant l'audit final.
   - Garde-fou `scripts/check-content-queries.mjs` étendu aux dossiers utilitaires et scripts applicatifs.
@@ -215,7 +213,7 @@ Ordre recommandé (mettre à jour et tester une par une) :
   - Note hors périmètre DEP-2 : 5 liens Markdown internes sans slash final restent dans un article existant ; pas de changement éditorial dans cet audit.
 - [x] **DEP-3** — Vérifier compatibilité `@nuxtjs/sitemap` 6.x avec Nuxt 4 ; mettre à jour vers 7.x si requis
   - DEP-2-B : nécessaire avant validation complète, car `@nuxtjs/sitemap` v6 importe encore `#content/server`.
-  - Rapport : `migration-nuxt4-dep-3-sitemap.md`.
+  - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-dep-3-sitemap.md`.
   - Version installée : `@nuxtjs/sitemap@8.0.15`.
   - `npm test` OK.
   - `npm run generate` termine avec `.output/public` généré et `/sitemap.xml` présent.
@@ -225,7 +223,7 @@ Ordre recommandé (mettre à jour et tester une par une) :
   - Prochaine étape : `DEP-2-C / Content pages APIs` et schéma Content complet.
   - Les erreurs pages Vue et champ Content `date` ont été traitées ensuite dans `DEP-2-C`.
 - [x] **DEP-4** — Vérifier compatibilité `@nuxt/image` ; mettre à jour si nécessaire
-  - Rapport : `migration-nuxt4-dep-4-image.md`.
+  - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-dep-4-image.md`.
   - Version installée : `@nuxt/image@2.0.0`.
   - Seule dépendance directe modifiée dans `package.json` : `@nuxt/image`.
   - Configuration minimale : `image.provider: 'none'` pour éviter la route IPX, car le projet utilise actuellement des `<img>` natifs et aucun `NuxtImg` / `NuxtPicture`.
@@ -234,17 +232,17 @@ Ordre recommandé (mettre à jour et tester une par une) :
   - Pages avec images vérifiées dans `.output/public` : home, portfolio, apps, Greenlight, pages apps ; aucune image locale manquante détectée.
   - `@nuxt/eslint` non migré dans cette étape ; aucun déplacement vers `app/`, aucun changement CSS/design/chunks.
 - [x] **DEP-5** — Mettre à jour `@nuxt/eslint` vers 1.x si requis par Nuxt 4
-  - Rapport : `migration-nuxt4-dep-5-eslint.md`.
+  - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-dep-5-eslint.md`.
   - Version installée : `@nuxt/eslint@1.15.2`.
   - Seule dépendance directe cible modifiée : `@nuxt/eslint`.
   - Configuration migrée vers `eslint.config.mjs`; ancienne `.eslintrc.cjs` supprimée car incompatible avec l'export ESM de `@nuxt/eslint-config` v1.
   - Script `lint:js` simplifié en `eslint .`.
   - `npm test`, `npm run generate` et check SEO OK ; routes prerendered : 72.
   - `npm run lint:js` OK avec 0 erreur et 101 warnings historiques.
-  - `npm run lint` reste bloqué par `lint:prettier` sur des formatages repo-wide historiques et `audit-unused-depcheck.json` non JSON ; aucune correction globale lancée.
+  - `npm run lint` reste bloqué par `lint:prettier` sur des formatages repo-wide historiques et `docs/migration/nuxt4/archive/audit-unused-depcheck.json` non JSON ; aucune correction globale lancée.
   - `eslint-config-prettier`, `eslint-plugin-vue` et `prettier` conservés.
 - [x] **NUXT4-FINAL-AUDIT** — Auditer la stabilisation post DEP-1 à DEP-5 avant décision preview/merge
-  - Rapport : `migration-nuxt4-final-audit.md`.
+  - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-final-audit.md`.
   - Versions finales confirmées : Nuxt `4.4.2`, Content `3.13.0`, sitemap `8.0.15`, image `2.0.0`, ESLint `1.15.2`.
   - `npm test`, `npm run generate`, check SEO et `npm run lint:js` validés.
   - Routes prerendered : 72.
@@ -252,19 +250,26 @@ Ordre recommandé (mettre à jour et tester une par une) :
   - Déplacement vers `app/` non requis avant preview tant que Nuxt 4 fonctionne avec l'arborescence actuelle.
   - Warnings restants reportés en lots séparés : sitemap `zeroRuntime`, sourcemap, circular chunk, lint Prettier, npm audit.
 - [x] **NUXT4-DEV-READINESS** — Décider les correctifs nécessaires avant merge vers `dev`
-  - Rapport : `migration-nuxt4-dev-readiness.md`.
+  - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-dev-readiness.md`.
   - Décision avant merge `dev` : faire uniquement un lot documentaire minimal pour aligner `AGENTS.md`, `CLAUDE.md` et éventuellement `README.md` avec la stack Nuxt 4 réelle.
-  - À reporter après preview : lint Prettier global, `audit-unused-depcheck.json`, audit sécurité npm, liens Markdown sans slash final, warnings ESLint historiques, warnings sourcemap/circular chunk, recherche UI, SCSS-6.
+  - À reporter après preview : lint Prettier global, `docs/migration/nuxt4/archive/audit-unused-depcheck.json`, audit sécurité npm, liens Markdown sans slash final, warnings ESLint historiques, warnings sourcemap/circular chunk, recherche UI, SCSS-6.
   - À ne pas faire dans la migration Nuxt 4 : déplacement `app/`, refactor CSS/design, `npm audit fix`, correction lint globale ou merge direct vers `master`.
 - [x] **FIX-PREVIEW éco-conception** — Réparer les régressions visibles de `/eco-conception/` après Content v3
-  - Rapport : `migration-nuxt4-fix-eco-conception-page.md`.
+  - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-fix-eco-conception-page.md`.
   - Filtres par thème et recherche locale réparés via normalisation locale de `article.tag`.
   - FAQ réparée via lecture Content v3 `body.value`, avec compatibilité `body.children`.
   - `npm test`, `npm run generate`, check SEO et `npm run lint:js` validés ; routes prerendered : 72.
   - Vérification navigateur locale effectuée sur `/eco-conception/` : filtres `Tout`, `Éco-conception`, `WordPress`, `Performance`, recherches avec/sans résultat, FAQ visible.
   - Aucune dépendance modifiée ; aucun merge vers `dev` ou `master`.
+- [x] **CLEANUP-ROOT** — Ranger les rapports et sorties d'audit avant merge `dev`
+  - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-cleanup-root.md`.
+  - Rapports utiles déplacés vers `docs/migration/nuxt4/reports/`.
+  - Fichiers ambigus conservés dans `docs/migration/nuxt4/archive/`.
+  - Sorties `.txt` brutes supprimées de la racine car résumées par les rapports Markdown.
+  - `npm test`, `npm run generate`, check SEO et `npm run lint:js` validés ; routes prerendered : 72.
+  - Aucun code applicatif, aucune dépendance, aucun CSS/SCSS modifié.
 - [x] **DEP-6** — Supprimer `"#internal/nuxt/paths": "./nuxt.paths.mjs"` de `package.json` `imports` — override interne Nuxt 3 probablement incompatible avec Nuxt 4
-  - Rapport : `migration-nuxt4-dep-6.md`
+  - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-dep-6.md`
   - Suppression réalisée avant `DEP-1`.
   - `npm test`, `npm run generate` et check SEO validés.
   - Aucune dépendance modifiée ; `package-lock.json` inchangé.
@@ -315,15 +320,15 @@ Fichiers qui **restent à la racine** (pas de déplacement) :
 
 > CONTENT-PREP réalisé le 29 avril 2026 sur `chore/nuxt4-migration`.
 > Rapports :
-> - `content-prep-query-map.md`
-> - `content-prep-v2-v3-mapping.md`
-> - `content-prep-content-config-plan.md`
-> - `content-prep-migration-order.md`
-> - `content-prep-tests-plan.md`
+> - `docs/migration/nuxt4/reports/content-prep-query-map.md`
+> - `docs/migration/nuxt4/reports/content-prep-v2-v3-mapping.md`
+> - `docs/migration/nuxt4/reports/content-prep-content-config-plan.md`
+> - `docs/migration/nuxt4/reports/content-prep-migration-order.md`
+> - `docs/migration/nuxt4/reports/content-prep-tests-plan.md`
 > Aucun changement de dépendance, aucune migration API, aucun déplacement vers `app/`.
 >
 > CONTENT-DOCS / DEP-2-PREP réalisé le 29 avril 2026 avec documentation officielle Nuxt Content v3.
-> Rapport : `migration-nuxt4-content-v3-docs-audit.md`
+> Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-content-v3-docs-audit.md`
 > Décisions préparatoires :
 > - collection cible `articles` en `type: 'page'` ;
 > - source cible `{ include: 'articles/**/*.md', prefix: '/eco-conception' }` ;
@@ -334,7 +339,7 @@ Fichiers qui **restent à la racine** (pas de déplacement) :
 > Aucun `npm install`, aucun `content.config.ts`, aucune migration API.
 
 - [x] **CONTENT-DOCS** — Auditer la documentation officielle Nuxt Content v3 avant `DEP-2`
-  - Rapport : `migration-nuxt4-content-v3-docs-audit.md`
+  - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-content-v3-docs-audit.md`
   - Documentation only, aucune validation runtime nécessaire.
   - Points critiques documentés : source de collection, schéma minimal, API server, recherche, RSS/JSON Feed, sitemap, TOC, trailing slashes.
 
@@ -435,13 +440,13 @@ content: {
 Content v3 utilise un fichier `content.config.ts` séparé pour définir les collections et les sources.
 
 - [x] **CONTENT-9** — Créer `content.config.ts` avec la définition de la collection `articles`
-  - Rapport : `migration-nuxt4-dep-2-a.md`
+  - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-dep-2-a.md`
   - Collection minimale `articles` créée en `type: 'page'`.
   - Source : `{ include: 'articles/**/*.md', prefix: '/eco-conception' }`.
   - Schéma custom reporté pour ne pas ajouter de dépendance directe hors `@nuxt/content`.
   - DEP-2-C : schéma enrichi ajouté avec `zod@3.25.76` en dépendance directe.
 - [x] **CONTENT-10** — Migrer la config `highlight` et `markdown` vers le nouveau format Content v3
-  - Rapport : `migration-nuxt4-dep-2-a.md`
+  - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-dep-2-a.md`
   - Config déplacée vers `content.build.markdown`.
   - `highlight.preload` remplacé par `highlight.langs`.
   - `content.experimental.sqliteConnector: 'native'` ajouté pour éviter `better-sqlite3`.
@@ -464,7 +469,7 @@ Content v3 trie alphabétiquement par défaut (au lieu de numériquement). Véri
 #### 3.4 — Breaking changes `nuxt.config.ts`
 
 > CONFIG-AUDIT Nuxt 4 réalisé le 29 avril 2026 sur `chore/nuxt4-migration`.
-> Rapport : `migration-nuxt4-config-audit.md`
+> Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-config-audit.md`
 > Changement appliqué : `experimental.inlineSSRStyles` → `features.inlineStyles`.
 > Options auditées et conservées sans changement : `experimental.defaults.nuxtLink.prefetch`, `router.options`, `routeRules.noScripts`, hooks sitemap.
 > Aucun changement de dépendance, aucune migration Content, aucun déplacement vers `app/`.
@@ -484,7 +489,7 @@ features: {
 ```
 
 - [x] **CONFIG-1** — Migrer `experimental.inlineSSRStyles` → `features.inlineStyles` et réévaluer la valeur (`false` était choisi pour meilleur cache — le comportement par défaut Nuxt 4 est déjà plus granulaire)
-  - Rapport : `migration-nuxt4-config-audit.md`
+  - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-config-audit.md`
   - `features.inlineStyles: false` appliqué.
   - `npm test`, `npm run generate` et check SEO validés.
 
@@ -673,7 +678,7 @@ export const useTags = () => {
 - [ ] **NEW-1** — Configuration npm utilisateur `python` inconnue
   - Impact : 🟢
   - Fichier : configuration npm utilisateur hors dépôt
-  - Ligne : `migration-nuxt4-warnings.txt:1` et `migration-nuxt4-warnings.txt:7`
+  - Référence : `docs/migration/nuxt4/reports/migration-nuxt4-warnings.md`
   - Message exact :
     ```text
     npm warn Unknown user config "python". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
@@ -683,7 +688,7 @@ export const useTags = () => {
 - [ ] **NEW-2** — Configuration npm environnement `python` inconnue
   - Impact : 🟢
   - Fichier : configuration npm environnement hors dépôt
-  - Ligne : `migration-nuxt4-warnings.txt:6`
+  - Référence : `docs/migration/nuxt4/reports/migration-nuxt4-warnings.md`
   - Message exact :
     ```text
     npm warn Unknown env config "python". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.

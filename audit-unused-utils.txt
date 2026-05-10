@@ -1,4 +1,0 @@
-utils/getRoutes.js
-utils/getSiteMeta.js
-utils/portfolioItems.ts
-utils/seo-url.ts

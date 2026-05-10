@@ -1,2 +1,0 @@
-166:[@nuxt/content]  ERROR  Nuxt Content requires better-sqlite3 module to operate.
-169: ERROR  TTY initialization failed: uv_tty_init returned EINVAL (invalid argument)

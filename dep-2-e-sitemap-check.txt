@@ -1,8 +1,0 @@
-sitemap urls: 24
-sitemap article urls: 13
-archive present: true
-404 excluded: true
-article urls missing trailing slash: 0
-unexpected /articles/ urls: 0
-#content/server in sitemap: false
-first article url: https://beabot.fr/eco-conception/audit-eco-conception/

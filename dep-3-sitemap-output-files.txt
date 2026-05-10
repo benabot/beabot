@@ -1,3 +1,0 @@
-ls: .output/public/feed.json: No such file or directory
-ls: .output/public/rss.xml: No such file or directory
--rw-r--r--@ 1 benoitabot  staff  8780 May  2 15:20 .output/public/sitemap.xml

@@ -1,3 +1,0 @@
-rss.xml OK
-feed.json OK
-sitemap.xml OK
