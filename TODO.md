@@ -127,6 +127,11 @@
   - Opportunités CSS moderne documentées : `var()`, `calc()`, `clamp()`, `min()`, `max()`, `color-mix()` et couleurs relatives CSS.
   - Aucune suppression complète de SCSS dans cette étape.
 - [ ] **SCSS-6** — Supprimer SCSS entièrement si la migration est complète et que tous les composants utilisent CSS natif + custom properties
+  - Décision SCSS-6 réalisée : `docs/migration/nuxt4/reports/migration-nuxt4-scss-6-decision.md`.
+  - Décision : reporter après preview Nuxt 4 ; ne pas faire avant merge `dev`.
+  - Raison : 8 fichiers `.scss`, 28 fichiers Vue en `lang="scss"`, 511 occurrences `$...`, helpers `sass:color`, `sass:math`, `sass:map`, fonctions et maps encore actifs.
+  - `sass`, `sass-loader` et `vite.css.preprocessorOptions.scss` restent nécessaires tant que ces usages existent.
+  - Point à intégrer au futur lot : `pages/contact.vue` contient une valeur `$gris3` dans un bloc CSS non SCSS.
 
 ### Étape 3 — Migration Nuxt 4
 
@@ -254,6 +259,11 @@ Ordre recommandé (mettre à jour et tester une par une) :
   - Décision avant merge `dev` : faire uniquement un lot documentaire minimal pour aligner `AGENTS.md`, `CLAUDE.md` et éventuellement `README.md` avec la stack Nuxt 4 réelle.
   - À reporter après preview : lint Prettier global, `docs/migration/nuxt4/archive/audit-unused-depcheck.json`, audit sécurité npm, liens Markdown sans slash final, warnings ESLint historiques, warnings sourcemap/circular chunk, recherche UI, SCSS-6.
   - À ne pas faire dans la migration Nuxt 4 : déplacement `app/`, refactor CSS/design, `npm audit fix`, correction lint globale ou merge direct vers `master`.
+- [x] **SCSS-6-DECISION** — Décider la sortie complète de SCSS avant merge `dev`
+  - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-scss-6-decision.md`.
+  - Décision : reporter `SCSS-6` après preview Nuxt 4.
+  - La branche Nuxt 4 fonctionne avec SCSS ; `SCSS-4/5` ont déjà supprimé l'injection globale `additionalData` et validé l'éco-impact.
+  - Aucun style, aucune dépendance, aucun fichier applicatif modifié.
 - [x] **FIX-PREVIEW éco-conception** — Réparer les régressions visibles de `/eco-conception/` après Content v3
   - Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-fix-eco-conception-page.md`.
   - Filtres par thème et recherche locale réparés via normalisation locale de `article.tag`.

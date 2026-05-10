@@ -14,7 +14,7 @@
 6. **Lint global repo-wide** — `npm run lint:js` fonctionne avec la flat config Nuxt ESLint v1, mais `npm run lint` reste bloque par `lint:prettier` sur des formatages historiques et `docs/migration/nuxt4/archive/audit-unused-depcheck.json` non JSON ; a traiter separement.
 7. **Audit securite npm** — `npm audit --audit-level=moderate` signale 11 vulnerabilites ; ne pas lancer `npm audit fix` sans lot dedie.
 8. **DIR-* app directory** — Ne pas deplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dedie uniquement si une incompatibilite reelle apparait.
-9. **SCSS-6** — Ne pas supprimer SCSS tout de suite. Ouvrir une branche dédiée uniquement si un lot CSS moderne sûr est identifié.
+9. **SCSS-6** — Reporté après preview Nuxt 4. La sortie complète de SCSS demande une branche dédiée : 8 fichiers `.scss`, 28 fichiers Vue `lang="scss"`, helpers Sass et dépendances `sass` / `sass-loader` encore nécessaires.
 
 ---
 
@@ -43,25 +43,29 @@ SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stabl
 Branche : `chore/nuxt4-migration`
 
 Dernière décision :
-- CLEANUP-ROOT réalisé le 10 mai 2026.
-- Résultat : racine du dépôt nettoyée des rapports et sorties d'audit Nuxt 4 avant merge `dev`.
+- SCSS-6-DECISION réalisé le 10 mai 2026.
+- Résultat : sortie complète de SCSS reportée après preview Nuxt 4.
 - Version Nuxt : `4.4.2`.
 - Version Content : `@nuxt/content@3.13.0`.
 - Version Image : `@nuxt/image@2.0.0`.
 - Version sitemap : `@nuxtjs/sitemap@8.0.15`.
 - Version ESLint Nuxt : `@nuxt/eslint@1.15.2`.
-- Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-cleanup-root.md`.
-- Changements appliques :
-  - rapports Markdown utiles déplacés vers `docs/migration/nuxt4/reports/` ;
-  - fichiers ambigus déplacés vers `docs/migration/nuxt4/archive/` ;
-  - sorties `.txt` brutes supprimées de la racine ;
-  - références `TODO.md` et `PROJECT_STATE.md` mises à jour.
+- Rapport : `docs/migration/nuxt4/reports/migration-nuxt4-scss-6-decision.md`.
+- Constats SCSS :
+  - 8 fichiers `.scss` restants ;
+  - 28 fichiers Vue avec `lang="scss"` ;
+  - 511 occurrences de variables Sass `$...` ;
+  - 6 fichiers utilisent encore `sass:color` / `color.adjust()` ;
+  - `sass:math`, `sass:map`, fonctions Sass, maps typo et espacements fluides restent actifs ;
+  - `pages/contact.vue` contient une valeur `$gris3` dans un bloc CSS non SCSS, à corriger dans le futur lot CSS.
+- Décision :
+  - ne pas faire `SCSS-6` avant merge `dev` ;
+  - conserver `sass`, `sass-loader` et `vite.css.preprocessorOptions.scss` tant que ces usages existent ;
+  - ouvrir une branche dédiée après preview Nuxt 4 validée.
 - Validation :
-  - `npm test` : OK ;
-  - `npm run generate` : OK ;
-  - check SEO : OK ;
-  - routes prerendered : 72 ;
-  - `npm run lint:js` : OK, 0 erreur, 94 warnings historiques ;
+  - validation runtime non relancée, lot documentaire uniquement ;
+  - dernière validation CLEANUP-ROOT conservée : `npm test` OK, `npm run generate` OK, check SEO OK, `npm run lint:js` OK ;
+  - routes prerendered lors de la dernière validation : 72 ;
   - `npm run lint` : bloque par `lint:prettier` sur formatages historiques et `docs/migration/nuxt4/archive/audit-unused-depcheck.json` non JSON, non corrige dans DEP-5 ;
   - `npm audit --audit-level=moderate` : 11 vulnerabilites documentees, aucun `npm audit fix` lance ;
   - RSS : `/rss.xml` genere ;
@@ -93,11 +97,11 @@ Dernière décision :
 
 Contraintes maintenues :
 - Aucun déplacement vers `app/` dans CLEANUP-ROOT.
-- Aucun changement CSS/design fait dans CLEANUP-ROOT.
+- Aucun changement CSS/design fait dans SCSS-6-DECISION.
 - Aucune correction globale lint, Prettier ou chunks faite dans CLEANUP-ROOT.
-- Aucun contenu editorial ni lien Markdown corrige dans CLEANUP-ROOT.
-- Aucune dépendance modifiée dans CLEANUP-ROOT.
-- Aucun code applicatif modifié dans CLEANUP-ROOT.
+- Aucun contenu editorial ni lien Markdown corrige dans SCSS-6-DECISION.
+- Aucune dépendance modifiée dans SCSS-6-DECISION.
+- Aucun code applicatif modifié dans SCSS-6-DECISION.
 - Aucun merge vers `dev` ou `master`.
 - `npm audit fix` non lance.
 
@@ -226,6 +230,11 @@ Contraintes maintenues :
   - sorties `.txt` brutes d'audit supprimées de la racine
   - `TODO.md` et `PROJECT_STATE.md` mis à jour avec les nouveaux chemins
   - aucun code applicatif, aucune dépendance, aucun CSS/SCSS et aucun merge modifiés
+- ✅ SCSS-6-DECISION realise :
+  - inventaire final avant décision : 8 fichiers `.scss`, 28 fichiers Vue `lang="scss"`, 511 occurrences `$...`
+  - helpers Sass encore actifs : `sass:color`, `sass:math`, `sass:map`, fonctions, maps typo et espacements fluides
+  - décision : ne pas supprimer SCSS avant merge `dev`, reporter après preview Nuxt 4 sur branche dédiée
+  - aucun style, aucune dépendance et aucun code applicatif modifiés
 
 **Services freelance — relief visuel & maillage (28 avril 2026)** — Branche `feat/design-services`.
 
