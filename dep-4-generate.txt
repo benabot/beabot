@@ -1,0 +1,252 @@
+
+> beabot@2.0.0 pregenerate
+> npm run test
+
+
+> beabot@2.0.0 test
+> node scripts/pre-build-check.js && npm run test:content && npm run test:node
+
+🔍 Running pre-build checks...
+
+📋 Checking configuration files...
+📦 Validating package.json...
+📁 Checking critical directories...
+📄 Checking key pages...
+🧩 Checking components...
+⚡ Checking composables...
+📝 Checking content...
+🎨 Checking assets...
+🌐 Checking public files...
+☁️  Checking Netlify configuration...
+
+==================================================
+📊 RESULTS
+==================================================
+Total checks: 49
+✅ Passed: 49
+⚠️  Warnings: 0
+❌ Errors: 0
+
+✅ All checks passed! Ready to build.
+
+> beabot@2.0.0 test:content
+> node scripts/check-content-queries.mjs
+
+OK Content migration guard checks passed.
+
+> beabot@2.0.0 test:node
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: AppLink compiles with a NuxtLink, slot, and forwarded attributes
+ok 1 - AppLink compiles with a NuxtLink, slot, and forwarded attributes
+  ---
+  duration_ms: 17.781583
+  type: 'test'
+  ...
+# Subtest: AppLink normalizes string links like normalizeInternalHref
+ok 2 - AppLink normalizes string links like normalizeInternalHref
+  ---
+  duration_ms: 0.53675
+  type: 'test'
+  ...
+# Subtest: AppLink leaves external, special, and file hrefs unchanged
+ok 3 - AppLink leaves external, special, and file hrefs unchanged
+  ---
+  duration_ms: 0.103792
+  type: 'test'
+  ...
+# Subtest: AppLink normalizes object routes without dropping route fields
+ok 4 - AppLink normalizes object routes without dropping route fields
+  ---
+  duration_ms: 0.160875
+  type: 'test'
+  ...
+# Subtest: rss.xml exposes a non-empty RSS feed with stable article URLs
+ok 5 - rss.xml exposes a non-empty RSS feed with stable article URLs
+  ---
+  duration_ms: 1.59175
+  type: 'test'
+  ...
+# Subtest: feed.json is parseable and exposes stable JSON Feed items
+ok 6 - feed.json is parseable and exposes stable JSON Feed items
+  ---
+  duration_ms: 1.716917
+  type: 'test'
+  ...
+# Subtest: generated page / exposes minimal SEO tags
+ok 7 - generated page / exposes minimal SEO tags
+  ---
+  duration_ms: 2.668209
+  type: 'test'
+  ...
+# Subtest: generated page /eco-conception/ exposes minimal SEO tags
+ok 8 - generated page /eco-conception/ exposes minimal SEO tags
+  ---
+  duration_ms: 1.716916
+  type: 'test'
+  ...
+# Subtest: generated page /eco-conception/l-eco-conception-web/ exposes minimal SEO tags
+ok 9 - generated page /eco-conception/l-eco-conception-web/ exposes minimal SEO tags
+  ---
+  duration_ms: 0.989
+  type: 'test'
+  ...
+# Subtest: generated page /portfolio/ exposes minimal SEO tags
+ok 10 - generated page /portfolio/ exposes minimal SEO tags
+  ---
+  duration_ms: 0.613375
+  type: 'test'
+  ...
+# Subtest: generated page /services/ exposes minimal SEO tags
+ok 11 - generated page /services/ exposes minimal SEO tags
+  ---
+  duration_ms: 1.213833
+  type: 'test'
+  ...
+# Subtest: generated page /contact/ exposes minimal SEO tags
+ok 12 - generated page /contact/ exposes minimal SEO tags
+  ---
+  duration_ms: 0.357583
+  type: 'test'
+  ...
+# Subtest: absoluteUrl builds stable absolute URLs without double slashes
+ok 13 - absoluteUrl builds stable absolute URLs without double slashes
+  ---
+  duration_ms: 1.163
+  type: 'test'
+  ...
+# Subtest: canonicalUrl keeps the root and internal pages canonical
+ok 14 - canonicalUrl keeps the root and internal pages canonical
+  ---
+  duration_ms: 0.204583
+  type: 'test'
+  ...
+# Subtest: withTrailingSlash normalizes internal paths only once
+ok 15 - withTrailingSlash normalizes internal paths only once
+  ---
+  duration_ms: 0.2195
+  type: 'test'
+  ...
+# Subtest: normalizeInternalHref normalizes internal links with suffixes
+ok 16 - normalizeInternalHref normalizes internal links with suffixes
+  ---
+  duration_ms: 0.665583
+  type: 'test'
+  ...
+# Subtest: normalizeInternalHref preserves static assets and feed files
+ok 17 - normalizeInternalHref preserves static assets and feed files
+  ---
+  duration_ms: 0.157708
+  type: 'test'
+  ...
+# Subtest: normalizeInternalHref leaves external and special hrefs unchanged
+ok 18 - normalizeInternalHref leaves external and special hrefs unchanged
+  ---
+  duration_ms: 0.093416
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 252.159917
+
+> beabot@2.0.0 generate
+> nuxt generate
+
+┌  Building Nuxt for production...
+│
+●  Nuxt 4.4.2 (with Nitro 2.13.3, Vite 7.3.2 and Vue 3.5.33)
+[@nuxtjs/sitemap] ℹ No dynamic sources detected. Consider enabling zeroRuntime to reduce server bundle size. See https://nuxtseo.com/sitemap/guides/zero-runtime
+[@nuxt/content] ✔ Processed 2 collections and 13 files in 535.90ms (0 cached, 13 parsed)
+│
+●  Nitro preset: static
+ℹ Building client...
+ℹ vite v7.3.2 building client environment for production...
+
+ WARN  [plugin nuxt:module-preload-polyfill] Sourcemap is likely to be incorrect: a plugin (nuxt:module-preload-polyfill) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help
+
+ℹ transforming...
+ℹ ✓ 357 modules transformed.
+
+ WARN  Circular chunk: vendor-nuxt -> vendor-libs -> vendor-nuxt. Please adjust the manual chunk logic for these chunks.
+
+ℹ rendering chunks...
+ℹ computing gzip size...
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/manifest.json                                         7.91 kB │ gzip:   1.22 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/sqlite3-opfs-async-proxy-TO7yStCU.js            9.41 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/sqlite3-worker1-bundler-friendly-Ds-6LPzH.js  193.57 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/sqlite3.DBpDb1lf.wasm                         856.45 kB │ gzip: 393.51 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/sqlite3-DBpDb1lf.wasm                         856.45 kB │ gzip: 393.51 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/entry.D5orA6B_.css                              0.03 kB │ gzip:   0.05 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/mentions-legales.5A8bndUj.css                   0.29 kB │ gzip:   0.15 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/apps.7YhmZt2x.css                               0.88 kB │ gzip:   0.43 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/404.CHVsaqk2.css                                2.40 kB │ gzip:   0.77 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/index.KLadovww.css                              5.04 kB │ gzip:   1.44 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/contact.Bw1a-DgM.css                            5.79 kB │ gzip:   1.67 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/AppReleaseInterestForm.qp4wLmWt.css             7.89 kB │ gzip:   2.05 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/vendor-libs.Df1OGHDb.css                        9.33 kB │ gzip:   2.67 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/siturem.DueYsy34.css                           10.27 kB │ gzip:   2.31 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/meeting-mode.XuDulx2x.css                      11.55 kB │ gzip:   2.56 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/services.Dr7llAHs.css                          11.97 kB │ gzip:   2.82 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/duo-spend.B6AOkePa.css                         12.43 kB │ gzip:   2.69 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/_slug_.pDaNB1uY.css                            12.88 kB │ gzip:   2.51 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/greenlight.Bfoj1z8L.css                        12.98 kB │ gzip:   2.65 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/index.BngmVzD2.css                             13.60 kB │ gzip:   3.15 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/default.CxJFeTOl.css                           13.67 kB │ gzip:   3.75 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/portfolio.CBpEqOvY.css                         16.47 kB │ gzip:   3.56 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/index.B4ZTSwZX.css                             24.06 kB │ gzip:   4.58 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/BGQsO9D_.js                                     0.15 kB │ gzip:   0.14 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/DcUSyitW.js                                     0.22 kB │ gzip:   0.19 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/BZ74EMKU.js                                     0.85 kB │ gzip:   0.49 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/DC3SZOXD.js                                     1.21 kB │ gzip:   0.68 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/Dxpk_S-f.js                                     4.30 kB │ gzip:   1.77 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/BjJEn2ww.js                                     5.66 kB │ gzip:   2.03 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/wE0UymJR.js                                     5.95 kB │ gzip:   2.72 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/C_r7UgTk.js                                     6.93 kB │ gzip:   2.73 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/Cari9q-b.js                                     7.89 kB │ gzip:   2.87 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/C5OSjv_l.js                                     8.31 kB │ gzip:   3.00 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/ndTNF9aS.js                                     8.31 kB │ gzip:   3.32 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/BloBwf0S.js                                    10.04 kB │ gzip:   4.32 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/D14fPf6R.js                                    12.13 kB │ gzip:   3.81 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/Mn6hnAdz.js                                    12.54 kB │ gzip:   4.13 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/DAKeSMqB.js                                    12.93 kB │ gzip:   4.14 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/BaicavzX.js                                    13.23 kB │ gzip:   5.05 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/DRMl4a7X.js                                    14.79 kB │ gzip:   5.14 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/BditnMnJ.js                                    20.10 kB │ gzip:   5.74 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/CoV3hWs4.js                                    21.12 kB │ gzip:   7.28 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/L3vcSJja.js                                    45.09 kB │ gzip:  15.28 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/DHT1V28w.js                                   102.66 kB │ gzip:  34.16 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/5HMBrIFg.js                                   111.15 kB │ gzip:  41.78 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/BWLlNwaq.js                                   246.71 kB │ gzip:  73.94 kB
+ℹ ✓ built in 11.09s
+✔ Client built in 11116ms
+ℹ Building server...
+ℹ vite v7.3.2 building ssr environment for production...
+ℹ transforming...
+ℹ ✓ 276 modules transformed.
+ℹ rendering chunks...
+ℹ ✓ built in 6.44s
+✔ Server built in 6460ms
+[nitro] ℹ Initializing prerenderer
+
+ WARN  "ipx" is imported by "node_modules/@nuxt/image/dist/runtime/server/routes/_ipx.js", but could not be resolved – treating it as an external dependency.
+
+
+ ERROR  Cannot find package 'ipx' imported from /Users/benoitabot/Sites/beabot/node_modules/.cache/nuxt/.nuxt/prerender/index.mjs
+
+    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
+    at packageResolve (node:internal/modules/esm/resolve:767:81)
+    at moduleResolve (node:internal/modules/esm/resolve:853:18)
+    at defaultResolve (node:internal/modules/esm/resolve:983:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:731:20)
+    at ModuleLoader.resolve (node:internal/modules/esm/loader:708:38)
+    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:310:38)
+    at ModuleJob._link (node:internal/modules/esm/module_job:182:49) 
+
+

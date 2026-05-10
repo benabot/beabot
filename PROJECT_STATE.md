@@ -8,7 +8,7 @@
 
 1. **Recherche UI / composant orphelin** — Si `AppSearchInput.vue` doit redevenir visible, choisir une page hote et faire une verification UX dediee ; sinon documenter son statut orphelin dans un lot separe.
 2. **URL hygiene articles Markdown** — Corriger dans un lot dedie les 5 liens internes d'article sans slash final detectes pendant `DEP-2-E`, sans melanger avec les migrations de dependances.
-3. **Image / ESLint** — Traiter séparément après Content/sitemap : `@nuxt/image`, puis `@nuxt/eslint` probablement en dernier.
+3. **DEP-5 / ESLint** — Traiter `@nuxt/eslint` séparément, probablement en dernier parmi les dépendances sensibles.
 4. **CONFIG-* restants selon besoin** — Les options Nuxt 4 ont ete auditees ; ne corriger que si un warning futur ou une mise a jour de module l'exige.
 5. **DIR-* app directory** — Ne pas deplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dedie si besoin.
 6. **Lint global repo-wide** — `npm run lint` reste bloqué par des warnings/formatages historiques hors périmètre ; à traiter séparément.
@@ -28,7 +28,7 @@ SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stabl
 
 - Base actuelle validée : Nuxt `4.4.2`, Nitro `2.13.3`, Vue `3.5.33`, Vite direct `6.4.1` (`7.3.2` côté builder Nuxt)
 - `future.compatibilityVersion: 4` actif
-- Génération statique validée après DEP-2-E : 72 routes prerendered
+- Génération statique validée après DEP-4 : 72 routes prerendered
 - Derniers commits documentaires :
   - `75d9207` — `docs: rafraichir baseline compat Nuxt 4`
   - `e1e6b6a` — `docs: cartographier migration Content v3`
@@ -41,17 +41,18 @@ SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stabl
 Branche : `chore/nuxt4-migration`
 
 Dernière décision :
-- DEP-2-E réalisé le 10 mai 2026.
-- Résultat : migration Content v3 clôturée côté APIs applicatives ; `DEP-2` peut être coché.
+- DEP-4 réalisé le 10 mai 2026.
+- Résultat : `@nuxt/image` migré vers `2.0.0` pour Nuxt 4.
 - Version Nuxt : `4.4.2`.
 - Version Content : `@nuxt/content@3.13.0`.
+- Version Image : `@nuxt/image@2.0.0`.
 - Version sitemap : `@nuxtjs/sitemap@8.0.15`.
-- Rapport : `migration-nuxt4-dep-2-final-audit.md`.
+- Rapport : `migration-nuxt4-dep-4-image.md`.
 - Changements appliques :
-  - audit final des motifs Content v2 dans `pages/`, `components/`, `composables/`, `layouts/`, `server/`, `utils/`, `scripts/`, `nuxt.config.ts`, `app.vue` et `error.vue` ;
-  - suppression de `utils/getRoutes.js`, utilitaire orphelin Nuxt Content v2 deja signale par les audits de fichiers inutilises ;
-  - garde-fou `scripts/check-content-queries.mjs` etendu aux dossiers utilitaires et scripts applicatifs ;
-  - `DEP-2` coche dans `TODO.md`.
+  - seule dependance directe modifiee : `@nuxt/image` ;
+  - `image.provider: 'none'` ajoute dans `nuxt.config.ts` pour eviter la route IPX, car le projet n'utilise pas `NuxtImg` / `NuxtPicture` aujourd'hui ;
+  - configuration existante conservee : qualite, WebP, breakpoints et presets ;
+  - pages image cles verifiees dans la sortie statique.
 - Validation :
   - `npm test` : OK ;
   - `npm run generate` : OK ;
@@ -63,19 +64,22 @@ Dernière décision :
 - Audit URLs :
   - aucune URL `/articles/`, `[object Object]` ou `undefined` dans les sorties Content generees ;
   - 5 liens Markdown internes sans slash final detectes dans un article existant, reportes hors DEP-2 car les changements editoriaux etaient exclus.
+- Audit images :
+  - home, portfolio, `/apps/`, pages apps et Greenlight verifiees ;
+  - aucune image locale manquante detectee dans `.output/public` sur les pages controlees.
 - Warnings non bloquants :
   - warning sitemap `zeroRuntime` ;
   - sourcemap `nuxt:module-preload-polyfill` ;
   - circular chunk `vendor-nuxt -> vendor-libs -> vendor-nuxt`.
 - Prochaine étape :
-  - traiter le statut UI de `AppSearchInput.vue` si le composant doit redevenir visible, puis poursuivre les lots `@nuxt/image` / `@nuxt/eslint`.
+  - traiter `DEP-5 / @nuxt/eslint` dans un lot dedie, sans melanger avec `app/` ou les nettoyages opportunistes.
 
 Contraintes maintenues :
-- Aucun déplacement vers `app/` dans DEP-2-E.
-- Modules image/eslint non migres dans DEP-2-E.
-- Aucun changement CSS/design fait dans DEP-2-E.
-- Aucune correction globale lint ou chunks faite dans DEP-2-E.
-- `package.json` et `package-lock.json` inchanges dans DEP-2-E.
+- Aucun déplacement vers `app/` dans DEP-4.
+- Module ESLint non migre dans DEP-4.
+- Aucun changement CSS/design fait dans DEP-4.
+- Aucune correction globale lint ou chunks faite dans DEP-4.
+- Aucun contenu editorial ni lien Markdown corrige dans DEP-4.
 - `npm audit fix` non lance.
 
 ### Dernière mise à jour
@@ -163,6 +167,13 @@ Contraintes maintenues :
   - routes prerendered : 72
   - RSS, JSON Feed et sitemap generes
   - `package.json` et `package-lock.json` inchanges
+- ✅ DEP-4 realise :
+  - `@nuxt/image` migre de `1.11.0` reel / `^1.8.1` declare vers `2.0.0`
+  - `image.provider: 'none'` ajoute pour eviter IPX tant qu'aucun composant Nuxt Image n'est rendu
+  - `npm test` OK, `npm run generate` OK, check SEO OK
+  - routes prerendered : 72
+  - pages avec images verifiees dans `.output/public`
+  - `@nuxt/eslint` non migre
 
 **Services freelance — relief visuel & maillage (28 avril 2026)** — Branche `feat/design-services`.
 

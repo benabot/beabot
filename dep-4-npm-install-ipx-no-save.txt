@@ -1,0 +1,12 @@
+npm error code 1
+npm error path /Users/benoitabot/Sites/beabot/node_modules/sharp
+npm error command failed
+npm error command sh -c node install/check.js || npm run build
+npm error > sharp@0.34.5 build
+npm error > node install/build.js
+npm error
+npm error sharp: Attempting to build from source via node-gyp
+npm error sharp: See https://sharp.pixelplumbing.com/install#building-from-source
+npm error sharp: Found node-addon-api 
+npm error sharp: Please add node-gyp to your dependencies
+npm error A complete log of this run can be found in: /Users/benoitabot/.npm/_logs/2026-05-10T10_57_52_517Z-debug-0.log

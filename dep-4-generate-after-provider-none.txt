@@ -1,0 +1,479 @@
+
+> beabot@2.0.0 pregenerate
+> npm run test
+
+
+> beabot@2.0.0 test
+> node scripts/pre-build-check.js && npm run test:content && npm run test:node
+
+🔍 Running pre-build checks...
+
+📋 Checking configuration files...
+📦 Validating package.json...
+📁 Checking critical directories...
+📄 Checking key pages...
+🧩 Checking components...
+⚡ Checking composables...
+📝 Checking content...
+🎨 Checking assets...
+🌐 Checking public files...
+☁️  Checking Netlify configuration...
+
+==================================================
+📊 RESULTS
+==================================================
+Total checks: 49
+✅ Passed: 49
+⚠️  Warnings: 0
+❌ Errors: 0
+
+✅ All checks passed! Ready to build.
+
+> beabot@2.0.0 test:content
+> node scripts/check-content-queries.mjs
+
+Static output missing; skipping generated Content checks.
+OK Content migration guard checks passed.
+
+> beabot@2.0.0 test:node
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: AppLink compiles with a NuxtLink, slot, and forwarded attributes
+ok 1 - AppLink compiles with a NuxtLink, slot, and forwarded attributes
+  ---
+  duration_ms: 17.705083
+  type: 'test'
+  ...
+# Subtest: AppLink normalizes string links like normalizeInternalHref
+ok 2 - AppLink normalizes string links like normalizeInternalHref
+  ---
+  duration_ms: 0.522875
+  type: 'test'
+  ...
+# Subtest: AppLink leaves external, special, and file hrefs unchanged
+ok 3 - AppLink leaves external, special, and file hrefs unchanged
+  ---
+  duration_ms: 0.10275
+  type: 'test'
+  ...
+# Subtest: AppLink normalizes object routes without dropping route fields
+ok 4 - AppLink normalizes object routes without dropping route fields
+  ---
+  duration_ms: 0.155625
+  type: 'test'
+  ...
+# Subtest: rss.xml exposes a non-empty RSS feed with stable article URLs
+not ok 5 - rss.xml exposes a non-empty RSS feed with stable article URLs # SKIP Static output is missing. Run npm run generate before this test.
+  ---
+  duration_ms: 6.340292
+  type: 'test'
+  location: '/Users/benoitabot/Sites/beabot/tests/feeds.test.mjs:18:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing generated file: /Users/benoitabot/Sites/beabot/.output/public/rss.xml'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    readGeneratedText (file:///Users/benoitabot/Sites/beabot/tests/helpers/generated-site.mjs:29:10)
+    TestContext.<anonymous> (file:///Users/benoitabot/Sites/beabot/tests/feeds.test.mjs:19:15)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: feed.json is parseable and exposes stable JSON Feed items
+not ok 6 - feed.json is parseable and exposes stable JSON Feed items # SKIP Static output is missing. Run npm run generate before this test.
+  ---
+  duration_ms: 0.446167
+  type: 'test'
+  location: '/Users/benoitabot/Sites/beabot/tests/feeds.test.mjs:42:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing generated file: /Users/benoitabot/Sites/beabot/.output/public/feed.json'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    readGeneratedText (file:///Users/benoitabot/Sites/beabot/tests/helpers/generated-site.mjs:29:10)
+    TestContext.<anonymous> (file:///Users/benoitabot/Sites/beabot/tests/feeds.test.mjs:43:19)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: generated page / exposes minimal SEO tags
+not ok 7 - generated page / exposes minimal SEO tags # SKIP Static output is missing. Run npm run generate before this test.
+  ---
+  duration_ms: 4.233458
+  type: 'test'
+  location: '/Users/benoitabot/Sites/beabot/tests/generated-pages.test.mjs:20:3'
+  failureType: 'testCodeFailure'
+  error: 'Missing generated HTML for /: /Users/benoitabot/Sites/beabot/.output/public/index.html'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    readGeneratedHtml (file:///Users/benoitabot/Sites/beabot/tests/helpers/generated-site.mjs:22:10)
+    TestContext.<anonymous> (file:///Users/benoitabot/Sites/beabot/tests/generated-pages.test.mjs:21:18)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: generated page /eco-conception/ exposes minimal SEO tags
+not ok 8 - generated page /eco-conception/ exposes minimal SEO tags # SKIP Static output is missing. Run npm run generate before this test.
+  ---
+  duration_ms: 0.404834
+  type: 'test'
+  location: '/Users/benoitabot/Sites/beabot/tests/generated-pages.test.mjs:20:3'
+  failureType: 'testCodeFailure'
+  error: 'Missing generated HTML for /eco-conception/: /Users/benoitabot/Sites/beabot/.output/public/eco-conception/index.html'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    readGeneratedHtml (file:///Users/benoitabot/Sites/beabot/tests/helpers/generated-site.mjs:22:10)
+    TestContext.<anonymous> (file:///Users/benoitabot/Sites/beabot/tests/generated-pages.test.mjs:21:18)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: generated page /eco-conception/l-eco-conception-web/ exposes minimal SEO tags
+not ok 9 - generated page /eco-conception/l-eco-conception-web/ exposes minimal SEO tags # SKIP Static output is missing. Run npm run generate before this test.
+  ---
+  duration_ms: 2.087208
+  type: 'test'
+  location: '/Users/benoitabot/Sites/beabot/tests/generated-pages.test.mjs:20:3'
+  failureType: 'testCodeFailure'
+  error: 'Missing generated HTML for /eco-conception/l-eco-conception-web/: /Users/benoitabot/Sites/beabot/.output/public/eco-conception/l-eco-conception-web/index.html'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    readGeneratedHtml (file:///Users/benoitabot/Sites/beabot/tests/helpers/generated-site.mjs:22:10)
+    TestContext.<anonymous> (file:///Users/benoitabot/Sites/beabot/tests/generated-pages.test.mjs:21:18)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: generated page /portfolio/ exposes minimal SEO tags
+not ok 10 - generated page /portfolio/ exposes minimal SEO tags # SKIP Static output is missing. Run npm run generate before this test.
+  ---
+  duration_ms: 0.233709
+  type: 'test'
+  location: '/Users/benoitabot/Sites/beabot/tests/generated-pages.test.mjs:20:3'
+  failureType: 'testCodeFailure'
+  error: 'Missing generated HTML for /portfolio/: /Users/benoitabot/Sites/beabot/.output/public/portfolio/index.html'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    readGeneratedHtml (file:///Users/benoitabot/Sites/beabot/tests/helpers/generated-site.mjs:22:10)
+    TestContext.<anonymous> (file:///Users/benoitabot/Sites/beabot/tests/generated-pages.test.mjs:21:18)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: generated page /services/ exposes minimal SEO tags
+not ok 11 - generated page /services/ exposes minimal SEO tags # SKIP Static output is missing. Run npm run generate before this test.
+  ---
+  duration_ms: 0.164791
+  type: 'test'
+  location: '/Users/benoitabot/Sites/beabot/tests/generated-pages.test.mjs:20:3'
+  failureType: 'testCodeFailure'
+  error: 'Missing generated HTML for /services/: /Users/benoitabot/Sites/beabot/.output/public/services/index.html'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    readGeneratedHtml (file:///Users/benoitabot/Sites/beabot/tests/helpers/generated-site.mjs:22:10)
+    TestContext.<anonymous> (file:///Users/benoitabot/Sites/beabot/tests/generated-pages.test.mjs:21:18)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: generated page /contact/ exposes minimal SEO tags
+not ok 12 - generated page /contact/ exposes minimal SEO tags # SKIP Static output is missing. Run npm run generate before this test.
+  ---
+  duration_ms: 0.143167
+  type: 'test'
+  location: '/Users/benoitabot/Sites/beabot/tests/generated-pages.test.mjs:20:3'
+  failureType: 'testCodeFailure'
+  error: 'Missing generated HTML for /contact/: /Users/benoitabot/Sites/beabot/.output/public/contact/index.html'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    readGeneratedHtml (file:///Users/benoitabot/Sites/beabot/tests/helpers/generated-site.mjs:22:10)
+    TestContext.<anonymous> (file:///Users/benoitabot/Sites/beabot/tests/generated-pages.test.mjs:21:18)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: absoluteUrl builds stable absolute URLs without double slashes
+ok 13 - absoluteUrl builds stable absolute URLs without double slashes
+  ---
+  duration_ms: 1.179167
+  type: 'test'
+  ...
+# Subtest: canonicalUrl keeps the root and internal pages canonical
+ok 14 - canonicalUrl keeps the root and internal pages canonical
+  ---
+  duration_ms: 0.211334
+  type: 'test'
+  ...
+# Subtest: withTrailingSlash normalizes internal paths only once
+ok 15 - withTrailingSlash normalizes internal paths only once
+  ---
+  duration_ms: 0.34525
+  type: 'test'
+  ...
+# Subtest: normalizeInternalHref normalizes internal links with suffixes
+ok 16 - normalizeInternalHref normalizes internal links with suffixes
+  ---
+  duration_ms: 0.673916
+  type: 'test'
+  ...
+# Subtest: normalizeInternalHref preserves static assets and feed files
+ok 17 - normalizeInternalHref preserves static assets and feed files
+  ---
+  duration_ms: 0.164542
+  type: 'test'
+  ...
+# Subtest: normalizeInternalHref leaves external and special hrefs unchanged
+ok 18 - normalizeInternalHref leaves external and special hrefs unchanged
+  ---
+  duration_ms: 0.118167
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 8
+# todo 0
+# duration_ms 288.589834
+
+> beabot@2.0.0 generate
+> nuxt generate
+
+┌  Building Nuxt for production...
+│
+●  Nuxt 4.4.2 (with Nitro 2.13.3, Vite 7.3.2 and Vue 3.5.33)
+[@nuxtjs/sitemap] ℹ No dynamic sources detected. Consider enabling zeroRuntime to reduce server bundle size. See https://nuxtseo.com/sitemap/guides/zero-runtime
+[@nuxt/content] ✔ Processed 2 collections and 13 files in 84.09ms (13 cached, 0 parsed)
+│
+●  Nitro preset: static
+ℹ Building client...
+ℹ vite v7.3.2 building client environment for production...
+
+ WARN  [plugin nuxt:module-preload-polyfill] Sourcemap is likely to be incorrect: a plugin (nuxt:module-preload-polyfill) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help
+
+ℹ transforming...
+ℹ ✓ 356 modules transformed.
+
+ WARN  Circular chunk: vendor-nuxt -> vendor-libs -> vendor-nuxt. Please adjust the manual chunk logic for these chunks.
+
+ℹ rendering chunks...
+ℹ computing gzip size...
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/manifest.json                                         7.91 kB │ gzip:   1.22 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/sqlite3-opfs-async-proxy-TO7yStCU.js            9.41 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/sqlite3-worker1-bundler-friendly-Ds-6LPzH.js  193.57 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/sqlite3.DBpDb1lf.wasm                         856.45 kB │ gzip: 393.51 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/sqlite3-DBpDb1lf.wasm                         856.45 kB │ gzip: 393.51 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/entry.D5orA6B_.css                              0.03 kB │ gzip:   0.05 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/mentions-legales.5A8bndUj.css                   0.29 kB │ gzip:   0.15 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/apps.7YhmZt2x.css                               0.88 kB │ gzip:   0.43 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/404.CHVsaqk2.css                                2.40 kB │ gzip:   0.77 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/index.KLadovww.css                              5.04 kB │ gzip:   1.44 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/contact.Bw1a-DgM.css                            5.79 kB │ gzip:   1.67 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/AppReleaseInterestForm.qp4wLmWt.css             7.89 kB │ gzip:   2.05 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/vendor-libs.Df1OGHDb.css                        9.33 kB │ gzip:   2.67 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/siturem.DueYsy34.css                           10.27 kB │ gzip:   2.31 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/meeting-mode.XuDulx2x.css                      11.55 kB │ gzip:   2.56 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/services.Dr7llAHs.css                          11.97 kB │ gzip:   2.82 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/duo-spend.B6AOkePa.css                         12.43 kB │ gzip:   2.69 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/_slug_.pDaNB1uY.css                            12.88 kB │ gzip:   2.51 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/greenlight.Bfoj1z8L.css                        12.98 kB │ gzip:   2.65 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/index.BngmVzD2.css                             13.60 kB │ gzip:   3.15 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/default.CxJFeTOl.css                           13.67 kB │ gzip:   3.75 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/portfolio.CBpEqOvY.css                         16.47 kB │ gzip:   3.56 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/index.B4ZTSwZX.css                             24.06 kB │ gzip:   4.58 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/lUnjj16q.js                                     0.15 kB │ gzip:   0.14 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/D6yy5NiS.js                                     0.22 kB │ gzip:   0.19 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/B0R6FKgY.js                                     0.85 kB │ gzip:   0.49 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/BfH4BbdY.js                                     1.21 kB │ gzip:   0.68 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/DMzWzkOY.js                                     4.30 kB │ gzip:   1.77 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/BjJEn2ww.js                                     5.66 kB │ gzip:   2.03 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/BjYeqIw5.js                                     5.95 kB │ gzip:   2.72 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/hZTHVrMV.js                                     6.93 kB │ gzip:   2.73 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/BYhTO04T.js                                     7.89 kB │ gzip:   2.87 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/BBOlPNuL.js                                     8.31 kB │ gzip:   3.00 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/Dda7PUmd.js                                     8.31 kB │ gzip:   3.32 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/D-p3-3l2.js                                    10.04 kB │ gzip:   4.32 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/DbrPE6Pa.js                                    12.13 kB │ gzip:   3.82 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/CnDs10WL.js                                    12.54 kB │ gzip:   4.14 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/BiBGvnnb.js                                    12.93 kB │ gzip:   4.14 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/BA_u5MdS.js                                    13.23 kB │ gzip:   5.05 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/C8zLXVca.js                                    14.79 kB │ gzip:   5.14 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/CyTrD83f.js                                    20.10 kB │ gzip:   5.74 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/Cu0g1wgK.js                                    21.12 kB │ gzip:   7.28 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/VkDqhSpE.js                                    45.09 kB │ gzip:  15.28 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/DSI6xzwp.js                                   101.78 kB │ gzip:  33.80 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/5HMBrIFg.js                                   111.15 kB │ gzip:  41.78 kB
+ℹ node_modules/.cache/nuxt/.nuxt/dist/client/_nuxt/B0XL42NP.js                                   246.64 kB │ gzip:  73.92 kB
+ℹ ✓ built in 10.98s
+✔ Client built in 10994ms
+ℹ Building server...
+ℹ vite v7.3.2 building ssr environment for production...
+ℹ transforming...
+ℹ ✓ 275 modules transformed.
+ℹ rendering chunks...
+ℹ ✓ built in 4.49s
+✔ Server built in 4502ms
+[nitro] ℹ Initializing prerenderer
+[nitro] ℹ Prerendering 9 initial routes with crawler
+[nitro]   ├─ /__sitemap__/style.xsl (116ms)
+[nitro]   ├─ /200.html (120ms)
+[nitro]   ├─ /robots.txt (116ms)
+[nitro]   ├─ /404.html (120ms)
+[nitro]   ├─ /rss.xml (128ms)
+[nitro]   ├─ /feed.json (128ms)
+[nitro]   ├─ /__nuxt_content/articles/sql_dump.txt (130ms)
+[nitro]   ├─ / (135ms)
+[nitro]   ├─ /mentions-legales/ (141ms)
+[nitro]   ├─ /_payload.json (170ms)
+[nitro]   ├─ /mentions-legales/_payload.json (79ms)
+[nitro]   ├─ /greenlight/ (283ms)
+[nitro]   ├─ /apps/ (300ms)
+[nitro]   ├─ /portfolio/ (291ms)
+[nitro]   ├─ /services/ (286ms)
+[nitro]   ├─ /contact (301ms)
+[nitro]   ├─ /apps/meeting-mode (304ms)
+[nitro]   ├─ /404 (312ms)
+[nitro]   ├─ /greenlight/_payload.json?568186a8-b3fd-4af5-8db0-2572d72639f2 (62ms) (skipped)
+[nitro]   ├─ /apps/_payload.json?568186a8-b3fd-4af5-8db0-2572d72639f2 (59ms) (skipped)
+[nitro]   ├─ /portfolio/_payload.json?568186a8-b3fd-4af5-8db0-2572d72639f2 (34ms) (skipped)
+[nitro]   ├─ /services/_payload.json?568186a8-b3fd-4af5-8db0-2572d72639f2 (27ms) (skipped)
+[nitro]   ├─ /contact/_payload.json?568186a8-b3fd-4af5-8db0-2572d72639f2 (19ms) (skipped)
+[nitro]   ├─ /apps/meeting-mode/_payload.json?568186a8-b3fd-4af5-8db0-2572d72639f2 (14ms) (skipped)
+[nitro]   ├─ /404/_payload.json?568186a8-b3fd-4af5-8db0-2572d72639f2 (11ms) (skipped)
+[nitro]   ├─ /apps/siturem (309ms)
+[nitro]   ├─ /apps/duo-spend (313ms)
+[nitro]   ├─ /greenlight (288ms)
+[nitro]   ├─ /mentions-legales (294ms)
+[nitro]   ├─ /portfolio (295ms)
+[nitro]   ├─ /contact/ (303ms)
+[nitro]   ├─ /apps/siturem/_payload.json?568186a8-b3fd-4af5-8db0-2572d72639f2 (75ms) (skipped)
+[nitro]   ├─ /apps/duo-spend/_payload.json?568186a8-b3fd-4af5-8db0-2572d72639f2 (43ms) (skipped)
+[nitro]   ├─ /apps (307ms)
+[nitro]   ├─ /eco-conception (324ms)
+[nitro]   ├─ /eco-conception/refonte-site-eco-concu/ (332ms)
+[nitro]   ├─ /eco-conception/audit-site-web/ (327ms)
+[nitro]   ├─ /eco-conception/_payload.json?568186a8-b3fd-4af5-8db0-2572d72639f2 (69ms) (skipped)
+[nitro]   ├─ /eco-conception/refonte-site-eco-concu/_payload.json?568186a8-b3fd-4af5-8db0-2572d72639f2 (47ms) (skipped)
+[nitro]   ├─ /eco-conception/faq-eco-conception/ (334ms)
+[nitro]   ├─ /eco-conception/ (329ms)
+[nitro]   ├─ /eco-conception/audit-site-web/_payload.json?568186a8-b3fd-4af5-8db0-2572d72639f2 (43ms) (skipped)
+[nitro]   ├─ /eco-conception/faq-eco-conception/_payload.json?568186a8-b3fd-4af5-8db0-2572d72639f2 (71ms) (skipped)
+[nitro]   ├─ /apps/_payload.json (60ms)
+[nitro]   ├─ /services/_payload.json (27ms)
+[nitro]   ├─ /portfolio/_payload.json (34ms)
+[nitro]   ├─ /greenlight/_payload.json (62ms)
+[nitro]   ├─ /apps/meeting-mode/_payload.json (14ms)
+[nitro]   ├─ /contact/_payload.json (19ms)
+[nitro]   ├─ /eco-conception/?tag=Eco-conception (184ms) (skipped)
+[nitro]   ├─ /eco-conception/?tag=WordPress (191ms) (skipped)
+[nitro]   ├─ /eco-conception/?tag=Performance (198ms) (skipped)
+[nitro]   ├─ /eco-conception/?tag=Audit (157ms) (skipped)
+[nitro]   ├─ /404/_payload.json (11ms)
+[nitro]   ├─ /apps/siturem/_payload.json (75ms)
+[nitro]   ├─ /eco-conception/?tag=SEO (160ms) (skipped)
+[nitro]   ├─ /apps/duo-spend/_payload.json (43ms)
+[nitro]   ├─ /eco-conception/_payload.json (70ms)
+[nitro]   ├─ /eco-conception/?tag=Éco-conception (98ms) (skipped)
+[nitro]   ├─ /eco-conception/refonte-site-eco-concu/_payload.json (26ms)
+[nitro]   ├─ /apps/duo-spend/ (321ms)
+[nitro]   ├─ /apps/meeting-mode/ (324ms)
+[nitro]   ├─ /apps/siturem/ (327ms)
+[nitro]   ├─ /eco-conception/theme-wordpress-eco-conception/ (323ms)
+[nitro]   ├─ /eco-conception/wordpress-freelance-lille/ (316ms)
+[nitro]   ├─ /eco-conception/?tag=WebDesign (107ms) (skipped)
+[nitro]   ├─ /eco-conception/theme-wordpress-eco-conception/_payload.json?568186a8-b3fd-4af5-8db0-2572d72639f2 (15ms) (skipped)
+[nitro]   ├─ /eco-conception/wordpress-freelance-lille/_payload.json?568186a8-b3fd-4af5-8db0-2572d72639f2 (12ms) (skipped)
+[nitro]   ├─ /eco-conception/audit-site-web/_payload.json (69ms)
+[nitro]   ├─ /eco-conception/wordpress-vs-nuxt/ (318ms)
+[nitro]   ├─ /services (233ms)
+[nitro]   ├─ /eco-conception/wordpress-vs-nuxt/_payload.json?568186a8-b3fd-4af5-8db0-2572d72639f2 (5ms) (skipped)
+[nitro]   ├─ /eco-conception/faq-eco-conception/_payload.json (25ms)
+[nitro]   ├─ /eco-conception/l-eco-conception-web/ (272ms)
+[nitro]   ├─ /eco-conception/audit-eco-conception/ (267ms)
+[nitro]   ├─ /eco-conception/comment-reduire-le-poids-d-un-site-web/ (274ms)
+[nitro]   ├─ /eco-conception/wordpress-eco-conception/ (264ms)
+[nitro]   ├─ /eco-conception/la-consommation-energetique-du-numerique/ (263ms)
+[nitro]   ├─ /eco-conception/images-eco-conception/ (269ms)
+[nitro]   ├─ /eco-conception/l-eco-conception-web/_payload.json?568186a8-b3fd-4af5-8db0-2572d72639f2 (80ms) (skipped)
+[nitro]   ├─ /eco-conception/audit-eco-conception/_payload.json?568186a8-b3fd-4af5-8db0-2572d72639f2 (76ms) (skipped)
+[nitro]   ├─ /eco-conception/comment-reduire-le-poids-d-un-site-web/_payload.json?568186a8-b3fd-4af5-8db0-2572d72639f2 (71ms) (skipped)
+[nitro]   ├─ /eco-conception/wordpress-eco-conception/_payload.json?568186a8-b3fd-4af5-8db0-2572d72639f2 (65ms) (skipped)
+[nitro]   ├─ /eco-conception/la-consommation-energetique-du-numerique/_payload.json?568186a8-b3fd-4af5-8db0-2572d72639f2 (22ms) (skipped)
+[nitro]   ├─ /eco-conception/images-eco-conception/_payload.json?568186a8-b3fd-4af5-8db0-2572d72639f2 (13ms) (skipped)
+[nitro]   ├─ /eco-conception/typographie-ecoconception/ (277ms)
+[nitro]   ├─ /eco-conception/typographie-ecoconception/_payload.json?568186a8-b3fd-4af5-8db0-2572d72639f2 (11ms) (skipped)
+[nitro]   ├─ /eco-conception/theme-wordpress-eco-conception/_payload.json (15ms)
+[nitro]   ├─ /eco-conception/?tag=Images (39ms) (skipped)
+[nitro]   ├─ /eco-conception/wordpress-freelance-lille/_payload.json (12ms)
+[nitro]   ├─ /eco-conception/?tag=Typographie (32ms) (skipped)
+[nitro]   ├─ /eco-conception/wordpress-vs-nuxt/_payload.json (4ms)
+[nitro]   ├─ /eco-conception/l-eco-conception-web/_payload.json (80ms)
+[nitro]   ├─ /eco-conception/audit-eco-conception/_payload.json (76ms)
+[nitro]   ├─ /eco-conception/comment-reduire-le-poids-d-un-site-web/_payload.json (71ms)
+[nitro]   ├─ /eco-conception/la-consommation-energetique-du-numerique/_payload.json (22ms)
+[nitro]   ├─ /eco-conception/wordpress-eco-conception/_payload.json (65ms)
+[nitro]   ├─ /eco-conception/images-eco-conception/_payload.json (13ms)
+[nitro]   ├─ /eco-conception/typographie-ecoconception/_payload.json (11ms)
+[nitro]   ├─ /eco-conception/l-eco-conception-web (87ms)
+[nitro]   ├─ /eco-conception/images-eco-conception (84ms)
+[nitro]   ├─ /eco-conception/theme-wordpress-eco-conception (90ms)
+[nitro]   ├─ /eco-conception/typographie-ecoconception (99ms)
+[nitro]   ├─ /sitemap.xml (11ms)
+[nitro] ℹ Prerendered 72 routes in 5.423 seconds
+[nitro] ✔ Generated public .output/public
+[nitro] ✔ You can preview this build using npx serve .output/public
+│
+└  ✨ You can now deploy .output/public to any static hosting!

@@ -249,6 +249,7 @@ export default defineNuxtConfig({
 
   // Image module configuration
   image: {
+    provider: 'none',
     // Default image optimization
     quality: 75, // Reduced from 80 for smaller file sizes
     format: ['webp'], // WebP only for better compression (AVIF has compatibility issues)

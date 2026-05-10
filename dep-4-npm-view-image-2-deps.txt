@@ -1,0 +1,13 @@
+optionalDependencies = { ipx: '^3.1.1' }
+dependencies = {
+  '@nuxt/kit': '^4.2.0',
+  consola: '^3.4.2',
+  defu: '^6.1.4',
+  h3: '^1.15.4',
+  'image-meta': '^0.2.2',
+  knitwork: '^1.2.0',
+  ohash: '^2.0.11',
+  pathe: '^2.0.3',
+  'std-env': '^3.10.0',
+  ufo: '^1.6.1'
+}

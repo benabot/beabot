@@ -164,7 +164,7 @@ Ordre recommandé (mettre à jour et tester une par une) :
 | 2   | `@nuxt/content`   | 3.13.0           | 3.13.0               | API entièrement refondue (voir 3.3)                                        | 🔴     |
 | 3   | `vue`             | ^3.5.12          | ^3.5+                | Aucun — compatible                                                         | 🟢     |
 | 4   | `vue-router`      | ^4.4.5           | ^4.5+                | Aucun — compatible                                                         | 🟢     |
-| 5   | `@nuxt/image`     | ^1.8.1           | ^1.9+                | ⚠️ Vérifier compatibilité Nuxt 4 — probablement compatible sans changement | 🟡     |
+| 5   | `@nuxt/image`     | 2.0.0            | 2.0.0                | Compatible Nuxt 4 ; provider `none` utilisé car aucun composant Nuxt Image n'est rendu aujourd'hui | 🟡     |
 | 6   | `@nuxtjs/sitemap` | 8.0.15           | 8.0.15               | v6 incompatible avec Content v3 via import interne `#content/server`       | 🟠     |
 | 7   | `@nuxt/eslint`    | ^0.5.7           | ^1.x                 | Config flat ESLint, probablement cassant                                   | 🟠     |
 | 8   | `eslint`          | ^9.14.0          | ^9.x                 | Compatible                                                                 | 🟢     |
@@ -224,7 +224,15 @@ Ordre recommandé (mettre à jour et tester une par une) :
   - Warnings/erreurs non corrigés dans ce lot : warning `zeroRuntime`, sourcemap `nuxt:module-preload-polyfill`, circular chunk, pages Vue encore en `queryContent`, RSS/JSON Feed bloqués par le champ Content `date` non déclaré.
   - Prochaine étape : `DEP-2-C / Content pages APIs` et schéma Content complet.
   - Les erreurs pages Vue et champ Content `date` ont été traitées ensuite dans `DEP-2-C`.
-- [ ] **DEP-4** — Vérifier compatibilité `@nuxt/image` ; mettre à jour si nécessaire
+- [x] **DEP-4** — Vérifier compatibilité `@nuxt/image` ; mettre à jour si nécessaire
+  - Rapport : `migration-nuxt4-dep-4-image.md`.
+  - Version installée : `@nuxt/image@2.0.0`.
+  - Seule dépendance directe modifiée dans `package.json` : `@nuxt/image`.
+  - Configuration minimale : `image.provider: 'none'` pour éviter la route IPX, car le projet utilise actuellement des `<img>` natifs et aucun `NuxtImg` / `NuxtPicture`.
+  - `quality`, `format: ['webp']`, `screens` et presets existants conservés.
+  - `npm test`, `npm run generate` et check SEO OK ; routes prerendered : 72.
+  - Pages avec images vérifiées dans `.output/public` : home, portfolio, apps, Greenlight, pages apps ; aucune image locale manquante détectée.
+  - `@nuxt/eslint` non migré dans cette étape ; aucun déplacement vers `app/`, aucun changement CSS/design/chunks.
 - [ ] **DEP-5** — Mettre à jour `@nuxt/eslint` vers 1.x si requis par Nuxt 4
 - [x] **DEP-6** — Supprimer `"#internal/nuxt/paths": "./nuxt.paths.mjs"` de `package.json` `imports` — override interne Nuxt 3 probablement incompatible avec Nuxt 4
   - Rapport : `migration-nuxt4-dep-6.md`
