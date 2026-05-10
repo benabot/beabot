@@ -1,0 +1,8 @@
+feed items: 13
+feed invalid urls: 0
+feed invalid dates: 0
+rss items: 13
+rss has trailing article url: true
+rss no no-such-column error: true
+first feed url: https://beabot.fr/eco-conception/audit-site-web/
+first feed tags: Audit, Performance, SEO, Eco-conception

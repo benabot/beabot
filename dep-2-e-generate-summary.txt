@@ -1,0 +1,30 @@
+DEP-2-E generated output summary
+[nitro] ℹ Prerendered 72 routes in 5.376 seconds
+Generated output files:
+-rw-r--r--@ 1 benoitabot  staff  8592 May 10 12:46 .output/public/feed.json
+-rw-r--r--@ 1 benoitabot  staff  8867 May 10 12:46 .output/public/rss.xml
+-rw-r--r--@ 1 benoitabot  staff  8780 May 10 12:46 .output/public/sitemap.xml
+
+Generated article sample:
+-rw-r--r--@ 1 benoitabot  staff  50615 May 10 12:46 .output/public/eco-conception/l-eco-conception-web/index.html
+
+Routes prerendered:
+[nitro] ℹ Prerendered 72 routes in 5.376 seconds
+
+feed items: 13
+feed invalid urls: 0
+feed invalid dates: 0
+rss items: 13
+rss has trailing article url: true
+rss no no-such-column error: true
+first feed url: https://beabot.fr/eco-conception/audit-site-web/
+first feed tags: Audit, Performance, SEO, Eco-conception
+
+sitemap urls: 24
+sitemap article urls: 13
+archive present: true
+404 excluded: true
+article urls missing trailing slash: 0
+unexpected /articles/ urls: 0
+#content/server in sitemap: false
+first article url: https://beabot.fr/eco-conception/audit-eco-conception/

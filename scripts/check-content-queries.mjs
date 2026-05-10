@@ -116,11 +116,32 @@ function walkFiles(entry) {
 }
 
 function checkNoUnexpectedContentV2Usage() {
-  const scanEntries = ['pages', 'components', 'layouts', 'server', 'nuxt.config.ts', 'app.vue', 'error.vue']
-  const forbiddenPatterns = [/queryContent\(/, /serverQueryContent/, /findSurround\(/, /searchContent\(/, /\b_path\b/]
+  const scanEntries = [
+    'pages',
+    'components',
+    'composables',
+    'layouts',
+    'server',
+    'utils',
+    'scripts',
+    'nuxt.config.ts',
+    'app.vue',
+    'error.vue',
+  ]
+  const ignoredFiles = new Set(['scripts/check-content-queries.mjs'])
+  const forbiddenPatterns = [
+    /queryContent\(/,
+    /serverQueryContent/,
+    /findSurround\(/,
+    /searchContent\(/,
+    /#content\/server/,
+    /\$content\b/,
+    /\b_path\b/,
+  ]
 
   for (const absolutePath of scanEntries.flatMap(walkFiles)) {
     const relativePath = path.relative(rootDir, absolutePath)
+    if (ignoredFiles.has(relativePath)) continue
     if (!/\.(vue|ts|js|mjs)$/.test(relativePath)) continue
 
     const source = fs.readFileSync(absolutePath, 'utf8')

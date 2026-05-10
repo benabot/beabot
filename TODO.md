@@ -184,7 +184,7 @@ Ordre recommandé (mettre à jour et tester une par une) :
   - Routes prerendered : 100.
   - Warnings non bloquants documentés : sourcemap `nuxt:module-preload-polyfill`, circular chunk `vendor-nuxt -> vendor-libs -> vendor-nuxt`.
   - `@nuxt/content`, `@nuxt/image`, `@nuxtjs/sitemap` et `@nuxt/eslint` non migrés dans cette étape.
-- [ ] **DEP-2** — Mettre à jour `@nuxt/content` vers 3.x (après avoir migré les APIs — voir 3.3)
+- [x] **DEP-2** — Mettre à jour `@nuxt/content` vers 3.x (après avoir migré les APIs — voir 3.3)
   - CONTENT-DOCS réalisé : `migration-nuxt4-content-v3-docs-audit.md`.
   - Ne pas lancer avant décision explicite sur le schéma `content.config.ts` et le validateur requis par la documentation officielle.
   - DEP-2-A réalisé partiellement : `migration-nuxt4-dep-2-a.md`.
@@ -206,7 +206,13 @@ Ordre recommandé (mettre à jour et tester une par une) :
   - DEP-2-D réalisé : `migration-nuxt4-dep-2-d-search.md`.
   - Recherche `AppSearchInput.vue` migrée vers `queryCollection('articles')`, `LIKE`, `.orWhere(...)`, `.all()` et `path`.
   - `npm test`, `npm run generate` et check SEO OK ; routes prerendered : 72.
-  - Reste avant clôture globale : audit final des usages Content v2 et décision de clôture `DEP-2`.
+  - DEP-2-E audit final réalisé : `migration-nuxt4-dep-2-final-audit.md`.
+  - Plus aucune API Content v2 applicative détectée dans `pages/`, `components/`, `composables/`, `layouts/`, `server/`, `utils/`, `scripts/`, `nuxt.config.ts`, `app.vue` et `error.vue`.
+  - `utils/getRoutes.js`, utilitaire orphelin Nuxt Content v2 documenté par les audits précédents, supprimé pendant l'audit final.
+  - Garde-fou `scripts/check-content-queries.mjs` étendu aux dossiers utilitaires et scripts applicatifs.
+  - `npm test`, `npm run generate` et check SEO OK ; routes prerendered : 72.
+  - RSS, JSON Feed et sitemap générés ; sitemap : 13 URLs articles + archive `/eco-conception/`.
+  - Note hors périmètre DEP-2 : 5 liens Markdown internes sans slash final restent dans un article existant ; pas de changement éditorial dans cet audit.
 - [x] **DEP-3** — Vérifier compatibilité `@nuxtjs/sitemap` 6.x avec Nuxt 4 ; mettre à jour vers 7.x si requis
   - DEP-2-B : nécessaire avant validation complète, car `@nuxtjs/sitemap` v6 importe encore `#content/server`.
   - Rapport : `migration-nuxt4-dep-3-sitemap.md`.
@@ -214,7 +220,7 @@ Ordre recommandé (mettre à jour et tester une par une) :
   - `npm test` OK.
   - `npm run generate` termine avec `.output/public` généré et `/sitemap.xml` présent.
   - Check SEO OK.
-  - Routes articles sitemap vérifiées : 14 URLs `/eco-conception/` dans `.output/public/sitemap.xml`.
+  - Routes sitemap vérifiées : 13 URLs articles + archive `/eco-conception/` dans `.output/public/sitemap.xml`.
   - Warnings/erreurs non corrigés dans ce lot : warning `zeroRuntime`, sourcemap `nuxt:module-preload-polyfill`, circular chunk, pages Vue encore en `queryContent`, RSS/JSON Feed bloqués par le champ Content `date` non déclaré.
   - Prochaine étape : `DEP-2-C / Content pages APIs` et schéma Content complet.
   - Les erreurs pages Vue et champ Content `date` ont été traitées ensuite dans `DEP-2-C`.
@@ -307,7 +313,8 @@ Fichiers qui **restent à la racine** (pas de déplacement) :
 
 - [x] **CONTENT-1** — Migrer les 5 appels `queryContent()` → `queryCollection()` dans les fichiers ci-dessus
   - DEP-2-C : `pages/index.vue`, `pages/eco-conception/index.vue`, `pages/eco-conception/[slug].vue` et `components/HomeEcoArticles.vue` migrés.
-  - Exception restante hors liste : `components/AppSearchInput.vue`, reportée vers `CONTENT-6`.
+  - DEP-2-D : exception restante `components/AppSearchInput.vue` migrée.
+  - DEP-2-E : audit final confirme l'absence de `queryContent()` applicatif.
 
 ##### 3.3.2 — `findSurround()` → `queryCollectionItemSurroundings()`
 
@@ -335,7 +342,7 @@ Fichiers qui **restent à la racine** (pas de déplacement) :
 - [x] **CONTENT-5** — Réécrire `sitemap.routes` dans `nuxt.config.ts` sans `serverQueryContent` — ⚠️ vérifier si `@nuxtjs/sitemap` 7.x génère les routes automatiquement depuis Content v3
   - DEP-2-A : blocage generate confirme aussi dans `@nuxtjs/sitemap` v6, qui importe encore `#content/server`.
   - DEP-2-B : import `#content/server` supprimé du projet et routes articles remplacées par `urls: getArticleSitemapRoutes`; blocage restant dans le handler interne `@nuxtjs/sitemap` v6, à traiter en `DEP-3`.
-  - DEP-3 : `@nuxtjs/sitemap@8.0.15` installé, handler Content v3 disponible, `/sitemap.xml` généré avec 14 URLs articles.
+  - DEP-3 : `@nuxtjs/sitemap@8.0.15` installé, handler Content v3 disponible, `/sitemap.xml` généré avec 13 URLs articles + archive.
 
 ##### 3.3.4 — `.where()` query syntax refondu
 
@@ -367,6 +374,7 @@ Toutes les propriétés internes préfixées `_` sont renommées en Content v3.
 
 - [x] **CONTENT-7** — Remplacer `._path` par `.path` dans tous les fichiers listés (7 fichiers, ~12 occurrences)
   - DEP-2-C : usages applicatifs listés remplacés ; les seules occurrences `_path` restantes sont des garde-fous ou historiques documentés dans les scripts.
+  - DEP-2-E : audit final confirme l'absence de `_path` dans le code applicatif, hors motif de garde-fou.
 
 ##### 3.3.6 — `<ContentRenderer>` — API modifiée
 

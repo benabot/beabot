@@ -1,0 +1,10 @@
+files scanned: 59
+visible Content errors: 0
+bad Content URLs ([object Object], undefined, /articles/): 0
+article links without trailing slash in generated Markdown content: 5
+Non-blocking URL hygiene findings, not modified in DEP-2-E because content editorial changes are out of scope:
+.output/public/eco-conception/wordpress-eco-conception/index.html: /eco-conception/images-eco-conception
+.output/public/eco-conception/wordpress-eco-conception/index.html: /eco-conception/l-eco-conception-web
+.output/public/eco-conception/wordpress-eco-conception/index.html: /eco-conception/images-eco-conception
+.output/public/eco-conception/wordpress-eco-conception/index.html: /eco-conception/theme-wordpress-eco-conception
+.output/public/eco-conception/wordpress-eco-conception/index.html: /eco-conception/typographie-ecoconception

@@ -1,0 +1,437 @@
+# Audit anciennes APIs Content v2 - documentation historique
+Date: 2026-05-10 12:44:20 CEST
+
+content-prep-query-map.md:18:queryContent('articles')
+content-prep-query-map.md:19:  .only([...])
+content-prep-query-map.md:20:  .sort({ date: -1 })
+content-prep-query-map.md:22:  .find()
+content-prep-query-map.md:47:- `_path` devient probablement `path`.
+content-prep-query-map.md:61:queryContent('articles', route.params.slug).findOne()
+content-prep-query-map.md:103:queryContent('articles', 'faq-eco-conception').findOne()
+content-prep-query-map.md:137:queryContent('articles')
+content-prep-query-map.md:138:  .only(['title', '_path'])
+content-prep-query-map.md:139:  .sort({ date: 1 })
+content-prep-query-map.md:140:  .findSurround(article.value._path)
+content-prep-query-map.md:160:- `ArticleNavigation.vue` consomme encore `_path`.
+content-prep-query-map.md:172:queryContent('articles')
+content-prep-query-map.md:180:  .find()
+content-prep-query-map.md:219:serverQueryContent(event, 'articles')
+content-prep-query-map.md:220:  .sort({ $numeric: true })
+content-prep-query-map.md:221:  .find()
+content-prep-query-map.md:246:- Le flux construit les slugs depuis `_path`.
+content-prep-query-map.md:259:serverQueryContent(event, 'articles')
+content-prep-query-map.md:260:  .sort({ $numeric: true })
+content-prep-query-map.md:261:  .find()
+content-prep-query-map.md:298:const { serverQueryContent } = await import('#content/server')
+content-prep-query-map.md:299:const articles = await serverQueryContent('articles').find()
+content-prep-query-map.md:301:  .map((article) => article._path?.split('/').pop())
+migration-nuxt4-tests-coverage.md:94:- Risque : APIs `queryContent`, `serverQueryContent` et `_path` déjà identifiées comme cassantes dans le plan Nuxt 4.
+migration-nuxt4-tests-coverage.md:186:  - présence des usages Content v2 critiques : `queryContent`, `serverQueryContent`, `findSurround`, `_path`, `tag`
+dep-audit-peer-risks.txt:25:    - 32 occurrences applicatives _path ;
+content-prep-impacted-files.txt:4:  - queryContent('articles')
+content-prep-impacted-files.txt:5:  - .only(['title', 'description', 'tag', '_path', 'date'])
+content-prep-impacted-files.txt:6:  - .sort({ date: -1 })
+content-prep-impacted-files.txt:8:  - .find()
+content-prep-impacted-files.txt:14:  - _path
+content-prep-impacted-files.txt:22:  - remplacement _path -> path
+content-prep-impacted-files.txt:35:  - queryContent('articles')
+content-prep-impacted-files.txt:36:  - .only(['title', 'description', 'tag', '_path', 'date', 'updatedAt'])
+content-prep-impacted-files.txt:37:  - .sort({ date: -1 })
+content-prep-impacted-files.txt:38:  - .find()
+content-prep-impacted-files.txt:39:  - queryContent('articles', 'faq-eco-conception').findOne()
+content-prep-impacted-files.txt:46:  - _path
+content-prep-impacted-files.txt:56:  - remplacement _path -> path
+content-prep-impacted-files.txt:71:  - queryContent('articles', route.params.slug).findOne()
+content-prep-impacted-files.txt:72:  - queryContent('articles').only(['title', '_path']).sort({ date: 1 }).findSurround(article.value._path)
+content-prep-impacted-files.txt:90:  - _path
+content-prep-impacted-files.txt:99:  - remplacement _path -> path dans ArticleNavigation
+content-prep-impacted-files.txt:113:  - queryContent('articles')
+content-prep-impacted-files.txt:114:  - .only(['title', 'description', 'tag', '_path', 'date'])
+content-prep-impacted-files.txt:115:  - .sort({ date: -1 })
+content-prep-impacted-files.txt:117:  - .find()
+content-prep-impacted-files.txt:123:  - _path
+content-prep-impacted-files.txt:141:  - queryContent('articles')
+content-prep-impacted-files.txt:144:  - .find()
+content-prep-impacted-files.txt:168:  - prev._path
+content-prep-impacted-files.txt:169:  - next._path
+content-prep-impacted-files.txt:173:  - fichier oublie si le nettoyage _path est fait uniquement dans les pages
+content-prep-impacted-files.txt:182:  - import { serverQueryContent } from '#content/server'
+content-prep-impacted-files.txt:183:  - serverQueryContent(event, 'articles')
+content-prep-impacted-files.txt:184:  - .sort({ $numeric: true })
+content-prep-impacted-files.txt:185:  - .find()
+content-prep-impacted-files.txt:192:  - _path
+content-prep-impacted-files.txt:199:  - construction slug depuis _path
+content-prep-impacted-files.txt:212:  - import { serverQueryContent } from '#content/server'
+content-prep-impacted-files.txt:213:  - serverQueryContent(event, 'articles')
+content-prep-impacted-files.txt:214:  - .sort({ $numeric: true })
+content-prep-impacted-files.txt:215:  - .find()
+content-prep-impacted-files.txt:222:  - _path
+content-prep-impacted-files.txt:227:  - slug depuis _path
+content-prep-impacted-files.txt:242:  - import dynamique #content/server
+content-prep-impacted-files.txt:243:  - serverQueryContent('articles').find()
+content-prep-impacted-files.txt:244:  - article._path
+content-prep-impacted-files.txt:262:  - patterns queryContent/serverQueryContent/findSurround/_path
+content-prep-impacted-files.txt:268:  - verifier absence de _path
+dep-2-b-api-usages-after.txt:3:scripts/check-content-queries.mjs:14:    patterns: [/queryContent\('articles'\)/, /_path/, /tag/],
+dep-2-b-api-usages-after.txt:4:scripts/check-content-queries.mjs:18:    patterns: [/queryContent\('articles'\)/, /queryContent\('articles', 'faq-eco-conception'\)/, /_path/, /tag/],
+dep-2-b-api-usages-after.txt:5:scripts/check-content-queries.mjs:22:    patterns: [/queryContent\('articles', route\.params\.slug\)/, /findSurround/, /_path/, /tag/],
+dep-2-b-api-usages-after.txt:6:scripts/check-content-queries.mjs:26:    patterns: [/queryContent\('articles'\)/, /_path/, /tag/],
+dep-2-b-api-usages-after.txt:7:scripts/check-content-queries.mjs:41:    forbiddenPatterns: [/serverQueryContent/, /#content\/server/, /_path/],
+dep-2-b-api-usages-after.txt:8:scripts/check-content-queries.mjs:52:    forbiddenPatterns: [/serverQueryContent/, /#content\/server/, /_path/],
+dep-2-b-api-usages-after.txt:10:scripts/check-content-queries.mjs:57:    forbiddenPatterns: [/serverQueryContent/, /#content\/server/, /_path/],
+content-prep-find-surround-usages.txt:1:pages/eco-conception/[slug].vue:152:      .findSurround(article.value._path)
+content-prep-find-surround-usages.txt:2:scripts/check-content-queries.mjs:22:    patterns: [/queryContent\('articles', route\.params\.slug\)/, /findSurround/, /_path/, /tag/],
+dep-2-b-generate-summary.txt:4:233: WARN  [plugin node-resolve] Could not resolve import "#content/server" in /Users/benoitabot/Sites/beabot/node_modules/@nuxtjs/sitemap/dist/runtime/nitro/routes/__sitemap__/nuxt-content-urls.js using imports defined in /Users/benoitabot/Sites/beabot/node_modules/@nuxtjs/sitemap/package.json.
+dep-2-b-generate-summary.txt:5:236: WARN  [plugin node-resolve] Could not resolve import "#content/server" in /Users/benoitabot/Sites/beabot/node_modules/@nuxtjs/sitemap/dist/runtime/nitro/routes/__sitemap__/nuxt-content-urls.js using imports defined in /Users/benoitabot/Sites/beabot/node_modules/@nuxtjs/sitemap/package.json.
+dep-2-b-generate-summary.txt:6:239: WARN  "#content/server" is imported by "node_modules/@nuxtjs/sitemap/dist/runtime/nitro/routes/__sitemap__/nuxt-content-urls.js", but could not be resolved – treating it as an external dependency.
+dep-2-b-generate-summary.txt:7:242: ERROR  Package import specifier "#content/server" is not defined imported from /Users/benoitabot/Sites/beabot/node_modules/.cache/nuxt/.nuxt/prerender/index.mjs
+content-prep-query-content-usages.txt:1:pages/index.vue:429:    queryContent('articles')
+content-prep-query-content-usages.txt:2:pages/eco-conception/index.vue:653:    queryContent('articles')
+content-prep-query-content-usages.txt:3:pages/eco-conception/index.vue:661:  () => queryContent('articles', 'faq-eco-conception').findOne(),
+content-prep-query-content-usages.txt:4:pages/eco-conception/[slug].vue:140:  () => queryContent('articles', route.params.slug).findOne(),
+content-prep-query-content-usages.txt:5:pages/eco-conception/[slug].vue:149:    return queryContent('articles')
+content-prep-query-content-usages.txt:6:components/HomeEcoArticles.vue:50:  queryContent('articles')
+content-prep-query-content-usages.txt:8:components/AppSearchInput.vue:33:  const results = await queryContent('articles')
+content-prep-query-content-usages.txt:9:scripts/check-content-queries.mjs:14:    patterns: [/queryContent\('articles'\)/, /_path/, /tag/],
+content-prep-query-content-usages.txt:10:scripts/check-content-queries.mjs:18:    patterns: [/queryContent\('articles'\)/, /queryContent\('articles', 'faq-eco-conception'\)/, /_path/, /tag/],
+content-prep-query-content-usages.txt:11:scripts/check-content-queries.mjs:22:    patterns: [/queryContent\('articles', route\.params\.slug\)/, /findSurround/, /_path/, /tag/],
+content-prep-query-content-usages.txt:12:scripts/check-content-queries.mjs:26:    patterns: [/queryContent\('articles'\)/, /_path/, /tag/],
+content-prep-path-usages.txt:1:pages/index.vue:302:            :key="article._path"
+content-prep-path-usages.txt:2:pages/index.vue:359:  _path?: string
+content-prep-path-usages.txt:3:pages/index.vue:430:      .only(['title', 'description', 'tag', '_path', 'date'])
+content-prep-path-usages.txt:4:pages/index.vue:457:  if (!article || !article._path) return '/eco-conception/'
+content-prep-path-usages.txt:5:pages/index.vue:459:    article._path.replace(/^\/articles\//, '/eco-conception/'),
+content-prep-path-usages.txt:6:pages/eco-conception/index.vue:280:            :key="article._path"
+content-prep-path-usages.txt:7:pages/eco-conception/index.vue:374:              :key="article._path"
+content-prep-path-usages.txt:8:pages/eco-conception/index.vue:390:                    :key="`${article._path}-${tag}`"
+content-prep-path-usages.txt:9:pages/eco-conception/index.vue:526:  _path?: string
+content-prep-path-usages.txt:10:pages/eco-conception/index.vue:654:      .only(['title', 'description', 'tag', '_path', 'date', 'updatedAt'])
+content-prep-path-usages.txt:11:pages/eco-conception/index.vue:685:  if (!article || !article._path) return '/eco-conception/'
+content-prep-path-usages.txt:12:pages/eco-conception/index.vue:687:    article._path.replace(/^\/articles\//, '/eco-conception/'),
+content-prep-path-usages.txt:13:pages/eco-conception/index.vue:761:    const article = allArticles.value.find((entry) => entry._path === path)
+content-prep-path-usages.txt:14:pages/eco-conception/[slug].vue:147:    if (!article.value?._path) return Promise.resolve([null, null])
+content-prep-path-usages.txt:15:pages/eco-conception/[slug].vue:150:      .only(['title', '_path'])
+content-prep-path-usages.txt:16:pages/eco-conception/[slug].vue:152:      .findSurround(article.value._path)
+content-prep-path-usages.txt:17:pages/eco-conception/[slug].vue:158:  if (!article || !article._path) return null
+content-prep-path-usages.txt:18:pages/eco-conception/[slug].vue:160:    article._path.replace(/^\/articles\//, '/eco-conception/'),
+content-prep-path-usages.txt:19:pages/eco-conception/[slug].vue:164:    _path: normalizedPath,
+content-prep-path-usages.txt:20:components/HomeEcoArticles.vue:13:        :key="article._path || index"
+content-prep-path-usages.txt:21:components/HomeEcoArticles.vue:51:    .only(['title', 'description', 'tag', '_path', 'date'])
+content-prep-path-usages.txt:22:components/HomeEcoArticles.vue:60:  if (!article || !article._path) return '/eco-conception/'
+content-prep-path-usages.txt:23:components/HomeEcoArticles.vue:62:    article._path.replace(/^\/articles\//, '/eco-conception/')
+content-prep-path-usages.txt:27:components/ArticleNavigation.vue:4:      v-if="prev && prev._path"
+content-prep-path-usages.txt:28:components/ArticleNavigation.vue:5:      :to="prev._path"
+content-prep-path-usages.txt:29:components/ArticleNavigation.vue:12:      v-if="next && next._path"
+content-prep-path-usages.txt:30:components/ArticleNavigation.vue:13:      :to="next._path"
+content-prep-path-usages.txt:42:server/routes/feed.json.ts:28:        // Extraire le slug depuis _path (format: /articles/slug) et convertir en minuscules
+content-prep-path-usages.txt:43:server/routes/feed.json.ts:29:        const slug = article._path?.split('/').pop()?.toLowerCase() || ''
+content-prep-path-usages.txt:44:server/routes/rss.xml.ts:35:        // Extraire le slug depuis _path (format: /articles/slug) et convertir en minuscules
+content-prep-path-usages.txt:45:server/routes/rss.xml.ts:36:        const slug = article._path?.split('/').pop()?.toLowerCase() || ''
+content-prep-path-usages.txt:46:nuxt.config.ts:270:        .map((article) => article._path?.split('/').pop())
+content-prep-path-usages.txt:47:scripts/check-content-queries.mjs:14:    patterns: [/queryContent\('articles'\)/, /_path/, /tag/],
+content-prep-path-usages.txt:48:scripts/check-content-queries.mjs:18:    patterns: [/queryContent\('articles'\)/, /queryContent\('articles', 'faq-eco-conception'\)/, /_path/, /tag/],
+content-prep-path-usages.txt:49:scripts/check-content-queries.mjs:22:    patterns: [/queryContent\('articles', route\.params\.slug\)/, /findSurround/, /_path/, /tag/],
+content-prep-path-usages.txt:50:scripts/check-content-queries.mjs:26:    patterns: [/queryContent\('articles'\)/, /_path/, /tag/],
+content-prep-path-usages.txt:51:scripts/check-content-queries.mjs:34:    patterns: [/serverQueryContent/, /_path/, /article\.tag/],
+content-prep-path-usages.txt:52:scripts/check-content-queries.mjs:38:    patterns: [/serverQueryContent/, /_path/, /article\.tag/],
+content-prep-path-usages.txt:53:scripts/check-content-queries.mjs:42:    patterns: [/serverQueryContent/, /_path/, /\/eco-conception\/\$\{slug\}\//],
+AUDITS/MIGRATION_STATUS.md:88:- [x] **URLs articles "undefined"** : Fix pour utiliser `_path` Nuxt Content v2 ✅
+AUDITS/MIGRATION_STATUS.md:91:- [x] **Navigation prev/next** : ArticleNavigation.vue utilise `_path` au lieu de `slug` ✅
+AUDITS/MIGRATION_STATUS.md:162:  - Fix: utilise `_path` généré par Nuxt Content
+AUDITS/MIGRATION_STATUS.md:182:  - Supprimé de pages/eco-conception/index.vue queryContent()
+AUDITS/MIGRATION_STATUS.md:230:   - components/ArticleNavigation.vue (résolu - `_path` au lieu de `slug`)
+AUDITS/MIGRATION_STATUS.md:239:   - Incorporated feat/nuxt3-phase1-deps's bug fixes (`_path` usage)
+AUDITS/MIGRATION_STATUS.md:264:- Navigation fixed (_path instead of slug)
+content-prep-migration-order.md:36:- remplacer localement les transformations de `_path`.
+content-prep-migration-order.md:55:- migrer `findSurround()` ;
+content-prep-migration-order.md:109:## Lot 6 — Nettoyage `_path`
+content-prep-migration-order.md:116:- supprimer les usages `_path` restants ;
+content-prep-migration-order.md:121:- `rg "_path" pages components server nuxt.config.ts scripts tests`
+content-prep-migration-order.md:126:- `refactor: remplacer _path par path Content v3`
+migration-nuxt4-dep-3-sitemap.md:15:- import obsolete : `#content/server`
+migration-nuxt4-dep-3-sitemap.md:16:- API obsolete : `serverQueryContent(e).find()`
+migration-nuxt4-dep-3-sitemap.md:147:- migrer les listes articles et pages Vue de `queryContent()` vers `queryCollection()` ;
+migration-nuxt4-dep-3-sitemap.md:148:- migrer `findSurround()` ;
+migration-nuxt4-dep-3-sitemap.md:150:- verifier recherche et `_path` -> `path` dans les lots dedies.
+audit-unused-scripts-usage.txt:37:    TODO.md:216:| `nuxt.config.ts`             | 265    | `const { serverQueryContent } = await import('#content/server')` dans `sitemap.routes`                                           |
+audit-unused-scripts-usage.txt:39:    TODO.md:244:| `nuxt.config.ts`                  | `article._path` dans `sitemap.routes` (ligne 267) |
+AUDITS/SESSION_RECAP.md:40:- ✅ `$content().fetch()` → `queryContent().findOne()`
+AUDITS/SESSION_RECAP.md:41:- ✅ `.surround()` → `.findSurround()`
+AUDITS/SESSION_RECAP.md:151:- Après : `queryContent('articles').find()`
+AUDITS/SESSION_RECAP.md:238:  const result = await queryContent('articles')
+AUDITS/SESSION_RECAP.md:245:    .find()
+migration-nuxt4-dep-2-a.md:126:- prerender bloque ensuite sur `#content/server`.
+migration-nuxt4-dep-2-a.md:131:Package import specifier "#content/server" is not defined imported from .../.nuxt/prerender/index.mjs
+migration-nuxt4-dep-2-a.md:135:- `#content/server` importe par `server/routes/feed.json.ts` ;
+migration-nuxt4-dep-2-a.md:136:- `#content/server` importe par `server/routes/rss.xml.ts` ;
+migration-nuxt4-dep-2-a.md:137:- `#content/server` importe par `@nuxtjs/sitemap` v6 via `__sitemap__/nuxt-content-urls.js`.
+migration-nuxt4-dep-2-a.md:152:- `queryContent()` dans les pages et composants ;
+migration-nuxt4-dep-2-a.md:153:- `findSurround()` dans `pages/eco-conception/[slug].vue` ;
+migration-nuxt4-dep-2-a.md:154:- `serverQueryContent()` dans RSS, JSON Feed et sitemap routes ;
+migration-nuxt4-dep-2-a.md:155:- `_path` dans pages, composants, feeds et sitemap.
+migration-nuxt4-dep-2-a.md:186:- traiter le blocage `@nuxtjs/sitemap` v6 qui importe encore `#content/server` ;
+migration-nuxt4-dep-2-a.md:187:- relancer `npm run generate` pour atteindre ensuite les erreurs eventuelles `queryContent()` cote pages.
+dep-2-d-content-v2-usages-after.txt:1:scripts/check-content-queries.mjs:15:    forbiddenPatterns: [/queryContent\(/, /findSurround/, /_path/, /\.only\(/],
+dep-2-d-content-v2-usages-after.txt:2:scripts/check-content-queries.mjs:20:    forbiddenPatterns: [/queryContent\(/, /findSurround/, /_path/, /\.only\(/],
+dep-2-d-content-v2-usages-after.txt:3:scripts/check-content-queries.mjs:25:    forbiddenPatterns: [/queryContent\(/, /findSurround/, /_path/, /\.only\(/],
+dep-2-d-content-v2-usages-after.txt:4:scripts/check-content-queries.mjs:30:    forbiddenPatterns: [/queryContent\(/, /findSurround/, /_path/, /\.only\(/],
+dep-2-d-content-v2-usages-after.txt:5:scripts/check-content-queries.mjs:35:    forbiddenPatterns: [/_path/],
+dep-2-d-content-v2-usages-after.txt:6:scripts/check-content-queries.mjs:49:    forbiddenPatterns: [/queryContent\(/, /\$contains/, /\$or/, /_path/, /article\.slug/],
+dep-2-d-content-v2-usages-after.txt:7:scripts/check-content-queries.mjs:60:    forbiddenPatterns: [/serverQueryContent/, /#content\/server/, /_path/],
+dep-2-d-content-v2-usages-after.txt:8:scripts/check-content-queries.mjs:71:    forbiddenPatterns: [/serverQueryContent/, /#content\/server/, /_path/],
+dep-2-d-content-v2-usages-after.txt:9:scripts/check-content-queries.mjs:76:    forbiddenPatterns: [/serverQueryContent/, /#content\/server/, /_path/],
+AUDITS/MIGRATION_STATUS_UPDATED.md:55:- ✅ `$content().fetch()` → `queryContent().findOne()`
+AUDITS/MIGRATION_STATUS_UPDATED.md:56:- ✅ `.surround()` → `.findSurround()`
+migration-nuxt4-dep-2-d-search.md:20:- `queryContent('articles')`
+migration-nuxt4-dep-2-d-search.md:23:- `.find()`
+dep-2-c-content-v2-usages-after.txt:1:scripts/check-content-queries.mjs:15:    forbiddenPatterns: [/queryContent\(/, /findSurround/, /_path/, /\.only\(/],
+dep-2-c-content-v2-usages-after.txt:2:scripts/check-content-queries.mjs:20:    forbiddenPatterns: [/queryContent\(/, /findSurround/, /_path/, /\.only\(/],
+dep-2-c-content-v2-usages-after.txt:3:scripts/check-content-queries.mjs:25:    forbiddenPatterns: [/queryContent\(/, /findSurround/, /_path/, /\.only\(/],
+dep-2-c-content-v2-usages-after.txt:4:scripts/check-content-queries.mjs:30:    forbiddenPatterns: [/queryContent\(/, /findSurround/, /_path/, /\.only\(/],
+dep-2-c-content-v2-usages-after.txt:5:scripts/check-content-queries.mjs:35:    forbiddenPatterns: [/_path/],
+dep-2-c-content-v2-usages-after.txt:6:scripts/check-content-queries.mjs:46:    forbiddenPatterns: [/serverQueryContent/, /#content\/server/, /_path/],
+dep-2-c-content-v2-usages-after.txt:7:scripts/check-content-queries.mjs:57:    forbiddenPatterns: [/serverQueryContent/, /#content\/server/, /_path/],
+dep-2-c-content-v2-usages-after.txt:8:scripts/check-content-queries.mjs:62:    forbiddenPatterns: [/serverQueryContent/, /#content\/server/, /_path/],
+dep-2-c-content-v2-usages-after.txt:10:components/AppSearchInput.vue:33:  const results = await queryContent('articles')
+dep-2-b-generate.txt:233: WARN  [plugin node-resolve] Could not resolve import "#content/server" in /Users/benoitabot/Sites/beabot/node_modules/@nuxtjs/sitemap/dist/runtime/nitro/routes/__sitemap__/nuxt-content-urls.js using imports defined in /Users/benoitabot/Sites/beabot/node_modules/@nuxtjs/sitemap/package.json.
+dep-2-b-generate.txt:236: WARN  [plugin node-resolve] Could not resolve import "#content/server" in /Users/benoitabot/Sites/beabot/node_modules/@nuxtjs/sitemap/dist/runtime/nitro/routes/__sitemap__/nuxt-content-urls.js using imports defined in /Users/benoitabot/Sites/beabot/node_modules/@nuxtjs/sitemap/package.json.
+dep-2-b-generate.txt:239: WARN  "#content/server" is imported by "node_modules/@nuxtjs/sitemap/dist/runtime/nitro/routes/__sitemap__/nuxt-content-urls.js", but could not be resolved – treating it as an external dependency.
+dep-2-b-generate.txt:242: ERROR  Package import specifier "#content/server" is not defined imported from /Users/benoitabot/Sites/beabot/node_modules/.cache/nuxt/.nuxt/prerender/index.mjs
+dep-2-c-content-v2-usages-after-pages.txt:1:scripts/check-content-queries.mjs:14:    patterns: [/queryContent\('articles'\)/, /_path/, /tag/],
+dep-2-c-content-v2-usages-after-pages.txt:2:scripts/check-content-queries.mjs:18:    patterns: [/queryContent\('articles'\)/, /queryContent\('articles', 'faq-eco-conception'\)/, /_path/, /tag/],
+dep-2-c-content-v2-usages-after-pages.txt:3:scripts/check-content-queries.mjs:22:    patterns: [/queryContent\('articles', route\.params\.slug\)/, /findSurround/, /_path/, /tag/],
+dep-2-c-content-v2-usages-after-pages.txt:4:scripts/check-content-queries.mjs:26:    patterns: [/queryContent\('articles'\)/, /_path/, /tag/],
+dep-2-c-content-v2-usages-after-pages.txt:5:scripts/check-content-queries.mjs:41:    forbiddenPatterns: [/serverQueryContent/, /#content\/server/, /_path/],
+dep-2-c-content-v2-usages-after-pages.txt:6:scripts/check-content-queries.mjs:52:    forbiddenPatterns: [/serverQueryContent/, /#content\/server/, /_path/],
+dep-2-c-content-v2-usages-after-pages.txt:7:scripts/check-content-queries.mjs:57:    forbiddenPatterns: [/serverQueryContent/, /#content\/server/, /_path/],
+dep-2-c-content-v2-usages-after-pages.txt:8:components/AppSearchInput.vue:33:  const results = await queryContent('articles')
+content-prep-content-api-usages.txt:1:server/routes/feed.json.ts:1:import { serverQueryContent } from '#content/server'
+content-prep-content-api-usages.txt:2:server/routes/rss.xml.ts:1:import { serverQueryContent } from '#content/server'
+content-prep-content-api-usages.txt:5:nuxt.config.ts:267:      const { serverQueryContent } = await import('#content/server')
+migration-nuxt4-dep-2-c-pages.md:63:- `queryContent()`
+migration-nuxt4-dep-2-c-pages.md:64:- `.only()`
+migration-nuxt4-dep-2-c-pages.md:65:- `.sort({ date: -1 })`
+migration-nuxt4-dep-2-c-pages.md:66:- `.find()`
+migration-nuxt4-dep-2-c-pages.md:67:- `.findOne()`
+migration-nuxt4-dep-2-c-pages.md:68:- `findSurround()`
+migration-nuxt4-dep-2-c-pages.md:69:- `._path`
+migration-nuxt4-dep-2-c-pages.md:73:- `components/AppSearchInput.vue` conserve `queryContent('articles')` et `.where({ $or: ... })` pour le futur lot `CONTENT-6 / Recherche Content v3`.
+migration-nuxt4-dep-2-c-pages.md:108:`findSurround()` est remplacé par `queryCollectionItemSurroundings()`. `ArticleNavigation` consomme désormais `prev.path` et `next.path`.
+dep-2-c-content-v2-usages-final.txt:1:components/AppSearchInput.vue:33:  const results = await queryContent('articles')
+dep-2-c-content-v2-usages-final.txt:2:scripts/check-content-queries.mjs:15:    forbiddenPatterns: [/queryContent\(/, /findSurround/, /_path/, /\.only\(/],
+dep-2-c-content-v2-usages-final.txt:3:scripts/check-content-queries.mjs:20:    forbiddenPatterns: [/queryContent\(/, /findSurround/, /_path/, /\.only\(/],
+dep-2-c-content-v2-usages-final.txt:4:scripts/check-content-queries.mjs:25:    forbiddenPatterns: [/queryContent\(/, /findSurround/, /_path/, /\.only\(/],
+dep-2-c-content-v2-usages-final.txt:5:scripts/check-content-queries.mjs:30:    forbiddenPatterns: [/queryContent\(/, /findSurround/, /_path/, /\.only\(/],
+dep-2-c-content-v2-usages-final.txt:6:scripts/check-content-queries.mjs:35:    forbiddenPatterns: [/_path/],
+dep-2-c-content-v2-usages-final.txt:7:scripts/check-content-queries.mjs:46:    forbiddenPatterns: [/serverQueryContent/, /#content\/server/, /_path/],
+dep-2-c-content-v2-usages-final.txt:8:scripts/check-content-queries.mjs:57:    forbiddenPatterns: [/serverQueryContent/, /#content\/server/, /_path/],
+dep-2-c-content-v2-usages-final.txt:9:scripts/check-content-queries.mjs:62:    forbiddenPatterns: [/serverQueryContent/, /#content\/server/, /_path/],
+dep-2-c-content-v2-usages-before.txt:6:scripts/check-content-queries.mjs:14:    patterns: [/queryContent\('articles'\)/, /_path/, /tag/],
+dep-2-c-content-v2-usages-before.txt:7:scripts/check-content-queries.mjs:18:    patterns: [/queryContent\('articles'\)/, /queryContent\('articles', 'faq-eco-conception'\)/, /_path/, /tag/],
+dep-2-c-content-v2-usages-before.txt:8:scripts/check-content-queries.mjs:22:    patterns: [/queryContent\('articles', route\.params\.slug\)/, /findSurround/, /_path/, /tag/],
+dep-2-c-content-v2-usages-before.txt:9:scripts/check-content-queries.mjs:26:    patterns: [/queryContent\('articles'\)/, /_path/, /tag/],
+dep-2-c-content-v2-usages-before.txt:10:scripts/check-content-queries.mjs:41:    forbiddenPatterns: [/serverQueryContent/, /#content\/server/, /_path/],
+dep-2-c-content-v2-usages-before.txt:11:scripts/check-content-queries.mjs:52:    forbiddenPatterns: [/serverQueryContent/, /#content\/server/, /_path/],
+dep-2-c-content-v2-usages-before.txt:12:scripts/check-content-queries.mjs:57:    forbiddenPatterns: [/serverQueryContent/, /#content\/server/, /_path/],
+dep-2-c-content-v2-usages-before.txt:14:components/ArticleNavigation.vue:4:      v-if="prev && prev._path"
+dep-2-c-content-v2-usages-before.txt:15:components/ArticleNavigation.vue:5:      :to="prev._path"
+dep-2-c-content-v2-usages-before.txt:16:components/ArticleNavigation.vue:12:      v-if="next && next._path"
+dep-2-c-content-v2-usages-before.txt:17:components/ArticleNavigation.vue:13:      :to="next._path"
+dep-2-c-content-v2-usages-before.txt:18:components/AppSearchInput.vue:33:  const results = await queryContent('articles')
+dep-2-c-content-v2-usages-before.txt:19:components/AppSearchInput.vue:41:    .find()
+dep-2-c-content-v2-usages-before.txt:20:components/HomeEcoArticles.vue:13:        :key="article._path || index"
+dep-2-c-content-v2-usages-before.txt:21:components/HomeEcoArticles.vue:50:  queryContent('articles')
+dep-2-c-content-v2-usages-before.txt:22:components/HomeEcoArticles.vue:51:    .only(['title', 'description', 'tag', '_path', 'date'])
+dep-2-c-content-v2-usages-before.txt:23:components/HomeEcoArticles.vue:52:    .sort({ date: -1 })
+dep-2-c-content-v2-usages-before.txt:24:components/HomeEcoArticles.vue:54:    .find()
+dep-2-c-content-v2-usages-before.txt:25:components/HomeEcoArticles.vue:60:  if (!article || !article._path) return '/eco-conception/'
+dep-2-c-content-v2-usages-before.txt:26:components/HomeEcoArticles.vue:62:    article._path.replace(/^\/articles\//, '/eco-conception/')
+dep-2-c-content-v2-usages-before.txt:40:pages/eco-conception/[slug].vue:140:  () => queryContent('articles', route.params.slug).findOne(),
+dep-2-c-content-v2-usages-before.txt:41:pages/eco-conception/[slug].vue:147:    if (!article.value?._path) return Promise.resolve([null, null])
+dep-2-c-content-v2-usages-before.txt:42:pages/eco-conception/[slug].vue:149:    return queryContent('articles')
+dep-2-c-content-v2-usages-before.txt:43:pages/eco-conception/[slug].vue:150:      .only(['title', '_path'])
+dep-2-c-content-v2-usages-before.txt:44:pages/eco-conception/[slug].vue:151:      .sort({ date: 1 })
+dep-2-c-content-v2-usages-before.txt:45:pages/eco-conception/[slug].vue:152:      .findSurround(article.value._path)
+dep-2-c-content-v2-usages-before.txt:46:pages/eco-conception/[slug].vue:158:  if (!article || !article._path) return null
+dep-2-c-content-v2-usages-before.txt:47:pages/eco-conception/[slug].vue:160:    article._path.replace(/^\/articles\//, '/eco-conception/'),
+dep-2-c-content-v2-usages-before.txt:48:pages/eco-conception/[slug].vue:164:    _path: normalizedPath,
+dep-2-c-content-v2-usages-before.txt:49:pages/index.vue:302:            :key="article._path"
+dep-2-c-content-v2-usages-before.txt:50:pages/index.vue:359:  _path?: string
+dep-2-c-content-v2-usages-before.txt:52:pages/index.vue:429:    queryContent('articles')
+dep-2-c-content-v2-usages-before.txt:53:pages/index.vue:430:      .only(['title', 'description', 'tag', '_path', 'date'])
+dep-2-c-content-v2-usages-before.txt:54:pages/index.vue:431:      .sort({ date: -1 })
+dep-2-c-content-v2-usages-before.txt:55:pages/index.vue:433:      .find(),
+dep-2-c-content-v2-usages-before.txt:56:pages/index.vue:457:  if (!article || !article._path) return '/eco-conception/'
+dep-2-c-content-v2-usages-before.txt:57:pages/index.vue:459:    article._path.replace(/^\/articles\//, '/eco-conception/'),
+dep-2-c-content-v2-usages-before.txt:58:pages/eco-conception/index.vue:280:            :key="article._path"
+dep-2-c-content-v2-usages-before.txt:59:pages/eco-conception/index.vue:374:              :key="article._path"
+dep-2-c-content-v2-usages-before.txt:60:pages/eco-conception/index.vue:390:                    :key="`${article._path}-${tag}`"
+dep-2-c-content-v2-usages-before.txt:61:pages/eco-conception/index.vue:526:  _path?: string
+dep-2-c-content-v2-usages-before.txt:62:pages/eco-conception/index.vue:653:    queryContent('articles')
+dep-2-c-content-v2-usages-before.txt:63:pages/eco-conception/index.vue:654:      .only(['title', 'description', 'tag', '_path', 'date', 'updatedAt'])
+dep-2-c-content-v2-usages-before.txt:64:pages/eco-conception/index.vue:655:      .sort({ date: -1 })
+dep-2-c-content-v2-usages-before.txt:65:pages/eco-conception/index.vue:656:      .find(),
+dep-2-c-content-v2-usages-before.txt:66:pages/eco-conception/index.vue:661:  () => queryContent('articles', 'faq-eco-conception').findOne(),
+dep-2-c-content-v2-usages-before.txt:67:pages/eco-conception/index.vue:685:  if (!article || !article._path) return '/eco-conception/'
+dep-2-c-content-v2-usages-before.txt:68:pages/eco-conception/index.vue:687:    article._path.replace(/^\/articles\//, '/eco-conception/'),
+dep-2-c-content-v2-usages-before.txt:70:pages/eco-conception/index.vue:761:    const article = allArticles.value.find((entry) => entry._path === path)
+dep-2-a-generate-after-sqlite-config.txt:233: WARN  [plugin node-resolve] Could not resolve import "#content/server" in /Users/benoitabot/Sites/beabot/node_modules/@nuxtjs/sitemap/dist/runtime/nitro/routes/__sitemap__/nuxt-content-urls.js using imports defined in /Users/benoitabot/Sites/beabot/node_modules/@nuxtjs/sitemap/package.json.
+dep-2-a-generate-after-sqlite-config.txt:236: WARN  [plugin node-resolve] Could not resolve import "#content/server" in /Users/benoitabot/Sites/beabot/node_modules/@nuxtjs/sitemap/dist/runtime/nitro/routes/__sitemap__/nuxt-content-urls.js using imports defined in /Users/benoitabot/Sites/beabot/node_modules/@nuxtjs/sitemap/package.json.
+dep-2-a-generate-after-sqlite-config.txt:239: WARN  "#content/server" is imported by "node_modules/@nuxtjs/sitemap/dist/runtime/nitro/routes/__sitemap__/nuxt-content-urls.js", but could not be resolved – treating it as an external dependency.
+dep-2-a-generate-after-sqlite-config.txt:242: WARN  [plugin node-resolve] Could not resolve import "#content/server" in /Users/benoitabot/Sites/beabot/server/routes/feed.json.ts using imports defined in /Users/benoitabot/Sites/beabot/package.json.
+dep-2-a-generate-after-sqlite-config.txt:245: WARN  [plugin node-resolve] Could not resolve import "#content/server" in /Users/benoitabot/Sites/beabot/server/routes/rss.xml.ts using imports defined in /Users/benoitabot/Sites/beabot/package.json.
+dep-2-a-generate-after-sqlite-config.txt:248: WARN  [plugin node-resolve] Could not resolve import "#content/server" in /Users/benoitabot/Sites/beabot/server/routes/feed.json.ts using imports defined in /Users/benoitabot/Sites/beabot/package.json.
+dep-2-a-generate-after-sqlite-config.txt:251: WARN  "#content/server" is imported by "server/routes/feed.json.ts", but could not be resolved – treating it as an external dependency.
+dep-2-a-generate-after-sqlite-config.txt:254: WARN  [plugin node-resolve] Could not resolve import "#content/server" in /Users/benoitabot/Sites/beabot/server/routes/rss.xml.ts using imports defined in /Users/benoitabot/Sites/beabot/package.json.
+dep-2-a-generate-after-sqlite-config.txt:257: WARN  "#content/server" is imported by "server/routes/rss.xml.ts", but could not be resolved – treating it as an external dependency.
+dep-2-a-generate-after-sqlite-config.txt:260: ERROR  Package import specifier "#content/server" is not defined imported from /Users/benoitabot/Sites/beabot/node_modules/.cache/nuxt/.nuxt/prerender/index.mjs
+TODO.md:64:  - Critique : APIs `queryContent`, `serverQueryContent`, `_path` identifiées comme cassantes en Nuxt/Content v3
+TODO.md:168:| 6   | `@nuxtjs/sitemap` | 8.0.15           | 8.0.15               | v6 incompatible avec Content v3 via import interne `#content/server`       | 🟠     |
+TODO.md:194:  - `npm run generate` bloqué par les imports v2 `#content/server` dans RSS/JSON Feed et `@nuxtjs/sitemap` v6.
+TODO.md:211:  - DEP-2-B : nécessaire avant validation complète, car `@nuxtjs/sitemap` v6 importe encore `#content/server`.
+TODO.md:287:> - `queryContent()` → `queryCollection()` ;
+TODO.md:288:> - `findSurround()` → `queryCollectionItemSurroundings()` ;
+TODO.md:289:> - `serverQueryContent()` → `queryCollection(event, ...)` pour routes Nitro ;
+TODO.md:290:> - `_path` → `path`.
+TODO.md:298:##### 3.3.1 — `queryContent()` → `queryCollection()`
+TODO.md:302:| `pages/index.vue`                 | 430-436 | `queryContent('articles').only([...]).sort({ date: -1 }).limit(2).find()` | `queryCollection('articles').select([...]).order('date', 'DESC').limit(2).all()` |
+TODO.md:303:| `pages/eco-conception/index.vue`  | 651-654 | `queryContent('articles').only([...]).sort({ date: -1 }).find()`          | `queryCollection('articles').select([...]).order('date', 'DESC').all()`          |
+TODO.md:304:| `pages/eco-conception/index.vue`  | 659     | `queryContent('articles', 'faq-eco-conception').findOne()`                | `queryCollection('articles').where('stem', '=', 'faq-eco-conception').first()`   |
+TODO.md:305:| `pages/eco-conception/[slug].vue` | 140     | `queryContent('articles', route.params.slug).findOne()`                   | `queryCollection('articles').where('stem', '=', slug).first()`                   |
+TODO.md:306:| `components/HomeEcoArticles.vue`  | 50-54   | `queryContent('articles').only([...]).sort({ date: -1 }).limit(2).find()` | Idem index.vue                                                                   |
+TODO.md:308:- [x] **CONTENT-1** — Migrer les 5 appels `queryContent()` → `queryCollection()` dans les fichiers ci-dessus
+TODO.md:312:##### 3.3.2 — `findSurround()` → `queryCollectionItemSurroundings()`
+TODO.md:316:| `pages/eco-conception/[slug].vue` | 149-152 | `queryContent('articles').only(['title', '_path']).sort({ date: 1 }).findSurround(article.value._path)` |
+TODO.md:318:- [x] **CONTENT-2** — Migrer `findSurround()` → `queryCollectionItemSurroundings()` avec la nouvelle syntaxe
+TODO.md:321:##### 3.3.3 — `serverQueryContent()` supprimé
+TODO.md:325:| `server/routes/rss.xml.ts`   | 1, 7   | `import { serverQueryContent } from '#content/server'` + `serverQueryContent(event, 'articles').sort({ $numeric: true }).find()` |
+TODO.md:327:| `nuxt.config.ts`             | 265    | `const { serverQueryContent } = await import('#content/server')` dans `sitemap.routes`                                           |
+TODO.md:330:  - DEP-2-A : blocage generate confirme sur `#content/server`.
+TODO.md:331:  - DEP-2-B : migré vers `queryCollection(event, 'articles')`, `_path` remplacé par `path`, `npm test` OK.
+TODO.md:333:  - DEP-2-A : blocage generate confirme sur `#content/server`.
+TODO.md:334:  - DEP-2-B : migré vers `queryCollection(event, 'articles')`, `_path` remplacé par `path`, `npm test` OK.
+TODO.md:336:  - DEP-2-A : blocage generate confirme aussi dans `@nuxtjs/sitemap` v6, qui importe encore `#content/server`.
+TODO.md:337:  - DEP-2-B : import `#content/server` supprimé du projet et routes articles remplacées par `urls: getArticleSitemapRoutes`; blocage restant dans le handler interne `@nuxtjs/sitemap` v6, à traiter en `DEP-3`.
+TODO.md:348:- [x] **CONTENT-6** — Réécrire le search dans `AppSearchInput.vue` avec la nouvelle syntaxe `.where()` ou utiliser `queryCollectionSearchSections()` (remplaçant de `searchContent()`)
+TODO.md:351:  - Garde-fou Content mis à jour : plus aucune exception applicative `queryContent()`.
+TODO.md:354:##### 3.3.5 — `._path` → `.path` (underscore prefix supprimé)
+TODO.md:360:| `pages/eco-conception/[slug].vue` | `article.value._path` (lignes 147, 152, 158)      |
+TODO.md:361:| `pages/eco-conception/index.vue`  | `article._path` dans le template                  |
+TODO.md:362:| `pages/index.vue`                 | `article._path` dans le template                  |
+TODO.md:363:| `components/HomeEcoArticles.vue`  | `article._path` dans le template                  |
+TODO.md:364:| `server/routes/rss.xml.ts`        | `article._path` (ligne 37)                        |
+TODO.md:365:| `server/routes/feed.json.ts`      | `article._path` (ligne 29)                        |
+TODO.md:366:| `nuxt.config.ts`                  | `article._path` dans `sitemap.routes` (ligne 267) |
+TODO.md:368:- [x] **CONTENT-7** — Remplacer `._path` par `.path` dans tous les fichiers listés (7 fichiers, ~12 occurrences)
+TODO.md:369:  - DEP-2-C : usages applicatifs listés remplacés ; les seules occurrences `_path` restantes sont des garde-fous ou historiques documentés dans les scripts.
+TODO.md:412:Content v3 trie alphabétiquement par défaut (au lieu de numériquement). Vérifier que les `.sort({ date: -1 })` explicites suffisent.
+TODO.md:541:| `pages/eco-conception/[slug].vue:138` | `article.value?._path` (optional chaining)  | 🟢 OK  |
+ARCHIVES/MIGRATION_PLAN_NUXT3.md:695:        :key="article._path"
+ARCHIVES/MIGRATION_PLAN_NUXT3.md:712:  queryContent('articles')
+ARCHIVES/MIGRATION_PLAN_NUXT3.md:713:    .sort({ createdAt: -1 })
+ARCHIVES/MIGRATION_PLAN_NUXT3.md:715:    .find()
+ARCHIVES/MIGRATION_PLAN_NUXT3.md:754:  queryContent('articles', route.params.slug).findOne()
+ARCHIVES/MIGRATION_PLAN_NUXT3.md:923:import { serverQueryContent } from '#content/server'
+ARCHIVES/MIGRATION_PLAN_NUXT3.md:926:  const articles = await serverQueryContent(event, 'articles')
+ARCHIVES/MIGRATION_PLAN_NUXT3.md:927:    .sort({ createdAt: -1 })
+ARCHIVES/MIGRATION_PLAN_NUXT3.md:928:    .find()
+ARCHIVES/MIGRATION_PLAN_NUXT3.md:960:  const articles = await serverQueryContent(event, 'articles')
+ARCHIVES/MIGRATION_PLAN_NUXT3.md:961:    .sort({ createdAt: -1 })
+ARCHIVES/MIGRATION_PLAN_NUXT3.md:962:    .find()
+ARCHIVES/AUDIT_BEABOT.md:142:  queryContent('articles').find()
+ARCHIVES/VUE_BEST_PRACTICES_AUDIT.md:776:  queryContent('articles', route.params.slug).findOne()
+migration-nuxt4-content-prep.md:12:- Usages `queryContent()` : 7 appels applicatifs
+migration-nuxt4-content-prep.md:13:- Usages `serverQueryContent()` : 6 occurrences applicatives import/appel inclus
+migration-nuxt4-content-prep.md:14:- Usages `findSurround()` : 1 occurrence applicative
+migration-nuxt4-content-prep.md:15:- Occurrences `_path` : 32 occurrences applicatives, 39 occurrences avec le script de garde-fou
+migration-nuxt4-content-prep.md:25:| `server/routes/rss.xml.ts` | eleve | `serverQueryContent` supprime, `_path` pour slug, XML a preserver |
+migration-nuxt4-content-prep.md:26:| `server/routes/feed.json.ts` | eleve | `serverQueryContent` supprime, `_path` pour slug, dates/tags feed |
+migration-nuxt4-content-prep.md:30:| `components/ArticleNavigation.vue` | moyen | consomme `_path` sans requete directe |
+migration-nuxt4-content-prep.md:51:6. Nettoyage `_path`.
+migration-nuxt4-content-v3-docs-audit.md:35:- `queryContent()` est remplace par `queryCollection()`.
+migration-nuxt4-content-v3-docs-audit.md:37:- `findSurround()` est remplace par `queryCollectionItemSurroundings()`.
+migration-nuxt4-content-v3-docs-audit.md:38:- `searchContent()` est remplace par `queryCollectionSearchSections()`.
+migration-nuxt4-content-v3-docs-audit.md:39:- `serverQueryContent()` n'est plus l'API cible : en Nitro, `queryCollection(event, 'collection')` et les utilitaires associes recoivent `event` en premier argument.
+migration-nuxt4-content-v3-docs-audit.md:40:- `._path` devient `.path`; la documentation indique que les champs internes prefixees `_` sont supprimes ou renommes.
+migration-nuxt4-content-v3-docs-audit.md:119:| `queryContent('articles').only([...]).sort({ date: -1 }).limit(n).find()` | `queryCollection('articles').select(...).order('date', 'DESC').limit(n).all()` | utiliser pour homepage, archive, `HomeEcoArticles` |
+migration-nuxt4-content-v3-docs-audit.md:120:| `queryContent('articles', slug).findOne()` | `queryCollection('articles').path('/eco-conception/' + slug).first()` | preferer `.path()` avec le prefix de collection |
+migration-nuxt4-content-v3-docs-audit.md:121:| `queryContent('articles', 'faq-eco-conception').findOne()` | `queryCollection('articles').path('/eco-conception/faq-eco-conception').first()` | conserver extraction FAQ apres verification du body AST |
+migration-nuxt4-content-v3-docs-audit.md:122:| `.findSurround(article._path)` | `queryCollectionItemSurroundings('articles', article.path, { fields: [...] }).order(...)` | utiliser pour prev/next |
+migration-nuxt4-content-v3-docs-audit.md:123:| `serverQueryContent(event, 'articles')` | `queryCollection(event, 'articles')` | utiliser dans `/rss.xml` et `/feed.json` |
+migration-nuxt4-content-v3-docs-audit.md:125:| `.only(...)` | `.select(...)` | remplacer champ par champ |
+migration-nuxt4-content-v3-docs-audit.md:127:| `.find()` | `.all()` | listes et feeds |
+migration-nuxt4-content-v3-docs-audit.md:128:| `.findOne()` | `.first()` | article et FAQ |
+migration-nuxt4-content-v3-docs-audit.md:129:| `._path` | `.path` | remplacer partout apres migration Content |
+migration-nuxt4-content-v3-docs-audit.md:134:- `_path` : present dans pages, composants, feeds, sitemap et garde-fou.
+migration-nuxt4-content-v3-docs-audit.md:141:- ne migrer que `_path -> path` pour le code existant ;
+migration-nuxt4-content-v3-docs-audit.md:317:- Content v3 `path` doit servir d'identifiant sans transformation `_path` ;
+migration-nuxt4-content-v3-docs-audit.md:380:6. `CONTENT-7` : nettoyer `_path`.
+PROJECT_STATE.md:51:  - `queryContent('articles')`, `$or`, `$contains`, `.find()` et `article.slug` supprimes de `AppSearchInput.vue` ;
+PROJECT_STATE.md:64:  - dernier usage applicatif documente de `queryContent()` corrige.
+PROJECT_STATE.md:103:  - 7 appels applicatifs `queryContent()`
+PROJECT_STATE.md:105:  - 1 usage `findSurround()`
+PROJECT_STATE.md:106:  - 32 occurrences applicatives `_path`
+PROJECT_STATE.md:130:  - `npm run generate` bloque par `#content/server`, documente sans migration en vrac
+PROJECT_STATE.md:135:  - `npm run generate` bloque uniquement par l'integration interne `@nuxtjs/sitemap` v6 qui importe encore `#content/server`
+PROJECT_STATE.md:147:  - `findSurround()` remplace par `queryCollectionItemSurroundings()`
+PROJECT_STATE.md:154:  - garde-fou Content durci : plus aucune exception applicative `queryContent()`
+content-prep-tests-plan.md:25:- verifier absence de `_path` ;
+dep-3-sitemap-local-audit-before.txt:1:node_modules/@nuxtjs/sitemap/dist/runtime/nitro/routes/__sitemap__/nuxt-content-urls.js:2:import { serverQueryContent } from "#content/server";
+dep-3-sitemap-local-audit-before.txt:2:node_modules/@nuxtjs/sitemap/dist/runtime/nitro/routes/__sitemap__/nuxt-content-urls.js:4:  const contentList = await serverQueryContent(e).find();
+dep-3-sitemap-v8-content-integration.txt:1:node_modules/@nuxtjs/sitemap/dist/runtime/server/routes/__sitemap__/nuxt-content-urls-v2.js:2:import { serverQueryContent } from "#content/server";
+dep-3-sitemap-v8-content-integration.txt:2:node_modules/@nuxtjs/sitemap/dist/runtime/server/routes/__sitemap__/nuxt-content-urls-v2.js:4:  const contentList = await serverQueryContent(e).find();
+content-prep-server-query-content-usages.txt:1:server/routes/feed.json.ts:1:import { serverQueryContent } from '#content/server'
+content-prep-server-query-content-usages.txt:2:server/routes/feed.json.ts:6:    const articles = await serverQueryContent(event, 'articles')
+content-prep-server-query-content-usages.txt:3:server/routes/rss.xml.ts:1:import { serverQueryContent } from '#content/server'
+content-prep-server-query-content-usages.txt:4:server/routes/rss.xml.ts:6:    const articles = await serverQueryContent(event, 'articles')
+content-prep-server-query-content-usages.txt:5:nuxt.config.ts:267:      const { serverQueryContent } = await import('#content/server')
+content-prep-server-query-content-usages.txt:6:nuxt.config.ts:268:      const articles = await serverQueryContent('articles').find()
+content-prep-server-query-content-usages.txt:7:scripts/check-content-queries.mjs:34:    patterns: [/serverQueryContent/, /_path/, /article\.tag/],
+content-prep-server-query-content-usages.txt:8:scripts/check-content-queries.mjs:38:    patterns: [/serverQueryContent/, /_path/, /article\.tag/],
+content-prep-server-query-content-usages.txt:9:scripts/check-content-queries.mjs:42:    patterns: [/serverQueryContent/, /_path/, /\/eco-conception\/\$\{slug\}\//],
+audit-unused-dependencies.txt:79:    nuxt.config.ts:268:const { serverQueryContent } = await import('#content/server')
+audit-unused-dependencies.txt:227:    server/routes/feed.json.ts:1:import { serverQueryContent } from '#content/server'
+audit-unused-dependencies.txt:229:    server/routes/rss.xml.ts:1:import { serverQueryContent } from '#content/server'
+audit-unused-dependencies.txt:238:    utils/getRoutes.js:3:const files = await $content({ deep: true }).only(['path']).fetch()
+content-prep-v2-v3-mapping.md:11:| `queryContent()` | `queryCollection()` | `pages/index.vue`, `pages/eco-conception/index.vue`, `pages/eco-conception/[slug].vue`, `components/HomeEcoArticles.vue`, `components/AppSearchInput.vue` | eleve |
+content-prep-v2-v3-mapping.md:12:| `serverQueryContent()` | API server Content v3 a confirmer | `server/routes/rss.xml.ts`, `server/routes/feed.json.ts`, `nuxt.config.ts` | eleve |
+content-prep-v2-v3-mapping.md:13:| `.only()` | `.select()` | `pages/index.vue`, `pages/eco-conception/index.vue`, `pages/eco-conception/[slug].vue`, `components/HomeEcoArticles.vue` | moyen |
+content-prep-v2-v3-mapping.md:14:| `.sort({ date: -1 })` | `.order('date', 'DESC')` | `pages/index.vue`, `pages/eco-conception/index.vue`, `components/HomeEcoArticles.vue` | moyen |
+content-prep-v2-v3-mapping.md:15:| `.sort({ date: 1 })` | `.order('date', 'ASC')` | `pages/eco-conception/[slug].vue` | moyen |
+content-prep-v2-v3-mapping.md:16:| `.sort({ $numeric: true })` | `.order('date', 'DESC')` ou tri explicite equivalent | `server/routes/rss.xml.ts`, `server/routes/feed.json.ts` | eleve |
+content-prep-v2-v3-mapping.md:17:| `.find()` | `.all()` | listes articles, feeds, sitemap | moyen |
+content-prep-v2-v3-mapping.md:18:| `.findOne()` | `.first()` | `pages/eco-conception/index.vue`, `pages/eco-conception/[slug].vue` | moyen |
+content-prep-v2-v3-mapping.md:19:| `.findSurround()` | `queryCollectionItemSurroundings()` | `pages/eco-conception/[slug].vue` | eleve |
+content-prep-v2-v3-mapping.md:20:| `._path` | `.path` | `pages/index.vue`, `pages/eco-conception/index.vue`, `pages/eco-conception/[slug].vue`, `components/HomeEcoArticles.vue`, `components/ArticleNavigation.vue`, `server/routes/rss.xml.ts`, `server/routes/feed.json.ts`, `nuxt.config.ts` | eleve |
+migration-nuxt4-dep-2-b.md:13:- `_path` supprime des endpoints serveur et de la generation manuelle des routes articles sitemap.
+migration-nuxt4-dep-2-b.md:15:- `npm run generate` avance jusqu'au prerender, mais reste bloque par l'integration interne `@nuxtjs/sitemap` v6 qui importe encore `#content/server`.
+migration-nuxt4-dep-2-b.md:31:- `import { serverQueryContent } from '#content/server'`
+migration-nuxt4-dep-2-b.md:32:- `serverQueryContent(event, 'articles')`
+migration-nuxt4-dep-2-b.md:33:- `article._path`
+migration-nuxt4-dep-2-b.md:37:- `@nuxtjs/sitemap` v6 contient une route interne `__sitemap__/nuxt-content-urls.js` qui importe `serverQueryContent` depuis `#content/server`.
+migration-nuxt4-dep-2-b.md:101:- suppression de l'import dynamique `#content/server` dans `sitemap.routes` ;
+migration-nuxt4-dep-2-b.md:127:- Cette route importe encore `#content/server`, absent avec Content v3.
+migration-nuxt4-dep-2-b.md:132:- ne pas ajouter d'alias de compatibilite fragile `#content/server` ;
+migration-nuxt4-dep-2-b.md:144:- il interdit `serverQueryContent`, `#content/server` et `_path` dans les surfaces serveur migrees.
+migration-nuxt4-dep-2-b.md:176:Package import specifier "#content/server" is not defined imported from .../.nuxt/prerender/index.mjs
+migration-nuxt4-dep-2-b.md:200:- `DEP-2-C / Content pages APIs` : `queryContent()` dans les pages et composants ;
+migration-nuxt4-dep-2-b.md:201:- `findSurround()` dans `pages/eco-conception/[slug].vue` ;
+migration-nuxt4-dep-2-b.md:202:- `_path` restant dans les pages/composants.
+audit-unused-dependencies-after-delete.txt:79:    nuxt.config.ts:268:const { serverQueryContent } = await import('#content/server')
+audit-unused-dependencies-after-delete.txt:209:    server/routes/feed.json.ts:1:import { serverQueryContent } from '#content/server'
+audit-unused-dependencies-after-delete.txt:211:    server/routes/rss.xml.ts:1:import { serverQueryContent } from '#content/server'
+audit-unused-dependencies-after-delete.txt:220:    utils/getRoutes.js:3:const files = await $content({ deep: true }).only(['path']).fetch()
+dep-2-b-sitemap-local-audit.txt:1:node_modules/@nuxtjs/sitemap/dist/runtime/nitro/routes/__sitemap__/nuxt-content-urls.js:2:import { serverQueryContent } from "#content/server";
+dep-3-sitemap-local-audit-after.txt:26:node_modules/@nuxtjs/sitemap/dist/runtime/server/plugins/nuxt-content-v2.js:31:        console.warn(`[@nuxtjs/content] The @nuxt/content file \`${content._path}\` is missing a sitemap \`loc\`.`);
+dep-3-sitemap-local-audit-after.txt:27:node_modules/@nuxtjs/sitemap/dist/runtime/server/routes/__sitemap__/nuxt-content-urls-v2.js:2:import { serverQueryContent } from "#content/server";
+dep-3-sitemap-local-audit-after.txt:28:node_modules/@nuxtjs/sitemap/dist/runtime/server/routes/__sitemap__/nuxt-content-urls-v2.js:4:  const contentList = await serverQueryContent(e).find();
+dep-2-a-generate-errors-summary.txt:4:233: WARN  [plugin node-resolve] Could not resolve import "#content/server" in /Users/benoitabot/Sites/beabot/node_modules/@nuxtjs/sitemap/dist/runtime/nitro/routes/__sitemap__/nuxt-content-urls.js using imports defined in /Users/benoitabot/Sites/beabot/node_modules/@nuxtjs/sitemap/package.json.
+dep-2-a-generate-errors-summary.txt:5:236: WARN  [plugin node-resolve] Could not resolve import "#content/server" in /Users/benoitabot/Sites/beabot/node_modules/@nuxtjs/sitemap/dist/runtime/nitro/routes/__sitemap__/nuxt-content-urls.js using imports defined in /Users/benoitabot/Sites/beabot/node_modules/@nuxtjs/sitemap/package.json.
+dep-2-a-generate-errors-summary.txt:6:239: WARN  "#content/server" is imported by "node_modules/@nuxtjs/sitemap/dist/runtime/nitro/routes/__sitemap__/nuxt-content-urls.js", but could not be resolved – treating it as an external dependency.
+dep-2-a-generate-errors-summary.txt:7:242: WARN  [plugin node-resolve] Could not resolve import "#content/server" in /Users/benoitabot/Sites/beabot/server/routes/feed.json.ts using imports defined in /Users/benoitabot/Sites/beabot/package.json.
+dep-2-a-generate-errors-summary.txt:8:245: WARN  [plugin node-resolve] Could not resolve import "#content/server" in /Users/benoitabot/Sites/beabot/server/routes/rss.xml.ts using imports defined in /Users/benoitabot/Sites/beabot/package.json.
+dep-2-a-generate-errors-summary.txt:9:248: WARN  [plugin node-resolve] Could not resolve import "#content/server" in /Users/benoitabot/Sites/beabot/server/routes/feed.json.ts using imports defined in /Users/benoitabot/Sites/beabot/package.json.
+dep-2-a-generate-errors-summary.txt:10:251: WARN  "#content/server" is imported by "server/routes/feed.json.ts", but could not be resolved – treating it as an external dependency.
+dep-2-a-generate-errors-summary.txt:11:254: WARN  [plugin node-resolve] Could not resolve import "#content/server" in /Users/benoitabot/Sites/beabot/server/routes/rss.xml.ts using imports defined in /Users/benoitabot/Sites/beabot/package.json.
+dep-2-a-generate-errors-summary.txt:12:257: WARN  "#content/server" is imported by "server/routes/rss.xml.ts", but could not be resolved – treating it as an external dependency.
+dep-2-a-generate-errors-summary.txt:13:260: ERROR  Package import specifier "#content/server" is not defined imported from /Users/benoitabot/Sites/beabot/node_modules/.cache/nuxt/.nuxt/prerender/index.mjs

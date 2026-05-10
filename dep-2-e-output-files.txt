@@ -1,0 +1,10 @@
+Generated output files:
+-rw-r--r--@ 1 benoitabot  staff  8592 May 10 12:46 .output/public/feed.json
+-rw-r--r--@ 1 benoitabot  staff  8867 May 10 12:46 .output/public/rss.xml
+-rw-r--r--@ 1 benoitabot  staff  8780 May 10 12:46 .output/public/sitemap.xml
+
+Generated article sample:
+-rw-r--r--@ 1 benoitabot  staff  50615 May 10 12:46 .output/public/eco-conception/l-eco-conception-web/index.html
+
+Routes prerendered:
+[nitro] ℹ Prerendered 72 routes in 5.376 seconds
