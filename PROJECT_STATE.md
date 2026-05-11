@@ -6,7 +6,7 @@
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
-0. **Audit Sass restant / CSS natif** — Branche `refactor/css-native-audit` faite localement le 11 mai 2026. Rapport `migration-css-native-audit.md` produit avec l'inventaire Sass restant et une feuille de route CSS native progressive, sans modifier les styles.
+0. **Audit dépendances suspectes restantes** — Branche `chore/audit-unused-dependencies` prête localement le 11 mai 2026. `gray-matter` et `sass-loader` supprimés avec preuve ; `sass`, `eslint-config-prettier`, `eslint-plugin-vue` et `prettier` conservés.
 1. **Merge manuel du correctif Netlify vers `dev`** — Merger `fix/netlify-eco-conception-runtime` dans `dev`, puis redéployer Netlify dev avec clear cache.
 2. **Preview Nuxt 4** — Vérifier `/eco-conception/` sur `https://dev-beabot.netlify.app/` : console sans erreur, filtres, recherche et FAQ OK ; ne pas merger vers `master` avant validation.
 3. **Recherche UI / composant orphelin** — Si `AppSearchInput.vue` doit redevenir visible, choisir une page hote et faire une verification UX dediee ; sinon documenter son statut orphelin dans un lot separe.
@@ -25,13 +25,42 @@
 3. **`fix/internal-url-trailing-slashes`** — État : fait, présent dans `dev` local après diagnostic. Objet : URLs internes HTML avec slash final, exceptions fichiers statiques/assets/ancres/query/liens externes, sitemap, RSS et JSON Feed. Diagnostic validé : 26 `index.html`, 13 articles, 3 pages apps, sitemap 24 routes publiques, feeds 13 articles, pas de `/404/` dans sitemap.
 4. **`fix/seo-json-ld-structured-data`** — État : fait, mergé dans `dev`. Objet : JSON-LD via `innerHTML`, homepage `WebSite`/`Organization`/`Person`, `ContactPage`, articles avec `url` canonical. Commit connu : `f48d425 fix: fiabiliser les données structurées SEO`.
 5. **`content/freelance-local-signals`** — État : fait localement, à valider/merger par Benoît. Objet : renforcer sobrement les signaux freelance/local/conversion sur homepage, contact, portfolio, éco-conception et Greenlight ; signal footer retiré après contrôle visuel. Mots-clés : freelance, mission, disponible, Lille, Compiègne, Amiens, Paris, remote, Hauts-de-France.
-6. **`chore/audit-unused-dependencies`** — État : à faire dans une branche séparée. Objet : auditer `gray-matter`, `sass-loader` et dépendances suspectes ; ne supprimer qu'avec preuve ; ne pas lancer `npm install` ni `npm update`.
+6. **`chore/audit-unused-dependencies`** — État : fait localement. Objet : audit des dépendances suspectes restantes ; `gray-matter` et `sass-loader` supprimés avec preuve ; aucun `npm install` ni `npm update`.
 7. **`docs/nuxt-vite-warnings-audit`** — État : à faire plus tard. Objet : documenter les warnings Nuxt/Vite `[plugin nuxt:module-preload-polyfill] Sourcemap is likely to be incorrect` et `Circular chunk: vendor-nuxt -> vendor-libs -> vendor-nuxt`; ne pas optimiser les chunks dans cette branche.
 8. **`refactor/css-native-audit`** — État : fait localement. Objet : audit final Sass restant avant migration CSS moderne ; aucun style modifié ; rapport `migration-css-native-audit.md`.
 
 ---
 
 ## 🎯 SITUATION ACTUELLE
+
+### Audit dépendances suspectes restantes — 11 mai 2026
+
+Branche : `chore/audit-unused-dependencies`
+
+- Périmètre en cours :
+  - audit de `gray-matter`, `sass-loader`, `eslint-config-prettier`, `eslint-plugin-vue` et `prettier` ;
+  - création du rapport `migration-unused-dependencies-audit.md` ;
+  - suppression de `gray-matter` et `sass-loader` de `package.json` et `package-lock.json` avec retrait des entrées lock strictement associées ;
+  - conservation de `sass`, car il reste 8 fichiers `.scss` et 28 blocs Vue `lang="scss"` ;
+  - conservation de `eslint-config-prettier`, `eslint-plugin-vue` et `prettier` par prudence, sans refactor ESLint/formatage dans ce lot.
+- Preuves :
+  - `gray-matter` n'a plus d'import, require ou appel applicatif ; le lock ne montre pas d'usage indirect par Nuxt Content, Nuxt ou Vite ;
+  - `sass-loader` n'a aucun usage projet ni configuration Webpack/Rspack ; Vite supporte SCSS via le paquet préprocesseur, et `sass` reste installé ;
+  - `prettier` est appelé par `lint:prettier`, `lint` et `lintfix` ;
+  - `eslint.config.mjs` utilise encore des règles Vue et l'audit Nuxt ESLint précédent avait explicitement conservé les dépendances ESLint.
+- Décisions :
+  - aucun `npm install`, `npm update`, `npm prune`, `npm audit fix` ou depcheck ajouté ;
+  - ne pas supprimer `sass` ;
+  - ne pas modifier SCSS, Content, SEO, chunks Nuxt/Vite ou contenu éditorial ;
+  - accepter que `npm ls` puisse afficher les paquets supprimés comme `extraneous` dans le `node_modules` local tant qu'aucun install/prune n'est lancé.
+- Validations locales :
+  - `npm test` : OK, 49 pre-build checks, garde-fou Content et 23 tests Node ;
+  - `npm run generate` : OK, 68 routes prerendered, build Nuxt 4 et compilation SCSS OK sans `sass-loader` déclaré ;
+  - `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK ;
+  - `node scripts/check-scss-explicit-imports.mjs` : OK, `TOTAL_DEPENDANCES_IMPLICITES=0` ;
+  - contrôles ciblés : `package.json` et `package-lock.json` valides, aucun résidu `gray-matter`/`sass-loader` dans les manifests, sitemap 24 URLs sans `/404/`, RSS et JSON Feed 13 items, 27 fichiers HTML publics.
+- Risque restant :
+  - le `node_modules` local peut encore afficher `gray-matter` et `sass-loader` comme `extraneous` tant qu'aucun install/prune n'est lancé ; ce n'est pas un risque repo puisque les manifests ont été nettoyés.
 
 ### Audit Sass restant / CSS natif — 11 mai 2026
 

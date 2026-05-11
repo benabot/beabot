@@ -5,7 +5,7 @@
 3. [x] **`fix/internal-url-trailing-slashes`** — fait, présent dans `dev` local après diagnostic ; URLs internes HTML normalisées avec slash final, sans casser fichiers statiques, ancres, query strings, liens externes, `mailto:`, `tel:`, sitemap, RSS et JSON Feed ; diagnostic 68 routes OK : 26 `index.html`, 13 articles, 3 pages apps, sitemap 24 routes publiques, feeds 13 articles, pas de `/404/` dans sitemap
 4. [x] **`fix/seo-json-ld-structured-data`** — fait, mergé dans `dev` ; JSON-LD via `innerHTML`, homepage `WebSite`/`Organization`/`Person`, `ContactPage`, articles avec `url` canonical ; commit `f48d425 fix: fiabiliser les données structurées SEO`
 5. [x] **`content/freelance-local-signals`** — fait localement, à valider/merger par Benoît ; renforcer sobrement les signaux freelance/local/conversion sur homepage, contact, portfolio, éco-conception et Greenlight ; signal footer retiré après contrôle visuel ; mots-clés : freelance, mission, disponible, Lille, Compiègne, Amiens, Paris, remote, Hauts-de-France
-6. [ ] **`chore/audit-unused-dependencies`** — branche séparée ; auditer `gray-matter`, `sass-loader` et dépendances suspectes ; ne supprimer qu'avec preuve ; ne pas lancer `npm install` ni `npm update`
+6. [x] **`chore/audit-unused-dependencies`** — fait localement ; audit de `gray-matter`, `sass-loader` et dépendances suspectes ; `gray-matter` et `sass-loader` supprimés avec preuve ; aucun `npm install` ni `npm update`
 7. [ ] **`docs/nuxt-vite-warnings-audit`** — plus tard ; documenter les warnings Nuxt/Vite `nuxt:module-preload-polyfill` sourcemap et `Circular chunk: vendor-nuxt -> vendor-libs -> vendor-nuxt` ; ne pas optimiser les chunks ici
 8. [x] **`refactor/css-native-audit`** — fait localement ; audit Sass restant avant migration CSS moderne ; aucun style modifié ; rapport `migration-css-native-audit.md`
 
@@ -28,6 +28,28 @@
 - [x] Valider `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK
 - [x] Vérifier que le CSS généré reste identique à la baseline : 18 fichiers CSS, 171 523 octets, hash `ba0d818a9f0c3dbbda99661146aad5625e9822d64c57ba4a538079d331fd8e15`
 - [x] Risque restant : aucun risque de rendu identifié sur ce lot documentaire ; risques visuels et compatibilité reportés aux futurs lots CSS-2 à CSS-8
+
+## Phase 27 — Audit dépendances suspectes restantes (11 mai 2026)
+
+> Branche : `chore/audit-unused-dependencies`
+
+- [x] Créer la branche depuis `dev` après intégration locale de `refactor/css-native-audit`
+- [x] Lire `docs/migration/nuxt4/reports/migration-nuxt4-unused-files-audit.md` et `migration-css-native-audit.md`
+- [x] Auditer `gray-matter` : aucune référence code/script/test utile, uniquement manifests et docs ; pas d'usage indirect identifié dans le lock par Nuxt Content, Nuxt ou Vite
+- [x] Auditer `sass-loader` : aucune référence projet ni config Webpack/Rspack ; Vite compile SCSS via le préprocesseur `sass`, conservé
+- [x] Vérifier que les fichiers SCSS restent présents : 8 fichiers `.scss` et 28 blocs Vue `lang="scss"`
+- [x] Conserver `sass`
+- [x] Conserver `prettier`, utilisé par `lint:prettier`, `lint` et `lintfix`
+- [x] Conserver `eslint-config-prettier` et `eslint-plugin-vue`, déjà conservés par l'audit ESLint Nuxt 4 et à ne pas refactorer dans ce lot
+- [x] Supprimer `gray-matter` et `sass-loader` de `package.json` et `package-lock.json`
+- [x] Limiter le diff lock aux paquets supprimés et à leurs dépendances strictement associées
+- [x] Produire `migration-unused-dependencies-audit.md`
+- [x] Valider `npm test` : 49 pre-build checks, garde-fou Content et 23 tests Node OK
+- [x] Valider `npm run generate` : 68 routes prerendered, build Nuxt 4 et compilation SCSS OK
+- [x] Valider `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK
+- [x] Valider `node scripts/check-scss-explicit-imports.mjs` : `TOTAL_DEPENDANCES_IMPLICITES=0`
+- [x] Contrôles ciblés : build Nuxt 4, compilation SCSS, `TOTAL_DEPENDANCES_IMPLICITES=0`, package-lock diff limité, SEO/sitemap/JSON-LD/trailing slash/RSS/JSON Feed sans régression ; sitemap 24 URLs sans `/404/`, RSS et JSON Feed 13 items, 27 fichiers HTML publics
+- [x] Risque restant : `node_modules` local peut afficher `gray-matter` et `sass-loader` comme `extraneous` car aucun install/prune n'est lancé ; pas de risque repo identifié
 
 ## Phase 25 — Signaux freelance/local sobres (11 mai 2026)
 
