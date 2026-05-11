@@ -2,12 +2,36 @@
 
 1. [x] **`fix/seo-technical-cleanup`** — fait, mergé dans `dev` ; canonical homepage, meta descriptions critiques, `/404/` sitemap/statut, `twitter:card` simple ; commit `ea6d884 fix: corriger les métadonnées SEO techniques critiques`
 2. [x] **`fix/seo-title-description-patterns`** — fait, mergé dans `dev` ; pattern `Titre | BeAbot`, entités HTML, descriptions ciblées ; commit `3a17826 fix: uniformiser titles et descriptions SEO`
-3. [x] **`fix/internal-url-trailing-slashes`** — fait, présent dans `dev` local après diagnostic ; URLs internes HTML normalisées avec slash final, sans casser fichiers statiques, ancres, query strings, liens externes, `mailto:`, `tel:`, sitemap, RSS et JSON Feed ; diagnostic 68 routes OK : 26 `index.html`, 13 articles, 3 pages apps, sitemap 24 routes publiques, feeds 13 articles, pas de `/404/` dans sitemap
+3. [x] **`fix/internal-url-trailing-slashes`** — fait, mergé dans `dev` ; URLs internes HTML normalisées avec slash final, sans casser fichiers statiques, ancres, query strings, liens externes, `mailto:`, `tel:`, sitemap, RSS et JSON Feed ; diagnostic 68 routes OK : 26 `index.html`, 13 articles, 3 pages apps, sitemap 24 routes publiques, feeds 13 articles, pas de `/404/` dans sitemap
 4. [x] **`fix/seo-json-ld-structured-data`** — fait, mergé dans `dev` ; JSON-LD via `innerHTML`, homepage `WebSite`/`Organization`/`Person`, `ContactPage`, articles avec `url` canonical ; commit `f48d425 fix: fiabiliser les données structurées SEO`
-5. [x] **`content/freelance-local-signals`** — fait localement, à valider/merger par Benoît ; renforcer sobrement les signaux freelance/local/conversion sur homepage, contact, portfolio, éco-conception et Greenlight ; signal footer retiré après contrôle visuel ; mots-clés : freelance, mission, disponible, Lille, Compiègne, Amiens, Paris, remote, Hauts-de-France
-6. [x] **`chore/audit-unused-dependencies`** — fait localement ; audit de `gray-matter`, `sass-loader` et dépendances suspectes ; `gray-matter` et `sass-loader` supprimés avec preuve ; aucun `npm install` ni `npm update`
-7. [x] **`docs/nuxt-vite-warnings-audit`** — fait localement ; warnings Nuxt/Vite restants documentés sans optimisation de chunks ni modification de configuration build
-8. [x] **`refactor/css-native-audit`** — fait localement ; audit Sass restant avant migration CSS moderne ; aucun style modifié ; rapport `migration-css-native-audit.md`
+5. [x] **`content/freelance-local-signals`** — fait, mergé dans `dev` ; renforcer sobrement les signaux freelance/local/conversion sur homepage, contact, portfolio, éco-conception et Greenlight ; signal footer retiré après contrôle visuel ; mots-clés : freelance, mission, disponible, Lille, Compiègne, Amiens, Paris, remote, Hauts-de-France
+6. [x] **`chore/audit-unused-dependencies`** — fait, mergé dans `dev` ; audit de `gray-matter`, `sass-loader` et dépendances suspectes ; `gray-matter` et `sass-loader` supprimés avec preuve ; aucun `npm install` ni `npm update`
+7. [x] **`docs/nuxt-vite-warnings-audit`** — fait, mergé dans `dev` ; warnings Nuxt/Vite restants documentés sans optimisation de chunks ni modification de configuration build
+8. [x] **`refactor/css-native-audit`** — fait, mergé dans `dev` ; audit Sass restant avant migration CSS moderne ; aucun style modifié ; rapport `migration-css-native-audit.md`
+9. [x] **`docs/pre-master-final-check`** — fait localement ; validation finale de `dev` avant merge manuel vers `master`, sans modification de code applicatif
+
+## Phase 29 — Validation finale pré-master (11 mai 2026)
+
+> Branche : `docs/pre-master-final-check`
+
+- [x] Créer la branche depuis `dev`
+- [x] Relire `AGENTS.md`, `BRANCHING_STRATEGY.md`, `PROJECT_STATE.md`, `TODO.md`, `migration-nuxt-vite-warnings-audit.md`, `migration-css-native-audit.md` et `migration-unused-dependencies-audit.md`
+- [x] Appliquer les skills locaux pertinents : quick-start, planning, Vue/Nuxt 4 et éco-conception
+- [x] Vérifier que les rapports récents existent et restent cohérents
+- [x] Valider `npm test` : 49 pre-build checks, garde-fou Content et 23 tests Node OK
+- [x] Valider `npm run generate` : 68 routes prerendered
+- [x] Valider `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK
+- [x] Valider `node scripts/check-scss-explicit-imports.mjs` : `TOTAL_DEPENDANCES_IMPLICITES=0`
+- [x] Contrôler les sorties générées : 29 fichiers HTML publics, 26 fichiers `index.html`, sitemap 24 URLs sans `/404/`, RSS 13 items, JSON Feed 13 items
+- [x] Vérifier canonical homepage : `https://beabot.fr/`
+- [x] Vérifier JSON-LD : 34 scripts `application/ld+json` parsables, avec `@type` ou `@graph` typé
+- [x] Vérifier trailing slash : aucune URL HTML interne sans slash final après exclusion des fichiers statiques, dont le ZIP Greenlight
+- [x] Vérifier dépendances : `gray-matter` et `sass-loader` absents des manifests, `sass` conservé
+- [x] Noter les warnings : `zeroRuntime` sitemap informatif et warning sourcemap `nuxt:module-preload-polyfill` présents ; circular chunk non reproduit
+- [x] Produire `pre-master-final-check.md`
+- [x] Décision : état local prêt pour merge manuel `dev` -> `master` par Benoît
+- [x] Hors périmètre respecté : aucun code applicatif, build/config, CSS/SCSS, contenu éditorial, `package.json` ou `package-lock.json` modifié
+- [x] Points reportés : validation Netlify preview/production, statut HTTP réel de `/404/`, warnings Nuxt/Vite uniquement sur preuve d'impact, migration CSS native CSS-2 à CSS-8, lint global repo-wide, audit sécurité npm
 
 ## Phase 26 — Audit Sass restant / CSS natif (11 mai 2026)
 

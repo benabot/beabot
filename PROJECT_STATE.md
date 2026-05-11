@@ -1,19 +1,19 @@
 # 📊 ÉTAT DU PROJET - BeAbot
 
-> **Récapitulatif de l'état du projet au 29 avril 2026**
+> **Récapitulatif de l'état du projet au 11 mai 2026**
 
 ---
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
-0. **Audit warnings Nuxt/Vite** — Branche `docs/nuxt-vite-warnings-audit` prête localement le 11 mai 2026. Warning sourcemap `nuxt:module-preload-polyfill` documenté, circular chunk `vendor-nuxt -> vendor-libs -> vendor-nuxt` non reproduit, aucune config build modifiée.
-1. **Merge manuel du correctif Netlify vers `dev`** — Merger `fix/netlify-eco-conception-runtime` dans `dev`, puis redéployer Netlify dev avec clear cache.
-2. **Preview Nuxt 4** — Vérifier `/eco-conception/` sur `https://dev-beabot.netlify.app/` : console sans erreur, filtres, recherche et FAQ OK ; ne pas merger vers `master` avant validation.
-3. **Recherche UI / composant orphelin** — Si `AppSearchInput.vue` doit redevenir visible, choisir une page hote et faire une verification UX dediee ; sinon documenter son statut orphelin dans un lot separe.
-4. **URL hygiene articles Markdown** — Corriger dans un lot dedie les 5 liens internes d'article sans slash final detectes pendant `DEP-2-E`, sans melanger avec les migrations de dependances.
-5. **Lint global repo-wide** — `npm run lint:js` fonctionne avec la flat config Nuxt ESLint v1, mais `npm run lint` reste bloque par `lint:prettier` sur des formatages historiques et `docs/migration/nuxt4/archive/audit-unused-depcheck.json` non JSON ; a traiter separement.
-6. **Audit securite npm** — `npm audit --audit-level=moderate` signale 11 vulnerabilites ; ne pas lancer `npm audit fix` sans lot dedie.
-7. **DIR-* app directory** — Ne pas deplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dedie uniquement si une incompatibilite reelle apparait.
+0. **Merge manuel `dev` -> `master`** — État local prêt après validation finale sur `docs/pre-master-final-check`. Benoît garde le merge et le push.
+1. **Validation preview/production après merge** — Vérifier pages principales, sitemap, RSS, JSON Feed, canonical homepage et statut HTTP réel de `/404/` sur Netlify.
+2. **Warnings Nuxt/Vite** — Warning sourcemap `nuxt:module-preload-polyfill` documenté et non bloquant ; circular chunk non reproduit. Rouvrir un lot uniquement sur preuve d'impact.
+3. **Migration CSS native** — Suivre les lots CSS-2 à CSS-8 proposés dans `migration-css-native-audit.md`, sans refactor massif.
+4. **Recherche UI / composant orphelin** — Si `AppSearchInput.vue` doit redevenir visible, choisir une page hôte et faire une vérification UX dédiée ; sinon documenter son statut orphelin dans un lot séparé.
+5. **Lint global repo-wide** — `npm run lint:js` fonctionne avec la flat config Nuxt ESLint v1, mais `npm run lint` reste bloqué par `lint:prettier` sur des formatages historiques et `docs/migration/nuxt4/archive/audit-unused-depcheck.json` non JSON ; à traiter séparément.
+6. **Audit sécurité npm** — `npm audit --audit-level=moderate` signalait 11 vulnérabilités lors de l'audit Nuxt 4 ; ne pas lancer `npm audit fix` sans lot dédié.
+7. **DIR-* app directory** — Ne pas déplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dédié uniquement si une incompatibilité réelle apparaît.
 8. **SCSS-6** — Reporté après audit CSS natif. La sortie complète de SCSS demande plusieurs lots progressifs : couleurs simples, typo, spacing, breakpoints, couleurs dérivées, réduction des imports Sass, puis décision de suppression Sass.
 
 ---
@@ -22,16 +22,49 @@
 
 1. **`fix/seo-technical-cleanup`** — État : fait, mergé dans `dev`. Objet : canonical homepage, meta descriptions critiques, `/404/` sitemap/statut, `twitter:card` simple. Commit connu : `ea6d884 fix: corriger les métadonnées SEO techniques critiques`.
 2. **`fix/seo-title-description-patterns`** — État : fait, mergé dans `dev`. Objet : pattern `Titre | BeAbot`, entités HTML, descriptions ciblées. Commit connu : `3a17826 fix: uniformiser titles et descriptions SEO`.
-3. **`fix/internal-url-trailing-slashes`** — État : fait, présent dans `dev` local après diagnostic. Objet : URLs internes HTML avec slash final, exceptions fichiers statiques/assets/ancres/query/liens externes, sitemap, RSS et JSON Feed. Diagnostic validé : 26 `index.html`, 13 articles, 3 pages apps, sitemap 24 routes publiques, feeds 13 articles, pas de `/404/` dans sitemap.
+3. **`fix/internal-url-trailing-slashes`** — État : fait, mergé dans `dev`. Objet : URLs internes HTML avec slash final, exceptions fichiers statiques/assets/ancres/query/liens externes, sitemap, RSS et JSON Feed. Diagnostic validé : 26 `index.html`, 13 articles, 3 pages apps, sitemap 24 routes publiques, feeds 13 articles, pas de `/404/` dans sitemap.
 4. **`fix/seo-json-ld-structured-data`** — État : fait, mergé dans `dev`. Objet : JSON-LD via `innerHTML`, homepage `WebSite`/`Organization`/`Person`, `ContactPage`, articles avec `url` canonical. Commit connu : `f48d425 fix: fiabiliser les données structurées SEO`.
-5. **`content/freelance-local-signals`** — État : fait localement, à valider/merger par Benoît. Objet : renforcer sobrement les signaux freelance/local/conversion sur homepage, contact, portfolio, éco-conception et Greenlight ; signal footer retiré après contrôle visuel. Mots-clés : freelance, mission, disponible, Lille, Compiègne, Amiens, Paris, remote, Hauts-de-France.
-6. **`chore/audit-unused-dependencies`** — État : fait localement. Objet : audit des dépendances suspectes restantes ; `gray-matter` et `sass-loader` supprimés avec preuve ; aucun `npm install` ni `npm update`.
-7. **`docs/nuxt-vite-warnings-audit`** — État : fait localement. Objet : documenter les warnings Nuxt/Vite restants sans optimiser les chunks ni modifier la configuration build.
-8. **`refactor/css-native-audit`** — État : fait localement. Objet : audit final Sass restant avant migration CSS moderne ; aucun style modifié ; rapport `migration-css-native-audit.md`.
+5. **`content/freelance-local-signals`** — État : fait, mergé dans `dev`. Objet : renforcer sobrement les signaux freelance/local/conversion sur homepage, contact, portfolio, éco-conception et Greenlight ; signal footer retiré après contrôle visuel. Mots-clés : freelance, mission, disponible, Lille, Compiègne, Amiens, Paris, remote, Hauts-de-France.
+6. **`chore/audit-unused-dependencies`** — État : fait, mergé dans `dev`. Objet : audit des dépendances suspectes restantes ; `gray-matter` et `sass-loader` supprimés avec preuve ; aucun `npm install` ni `npm update`.
+7. **`docs/nuxt-vite-warnings-audit`** — État : fait, mergé dans `dev`. Objet : documenter les warnings Nuxt/Vite restants sans optimiser les chunks ni modifier la configuration build.
+8. **`refactor/css-native-audit`** — État : fait, mergé dans `dev`. Objet : audit final Sass restant avant migration CSS moderne ; aucun style modifié ; rapport `migration-css-native-audit.md`.
+9. **`docs/pre-master-final-check`** — État : fait localement. Objet : validation finale de `dev` avant merge manuel vers `master`, sans modification de code applicatif.
 
 ---
 
 ## 🎯 SITUATION ACTUELLE
+
+### Validation finale pré-master — 11 mai 2026
+
+Branche : `docs/pre-master-final-check`
+
+- Périmètre :
+  - création du rapport `pre-master-final-check.md` ;
+  - vérification de `PROJECT_STATE.md`, `TODO.md` et des rapports récents `migration-css-native-audit.md`, `migration-unused-dependencies-audit.md`, `migration-nuxt-vite-warnings-audit.md` ;
+  - relance des validations finales avant merge manuel `dev` -> `master` ;
+  - contrôles ciblés sur `.output/public`, dépendances et warnings.
+- Constat :
+  - `npm run generate` réussit avec 68 routes prerendered ;
+  - sorties générées : 29 fichiers HTML publics, 26 fichiers `index.html`, sitemap 24 URLs sans `/404/`, RSS 13 items, JSON Feed 13 items ;
+  - canonical homepage OK : `https://beabot.fr/` ;
+  - JSON-LD valide : 34 scripts `application/ld+json` parsables avec `@type` ou `@graph` typé ;
+  - URLs internes HTML cohérentes avec le slash final ; aucun lien HTML interne sans slash final détecté après exclusion des fichiers statiques, dont le ZIP Greenlight ;
+  - aucun `[object Object]` dans les HTML générés ;
+  - dépendances : `gray-matter` et `sass-loader` absents des manifests, `sass` conservé ;
+  - warnings observés : `zeroRuntime` sitemap informatif et warning sourcemap `nuxt:module-preload-polyfill` ; circular chunk non reproduit.
+- Validations locales :
+  - `npm test` : OK, 49 pre-build checks, garde-fou Content et 23 tests Node ;
+  - `npm run generate` : OK, 68 routes prerendered ;
+  - `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK ;
+  - `node scripts/check-scss-explicit-imports.mjs` : OK, `TOTAL_DEPENDANCES_IMPLICITES=0`.
+- Décisions :
+  - prêt pour merge manuel `dev` -> `master` par Benoît ;
+  - aucune modification de code applicatif, build/config, CSS/SCSS, contenu éditorial ou dépendances ;
+  - pas de `npm install`, `npm update`, `npm prune` ou `npm audit fix`.
+- Risques restants :
+  - statut HTTP réel de `/404/` à confirmer sur Netlify preview/production ;
+  - warnings Nuxt/Vite à surveiller seulement si impact runtime/debugging mesuré ;
+  - lint global repo-wide, audit sécurité npm, migration CSS native et éventuel déplacement `app/` restent des chantiers séparés.
 
 ### Audit warnings Nuxt/Vite — 11 mai 2026
 
