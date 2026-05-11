@@ -1,11 +1,11 @@
 ---
-title: "Comment réduire le poids d'un site web"
+title: "Comment réduire le poids d’un site web"
 description: Réduire le poids d'un site web ne consiste pas seulement à compresser quelques images. C'est une démarche globale qui touche les contenus, le design, le code, les dépendances et la maintenance.
 chapo: Réduire le poids d'un site web ne consiste pas seulement à compresser quelques images. C'est une démarche globale qui touche les contenus, le design, le code, les dépendances et la maintenance.
 tag: ['Éco-conception', 'Performance', 'WebDesign', 'SEO']
 seo:
-  title: "Réduire le poids d'un site web : méthode complète"
-  description: "Méthode concrète pour alléger une page web : images, CSS, JavaScript, polices, ressources tierces, WordPress et bonnes pratiques d'éco-conception."
+  title: "Réduire le poids d’un site web : méthode complète"
+  description: "Méthode concrète pour alléger une page web : images, CSS, JavaScript, polices, ressources tierces, WordPress et bonnes pratiques d’éco-conception."
   ogImage: /beabot.png
   robots: index,follow
 date: 2026-04-26

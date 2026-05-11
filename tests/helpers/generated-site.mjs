@@ -31,8 +31,8 @@ export function readGeneratedText(t, filename) {
 }
 
 export function getAttr(tag, attr) {
-  const match = tag.match(new RegExp(`${attr}=["']([^"']*)["']`, 'i'))
-  return match?.[1] || ''
+  const match = tag.match(new RegExp(`${attr}=(["'])(.*?)\\1`, 'i'))
+  return match?.[2] || ''
 }
 
 export function findTag(html, tagName, attrName, attrValue) {
@@ -66,6 +66,9 @@ export function assertSeoTags(html, expectedUrl) {
   const ogUrl = getMetaContent(html, 'property', 'og:url')
 
   assert.ok(title.length > 0, 'Expected a non-empty <title>')
+  assert.match(title, / \| BeAbot$/)
+  assert.doesNotMatch(title, /^BeAbot - /)
+  assert.doesNotMatch(title, /&amp;|&#x27;|&#39;/)
   assert.ok(description.length > 20, 'Expected a useful meta description')
   assert.equal(canonical, expectedUrl)
   assert.equal(ogUrl, expectedUrl)

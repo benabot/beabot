@@ -1,10 +1,10 @@
 ---
-title: Qu'est-ce que l'éco-conception web
-description: L’éco-conception web est un sujet repris au prix de nombreux raccourcis. Cet article propose une définition claire du concept et en précise les limites.
+title: Qu’est-ce que l’éco-conception web
+description: L’éco-conception web est un sujet souvent résumé trop vite. Cet article en donne une définition claire, ses limites et ses enjeux concrets.
 chapo: L’éco-conception web est un sujet repris au prix de nombreux raccourcis. Cet article propose une définition claire du concept et en précise les limites.
 seo:
   title: Qu’est-ce que l’éco-conception web
-  description: "L’éco-conception web : définition précise, limites du concept et enjeux concrets, loin des raccourcis habituels sur la sobriété numérique."
+  description: "L’éco-conception web est souvent résumée trop vite. Voici une définition claire du concept, ses limites et ses enjeux concrets."
 date: 2021-12-17
 updatedAt: 2026-04-27
 temps: 15

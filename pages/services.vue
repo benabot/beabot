@@ -288,7 +288,7 @@ const ogImage = `${config.public.siteUrl}/beabot.png`
 
 const seo = {
   title:
-    'Missions freelance — WordPress, JavaScript, Vue.js, Nuxt & éco-conception | BeAbot',
+    'Missions web WordPress, JavaScript et Nuxt',
   description:
     "Développeur web freelance à Lille — projets WordPress, JavaScript, Vue.js/Nuxt et audits d'éco-conception. Missions en Hauts-de-France et en remote.",
 }

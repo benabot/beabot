@@ -260,7 +260,8 @@ const config = useRuntimeConfig()
 const mentionsCanonicalUrl = canonicalUrl(config.public.siteUrl, '/mentions-legales')
 
 useHead({
-  title: 'Mentions légales',
+  title: 'Mentions légales et confidentialité',
+  titleTemplate: '%s | BeAbot',
   link: [
     {
       hid: 'canonical',
@@ -271,9 +272,9 @@ useHead({
 })
 
 useSeoMeta({
-  description: 'Mentions légales du site beabot.fr : éditeur, hébergeur, propriété intellectuelle, données personnelles et conditions d\'utilisation.',
+  description: 'Mentions légales du site beabot.fr : éditeur, hébergeur, propriété intellectuelle, données personnelles et conditions d’utilisation.',
   ogTitle: 'Mentions légales — BeAbot',
-  ogDescription: 'Mentions légales du site beabot.fr : éditeur, hébergeur, propriété intellectuelle, données personnelles et conditions d\'utilisation.',
+  ogDescription: 'Mentions légales du site beabot.fr : éditeur, hébergeur, propriété intellectuelle, données personnelles et conditions d’utilisation.',
   ogUrl: mentionsCanonicalUrl,
   ogImage: `${config.public.siteUrl}/beabot.png`,
   ogImageWidth: 1200,

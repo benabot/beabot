@@ -437,7 +437,7 @@ const latestArticles = computed(() => articles.value || [])
 
 const config = useRuntimeConfig()
 const homeCanonicalUrl = canonicalUrl(config.public.siteUrl, '/')
-const homeTitle = 'Benoît Abot — Développeur web freelance WordPress & Nuxt | Lille'
+const homeTitle = 'Benoît Abot — développeur WordPress et Nuxt | BeAbot'
 const homeDescription =
   'Développeur web freelance WordPress et JavaScript, spécialisé en éco-conception à Lille. Sites sobres, rapides, durables. Portfolio, Greenlight, articles.'
 

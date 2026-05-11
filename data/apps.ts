@@ -133,7 +133,7 @@ export interface BreadcrumbEntry {
 }
 
 export const appsIndexContent = {
-  title: 'Applications iOS & macOS',
+  title: 'Applications iOS et macOS',
   intro: [
     "Des applications iOS et macOS pensées pour aller à l'essentiel.",
     'Chaque app est conçue de la même façon que mes sites : sobre, sans couche inutile. Pas de compte imposé, pas de tracking. Vos données vous appartiennent.',
@@ -141,7 +141,7 @@ export const appsIndexContent = {
   ],
   meta: '',
   seo: {
-    title: 'Apps iOS & macOS — BeAbot',
+    title: 'Apps iOS et macOS sobres',
     description:
       'DuoSpend, Meeting Mode et Siturem : apps natives Swift sans tracking ni SDK tiers. Certaines gratuites, certaines avec abonnement. Autres apps en préparation.',
     image: '/img/apps/duospend-vignette-apps.webp',
@@ -660,7 +660,7 @@ export const meetingModeContent: AppDetailContent = {
     secondaryTo: '/contact/',
   },
   seo: {
-    title: 'Meeting Mode — App macOS menu bar pour réunions | BeAbot',
+    title: 'Meeting Mode — app macOS pour réunions',
     description:
       'Meeting Mode prépare votre Mac en un clic : ouvre vos apps, masque le reste, affiche un écran propre. App macOS de barre de menu, locale, sans compte.',
     image: '/img/apps/meeting-mode_vignette-apps.webp',
@@ -815,7 +815,7 @@ export const duoSpendContent: AppDetailContent = {
     secondaryTo: '/contact/',
   },
   seo: {
-    title: 'DuoSpend — App iPhone pour dépenses à deux | BeAbot',
+    title: 'DuoSpend — app iPhone pour dépenses à deux',
     description:
       'DuoSpend calcule qui doit combien à qui, sur chaque projet commun. Hors ligne, sans compte, sans pub. Achat unique 6,99 €.',
     image: '/img/apps/duospend-vignette-apps.webp',
@@ -995,7 +995,7 @@ export const situremContent: AppDetailContent = {
     secondaryTo: '/contact/',
   },
   seo: {
-    title: 'Siturem — méditation timer iOS pour pratiquants avancés | BeAbot',
+    title: 'Siturem — timer iOS pour méditer',
     description:
       'Siturem est un timer de méditation iOS conçu pour offrir un cadre stable, régulier et sans distraction aux pratiquants avancés.',
     image: '/img/siturem/siturem-landing.webp',

@@ -434,9 +434,9 @@ const ogImage = absoluteUrl(
 )
 
 const seo = {
-  title: 'Greenlight — thème WordPress Gutenberg éco-conçu | BeAbot',
+  title: 'Greenlight — thème WordPress éco-conçu',
   description:
-    'Greenlight-free est un thème WordPress Gutenberg extrêmement léger : 6 requêtes HTTP, moins de 115 ko, DOM 148 et EcoIndex A. Greenlight premium reprend ce socle avec une édition de thème avancée, du SEO et de l’optimisation WordPress.',
+    'Greenlight est un thème WordPress sobre et rapide : 6 requêtes HTTP, moins de 115 ko, DOM 148 et EcoIndex A sur la base gratuite.',
 }
 
 const heroVisuals = {

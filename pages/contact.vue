@@ -193,7 +193,7 @@ useSeoMeta({
     'Contactez Benoît Abot, développeur web spécialisé en éco-conception. Devis gratuit pour votre projet web sobre, performant et durable.',
   ogTitle: 'Contact — Benoît Abot, développeur éco-conception',
   ogDescription:
-    'Développeur web éco-conception disponible pour vos projets. Site à créer, refondre ou optimiser ? Contactez-moi, réponse sous 48h.',
+    'Contactez Benoît Abot, développeur web spécialisé en éco-conception. Devis gratuit pour votre projet web sobre, performant et durable.',
   ogType: 'website',
   ogUrl: contactCanonicalUrl,
   ogImageWidth: 1200,

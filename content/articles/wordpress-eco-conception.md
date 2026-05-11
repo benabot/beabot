@@ -3,7 +3,7 @@ title: Éco-concevoir un site WordPress
 description: Guide pratique pour concevoir un site WordPress sobre, performant et durable. Méthode, choix techniques et bonnes pratiques.
 chapo: Guide pratique pour concevoir un site WordPress sobre, performant et durable. Méthode, choix techniques et bonnes pratiques.
 seo:
-  title: WordPress et éco-conception web — thèmes sobres et performants
+  title: "WordPress éco-conception : thème sobre"
   description: Guide pratique pour concevoir un site WordPress sobre, performant et durable. Méthode, choix techniques et bonnes pratiques.
   ogImage: /img/og/wordpress-eco-conception.png
 tag: ['WordPress', 'Éco-conception', 'WebDesign', 'Performance']

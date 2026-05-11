@@ -35,7 +35,7 @@
         <h1 id="portfolio-hero-title" class="hero__title">
           <span class="hero__name">Benoît Abot</span>
           <span class="hero__role">
-            Développeur web & designer spécialisé en éco‑conception
+            Développeur web et designer spécialisé en éco‑conception
           </span>
         </h1>
         <p class="hero__lead">
@@ -290,12 +290,12 @@ const config = useRuntimeConfig()
 const portfolioCanonicalUrl = canonicalUrl(config.public.siteUrl, '/portfolio')
 
 useSeoMeta({
-  title: 'Portfolio — Benoît Abot, développeur web éco-conception',
+  title: 'Portfolio Benoît Abot — web éco-conception',
   description:
     'Portfolio de Benoît Abot — développeur web, designer, éco-conception. Vue.js, Nuxt, WordPress, 15 ans de pratique. Disponible en freelance et CDI.',
-  ogTitle: 'Portfolio — Benoît Abot, développeur web éco-conception',
+  ogTitle: 'Portfolio Benoît Abot — web éco-conception',
   ogDescription:
-    'Développeur web et designer spécialisé en éco-conception. Sites performants, accessibles et sobres.',
+    'Portfolio de Benoît Abot — développeur web, designer, éco-conception. Vue.js, Nuxt, WordPress, 15 ans de pratique. Disponible en freelance et CDI.',
   ogType: 'profile',
   ogUrl: portfolioCanonicalUrl,
   ogImage: `${config.public.siteUrl}/beabot.png`,
@@ -318,7 +318,7 @@ useHead({
         mainEntity: {
           '@type': 'Person',
           name: 'Benoît Abot',
-          jobTitle: 'Développeur web & designer',
+          jobTitle: 'Développeur web et designer',
           description: "Spécialisé en éco-conception web. 15 ans d'expérience.",
           url: 'https://beabot.fr/portfolio/',
           sameAs: [

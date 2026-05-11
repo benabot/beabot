@@ -6,6 +6,7 @@
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
+0. **Uniformisation SEO titles/descriptions** — Branche `fix/seo-title-description-patterns` créée depuis `dev` le 11 mai 2026, après intégration locale du correctif SEO technique. Pattern cible : `Titre | BeAbot`, sans entités HTML visibles dans les titles générés ; descriptions ciblées ramenées dans une plage lisible et `og:description` alignées sur les pages corrigées.
 0. **Stabilisation SEO technique critique** — Branche `fix/seo-technical-cleanup` créée depuis `dev` le 11 mai 2026. Correctifs ciblés : canonical home vérifiée avec slash final, descriptions HTML ciblées contrôlées, garde-fou `[object Object]`, `/404/` exclu du sitemap et redirection Netlify `/404`/`/404/` vers `/404.html` en statut 404. Ne pas pousser ni merger ; Benoît valide en preview.
 1. **Merge manuel du correctif Netlify vers `dev`** — Merger `fix/netlify-eco-conception-runtime` dans `dev`, puis redéployer Netlify dev avec clear cache.
 2. **Preview Nuxt 4** — Vérifier `/eco-conception/` sur `https://dev-beabot.netlify.app/` : console sans erreur, filtres, recherche et FAQ OK ; ne pas merger vers `master` avant validation.
@@ -19,6 +20,30 @@
 ---
 
 ## 🎯 SITUATION ACTUELLE
+
+### Uniformisation SEO titles & descriptions — 11 mai 2026
+
+Branche : `fix/seo-title-description-patterns`
+
+- Périmètre appliqué :
+  - template global normalisé vers `Titre | BeAbot` ;
+  - `app.vue` corrigé car il forçait encore `BeAbot - Titre` ;
+  - titles/H1 ciblés nettoyés des `&amp;`, `&#x27;` et `&#39;` visibles dans la sortie générée ;
+  - titles trop longs ou trop courts ajustés sur `/apps/`, `/mentions-legales/`, `/eco-conception/images-eco-conception/`, `/eco-conception/typographie-ecoconception/`, `/eco-conception/wordpress-eco-conception/` et la page pilier `/eco-conception/` ;
+  - descriptions ciblées raccourcies sur `/greenlight/`, `/eco-conception/l-eco-conception-web/`, `/eco-conception/la-consommation-energetique-du-numerique/`, `/eco-conception/theme-wordpress-eco-conception/` et `/eco-conception/typographie-ecoconception/` ;
+  - `og:description` alignées sur les meta descriptions pour `/contact/`, `/portfolio/` et les pages utilisant une constante SEO partagée ;
+  - `scripts/seo-check.mjs` et les tests HTML générés renforcés pour contrôler le pattern des titles.
+- Décisions :
+  - aucun changement de redirection Netlify ;
+  - aucun changement sitemap hors contrôle de non-régression ;
+  - aucun changement SCSS, dépendance, JSON-LD, Content v3, structure `app/` ou chunking.
+- Risque restant :
+  - `/404/` et `/merci/` peuvent rester hors de la plage 120–160 caractères car ce sont des pages non éditoriales/hors sitemap.
+- Validations locales :
+  - `npm test` : OK, 49 pre-build checks, garde-fou Content et 22 tests Node ;
+  - `npm run generate` : OK, 72 routes prerendered ;
+  - `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK ;
+  - contrôles ciblés post-génération : aucun title ciblé avec `&amp;`, `&#x27;` ou `&#39;`, pattern `Titre | BeAbot` OK, descriptions ciblées entre 120 et 160 caractères, canonical homepage toujours `https://beabot.fr/`, aucun `[object Object]` dans les HTML, sitemap sans `/404/`.
 
 ### Stabilisation SEO technique critique — 11 mai 2026
 

@@ -646,7 +646,7 @@ const featuredResourcePaths = [
 
 const config = useRuntimeConfig()
 const pageUrl = canonicalUrl(config.public.siteUrl, '/eco-conception')
-const pageTitle = 'Éco-conception web — performance, accessibilité et sobriété'
+const pageTitle = 'Éco-conception web : méthode et ressources'
 const pageDescription =
   'Page pilier sur l’éco-conception web : impacts du numérique, principes, bénéfices concrets, ressources éditoriales, FAQ et liens vers les réalisations BeAbot.'
 
@@ -1066,7 +1066,7 @@ useHead(() => {
   }
 
   return {
-    titleTemplate: '%s',
+    titleTemplate: '%s | BeAbot',
     link: [{ rel: 'canonical', href: pageUrl }],
     script: [
       {

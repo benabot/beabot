@@ -1,3 +1,20 @@
+## Phase 22 — Uniformisation SEO titles & descriptions (11 mai 2026)
+
+> Branche : `fix/seo-title-description-patterns`
+
+- [x] Remplacer le template global historique `BeAbot - Titre` par le pattern `Titre | BeAbot`
+- [x] Corriger le template central dans `app.vue`, qui imposait encore le préfixe `BeAbot -`
+- [x] Corriger les entités HTML visibles dans les titles/H1 ciblés : `/apps/`, `/portfolio/` et articles concernés
+- [x] Raccourcir ou clarifier les titles signalés : images, mentions légales, typographie, WordPress éco-conception, page pilier éco-conception
+- [x] Raccourcir les descriptions trop longues : `/greenlight/`, `/eco-conception/l-eco-conception-web/`, `/eco-conception/la-consommation-energetique-du-numerique/`, `/eco-conception/theme-wordpress-eco-conception/`, `/eco-conception/typographie-ecoconception/`
+- [x] Aligner les `og:description` sur les meta descriptions pour les pages corrigées ou conserver la constante partagée existante
+- [x] Renforcer `scripts/seo-check.mjs` et les tests générés pour refuser `BeAbot -`, `&amp;`, `&#x27;`, `&#39;` et les titles hors pattern
+- [x] Valider `npm test` : 49 pre-build checks, garde-fou Content et 22 tests Node OK
+- [x] Valider `npm run generate` : 72 routes prerendered
+- [x] Valider `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK
+- [x] Contrôles ciblés post-génération : aucun title ciblé avec `&amp;`, `&#x27;` ou `&#39;`, pattern `Titre | BeAbot` OK, descriptions ciblées entre 120 et 160 caractères, non-régression canonical/homepage, `[object Object]` et sitemap `/404/`
+- [ ] Risque restant : la plage 120–160 caractères reste un objectif SEO local, pas une règle stricte universelle pour les pages hors sitemap comme `/404/` ou `/merci/`
+
 ## Phase 21 — Stabilisation SEO technique critique (11 mai 2026)
 
 > Branche : `fix/seo-technical-cleanup`

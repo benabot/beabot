@@ -21,8 +21,8 @@ const htmlPathForRoute = (route) => {
 }
 
 const getAttr = (tag, attr) => {
-  const match = tag?.match(new RegExp(`${attr}=["']([^"']*)["']`, 'i'))
-  return match?.[1] || ''
+  const match = tag?.match(new RegExp(`${attr}=(["'])(.*?)\\1`, 'i'))
+  return match?.[2] || ''
 }
 
 const findTag = (html, tagName, attrName, attrValue) => {
@@ -35,6 +35,19 @@ const getMetaContent = (html, keyAttr, keyValue) =>
 
 const getCanonical = (html) =>
   getAttr(findTag(html, 'link', 'rel', 'canonical'), 'href')
+
+const getTitle = (html) => html.match(/<title>(.*?)<\/title>/i)?.[1]?.trim() || ''
+
+const ensureUsefulTitle = (html, route) => {
+  const title = getTitle(html)
+  ensure(!!title, `Missing title in ${route}`)
+  ensure(!/^BeAbot - /.test(title), `Legacy title prefix in ${route}: ${title}`)
+  ensure(
+    !/&amp;|&#x27;|&#39;/.test(title),
+    `Encoded entity in title for ${route}: ${title}`
+  )
+  ensure(title.endsWith(' | BeAbot'), `Title must end with " | BeAbot" in ${route}: ${title}`)
+}
 
 const ensureUsefulMeta = (html, route, keyAttr, keyValue) => {
   const content = getMetaContent(html, keyAttr, keyValue)
@@ -89,27 +102,23 @@ if (siteUrl && fs.existsSync(robotsPath)) {
 }
 
 if (process.env.SEO_CHECK_HTML === '1' && siteUrl && locs.length) {
-  const defaultPaths = [
+  const checkedPaths = new Set([
     '/',
     '/apps/',
     '/contact/',
     '/eco-conception/',
     '/eco-conception/audit-eco-conception/',
     '/eco-conception/comment-reduire-le-poids-d-un-site-web/',
+    '/greenlight/',
     '/mentions-legales/',
     '/portfolio/',
-  ]
-  const articleLoc = locs.find(
-    (loc) =>
-      loc.startsWith(`${siteUrl}/eco-conception/`) &&
-      loc !== `${siteUrl}/eco-conception/`
-  )
+  ])
 
-  if (articleLoc) {
-    defaultPaths.push(articleLoc.replace(siteUrl, ''))
+  for (const loc of locs) {
+    if (loc.startsWith(siteUrl)) checkedPaths.add(loc.replace(siteUrl, '') || '/')
   }
 
-  for (const pagePath of defaultPaths) {
+  for (const pagePath of checkedPaths) {
     const normalized = pagePath === '/' ? '/' : pagePath
     const filePath = htmlPathForRoute(normalized)
 
@@ -123,6 +132,7 @@ if (process.env.SEO_CHECK_HTML === '1' && siteUrl && locs.length) {
     ensure(!!canonical, `Missing canonical in ${normalized}`)
     ensure(!!ogUrl, `Missing og:url in ${normalized}`)
     ensure(!html.includes('[object Object]'), `HTML contains [object Object] in ${normalized}`)
+    ensureUsefulTitle(html, normalized)
     ensureUsefulMeta(html, normalized, 'name', 'description')
     ensureUsefulMeta(html, normalized, 'property', 'og:description')
 

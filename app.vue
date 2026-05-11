@@ -11,12 +11,12 @@
 useHead({
   titleTemplate: (titleChunk) => {
     if (!titleChunk) {
-      return 'BeAbot - Éco-conception web'
+      return 'Éco-conception web | BeAbot'
     }
 
     return titleChunk.trim().endsWith('BeAbot')
       ? titleChunk
-      : `BeAbot - ${titleChunk}`
+      : `${titleChunk} | BeAbot`
   },
 })
 </script>

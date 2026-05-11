@@ -69,7 +69,7 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'fr',
       },
-      titleTemplate: 'BeAbot - %s',
+      titleTemplate: '%s | BeAbot',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
