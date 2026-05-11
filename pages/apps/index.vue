@@ -96,15 +96,15 @@ useHead({
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify(collectionSchema),
+      innerHTML: JSON.stringify(collectionSchema),
     },
     {
       type: 'application/ld+json',
-      children: JSON.stringify(breadcrumbSchema),
+      innerHTML: JSON.stringify(breadcrumbSchema),
     },
     {
       type: 'application/ld+json',
-      children: JSON.stringify(itemListSchema),
+      innerHTML: JSON.stringify(itemListSchema),
     },
   ],
 })

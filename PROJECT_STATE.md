@@ -6,6 +6,7 @@
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
+0. **Fiabilisation JSON-LD SEO** — Branche `fix/seo-json-ld-structured-data` prête pour validation preview après merge manuel par Benoît. Le rendu `application/ld+json` passe par `innerHTML`, car `children` peut produire un attribut non parsable au lieu d'un vrai contenu de script.
 0. **Uniformisation SEO titles/descriptions** — Branche `fix/seo-title-description-patterns` créée depuis `dev` le 11 mai 2026, après intégration locale du correctif SEO technique. Pattern cible : `Titre | BeAbot`, sans entités HTML visibles dans les titles générés ; descriptions ciblées ramenées dans une plage lisible et `og:description` alignées sur les pages corrigées.
 0. **Stabilisation SEO technique critique** — Branche `fix/seo-technical-cleanup` créée depuis `dev` le 11 mai 2026. Correctifs ciblés : canonical home vérifiée avec slash final, descriptions HTML ciblées contrôlées, garde-fou `[object Object]`, `/404/` exclu du sitemap et redirection Netlify `/404`/`/404/` vers `/404.html` en statut 404. Ne pas pousser ni merger ; Benoît valide en preview.
 1. **Merge manuel du correctif Netlify vers `dev`** — Merger `fix/netlify-eco-conception-runtime` dans `dev`, puis redéployer Netlify dev avec clear cache.
@@ -20,6 +21,28 @@
 ---
 
 ## 🎯 SITUATION ACTUELLE
+
+### Fiabilisation JSON-LD SEO — 11 mai 2026
+
+Branche : `fix/seo-json-ld-structured-data`
+
+- Périmètre en cours :
+  - scripts `application/ld+json` rendus en contenu de script via `innerHTML`, pour éviter le JSON dans un attribut `children` non parsable ;
+  - homepage conservée avec `Organization` et `Person`, et ajout sobre d'un `WebSite` dans le `@graph` ;
+  - `/contact/` conserve un `ContactPage` sobre et vérifiable ;
+  - articles éco-conception enrichis avec une propriété `url` alignée sur la canonical existante ;
+  - tests HTML générés et `scripts/seo-check.mjs` renforcés pour refuser JSON-LD invalide, script vide, attribut `children`, absence de `@type`/`@graph`, `ContactPage` absent, et article sans `author`/`datePublished`/`url`.
+- Décisions :
+  - correction appliquée à tous les scripts JSON-LD déclarés avec le même bug de rendu, sans modifier les metas titles/descriptions ni le contenu visible ;
+  - `/eco-conception/faq-eco-conception/` reste une `FAQPage` et n'est pas forcée en `BlogPosting`, car ce n'est pas un article éditorial ;
+  - aucun changement redirections, sitemap, SCSS, dépendances, Content v3, structure `app/` ou chunking.
+- Validations locales :
+  - `npm test` : OK, 49 pre-build checks, garde-fou Content et 23 tests Node ;
+  - `npm run generate` : OK, 72 routes prerendered ;
+  - `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK ;
+  - contrôles ciblés post-génération : scripts `application/ld+json` valides sur les 24 routes du sitemap, homepage avec `Person`/`WebSite`, `/contact/` avec `ContactPage`, articles avec `BlogPosting` + `author` + `datePublished` + `url`, canonical home `https://beabot.fr/`, sitemap sans `/404/`, titles/descriptions sans régression et aucun `[object Object]`.
+- Risque restant :
+  - aucun risque local identifié ; à confirmer en preview Netlify après merge manuel par Benoît.
 
 ### Uniformisation SEO titles & descriptions — 11 mai 2026
 

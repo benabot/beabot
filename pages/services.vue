@@ -492,8 +492,8 @@ useSeoMeta({
 useHead({
   link: [{ rel: 'canonical', href: pageUrl }],
   script: [
-    { type: 'application/ld+json', children: JSON.stringify(jsonLd) },
-    { type: 'application/ld+json', children: JSON.stringify(breadcrumb) },
+    { type: 'application/ld+json', innerHTML: JSON.stringify(jsonLd) },
+    { type: 'application/ld+json', innerHTML: JSON.stringify(breadcrumb) },
   ],
 })
 </script>

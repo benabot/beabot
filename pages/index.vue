@@ -519,6 +519,16 @@ const structuredData = {
         serviceType: 'remote',
       },
     },
+    {
+      '@type': 'WebSite',
+      '@id': `${config.public.siteUrl}/#website`,
+      name: 'BeAbot',
+      url: homeCanonicalUrl,
+      inLanguage: 'fr-FR',
+      publisher: {
+        '@id': `${config.public.siteUrl}/#organization`,
+      },
+    },
   ],
 }
 
@@ -550,7 +560,7 @@ useHead({
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify(structuredData),
+      innerHTML: JSON.stringify(structuredData),
     },
   ],
 })

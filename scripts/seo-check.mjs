@@ -38,6 +38,57 @@ const getCanonical = (html) =>
 
 const getTitle = (html) => html.match(/<title>(.*?)<\/title>/i)?.[1]?.trim() || ''
 
+const jsonLdPattern =
+  /<script\b(?=[^>]*\btype=(["'])application\/ld\+json\1)[^>]*>([\s\S]*?)<\/script>/gi
+
+const flattenStructuredDataNodes = (data) => {
+  if (Array.isArray(data)) return data.flatMap((item) => flattenStructuredDataNodes(item))
+  if (!data || typeof data !== 'object') return []
+
+  const nodes = [data]
+  if (Array.isArray(data['@graph'])) {
+    nodes.push(...data['@graph'].flatMap((item) => flattenStructuredDataNodes(item)))
+  }
+
+  return nodes
+}
+
+const nodeHasType = (node, type) => {
+  const nodeType = node?.['@type']
+  return Array.isArray(nodeType) ? nodeType.includes(type) : nodeType === type
+}
+
+const hasRootTypeOrGraph = (data) => {
+  if (Array.isArray(data)) return data.every((item) => hasRootTypeOrGraph(item))
+  return !!(data && typeof data === 'object' && (data['@type'] || data['@graph']))
+}
+
+const getStructuredDataNodes = (html, route) => {
+  const nodes = []
+
+  for (const match of html.matchAll(jsonLdPattern)) {
+    const tag = match[0]
+    const content = match[2].trim()
+
+    ensure(
+      !/\bchildren=(["'])[\s\S]*?\1/i.test(tag),
+      `JSON-LD must be script content, not children attr in ${route}`
+    )
+    ensure(!!content, `Empty JSON-LD script in ${route}`)
+    if (!content) continue
+
+    try {
+      const data = JSON.parse(content)
+      ensure(hasRootTypeOrGraph(data), `JSON-LD root missing @type or @graph in ${route}`)
+      nodes.push(...flattenStructuredDataNodes(data))
+    } catch (error) {
+      ensure(false, `Invalid JSON-LD in ${route}: ${error.message}`)
+    }
+  }
+
+  return nodes
+}
+
 const ensureUsefulTitle = (html, route) => {
   const title = getTitle(html)
   ensure(!!title, `Missing title in ${route}`)
@@ -135,6 +186,7 @@ if (process.env.SEO_CHECK_HTML === '1' && siteUrl && locs.length) {
     ensureUsefulTitle(html, normalized)
     ensureUsefulMeta(html, normalized, 'name', 'description')
     ensureUsefulMeta(html, normalized, 'property', 'og:description')
+    const structuredDataNodes = getStructuredDataNodes(html, normalized)
 
     if (canonical && ogUrl) {
       ensure(
@@ -146,6 +198,42 @@ if (process.env.SEO_CHECK_HTML === '1' && siteUrl && locs.length) {
         if (pathPart !== '/' && !pathPart.endsWith('/')) {
           errors.push(`Canonical missing trailing slash in ${normalized}: ${canonical}`)
         }
+      }
+    }
+
+    if (normalized === '/') {
+      ensure(
+        structuredDataNodes.some(
+          (node) => nodeHasType(node, 'Person') || nodeHasType(node, 'WebSite')
+        ),
+        'Homepage must expose parsable Person or WebSite JSON-LD'
+      )
+    }
+
+    if (normalized === '/contact/') {
+      ensure(
+        structuredDataNodes.some((node) => nodeHasType(node, 'ContactPage')),
+        'Contact page must expose parsable ContactPage JSON-LD'
+      )
+    }
+
+    if (
+      normalized.startsWith('/eco-conception/') &&
+      normalized !== '/eco-conception/' &&
+      !structuredDataNodes.some((node) => nodeHasType(node, 'FAQPage'))
+    ) {
+      const articleNode = structuredDataNodes.find(
+        (node) => nodeHasType(node, 'Article') || nodeHasType(node, 'BlogPosting')
+      )
+
+      ensure(!!articleNode, `Article JSON-LD missing Article or BlogPosting in ${normalized}`)
+      if (articleNode) {
+        ensure(!!articleNode.author, `Article JSON-LD missing author in ${normalized}`)
+        ensure(
+          !!articleNode.datePublished,
+          `Article JSON-LD missing datePublished in ${normalized}`
+        )
+        ensure(articleNode.url === canonical, `Article JSON-LD url mismatch in ${normalized}`)
       }
     }
   }

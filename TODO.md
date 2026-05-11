@@ -1,3 +1,21 @@
+## Phase 23 — Données structurées JSON-LD minimales (11 mai 2026)
+
+> Branche : `fix/seo-json-ld-structured-data`
+
+- [x] Créer la branche depuis `dev` après intégration des correctifs SEO technique et titles/descriptions
+- [x] Corriger le rendu des scripts `application/ld+json` : utiliser `innerHTML` au lieu de `children` pour produire du JSON parsable dans le HTML statique
+- [x] Conserver et renforcer la homepage : `Organization` + `Person` existants, ajout sobre de `WebSite` dans le `@graph`
+- [x] Vérifier `/contact/` : `ContactPage` présent, sobre et vérifiable
+- [x] Renforcer les articles éco-conception : `BlogPosting` conserve `author`, `datePublished`, `dateModified` si disponible, et ajoute `url` alignée sur la canonical
+- [x] Renforcer les tests HTML générés contre JSON-LD invalide, script vide, attribut `children`, `@type`/`@graph` absent, `ContactPage` absent, article sans `author`/`datePublished`/`url`
+- [x] Renforcer `scripts/seo-check.mjs` avec les mêmes contrôles JSON-LD post-génération
+- [x] Conserver `/eco-conception/faq-eco-conception/` en `FAQPage` sans forcer `BlogPosting`, car ce n'est pas un article éditorial
+- [x] Valider `npm test` : 49 pre-build checks, garde-fou Content et 23 tests Node OK
+- [x] Valider `npm run generate` : 72 routes prerendered
+- [x] Valider `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK
+- [x] Contrôles ciblés post-génération : scripts LD+JSON valides sur 24 routes sitemap, homepage `Person`/`WebSite`, `/contact/` `ContactPage`, articles `BlogPosting` avec `author`/`datePublished`/`url`, non-régression canonical home, sitemap `/404/`, titles, descriptions et `[object Object]`
+- [x] Risque restant : aucun risque local identifié ; validation preview Netlify à faire après merge manuel par Benoît
+
 ## Phase 22 — Uniformisation SEO titles & descriptions (11 mai 2026)
 
 > Branche : `fix/seo-title-description-patterns`

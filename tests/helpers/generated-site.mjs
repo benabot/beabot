@@ -54,6 +54,54 @@ export function getCanonical(html) {
   return getAttr(tag, 'href')
 }
 
+export function extractJsonLdScripts(html) {
+  const scripts = []
+  const pattern =
+    /<script\b(?=[^>]*\btype=(["'])application\/ld\+json\1)[^>]*>([\s\S]*?)<\/script>/gi
+
+  for (const match of html.matchAll(pattern)) {
+    const content = match[2].trim()
+    assert.ok(content, 'Expected a non-empty application/ld+json script')
+    assert.doesNotMatch(
+      match[0],
+      /\bchildren=(["'])[\s\S]*?\1/i,
+      'JSON-LD must be rendered as script content, not a children attribute',
+    )
+    assert.doesNotThrow(
+      () => scripts.push(JSON.parse(content)),
+      `Invalid JSON-LD script content: ${content.slice(0, 120)}`,
+    )
+  }
+
+  return scripts
+}
+
+export function flattenStructuredDataNodes(data) {
+  if (Array.isArray(data)) {
+    return data.flatMap((item) => flattenStructuredDataNodes(item))
+  }
+
+  if (!data || typeof data !== 'object') return []
+
+  const nodes = [data]
+  if (Array.isArray(data['@graph'])) {
+    nodes.push(...data['@graph'].flatMap((item) => flattenStructuredDataNodes(item)))
+  }
+
+  return nodes
+}
+
+export function getStructuredDataNodes(html) {
+  return extractJsonLdScripts(html).flatMap((script) =>
+    flattenStructuredDataNodes(script),
+  )
+}
+
+export function nodeHasType(node, type) {
+  const nodeType = node?.['@type']
+  return Array.isArray(nodeType) ? nodeType.includes(type) : nodeType === type
+}
+
 export function assertCleanHtml(html) {
   assert.doesNotMatch(html, /\[object Object\]/)
   assert.doesNotMatch(html, /<meta[^>]+name=["']description["'][^>]+content=["']\s*L\s*["']/i)

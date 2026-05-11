@@ -687,15 +687,15 @@ useHead({
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify(productSchema),
+      innerHTML: JSON.stringify(productSchema),
     },
     {
       type: 'application/ld+json',
-      children: JSON.stringify(faqSchema),
+      innerHTML: JSON.stringify(faqSchema),
     },
     {
       type: 'application/ld+json',
-      children: JSON.stringify(breadcrumbSchema),
+      innerHTML: JSON.stringify(breadcrumbSchema),
     },
   ],
 })

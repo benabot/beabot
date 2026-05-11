@@ -432,6 +432,7 @@ const blogPostingStructuredData = computed(() => ({
     '@id': articleCanonicalUrl,
   },
   inLanguage: 'fr-FR',
+  url: articleCanonicalUrl,
   headline: seoTitle.value,
   description: seoDesc.value,
   datePublished: article.value?.date,
@@ -509,7 +510,7 @@ useHead(
     script: [
       {
         type: 'application/ld+json',
-        children: JSON.stringify({
+        innerHTML: JSON.stringify({
           '@context': 'https://schema.org',
           '@graph': [
             ...(isFaq.value
