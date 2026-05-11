@@ -267,6 +267,24 @@
               <AppLink class="eco-link eco-link--compact" to="/portfolio/">
                 Voir mes réalisations
               </AppLink>
+              <AppLink
+                class="eco-link eco-link--compact"
+                to="/eco-conception/audit-site-web/"
+              >
+                Préparer un audit
+              </AppLink>
+              <AppLink
+                class="eco-link eco-link--compact"
+                to="/eco-conception/refonte-site-eco-concu/"
+              >
+                Préparer une refonte
+              </AppLink>
+              <AppLink
+                class="eco-link eco-link--compact"
+                to="/eco-conception/wordpress-freelance-lille/"
+              >
+                Choisir un freelance WordPress
+              </AppLink>
               <AppLink class="eco-link eco-link--compact" to="/greenlight/">
                 Découvrir Greenlight
               </AppLink>
@@ -496,14 +514,20 @@
             Un projet web à éco-concevoir ? Je suis disponible.
           </h2>
           <p class="eco-final__text">
-            Développeur web freelance à Lille — je conçois et développe des
-            sites WordPress et Nuxt éco-conçus, et j’interviens sur des audits
-            de performance et d’empreinte numérique. Disponible en Hauts-de-France
-            et en remote.
+            Vous cherchez un développeur qui applique ces principes à un site
+            WordPress ou Nuxt ? Basé à Lille, j’interviens sur des audits, des
+            refontes et des développements web sobres en Hauts-de-France et en
+            remote.
           </p>
           <div class="eco-actions eco-actions--centered">
             <AppLink class="eco-button eco-button--primary" to="/contact/">
               Discutons de votre projet
+            </AppLink>
+            <AppLink
+              class="eco-button eco-button--ghost"
+              to="/eco-conception/audit-site-web/"
+            >
+              Voir l’audit de site web
             </AppLink>
             <AppLink class="eco-button eco-button--ghost" to="/portfolio/">
               Voir mes réalisations

@@ -342,18 +342,19 @@
           <div class="greenlight-mandate__copy">
             <p class="greenlight-eyebrow">Déléguer</p>
             <h2 id="greenlight-mandate-title" class="greenlight-section__title">
-              Vous voulez un site Greenlight sans gérer le développement ?
+              Besoin d’un site WordPress sobre construit sur Greenlight ?
             </h2>
             <p class="greenlight-section__lede">
-              Je m'occupe de l'installation, de la configuration et de l'optimisation
-              de votre site WordPress sur la base Greenlight. Vous recevez un site
-              prêt à l'emploi, sobre et performant — sans manipuler une ligne de code.
+              Je peux intervenir en mission freelance pour installer,
+              configurer et optimiser un site WordPress sur la base Greenlight.
+              L’objectif reste simple : un site lisible, sobre et maintenable,
+              sans pile de plugins ajoutée par défaut.
             </p>
             <AppLink
               class="greenlight-button greenlight-button--primary"
               to="/contact/"
             >
-              Me contacter pour un devis
+              Parler de votre site WordPress
             </AppLink>
           </div>
         </article>
@@ -408,7 +409,7 @@
                 class="greenlight-button greenlight-button--primary"
                 to="/contact/"
               >
-                Me contacter pour Greenlight premium
+                Me contacter pour une mission Greenlight
               </AppLink>
             </article>
           </div>

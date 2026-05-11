@@ -2,12 +2,32 @@
 
 1. [x] **`fix/seo-technical-cleanup`** — fait, mergé dans `dev` ; canonical homepage, meta descriptions critiques, `/404/` sitemap/statut, `twitter:card` simple ; commit `ea6d884 fix: corriger les métadonnées SEO techniques critiques`
 2. [x] **`fix/seo-title-description-patterns`** — fait, mergé dans `dev` ; pattern `Titre | BeAbot`, entités HTML, descriptions ciblées ; commit `3a17826 fix: uniformiser titles et descriptions SEO`
-3. [x] **`fix/internal-url-trailing-slashes`** — fait localement, à valider/merger par Benoît ; URLs internes HTML normalisées avec slash final, sans casser fichiers statiques, ancres, query strings, liens externes, `mailto:`, `tel:`, sitemap, RSS et JSON Feed
+3. [x] **`fix/internal-url-trailing-slashes`** — fait, présent dans `dev` local après diagnostic ; URLs internes HTML normalisées avec slash final, sans casser fichiers statiques, ancres, query strings, liens externes, `mailto:`, `tel:`, sitemap, RSS et JSON Feed ; diagnostic 68 routes OK : 26 `index.html`, 13 articles, 3 pages apps, sitemap 24 routes publiques, feeds 13 articles, pas de `/404/` dans sitemap
 4. [x] **`fix/seo-json-ld-structured-data`** — fait, mergé dans `dev` ; JSON-LD via `innerHTML`, homepage `WebSite`/`Organization`/`Person`, `ContactPage`, articles avec `url` canonical ; commit `f48d425 fix: fiabiliser les données structurées SEO`
-5. [ ] **`content/freelance-local-signals`** — à faire après stabilisation SEO technique ; renforcer sobrement les signaux freelance/local/conversion sur homepage, contact, portfolio, éco-conception, Greenlight et footer avec : freelance, mission, disponible, Lille, Compiègne, Amiens, Paris, remote, Hauts-de-France
+5. [x] **`content/freelance-local-signals`** — fait localement, à valider/merger par Benoît ; renforcer sobrement les signaux freelance/local/conversion sur homepage, contact, portfolio, éco-conception et Greenlight ; signal footer retiré après contrôle visuel ; mots-clés : freelance, mission, disponible, Lille, Compiègne, Amiens, Paris, remote, Hauts-de-France
 6. [ ] **`chore/audit-unused-dependencies`** — branche séparée ; auditer `gray-matter`, `sass-loader` et dépendances suspectes ; ne supprimer qu'avec preuve ; ne pas lancer `npm install` ni `npm update`
 7. [ ] **`docs/nuxt-vite-warnings-audit`** — plus tard ; documenter les warnings Nuxt/Vite `nuxt:module-preload-polyfill` sourcemap et `Circular chunk: vendor-nuxt -> vendor-libs -> vendor-nuxt` ; ne pas optimiser les chunks ici
 8. [ ] **`refactor/css-native-audit`** — après les chantiers SEO/contenu prioritaires ; auditer le Sass restant avant migration CSS moderne ; ne modifier aucun style ; produire `migration-css-native-audit.md`
+
+## Phase 25 — Signaux freelance/local sobres (11 mai 2026)
+
+> Branche : `content/freelance-local-signals`
+
+- [x] Créer la branche depuis `dev` après intégration locale des lots SEO techniques
+- [x] Renforcer la homepage sans nouveau badge ni refonte : signal Lille, Hauts-de-France, remote et CTA de mission
+- [x] Clarifier `/contact/` : missions WordPress, JavaScript, audit, éco-conception, zone d'intervention et remote
+- [x] Cadrer `/portfolio/` comme preuve de missions web WordPress, JavaScript, Nuxt et éco-conception, sans masquer les apps iOS ni réorganiser les projets
+- [x] Retirer la localisation globale du footer après contrôle visuel : la ligne alourdissait la zone légale
+- [x] Ajouter sur `/eco-conception/` un CTA bas de page et du maillage sobre vers les articles longue traîne existants : audit, refonte et freelance WordPress Lille
+- [x] Relier `/greenlight/` à une prestation WordPress possible sans modifier l'offre produit en profondeur
+- [x] Décision éditoriale : ton factuel, pas de tarifs, pas de promesse de disponibilité précise, pas de nouvelle page ni nouvel article
+- [x] Décision technique : pas de SCSS modifié, pas de helper URL, sitemap, JSON-LD ou dépendance modifiés
+- [x] Valider `npm test` : 49 pre-build checks, garde-fou Content et 23 tests Node OK
+- [x] Valider `npm run generate` : 68 routes prerendered
+- [x] Valider `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK
+- [x] Contrôles ciblés post-génération : signaux visibles sur `/`, `/contact/`, `/portfolio/`, `/eco-conception/` et `/greenlight/` ; signal footer supprimé ; page contact espacée de la navigation ; liens internes avec slash final ; articles longue traîne générés ; canonical, `/404/`, sitemap 24 routes sans `/404/`, titles, descriptions, JSON-LD, trailing slash, RSS et JSON Feed sans régression
+- [x] Contrôle navigateur local : homepage desktop 1440×900 avec hero à 100vh et contenu contenu ; mobile 390×844 sans débordement horizontal, hero plus haut que 100vh par empilement responsive existant mais sans casse de mise en page
+- [x] Risque restant : aucun risque local bloquant identifié ; validation preview Netlify à faire après merge manuel par Benoît
 
 ## Phase 24 — URLs internes avec slash final (11 mai 2026)
 

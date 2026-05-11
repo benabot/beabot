@@ -12,7 +12,7 @@
             Sites WordPress et interfaces JavaScript sobres, rapides et
             durables. 15 ans d’expérience, spécialiste du numérique responsable.
           </p>
-          <p class="home-geo">Lille · Hauts-de-France · Remote</p>
+          <p class="home-geo">Lille · Hauts-de-France · remote</p>
           <p class="home-lead">
             Je conçois des sites et des applications web avec une attention
             particulière portée à la performance, à l’accessibilité, à la
@@ -24,7 +24,7 @@
               Voir mes réalisations
             </AppLink>
             <AppLink class="button button--secondary" to="/contact/">
-              Me contacter
+              Parler d’une mission
             </AppLink>
             <AppLink class="text-link" to="/greenlight/">
               Découvrir Greenlight
@@ -128,8 +128,8 @@
             </h2>
           </div>
           <p class="section-intro">
-            Trois types de missions, une même approche : faire mieux avec moins
-            de complexité inutile.
+            Trois types de missions freelance, une même approche : faire mieux
+            avec moins de complexité inutile.
           </p>
         </header>
 

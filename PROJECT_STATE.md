@@ -6,7 +6,7 @@
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
-0. **Trailing slashes internes** — Branche `fix/internal-url-trailing-slashes` créée depuis `dev` le 11 mai 2026, après intégration locale de `fix/seo-technical-cleanup`, `fix/seo-title-description-patterns` et `fix/seo-json-ld-structured-data`. Objectif : normaliser les liens HTML internes avec slash final, sans casser fichiers statiques, ancres, query strings, liens externes, feeds ni JSON-LD.
+0. **Signaux freelance/local** — Branche `content/freelance-local-signals` prête localement le 11 mai 2026 après intégration des lots SEO techniques dans `dev`. Objectif réalisé : renforcer sobrement les signaux freelance, missions, Lille, Hauts-de-France et remote sur les pages principales existantes, sans créer de page ni d'article. Merge manuel par Benoît.
 1. **Merge manuel du correctif Netlify vers `dev`** — Merger `fix/netlify-eco-conception-runtime` dans `dev`, puis redéployer Netlify dev avec clear cache.
 2. **Preview Nuxt 4** — Vérifier `/eco-conception/` sur `https://dev-beabot.netlify.app/` : console sans erreur, filtres, recherche et FAQ OK ; ne pas merger vers `master` avant validation.
 3. **Recherche UI / composant orphelin** — Si `AppSearchInput.vue` doit redevenir visible, choisir une page hote et faire une verification UX dediee ; sinon documenter son statut orphelin dans un lot separe.
@@ -22,9 +22,9 @@
 
 1. **`fix/seo-technical-cleanup`** — État : fait, mergé dans `dev`. Objet : canonical homepage, meta descriptions critiques, `/404/` sitemap/statut, `twitter:card` simple. Commit connu : `ea6d884 fix: corriger les métadonnées SEO techniques critiques`.
 2. **`fix/seo-title-description-patterns`** — État : fait, mergé dans `dev`. Objet : pattern `Titre | BeAbot`, entités HTML, descriptions ciblées. Commit connu : `3a17826 fix: uniformiser titles et descriptions SEO`.
-3. **`fix/internal-url-trailing-slashes`** — État : en cours. Objet : vérifier et normaliser les URLs internes HTML avec slash final, sans casser fichiers statiques, ancres, query strings, liens externes, `mailto:`, `tel:`, sitemap, RSS et JSON Feed.
+3. **`fix/internal-url-trailing-slashes`** — État : fait, présent dans `dev` local après diagnostic. Objet : URLs internes HTML avec slash final, exceptions fichiers statiques/assets/ancres/query/liens externes, sitemap, RSS et JSON Feed. Diagnostic validé : 26 `index.html`, 13 articles, 3 pages apps, sitemap 24 routes publiques, feeds 13 articles, pas de `/404/` dans sitemap.
 4. **`fix/seo-json-ld-structured-data`** — État : fait, mergé dans `dev`. Objet : JSON-LD via `innerHTML`, homepage `WebSite`/`Organization`/`Person`, `ContactPage`, articles avec `url` canonical. Commit connu : `f48d425 fix: fiabiliser les données structurées SEO`.
-5. **`content/freelance-local-signals`** — État : à faire après la stabilisation SEO technique. Objet : renforcer sobrement les signaux freelance/local/conversion sur homepage, contact, portfolio, éco-conception, Greenlight et footer. Mots-clés : freelance, mission, disponible, Lille, Compiègne, Amiens, Paris, remote, Hauts-de-France.
+5. **`content/freelance-local-signals`** — État : fait localement, à valider/merger par Benoît. Objet : renforcer sobrement les signaux freelance/local/conversion sur homepage, contact, portfolio, éco-conception et Greenlight ; signal footer retiré après contrôle visuel. Mots-clés : freelance, mission, disponible, Lille, Compiègne, Amiens, Paris, remote, Hauts-de-France.
 6. **`chore/audit-unused-dependencies`** — État : à faire dans une branche séparée. Objet : auditer `gray-matter`, `sass-loader` et dépendances suspectes ; ne supprimer qu'avec preuve ; ne pas lancer `npm install` ni `npm update`.
 7. **`docs/nuxt-vite-warnings-audit`** — État : à faire plus tard. Objet : documenter les warnings Nuxt/Vite `[plugin nuxt:module-preload-polyfill] Sourcemap is likely to be incorrect` et `Circular chunk: vendor-nuxt -> vendor-libs -> vendor-nuxt`; ne pas optimiser les chunks dans cette branche.
 8. **`refactor/css-native-audit`** — État : à faire après les chantiers SEO/contenu prioritaires. Objet : audit final Sass restant avant migration CSS moderne ; ne modifier aucun style dans ce lot ; produire `migration-css-native-audit.md`.
@@ -32,6 +32,31 @@
 ---
 
 ## 🎯 SITUATION ACTUELLE
+
+### Signaux freelance/local — 11 mai 2026
+
+Branche : `content/freelance-local-signals`
+
+- Périmètre en cours :
+  - homepage renforcée sans nouveau badge ni changement de structure : signal Lille/Hauts-de-France/remote et CTA de mission ;
+  - `/contact/` clarifiée sur les types de missions WordPress, JavaScript, audit et éco-conception, avec zone d'intervention et remote ;
+  - `/portfolio/` cadré comme preuve de missions web WordPress, JavaScript, Nuxt et éco-conception, sans réorganiser ni masquer les apps ;
+  - `/eco-conception/` enrichie avec un CTA bas de page et des liens sobres vers les articles longue traîne existants ;
+  - `/greenlight/` relie le thème à une mission WordPress possible sans modifier l'offre produit en profondeur.
+- Décisions :
+  - aucun nouvel article, aucune nouvelle page `/services` ou `/freelance` ;
+  - pas de changement SCSS : seules des classes et structures existantes sont réutilisées ;
+  - le ton reste factuel, sans tarifs, promesses de disponibilité précises ni repositionnement commercial lourd ;
+  - signal freelance/local retiré du footer après contrôle visuel, car la ligne alourdissait la zone légale ;
+  - les metas ajustées uniquement sur `/contact/` et `/portfolio/`, pour refléter le positionnement freelance/local sans casser le pattern SEO.
+- Validations locales :
+  - `npm test` : OK, 49 pre-build checks, garde-fou Content et 23 tests Node ;
+  - `npm run generate` : OK, 68 routes prerendered ;
+  - `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK ;
+  - contrôles ciblés post-génération : signaux visibles sur `/`, `/contact/`, `/portfolio/`, `/eco-conception/` et `/greenlight/` ; signal footer supprimé ; page contact espacée de la navigation ; liens internes ajoutés avec slash final ; articles longue traîne `/eco-conception/audit-site-web/`, `/eco-conception/refonte-site-eco-concu/`, `/eco-conception/wordpress-freelance-lille/` et `/eco-conception/wordpress-vs-nuxt/` générés ; sitemap avec 24 routes publiques et sans `/404/` ; RSS et JSON Feed valides avec 13 articles ; JSON-LD parsable ; descriptions ciblées textuelles entre 129 et 158 caractères ; 26 fichiers `index.html` publics ;
+  - contrôle navigateur local : homepage desktop 1440×900 avec hero à 100vh et contenu contenu dans le hero ; mobile 390×844 sans débordement horizontal, hero plus haut que 100vh par empilement responsive existant mais sans casse de mise en page.
+- Risque restant :
+  - aucun risque local bloquant identifié ; validation preview Netlify à faire après merge manuel par Benoît.
 
 ### Trailing slashes internes — 11 mai 2026
 
