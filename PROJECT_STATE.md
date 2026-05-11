@@ -6,7 +6,7 @@
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
-0. **Signaux freelance/local** — Branche `content/freelance-local-signals` prête localement le 11 mai 2026 après intégration des lots SEO techniques dans `dev`. Objectif réalisé : renforcer sobrement les signaux freelance, missions, Lille, Hauts-de-France et remote sur les pages principales existantes, sans créer de page ni d'article. Merge manuel par Benoît.
+0. **Audit Sass restant / CSS natif** — Branche `refactor/css-native-audit` faite localement le 11 mai 2026. Rapport `migration-css-native-audit.md` produit avec l'inventaire Sass restant et une feuille de route CSS native progressive, sans modifier les styles.
 1. **Merge manuel du correctif Netlify vers `dev`** — Merger `fix/netlify-eco-conception-runtime` dans `dev`, puis redéployer Netlify dev avec clear cache.
 2. **Preview Nuxt 4** — Vérifier `/eco-conception/` sur `https://dev-beabot.netlify.app/` : console sans erreur, filtres, recherche et FAQ OK ; ne pas merger vers `master` avant validation.
 3. **Recherche UI / composant orphelin** — Si `AppSearchInput.vue` doit redevenir visible, choisir une page hote et faire une verification UX dediee ; sinon documenter son statut orphelin dans un lot separe.
@@ -14,7 +14,7 @@
 5. **Lint global repo-wide** — `npm run lint:js` fonctionne avec la flat config Nuxt ESLint v1, mais `npm run lint` reste bloque par `lint:prettier` sur des formatages historiques et `docs/migration/nuxt4/archive/audit-unused-depcheck.json` non JSON ; a traiter separement.
 6. **Audit securite npm** — `npm audit --audit-level=moderate` signale 11 vulnerabilites ; ne pas lancer `npm audit fix` sans lot dedie.
 7. **DIR-* app directory** — Ne pas deplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dedie uniquement si une incompatibilite reelle apparait.
-8. **SCSS-6** — Reporté après preview Nuxt 4. La sortie complète de SCSS demande une branche dédiée : 8 fichiers `.scss`, 28 fichiers Vue `lang="scss"`, helpers Sass et dépendances `sass` / `sass-loader` encore nécessaires.
+8. **SCSS-6** — Reporté après audit CSS natif. La sortie complète de SCSS demande plusieurs lots progressifs : couleurs simples, typo, spacing, breakpoints, couleurs dérivées, réduction des imports Sass, puis décision de suppression Sass.
 
 ---
 
@@ -27,11 +27,35 @@
 5. **`content/freelance-local-signals`** — État : fait localement, à valider/merger par Benoît. Objet : renforcer sobrement les signaux freelance/local/conversion sur homepage, contact, portfolio, éco-conception et Greenlight ; signal footer retiré après contrôle visuel. Mots-clés : freelance, mission, disponible, Lille, Compiègne, Amiens, Paris, remote, Hauts-de-France.
 6. **`chore/audit-unused-dependencies`** — État : à faire dans une branche séparée. Objet : auditer `gray-matter`, `sass-loader` et dépendances suspectes ; ne supprimer qu'avec preuve ; ne pas lancer `npm install` ni `npm update`.
 7. **`docs/nuxt-vite-warnings-audit`** — État : à faire plus tard. Objet : documenter les warnings Nuxt/Vite `[plugin nuxt:module-preload-polyfill] Sourcemap is likely to be incorrect` et `Circular chunk: vendor-nuxt -> vendor-libs -> vendor-nuxt`; ne pas optimiser les chunks dans cette branche.
-8. **`refactor/css-native-audit`** — État : à faire après les chantiers SEO/contenu prioritaires. Objet : audit final Sass restant avant migration CSS moderne ; ne modifier aucun style dans ce lot ; produire `migration-css-native-audit.md`.
+8. **`refactor/css-native-audit`** — État : fait localement. Objet : audit final Sass restant avant migration CSS moderne ; aucun style modifié ; rapport `migration-css-native-audit.md`.
 
 ---
 
 ## 🎯 SITUATION ACTUELLE
+
+### Audit Sass restant / CSS natif — 11 mai 2026
+
+Branche : `refactor/css-native-audit`
+
+- Périmètre en cours :
+  - création du rapport `migration-css-native-audit.md` ;
+  - inventaire des usages Sass restants : 8 fichiers `.scss`, 28 blocs Vue `lang="scss"`, 57 `@use`, 586 occurrences de variables Sass, 24 `color.adjust()`, 5 `math.div()`, 2 `map.get()`, 1 boucle `@each`, 3 fonctions Sass, 80 occurrences de `$breakpoint-tablet` et 54 usages `$space-*` ;
+  - `node scripts/check-scss-explicit-imports.mjs` confirme `TOTAL_DEPENDANCES_IMPLICITES=0` ;
+  - baseline CSS avant audit : 18 fichiers CSS, 171 523 octets, hash global `ba0d818a9f0c3dbbda99661146aad5625e9822d64c57ba4a538079d331fd8e15`.
+- Décisions :
+  - aucune modification de style dans ce lot ;
+  - aucune suppression de fichier SCSS, dépendance, config Nuxt/Vite ou plugin ;
+  - les ressources Medium de `docs/ressources/ressources.md` restent de la veille, pas des consignes ;
+  - GreenIT/RWEB et la Front-End Performance Checklist sont retenus comme garde-fous : budget CSS, pas de dépendance inutile, progressive enhancement, mesure avant/après ;
+  - roadmap retenue : CSS-2 couleurs simples vers `var()`, CSS-3 typographie native avec `clamp()`, CSS-4 spacing tokens CSS, CSS-5 breakpoints/media queries, CSS-6 couleurs dérivées avec fallbacks, CSS-7 réduction des imports Sass, CSS-8 décision SCSS-6.
+- Validations locales :
+  - `npm test` : OK, 49 pre-build checks, garde-fou Content et 23 tests Node ;
+  - `npm run generate` : OK, 68 routes prerendered ;
+  - `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK ;
+  - `node scripts/check-scss-explicit-imports.mjs` : OK, `TOTAL_DEPENDANCES_IMPLICITES=0` ;
+  - contrôle CSS généré : inchangé par rapport à la baseline, 18 fichiers CSS, 171 523 octets, hash global `ba0d818a9f0c3dbbda99661146aad5625e9822d64c57ba4a538079d331fd8e15`.
+- Risque restant :
+  - aucun risque de rendu identifié sur ce lot documentaire ; les risques visuels et compatibilité sont reportés dans les futurs lots CSS-2 à CSS-8 avec validations ciblées.
 
 ### Signaux freelance/local — 11 mai 2026
 

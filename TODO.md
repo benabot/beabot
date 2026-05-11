@@ -7,7 +7,27 @@
 5. [x] **`content/freelance-local-signals`** — fait localement, à valider/merger par Benoît ; renforcer sobrement les signaux freelance/local/conversion sur homepage, contact, portfolio, éco-conception et Greenlight ; signal footer retiré après contrôle visuel ; mots-clés : freelance, mission, disponible, Lille, Compiègne, Amiens, Paris, remote, Hauts-de-France
 6. [ ] **`chore/audit-unused-dependencies`** — branche séparée ; auditer `gray-matter`, `sass-loader` et dépendances suspectes ; ne supprimer qu'avec preuve ; ne pas lancer `npm install` ni `npm update`
 7. [ ] **`docs/nuxt-vite-warnings-audit`** — plus tard ; documenter les warnings Nuxt/Vite `nuxt:module-preload-polyfill` sourcemap et `Circular chunk: vendor-nuxt -> vendor-libs -> vendor-nuxt` ; ne pas optimiser les chunks ici
-8. [ ] **`refactor/css-native-audit`** — après les chantiers SEO/contenu prioritaires ; auditer le Sass restant avant migration CSS moderne ; ne modifier aucun style ; produire `migration-css-native-audit.md`
+8. [x] **`refactor/css-native-audit`** — fait localement ; audit Sass restant avant migration CSS moderne ; aucun style modifié ; rapport `migration-css-native-audit.md`
+
+## Phase 26 — Audit Sass restant / CSS natif (11 mai 2026)
+
+> Branche : `refactor/css-native-audit`
+
+- [x] Créer la branche depuis `dev`
+- [x] Lire `docs/ressources/ressources.md` et distinguer les ressources Medium comme inspiration, pas consigne automatique
+- [x] Croiser l'audit avec RWEB / GreenIT v5 et Front-End Performance Checklist
+- [x] Établir une baseline CSS avant rédaction : 18 fichiers CSS, 171 523 octets, hash `ba0d818a9f0c3dbbda99661146aad5625e9822d64c57ba4a538079d331fd8e15`
+- [x] Inventorier les usages Sass restants : 8 fichiers `.scss`, 28 blocs Vue `lang="scss"`, 57 `@use`, 586 variables Sass, 24 `color.adjust()`, 5 `math.div()`, 2 `map.get()`, 1 `@each`, 3 fonctions Sass, 80 `$breakpoint-tablet`, 54 `$space-*`
+- [x] Vérifier `node scripts/check-scss-explicit-imports.mjs` : `TOTAL_DEPENDANCES_IMPLICITES=0`
+- [x] Produire `migration-css-native-audit.md`
+- [x] Classer les usages : migrable maintenant vers `var()`, migrable vers `clamp()`/`min()`/`max()`/`calc()`, migrable plus tard avec `@supports`, à garder en Sass, à risque visuel, à risque compatibilité
+- [x] Proposer la feuille de route CSS-2 à CSS-8 : couleurs, typo, spacing, breakpoints, couleurs dérivées, réduction des imports Sass, décision SCSS-6
+- [x] Décision : aucun style modifié, aucun fichier SCSS supprimé, aucune dépendance supprimée, aucun plugin PostCSS ajouté
+- [x] Valider `npm test` : 49 pre-build checks, garde-fou Content et 23 tests Node OK
+- [x] Valider `npm run generate` : 68 routes prerendered
+- [x] Valider `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK
+- [x] Vérifier que le CSS généré reste identique à la baseline : 18 fichiers CSS, 171 523 octets, hash `ba0d818a9f0c3dbbda99661146aad5625e9822d64c57ba4a538079d331fd8e15`
+- [x] Risque restant : aucun risque de rendu identifié sur ce lot documentaire ; risques visuels et compatibilité reportés aux futurs lots CSS-2 à CSS-8
 
 ## Phase 25 — Signaux freelance/local sobres (11 mai 2026)
 
