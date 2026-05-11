@@ -46,11 +46,15 @@ Branche : `fix/internal-url-trailing-slashes`
 - Décisions :
   - les corrections portent uniquement sur les URLs, pas sur le wording éditorial, les titles/descriptions, le JSON-LD métier, le SCSS, les dépendances, les chunks ou Netlify ;
   - les fichiers statiques, feeds, assets Nuxt, ancres, query strings, liens externes, `mailto:` et `tel:` restent des exceptions explicites.
+  - diagnostic pré-merge sur l'écart `npm run generate` : `dev` annonce 72 routes prerendered et la branche 68, mais les artefacts publics sont identiques sur les pages utiles : 26 fichiers `index.html`, 13 routes `/eco-conception/.../`, 3 routes `/apps/.../`, `404.html`, `sitemap.xml`, `rss.xml` et `feed.json` présents des deux côtés.
+  - raison probable de l'écart 72 → 68 : Nitro ne crawle plus 4 variantes non canoniques sans slash issues de liens Markdown corrigés dans `wordpress-eco-conception.md` (`/eco-conception/images-eco-conception`, `/eco-conception/l-eco-conception-web`, `/eco-conception/theme-wordpress-eco-conception`, `/eco-conception/typographie-ecoconception`). Ces variantes n'étaient pas des pages publiques distinctes ; elles écrivaient les mêmes sorties que les URLs canoniques avec slash.
+  - l'ancien chiffre 100 routes correspond à une base antérieure aux nettoyages Nuxt/SEO actuels et ne sert pas de référence pour cette branche ; la référence comparable est `dev` à 72 routes.
 - Validations locales :
   - `npm test` : OK, 49 pre-build checks, garde-fou Content et 23 tests Node ;
   - `npm run generate` : OK, 68 routes prerendered ;
   - `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK ;
   - contrôles ciblés post-génération : liens internes HTML vérifiés sur 27 fichiers HTML, fichiers statiques sans slash ajouté, ancres conservées, liens externes conservés, aucun `mailto:`/`tel:` généré et cas couverts par tests unitaires, sitemap 24 routes avec slash final et sans `/404/`, RSS et JSON Feed valides, JSON-LD cohérent avec canonical articles/home/contact, canonical home `https://beabot.fr/`, titles/descriptions sans régression et aucun `[object Object]`.
+  - comparaison `dev` vs branche : aucune route sitemap absente ou ajoutée, aucun fichier `_payload.json` utile absent ou ajouté, RSS et JSON Feed à 13 articles chacun.
 - Risque restant :
   - aucun risque local identifié ; validation preview Netlify à faire après merge manuel par Benoît.
 

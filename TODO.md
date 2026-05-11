@@ -25,6 +25,9 @@
 - [x] Valider `npm run generate` : 68 routes prerendered
 - [x] Valider `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK
 - [x] Contrôles ciblés post-génération : liens internes HTML vérifiés sur 27 fichiers HTML, fichiers statiques sans slash ajouté, ancres conservées, liens externes conservés, aucun `mailto:`/`tel:` généré et cas couverts par tests unitaires, sitemap 24 routes avec slash final et sans `/404/`, RSS, JSON Feed, JSON-LD et non-régressions SEO OK
+- [x] Diagnostic pré-merge de l'écart de comptage Nitro : `dev` génère 72 routes et la branche 68, mais les deux sorties contiennent les mêmes 26 `index.html`, les mêmes 13 articles `/eco-conception/.../`, les mêmes 3 pages `/apps/.../`, `404.html`, `sitemap.xml`, `rss.xml` et `feed.json`
+- [x] Confirmer que les 24 routes du sitemap sont identiques entre `dev` et la branche, toutes canoniques avec slash final et sans `/404/`
+- [x] Identifier les 4 routes Nitro non pertinentes supprimées du crawl : variantes sans slash `/eco-conception/images-eco-conception`, `/eco-conception/l-eco-conception-web`, `/eco-conception/theme-wordpress-eco-conception`, `/eco-conception/typographie-ecoconception`, issues des liens Markdown désormais normalisés
 - [x] Risque restant : aucun risque local identifié ; validation preview Netlify à faire après merge manuel par Benoît
 
 ## Phase 23 — Données structurées JSON-LD minimales (11 mai 2026)
