@@ -6,6 +6,7 @@
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
+0. **Stabilisation SEO technique critique** — Branche `fix/seo-technical-cleanup` créée depuis `dev` le 11 mai 2026. Correctifs ciblés : canonical home vérifiée avec slash final, descriptions HTML ciblées contrôlées, garde-fou `[object Object]`, `/404/` exclu du sitemap et redirection Netlify `/404`/`/404/` vers `/404.html` en statut 404. Ne pas pousser ni merger ; Benoît valide en preview.
 1. **Merge manuel du correctif Netlify vers `dev`** — Merger `fix/netlify-eco-conception-runtime` dans `dev`, puis redéployer Netlify dev avec clear cache.
 2. **Preview Nuxt 4** — Vérifier `/eco-conception/` sur `https://dev-beabot.netlify.app/` : console sans erreur, filtres, recherche et FAQ OK ; ne pas merger vers `master` avant validation.
 3. **Recherche UI / composant orphelin** — Si `AppSearchInput.vue` doit redevenir visible, choisir une page hote et faire une verification UX dediee ; sinon documenter son statut orphelin dans un lot separe.
@@ -18,6 +19,28 @@
 ---
 
 ## 🎯 SITUATION ACTUELLE
+
+### Stabilisation SEO technique critique — 11 mai 2026
+
+Branche : `fix/seo-technical-cleanup`
+
+- Périmètre appliqué :
+  - canonical homepage conservée via `canonicalUrl(config.public.siteUrl, '/')`, sortie attendue `https://beabot.fr/` ;
+  - description article normalisée pour ignorer les valeurs non textuelles avant écriture des metas, afin d'éviter `[object Object]` si un frontmatter SEO devient invalide ;
+  - `scripts/seo-check.mjs` étendu aux pages critiques demandées et aux contrôles `[object Object]`, descriptions trop courtes, `og:description`, canonical home, absence de `/404/` dans le sitemap, `twitter:card` sur `/mentions-legales/` et `/portfolio/` ;
+  - tests générés étendus aux pages SEO critiques ;
+  - redirects Netlify `/404` et `/404/` vers `/404.html` en statut 404.
+- Décisions :
+  - pas d'uniformisation globale des titres ;
+  - pas de changement SCSS, Content, dépendances, chunks, positionnement freelance/local ou JSON-LD global ;
+  - correction HTTP `/404/` traitée uniquement côté Netlify, car c'est la solution simple et sûre pour l'hébergement statique.
+- Risque restant :
+  - le statut HTTP réel de `/404/` doit être confirmé sur preview Netlify après déploiement.
+- Validations locales :
+  - `npm test` : OK, 49 pre-build checks, garde-fou Content et 22 tests Node ;
+  - `npm run generate` : OK, 72 routes prerendered ;
+  - `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK ;
+  - contrôles ciblés post-génération : aucun `[object Object]` dans les HTML, canonical home `https://beabot.fr/`, sitemap sans `https://beabot.fr/404/`, descriptions et `og:description` des pages ciblées OK, `twitter:card` présent sur `/mentions-legales/` et `/portfolio/`.
 
 ### Site en production
 

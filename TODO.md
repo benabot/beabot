@@ -1,3 +1,20 @@
+## Phase 21 — Stabilisation SEO technique critique (11 mai 2026)
+
+> Branche : `fix/seo-technical-cleanup`
+
+- [x] Vérifier la canonical homepage via `canonicalUrl(config.public.siteUrl, '/')` : sortie attendue `https://beabot.fr/`
+- [x] Blinder la meta description article contre les valeurs non textuelles pour éviter une sérialisation `[object Object]`
+- [x] Étendre les garde-fous SEO HTML aux pages ciblées : `/apps/`, `/portfolio/`, `/mentions-legales/`, `/contact/`, `/eco-conception/audit-eco-conception/`, `/eco-conception/comment-reduire-le-poids-d-un-site-web/`
+- [x] Vérifier les descriptions courtes/tronquées et `og:description` sur les pages du périmètre via `scripts/seo-check.mjs`
+- [x] Exclure `/404/` du sitemap : configuration existante conservée et contrôle ajouté au check SEO
+- [x] Corriger le cas `/404/` HTTP 200 côté Netlify avec redirects `/404` et `/404/` vers `/404.html` en statut 404
+- [x] Vérifier `twitter:card` sur `/mentions-legales/` et `/portfolio/` via le check SEO HTML
+- [x] Valider `npm test` : 22 tests Node OK, 49 pre-build checks OK
+- [x] Valider `npm run generate` : 72 routes prerendered
+- [x] Valider `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK
+- [x] Contrôles ciblés post-génération : aucun `[object Object]` dans les HTML, canonical home `https://beabot.fr/`, sitemap sans `https://beabot.fr/404/`, metas ciblées vérifiées
+- [ ] Risque restant : le statut HTTP réel de `/404/` dépend du comportement Netlify en preview/production ; à confirmer après déploiement, sans merge automatique vers `master`
+
 ## Phase 17 — SEO & Repositionnement freelance (26 avril 2026)
 
 > Basé sur `audit-seo-2026-04-26.md` + `audit-contenu-positionnement-2026-04-26.md`  

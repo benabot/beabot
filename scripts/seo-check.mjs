@@ -7,11 +7,43 @@ const rootDir = process.cwd()
 const siteUrl = (process.env.NUXT_PUBLIC_SITE_URL || '').replace(/\/+$/, '')
 const sitemapPath = path.join(rootDir, '.output', 'public', 'sitemap.xml')
 const robotsPath = path.join(rootDir, '.output', 'public', 'robots.txt')
+const publicDir = path.join(rootDir, '.output', 'public')
 
 const errors = []
 
 const ensure = (condition, message) => {
   if (!condition) errors.push(message)
+}
+
+const htmlPathForRoute = (route) => {
+  if (route === '/') return path.join(publicDir, 'index.html')
+  return path.join(publicDir, route.replace(/^\/|\/$/g, ''), 'index.html')
+}
+
+const getAttr = (tag, attr) => {
+  const match = tag?.match(new RegExp(`${attr}=["']([^"']*)["']`, 'i'))
+  return match?.[1] || ''
+}
+
+const findTag = (html, tagName, attrName, attrValue) => {
+  const tags = html.match(new RegExp(`<${tagName}\\b[^>]*>`, 'gi')) || []
+  return tags.find((tag) => getAttr(tag, attrName) === attrValue) || ''
+}
+
+const getMetaContent = (html, keyAttr, keyValue) =>
+  getAttr(findTag(html, 'meta', keyAttr, keyValue), 'content')
+
+const getCanonical = (html) =>
+  getAttr(findTag(html, 'link', 'rel', 'canonical'), 'href')
+
+const ensureUsefulMeta = (html, route, keyAttr, keyValue) => {
+  const content = getMetaContent(html, keyAttr, keyValue)
+  ensure(!!content, `Missing ${keyValue} in ${route}`)
+  ensure(content !== '[object Object]', `Invalid object meta ${keyValue} in ${route}`)
+  ensure(
+    content.trim().length > 20,
+    `Meta ${keyValue} is too short in ${route}: "${content}"`
+  )
 }
 
 if (!siteUrl) {
@@ -26,6 +58,8 @@ if (fs.existsSync(sitemapPath)) {
   const sitemapXml = fs.readFileSync(sitemapPath, 'utf8')
   locs = Array.from(sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)).map((m) => m[1].trim())
   ensure(locs.length > 0, 'No <loc> entries found in sitemap.xml.')
+  ensure(!sitemapXml.includes(`${siteUrl}/404/`), 'sitemap.xml must not include /404/.')
+  ensure(!sitemapXml.includes(`${siteUrl}/404`), 'sitemap.xml must not include /404.')
 }
 
 if (siteUrl && locs.length) {
@@ -55,7 +89,16 @@ if (siteUrl && fs.existsSync(robotsPath)) {
 }
 
 if (process.env.SEO_CHECK_HTML === '1' && siteUrl && locs.length) {
-  const defaultPaths = ['/', '/eco-conception/', '/portfolio/', '/mentions-legales/']
+  const defaultPaths = [
+    '/',
+    '/apps/',
+    '/contact/',
+    '/eco-conception/',
+    '/eco-conception/audit-eco-conception/',
+    '/eco-conception/comment-reduire-le-poids-d-un-site-web/',
+    '/mentions-legales/',
+    '/portfolio/',
+  ]
   const articleLoc = locs.find(
     (loc) =>
       loc.startsWith(`${siteUrl}/eco-conception/`) &&
@@ -68,27 +111,20 @@ if (process.env.SEO_CHECK_HTML === '1' && siteUrl && locs.length) {
 
   for (const pagePath of defaultPaths) {
     const normalized = pagePath === '/' ? '/' : pagePath
-    const filePath =
-      normalized === '/'
-        ? path.join(rootDir, '.output', 'public', 'index.html')
-        : path.join(rootDir, '.output', 'public', normalized, 'index.html')
+    const filePath = htmlPathForRoute(normalized)
 
     ensure(fs.existsSync(filePath), `Missing HTML file for ${normalized}: ${filePath}`)
     if (!fs.existsSync(filePath)) continue
 
     const html = fs.readFileSync(filePath, 'utf8')
-    const canonicalMatch = html.match(
-      /<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["']/i
-    )
-    const ogMatch = html.match(
-      /<meta[^>]+property=["']og:url["'][^>]+content=["']([^"']+)["']/i
-    )
-
-    const canonical = canonicalMatch?.[1]
-    const ogUrl = ogMatch?.[1]
+    const canonical = getCanonical(html)
+    const ogUrl = getMetaContent(html, 'property', 'og:url')
 
     ensure(!!canonical, `Missing canonical in ${normalized}`)
     ensure(!!ogUrl, `Missing og:url in ${normalized}`)
+    ensure(!html.includes('[object Object]'), `HTML contains [object Object] in ${normalized}`)
+    ensureUsefulMeta(html, normalized, 'name', 'description')
+    ensureUsefulMeta(html, normalized, 'property', 'og:description')
 
     if (canonical && ogUrl) {
       ensure(
@@ -102,6 +138,18 @@ if (process.env.SEO_CHECK_HTML === '1' && siteUrl && locs.length) {
         }
       }
     }
+  }
+
+  const rootHtml = fs.readFileSync(htmlPathForRoute('/'), 'utf8')
+  ensure(
+    getCanonical(rootHtml) === `${siteUrl}/`,
+    `Homepage canonical must be ${siteUrl}/`
+  )
+
+  for (const route of ['/mentions-legales/', '/portfolio/']) {
+    const html = fs.readFileSync(htmlPathForRoute(route), 'utf8')
+    const twitterCard = getMetaContent(html, 'name', 'twitter:card')
+    ensure(twitterCard === 'summary_large_image', `Missing twitter:card in ${route}`)
   }
 }
 

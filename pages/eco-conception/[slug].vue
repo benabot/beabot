@@ -369,14 +369,30 @@ const articleCanonicalUrl = canonicalUrl(
 )
 const hubCanonicalUrl = canonicalUrl(config.public.siteUrl, '/eco-conception')
 const homeCanonicalUrl = canonicalUrl(config.public.siteUrl, '/')
+const plainMetaContent = (...values) => {
+  for (const value of values) {
+    if (typeof value !== 'string') continue
+    const text = value.trim()
+    if (text) return text
+  }
+
+  return ''
+}
 const seoTitle = computed(
   () => article.value?.seo?.title || article.value?.title || '',
 )
 const seoDesc = computed(
-  () =>
-    article.value?.seo?.description ||
-    article.value?.description ||
-    `Article sur l’éco-conception web : ${article.value?.title || ''}`.trim(),
+  () => {
+    const fallback = `Article sur l’éco-conception web : ${
+      article.value?.title || ''
+    }`.trim()
+
+    return plainMetaContent(
+      article.value?.seo?.description,
+      article.value?.description,
+      fallback,
+    )
+  },
 )
 const ogImage = computed(() => {
   const image = article.value?.seo?.ogImage || article.value?.img
