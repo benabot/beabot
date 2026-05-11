@@ -6,7 +6,7 @@
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
-0. **Audit dépendances suspectes restantes** — Branche `chore/audit-unused-dependencies` prête localement le 11 mai 2026. `gray-matter` et `sass-loader` supprimés avec preuve ; `sass`, `eslint-config-prettier`, `eslint-plugin-vue` et `prettier` conservés.
+0. **Audit warnings Nuxt/Vite** — Branche `docs/nuxt-vite-warnings-audit` prête localement le 11 mai 2026. Warning sourcemap `nuxt:module-preload-polyfill` documenté, circular chunk `vendor-nuxt -> vendor-libs -> vendor-nuxt` non reproduit, aucune config build modifiée.
 1. **Merge manuel du correctif Netlify vers `dev`** — Merger `fix/netlify-eco-conception-runtime` dans `dev`, puis redéployer Netlify dev avec clear cache.
 2. **Preview Nuxt 4** — Vérifier `/eco-conception/` sur `https://dev-beabot.netlify.app/` : console sans erreur, filtres, recherche et FAQ OK ; ne pas merger vers `master` avant validation.
 3. **Recherche UI / composant orphelin** — Si `AppSearchInput.vue` doit redevenir visible, choisir une page hote et faire une verification UX dediee ; sinon documenter son statut orphelin dans un lot separe.
@@ -26,12 +26,43 @@
 4. **`fix/seo-json-ld-structured-data`** — État : fait, mergé dans `dev`. Objet : JSON-LD via `innerHTML`, homepage `WebSite`/`Organization`/`Person`, `ContactPage`, articles avec `url` canonical. Commit connu : `f48d425 fix: fiabiliser les données structurées SEO`.
 5. **`content/freelance-local-signals`** — État : fait localement, à valider/merger par Benoît. Objet : renforcer sobrement les signaux freelance/local/conversion sur homepage, contact, portfolio, éco-conception et Greenlight ; signal footer retiré après contrôle visuel. Mots-clés : freelance, mission, disponible, Lille, Compiègne, Amiens, Paris, remote, Hauts-de-France.
 6. **`chore/audit-unused-dependencies`** — État : fait localement. Objet : audit des dépendances suspectes restantes ; `gray-matter` et `sass-loader` supprimés avec preuve ; aucun `npm install` ni `npm update`.
-7. **`docs/nuxt-vite-warnings-audit`** — État : à faire plus tard. Objet : documenter les warnings Nuxt/Vite `[plugin nuxt:module-preload-polyfill] Sourcemap is likely to be incorrect` et `Circular chunk: vendor-nuxt -> vendor-libs -> vendor-nuxt`; ne pas optimiser les chunks dans cette branche.
+7. **`docs/nuxt-vite-warnings-audit`** — État : fait localement. Objet : documenter les warnings Nuxt/Vite restants sans optimiser les chunks ni modifier la configuration build.
 8. **`refactor/css-native-audit`** — État : fait localement. Objet : audit final Sass restant avant migration CSS moderne ; aucun style modifié ; rapport `migration-css-native-audit.md`.
 
 ---
 
 ## 🎯 SITUATION ACTUELLE
+
+### Audit warnings Nuxt/Vite — 11 mai 2026
+
+Branche : `docs/nuxt-vite-warnings-audit`
+
+- Périmètre :
+  - création du rapport `migration-nuxt-vite-warnings-audit.md` ;
+  - reproduction des warnings via `npm run generate` ;
+  - documentation du warning sourcemap `nuxt:module-preload-polyfill` ;
+  - vérification du warning historique `Circular chunk: vendor-nuxt -> vendor-libs -> vendor-nuxt` ;
+  - observation des sorties CSS/JS sans modification de configuration.
+- Constat :
+  - contexte observé : Nuxt `4.4.2`, Nitro/Nitropack `2.13.4`, Vite builder `7.3.2`, Vite direct `6.4.2`, Vue `3.5.33`, génération statique ;
+  - `npm run generate` réussit avec 68 routes prerendered ;
+  - warning sourcemap `nuxt:module-preload-polyfill` encore présent pendant le build client Vite ;
+  - warning circular chunk non reproduit sur l'état actuel ;
+  - `nuxt.config.ts` ne contient plus de `manualChunks`, cohérent avec le correctif runtime Netlify précédent.
+- Décisions :
+  - aucune modification de `nuxt.config.ts`, Vite, chunks, CSS/SCSS, Content, SEO, dépendances ou contenus ;
+  - warning sourcemap classé faible, impact probable limité aux sourcemaps/devtools tant qu'aucune erreur runtime n'est observée ;
+  - warning circular chunk classé historique à surveiller seulement si un futur lot touche au chunking ;
+  - futur chantier possible uniquement sur preuve : `perf/vite-chunk-audit` ou `docs/build-warnings-followup`.
+- Validations locales :
+  - `npm run generate` : OK, 68 routes prerendered ;
+  - `npm test` : OK, 49 pre-build checks, garde-fou Content et 23 tests Node ;
+  - `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK ;
+  - `node scripts/check-scss-explicit-imports.mjs` : OK, `TOTAL_DEPENDANCES_IMPLICITES=0` ;
+  - contrôles ciblés post-génération : 29 fichiers HTML publics, 26 fichiers `index.html`, sitemap 24 URLs sans `/404/`, RSS 13 items, JSON Feed 13 items, 18 fichiers CSS pour 171 523 octets et 51 fichiers JS pour 871 923 octets observés ;
+  - contrôle de périmètre : aucun fichier build/config (`nuxt.config.ts`, Vite, package manifests) modifié.
+- Risque restant :
+  - le warning sourcemap peut gêner le debugging source-map, mais aucun impact runtime local n'est constaté ; le circular chunk doit rester surveillé si un futur lot réintroduit du chunking manuel.
 
 ### Audit dépendances suspectes restantes — 11 mai 2026
 

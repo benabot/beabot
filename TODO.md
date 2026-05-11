@@ -6,7 +6,7 @@
 4. [x] **`fix/seo-json-ld-structured-data`** — fait, mergé dans `dev` ; JSON-LD via `innerHTML`, homepage `WebSite`/`Organization`/`Person`, `ContactPage`, articles avec `url` canonical ; commit `f48d425 fix: fiabiliser les données structurées SEO`
 5. [x] **`content/freelance-local-signals`** — fait localement, à valider/merger par Benoît ; renforcer sobrement les signaux freelance/local/conversion sur homepage, contact, portfolio, éco-conception et Greenlight ; signal footer retiré après contrôle visuel ; mots-clés : freelance, mission, disponible, Lille, Compiègne, Amiens, Paris, remote, Hauts-de-France
 6. [x] **`chore/audit-unused-dependencies`** — fait localement ; audit de `gray-matter`, `sass-loader` et dépendances suspectes ; `gray-matter` et `sass-loader` supprimés avec preuve ; aucun `npm install` ni `npm update`
-7. [ ] **`docs/nuxt-vite-warnings-audit`** — plus tard ; documenter les warnings Nuxt/Vite `nuxt:module-preload-polyfill` sourcemap et `Circular chunk: vendor-nuxt -> vendor-libs -> vendor-nuxt` ; ne pas optimiser les chunks ici
+7. [x] **`docs/nuxt-vite-warnings-audit`** — fait localement ; warnings Nuxt/Vite restants documentés sans optimisation de chunks ni modification de configuration build
 8. [x] **`refactor/css-native-audit`** — fait localement ; audit Sass restant avant migration CSS moderne ; aucun style modifié ; rapport `migration-css-native-audit.md`
 
 ## Phase 26 — Audit Sass restant / CSS natif (11 mai 2026)
@@ -50,6 +50,27 @@
 - [x] Valider `node scripts/check-scss-explicit-imports.mjs` : `TOTAL_DEPENDANCES_IMPLICITES=0`
 - [x] Contrôles ciblés : build Nuxt 4, compilation SCSS, `TOTAL_DEPENDANCES_IMPLICITES=0`, package-lock diff limité, SEO/sitemap/JSON-LD/trailing slash/RSS/JSON Feed sans régression ; sitemap 24 URLs sans `/404/`, RSS et JSON Feed 13 items, 27 fichiers HTML publics
 - [x] Risque restant : `node_modules` local peut afficher `gray-matter` et `sass-loader` comme `extraneous` car aucun install/prune n'est lancé ; pas de risque repo identifié
+
+## Phase 28 — Audit warnings Nuxt/Vite restants (11 mai 2026)
+
+> Branche : `docs/nuxt-vite-warnings-audit`
+
+- [x] Créer la branche depuis `dev` après intégration locale de `chore/audit-unused-dependencies`
+- [x] Lire `docs/migration/nuxt4/reports/migration-nuxt4-final-audit.md`, `migration-css-native-audit.md`, `migration-unused-dependencies-audit.md` et `docs/ressources/ressources.md`
+- [x] Reproduire la génération avec `npm run generate`
+- [x] Noter le contexte : Nuxt `4.4.2`, Nitro/Nitropack `2.13.4`, Vite builder `7.3.2`, Vite direct `6.4.2`, Vue `3.5.33`, génération statique
+- [x] Confirmer le warning sourcemap `nuxt:module-preload-polyfill`
+- [x] Confirmer que le warning `Circular chunk: vendor-nuxt -> vendor-libs -> vendor-nuxt` n'est plus reproduit sur l'état actuel
+- [x] Vérifier que `nuxt.config.ts` ne contient plus de `manualChunks`
+- [x] Produire `migration-nuxt-vite-warnings-audit.md`
+- [x] Décision : ne pas modifier `nuxt.config.ts`, Vite, chunks, CSS/SCSS, Content, SEO, dépendances ou contenus dans ce lot
+- [x] Proposer un futur chantier uniquement si mesure réelle : `perf/vite-chunk-audit` ou `docs/build-warnings-followup`
+- [x] Contrôles ciblés post-génération : 68 routes prerendered, 29 fichiers HTML publics, 26 fichiers `index.html`, sitemap 24 URLs sans `/404/`, RSS 13 items, JSON Feed 13 items, 18 fichiers CSS pour 171 523 octets, 51 fichiers JS pour 871 923 octets observés
+- [x] Valider `npm test` : 49 pre-build checks, garde-fou Content et 23 tests Node OK
+- [x] Valider `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK
+- [x] Valider `node scripts/check-scss-explicit-imports.mjs` : `TOTAL_DEPENDANCES_IMPLICITES=0`
+- [x] Vérifier qu'aucun fichier build/config n'a été modifié par erreur : seuls `PROJECT_STATE.md`, `TODO.md` et `migration-nuxt-vite-warnings-audit.md` sont modifiés
+- [x] Risque restant : warning sourcemap à surveiller si impact debugging, circular chunk à surveiller uniquement si futur chunking manuel
 
 ## Phase 25 — Signaux freelance/local sobres (11 mai 2026)
 
