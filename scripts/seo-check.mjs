@@ -37,6 +37,8 @@ const getCanonical = (html) =>
   getAttr(findTag(html, 'link', 'rel', 'canonical'), 'href')
 
 const getTitle = (html) => html.match(/<title>(.*?)<\/title>/i)?.[1]?.trim() || ''
+const staticUrlPattern =
+  /\.(?:avif|css|gif|ico|jpe?g|js|json|map|mjs|pdf|png|svg|txt|wasm|webmanifest|webp|xml|zip)(?:[?#]|$)/i
 
 const jsonLdPattern =
   /<script\b(?=[^>]*\btype=(["'])application\/ld\+json\1)[^>]*>([\s\S]*?)<\/script>/gi
@@ -87,6 +89,50 @@ const getStructuredDataNodes = (html, route) => {
   }
 
   return nodes
+}
+
+const isStaticOrAssetUrl = (value) =>
+  value.startsWith('/_nuxt/') || staticUrlPattern.test(value)
+
+const ensureInternalUrlsUseTrailingSlash = (html, route) => {
+  const matches = html.matchAll(/\b(?:action|href|src)=(["'])(.*?)\1/gi)
+
+  for (const match of matches) {
+    const value = match[2]
+
+    if (
+      !value ||
+      value.startsWith('#') ||
+      value.startsWith('?') ||
+      value.startsWith('//') ||
+      (/^[a-z][a-z0-9+.-]*:/i.test(value) && !value.startsWith(siteUrl))
+    ) {
+      continue
+    }
+
+    if (isStaticOrAssetUrl(value)) continue
+
+    if (value.startsWith(siteUrl)) {
+      const suffix = value.slice(siteUrl.length)
+      const pathPart = suffix.match(/^([^?#]*)/)?.[1] || ''
+
+      ensure(value !== siteUrl, `Root URL must keep trailing slash in ${route}: ${value}`)
+      ensure(
+        pathPart === '' || pathPart === '/' || pathPart.endsWith('/'),
+        `Internal absolute URL missing trailing slash in ${route}: ${value}`
+      )
+      continue
+    }
+
+    if (value.startsWith('/')) {
+      const pathPart = value.match(/^([^?#]*)/)?.[1] || ''
+
+      ensure(
+        pathPart === '/' || pathPart.endsWith('/'),
+        `Internal URL missing trailing slash in ${route}: ${value}`
+      )
+    }
+  }
 }
 
 const ensureUsefulTitle = (html, route) => {
@@ -186,6 +232,7 @@ if (process.env.SEO_CHECK_HTML === '1' && siteUrl && locs.length) {
     ensureUsefulTitle(html, normalized)
     ensureUsefulMeta(html, normalized, 'name', 'description')
     ensureUsefulMeta(html, normalized, 'property', 'og:description')
+    ensureInternalUrlsUseTrailingSlash(html, normalized)
     const structuredDataNodes = getStructuredDataNodes(html, normalized)
 
     if (canonical && ogUrl) {

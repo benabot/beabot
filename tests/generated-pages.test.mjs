@@ -3,6 +3,7 @@ import test from 'node:test'
 
 import {
   assertSeoTags,
+  assertInternalUrlsUseTrailingSlash,
   getMetaContent,
   getStructuredDataNodes,
   nodeHasType,
@@ -44,6 +45,7 @@ for (const page of pages) {
     const html = readGeneratedHtml(t, page.route)
 
     assertSeoTags(html, page.expectedUrl)
+    assertInternalUrlsUseTrailingSlash(html, page.route)
     const structuredDataNodes = getStructuredDataNodes(html)
 
     for (const node of structuredDataNodes) {

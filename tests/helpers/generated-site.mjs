@@ -4,6 +4,8 @@ import { join } from 'node:path'
 
 export const siteUrl = 'https://beabot.fr'
 export const publicDir = join(process.cwd(), '.output', 'public')
+const staticFilePattern =
+  /\.(?:avif|css|gif|ico|jpe?g|js|json|map|mjs|pdf|png|svg|txt|wasm|webmanifest|webp|xml|zip)(?:[?#]|$)/i
 
 export function ensureGeneratedSite(t) {
   if (!existsSync(join(publicDir, 'index.html'))) {
@@ -100,6 +102,54 @@ export function getStructuredDataNodes(html) {
 export function nodeHasType(node, type) {
   const nodeType = node?.['@type']
   return Array.isArray(nodeType) ? nodeType.includes(type) : nodeType === type
+}
+
+export function getHtmlUrlAttributes(html) {
+  return Array.from(
+    html.matchAll(/\b(?:action|href|src)=(["'])(.*?)\1/gi),
+    (match) => match[2],
+  )
+}
+
+export function isStaticOrAssetUrl(value) {
+  return value.startsWith('/_nuxt/') || staticFilePattern.test(value)
+}
+
+export function assertInternalUrlsUseTrailingSlash(html, route) {
+  for (const value of getHtmlUrlAttributes(html)) {
+    if (
+      !value ||
+      value.startsWith('#') ||
+      value.startsWith('?') ||
+      value.startsWith('//') ||
+      (/^[a-z][a-z0-9+.-]*:/i.test(value) && !value.startsWith(siteUrl))
+    ) {
+      continue
+    }
+
+    if (isStaticOrAssetUrl(value)) continue
+
+    if (value.startsWith(siteUrl)) {
+      const suffix = value.slice(siteUrl.length)
+      const pathPart = suffix.match(/^([^?#]*)/)?.[1] || ''
+
+      assert.notEqual(value, siteUrl, `Root URL should keep trailing slash in ${route}`)
+      assert.ok(
+        pathPart === '' || pathPart === '/' || pathPart.endsWith('/'),
+        `Internal absolute URL should keep trailing slash in ${route}: ${value}`,
+      )
+      continue
+    }
+
+    if (value.startsWith('/')) {
+      const pathPart = value.match(/^([^?#]*)/)?.[1] || ''
+
+      assert.ok(
+        pathPart === '/' || pathPart.endsWith('/'),
+        `Internal URL should keep trailing slash in ${route}: ${value}`,
+      )
+    }
+  }
 }
 
 export function assertCleanHtml(html) {

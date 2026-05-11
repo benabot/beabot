@@ -6,9 +6,7 @@
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
-0. **Fiabilisation JSON-LD SEO** — Branche `fix/seo-json-ld-structured-data` prête pour validation preview après merge manuel par Benoît. Le rendu `application/ld+json` passe par `innerHTML`, car `children` peut produire un attribut non parsable au lieu d'un vrai contenu de script.
-0. **Uniformisation SEO titles/descriptions** — Branche `fix/seo-title-description-patterns` créée depuis `dev` le 11 mai 2026, après intégration locale du correctif SEO technique. Pattern cible : `Titre | BeAbot`, sans entités HTML visibles dans les titles générés ; descriptions ciblées ramenées dans une plage lisible et `og:description` alignées sur les pages corrigées.
-0. **Stabilisation SEO technique critique** — Branche `fix/seo-technical-cleanup` créée depuis `dev` le 11 mai 2026. Correctifs ciblés : canonical home vérifiée avec slash final, descriptions HTML ciblées contrôlées, garde-fou `[object Object]`, `/404/` exclu du sitemap et redirection Netlify `/404`/`/404/` vers `/404.html` en statut 404. Ne pas pousser ni merger ; Benoît valide en preview.
+0. **Trailing slashes internes** — Branche `fix/internal-url-trailing-slashes` créée depuis `dev` le 11 mai 2026, après intégration locale de `fix/seo-technical-cleanup`, `fix/seo-title-description-patterns` et `fix/seo-json-ld-structured-data`. Objectif : normaliser les liens HTML internes avec slash final, sans casser fichiers statiques, ancres, query strings, liens externes, feeds ni JSON-LD.
 1. **Merge manuel du correctif Netlify vers `dev`** — Merger `fix/netlify-eco-conception-runtime` dans `dev`, puis redéployer Netlify dev avec clear cache.
 2. **Preview Nuxt 4** — Vérifier `/eco-conception/` sur `https://dev-beabot.netlify.app/` : console sans erreur, filtres, recherche et FAQ OK ; ne pas merger vers `master` avant validation.
 3. **Recherche UI / composant orphelin** — Si `AppSearchInput.vue` doit redevenir visible, choisir une page hote et faire une verification UX dediee ; sinon documenter son statut orphelin dans un lot separe.
@@ -20,7 +18,41 @@
 
 ---
 
+## 🧭 BACKLOG FINAL AVANT MASTER
+
+1. **`fix/seo-technical-cleanup`** — État : fait, mergé dans `dev`. Objet : canonical homepage, meta descriptions critiques, `/404/` sitemap/statut, `twitter:card` simple. Commit connu : `ea6d884 fix: corriger les métadonnées SEO techniques critiques`.
+2. **`fix/seo-title-description-patterns`** — État : fait, mergé dans `dev`. Objet : pattern `Titre | BeAbot`, entités HTML, descriptions ciblées. Commit connu : `3a17826 fix: uniformiser titles et descriptions SEO`.
+3. **`fix/internal-url-trailing-slashes`** — État : en cours. Objet : vérifier et normaliser les URLs internes HTML avec slash final, sans casser fichiers statiques, ancres, query strings, liens externes, `mailto:`, `tel:`, sitemap, RSS et JSON Feed.
+4. **`fix/seo-json-ld-structured-data`** — État : fait, mergé dans `dev`. Objet : JSON-LD via `innerHTML`, homepage `WebSite`/`Organization`/`Person`, `ContactPage`, articles avec `url` canonical. Commit connu : `f48d425 fix: fiabiliser les données structurées SEO`.
+5. **`content/freelance-local-signals`** — État : à faire après la stabilisation SEO technique. Objet : renforcer sobrement les signaux freelance/local/conversion sur homepage, contact, portfolio, éco-conception, Greenlight et footer. Mots-clés : freelance, mission, disponible, Lille, Compiègne, Amiens, Paris, remote, Hauts-de-France.
+6. **`chore/audit-unused-dependencies`** — État : à faire dans une branche séparée. Objet : auditer `gray-matter`, `sass-loader` et dépendances suspectes ; ne supprimer qu'avec preuve ; ne pas lancer `npm install` ni `npm update`.
+7. **`docs/nuxt-vite-warnings-audit`** — État : à faire plus tard. Objet : documenter les warnings Nuxt/Vite `[plugin nuxt:module-preload-polyfill] Sourcemap is likely to be incorrect` et `Circular chunk: vendor-nuxt -> vendor-libs -> vendor-nuxt`; ne pas optimiser les chunks dans cette branche.
+8. **`refactor/css-native-audit`** — État : à faire après les chantiers SEO/contenu prioritaires. Objet : audit final Sass restant avant migration CSS moderne ; ne modifier aucun style dans ce lot ; produire `migration-css-native-audit.md`.
+
+---
+
 ## 🎯 SITUATION ACTUELLE
+
+### Trailing slashes internes — 11 mai 2026
+
+Branche : `fix/internal-url-trailing-slashes`
+
+- Périmètre en cours :
+  - helpers `canonicalUrl`, `absoluteUrl`, `withTrailingSlash` et `normalizeInternalHref` audités ;
+  - exceptions fichiers renforcées pour ne pas ajouter de slash aux fichiers statiques, images modernes, manifest, robots, assets Nuxt et archive Greenlight ;
+  - `AppLink` conserve le slash final quand un lien interne est rendu en `<a>` natif pour un nouvel onglet ;
+  - liens Markdown internes de `wordpress-eco-conception.md` normalisés avec slash final ;
+  - `seo-check` et les tests HTML générés renforcés sur les attributs `href`, `src` et `action`.
+- Décisions :
+  - les corrections portent uniquement sur les URLs, pas sur le wording éditorial, les titles/descriptions, le JSON-LD métier, le SCSS, les dépendances, les chunks ou Netlify ;
+  - les fichiers statiques, feeds, assets Nuxt, ancres, query strings, liens externes, `mailto:` et `tel:` restent des exceptions explicites.
+- Validations locales :
+  - `npm test` : OK, 49 pre-build checks, garde-fou Content et 23 tests Node ;
+  - `npm run generate` : OK, 68 routes prerendered ;
+  - `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK ;
+  - contrôles ciblés post-génération : liens internes HTML vérifiés sur 27 fichiers HTML, fichiers statiques sans slash ajouté, ancres conservées, liens externes conservés, aucun `mailto:`/`tel:` généré et cas couverts par tests unitaires, sitemap 24 routes avec slash final et sans `/404/`, RSS et JSON Feed valides, JSON-LD cohérent avec canonical articles/home/contact, canonical home `https://beabot.fr/`, titles/descriptions sans régression et aucun `[object Object]`.
+- Risque restant :
+  - aucun risque local identifié ; validation preview Netlify à faire après merge manuel par Benoît.
 
 ### Fiabilisation JSON-LD SEO — 11 mai 2026
 

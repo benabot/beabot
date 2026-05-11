@@ -1,3 +1,32 @@
+## Backlog final avant master (11 mai 2026)
+
+1. [x] **`fix/seo-technical-cleanup`** — fait, mergé dans `dev` ; canonical homepage, meta descriptions critiques, `/404/` sitemap/statut, `twitter:card` simple ; commit `ea6d884 fix: corriger les métadonnées SEO techniques critiques`
+2. [x] **`fix/seo-title-description-patterns`** — fait, mergé dans `dev` ; pattern `Titre | BeAbot`, entités HTML, descriptions ciblées ; commit `3a17826 fix: uniformiser titles et descriptions SEO`
+3. [x] **`fix/internal-url-trailing-slashes`** — fait localement, à valider/merger par Benoît ; URLs internes HTML normalisées avec slash final, sans casser fichiers statiques, ancres, query strings, liens externes, `mailto:`, `tel:`, sitemap, RSS et JSON Feed
+4. [x] **`fix/seo-json-ld-structured-data`** — fait, mergé dans `dev` ; JSON-LD via `innerHTML`, homepage `WebSite`/`Organization`/`Person`, `ContactPage`, articles avec `url` canonical ; commit `f48d425 fix: fiabiliser les données structurées SEO`
+5. [ ] **`content/freelance-local-signals`** — à faire après stabilisation SEO technique ; renforcer sobrement les signaux freelance/local/conversion sur homepage, contact, portfolio, éco-conception, Greenlight et footer avec : freelance, mission, disponible, Lille, Compiègne, Amiens, Paris, remote, Hauts-de-France
+6. [ ] **`chore/audit-unused-dependencies`** — branche séparée ; auditer `gray-matter`, `sass-loader` et dépendances suspectes ; ne supprimer qu'avec preuve ; ne pas lancer `npm install` ni `npm update`
+7. [ ] **`docs/nuxt-vite-warnings-audit`** — plus tard ; documenter les warnings Nuxt/Vite `nuxt:module-preload-polyfill` sourcemap et `Circular chunk: vendor-nuxt -> vendor-libs -> vendor-nuxt` ; ne pas optimiser les chunks ici
+8. [ ] **`refactor/css-native-audit`** — après les chantiers SEO/contenu prioritaires ; auditer le Sass restant avant migration CSS moderne ; ne modifier aucun style ; produire `migration-css-native-audit.md`
+
+## Phase 24 — URLs internes avec slash final (11 mai 2026)
+
+> Branche : `fix/internal-url-trailing-slashes`
+
+- [x] Créer la branche depuis `dev` après merge local des lots SEO prérequis
+- [x] Auditer `canonicalUrl`, `absoluteUrl`, `withTrailingSlash` et `normalizeInternalHref`
+- [x] Renforcer les exceptions fichiers de `normalizeInternalHref` : manifest, robots, images modernes, assets Nuxt, map/wasm et archive zip
+- [x] Préserver les ancres, query strings, liens externes, `mailto:` et `tel:`
+- [x] Corriger `AppLink` pour préserver le slash final des liens internes rendus en nouvel onglet
+- [x] Normaliser les liens Markdown internes sans slash final dans `wordpress-eco-conception.md`
+- [x] Normaliser l'action du formulaire contact vers `/contact/`
+- [x] Renforcer les tests `seo-url`, `app-link`, `generated-pages` et `scripts/seo-check.mjs`
+- [x] Valider `npm test` : 49 pre-build checks, garde-fou Content et 23 tests Node OK
+- [x] Valider `npm run generate` : 68 routes prerendered
+- [x] Valider `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK
+- [x] Contrôles ciblés post-génération : liens internes HTML vérifiés sur 27 fichiers HTML, fichiers statiques sans slash ajouté, ancres conservées, liens externes conservés, aucun `mailto:`/`tel:` généré et cas couverts par tests unitaires, sitemap 24 routes avec slash final et sans `/404/`, RSS, JSON Feed, JSON-LD et non-régressions SEO OK
+- [x] Risque restant : aucun risque local identifié ; validation preview Netlify à faire après merge manuel par Benoît
+
 ## Phase 23 — Données structurées JSON-LD minimales (11 mai 2026)
 
 > Branche : `fix/seo-json-ld-structured-data`

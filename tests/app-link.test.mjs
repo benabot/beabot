@@ -27,6 +27,7 @@ test('AppLink compiles with a NuxtLink, slot, and forwarded attributes', () => {
 
   const script = compileScript(descriptor, { id: 'app-link-test' })
   assert.match(script.content, /normalizedTo/)
+  assert.match(script.content, /shouldRenderNativeAnchor/)
   assert.match(script.content, /useAttrs/)
 
   const template = compileTemplate({
@@ -38,6 +39,7 @@ test('AppLink compiles with a NuxtLink, slot, and forwarded attributes', () => {
   assert.deepEqual(template.errors, [])
   assert.match(template.code, /NuxtLink/)
   assert.match(template.code, /normalizedTo/)
+  assert.match(template.code, /normalizedHref/)
   assert.match(template.code, /renderSlot/)
   assert.match(source, /v-bind="attrs"/)
 })
@@ -64,7 +66,14 @@ test('AppLink leaves external, special, and file hrefs unchanged', () => {
     '/documents/cv.pdf',
     '/sitemap.xml',
     '/feed.json',
+    '/robots.txt',
+    '/site.webmanifest',
+    '/favicon.ico',
+    '/_nuxt/entry.css',
+    '/_nuxt/app.js',
     '/img/photo.webp',
+    '/img/photo.avif',
+    '/greenlight-free-v1.0.0.zip',
   ]) {
     assert.equal(normalizeAppLinkTo(href), href)
   }

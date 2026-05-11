@@ -66,10 +66,20 @@ test('normalizeInternalHref preserves static assets and feed files', () => {
     '/documents/cv.pdf',
     '/sitemap.xml',
     '/feed.json',
+    '/site.webmanifest',
+    '/robots.txt',
     '/img/article-cover.webp',
+    '/img/article-cover.avif',
     '/img/photo.png',
     '/img/photo.jpg',
+    '/favicon.ico',
     '/favicon.svg',
+    '/_nuxt/entry.css',
+    '/_nuxt/app.js',
+    '/_nuxt/sqlite3.wasm',
+    '/greenlight-free-v1.0.0.zip',
+    '/feed.json?cache=1',
+    '/robots.txt#top',
   ]) {
     assert.equal(normalizeInternalHref(href), href)
   }
