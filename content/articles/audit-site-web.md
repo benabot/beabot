@@ -1,5 +1,5 @@
 ---
-title: "Audit de site web : ce que j'analyse et ce que ça coûte"
+title: "Audit de site web : ce que j’analyse et ce que ça coûte"
 chapo: "Un audit, c'est une radiographie. Pas une liste de reproches. Voici ce que j'examine et pourquoi ça change quelque chose."
 description: "Ce qu'un audit de site web comprend : performance, SEO, éco-conception, accessibilité. Méthode et tarif d'un développeur web freelance."
 seo:

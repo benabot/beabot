@@ -1,6 +1,0 @@
-    5557 assets/css/main.scss
-    4864 assets/css/article-content.scss
-    3265 assets/css/vars/_spacing.scss
-    3220 assets/css/vars/_typo.scss
-     657 assets/css/vars/_colors.scss
-     304 assets/css/mixins/_mixins.scss

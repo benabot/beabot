@@ -374,21 +374,23 @@ useHead({
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify(breadcrumbSchema),
+      innerHTML: JSON.stringify(breadcrumbSchema),
     },
     {
       type: 'application/ld+json',
-      children: JSON.stringify(faqSchema),
+      innerHTML: JSON.stringify(faqSchema),
     },
     {
       type: 'application/ld+json',
-      children: JSON.stringify(softwareApplicationSchema),
+      innerHTML: JSON.stringify(softwareApplicationSchema),
     },
   ],
 })
 </script>
 
 <style lang="scss" scoped>
+@use "~/assets/css/vars/_colors.scss" as *;
+@use "~/assets/css/vars/_typo.scss" as *;
 .app-page {
   padding: clamp(2rem, 5vw, 3.5rem) 5% 5rem;
 

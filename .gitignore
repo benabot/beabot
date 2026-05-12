@@ -98,3 +98,10 @@ sw.*
 yarn.lock
 .gitignore
 node_modules
+
+# Nuxt generated artifacts
+.nuxt/
+.output/
+
+# Nuxt Content local data
+.data/

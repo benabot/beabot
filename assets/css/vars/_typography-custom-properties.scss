@@ -1,0 +1,9 @@
+@use './typo' as *;
+
+:root {
+  --font-weight-light: #{$font-weight-light-raw};
+  --font-weight-normal: #{$font-weight-normal-raw};
+  --font-weight-bold: #{$font-weight-bold-raw};
+  --font-weight-black: #{$font-weight-black-raw};
+  --font-size-base: #{$type-base-size-raw};
+}

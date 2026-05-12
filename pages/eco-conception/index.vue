@@ -267,6 +267,24 @@
               <AppLink class="eco-link eco-link--compact" to="/portfolio/">
                 Voir mes réalisations
               </AppLink>
+              <AppLink
+                class="eco-link eco-link--compact"
+                to="/eco-conception/audit-site-web/"
+              >
+                Préparer un audit
+              </AppLink>
+              <AppLink
+                class="eco-link eco-link--compact"
+                to="/eco-conception/refonte-site-eco-concu/"
+              >
+                Préparer une refonte
+              </AppLink>
+              <AppLink
+                class="eco-link eco-link--compact"
+                to="/eco-conception/wordpress-freelance-lille/"
+              >
+                Choisir un freelance WordPress
+              </AppLink>
               <AppLink class="eco-link eco-link--compact" to="/greenlight/">
                 Découvrir Greenlight
               </AppLink>
@@ -277,7 +295,7 @@
         <div class="eco-featured-grid">
           <article
             v-for="article in featuredArticles"
-            :key="article._path"
+            :key="article.path"
             class="eco-resource-card"
           >
             <p class="eco-resource-card__meta">
@@ -371,11 +389,11 @@
           <div class="eco-archive-grid">
             <article
               v-for="article in filteredArticles"
-              :key="article._path"
+              :key="article.path"
               class="eco-archive-card"
             >
               <p class="eco-archive-card__meta">
-                {{ formatDate((article.updatedAt && article.updatedAt > (article.date ?? '')) ? article.updatedAt : article.date) }}
+                {{ formatDate(displayDate(article)) }}
               </p>
               <h3>
                 <AppLink :to="articleLink(article)">
@@ -387,7 +405,7 @@
                 <div class="eco-tag-list" aria-label="Tags de l’article">
                   <span
                     v-for="tag in articlePreviewTags(article)"
-                    :key="`${article._path}-${tag}`"
+                    :key="`${article.path}-${tag}`"
                     class="eco-tag"
                   >
                     {{ tag }}
@@ -496,14 +514,20 @@
             Un projet web à éco-concevoir ? Je suis disponible.
           </h2>
           <p class="eco-final__text">
-            Développeur web freelance à Lille — je conçois et développe des
-            sites WordPress et Nuxt éco-conçus, et j’interviens sur des audits
-            de performance et d’empreinte numérique. Disponible en Hauts-de-France
-            et en remote.
+            Vous cherchez un développeur qui applique ces principes à un site
+            WordPress ou Nuxt ? Basé à Lille, j’interviens sur des audits, des
+            refontes et des développements web sobres en Hauts-de-France et en
+            remote.
           </p>
           <div class="eco-actions eco-actions--centered">
             <AppLink class="eco-button eco-button--primary" to="/contact/">
               Discutons de votre projet
+            </AppLink>
+            <AppLink
+              class="eco-button eco-button--ghost"
+              to="/eco-conception/audit-site-web/"
+            >
+              Voir l’audit de site web
             </AppLink>
             <AppLink class="eco-button eco-button--ghost" to="/portfolio/">
               Voir mes réalisations
@@ -522,15 +546,18 @@ import { canonicalUrl, withTrailingSlash } from '~/utils/seo-url'
 type EcoArticle = {
   title?: string
   description?: string
-  tag?: string[]
-  _path?: string
-  date?: string
-  updatedAt?: string
+  tag?: string[] | string | null
+  path?: string
+  date?: string | Date
+  updatedAt?: string | Date
 }
+
+type ContentNode = unknown
 
 type FaqArticle = EcoArticle & {
   body?: {
-    children?: any[]
+    children?: ContentNode[]
+    value?: ContentNode[]
   }
 }
 
@@ -636,29 +663,32 @@ const benefits = [
 ] as const
 
 const featuredResourcePaths = [
-  '/articles/audit-eco-conception',
-  '/articles/wordpress-eco-conception',
-  '/articles/theme-wordpress-eco-conception',
+  '/eco-conception/audit-eco-conception',
+  '/eco-conception/wordpress-eco-conception',
+  '/eco-conception/theme-wordpress-eco-conception',
 ] as const
 
 const config = useRuntimeConfig()
 const pageUrl = canonicalUrl(config.public.siteUrl, '/eco-conception')
-const pageTitle = 'Éco-conception web — performance, accessibilité et sobriété'
+const pageTitle = 'Éco-conception web : méthode et ressources'
 const pageDescription =
   'Page pilier sur l’éco-conception web : impacts du numérique, principes, bénéfices concrets, ressources éditoriales, FAQ et liens vers les réalisations BeAbot.'
 
 const { data: articles } = await useAsyncData<EcoArticle[]>(
   'eco-pillar-articles',
   () =>
-    queryContent('articles')
-      .only(['title', 'description', 'tag', '_path', 'date', 'updatedAt'])
-      .sort({ date: -1 })
-      .find(),
+    queryCollection('articles')
+      .select('title', 'description', 'tag', 'path', 'date', 'updatedAt')
+      .order('date', 'DESC')
+      .all(),
 )
 
 const { data: faqArticle } = await useAsyncData<FaqArticle | null>(
   'eco-pillar-faq',
-  () => queryContent('articles', 'faq-eco-conception').findOne(),
+  () =>
+    queryCollection('articles')
+      .path('/eco-conception/faq-eco-conception')
+      .first(),
 )
 
 useSeoMeta({
@@ -682,10 +712,8 @@ const searchQuery = ref('')
 const allArticles = computed(() => articles.value || [])
 
 function articleLink(article: EcoArticle) {
-  if (!article || !article._path) return '/eco-conception/'
-  return withTrailingSlash(
-    article._path.replace(/^\/articles\//, '/eco-conception/'),
-  )
+  if (!article || !article.path) return '/eco-conception/'
+  return withTrailingSlash(article.path)
 }
 
 function normalizeSearchText(value = '') {
@@ -713,8 +741,16 @@ function normalizeTagLabel(tag = '') {
   return tag.trim()
 }
 
+function articleTags(article: EcoArticle) {
+  const rawTags = article.tag
+
+  if (Array.isArray(rawTags)) return rawTags
+  if (typeof rawTags === 'string') return [rawTags]
+  return []
+}
+
 function articlePreviewTags(article: EcoArticle) {
-  return (article.tag || [])
+  return articleTags(article)
     .map((tag) => normalizeTagLabel(tag))
     .filter(Boolean)
 }
@@ -758,7 +794,7 @@ const availableTags = computed(() => {
 
 const featuredArticles = computed(() =>
   featuredResourcePaths.flatMap((path) => {
-    const article = allArticles.value.find((entry) => entry._path === path)
+    const article = allArticles.value.find((entry) => entry.path === path)
     return article ? [article] : []
   }),
 )
@@ -774,7 +810,7 @@ const filteredArticles = computed(() => {
     if (!query) return true
 
     const haystack = normalizeSearchText(
-      [article.title, article.description, ...(article.tag || [])]
+      [article.title, article.description, ...articlePreviewTags(article)]
         .filter(Boolean)
         .join(' '),
     )
@@ -797,7 +833,7 @@ watch(
   { immediate: true },
 )
 
-function formatDate(date?: string) {
+function formatDate(date?: string | Date) {
   if (!date) return ''
   return new Date(date).toLocaleDateString('fr-FR', {
     day: 'numeric',
@@ -806,30 +842,87 @@ function formatDate(date?: string) {
   })
 }
 
-function getTagName(node: any) {
-  return node?.tag || node?.tagName || node?.name || ''
+function displayDate(article: EcoArticle) {
+  if (!article.updatedAt || !article.date) return article.updatedAt || article.date
+  return new Date(article.updatedAt) > new Date(article.date)
+    ? article.updatedAt
+    : article.date
 }
 
-function isHeading(node: any, level: number) {
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value)
+}
+
+function getTagName(node: ContentNode) {
+  if (Array.isArray(node) && typeof node[0] === 'string') return node[0]
+
+  if (!isRecord(node)) return ''
+
+  const tagName = node.tag || node.tagName || node.name
+  return typeof tagName === 'string' ? tagName : ''
+}
+
+function getNodeChildren(node: ContentNode): ContentNode[] {
+  if (!Array.isArray(node)) {
+    return isRecord(node) && Array.isArray(node.children) ? node.children : []
+  }
+
+  const [, maybeProps, ...children] = node
+  const hasProps = isRecord(maybeProps)
+
+  return hasProps ? children : node.slice(1)
+}
+
+function getNodeProps(node: ContentNode): Record<string, unknown> {
+  if (!Array.isArray(node)) {
+    return isRecord(node) && isRecord(node.props) ? node.props : {}
+  }
+
+  const maybeProps = node[1]
+  if (isRecord(maybeProps)) {
+    return maybeProps
+  }
+
+  return {}
+}
+
+function isHeading(node: ContentNode, level: number) {
   const tagName = getTagName(node)
   if (tagName === `h${level}`) return true
-  return node?.type === 'heading' && node?.depth === level
+  return isRecord(node) && node.type === 'heading' && node.depth === level
 }
 
-function extractPlainText(node: any): string {
+function extractPlainText(node: ContentNode): string {
   if (!node) return ''
   if (typeof node === 'string') return node
 
   if (Array.isArray(node)) {
-    return node.map((child) => extractPlainText(child)).join('')
+    const tagName = getTagName(node)
+    const childText = getNodeChildren(node).map((child) =>
+      extractPlainText(child),
+    )
+
+    if (tagName === 'br') return '\n'
+    if (tagName === 'p' || tagName === 'li') return childText.join('').trim()
+    if (tagName === 'ul' || tagName === 'ol') {
+      return childText
+        .map((item: string) => item.trim())
+        .filter(Boolean)
+        .join('\n')
+    }
+
+    return childText.join('')
   }
 
-  if (node.type === 'text') return node.value || ''
+  if (!isRecord(node)) return ''
+  if (node.type === 'text') {
+    return typeof node.value === 'string' ? node.value : ''
+  }
   if (node.type === 'comment') return ''
 
   const tagName = getTagName(node)
-  const children = node.children || []
-  const childText = children.map((child: any) => extractPlainText(child))
+  const children = getNodeChildren(node)
+  const childText = children.map((child) => extractPlainText(child))
 
   if (tagName === 'br') return '\n'
   if (tagName === 'p' || tagName === 'li') return childText.join('').trim()
@@ -847,12 +940,13 @@ function normalizeHeadingText(text: string) {
   return normalizeSearchText(text)
 }
 
-function shouldIgnoreNode(node: any) {
+function shouldIgnoreNode(node: ContentNode) {
   const tagName = getTagName(node)
   if (tagName === 'nav') return true
 
-  const className = node?.props?.class || ''
-  const id = node?.props?.id || ''
+  const props = getNodeProps(node)
+  const className = props.class || ''
+  const id = props.id || ''
 
   return (
     (typeof className === 'string' && className.includes('toc')) ||
@@ -870,7 +964,7 @@ const skippedFaqHeadings = new Set([
   'ressources',
 ])
 
-function buildFaqItems(bodyChildren: any[]) {
+function buildFaqItems(bodyChildren: ContentNode[]) {
   const items: Array<{ q: string; a: string }> = []
   let currentQuestion = ''
   let currentAnswerParts: string[] = []
@@ -927,8 +1021,16 @@ function buildFaqItems(bodyChildren: any[]) {
   return items
 }
 
+function faqBodyChildren(article?: FaqArticle | null) {
+  const body = article?.body
+  if (!body) return []
+  if (Array.isArray(body.value)) return body.value
+  if (Array.isArray(body.children)) return body.children
+  return []
+}
+
 const faqPreviewItems = computed(() =>
-  buildFaqItems(faqArticle.value?.body?.children || []).slice(0, 4),
+  buildFaqItems(faqBodyChildren(faqArticle.value)).slice(0, 4),
 )
 
 function faqAnswerParagraphs(answer: string) {
@@ -988,12 +1090,12 @@ useHead(() => {
   }
 
   return {
-    titleTemplate: '%s',
+    titleTemplate: '%s | BeAbot',
     link: [{ rel: 'canonical', href: pageUrl }],
     script: [
       {
         type: 'application/ld+json',
-        children: JSON.stringify({
+        innerHTML: JSON.stringify({
           '@context': 'https://schema.org',
           '@graph': graph,
         }),
@@ -1005,6 +1107,8 @@ useHead(() => {
 
 <style lang="scss" scoped>
 @use 'sass:color';
+@use "~/assets/css/vars/_colors.scss" as *;
+@use "~/assets/css/vars/_typo.scss" as *;
 
 .eco-pillar {
   --surface: #f3f1ea;
@@ -1232,7 +1336,7 @@ useHead(() => {
 }
 
 .eco-title span {
-  color: color.adjust($vert, $lightness: 6%);
+  color: color.adjust($vert-raw, $lightness: 6%);
 }
 
 .eco-section__title,
@@ -1306,7 +1410,7 @@ useHead(() => {
 .eco-button--primary {
   background: linear-gradient(
     135deg,
-    color.adjust($vert, $lightness: 14%),
+    color.adjust($vert-raw, $lightness: 14%),
     $vert 72%
   );
   color: $gris1;
@@ -1474,7 +1578,7 @@ useHead(() => {
   height: 0.25rem;
   background: linear-gradient(
     90deg,
-    color.adjust($vert, $lightness: 8%),
+    color.adjust($vert-raw, $lightness: 8%),
     rgba(4, 57, 217, 0.42),
     rgba(242, 168, 29, 0.34)
   );
@@ -1646,7 +1750,7 @@ useHead(() => {
   font-size: clamp(1.8rem, 4vw, 2.6rem);
   line-height: 0.95;
   letter-spacing: -0.05em;
-  color: color.adjust($vert, $lightness: 2%);
+  color: color.adjust($vert-raw, $lightness: 2%);
 }
 
 .eco-impact-card h3,
@@ -1757,7 +1861,7 @@ useHead(() => {
   width: 2rem;
   height: 0.35rem;
   border-radius: 999px;
-  background: color.adjust($vert, $lightness: 4%);
+  background: color.adjust($vert-raw, $lightness: 4%);
 }
 
 .eco-benefit-card:nth-child(2),
@@ -1800,7 +1904,7 @@ useHead(() => {
 }
 
 .eco-section--dark .eco-impact-card__value {
-  color: color.adjust($vert, $lightness: 10%);
+  color: color.adjust($vert-raw, $lightness: 10%);
 }
 
 .eco-featured-grid {
@@ -1989,7 +2093,7 @@ useHead(() => {
 
 .eco-filter--active {
   background: rgba(0, 168, 62, 0.12);
-  color: color.adjust($vert, $lightness: -6%);
+  color: color.adjust($vert-raw, $lightness: -6%);
 }
 
 .eco-filter--active span {
@@ -2127,7 +2231,7 @@ useHead(() => {
   top: 50%;
   right: 1.25rem;
   transform: translateY(-50%);
-  color: color.adjust($vert, $lightness: -2%);
+  color: color.adjust($vert-raw, $lightness: -2%);
   font-size: 1.3rem;
   line-height: 1;
 }
@@ -2236,7 +2340,7 @@ a:focus-visible,
 button:focus-visible,
 summary:focus-visible,
 input:focus-visible {
-  outline: 2px solid color.adjust($vert, $lightness: 8%);
+  outline: 2px solid color.adjust($vert-raw, $lightness: 8%);
   outline-offset: 4px;
 }
 

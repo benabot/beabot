@@ -4,6 +4,8 @@ import { join } from 'node:path'
 
 export const siteUrl = 'https://beabot.fr'
 export const publicDir = join(process.cwd(), '.output', 'public')
+const staticFilePattern =
+  /\.(?:avif|css|gif|ico|jpe?g|js|json|map|mjs|pdf|png|svg|txt|wasm|webmanifest|webp|xml|zip)(?:[?#]|$)/i
 
 export function ensureGeneratedSite(t) {
   if (!existsSync(join(publicDir, 'index.html'))) {
@@ -31,8 +33,8 @@ export function readGeneratedText(t, filename) {
 }
 
 export function getAttr(tag, attr) {
-  const match = tag.match(new RegExp(`${attr}=["']([^"']*)["']`, 'i'))
-  return match?.[1] || ''
+  const match = tag.match(new RegExp(`${attr}=(["'])(.*?)\\1`, 'i'))
+  return match?.[2] || ''
 }
 
 export function findTag(html, tagName, attrName, attrValue) {
@@ -54,6 +56,102 @@ export function getCanonical(html) {
   return getAttr(tag, 'href')
 }
 
+export function extractJsonLdScripts(html) {
+  const scripts = []
+  const pattern =
+    /<script\b(?=[^>]*\btype=(["'])application\/ld\+json\1)[^>]*>([\s\S]*?)<\/script>/gi
+
+  for (const match of html.matchAll(pattern)) {
+    const content = match[2].trim()
+    assert.ok(content, 'Expected a non-empty application/ld+json script')
+    assert.doesNotMatch(
+      match[0],
+      /\bchildren=(["'])[\s\S]*?\1/i,
+      'JSON-LD must be rendered as script content, not a children attribute',
+    )
+    assert.doesNotThrow(
+      () => scripts.push(JSON.parse(content)),
+      `Invalid JSON-LD script content: ${content.slice(0, 120)}`,
+    )
+  }
+
+  return scripts
+}
+
+export function flattenStructuredDataNodes(data) {
+  if (Array.isArray(data)) {
+    return data.flatMap((item) => flattenStructuredDataNodes(item))
+  }
+
+  if (!data || typeof data !== 'object') return []
+
+  const nodes = [data]
+  if (Array.isArray(data['@graph'])) {
+    nodes.push(...data['@graph'].flatMap((item) => flattenStructuredDataNodes(item)))
+  }
+
+  return nodes
+}
+
+export function getStructuredDataNodes(html) {
+  return extractJsonLdScripts(html).flatMap((script) =>
+    flattenStructuredDataNodes(script),
+  )
+}
+
+export function nodeHasType(node, type) {
+  const nodeType = node?.['@type']
+  return Array.isArray(nodeType) ? nodeType.includes(type) : nodeType === type
+}
+
+export function getHtmlUrlAttributes(html) {
+  return Array.from(
+    html.matchAll(/\b(?:action|href|src)=(["'])(.*?)\1/gi),
+    (match) => match[2],
+  )
+}
+
+export function isStaticOrAssetUrl(value) {
+  return value.startsWith('/_nuxt/') || staticFilePattern.test(value)
+}
+
+export function assertInternalUrlsUseTrailingSlash(html, route) {
+  for (const value of getHtmlUrlAttributes(html)) {
+    if (
+      !value ||
+      value.startsWith('#') ||
+      value.startsWith('?') ||
+      value.startsWith('//') ||
+      (/^[a-z][a-z0-9+.-]*:/i.test(value) && !value.startsWith(siteUrl))
+    ) {
+      continue
+    }
+
+    if (isStaticOrAssetUrl(value)) continue
+
+    if (value.startsWith(siteUrl)) {
+      const suffix = value.slice(siteUrl.length)
+      const pathPart = suffix.match(/^([^?#]*)/)?.[1] || ''
+
+      assert.notEqual(value, siteUrl, `Root URL should keep trailing slash in ${route}`)
+      assert.ok(
+        pathPart === '' || pathPart === '/' || pathPart.endsWith('/'),
+        `Internal absolute URL should keep trailing slash in ${route}: ${value}`,
+      )
+      continue
+    }
+
+    if (value.startsWith('/')) {
+      const pathPart = value.match(/^([^?#]*)/)?.[1] || ''
+
+      assert.ok(
+        pathPart === '/' || pathPart.endsWith('/'),
+        `Internal URL should keep trailing slash in ${route}: ${value}`,
+      )
+    }
+  }
+}
+
 export function assertCleanHtml(html) {
   assert.doesNotMatch(html, /\[object Object\]/)
   assert.doesNotMatch(html, /<meta[^>]+name=["']description["'][^>]+content=["']\s*L\s*["']/i)
@@ -66,6 +164,9 @@ export function assertSeoTags(html, expectedUrl) {
   const ogUrl = getMetaContent(html, 'property', 'og:url')
 
   assert.ok(title.length > 0, 'Expected a non-empty <title>')
+  assert.match(title, / \| BeAbot$/)
+  assert.doesNotMatch(title, /^BeAbot - /)
+  assert.doesNotMatch(title, /&amp;|&#x27;|&#39;/)
   assert.ok(description.length > 20, 'Expected a useful meta description')
   assert.equal(canonical, expectedUrl)
   assert.equal(ogUrl, expectedUrl)

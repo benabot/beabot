@@ -288,7 +288,7 @@ const ogImage = `${config.public.siteUrl}/beabot.png`
 
 const seo = {
   title:
-    'Missions freelance — WordPress, JavaScript, Vue.js, Nuxt & éco-conception | BeAbot',
+    'Missions web WordPress, JavaScript et Nuxt',
   description:
     "Développeur web freelance à Lille — projets WordPress, JavaScript, Vue.js/Nuxt et audits d'éco-conception. Missions en Hauts-de-France et en remote.",
 }
@@ -492,14 +492,16 @@ useSeoMeta({
 useHead({
   link: [{ rel: 'canonical', href: pageUrl }],
   script: [
-    { type: 'application/ld+json', children: JSON.stringify(jsonLd) },
-    { type: 'application/ld+json', children: JSON.stringify(breadcrumb) },
+    { type: 'application/ld+json', innerHTML: JSON.stringify(jsonLd) },
+    { type: 'application/ld+json', innerHTML: JSON.stringify(breadcrumb) },
   ],
 })
 </script>
 
 <style lang="scss" scoped>
 @use 'sass:color';
+@use "~/assets/css/vars/_colors.scss" as *;
+@use "~/assets/css/vars/_typo.scss" as *;
 
 .services-page {
   --services-surface: #f3f1ea;
@@ -785,7 +787,7 @@ useHead({
 }
 
 .services-btn--primary:hover {
-  background: color.adjust($vert, $lightness: 6%);
+  background: color.adjust($vert-raw, $lightness: 6%);
 }
 
 .services-btn--secondary {
@@ -876,7 +878,7 @@ useHead({
 
 .services-text-link:hover,
 .services-text-link:focus-visible {
-  color: color.adjust($vert, $lightness: -16%);
+  color: color.adjust($vert-raw, $lightness: -16%);
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }

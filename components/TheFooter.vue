@@ -55,8 +55,6 @@
         <a href="/rss.xml" class="rss">RSS</a>
       </div>
       <div class="item d">
-        <span class="footer-geo">Benoît Abot · Développeur web freelance · Lille</span>
-        —
         <a href="/mentions-legales/">Mentions légales</a>
         · beAbot {{ annee }}
       </div>
@@ -80,6 +78,8 @@ const isAppsActive = computed(() => {
 </script>
 
 <style lang="scss" scoped>
+@use "~/assets/css/vars/_colors.scss" as *;
+@use "~/assets/css/vars/_typo.scss" as *;
 $width: 100vw;
 @media (min-width: $breakpoint-tablet) {
   $width: 90vw;

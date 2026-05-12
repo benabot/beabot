@@ -8,7 +8,7 @@
     />
     <span></span>
     <ul v-if="articles.length" class="text-gris3">
-      <li v-for="article of articles" :key="article.slug">
+      <li v-for="article of articles" :key="article.path">
         <AppLink :to="articleHref(article)">
           {{ article.title }}
         </AppLink>
@@ -24,31 +24,33 @@ const searchQuery = ref('')
 const articles = ref([])
 
 watch(searchQuery, async (newQuery) => {
-  if (!newQuery) {
+  const query = newQuery.trim()
+
+  if (!query) {
     articles.value = []
     return
   }
 
-  // Nuxt Content v2: queryContent + where pour search
-  const results = await queryContent('articles')
-    .where({
-      $or: [
-        { title: { $contains: newQuery } },
-        { description: { $contains: newQuery } },
-      ],
-    })
+  const results = await queryCollection('articles')
+    .select('title', 'description', 'path')
+    .orWhere((group) =>
+      group
+        .where('title', 'LIKE', `%${query}%`)
+        .where('description', 'LIKE', `%${query}%`)
+    )
     .limit(6)
-    .find()
+    .all()
 
   articles.value = results
 })
 
 function articleHref(article) {
-  if (!article?.slug) return '/eco-conception/'
-  return withTrailingSlash(`/eco-conception/${article.slug}`)
+  if (!article?.path) return '/eco-conception/'
+  return withTrailingSlash(article.path)
 }
 </script>
 <style lang="scss" scoped>
+@use "~/assets/css/vars/_colors.scss" as *;
 #search {
   display: flex;
   flex-direction: column;

@@ -122,6 +122,7 @@ function onKeydown(event: KeyboardEvent, index: number) {
 </script>
 
 <style lang="scss" scoped>
+@use "~/assets/css/vars/_colors.scss" as *;
 .legal-tabs {
   display: grid;
   gap: 1rem;

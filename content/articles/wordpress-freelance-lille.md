@@ -3,7 +3,7 @@ title: 'Développeur WordPress freelance à Lille : comment choisir ?'
 chapo: "Trouver un développeur WordPress à Lille, c'est facile. En trouver un bon, c'est une autre affaire. Voici les critères concrets pour éviter les erreurs classiques."
 description: 'Comment choisir un développeur WordPress freelance à Lille : critères techniques, références, tarifs indicatifs. Guide pratique par un développeur web basé à Lille.'
 seo:
-  title: 'Développeur WordPress freelance Lille — comment choisir ?'
+  title: 'Freelance WordPress Lille : comment choisir ?'
   description: 'Choisir un développeur WordPress freelance à Lille : critères techniques, références, tarifs indicatifs. Guide pratique par un développeur web basé à Lille.'
 date: 2026-04-27
 updatedAt: 2026-04-27

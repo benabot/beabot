@@ -39,6 +39,7 @@ const props = defineProps<{
 </script>
 
 <style lang="scss" scoped>
+@use "~/assets/css/vars/_colors.scss" as *;
 .faq-list {
   display: grid;
   gap: 0.75rem;

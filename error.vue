@@ -58,6 +58,8 @@ useHead({
 </script>
 
 <style scoped lang="scss">
+@use "~/assets/css/vars/_colors.scss" as *;
+@use "~/assets/css/vars/_typo.scss" as *;
 .error-page {
   min-height: 100vh;
   display: flex;

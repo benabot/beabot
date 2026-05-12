@@ -133,35 +133,31 @@ import { canonicalUrl, withTrailingSlash } from '~/utils/seo-url'
 
 const route = useRoute()
 const tagsStore = useTags()
+const articlePath = computed(() => `/eco-conception/${route.params.slug}`)
 
 // Fetch article data
 const { data: article } = await useAsyncData(
   `article-${route.params.slug}`,
-  () => queryContent('articles', route.params.slug).findOne(),
+  () => queryCollection('articles').path(articlePath.value).first(),
 )
 
 // Fetch prev/next articles
 const { data: surroundArticles } = await useAsyncData(
   `surround-${route.params.slug}`,
   () => {
-    if (!article.value?._path) return Promise.resolve([null, null])
+    if (!article.value?.path) return Promise.resolve([null, null])
 
-    return queryContent('articles')
-      .only(['title', '_path'])
-      .sort({ date: 1 })
-      .findSurround(article.value._path)
+    return queryCollectionItemSurroundings('articles', article.value.path, {
+      fields: ['title'],
+    }).order('date', 'ASC')
   },
 )
 
-// Transform article links from /articles/* to /eco-conception/*
 const transformArticleLink = (article) => {
-  if (!article || !article._path) return null
-  const normalizedPath = withTrailingSlash(
-    article._path.replace(/^\/articles\//, '/eco-conception/'),
-  )
+  if (!article || !article.path) return null
   return {
     ...article,
-    _path: normalizedPath,
+    path: withTrailingSlash(article.path),
   }
 }
 
@@ -373,14 +369,30 @@ const articleCanonicalUrl = canonicalUrl(
 )
 const hubCanonicalUrl = canonicalUrl(config.public.siteUrl, '/eco-conception')
 const homeCanonicalUrl = canonicalUrl(config.public.siteUrl, '/')
+const plainMetaContent = (...values) => {
+  for (const value of values) {
+    if (typeof value !== 'string') continue
+    const text = value.trim()
+    if (text) return text
+  }
+
+  return ''
+}
 const seoTitle = computed(
   () => article.value?.seo?.title || article.value?.title || '',
 )
 const seoDesc = computed(
-  () =>
-    article.value?.seo?.description ||
-    article.value?.description ||
-    `Article sur l’éco-conception web : ${article.value?.title || ''}`.trim(),
+  () => {
+    const fallback = `Article sur l’éco-conception web : ${
+      article.value?.title || ''
+    }`.trim()
+
+    return plainMetaContent(
+      article.value?.seo?.description,
+      article.value?.description,
+      fallback,
+    )
+  },
 )
 const ogImage = computed(() => {
   const image = article.value?.seo?.ogImage || article.value?.img
@@ -420,6 +432,7 @@ const blogPostingStructuredData = computed(() => ({
     '@id': articleCanonicalUrl,
   },
   inLanguage: 'fr-FR',
+  url: articleCanonicalUrl,
   headline: seoTitle.value,
   description: seoDesc.value,
   datePublished: article.value?.date,
@@ -497,7 +510,7 @@ useHead(
     script: [
       {
         type: 'application/ld+json',
-        children: JSON.stringify({
+        innerHTML: JSON.stringify({
           '@context': 'https://schema.org',
           '@graph': [
             ...(isFaq.value
@@ -512,6 +525,9 @@ useHead(
 </script>
 
 <style lang="scss" scoped>
+@use "~/assets/css/vars/_colors.scss" as *;
+@use "~/assets/css/vars/_typo.scss" as *;
+@use "~/assets/css/vars/_spacing.scss" as *;
 h1 {
   margin: 0.95em 0;
 }

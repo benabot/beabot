@@ -1,5 +1,10 @@
 @charset 'utf-8';
 
+@use "~/assets/css/vars/_colors.scss" as *;
+@use "~/assets/css/vars/_typo.scss" as *;
+@use "~/assets/css/vars/_color-custom-properties.scss";
+@use "~/assets/css/vars/_typography-custom-properties.scss";
+
 
 // -------COLOR--------
 .fond-gris {
@@ -131,7 +136,7 @@ body {
   line-height: 1.5;
 
   @media (min-width: 1920px) {
-    font-size: $type-base-size * 1.28;
+    font-size: $type-base-size-raw * 1.28;
   }
 
 }

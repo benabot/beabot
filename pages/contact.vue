@@ -10,8 +10,8 @@
 
         <p>
           Une question sur l'éco-conception ?<br />
-          Un site à créer ou optimiser ?<br />
-          Écrivez-moi, <strong>je vous réponderai rapidement</strong>.
+          Un site WordPress ou JavaScript à créer, refondre ou optimiser ?<br />
+          Écrivez-moi, <strong>je vous répondrai rapidement</strong>.
         </p>
 
         <div class="promise" aria-label="Engagements">
@@ -21,13 +21,14 @@
             <li>Aucune exploitation commerciale de vos données</li>
           </ul> -->
           <p>
-            Un premier échange suffit pour cadrer : objectifs, contraintes,
-            budget, délais.
+            Un premier échange suffit pour cadrer une mission : objectifs,
+            contraintes, budget, délais, audit éventuel et choix techniques.
           </p>
         </div>
 
         <p class="contact-geo">
-          Basé à Lille · Disponible en remote et en présentiel (Hauts-de-France)
+          Basé à Lille · Missions possibles à Compiègne, Amiens, Paris, en
+          Hauts-de-France et en remote
         </p>
 
         <div class="contact-links">
@@ -64,7 +65,7 @@
           method="POST"
           data-netlify="true"
           netlify-honeypot="bot-field"
-          action="/contact"
+          action="/contact/"
           @submit.prevent="onSubmit"
         >
           <input type="hidden" name="form-name" value="contact" />
@@ -140,7 +141,7 @@
           </label>
 
           <button type="submit" :disabled="loading">
-            {{ loading ? 'Envoi…' : 'Envoyer mon message →' }}
+            {{ loading ? 'Envoi…' : 'Envoyer ma demande →' }}
           </button>
 
           <p class="form-note">
@@ -190,17 +191,17 @@ const contactCanonicalUrl = canonicalUrl(config.public.siteUrl, '/contact')
 useSeoMeta({
   title: 'Contact — Développeur web éco-conception',
   description:
-    'Contactez Benoît Abot, développeur web spécialisé en éco-conception. Devis gratuit pour votre projet web sobre, performant et durable.',
+    'Contactez Benoît Abot, développeur web freelance à Lille : missions WordPress, JavaScript, audit et éco-conception en remote ou Hauts-de-France.',
   ogTitle: 'Contact — Benoît Abot, développeur éco-conception',
   ogDescription:
-    'Développeur web éco-conception disponible pour vos projets. Site à créer, refondre ou optimiser ? Contactez-moi, réponse sous 48h.',
+    'Contactez Benoît Abot, développeur web freelance à Lille : missions WordPress, JavaScript, audit et éco-conception en remote ou Hauts-de-France.',
   ogType: 'website',
   ogUrl: contactCanonicalUrl,
   ogImageWidth: 1200,
   ogImageHeight: 630,
   twitterTitle: 'Contact — Benoît Abot',
   twitterDescription:
-    'Développeur web éco-conception. Contactez-moi pour votre projet web sobre et performant.',
+    'Développeur web freelance à Lille : missions WordPress, JavaScript, audit et éco-conception.',
   twitterCard: 'summary_large_image',
 })
 
@@ -214,7 +215,7 @@ useHead({
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify({
+      innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'ContactPage',
         name: 'Contact — Benoît Abot',
@@ -288,7 +289,7 @@ async function onSubmit() {
 /* Container: tu peux garder ton clamp */
 .container {
   width: clamp(90vw, 80vw, 1040px);
-  margin: 2rem auto clamp(5.5rem, 9vw, 7rem);
+  margin: clamp(5rem, 8vw, 7rem) auto clamp(5.5rem, 9vw, 7rem);
 }
 
 /* Layout 2 colonnes desktop */

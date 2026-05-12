@@ -287,6 +287,8 @@ const onMoreKeydown = (event) => {
 
 <style lang="scss" scoped>
 @use 'sass:color';
+@use "~/assets/css/vars/_colors.scss" as *;
+@use "~/assets/css/vars/_typo.scss" as *;
 .boite-article {
   width: min(92vw, 1120px);
   margin: 0 auto;
@@ -409,7 +411,7 @@ const onMoreKeydown = (event) => {
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: color.adjust($vert, $lightness: -10%);
+  color: color.adjust($vert-raw, $lightness: -10%);
   opacity: 0.75;
 }
 

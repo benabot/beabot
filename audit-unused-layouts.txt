@@ -1,3 +1,0 @@
-layouts/README.md
-layouts/default.vue
-layouts/error.vue

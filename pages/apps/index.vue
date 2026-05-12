@@ -7,8 +7,8 @@
         <div class="apps-hero__left">
           <p class="apps-hero__eyebrow">Apps</p>
           <h1>
-            DuoSpend & Meeting Mode —
-            Applications <span class="apps-hero__platform">iOS</span> &
+            DuoSpend et Meeting Mode —
+            Applications <span class="apps-hero__platform">iOS</span> et
             <span class="apps-hero__platform">macOS</span>
           </h1>
         </div>
@@ -96,21 +96,23 @@ useHead({
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify(collectionSchema),
+      innerHTML: JSON.stringify(collectionSchema),
     },
     {
       type: 'application/ld+json',
-      children: JSON.stringify(breadcrumbSchema),
+      innerHTML: JSON.stringify(breadcrumbSchema),
     },
     {
       type: 'application/ld+json',
-      children: JSON.stringify(itemListSchema),
+      innerHTML: JSON.stringify(itemListSchema),
     },
   ],
 })
 </script>
 
 <style lang="scss" scoped>
+@use "~/assets/css/vars/_colors.scss" as *;
+@use "~/assets/css/vars/_typo.scss" as *;
 .apps-index {
   padding: clamp(2rem, 5vw, 3.5rem) 5% 5rem;
 

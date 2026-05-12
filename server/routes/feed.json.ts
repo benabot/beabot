@@ -1,14 +1,19 @@
-import { serverQueryContent } from '#content/server'
+import { queryCollection } from '@nuxt/content/server'
 
 export default defineEventHandler(async (event) => {
   try {
-    // Récupérer tous les articles, triés par date de création
-    const articles = await serverQueryContent(event, 'articles')
-      .sort({ $numeric: true })
-      .find()
+    // Récupérer tous les articles, triés par date de publication
+    const articles = await queryCollection(event, 'articles')
+      .select('title', 'description', 'date', 'tag', 'path')
+      .order('date', 'DESC')
+      .all()
 
     const config = useRuntimeConfig()
     const baseUrl = config.public.siteUrl
+    const withTrailingSlash = (path: string) => {
+      if (!path) return '/eco-conception/'
+      return path.endsWith('/') ? path : `${path}/`
+    }
 
     // Générer le JSON Feed version 1.1
     const feed = {
@@ -25,9 +30,7 @@ export default defineEventHandler(async (event) => {
         },
       ],
       items: articles.map((article) => {
-        // Extraire le slug depuis _path (format: /articles/slug) et convertir en minuscules
-        const slug = article._path?.split('/').pop()?.toLowerCase() || ''
-        const articleUrl = `${baseUrl}/eco-conception/${slug}/`
+        const articleUrl = `${baseUrl}${withTrailingSlash(article.path)}`
 
         return {
           id: articleUrl,
@@ -35,7 +38,7 @@ export default defineEventHandler(async (event) => {
           title: article.title || '',
           content_html: article.description || '',
           summary: article.description || '',
-          date_published: new Date(article.date || article.createdAt || Date.now()).toISOString(),
+          date_published: new Date(article.date || Date.now()).toISOString(),
           tags: article.tag || [],
         }
       }),

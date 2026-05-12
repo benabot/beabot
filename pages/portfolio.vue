@@ -35,13 +35,14 @@
         <h1 id="portfolio-hero-title" class="hero__title">
           <span class="hero__name">Benoît Abot</span>
           <span class="hero__role">
-            Développeur web & designer spécialisé en éco‑conception
+            Développeur web et designer spécialisé en éco‑conception
           </span>
         </h1>
         <p class="hero__lead">
           Je conçois des sites performants, accessibles et sobres en
-          ressources. Chaque projet est une occasion de prouver qu'efficacité
-          et durabilité vont de pair, reposant sur des
+          ressources. Ces projets illustrent des missions web WordPress,
+          JavaScript, Nuxt et éco-conception, où efficacité et durabilité vont
+          de pair, reposant sur des
           <a href="#competences-title" class="hero__link">
             compétences mises en œuvre
           </a>
@@ -50,7 +51,7 @@
         <p class="hero__meta">
           15 ans d'expérience
           <span aria-hidden="true">•</span>
-          Spécialiste éco-conception
+          Freelance basé à Lille, missions remote
         </p>
         <div class="hero__cta">
           <a
@@ -76,8 +77,9 @@
           Extraits de 15 ans de web
         </h2>
         <p class="section-lead">
-          Projets WordPress et front-end conçus avec la même logique de sobriété
-          technique.
+          Projets WordPress, JavaScript, design d’interface et éco-conception,
+          issus de missions web concrètes, sans masquer les expérimentations
+          applicatives.
         </p>
 
         <div class="filters" role="tablist" aria-label="Filtres projets">
@@ -290,12 +292,12 @@ const config = useRuntimeConfig()
 const portfolioCanonicalUrl = canonicalUrl(config.public.siteUrl, '/portfolio')
 
 useSeoMeta({
-  title: 'Portfolio — Benoît Abot, développeur web éco-conception',
+  title: 'Portfolio Benoît Abot — web éco-conception',
   description:
-    'Portfolio de Benoît Abot — développeur web, designer, éco-conception. Vue.js, Nuxt, WordPress, 15 ans de pratique. Disponible en freelance et CDI.',
-  ogTitle: 'Portfolio — Benoît Abot, développeur web éco-conception',
+    'Portfolio de Benoît Abot, développeur web freelance à Lille. Missions WordPress, JavaScript, Nuxt et éco-conception, en Hauts-de-France et remote.',
+  ogTitle: 'Portfolio Benoît Abot — web éco-conception',
   ogDescription:
-    'Développeur web et designer spécialisé en éco-conception. Sites performants, accessibles et sobres.',
+    'Portfolio de Benoît Abot, développeur web freelance à Lille. Missions WordPress, JavaScript, Nuxt et éco-conception, en Hauts-de-France et remote.',
   ogType: 'profile',
   ogUrl: portfolioCanonicalUrl,
   ogImage: `${config.public.siteUrl}/beabot.png`,
@@ -304,7 +306,7 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
   twitterTitle: 'Portfolio — Benoît Abot, développeur web',
   twitterDescription:
-    'Développeur web et designer, éco-conception, Vue.js, Nuxt, WordPress. 15 ans de pratique.',
+    'Développeur web freelance à Lille : WordPress, JavaScript, Nuxt et éco-conception.',
 })
 
 useHead({
@@ -312,13 +314,13 @@ useHead({
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify({
+      innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'ProfilePage',
         mainEntity: {
           '@type': 'Person',
           name: 'Benoît Abot',
-          jobTitle: 'Développeur web & designer',
+          jobTitle: 'Développeur web et designer',
           description: "Spécialisé en éco-conception web. 15 ans d'expérience.",
           url: 'https://beabot.fr/portfolio/',
           sameAs: [
@@ -366,6 +368,7 @@ useHead({
 </script>
 
 <style lang="scss" scoped>
+@use "~/assets/css/vars/_colors.scss" as *;
 .sr-only {
   position: absolute;
   width: 1px;

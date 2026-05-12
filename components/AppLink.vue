@@ -1,5 +1,8 @@
 <template>
-  <NuxtLink :to="normalizedTo" v-bind="attrs">
+  <a v-if="shouldRenderNativeAnchor" :href="normalizedHref" v-bind="attrs">
+    <slot />
+  </a>
+  <NuxtLink v-else :to="normalizedTo" v-bind="attrs">
     <slot />
   </NuxtLink>
 </template>
@@ -27,5 +30,20 @@ const normalizedTo = computed(() => {
   }
 
   return props.to
+})
+
+const normalizedHref = computed(() =>
+  typeof normalizedTo.value === 'string' ? normalizedTo.value : '',
+)
+
+const shouldRenderNativeAnchor = computed(() => {
+  const target = attrs.target
+
+  return (
+    typeof props.to === 'string' &&
+    typeof target === 'string' &&
+    target.length > 0 &&
+    target !== '_self'
+  )
 })
 </script>

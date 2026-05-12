@@ -12,7 +12,7 @@
             Sites WordPress et interfaces JavaScript sobres, rapides et
             durables. 15 ans d’expérience, spécialiste du numérique responsable.
           </p>
-          <p class="home-geo">Lille · Hauts-de-France · Remote</p>
+          <p class="home-geo">Lille · Hauts-de-France · remote</p>
           <p class="home-lead">
             Je conçois des sites et des applications web avec une attention
             particulière portée à la performance, à l’accessibilité, à la
@@ -24,7 +24,7 @@
               Voir mes réalisations
             </AppLink>
             <AppLink class="button button--secondary" to="/contact/">
-              Me contacter
+              Parler d’une mission
             </AppLink>
             <AppLink class="text-link" to="/greenlight/">
               Découvrir Greenlight
@@ -128,8 +128,8 @@
             </h2>
           </div>
           <p class="section-intro">
-            Trois types de missions, une même approche : faire mieux avec moins
-            de complexité inutile.
+            Trois types de missions freelance, une même approche : faire mieux
+            avec moins de complexité inutile.
           </p>
         </header>
 
@@ -299,7 +299,7 @@
         <div class="article-grid">
           <article
             v-for="article in latestArticles"
-            :key="article._path"
+            :key="article.path"
             class="article-card"
           >
             <p class="article-card__tags">
@@ -356,8 +356,8 @@ type HomeArticle = {
   title?: string
   description?: string
   tag?: string[]
-  _path?: string
-  date?: string
+  path?: string
+  date?: string | Date
 }
 
 const services = [
@@ -426,18 +426,18 @@ const featuredProjects = computed(() =>
 const { data: articles } = await useAsyncData<HomeArticle[]>(
   'home-v3-latest-articles',
   () =>
-    queryContent('articles')
-      .only(['title', 'description', 'tag', '_path', 'date'])
-      .sort({ date: -1 })
+    queryCollection('articles')
+      .select('title', 'description', 'tag', 'path', 'date')
+      .order('date', 'DESC')
       .limit(2)
-      .find(),
+      .all(),
 )
 
 const latestArticles = computed(() => articles.value || [])
 
 const config = useRuntimeConfig()
 const homeCanonicalUrl = canonicalUrl(config.public.siteUrl, '/')
-const homeTitle = 'Benoît Abot — Développeur web freelance WordPress & Nuxt | Lille'
+const homeTitle = 'Benoît Abot — développeur WordPress et Nuxt | BeAbot'
 const homeDescription =
   'Développeur web freelance WordPress et JavaScript, spécialisé en éco-conception à Lille. Sites sobres, rapides, durables. Portfolio, Greenlight, articles.'
 
@@ -454,10 +454,8 @@ function projectPreviewTags(project: { tags: string[] }) {
 }
 
 function articleLink(article: HomeArticle) {
-  if (!article || !article._path) return '/eco-conception/'
-  return withTrailingSlash(
-    article._path.replace(/^\/articles\//, '/eco-conception/'),
-  )
+  if (!article || !article.path) return '/eco-conception/'
+  return withTrailingSlash(article.path)
 }
 
 function articlePreviewTags(article: HomeArticle) {
@@ -521,6 +519,16 @@ const structuredData = {
         serviceType: 'remote',
       },
     },
+    {
+      '@type': 'WebSite',
+      '@id': `${config.public.siteUrl}/#website`,
+      name: 'BeAbot',
+      url: homeCanonicalUrl,
+      inLanguage: 'fr-FR',
+      publisher: {
+        '@id': `${config.public.siteUrl}/#organization`,
+      },
+    },
   ],
 }
 
@@ -552,7 +560,7 @@ useHead({
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify(structuredData),
+      innerHTML: JSON.stringify(structuredData),
     },
   ],
 })
@@ -560,6 +568,8 @@ useHead({
 
 <style lang="scss" scoped>
 @use 'sass:color';
+@use "~/assets/css/vars/_colors.scss" as *;
+@use "~/assets/css/vars/_typo.scss" as *;
 
 .home-v3 {
   --surface: #0f0f0f;
@@ -691,7 +701,7 @@ useHead({
 }
 
 .home-title span {
-  color: color.adjust($vert, $lightness: 12%);
+  color: color.adjust($vert-raw, $lightness: 12%);
 }
 
 .section-title {
@@ -767,7 +777,7 @@ useHead({
 .button--primary {
   background: linear-gradient(
     135deg,
-    color.adjust($vert, $lightness: 12%),
+    color.adjust($vert-raw, $lightness: 12%),
     $vert 70%
   );
   color: $gris1;
@@ -828,7 +838,7 @@ useHead({
   height: 3.25rem;
   border-radius: 999px;
   background: rgba(0, 168, 62, 0.16);
-  color: color.adjust($vert, $lightness: 18%);
+  color: color.adjust($vert-raw, $lightness: 18%);
 }
 
 .proof-blob__icon svg {
@@ -927,7 +937,7 @@ useHead({
 }
 
 .metric-card__value--accent {
-  color: color.adjust($vert, $lightness: 14%);
+  color: color.adjust($vert-raw, $lightness: 14%);
 }
 
 .metric-card__meta {
@@ -955,7 +965,7 @@ useHead({
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: color.adjust($vert, $lightness: 12%);
+  color: color.adjust($vert-raw, $lightness: 12%);
 }
 
 .section-footer {
@@ -1151,7 +1161,7 @@ useHead({
 }
 
 .product-card__badge {
-  color: color.adjust($vert, $lightness: 14%);
+  color: color.adjust($vert-raw, $lightness: 14%);
 }
 
 .product-card__list {
@@ -1165,7 +1175,7 @@ useHead({
 
 .product-card__list li::before {
   content: '•';
-  color: color.adjust($vert, $lightness: 12%);
+  color: color.adjust($vert-raw, $lightness: 12%);
   margin-right: 0.45rem;
 }
 
@@ -1260,7 +1270,7 @@ useHead({
 }
 
 a:focus-visible {
-  outline: 2px solid color.adjust($vert, $lightness: 16%);
+  outline: 2px solid color.adjust($vert-raw, $lightness: 16%);
   outline-offset: 4px;
 }
 

@@ -342,18 +342,19 @@
           <div class="greenlight-mandate__copy">
             <p class="greenlight-eyebrow">Déléguer</p>
             <h2 id="greenlight-mandate-title" class="greenlight-section__title">
-              Vous voulez un site Greenlight sans gérer le développement ?
+              Besoin d’un site WordPress sobre construit sur Greenlight ?
             </h2>
             <p class="greenlight-section__lede">
-              Je m'occupe de l'installation, de la configuration et de l'optimisation
-              de votre site WordPress sur la base Greenlight. Vous recevez un site
-              prêt à l'emploi, sobre et performant — sans manipuler une ligne de code.
+              Je peux intervenir en mission freelance pour installer,
+              configurer et optimiser un site WordPress sur la base Greenlight.
+              L’objectif reste simple : un site lisible, sobre et maintenable,
+              sans pile de plugins ajoutée par défaut.
             </p>
             <AppLink
               class="greenlight-button greenlight-button--primary"
               to="/contact/"
             >
-              Me contacter pour un devis
+              Parler de votre site WordPress
             </AppLink>
           </div>
         </article>
@@ -408,7 +409,7 @@
                 class="greenlight-button greenlight-button--primary"
                 to="/contact/"
               >
-                Me contacter pour Greenlight premium
+                Me contacter pour une mission Greenlight
               </AppLink>
             </article>
           </div>
@@ -434,9 +435,9 @@ const ogImage = absoluteUrl(
 )
 
 const seo = {
-  title: 'Greenlight — thème WordPress Gutenberg éco-conçu | BeAbot',
+  title: 'Greenlight — thème WordPress éco-conçu',
   description:
-    'Greenlight-free est un thème WordPress Gutenberg extrêmement léger : 6 requêtes HTTP, moins de 115 ko, DOM 148 et EcoIndex A. Greenlight premium reprend ce socle avec une édition de thème avancée, du SEO et de l’optimisation WordPress.',
+    'Greenlight est un thème WordPress sobre et rapide : 6 requêtes HTTP, moins de 115 ko, DOM 148 et EcoIndex A sur la base gratuite.',
 }
 
 const heroVisuals = {
@@ -687,21 +688,22 @@ useHead({
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify(productSchema),
+      innerHTML: JSON.stringify(productSchema),
     },
     {
       type: 'application/ld+json',
-      children: JSON.stringify(faqSchema),
+      innerHTML: JSON.stringify(faqSchema),
     },
     {
       type: 'application/ld+json',
-      children: JSON.stringify(breadcrumbSchema),
+      innerHTML: JSON.stringify(breadcrumbSchema),
     },
   ],
 })
 </script>
 
 <style lang="scss" scoped>
+@use "~/assets/css/vars/_typo.scss" as *;
 .greenlight-page {
   background:
     radial-gradient(

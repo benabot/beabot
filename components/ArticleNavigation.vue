@@ -1,16 +1,16 @@
 <template>
   <div class="boite-prev text-fin text-gris2">
     <AppLink
-      v-if="prev && prev._path"
-      :to="prev._path"
+      v-if="prev && prev.path"
+      :to="prev.path"
       class="bloc"
     >
       &larr; {{ prev.title }}
     </AppLink>
     <span v-else>&nbsp;</span>
     <AppLink
-      v-if="next && next._path"
-      :to="next._path"
+      v-if="next && next.path"
+      :to="next.path"
       class="bloc"
     >
       {{ next.title }} &rarr;
@@ -33,6 +33,7 @@ defineProps({
 </script>
 
 <style lang="scss" scoped>
+@use "~/assets/css/vars/_colors.scss" as *;
 .boite-prev {
   display: flex;
   flex-direction: column;

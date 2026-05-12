@@ -4,7 +4,7 @@ description: Le numérique repose sur des infrastructures lourdes et énergivore
 chapo: Le numérique repose sur des infrastructures lourdes et énergivores. Tour d’horizon des impacts environnementaux et des ordres de grandeur à connaître.
 seo:
   title: Les impacts environnementaux du numérique
-  description: "Le numérique repose sur des infrastructures énergivores. Panorama chiffré des impacts environnementaux : CO2, électricité, fabrication des appareils."
+  description: "Le numérique repose sur des infrastructures lourdes. Panorama des impacts : CO2, électricité, fabrication des appareils et usages."
 date: 2022-02-28
 updatedAt: 2026-04-27
 tag: ['WebDesign', 'WordPress']

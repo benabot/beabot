@@ -1,11 +1,12 @@
-import { serverQueryContent } from '#content/server'
+import { queryCollection } from '@nuxt/content/server'
 
 export default defineEventHandler(async (event) => {
   try {
-    // Récupérer tous les articles, triés par date de création
-    const articles = await serverQueryContent(event, 'articles')
-      .sort({ $numeric: true })
-      .find()
+    // Récupérer tous les articles, triés par date de publication
+    const articles = await queryCollection(event, 'articles')
+      .select('title', 'description', 'date', 'tag', 'path')
+      .order('date', 'DESC')
+      .all()
 
     const config = useRuntimeConfig()
     const baseUrl = config.public.siteUrl
@@ -21,6 +22,11 @@ export default defineEventHandler(async (event) => {
         .replace(/'/g, '&apos;')
     }
 
+    const withTrailingSlash = (path: string) => {
+      if (!path) return '/eco-conception/'
+      return path.endsWith('/') ? path : `${path}/`
+    }
+
     // Générer le contenu RSS 2.0
     const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
@@ -32,9 +38,7 @@ export default defineEventHandler(async (event) => {
     <atom:link href="${baseUrl}/rss.xml" rel="self" type="application/rss+xml"/>
     ${articles
       .map((article) => {
-        // Extraire le slug depuis _path (format: /articles/slug) et convertir en minuscules
-        const slug = article._path?.split('/').pop()?.toLowerCase() || ''
-        const articleUrl = `${baseUrl}/eco-conception/${slug}/`
+        const articleUrl = `${baseUrl}${withTrailingSlash(article.path)}`
 
         return `
     <item>
@@ -42,7 +46,7 @@ export default defineEventHandler(async (event) => {
       <link>${articleUrl}</link>
       <guid isPermaLink="true">${articleUrl}</guid>
       <description>${escapeXml(article.description || '')}</description>
-      <pubDate>${new Date(article.date || article.createdAt || Date.now()).toUTCString()}</pubDate>
+      <pubDate>${new Date(article.date || Date.now()).toUTCString()}</pubDate>
       ${
         article.tag && Array.isArray(article.tag)
           ? article.tag.map((t: string) => `<category>${escapeXml(t)}</category>`).join('\n      ')

@@ -37,7 +37,7 @@ USA<br />
       l’acceptation pleine et entière des conditions générales d’utilisation
       ci-après décrites. Ces conditions d’utilisation sont susceptibles d’être
       modifiées ou complétées à tout moment, les utilisateurs du site
-      <a href="https://beabot.fr">https://beabot.fr</a> sont donc
+      <a href="https://beabot.fr/">https://beabot.fr</a> sont donc
       invités à les consulter de manière régulière.
     </p>
     <p>
@@ -47,7 +47,7 @@ USA<br />
       préalablement aux utilisateurs les dates et heures de l’intervention.
     </p>
     <p>
-      Le site <a href="https://beabot.fr">https://beabot.fr</a> est mis
+      Le site <a href="https://beabot.fr/">https://beabot.fr</a> est mis
       à jour régulièrement par Abot Benoît. De la même façon, les mentions
       légales peuvent être modifiées à tout moment : elles s’imposent néanmoins
       à l’utilisateur qui est invité à s’y référer le plus souvent possible afin
@@ -55,13 +55,13 @@ USA<br />
     </p>
     <h3>3. Description des services fournis.</h3>
     <p>
-      Le site <a href="https://beabot.fr">https://beabot.fr</a> a pour
+      Le site <a href="https://beabot.fr/">https://beabot.fr</a> a pour
       objet de fournir une information concernant l'ensemble des activités de la
       société.
     </p>
     <p>
       Benoît Abot s'efforce de fournir sur le site
-      <a href="https://beabot.fr">https://beabot.fr</a> des informations
+      <a href="https://beabot.fr/">https://beabot.fr</a> des informations
       aussi précises que possible. Toutefois, il ne pourra être tenue
       responsable des omissions, des inexactitudes et des carences dans la mise
       à jour, qu’elles soient de son fait ou du fait des tiers partenaires qui
@@ -69,10 +69,10 @@ USA<br />
     </p>
     <p>
       Tous les informations indiquées sur le site
-      <a href="https://beabot.fr">https://beabot.fr</a> sont données à
+      <a href="https://beabot.fr/">https://beabot.fr</a> sont données à
       titre indicatif, et sont susceptibles d'évoluer. Par ailleurs, les
       renseignements figurant sur le site
-      <a href="https://beabot.fr">https://beabot.fr</a> ne sont pas
+      <a href="https://beabot.fr/">https://beabot.fr</a> ne sont pas
       exhaustifs. Ils sont donnés sous réserve de modifications ayant été
       apportées depuis leur mise en ligne.
     </p>
@@ -114,7 +114,7 @@ USA<br />
       Benoît Abot ne pourra également être tenue responsable des dommages
       indirects (tels par exemple qu'une perte de marché ou perte d'une chance)
       consécutifs à l'utilisation du site
-      <a href="https://beabot.fr">https://beabot.fr</a>.
+      <a href="https://beabot.fr/">https://beabot.fr</a>.
     </p>
     <p>
       Des espaces interactifs (possibilité de poser des questions dans l’espace
@@ -135,9 +135,9 @@ USA<br />
     </p>
     <p>
       A l'occasion de l'utilisation du site
-      <a href="https://beabot.fr">https://beabot.fr</a>, peuvent êtres
+      <a href="https://beabot.fr/">https://beabot.fr</a>, peuvent êtres
       recueillies : l'URL des liens par l'intermédiaire desquels l'utilisateur a
-      accédé au site <a href="https://beabot.fr">https://beabot.fr</a>,
+      accédé au site <a href="https://beabot.fr/">https://beabot.fr</a>,
       le fournisseur d'accès de l'utilisateur, l'adresse de protocole Internet
       (IP) de l'utilisateur.
     </p>
@@ -145,7 +145,7 @@ USA<br />
       En tout état de cause Benoît Abot ne collecte des informations
       personnelles relatives à l'utilisateur que pour le besoin de certains
       services proposés par le site.
-      <a href="https://beabot.fr">https://beabot.fr</a>. 
+      <a href="https://beabot.fr/">https://beabot.fr</a>.
       <br/>
       Les données transmises via le formulaire de contact (nom, adresse email, message) sont utilisées exclusivement pour répondre à la demande de l’utilisateur. Elles ne sont ni stockées à des fins commerciales, ni transmises à des tiers, ni utilisées pour de la prospection.
       <br/>
@@ -155,7 +155,7 @@ Les données sont conservées uniquement le temps nécessaire au traitement de l
       fournit ces informations en toute connaissance de cause, notamment
       lorsqu'il procède par lui-même à leur saisie. Il est alors précisé à
       l'utilisateur du site
-      <a href="https://beabot.fr">https://beabot.fr</a> l'obligation ou
+      <a href="https://beabot.fr/">https://beabot.fr</a> l'obligation ou
       non de fournir ces informations.
     </p>
     <p>
@@ -169,13 +169,13 @@ Les données sont conservées uniquement le temps nécessaire au traitement de l
     </p>
     <p>
       Aucune information personnelle de l'utilisateur du site
-      <a href="https://beabot.fr">https://beabot.fr</a> n'est publiée à
+      <a href="https://beabot.fr/">https://beabot.fr</a> n'est publiée à
       l'insu de l'utilisateur, échangée, transférée, cédée ou vendue sur un
       support quelconque à des tiers. Seule l'hypothèse du rachat de Benoît Abot
       et de ses droits permettrait la transmission des dites informations à
       l'éventuel acquéreur qui serait à son tour tenu de la même obligation de
       conservation et de modification des données vis à vis de l'utilisateur du
-      site <a href="https://beabot.fr">https://beabot.fr</a>.
+      site <a href="https://beabot.fr/">https://beabot.fr</a>.
     </p>
     <p>
       Les bases de données sont protégées par les dispositions de la loi du 1er
@@ -184,14 +184,14 @@ Les données sont conservées uniquement le temps nécessaire au traitement de l
     </p>
     <h3>8. Liens hypertextes et cookies.</h3>
     <p>
-      Le site <a href="https://beabot.fr">https://beabot.fr</a> contient
+      Le site <a href="https://beabot.fr/">https://beabot.fr</a> contient
       un certain nombre de liens hypertextes vers d'autres sites, mis en place
       avec l'autorisation de Benoît Abot. Cependant, Benoît Abot n'a pas la
       possibilité de vérifier le contenu des sites ainsi visités, et n'assumera
       en conséquence aucune responsabilité de ce fait.
     </p>
     <p>
-      Le site <a href="https://beabot.fr">https://beabot.fr</a> n’utilise pas de cookies de suivi ou de mesure d’audience. Des cookies strictement techniques peuvent être utilisés par l’hébergeur pour assurer le bon fonctionnement du service.
+      Le site <a href="https://beabot.fr/">https://beabot.fr</a> n’utilise pas de cookies de suivi ou de mesure d’audience. Des cookies strictement techniques peuvent être utilisés par l’hébergeur pour assurer le bon fonctionnement du service.
     </p>
     <!-- <p>
       Le refus d’installation d’un cookie peut entraîner l’impossibilité
@@ -229,7 +229,7 @@ Les données sont conservées uniquement le temps nécessaire au traitement de l
     <h3>9. Droit applicable et attribution de juridiction.</h3>
     <p>
       Tout litige en relation avec l'utilisation du site
-      <a href="https://beabot.fr">https://beabot.fr</a> est soumis au
+      <a href="https://beabot.fr/">https://beabot.fr</a> est soumis au
       droit français. Il est fait attribution exclusive de juridiction aux
       tribunaux compétents de Paris.
     </p>
@@ -260,7 +260,8 @@ const config = useRuntimeConfig()
 const mentionsCanonicalUrl = canonicalUrl(config.public.siteUrl, '/mentions-legales')
 
 useHead({
-  title: 'Mentions légales',
+  title: 'Mentions légales et confidentialité',
+  titleTemplate: '%s | BeAbot',
   link: [
     {
       hid: 'canonical',
@@ -271,9 +272,9 @@ useHead({
 })
 
 useSeoMeta({
-  description: 'Mentions légales du site beabot.fr : éditeur, hébergeur, propriété intellectuelle, données personnelles et conditions d\'utilisation.',
+  description: 'Mentions légales du site beabot.fr : éditeur, hébergeur, propriété intellectuelle, données personnelles et conditions d’utilisation.',
   ogTitle: 'Mentions légales — BeAbot',
-  ogDescription: 'Mentions légales du site beabot.fr : éditeur, hébergeur, propriété intellectuelle, données personnelles et conditions d\'utilisation.',
+  ogDescription: 'Mentions légales du site beabot.fr : éditeur, hébergeur, propriété intellectuelle, données personnelles et conditions d’utilisation.',
   ogUrl: mentionsCanonicalUrl,
   ogImage: `${config.public.siteUrl}/beabot.png`,
   ogImageWidth: 1200,

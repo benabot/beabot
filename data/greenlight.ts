@@ -20,7 +20,7 @@ export interface GreenlightFaqItem {
 export const greenlightPageContent = {
   freeDownloadUrl: '',
   seo: {
-    title: 'Greenlight — thème WordPress éco-conçu | BeAbot',
+    title: 'Greenlight — thème WordPress éco-conçu',
     description:
       'Greenlight, un socle WordPress premium, rapide, accessible et durable. Une version free pour démarrer simplement, une version premium pour aller plus loin.',
   },

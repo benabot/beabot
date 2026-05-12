@@ -12,14 +12,17 @@ My website [beabot.fr](https://beabot.fr) where i'm talking mostly about greenIT
 
 | Technologie | Version | Usage |
 |-------------|---------|-------|
-| **Nuxt** | 3.14+ | Framework Vue.js SSG |
+| **Nuxt** | 4.4+ | Framework Vue.js SSG |
 | **Vue.js** | 3.5+ | UI Components |
-| **Vite** | 6 | Bundler |
-| **@nuxt/content** | 2.13+ | Markdown CMS |
-| **@nuxt/image** | 1.8+ | Optimisation images |
-| **@nuxtjs/sitemap** | 6.1+ | Génération sitemap |
-| **SCSS** | - | Styles |
-| **Node.js** | ≥18 | Runtime |
+| **Nitro** | 2.13+ | Server / prerender |
+| **Vite** | 7 côté builder Nuxt, 6 direct | Bundler |
+| **@nuxt/content** | 3.13+ | Markdown CMS, collection `articles` via `content.config.ts` |
+| **@nuxt/image** | 2.0+ | Module image, provider `none` tant qu'aucun composant Nuxt Image n'est rendu |
+| **@nuxtjs/sitemap** | 8.0+ | Génération sitemap |
+| **@nuxt/eslint** | 1.15+ | ESLint flat config (`eslint.config.mjs`) |
+| **zod** | 3.25+ | Schéma Content v3 |
+| **SCSS** | encore utilisé | Styles, sortie complète reportée après preview Nuxt 4 |
+| **Node.js** | 22.21.1 validé localement | Runtime local ; pas de champ `engines` dans `package.json` |
 
 ---
 
@@ -45,7 +48,14 @@ npm run generate
 # Preview du build statique
 npm run preview
 
-# Linting
+# Tests et garde-fous
+npm test
+
+# Lint JS avec @nuxt/eslint v1
+npm run lint:js
+
+# Linting complet
+# Note : peut rester bloqué par Prettier historique tant que le lot dédié n'est pas traité.
 npm run lint
 ```
 
@@ -58,6 +68,7 @@ beabot/
 ├── assets/css/          # Styles SCSS + variables
 ├── components/          # Composants Vue réutilisables
 ├── composables/         # Composables Vue (useTags, etc.)
+├── content.config.ts    # Collection Content v3 articles
 ├── content/articles/    # Articles Markdown (blog)
 ├── data/                # Données structurées (portfolio.ts)
 ├── layouts/             # Layouts Nuxt
@@ -85,6 +96,10 @@ Ce site applique les principes d'éco-conception web :
 - **Prefetch désactivé** : Économie bande passante
 - **Compression** : Brotli/Gzip activé
 
+### SCSS
+
+SCSS reste présent et validé avec Nuxt 4. Les étapes SCSS-1 à SCSS-5 ont déjà supprimé l'injection globale `additionalData` et stabilisé l'éco-impact, mais la sortie complète de SCSS (`SCSS-6`) est reportée après preview Nuxt 4.
+
 ### Scores de performance
 
 | Métrique | Score | Outil |
@@ -107,6 +122,16 @@ Ce site applique les principes d'éco-conception web :
 - Réécriture des composants en Composition API
 - Migration @nuxt/content v1 → v2
 - Configuration Vite + TypeScript
+
+### Migration Nuxt 4 (branche `chore/nuxt4-migration`)
+
+- Migration Nuxt `4.4.2`
+- Migration @nuxt/content `3.13.0` avec collection `articles`
+- Migration @nuxtjs/sitemap `8.0.15`
+- Migration @nuxt/image `2.0.0`
+- Migration @nuxt/eslint `1.15.2`
+- Génération statique, feeds, sitemap et SEO validés localement
+- Aucun déplacement vers `app/` pour le moment : l'arborescence actuelle reste fonctionnelle
 
 ### Optimisations éco-conception (Phase 9)
 

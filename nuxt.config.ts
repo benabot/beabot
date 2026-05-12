@@ -1,7 +1,10 @@
+import { readdir } from 'node:fs/promises'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://beabot.fr'
 const normalizedSiteUrl = siteUrl.replace(/\/+$/, '')
 const fileExtensionRegex = /\.[a-z0-9]+$/i
+const articleContentDir = new URL('./content/articles/', import.meta.url)
 
 const normalizeSitemapLoc = (loc: string): string => {
   if (!loc) return loc
@@ -21,6 +24,14 @@ const normalizeSitemapLoc = (loc: string): string => {
   return loc
 }
 
+const getArticleSitemapRoutes = async (): Promise<string[]> => {
+  const files = await readdir(articleContentDir)
+  return files
+    .filter((file) => file.endsWith('.md'))
+    .map((file) => file.replace(/\.md$/, '').toLowerCase())
+    .map((slug) => `/eco-conception/${slug}/`)
+}
+
 export default defineNuxtConfig({
   // Nuxt 3 uses SSG by default with `nuxt generate`
   ssr: true,
@@ -29,6 +40,9 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-12-06',
   future: {
     compatibilityVersion: 4,
+  },
+  features: {
+    inlineStyles: false,
   },
 
   // Runtime configuration (accessible via useRuntimeConfig())
@@ -55,7 +69,7 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'fr',
       },
-      titleTemplate: 'BeAbot - %s',
+      titleTemplate: '%s | BeAbot',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -133,8 +147,7 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData:
-            '@use "~/assets/css/vars/_colors.scss" as *; @use "~/assets/css/vars/_typo.scss" as *; @use "~/assets/css/vars/_spacing.scss" as *; @use "~/assets/css/mixins/mixins.scss" as *;',
+          additionalData: '',
           api: 'modern-compiler',
         },
       },
@@ -146,38 +159,6 @@ export default defineNuxtConfig({
         compress: {
           drop_console: true, // Remove console.logs in production
           drop_debugger: true,
-        },
-      },
-      rollupOptions: {
-        output: {
-          manualChunks: (id) => {
-            // Group Vue core together
-            if (
-              id.includes('node_modules/vue') ||
-              id.includes('node_modules/@vue')
-            ) {
-              return 'vendor-vue'
-            }
-            // Group Nuxt core modules
-            if (
-              id.includes('node_modules/@nuxt') ||
-              id.includes('node_modules/nuxt')
-            ) {
-              return 'vendor-nuxt'
-            }
-            // Group content/markdown related
-            if (
-              id.includes('shiki') ||
-              id.includes('markdown') ||
-              id.includes('@nuxt/content')
-            ) {
-              return 'vendor-content'
-            }
-            // Group all other node_modules into vendor
-            if (id.includes('node_modules')) {
-              return 'vendor-libs'
-            }
-          },
         },
       },
     },
@@ -197,40 +178,46 @@ export default defineNuxtConfig({
 
   // Content module configuration
   content: {
-    highlight: {
-      // Use VS Code Dark+ theme for better code readability
-      theme: 'dark-plus',
-      // Preload common languages for blog articles
-      preload: [
-        'javascript',
-        'js',
-        'typescript',
-        'ts',
-        'css',
-        'scss',
-        'html',
-        'vue',
-        'bash',
-        'shell',
-        'json',
-        'yaml',
-        'markdown',
-        'md',
-      ],
+    experimental: {
+      sqliteConnector: 'native',
     },
-    markdown: {
-      toc: {
-        depth: 3,
-        searchDepth: 3,
+    build: {
+      markdown: {
+        toc: {
+          depth: 3,
+          searchDepth: 3,
+        },
+        highlight: {
+          // Use VS Code Dark+ theme for better code readability
+          theme: 'dark-plus',
+          // Load common languages for blog articles
+          langs: [
+            'javascript',
+            'js',
+            'typescript',
+            'ts',
+            'css',
+            'scss',
+            'html',
+            'vue',
+            'bash',
+            'shell',
+            'json',
+            'yaml',
+            'markdown',
+            'md',
+          ],
+        },
+        // Enable code block meta (for filename, line numbers, etc.)
+        remarkPlugins: {},
+        rehypePlugins: {},
       },
-      // Enable code block meta (for filename, line numbers, etc.)
-      remarkPlugins: [],
-      rehypePlugins: [],
     },
   },
 
   // Image module configuration
   image: {
+    provider: 'none',
     // Default image optimization
     quality: 75, // Reduced from 80 for smaller file sizes
     format: ['webp'], // WebP only for better compression (AVIF has compatibility issues)
@@ -264,14 +251,7 @@ export default defineNuxtConfig({
     hostname: siteUrl,
     gzip: true,
     exclude: ['/404/', '/404'],
-    routes: async () => {
-      const { serverQueryContent } = await import('#content/server')
-      const articles = await serverQueryContent('articles').find()
-      return articles
-        .map((article) => article._path?.split('/').pop())
-        .filter(Boolean)
-        .map((slug) => `/eco-conception/${slug}/`)
-    },
+    urls: getArticleSitemapRoutes,
   },
 
   // Fonts configuration - removed for now
@@ -309,7 +289,6 @@ export default defineNuxtConfig({
   experimental: {
     // payloadExtraction: true, // Disabled - causes #app-manifest errors in dev mode
     // componentIslands: true, // Disabled - causes #app-manifest errors in current version
-    inlineSSRStyles: false, // Inline critical CSS to reduce render-blocking stylesheets
     defaults: {
       nuxtLink: {
         prefetch: false,

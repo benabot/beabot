@@ -178,6 +178,8 @@ async function onSubmit() {
 </script>
 
 <style lang="scss" scoped>
+@use "~/assets/css/vars/_colors.scss" as *;
+@use "~/assets/css/vars/_typo.scss" as *;
 .release-form {
   display: grid;
   gap: 1rem;
