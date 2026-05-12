@@ -9,6 +9,31 @@
 7. [x] **`docs/nuxt-vite-warnings-audit`** — fait, mergé dans `dev` ; warnings Nuxt/Vite restants documentés sans optimisation de chunks ni modification de configuration build
 8. [x] **`refactor/css-native-audit`** — fait, mergé dans `dev` ; audit Sass restant avant migration CSS moderne ; aucun style modifié ; rapport `migration-css-native-audit.md`
 9. [x] **`docs/pre-master-final-check`** — fait localement ; validation finale de `dev` avant merge manuel vers `master`, sans modification de code applicatif
+10. [x] **`fix/mobile-nav-close-on-link-click`** — fait localement ; fermeture du menu mobile au clic sur un lien interne avant merge master, sans rouvrir SEO, JSON-LD, URLs, dépendances, CSS natif ou warnings Nuxt/Vite
+
+## Phase 30 — Navigation mobile : fermeture au clic lien (12 mai 2026)
+
+> Branche : `fix/mobile-nav-close-on-link-click`
+
+- [x] Créer la branche depuis `dev`
+- [x] Relire `AGENTS.md`, `BRANCHING_STRATEGY.md`, `PROJECT_STATE.md` et `TODO.md`
+- [x] Appliquer les skills locaux pertinents : quick-start, Vue/Nuxt 4, design-front, Playwright, éco-conception et planning
+- [x] Identifier le composant responsable : `layouts/default.vue`, nav mobile en `<details>`, liens `AppLink`, état `showMobileMenu`
+- [x] Reproduire le bug en navigateur mobile 390×844 : après clic `Services`, route `/services/` OK mais `<details>` encore ouvert et logo en état menu ouvert
+- [x] Ajouter un test de non-régression `tests/mobile-nav.test.mjs` et observer l'échec avant correction
+- [x] Corriger `layouts/default.vue` : `ref` sur le `<details>`, fermeture au clic des liens mobiles, fermeture au changement de route, `showMobileMenu` synchronisé
+- [x] Préserver les liens internes avec slash final et ne pas modifier `AppLink`
+- [x] Ajouter l'état accessible minimal : `aria-expanded` et `aria-controls` sur le `summary` mobile
+- [x] Vérifier que le focus ne reste pas dans le menu fermé après clic lien
+- [x] Vérifier le comportement clavier du `summary` mobile avec `Enter`
+- [x] Vérifier le comportement desktop 1440×900 : nav mobile masquée, nav desktop visible, navigation desktop fonctionnelle
+- [x] Valider le test ciblé : `node --test tests/mobile-nav.test.mjs tests/app-link.test.mjs`
+- [x] Valider `npm test` : 49 pre-build checks, garde-fou Content et 25 tests Node OK
+- [x] Valider `npm run generate` : 68 routes prerendered
+- [x] Valider `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK
+- [x] Valider `node scripts/check-scss-explicit-imports.mjs` : `TOTAL_DEPENDANCES_IMPLICITES=0`
+- [x] Mettre à jour le statut final dans `PROJECT_STATE.md` après validations complètes
+- [x] Risque restant : aucun risque local bloquant identifié ; validation preview Netlify à faire après merge manuel par Benoît
 
 ## Phase 29 — Validation finale pré-master (11 mai 2026)
 

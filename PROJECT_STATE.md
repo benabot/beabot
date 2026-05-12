@@ -1,20 +1,21 @@
 # 📊 ÉTAT DU PROJET - BeAbot
 
-> **Récapitulatif de l'état du projet au 11 mai 2026**
+> **Récapitulatif de l'état du projet au 12 mai 2026**
 
 ---
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
-0. **Merge manuel `dev` -> `master`** — État local prêt après validation finale sur `docs/pre-master-final-check`. Benoît garde le merge et le push.
-1. **Validation preview/production après merge** — Vérifier pages principales, sitemap, RSS, JSON Feed, canonical homepage et statut HTTP réel de `/404/` sur Netlify.
-2. **Warnings Nuxt/Vite** — Warning sourcemap `nuxt:module-preload-polyfill` documenté et non bloquant ; circular chunk non reproduit. Rouvrir un lot uniquement sur preuve d'impact.
-3. **Migration CSS native** — Suivre les lots CSS-2 à CSS-8 proposés dans `migration-css-native-audit.md`, sans refactor massif.
-4. **Recherche UI / composant orphelin** — Si `AppSearchInput.vue` doit redevenir visible, choisir une page hôte et faire une vérification UX dédiée ; sinon documenter son statut orphelin dans un lot séparé.
-5. **Lint global repo-wide** — `npm run lint:js` fonctionne avec la flat config Nuxt ESLint v1, mais `npm run lint` reste bloqué par `lint:prettier` sur des formatages historiques et `docs/migration/nuxt4/archive/audit-unused-depcheck.json` non JSON ; à traiter séparément.
-6. **Audit sécurité npm** — `npm audit --audit-level=moderate` signalait 11 vulnérabilités lors de l'audit Nuxt 4 ; ne pas lancer `npm audit fix` sans lot dédié.
-7. **DIR-* app directory** — Ne pas déplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dédié uniquement si une incompatibilité réelle apparaît.
-8. **SCSS-6** — Reporté après audit CSS natif. La sortie complète de SCSS demande plusieurs lots progressifs : couleurs simples, typo, spacing, breakpoints, couleurs dérivées, réduction des imports Sass, puis décision de suppression Sass.
+0. **Merge manuel `fix/mobile-nav-close-on-link-click` -> `dev`** — Correction mobile locale à valider puis merge/push par Benoît.
+1. **Merge manuel `dev` -> `master`** — Après intégration du correctif mobile dans `dev`, Benoît garde le merge et le push.
+2. **Validation preview/production après merge** — Vérifier pages principales, navigation mobile, sitemap, RSS, JSON Feed, canonical homepage et statut HTTP réel de `/404/` sur Netlify.
+3. **Warnings Nuxt/Vite** — Warning sourcemap `nuxt:module-preload-polyfill` documenté et non bloquant ; circular chunk non reproduit. Rouvrir un lot uniquement sur preuve d'impact.
+4. **Migration CSS native** — Suivre les lots CSS-2 à CSS-8 proposés dans `migration-css-native-audit.md`, sans refactor massif.
+5. **Recherche UI / composant orphelin** — Si `AppSearchInput.vue` doit redevenir visible, choisir une page hôte et faire une vérification UX dédiée ; sinon documenter son statut orphelin dans un lot séparé.
+6. **Lint global repo-wide** — `npm run lint:js` fonctionne avec la flat config Nuxt ESLint v1, mais `npm run lint` reste bloqué par `lint:prettier` sur des formatages historiques et `docs/migration/nuxt4/archive/audit-unused-depcheck.json` non JSON ; à traiter séparément.
+7. **Audit sécurité npm** — `npm audit --audit-level=moderate` signalait 11 vulnérabilités lors de l'audit Nuxt 4 ; ne pas lancer `npm audit fix` sans lot dédié.
+8. **DIR-* app directory** — Ne pas déplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dédié uniquement si une incompatibilité réelle apparaît.
+9. **SCSS-6** — Reporté après audit CSS natif. La sortie complète de SCSS demande plusieurs lots progressifs : couleurs simples, typo, spacing, breakpoints, couleurs dérivées, réduction des imports Sass, puis décision de suppression Sass.
 
 ---
 
@@ -29,10 +30,47 @@
 7. **`docs/nuxt-vite-warnings-audit`** — État : fait, mergé dans `dev`. Objet : documenter les warnings Nuxt/Vite restants sans optimiser les chunks ni modifier la configuration build.
 8. **`refactor/css-native-audit`** — État : fait, mergé dans `dev`. Objet : audit final Sass restant avant migration CSS moderne ; aucun style modifié ; rapport `migration-css-native-audit.md`.
 9. **`docs/pre-master-final-check`** — État : fait localement. Objet : validation finale de `dev` avant merge manuel vers `master`, sans modification de code applicatif.
+10. **`fix/mobile-nav-close-on-link-click`** — État : fait localement. Objet : fermer la navigation mobile au clic sur un lien interne et synchroniser `aria-expanded`, sans modifier le desktop ni les URLs.
 
 ---
 
 ## 🎯 SITUATION ACTUELLE
+
+### Navigation mobile — fermeture au clic lien — 12 mai 2026
+
+Branche : `fix/mobile-nav-close-on-link-click`
+
+- Périmètre :
+  - correction limitée à `layouts/default.vue` ;
+  - ajout d'un test ciblé `tests/mobile-nav.test.mjs` ;
+  - documentation dans `PROJECT_STATE.md` et `TODO.md`.
+- Bug constaté :
+  - en viewport mobile 390×844 sur `http://localhost:3000/portfolio/`, après ouverture du menu mobile, un clic sur `Services` changeait la route vers `/services/` mais le `<details>` restait ouvert ;
+  - l'état visuel restait ouvert (`logo-gris`) et le menu continuait à recouvrir la page.
+- Correction :
+  - le `<details>` mobile est référencé via `mobileMenuDetails` ;
+  - les liens du menu mobile appellent `closeMobileMenu()` au clic ;
+  - le changement de route appelle aussi `closeMobileMenu()` pour couvrir les navigations internes ;
+  - `showMobileMenu` reste synchronisé avec l'état natif du `<details>` ;
+  - `aria-expanded` et `aria-controls` sont ajoutés au `summary` mobile ;
+  - le focus actif dans le menu est relâché quand le menu se ferme.
+- Validations manuelles mobiles :
+  - ouverture du menu puis clic sur `Services`, `Portfolio`, `Greenlight`, `Éco-conception`, `Apps`, `Contact` et `Accueil` : route correcte, menu fermé, `aria-expanded="false"`, logo hors état ouvert ;
+  - clic clavier `Enter` sur le `summary` : ouverture puis fermeture conservées, `aria-expanded` synchronisé ;
+  - aucun focus restant dans le menu fermé après clic lien ;
+  - trailing slash des liens internes préservé.
+- Validation desktop :
+  - viewport 1440×900 : nav mobile masquée, nav desktop visible, clic desktop vers `/services/` fonctionnel.
+- Validations automatisées :
+  - test rouge observé avant correction sur `tests/mobile-nav.test.mjs` ;
+  - test ciblé `node --test tests/mobile-nav.test.mjs tests/app-link.test.mjs` : OK après correction ;
+  - `npm test` : OK, 49 pre-build checks, garde-fou Content et 25 tests Node ;
+  - `npm run generate` : OK, 68 routes prerendered ;
+  - `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK ;
+  - `node scripts/check-scss-explicit-imports.mjs` : OK, `TOTAL_DEPENDANCES_IMPLICITES=0`.
+- Risques restants :
+  - aucun risque local bloquant identifié ;
+  - validation preview Netlify à faire après merge manuel par Benoît.
 
 ### Validation finale pré-master — 11 mai 2026
 

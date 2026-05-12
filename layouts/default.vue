@@ -5,8 +5,12 @@
       class="nav-mobile"
       :class="{ 'nav-mobile--greenlight': isGreenlightRoute }"
     >
-      <details @toggle="onMobileMenuToggle">
-        <summary class="nav-mobile-summary">
+      <details ref="mobileMenuDetails" @toggle="onMobileMenuToggle">
+        <summary
+          class="nav-mobile-summary"
+          aria-controls="mobile-navigation-menu"
+          :aria-expanded="showMobileMenu ? 'true' : 'false'"
+        >
           <svg
             viewBox="0 0 1111.7 336.6"
             xml:space="preserve"
@@ -67,15 +71,21 @@
             />
           </svg>
         </summary>
-        <ul class="menu-mobile">
+        <ul id="mobile-navigation-menu" class="menu-mobile">
           <li>
-            <AppLink to="/" class="nav-mobile__link">Accueil</AppLink>
+            <AppLink to="/" class="nav-mobile__link" @click="closeMobileMenu">
+              Accueil
+            </AppLink>
           </li>
           <li
             v-for="item in navigationItems"
             :key="`mobile-${item.to}`"
           >
-            <AppLink :to="item.to" class="nav-mobile__link">
+            <AppLink
+              :to="item.to"
+              class="nav-mobile__link"
+              @click="closeMobileMenu"
+            >
               {{ item.label }}
             </AppLink>
           </li>
@@ -210,6 +220,7 @@ const isGreenlightRoute = computed(
     route.path === '/green-light',
 )
 const showMobileMenu = ref(false)
+const mobileMenuDetails = ref(null)
 const isHeroActive = ref(isHomeRoute.value)
 const isDarkSectionActive = ref(false)
 const isLogoHovered = ref(false)
@@ -248,6 +259,27 @@ const resetLogoHover = () => {
 
 const onMobileMenuToggle = (event) => {
   showMobileMenu.value = event.target.open
+}
+
+const closeMobileMenu = () => {
+  const details = mobileMenuDetails.value
+
+  if (!details?.open && !showMobileMenu.value) return
+
+  if (details) {
+    const activeElement = document.activeElement
+
+    if (
+      activeElement instanceof HTMLElement &&
+      details.contains(activeElement)
+    ) {
+      activeElement.blur()
+    }
+
+    details.open = false
+  }
+
+  showMobileMenu.value = false
 }
 
 const syncLogoFill = () => {
@@ -337,6 +369,7 @@ watch(isHomeRoute, (value) => {
 watch(
   () => route.fullPath,
   () => {
+    closeMobileMenu()
     refreshHeroState()
   },
 )
