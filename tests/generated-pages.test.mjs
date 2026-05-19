@@ -14,6 +14,7 @@ import {
 const pages = [
   { route: '/', expectedUrl: `${siteUrl}/` },
   { route: '/apps/', expectedUrl: `${siteUrl}/apps/` },
+  { route: '/apps/focus-one/', expectedUrl: `${siteUrl}/apps/focus-one/` },
   { route: '/mentions-legales/', expectedUrl: `${siteUrl}/mentions-legales/` },
   { route: '/eco-conception/', expectedUrl: `${siteUrl}/eco-conception/` },
   {

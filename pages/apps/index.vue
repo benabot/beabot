@@ -7,7 +7,7 @@
         <div class="apps-hero__left">
           <p class="apps-hero__eyebrow">Apps</p>
           <h1>
-            DuoSpend et Meeting Mode —
+            DuoSpend, FocusOne et Meeting Mode —
             Applications <span class="apps-hero__platform">iOS</span> et
             <span class="apps-hero__platform">macOS</span>
           </h1>

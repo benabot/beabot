@@ -125,6 +125,16 @@ export interface SoftwareApplicationSchemaInput {
   operatingSystem: string
   applicationCategory: string
   image?: string
+  offers?: Array<{
+    name: string
+    price: string
+    priceCurrency: string
+    description?: string
+  }>
+  author?: {
+    name: string
+    url: string
+  }
 }
 
 export interface BreadcrumbEntry {
@@ -143,7 +153,7 @@ export const appsIndexContent = {
   seo: {
     title: 'Apps iOS et macOS sobres',
     description:
-      'DuoSpend, Meeting Mode et Siturem : apps natives Swift sans tracking ni SDK tiers. Certaines gratuites, certaines avec abonnement. Autres apps en préparation.',
+      'DuoSpend, FocusOne, Meeting Mode et Siturem : apps natives Swift sans tracking ni SDK tiers. Certaines gratuites, certaines avec abonnement. Autres apps en préparation.',
     image: '/img/apps/duospend-vignette-apps.webp',
   },
 }
@@ -163,6 +173,22 @@ export const appsIndexEntries: AppIndexEntry[] = [
       alt: 'Vignette de l’app DuoSpend',
       available: true,
       label: 'Capture actuelle',
+      fit: 'contain',
+    },
+  },
+  {
+    slug: 'focus-one',
+    name: 'FocusOne',
+    platform: 'iOS',
+    stage: 'Prépublication',
+    summary: 'App iPhone minimaliste pour suivre une micro-habitude à la fois.',
+    href: '/apps/focus-one/',
+    featured: false,
+    preview: {
+      src: '/img/apps/focus-one/06-onboarding.jpeg',
+      alt: 'Écran de création d’une routine dans FocusOne sur iPhone',
+      available: true,
+      label: 'Capture temporaire',
       fit: 'contain',
     },
   },
@@ -199,6 +225,139 @@ export const appsIndexEntries: AppIndexEntry[] = [
       label: 'Capture actuelle',
       fit: 'cover',
     },
+  },
+]
+
+const focusOneFaqSections: AppFaqSection[] = [
+  {
+    title: 'Premiers pas',
+    items: [
+      {
+        question: 'C’est quoi FocusOne exactement ?',
+        answer:
+          'FocusOne est une app iPhone pour suivre une seule micro-habitude à la fois. Vous créez une routine, vous la validez chaque jour en un tap, et l’app suit votre streak.',
+      },
+      {
+        question: 'Pour qui c’est fait ?',
+        answer:
+          'Pour les personnes qui veulent installer un geste simple sans gérer un tableau de bord de productivité complet. FocusOne convient aux habitudes courtes : méditer 5 minutes, lire quelques pages, marcher, écrire, respirer, boire de l’eau, faire quelques étirements.',
+      },
+      {
+        question: 'Pourquoi une seule habitude active ?',
+        answer:
+          'Parce que l’accumulation crée souvent de l’abandon. FocusOne privilégie la concentration : une habitude, une action, un retour immédiat. Quand une routine est ancrée, vous pouvez la clôturer et passer à une autre.',
+      },
+      {
+        question: 'Faut-il créer un compte ?',
+        answer:
+          'Non. FocusOne ne demande pas de compte, pas d’e-mail, pas de mot de passe.',
+      },
+      {
+        question: 'L’app est-elle disponible sur Android ?',
+        answer:
+          'Non. FocusOne est une app iPhone conçue avec les technologies Apple : SwiftUI, Core Data, CloudKit, WidgetKit et StoreKit 2. Une version Android n’est pas prévue à ce stade.',
+      },
+    ],
+  },
+  {
+    title: 'Fonctionnement',
+    items: [
+      {
+        question: 'Comment fonctionne le streak ?',
+        answer:
+          'Une journée est réussie dès qu’il existe au moins une validation sur cette journée. Si vous avez validé aujourd’hui et hier, la série continue. Si vous validez aujourd’hui mais pas hier, le streak repart à 1.',
+      },
+      {
+        question: 'Pourquoi la journée commence à 04:00 ?',
+        answer:
+          'Parce qu’une journée réelle ne se termine pas toujours à minuit. Une heure de début à 04:00 évite de casser une série quand vous validez une habitude tard le soir.',
+      },
+      {
+        question: 'Peut-on corriger une erreur ?',
+        answer:
+          'Oui. Le toggle le même jour est autorisé pour corriger une validation faite par erreur.',
+      },
+      {
+        question: 'Peut-on configurer des rappels ?',
+        answer:
+          'Oui. Vous pouvez configurer 0, 1 ou 2 rappels quotidiens. Les notifications sont locales : elles sont programmées sur votre iPhone, sans serveur distant.',
+      },
+      {
+        question: 'FocusOne fonctionne-t-elle hors ligne ?',
+        answer:
+          'Oui. Le cœur de l’app fonctionne localement sur l’iPhone. Si iCloud est activé, les données peuvent être synchronisées entre vos appareils Apple.',
+      },
+    ],
+  },
+  {
+    title: 'Premium',
+    items: [
+      {
+        question: 'C’est quoi FocusOne Premium ?',
+        answer:
+          'FocusOne Premium débloque des fonctions avancées : historique complet, archives, cycles, statistiques avancées, widgets avancés, icônes premium et personnalisation supplémentaire.',
+      },
+      {
+        question: 'La version gratuite est-elle vraiment utilisable ?',
+        answer:
+          'Oui. La version gratuite garde le cœur du produit : créer une habitude active, la valider chaque jour, suivre son streak et utiliser les fonctions de base.',
+      },
+      {
+        question: 'Pourquoi ne pas tout laisser gratuit ?',
+        answer:
+          'FocusOne est développée et maintenue par une seule personne. Le Premium finance le développement continu sans publicité, sans revente de données et sans dépendance à des outils de tracking.',
+      },
+      {
+        question: 'L’achat est-il géré par Apple ?',
+        answer:
+          'Oui. Les abonnements ou achats sont gérés par Apple via l’App Store. FocusOne ne reçoit pas et ne stocke pas vos informations de paiement.',
+      },
+    ],
+  },
+  {
+    title: 'Widgets et synchronisation',
+    items: [
+      {
+        question: 'Quels widgets sont prévus ?',
+        answer:
+          'Des widgets iOS pour l’écran d’accueil et l’écran verrouillé. Les widgets de base sont prévus dans l’offre gratuite ; les widgets avancés sont réservés à Premium.',
+      },
+      {
+        question: 'Quelles données apparaissent dans les widgets ?',
+        answer:
+          'Un snapshot simple : habitude active, état du jour et streak. Le widget ne remplace pas l’app, il donne un aperçu rapide.',
+      },
+      {
+        question: 'FocusOne utilise-t-elle iCloud ?',
+        answer:
+          'Oui, l’architecture prévoit la synchronisation iCloud via CloudKit. Selon la configuration de votre appareil, vos données peuvent être synchronisées entre vos appareils Apple.',
+      },
+    ],
+  },
+  {
+    title: 'Confidentialité et données',
+    items: [
+      {
+        question: 'Mes données sont-elles envoyées sur un serveur FocusOne ?',
+        answer:
+          'Non. FocusOne n’a pas de backend applicatif. Les données sont stockées localement sur l’iPhone, avec synchronisation iCloud si elle est activée sur votre appareil.',
+      },
+      {
+        question: 'L’app contient-elle des trackers ou de la publicité ?',
+        answer:
+          'Non. FocusOne n’intègre pas de tracking, pas de publicité, pas de Firebase, pas d’Amplitude, pas de Mixpanel et pas de SDK tiers.',
+      },
+      {
+        question: 'Comment supprimer mes données ?',
+        answer:
+          'Vous pouvez supprimer l’app de votre iPhone. Si la synchronisation iCloud est activée, désactivez aussi la synchronisation iCloud pour FocusOne dans les réglages de votre appareil.',
+      },
+      {
+        question: 'Comment signaler un bug ou suggérer une fonctionnalité ?',
+        answer:
+          'Depuis la page FocusOne : https://beabot.fr/apps/focus-one/. L’app est développée par une seule personne ; les retours sont lus directement.',
+      },
+    ],
   },
 ]
 
@@ -667,6 +826,188 @@ export const meetingModeContent: AppDetailContent = {
   },
 }
 
+export const focusOneContent: AppDetailContent = {
+  slug: 'focus-one',
+  name: 'FocusOne',
+  platform: 'iOS',
+  stage: 'Prépublication',
+  href: '/apps/focus-one/',
+  intro: 'Une habitude, une action, un retour immédiat.',
+  summary:
+    'Une app iPhone minimaliste pour tenir une micro-habitude à la fois, sans tableau de bord inutile, sans compte imposé, sans tracking. Créer une routine. La cocher. Garder le fil.',
+  overview: [
+    'Les apps d’habitudes finissent souvent par devenir des tableaux de bord de productivité : trop d’objectifs, trop de graphiques, trop de réglages, trop de pression.',
+    'FocusOne prend le parti inverse.',
+    'L’app vous aide à suivre une seule micro-habitude active à la fois. Vous choisissez une routine simple — méditer 5 minutes, marcher, lire, boire de l’eau, respirer, écrire quelques lignes — puis vous la validez chaque jour en un tap.',
+    'Pas de système complexe. Pas de flux social. Pas de compétition. L’objectif est de réduire la friction : ouvrir, cocher, repartir.',
+    'FocusOne suit votre streak, affiche l’état du jour, programme des rappels locaux si vous les activez, et vous laisse clôturer une habitude quand elle est suffisamment ancrée avant d’en démarrer une autre.',
+  ],
+  detailPoints: [
+    {
+      label: 'Une habitude',
+      value: 'Une seule routine active à la fois.',
+      description:
+        'FocusOne évite l’accumulation. L’app n’est pas pensée pour gérer dix objectifs en parallèle, mais pour aider à installer un geste simple, répété, mesurable et réaliste.',
+      featured: true,
+    },
+    {
+      label: 'Un tap',
+      value: 'Chaque jour, vous validez votre habitude avec un bouton Fait.',
+      description:
+        'La boucle est volontairement courte : vous ouvrez l’app, vous cochez, vous repartez. Le produit ne cherche pas à capter votre attention plus longtemps que nécessaire.',
+    },
+    {
+      label: 'Un streak',
+      value: 'FocusOne affiche votre série actuelle et votre meilleur streak.',
+      description:
+        'Le suivi reste lisible : savoir si vous avez tenu aujourd’hui, combien de jours vous avez enchaînés, et où vous en êtes sur les 7 ou 30 derniers jours.',
+    },
+    {
+      label: 'Des rappels locaux',
+      value: 'Vous pouvez activer 0, 1 ou 2 rappels quotidiens.',
+      description:
+        'Les notifications sont programmées localement sur l’iPhone. Aucun système de push distant n’est utilisé.',
+    },
+    {
+      label: 'Une journée plus réaliste',
+      value: 'Par défaut, la journée commence à 04:00.',
+      description:
+        'Ce choix évite de casser artificiellement une série quand vous validez une habitude tard le soir. La journée FocusOne n’est pas strictement calée sur minuit.',
+    },
+    {
+      label: 'Confidentialité',
+      value:
+        'Pas de compte. Pas de publicité. Pas de tracking. Pas de SDK tiers.',
+      description:
+        'Vos données restent sur votre iPhone. Si iCloud est activé, elles peuvent être synchronisées entre vos appareils Apple via iCloud, sans passer par un serveur applicatif tiers.',
+    },
+  ],
+  preview: {
+    src: '/img/apps/focus-one/06-onboarding.jpeg',
+    alt: 'Écran de création d’une routine dans FocusOne sur iPhone',
+    available: true,
+    label: "Aperçu de l'app",
+    fit: 'contain',
+  },
+  showVisual: false,
+  gallery: [
+    {
+      src: '/img/apps/focus-one/06-onboarding.jpeg',
+      alt: 'Création d’une routine dans FocusOne',
+      title: 'Création',
+      subtitle: 'Nom, icône, couleur, rappels et heure de début de journée',
+    },
+    {
+      src: '/img/apps/focus-one/06-onboarding.jpeg',
+      alt: 'Écran principal de FocusOne avec le bouton Fait',
+      title: 'Aujourd’hui',
+      subtitle: 'Une action claire : marquer l’habitude comme faite',
+    },
+    {
+      src: '/img/apps/focus-one/06-onboarding.jpeg',
+      alt: 'Suivi du streak quotidien dans FocusOne',
+      title: 'Streak',
+      subtitle: 'Série actuelle, meilleur streak et état du jour',
+    },
+    {
+      src: '/img/apps/focus-one/06-onboarding.jpeg',
+      alt: 'Statistiques mensuelles dans FocusOne',
+      title: 'Statistiques',
+      subtitle: 'Calendrier mensuel, complétion 7 et 30 jours',
+    },
+    {
+      src: '/img/apps/focus-one/06-onboarding.jpeg',
+      alt: 'Widget iOS FocusOne affichant la routine active',
+      title: 'Widgets',
+      subtitle: 'Aperçu rapide sur écran d’accueil ou verrouillé',
+    },
+  ],
+  faq: focusOneFaqSections.flatMap((section) => section.items),
+  faqSections: focusOneFaqSections,
+  pricing: {
+    title: 'Tarifs',
+    intro: 'Gratuit pour installer une habitude. Premium pour aller plus loin.',
+    plans: [
+      {
+        name: 'Gratuit',
+        price: '0 €',
+        description: 'L’essentiel pour suivre une micro-habitude quotidienne.',
+        items: [
+          '1 habitude active',
+          'Validation quotidienne',
+          'Streak actuel',
+          'Statistiques basiques',
+          'Rappels simples',
+          'Widgets de base',
+          'Thèmes gratuits',
+        ],
+      },
+      {
+        name: 'FocusOne Premium',
+        price: 'Prix à confirmer',
+        description:
+          'Pour conserver l’historique, personnaliser davantage et suivre vos cycles dans le temps.',
+        items: [
+          'Historique complet',
+          'Archives et cycles',
+          'Statistiques avancées',
+          'Widgets avancés',
+          'Icônes premium',
+          'Personnalisation supplémentaire',
+          'Durée d’engagement',
+          'Offre annuelle ou accès à vie',
+        ],
+      },
+    ],
+  },
+  legal: {
+    fr: {
+      title: 'Politique de confidentialité',
+      paragraphs: [
+        'FocusOne ne collecte aucune donnée personnelle identifiable.',
+        'Votre habitude active et vos check-ins journaliers sont stockés localement sur votre iPhone via Core Data. Si la synchronisation iCloud est activée sur votre appareil, ces données sont également synchronisées sur vos autres appareils Apple via iCloud — sans passer par un serveur tiers.',
+        'Quelques préférences sont conservées localement dans les réglages système de l’iPhone : état d’onboarding, préférences de notifications, état de l’abonnement et date de début de la période d’essai. Ces données restent sur l’appareil.',
+        'Lorsque vous utilisez les widgets de l’écran d’accueil, un snapshot réduit de vos données est partagé entre l’app et l’extension widget via un App Group local géré par iOS.',
+        'Si vous activez les rappels quotidiens, FocusOne programme des notifications locales sur votre iPhone. Aucune notification distante n’est utilisée.',
+        'Si vous souscrivez à FocusOne Premium — abonnement annuel ou accès à vie — la transaction est gérée par Apple via l’App Store. FocusOne ne reçoit ni ne stocke vos informations de paiement. Seul l’état de l’achat est conservé localement.',
+        'FocusOne n’intègre aucun système de tracking, aucune publicité et aucun SDK tiers comme Firebase, Amplitude ou Mixpanel.',
+        'Pour supprimer vos données, désactivez la synchronisation iCloud pour FocusOne dans Réglages → [votre nom] → iCloud, puis supprimez l’app de votre iPhone.',
+        'FocusOne n’est pas destinée aux enfants de moins de 13 ans.',
+        'Pour toute question, la page FocusOne reste le point de contact.',
+      ],
+    },
+    en: {
+      title: 'Privacy Policy',
+      paragraphs: [
+        'FocusOne does not collect any personally identifiable information.',
+        'Your active habit and daily check-ins are stored locally on your iPhone using Core Data. If iCloud is enabled on your device, this data is also synced to your other Apple devices via iCloud — without going through any third-party server.',
+        'A few preferences are kept locally in iPhone system storage: onboarding state, notification preferences, subscription status, and trial start date. This data stays on the device.',
+        'When you use the home screen widgets, a limited snapshot of your data is shared between the app and the widget extension through a local App Group managed by iOS.',
+        'If you enable daily reminders, FocusOne schedules local notifications on your iPhone. No remote push notifications are used.',
+        'If you subscribe to FocusOne Premium — yearly subscription or lifetime access — Apple handles the transaction through the App Store. FocusOne does not receive or store payment information. Only the purchase state is kept locally.',
+        'FocusOne includes no tracking, no advertising, and no third-party SDKs such as Firebase, Amplitude, or Mixpanel.',
+        'To delete your data, disable iCloud sync for FocusOne in Settings → [your name] → iCloud, then delete the app from your iPhone.',
+        'FocusOne is not intended for children under 13.',
+        'For any question, the FocusOne page remains the contact point.',
+      ],
+    },
+  },
+  cta: {
+    title: 'Soyez le premier à savoir.',
+    description:
+      "FocusOne arrive bientôt. Laissez votre adresse — je vous préviens dès l'ouverture.",
+    secondaryLabel: 'Une question ? Contactez-moi',
+    secondaryTo: '/contact/',
+  },
+  seo: {
+    title:
+      'FocusOne — app iPhone pour tenir une micro-habitude à la fois | BeAbot',
+    description:
+      'FocusOne est une app iPhone minimaliste pour créer, suivre et tenir une seule micro-habitude à la fois. Streak, rappels locaux, widgets, iCloud, sans tracking ni SDK tiers.',
+    image: '/img/apps/focus-one/06-onboarding.jpeg',
+  },
+}
+
 export const duoSpendContent: AppDetailContent = {
   slug: 'duo-spend',
   name: 'DuoSpend',
@@ -1028,6 +1369,8 @@ export const buildSoftwareApplicationSchema = ({
   operatingSystem,
   applicationCategory,
   image,
+  offers,
+  author,
 }: SoftwareApplicationSchemaInput) => ({
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -1037,6 +1380,26 @@ export const buildSoftwareApplicationSchema = ({
   operatingSystem,
   applicationCategory,
   ...(image ? { image } : {}),
+  ...(offers?.length
+    ? {
+        offers: offers.map((offer) => ({
+          '@type': 'Offer',
+          name: offer.name,
+          price: offer.price,
+          priceCurrency: offer.priceCurrency,
+          ...(offer.description ? { description: offer.description } : {}),
+        })),
+      }
+    : {}),
+  ...(author
+    ? {
+        author: {
+          '@type': 'Person',
+          name: author.name,
+          url: author.url,
+        },
+      }
+    : {}),
 })
 
 export const buildFaqSchema = (items: AppFaqItem[]) => ({
