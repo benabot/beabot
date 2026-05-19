@@ -181,7 +181,8 @@ export const appsIndexEntries: AppIndexEntry[] = [
     name: 'FocusOne',
     platform: 'iOS',
     stage: 'Prépublication',
-    summary: 'App iPhone minimaliste pour suivre une micro-habitude à la fois.',
+    summary:
+      'App iPhone minimaliste pour suivre une seule micro-habitude à la fois. Routine quotidienne, streak, rappels locaux et widgets, sans compte ni tracking.',
     href: '/apps/focus-one/',
     featured: false,
     preview: {
@@ -235,7 +236,7 @@ const focusOneFaqSections: AppFaqSection[] = [
       {
         question: 'C’est quoi FocusOne exactement ?',
         answer:
-          'FocusOne est une app iPhone pour suivre une seule micro-habitude à la fois. Vous créez une routine, vous la validez chaque jour en un tap, et l’app suit votre streak.',
+          'FocusOne est une app iPhone minimaliste pour suivre une seule micro-habitude à la fois. Vous créez une routine quotidienne, vous la validez chaque jour en un tap, et l’app suit votre streak.',
       },
       {
         question: 'Pour qui c’est fait ?',
@@ -243,9 +244,14 @@ const focusOneFaqSections: AppFaqSection[] = [
           'Pour les personnes qui veulent installer un geste simple sans gérer un tableau de bord de productivité complet. FocusOne convient aux habitudes courtes : méditer 5 minutes, lire quelques pages, marcher, écrire, respirer, boire de l’eau, faire quelques étirements.',
       },
       {
-        question: 'Pourquoi une seule habitude active ?',
+        question: 'Pourquoi FocusOne ne suit qu’une seule habitude active ?',
         answer:
-          'Parce que l’accumulation crée souvent de l’abandon. FocusOne privilégie la concentration : une habitude, une action, un retour immédiat. Quand une routine est ancrée, vous pouvez la clôturer et passer à une autre.',
+          'Parce que le produit est conçu pour réduire la dispersion. Beaucoup d’apps permettent de suivre plusieurs habitudes en parallèle ; FocusOne privilégie une approche plus étroite : une routine quotidienne, un geste simple, un suivi clair.',
+      },
+      {
+        question: 'FocusOne est-elle une app de productivité ?',
+        answer:
+          'Oui, mais volontairement minimale. FocusOne aide surtout à installer une routine quotidienne avec régularité, sans transformer le suivi d’habitude en tableau de bord complexe.',
       },
       {
         question: 'Faut-il créer un compte ?',
@@ -295,7 +301,17 @@ const focusOneFaqSections: AppFaqSection[] = [
       {
         question: 'C’est quoi FocusOne Premium ?',
         answer:
-          'FocusOne Premium débloque des fonctions avancées : historique complet, archives, cycles, statistiques avancées, widgets avancés, icônes premium et personnalisation supplémentaire.',
+          'FocusOne Premium débloque les stats avancées, l’historique complet au-delà de 30 jours, les widgets moyen et grand, les archives, la routine suivante, les icônes premium, les durées d’engagement, la palette de couleurs étendue, les paliers de streak célébrés et un joker mensuel pour protéger votre série.',
+      },
+      {
+        question: 'Que débloque FocusOne Premium ?',
+        answer:
+          'FocusOne Premium débloque les stats avancées, l’historique complet au-delà de 30 jours, les widgets moyen et grand, les archives, la routine suivante, les icônes premium, les durées d’engagement, la palette de couleurs étendue, les paliers de streak célébrés et un joker mensuel pour protéger votre série.',
+      },
+      {
+        question: 'Combien coûte FocusOne Premium ?',
+        answer:
+          'FocusOne Premium est proposé en abonnement annuel à 14,99 € par an ou en achat unique à 39,99 €.',
       },
       {
         question: 'La version gratuite est-elle vraiment utilisable ?',
@@ -832,22 +848,22 @@ export const focusOneContent: AppDetailContent = {
   platform: 'iOS',
   stage: 'Prépublication',
   href: '/apps/focus-one/',
-  intro: 'Une habitude, une action, un retour immédiat.',
+  intro: 'Une seule habitude. Chaque jour.',
   summary:
-    'Une app iPhone minimaliste pour tenir une micro-habitude à la fois, sans tableau de bord inutile, sans compte imposé, sans tracking. Créer une routine. La cocher. Garder le fil.',
+    'Une app iPhone minimaliste pour suivre une micro-habitude à la fois, garder votre streak et installer une routine quotidienne sans distraction. Créer une routine. La cocher. Garder le fil.',
   overview: [
     'Les apps d’habitudes finissent souvent par devenir des tableaux de bord de productivité : trop d’objectifs, trop de graphiques, trop de réglages, trop de pression.',
     'FocusOne prend le parti inverse.',
-    'L’app vous aide à suivre une seule micro-habitude active à la fois. Vous choisissez une routine simple — méditer 5 minutes, marcher, lire, boire de l’eau, respirer, écrire quelques lignes — puis vous la validez chaque jour en un tap.',
-    'Pas de système complexe. Pas de flux social. Pas de compétition. L’objectif est de réduire la friction : ouvrir, cocher, repartir.',
-    'FocusOne suit votre streak, affiche l’état du jour, programme des rappels locaux si vous les activez, et vous laisse clôturer une habitude quand elle est suffisamment ancrée avant d’en démarrer une autre.',
+    'L’app se concentre sur une seule habitude active. Vous choisissez une routine simple — méditer 5 minutes, marcher, lire, boire de l’eau, respirer, écrire quelques lignes — puis vous la validez chaque jour en un tap.',
+    'Pas de système complexe. Pas de flux social. Pas de compétition. Pas de liste interminable d’objectifs.',
+    'L’objectif est de réduire la friction : ouvrir, cocher, repartir.',
   ],
   detailPoints: [
     {
       label: 'Une habitude',
       value: 'Une seule routine active à la fois.',
       description:
-        'FocusOne évite l’accumulation. L’app n’est pas pensée pour gérer dix objectifs en parallèle, mais pour aider à installer un geste simple, répété, mesurable et réaliste.',
+        'FocusOne évite l’accumulation. L’app n’est pas pensée pour gérer dix objectifs en parallèle, mais pour aider à installer une seule habitude avec constance, régularité et un objectif réaliste.',
       featured: true,
     },
     {
@@ -898,13 +914,19 @@ export const focusOneContent: AppDetailContent = {
       subtitle: 'Nom, icône, couleur, rappels et heure de début de journée',
     },
     {
-      src: '/img/apps/focus-one/06-onboarding.jpeg',
+      src: '/img/apps/focus-one/welcome.webp',
+      alt: 'Écran de bienvenue FocusOne présentant une seule routine à la fois',
+      title: 'Découverte',
+      subtitle: 'Une seule routine à la fois, plus claire et plus tenable',
+    },
+    {
+      src: '/img/apps/focus-one/home-streak.webp',
       alt: 'Écran principal de FocusOne avec le bouton Fait',
       title: 'Aujourd’hui',
       subtitle: 'Une action claire : marquer l’habitude comme faite',
     },
     {
-      src: '/img/apps/focus-one/06-onboarding.jpeg',
+      src: '/img/apps/focus-one/home-streak.webp',
       alt: 'Suivi du streak quotidien dans FocusOne',
       title: 'Streak',
       subtitle: 'Série actuelle, meilleur streak et état du jour',
@@ -944,18 +966,19 @@ export const focusOneContent: AppDetailContent = {
       },
       {
         name: 'FocusOne Premium',
-        price: 'Prix à confirmer',
+        price: '14,99 € / an ou 39,99 € en achat unique.',
         description:
           'Pour conserver l’historique, personnaliser davantage et suivre vos cycles dans le temps.',
         items: [
-          'Historique complet',
-          'Archives et cycles',
-          'Statistiques avancées',
-          'Widgets avancés',
-          'Icônes premium',
-          'Personnalisation supplémentaire',
-          'Durée d’engagement',
-          'Offre annuelle ou accès à vie',
+          'Stats avancées — Des vues plus riches de la progression sans transformer FocusOne en tableau de bord.',
+          'Historique complet — Gardez chaque mois au-delà de la fenêtre gratuite de 30 jours.',
+          'Widgets avancés — Débloquez les widgets moyen et grand pour plus de contexte d’un coup d’œil.',
+          'Archives et routine suivante — Archivez les routines terminées et ajoutez la suivante pour garder la continuité.',
+          'Icônes premium — Choisissez plus de symboles pour distinguer chaque routine plus vite.',
+          'Durée d’engagement — Choisissez 7, 10, 15 ou 30 jours pour cadrer une routine.',
+          'Personnalisation supplémentaire — Débloquez la palette de couleurs étendue quand la base ne suffit plus.',
+          'Paliers de streak célébrés — Des moments animés à 7, 14, 30, 60, 100, 200 et 365 jours.',
+          'Protection de série — Un joker mensuel pour protéger votre série quand la vie s’en mêle.',
         ],
       },
     ],
@@ -1000,10 +1023,9 @@ export const focusOneContent: AppDetailContent = {
     secondaryTo: '/contact/',
   },
   seo: {
-    title:
-      'FocusOne — app iPhone pour tenir une micro-habitude à la fois | BeAbot',
+    title: 'FocusOne — App iPhone pour suivre une seule habitude',
     description:
-      'FocusOne est une app iPhone minimaliste pour créer, suivre et tenir une seule micro-habitude à la fois. Streak, rappels locaux, widgets, iCloud, sans tracking ni SDK tiers.',
+      'FocusOne est une app iPhone minimaliste pour suivre une seule micro-habitude à la fois : routine quotidienne, streak, rappels locaux, widgets et Premium sans tracking.',
     image: '/img/apps/focus-one/06-onboarding.jpeg',
   },
 }

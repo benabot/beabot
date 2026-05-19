@@ -6,6 +6,7 @@ import {
   assertInternalUrlsUseTrailingSlash,
   getMetaContent,
   getStructuredDataNodes,
+  getTitle,
   nodeHasType,
   readGeneratedHtml,
   siteUrl,
@@ -50,12 +51,15 @@ for (const page of pages) {
     const structuredDataNodes = getStructuredDataNodes(html)
 
     for (const node of structuredDataNodes) {
-      assert.ok(node['@type'] || node['@graph'], 'Expected JSON-LD @type or @graph')
+      assert.ok(
+        node['@type'] || node['@graph'],
+        'Expected JSON-LD @type or @graph',
+      )
     }
 
     assert.ok(
       getMetaContent(html, 'property', 'og:description').length > 20,
-      'Expected a useful og:description'
+      'Expected a useful og:description',
     )
 
     if (page.route === '/') {
@@ -74,17 +78,68 @@ for (const page of pages) {
       )
     }
 
+    if (page.route === '/apps/focus-one/') {
+      assert.match(
+        getTitle(html),
+        /^FocusOne — App iPhone pour suivre une seule habitude \| BeAbot$/,
+      )
+      assert.equal(
+        getMetaContent(html, 'name', 'description'),
+        'FocusOne est une app iPhone minimaliste pour suivre une seule micro-habitude à la fois : routine quotidienne, streak, rappels locaux, widgets et Premium sans tracking.',
+      )
+      assert.match(html, /14,99 € \/ an ou 39,99 € en achat unique\./)
+      assert.match(html, /\/img\/apps\/focus-one\/welcome\.webp/)
+      assert.match(html, /\/img\/apps\/focus-one\/home-streak\.webp/)
+      assert.doesNotMatch(html, /Prix à confirmer|Prix App Store à confirmer/)
+
+      const appNode = structuredDataNodes.find((node) =>
+        nodeHasType(node, 'SoftwareApplication'),
+      )
+      assert.ok(appNode, 'Expected FocusOne JSON-LD SoftwareApplication')
+      assert.deepEqual(
+        appNode.offers?.map((offer) => ({
+          name: offer.name,
+          price: offer.price,
+          priceCurrency: offer.priceCurrency,
+        })),
+        [
+          {
+            name: 'FocusOne gratuit',
+            price: '0',
+            priceCurrency: 'EUR',
+          },
+          {
+            name: 'FocusOne Premium annuel',
+            price: '14.99',
+            priceCurrency: 'EUR',
+          },
+          {
+            name: 'FocusOne Premium achat unique',
+            price: '39.99',
+            priceCurrency: 'EUR',
+          },
+        ],
+      )
+    }
+
     if (page.article) {
       assert.match(html, /<article\b/i)
       assert.match(html, /<h1\b[^>]*>[\s\S]*?<\/h1>/i)
       assert.match(html, /<a\b[^>]+href=["']\/eco-conception\/[^"']+\/["']/i)
 
       const articleNode = structuredDataNodes.find(
-        (node) => nodeHasType(node, 'Article') || nodeHasType(node, 'BlogPosting'),
+        (node) =>
+          nodeHasType(node, 'Article') || nodeHasType(node, 'BlogPosting'),
       )
-      assert.ok(articleNode, 'Expected article JSON-LD to expose Article or BlogPosting')
+      assert.ok(
+        articleNode,
+        'Expected article JSON-LD to expose Article or BlogPosting',
+      )
       assert.ok(articleNode.author, 'Expected article JSON-LD author')
-      assert.ok(articleNode.datePublished, 'Expected article JSON-LD datePublished')
+      assert.ok(
+        articleNode.datePublished,
+        'Expected article JSON-LD datePublished',
+      )
       assert.equal(articleNode.url, page.expectedUrl)
     }
   })

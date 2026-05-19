@@ -168,7 +168,7 @@
               v-if="plan.name === 'FocusOne Premium'"
               class="pricing-card__badge"
             >
-              À confirmer
+              Premium
             </div>
             <p class="pricing-card__name">{{ plan.name }}</p>
             <p class="pricing-card__price">{{ plan.price }}</p>
@@ -284,7 +284,8 @@ const breadcrumbSchema = buildBreadcrumbSchema(config.public.siteUrl, [
 const faqSchema = buildFaqSchema(focusOneContent.faq)
 const softwareApplicationSchema = buildSoftwareApplicationSchema({
   name: focusOneContent.name,
-  description: focusOneContent.seo.description,
+  description:
+    'FocusOne est une app iPhone minimaliste pour suivre une micro-habitude quotidienne à la fois, avec streak, rappels locaux, widgets et synchronisation iCloud.',
   url: pageUrl,
   operatingSystem: 'iOS',
   applicationCategory: 'ProductivityApplication',
@@ -296,10 +297,16 @@ const softwareApplicationSchema = buildSoftwareApplicationSchema({
       priceCurrency: 'EUR',
     },
     {
-      name: 'FocusOne Premium',
-      price: '0',
+      name: 'FocusOne Premium annuel',
+      price: '14.99',
       priceCurrency: 'EUR',
-      description: 'Prix à confirmer avant publication App Store.',
+      description: 'Abonnement annuel FocusOne Premium.',
+    },
+    {
+      name: 'FocusOne Premium achat unique',
+      price: '39.99',
+      priceCurrency: 'EUR',
+      description: 'Achat unique FocusOne Premium.',
     },
   ],
   author: {
@@ -346,9 +353,9 @@ watch(
 useSeoMeta({
   title: focusOneContent.seo.title,
   description: focusOneContent.seo.description,
-  ogTitle: 'FocusOne — une habitude, une action, un retour immédiat',
+  ogTitle: 'FocusOne — une seule habitude, chaque jour',
   ogDescription:
-    'Une app iPhone sobre pour suivre une micro-habitude quotidienne sans tableau de bord, sans compte, sans publicité et sans tracking.',
+    'Une app iPhone minimaliste pour suivre une seule micro-habitude à la fois, garder votre streak et installer une routine quotidienne sans distraction.',
   ogType: 'website',
   ogSiteName: 'BeAbot',
   ogUrl: pageUrl,
