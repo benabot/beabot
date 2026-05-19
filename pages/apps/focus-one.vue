@@ -7,18 +7,28 @@
         <div class="app-hero__content">
           <p class="app-meta">{{ focusOneContent.stage }}</p>
           <h1>{{ focusOneContent.name }} — {{ focusOneContent.intro }}</h1>
-          <p class="app-intro">{{ focusOneContent.summary }}</p>
+          <div class="app-hero__text">
+            <p
+              v-for="line in focusOneContent.heroLines ?? [
+                focusOneContent.summary,
+              ]"
+              :key="line"
+              class="app-intro"
+            >
+              {{ line }}
+            </p>
+          </div>
 
           <div class="app-actions">
             <AppLink to="#release-form" class="app-primary-action">
               Être informé
             </AppLink>
-            <NuxtLink
-              to="/contact/"
+            <AppLink
+              to="#privacy"
               class="app-secondary-action app-detail__contact-cta"
             >
-              Une question ? Contactez-moi
-            </NuxtLink>
+              Voir la confidentialité
+            </AppLink>
           </div>
         </div>
 
@@ -71,8 +81,8 @@
               <dd>Local sur iPhone + iCloud si activé</dd>
             </div>
             <div>
-              <dt>Connexion</dt>
-              <dd>Aucun serveur tiers</dd>
+              <dt>Compte</dt>
+              <dd>Aucun compte requis</dd>
             </div>
           </dl>
         </div>
@@ -82,8 +92,8 @@
         <div class="section-heading">
           <h2 id="focus-details-title">Points clés</h2>
           <p>
-            Les repères de base pour comprendre FocusOne sans la transformer en
-            usine à gaz.
+            Les repères de base pour tenir une routine sans y penser toute la
+            journée.
           </p>
         </div>
 
@@ -161,13 +171,10 @@
             :key="plan.name"
             class="pricing-card"
             :class="{
-              'pricing-card--featured': plan.name === 'FocusOne Premium',
+              'pricing-card--featured': plan.name === 'Premium',
             }"
           >
-            <div
-              v-if="plan.name === 'FocusOne Premium'"
-              class="pricing-card__badge"
-            >
+            <div v-if="plan.name === 'Premium'" class="pricing-card__badge">
               Premium
             </div>
             <p class="pricing-card__name">{{ plan.name }}</p>
@@ -177,6 +184,29 @@
               <li v-for="item in plan.items" :key="item">{{ item }}</li>
             </ul>
           </article>
+        </div>
+
+        <div
+          v-if="focusOneContent.pricing?.premiumBenefits?.length"
+          class="premium-benefits"
+          aria-labelledby="focus-premium-benefits-title"
+        >
+          <div class="section-heading section-heading--compact">
+            <h3 id="focus-premium-benefits-title">Ce que débloque Premium</h3>
+          </div>
+
+          <div class="premium-benefits__grid">
+            <article
+              v-for="benefit in focusOneContent.pricing?.premiumBenefits"
+              :key="benefit.title"
+              class="premium-benefit-card"
+            >
+              <p class="premium-benefit-card__title">{{ benefit.title }}</p>
+              <p class="premium-benefit-card__description">
+                {{ benefit.description }}
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -285,7 +315,7 @@ const faqSchema = buildFaqSchema(focusOneContent.faq)
 const softwareApplicationSchema = buildSoftwareApplicationSchema({
   name: focusOneContent.name,
   description:
-    'FocusOne est une app iPhone minimaliste pour suivre une micro-habitude quotidienne à la fois, avec streak, rappels locaux, widgets et synchronisation iCloud.',
+    'FocusOne est une app iPhone minimaliste pour installer une micro-habitude quotidienne à la fois, avec streak, rappels sobres, widgets et synchronisation iCloud.',
   url: pageUrl,
   operatingSystem: 'iOS',
   applicationCategory: 'ProductivityApplication',
@@ -355,7 +385,7 @@ useSeoMeta({
   description: focusOneContent.seo.description,
   ogTitle: 'FocusOne — une seule habitude, chaque jour',
   ogDescription:
-    'Une app iPhone minimaliste pour suivre une seule micro-habitude à la fois, garder votre streak et installer une routine quotidienne sans distraction.',
+    'Une app iPhone minimaliste pour installer une seule micro-habitude à la fois, garder votre streak et avancer sans distraction.',
   ogType: 'website',
   ogSiteName: 'BeAbot',
   ogUrl: pageUrl,
@@ -429,6 +459,12 @@ useHead({
   align-items: center;
 }
 
+.app-hero__text {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 0.95rem;
+}
+
 .app-meta {
   margin: 0 0 0.8rem;
   color: $vert;
@@ -460,7 +496,7 @@ useHead({
 
 .app-intro,
 .app-summary {
-  margin: 0.9rem 0 0;
+  margin: 0;
   max-width: 36rem;
   color: $gris2;
   line-height: 1.65;
@@ -874,8 +910,11 @@ useHead({
   grid-template-columns: 1fr;
 
   @media (min-width: 700px) {
-    grid-template-columns: 1.5fr 1fr 1fr;
-    grid-auto-rows: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 980px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -890,9 +929,18 @@ useHead({
 
 .detail-card--featured {
   @media (min-width: 700px) {
-    grid-row: span 2;
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(0, 0.55fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 0.75rem 1.25rem;
     background: rgba(255, 255, 255, 0.98);
     border: 1px solid rgba(13, 199, 99, 0.15);
+  }
+
+  .detail-card__description {
+    @media (min-width: 700px) {
+      margin-top: 0;
+    }
   }
 }
 
@@ -923,20 +971,22 @@ useHead({
 
 .pricing-grid {
   display: grid;
-  gap: 0.75rem;
+  gap: 1rem;
 
   @media (min-width: 820px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
   }
 }
 
 .pricing-card {
   display: grid;
   gap: 0.65rem;
-  padding: 1.05rem;
+  padding: clamp(1.1rem, 2.4vw, 1.35rem);
   border-radius: 1.15rem;
   background: rgba(255, 255, 255, 0.94);
   position: relative;
+  align-content: start;
 }
 
 .pricing-card--featured {
@@ -970,9 +1020,10 @@ useHead({
 .pricing-card__price {
   margin: 0;
   color: $gris1;
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-size: clamp(1.55rem, 3.4vw, 2.15rem);
   font-weight: 800;
   letter-spacing: -0.04em;
+  line-height: 1.05;
 }
 
 .pricing-card__summary {
@@ -1001,6 +1052,56 @@ useHead({
   position: absolute;
   left: 0;
   color: $vert;
+}
+
+.premium-benefits {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: clamp(1rem, 3vw, 1.35rem);
+}
+
+.section-heading--compact h3 {
+  margin: 0;
+  color: $gris1;
+  font-size: clamp(1.2rem, 2.6vw, 1.55rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.premium-benefits__grid {
+  display: grid;
+  gap: 0.7rem;
+
+  @media (min-width: 620px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 980px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.premium-benefit-card {
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.95rem 1rem;
+  border-radius: 1rem;
+  background: rgba(243, 244, 246, 0.76);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+.premium-benefit-card__title {
+  margin: 0;
+  color: $gris1;
+  font-weight: 750;
+  line-height: 1.25;
+}
+
+.premium-benefit-card__description {
+  margin: 0;
+  color: $gris2;
+  font-size: 0.86rem;
+  line-height: 1.5;
 }
 
 .app-cta {

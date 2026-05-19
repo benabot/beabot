@@ -7,29 +7,54 @@
         <div class="apps-hero__left">
           <p class="apps-hero__eyebrow">Apps</p>
           <h1>
-            DuoSpend, FocusOne et Meeting Mode —
-            Applications <span class="apps-hero__platform">iOS</span> et
+            DuoSpend, FocusOne et Meeting Mode — Applications
+            <span class="apps-hero__platform">iOS</span> et
             <span class="apps-hero__platform">macOS</span>
           </h1>
         </div>
         <div class="apps-hero__intro">
-          <p v-for="(line, i) in appsIndexContent.intro" :key="i" class="apps-hero__intro-p">{{ line }}</p>
+          <p
+            v-for="(line, i) in appsIndexContent.intro"
+            :key="i"
+            class="apps-hero__intro-p"
+          >
+            {{ line }}
+          </p>
         </div>
       </section>
 
-      <section class="apps-section" aria-labelledby="apps-list-title">
-        <h2 id="apps-list-title" class="apps-section__title">Sorti de l'atelier</h2>
-        <div class="apps-grid">
+      <section class="apps-section" aria-labelledby="apps-featured-title">
+        <div class="apps-section__heading">
+          <h2 id="apps-featured-title" class="apps-section__title">À la une</h2>
+          <p>Deux apps en prépublication.</p>
+        </div>
+
+        <div class="apps-featured-grid">
           <AppCard
-            v-for="app in appsIndexEntries"
+            v-for="app in featuredApps"
             :key="app.slug"
             :app="app"
-            :variant="app.featured ? 'featured' : 'compact'"
-            class="apps-grid__item"
-            :class="{
-              'apps-grid__item--featured': app.featured,
-              'apps-grid__item--compact': !app.featured,
-            }"
+            variant="featured"
+            class="apps-featured-grid__item"
+          />
+        </div>
+      </section>
+
+      <section
+        class="apps-section apps-section--secondary"
+        aria-labelledby="apps-other-title"
+      >
+        <div class="apps-section__heading">
+          <h2 id="apps-other-title" class="apps-section__title">Autres apps</h2>
+        </div>
+
+        <div class="apps-secondary-grid">
+          <AppCard
+            v-for="app in otherApps"
+            :key="app.slug"
+            :app="app"
+            variant="compact"
+            class="apps-secondary-grid__item"
           />
         </div>
       </section>
@@ -53,6 +78,8 @@ import { absoluteUrl, canonicalUrl } from '~/utils/seo-url'
 const config = useRuntimeConfig()
 const pageUrl = canonicalUrl(config.public.siteUrl, '/apps')
 const ogImage = absoluteUrl(config.public.siteUrl, appsIndexContent.seo.image)
+const featuredApps = appsIndexEntries.filter((app) => app.featured)
+const otherApps = appsIndexEntries.filter((app) => !app.featured)
 
 const breadcrumbItems = [{ label: 'Accueil', to: '/' }, { label: 'Apps' }]
 
@@ -61,7 +88,10 @@ const breadcrumbSchema = buildBreadcrumbSchema(config.public.siteUrl, [
   { name: 'Apps', path: '/apps/' },
 ])
 
-const itemListSchema = buildItemListSchema(config.public.siteUrl, appsIndexEntries)
+const itemListSchema = buildItemListSchema(
+  config.public.siteUrl,
+  appsIndexEntries,
+)
 const collectionSchema = buildCollectionPageSchema({
   siteUrl: config.public.siteUrl,
   pageUrl,
@@ -111,8 +141,8 @@ useHead({
 </script>
 
 <style lang="scss" scoped>
-@use "~/assets/css/vars/_colors.scss" as *;
-@use "~/assets/css/vars/_typo.scss" as *;
+@use '~/assets/css/vars/_colors.scss' as *;
+@use '~/assets/css/vars/_typo.scss' as *;
 .apps-index {
   padding: clamp(2rem, 5vw, 3.5rem) 5% 5rem;
 
@@ -195,43 +225,53 @@ useHead({
   letter-spacing: 0.04em;
 }
 
+.apps-section {
+  display: grid;
+  gap: clamp(1.1rem, 2.6vw, 1.6rem);
+}
+
+.apps-section + .apps-section {
+  margin-top: clamp(2.25rem, 5vw, 3.5rem);
+}
+
+.apps-section__heading {
+  display: grid;
+  gap: 0.35rem;
+}
+
 .apps-section__title {
-  margin: 0 0 clamp(1.5rem, 3vw, 2.5rem);
+  margin: 0;
   font-size: clamp(1.1rem, 2vw, 1.4rem);
   font-weight: 700;
-  letter-spacing: 0.01em;
   color: $gris3;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
-.apps-grid {
+.apps-section__heading p {
+  margin: 0;
+  color: $gris2;
+  line-height: 1.55;
+}
+
+.apps-featured-grid,
+.apps-secondary-grid {
   display: grid;
   gap: clamp(1.35rem, 2.8vw, 2.1rem);
-  margin-top: 0.75rem;
+}
 
+.apps-featured-grid {
   @media (min-width: 900px) {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    align-items: start;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
   }
 }
 
-.apps-grid__item {
-  @media (min-width: 900px) {
-    grid-column: span 12;
-  }
-}
+.apps-secondary-grid {
+  gap: clamp(1rem, 2vw, 1.4rem);
 
-.apps-grid__item--featured {
-  @media (min-width: 900px) {
-    grid-column: span 7;
-  }
-}
-
-.apps-grid__item--compact {
-  @media (min-width: 900px) {
-    grid-column: span 5;
-    margin-top: clamp(2rem, 7vw, 6rem);
+  @media (min-width: 760px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 </style>
