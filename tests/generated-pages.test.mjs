@@ -94,11 +94,15 @@ for (const page of pages) {
       assert.match(html, /Ce que débloque Premium/)
       assert.match(html, /Joker mensuel pour protéger votre série/)
       assert.match(html, /14,99 € \/ an ou 39,99 € en achat unique/)
-      assert.match(html, /\/img\/apps\/focus-one\/welcome\.webp/)
-      assert.match(html, /\/img\/apps\/focus-one\/home-streak\.webp/)
+      assert.match(html, /\/img\/apps\/focus-one\/02-creation\.webp/)
+      assert.match(html, /\/img\/apps\/focus-one\/03-serie-active\.webp/)
+      assert.match(html, /\/img\/apps\/focus-one\/04-streak\.webp/)
+      assert.match(html, /\/img\/apps\/focus-one\/07-stats\.webp/)
+      assert.match(html, /\/img\/apps\/focus-one\/08-widget\.webp/)
+      assert.match(html, /\/img\/apps\/focus-one\/step-1\.webp/)
       assert.doesNotMatch(
         html,
-        /Prix à confirmer|Prix App Store à confirmer|Par défaut, la journée commence à 04:00/,
+        /Prix à confirmer|Prix App Store à confirmer|Par défaut, la journée commence à 04:00|home-streak\.webp|welcome\.webp/,
       )
 
       const appNode = structuredDataNodes.find((node) =>

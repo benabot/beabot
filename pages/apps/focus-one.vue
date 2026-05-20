@@ -47,8 +47,8 @@
               <img
                 :src="focusOneContent.preview.src"
                 :alt="focusOneContent.preview.alt"
-                width="776"
-                height="1626"
+                width="1206"
+                height="2622"
                 loading="eager"
                 decoding="async"
               />
@@ -139,8 +139,8 @@
               <img
                 :src="image.src"
                 :alt="image.alt"
-                width="776"
-                height="1626"
+                width="1206"
+                height="2622"
                 loading="lazy"
                 decoding="async"
               />
