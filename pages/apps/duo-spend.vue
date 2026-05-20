@@ -7,16 +7,28 @@
         <div class="app-hero__content">
           <p class="app-meta">{{ duoSpendContent.stage }}</p>
           <h1>{{ duoSpendContent.name }} — {{ duoSpendContent.intro }}</h1>
-          <p class="app-intro">{{ duoSpendContent.intro }}</p>
-          <p class="app-summary">{{ duoSpendContent.summary }}</p>
+          <div class="app-hero__text">
+            <p
+              v-for="line in duoSpendContent.heroLines ?? [
+                duoSpendContent.summary,
+              ]"
+              :key="line"
+              class="app-intro"
+            >
+              {{ line }}
+            </p>
+          </div>
 
           <div class="app-actions">
             <AppLink to="#release-form" class="app-primary-action">
               Être informé
             </AppLink>
-            <NuxtLink to="/contact/" class="app-secondary-action app-detail__contact-cta">
-              Une question ? Contactez-moi
-            </NuxtLink>
+            <AppLink
+              to="#privacy"
+              class="app-secondary-action app-detail__contact-cta"
+            >
+              Voir la confidentialité
+            </AppLink>
           </div>
         </div>
 
@@ -58,15 +70,15 @@
           <dl class="app-surface__list app-surface__list--cards">
             <div>
               <dt>Usage</dt>
-              <dd>Dépenses communes à deux</dd>
+              <dd>Dépenses partagées à deux</dd>
             </div>
             <div>
-              <dt>Stockage</dt>
-              <dd>Local sur iPhone</dd>
+              <dt>Principe</dt>
+              <dd>Qui a payé quoi, qui doit quoi</dd>
             </div>
             <div>
-              <dt>Connexion</dt>
-              <dd>Hors ligne</dd>
+              <dt>Compte</dt>
+              <dd>Aucun compte requis</dd>
             </div>
           </dl>
         </div>
@@ -108,7 +120,7 @@
       <section class="app-section" aria-labelledby="duo-details-title">
         <div class="section-heading">
           <h2 id="duo-details-title">Points clés</h2>
-          <p>Les repères de base pour lire l’app sans la surcharger.</p>
+          <p>Les repères pour garder des comptes clairs, sans tableur.</p>
         </div>
 
         <div class="detail-grid">
@@ -297,11 +309,16 @@ const breadcrumbSchema = buildBreadcrumbSchema(config.public.siteUrl, [
 const faqSchema = buildFaqSchema(duoSpendContent.faq)
 const softwareApplicationSchema = buildSoftwareApplicationSchema({
   name: duoSpendContent.name,
-  description: duoSpendContent.seo.description,
+  description:
+    'DuoSpend est une app iOS pour suivre les dépenses partagées à deux, savoir qui a payé quoi et équilibrer les comptes simplement.',
   url: pageUrl,
   operatingSystem: 'iOS',
   applicationCategory: 'FinanceApplication',
   image: ogImage,
+  author: {
+    name: 'Benoît Abot',
+    url: canonicalUrl(config.public.siteUrl, '/'),
+  },
 })
 
 function openLightbox(index: number) {
@@ -342,8 +359,9 @@ watch(
 useSeoMeta({
   title: duoSpendContent.seo.title,
   description: duoSpendContent.seo.description,
-  ogTitle: duoSpendContent.seo.title,
-  ogDescription: duoSpendContent.seo.description,
+  ogTitle: 'DuoSpend — Les dépenses partagées, enfin claires',
+  ogDescription:
+    'Une app simple pour savoir qui a payé quoi, équilibrer les comptes et éviter les calculs à la main.',
   ogType: 'website',
   ogSiteName: 'BeAbot',
   ogUrl: pageUrl,
@@ -381,8 +399,8 @@ useHead({
 </script>
 
 <style lang="scss" scoped>
-@use "~/assets/css/vars/_colors.scss" as *;
-@use "~/assets/css/vars/_typo.scss" as *;
+@use '~/assets/css/vars/_colors.scss' as *;
+@use '~/assets/css/vars/_typo.scss' as *;
 .app-page {
   padding: clamp(2rem, 5vw, 3.5rem) 5% 5rem;
 
@@ -417,6 +435,12 @@ useHead({
   align-items: center;
 }
 
+.app-hero__text {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 0.95rem;
+}
+
 .app-meta {
   margin: 0 0 0.8rem;
   color: $vert;
@@ -448,7 +472,7 @@ useHead({
 
 .app-intro,
 .app-summary {
-  margin: 0.9rem 0 0;
+  margin: 0;
   max-width: 36rem;
   color: $gris2;
   line-height: 1.65;

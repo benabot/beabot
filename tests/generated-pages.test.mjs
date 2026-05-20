@@ -15,6 +15,7 @@ import {
 const pages = [
   { route: '/', expectedUrl: `${siteUrl}/` },
   { route: '/apps/', expectedUrl: `${siteUrl}/apps/` },
+  { route: '/apps/duo-spend/', expectedUrl: `${siteUrl}/apps/duo-spend/` },
   { route: '/apps/focus-one/', expectedUrl: `${siteUrl}/apps/focus-one/` },
   { route: '/mentions-legales/', expectedUrl: `${siteUrl}/mentions-legales/` },
   { route: '/eco-conception/', expectedUrl: `${siteUrl}/eco-conception/` },
@@ -130,6 +131,38 @@ for (const page of pages) {
       )
     }
 
+    if (page.route === '/apps/duo-spend/') {
+      assert.match(
+        getTitle(html),
+        /^DuoSpend — App de dépenses partagées pour couple et amis \| BeAbot$/,
+      )
+      assert.equal(
+        getMetaContent(html, 'name', 'description'),
+        'DuoSpend est une app pour suivre les dépenses partagées à deux : couple, colocation, amis, vacances ou frais du quotidien. Ajoutez une dépense, voyez qui doit quoi.',
+      )
+      assert.match(html, /DuoSpend — Gérez vos dépenses à deux simplement/)
+      assert.match(html, /sans tableur, sans calcul mental/)
+      assert.match(html, /qui a payé quoi/)
+      assert.match(html, /Dépenses partagées/)
+      assert.match(html, /DuoSpend Pro/)
+      assert.doesNotMatch(
+        html,
+        /DuoSpend — Conçue sans tracking|sans SDK tiers\.<\/h1>|StoreKit|Core Data|CloudKit/,
+      )
+
+      const appNode = structuredDataNodes.find((node) =>
+        nodeHasType(node, 'SoftwareApplication'),
+      )
+      assert.ok(appNode, 'Expected DuoSpend JSON-LD SoftwareApplication')
+      assert.equal(appNode.applicationCategory, 'FinanceApplication')
+      assert.equal(appNode.operatingSystem, 'iOS')
+      assert.equal(
+        appNode.description,
+        'DuoSpend est une app iOS pour suivre les dépenses partagées à deux, savoir qui a payé quoi et équilibrer les comptes simplement.',
+      )
+      assert.equal(appNode.author?.name, 'Benoît Abot')
+    }
+
     if (page.route === '/apps/') {
       assert.match(html, /À la une/)
       assert.match(html, /Deux apps en prépublication/)
@@ -137,6 +170,17 @@ for (const page of pages) {
       assert.match(
         html,
         /App iPhone minimaliste pour suivre une seule micro-habitude à la fois\. Routine quotidienne, streak, rappels locaux et widgets, sans compte ni publicité\./,
+      )
+    }
+
+    if (page.route === '/portfolio/') {
+      assert.match(html, /href="\/apps\/duo-spend\/"/)
+      assert.match(html, /href="\/apps\/focus-one\/"/)
+      assert.match(html, /Découvrir DuoSpend/)
+      assert.match(html, /Découvrir FocusOne/)
+      assert.doesNotMatch(
+        html,
+        /https:\/\/github\.com\/benabot\/(?:DuoSpend|focusone)/,
       )
     }
 

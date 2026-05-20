@@ -2,8 +2,8 @@
   <div class="boite-article">
     <article class="article-resum">
       <component
-        :is="lien ? 'a' : 'div'"
-        v-bind="lien ? { href: lien, target: '_blank', rel: 'noopener noreferrer' } : {}"
+        :is="imageLinkComponent"
+        v-bind="imageLinkAttrs"
         class="boite-image-link"
       >
         <div class="boite-image">
@@ -76,14 +76,25 @@
 
         <div class="project-aside">
           <div class="project-links">
+            <AppLink
+              v-if="isInternalProjectLink"
+              :to="lien"
+              class="btn-view-site"
+            >
+              {{ projectLinkLabel }}
+            </AppLink>
             <a
-              v-if="lien"
+              v-else-if="lien"
               :href="lien"
               target="_blank"
               rel="noopener noreferrer"
               class="btn-view-site"
             >
-              {{ lien.includes('web.archive.org') ? 'Archive (fonctionnalités limitées) →' : 'Voir le site →' }}
+              {{
+                lien.includes('web.archive.org')
+                  ? 'Archive (fonctionnalités limitées) →'
+                  : 'Voir le site →'
+              }}
             </a>
             <a
               v-if="githubLink"
@@ -105,6 +116,7 @@
 </template>
 <script setup>
 import { computed, ref } from 'vue'
+import AppLink from '~/components/AppLink.vue'
 
 const props = defineProps({
   titre: {
@@ -244,6 +256,28 @@ const allTags = computed(() => {
       seen.add(key)
       return true
     })
+})
+
+const isInternalProjectLink = computed(() => props.lien.startsWith('/'))
+
+const projectLinkLabel = computed(() => {
+  if (props.lien.startsWith('/apps/')) return `Découvrir ${props.titre}`
+  return 'Voir le projet'
+})
+
+const imageLinkComponent = computed(() => {
+  if (!props.lien) return 'div'
+  return isInternalProjectLink.value ? AppLink : 'a'
+})
+
+const imageLinkAttrs = computed(() => {
+  if (!props.lien) return {}
+  if (isInternalProjectLink.value) return { to: props.lien }
+  return {
+    href: props.lien,
+    target: '_blank',
+    rel: 'noopener noreferrer',
+  }
 })
 
 const metricsVisible = computed(() => metricsItems.value.slice(0, 2))

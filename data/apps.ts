@@ -171,7 +171,7 @@ export const appsIndexEntries: AppIndexEntry[] = [
     platform: 'iOS',
     stage: 'Prépublication',
     summary:
-      "Une app pour couple ou tous ceux qui ont des projets à deux. Qui doit combien à qui\u00a0? Un coup d'œil suffit.\nVoyage, mariage, emménagement — chaque projet a son solde.",
+      'App iOS pour suivre les dépenses partagées à deux : couple, colocation, amis, vacances ou frais du quotidien. Ajoutez une dépense, voyez qui doit quoi.',
     href: '/apps/duo-spend/',
     featured: true,
     preview: {
@@ -283,163 +283,57 @@ const focusOneFaqSections: AppFaqSection[] = [
 
 const duoSpendFaqSections: AppFaqSection[] = [
   {
-    title: 'Premiers pas',
+    title: 'Questions fréquentes',
     items: [
       {
-        question: "C'est quoi DuoSpend exactement ?",
+        question: 'À quoi sert DuoSpend ?',
         answer:
-          "DuoSpend est une app iPhone pour gérer les dépenses d'un projet commun à deux. Mariage, voyage, emménagement, travaux, projet bébé - vous enregistrez vos dépenses, l'app calcule qui doit combien à qui. Rien de plus.",
+          'DuoSpend aide à suivre les dépenses partagées à deux. Vous ajoutez une dépense, indiquez qui a payé, choisissez la répartition, puis l’app affiche simplement qui doit quoi.',
       },
       {
-        question: "Pour qui c'est fait ?",
+        question: 'Pour qui est-ce fait ?',
         answer:
-          "Pour les couples qui partagent des dépenses sur un projet précis. Pas pour les groupes d'amis, pas pour les entreprises - pour vous deux, dans un contexte défini.",
+          'Pour les couples, colocataires, amis ou proches qui partagent des frais sur un projet ou une période précise : voyage, mariage, travaux, emménagement, vacances ou dépenses du quotidien.',
+      },
+      {
+        question: 'Pourquoi ne pas utiliser un tableur ?',
+        answer:
+          'Un tableur fonctionne, mais il demande de tout tenir à la main. DuoSpend garde une lecture plus simple : dépenses, répartition et solde net au même endroit.',
+      },
+      {
+        question: 'Peut-on faire autre chose que du 50/50 ?',
+        answer:
+          'Oui. Chaque dépense peut être partagée à parts égales ou avec une répartition personnalisée, par exemple 60/40 ou 70/30.',
+      },
+      {
+        question: 'Que contient la version gratuite ?',
+        answer:
+          'La version gratuite permet de gérer un projet complet avec les fonctions essentielles : budget, dépenses, répartitions et solde clair.',
+      },
+      {
+        question: 'Que débloque DuoSpend Pro ?',
+        answer:
+          'DuoSpend Pro débloque les projets illimités, les widgets pour l’écran d’accueil et l’export PDF avec un achat unique.',
+      },
+      {
+        question: 'Combien coûte DuoSpend Pro ?',
+        answer:
+          'DuoSpend Pro coûte 6,99 € en achat unique. Il n’y a pas d’abonnement.',
       },
       {
         question: 'Faut-il créer un compte ?',
         answer:
-          'Non. Pas de compte, pas d’email, pas de mot de passe. Vous ouvrez l’app et vous commencez.',
+          'Non. DuoSpend ne demande pas de compte pour fonctionner.',
       },
       {
-        question: "L'app fonctionne-t-elle sans connexion ?",
+        question: 'Mes données restent-elles privées ?',
         answer:
-          'Oui. DuoSpend fonctionne entièrement hors ligne dans sa version actuelle. Vous n’avez pas besoin de Wi‑Fi ni de données mobiles.',
+          'Oui. Vos projets et dépenses restent sur votre iPhone dans la version actuelle. La page de confidentialité détaille précisément le fonctionnement.',
       },
       {
-        question: "L'app est-elle disponible sur Android ?",
+        question: 'Peut-on utiliser DuoSpend à deux sur deux iPhones ?',
         answer:
-          'Non. DuoSpend est une app iPhone uniquement, conçue avec les technologies Apple (Swift, SwiftUI). Une version Android n’est pas prévue.',
-      },
-    ],
-  },
-  {
-    title: 'Fonctionnement',
-    items: [
-      {
-        question: 'Comment fonctionne le calcul de la balance ?',
-        answer:
-          "Pour chaque dépense, l'app calcule la part théorique de chaque partenaire selon la répartition choisie (50/50 ou personnalisée). Elle compare cette part avec ce que chacun a réellement payé. L'écart cumulé donne la balance nette : une seule phrase, un seul montant.",
-      },
-      {
-        question: 'Peut-on avoir une répartition autre que 50/50 ?',
-        answer:
-          'Oui. Quand vous ajoutez une dépense, vous choisissez "50/50" ou une répartition personnalisée (ex. 70/30, 60/40). Chaque dépense peut avoir sa propre répartition.',
-      },
-      {
-        question: 'Peut-on avoir plusieurs projets en même temps ?',
-        answer:
-          'Oui. Chaque projet est indépendant, avec ses propres partenaires, son budget et son solde. Par exemple : un projet "Vacances été" et un projet "Travaux salon" en parallèle. Au-delà du premier projet, DuoSpend Pro est nécessaire.',
-      },
-      {
-        question: "L'app gère-t-elle plusieurs devises ?",
-        answer:
-          'Non, pas encore. DuoSpend fonctionne avec une seule devise (€ par défaut selon votre région). La gestion multi-devises est dans le backlog pour une version future.',
-      },
-      {
-        question: 'Peut-on exporter les données ?',
-        answer:
-          'Oui, avec DuoSpend Pro : générez un récapitulatif PDF de n’importe quel projet, avec la liste des dépenses et la balance finale.',
-      },
-    ],
-  },
-  {
-    title: 'DuoSpend Pro',
-    items: [
-      {
-        question: 'C’est quoi DuoSpend Pro ?',
-        answer:
-          'Un achat unique à 6,99 € qui débloque les projets illimités, les widgets pour l’écran d’accueil et l’export PDF. Pas d’abonnement, pas de renouvellement - vous payez une fois.',
-      },
-      {
-        question: 'Pourquoi ne pas tout laisser gratuit ?',
-        answer:
-          'DuoSpend est développée et maintenue par une seule personne. L’achat Pro permet de financer le développement continu sans dépendre de la publicité ou de la revente de données.',
-      },
-      {
-        question: 'La version gratuite est-elle vraiment utilisable ?',
-        answer:
-          'Oui. Avec un projet gratuit, vous avez accès à toutes les fonctionnalités essentielles : dépenses illimitées, balance en temps réel, répartitions personnalisées, budget de projet.',
-      },
-      {
-        question: "L'achat Pro est-il partageable avec ma famille ?",
-        answer:
-          'Oui, si le partage familial est activé sur votre compte Apple, DuoSpend Pro est automatiquement partagé avec votre groupe familial.',
-      },
-      {
-        question: "J'ai changé d'iPhone — comment récupérer mon achat ?",
-        answer:
-          'Ouvrez DuoSpend, allez dans Réglages et appuyez sur "Restaurer mes achats". L’App Store retrouve votre licence via votre identifiant Apple.',
-      },
-    ],
-  },
-  {
-    title: 'Widgets',
-    items: [
-      {
-        question:
-          'Comment ajouter un widget DuoSpend sur mon écran d’accueil ?',
-        answer:
-          'Maintenez votre doigt sur l’écran d’accueil → mode édition → appuyez sur + → cherchez "DuoSpend" → choisissez la taille (petit, moyen ou grand) → ajoutez. DuoSpend Pro est requis.',
-      },
-      {
-        question: 'Quels widgets sont disponibles ?',
-        answer:
-          'Trois tailles : petit (balance nette du projet), moyen (balance + barre de contribution), grand (balance + barre + dernières dépenses).',
-      },
-      {
-        question: 'Quel projet s’affiche dans le widget ?',
-        answer:
-          'Automatiquement le projet le plus récent. La possibilité de choisir le projet directement depuis le widget est prévue dans une prochaine version.',
-      },
-    ],
-  },
-  {
-    title: 'Confidentialité et données',
-    items: [
-      {
-        question: 'Mes données sont-elles envoyées sur un serveur ?',
-        answer:
-          'Non. DuoSpend ne dispose d’aucun serveur. Vos données vous appartiennent.',
-      },
-      {
-        question: "L'app contient-elle des trackers ou de la pub ?",
-        answer:
-          'Non. Pas de publicité, pas d’analytique, pas de SDK tiers. Votre vie privée est un invariant du produit, pas un argument marketing.',
-      },
-      {
-        question: 'Que se passe-t-il si je désinstalle l’app ?',
-        answer:
-          'Toutes vos données locales sont supprimées. Si vous souhaitez garder une trace, exportez vos projets en PDF (Pro) avant de désinstaller.',
-      },
-      {
-        question: 'Puis-je supprimer mes données sans désinstaller l’app ?',
-        answer:
-          'Oui. Réglages → Données → "Supprimer toutes les données". Cette action est irréversible.',
-      },
-      {
-        question: "Est-ce que l'app fonctionne avec iCloud ?",
-        answer:
-          'Pas en v1.0 - les données restent sur votre appareil. La synchronisation iCloud (même compte Apple, plusieurs appareils) est prévue pour la v1.1.',
-      },
-    ],
-  },
-  {
-    title: 'Synchronisation et avenir',
-    items: [
-      {
-        question: 'Peut-on utiliser l’app à deux sur deux iPhones différents ?',
-        answer:
-          'Pas encore en v1.0. La synchronisation entre deux iPhones sur le même compte Apple arrive en v1.1. Le partage entre deux comptes Apple différents (chacun son iPhone) est prévu pour la v2.0 - c’est la feature la plus demandée.',
-      },
-      {
-        question: 'Quelles fonctionnalités sont prévues ?',
-        answer:
-          'v1.1 : synchronisation iCloud (même compte Apple). v2.0 : partage entre deux comptes Apple (la vraie sync couple). Plus tard : catégories de dépenses, graphiques, recherche, templates de projets.',
-      },
-      {
-        question: 'Comment signaler un bug ou suggérer une fonctionnalité ?',
-        answer:
-          'Via la page support : beabot.fr/apps/duo-spend/. L’app est développée par une seule personne - les retours sont lus et pris en compte.',
+          'Pas encore dans la première version. DuoSpend démarre avec un suivi local sur un iPhone. La synchronisation iCloud et le partage entre deux comptes Apple sont prévus pour la suite.',
       },
     ],
   },
@@ -982,37 +876,54 @@ export const duoSpendContent: AppDetailContent = {
   platform: 'iOS',
   stage: 'Prépublication',
   href: '/apps/duo-spend/',
-  intro: 'Conçue sans tracking, sans compte imposé, sans SDK tiers.',
-  summary: 'Gérez vos dépenses communes à deux, avec un suivi simple et clair.',
+  intro: 'Gérez vos dépenses à deux simplement',
+  summary:
+    'DuoSpend vous aide à suivre les dépenses partagées sans tableur, sans calcul mental et sans discussion interminable.',
+  heroLines: [
+    'DuoSpend vous aide à suivre les dépenses partagées sans tableur, sans calcul mental et sans discussion interminable.',
+    'Ajoutez une dépense, indiquez qui a payé, voyez l’équilibre. Chacun sait où il en est.',
+  ],
   overview: [
-    'Vous organisez un voyage, un mariage, des travaux ou un emménagement. L’un avance les frais, l’autre rembourse — mais le solde n’est jamais évident à suivre.',
-    'DuoSpend est conçue pour deux. Créez un projet, ajoutez vos dépenses, choisissez qui paie quoi et en quelle proportion. L’app calcule le solde net en temps réel, sans tracking, sans compte imposé, sans SDK tiers.',
+    'Les petites dépenses partagées s’accumulent vite : courses, restaurant, essence, abonnement, week-end, vacances, frais de colocation ou projet de couple.',
+    'Au début, tout semble évident. Puis on oublie qui a payé quoi, on reporte les calculs, on garde une note dans un coin, ou on finit dans un tableur que personne n’a envie de tenir.',
+    'DuoSpend simplifie ce suivi : chaque dépense est ajoutée en quelques secondes, les soldes restent lisibles, et chacun sait ce qu’il doit ou ce qu’il a avancé.',
   ],
   detailPoints: [
     {
-      label: 'Un solde',
-      value: 'Un seul chiffre. Qui rembourse qui.',
+      label: 'Dépenses partagées',
+      value: 'Courses, sorties, trajets, abonnements, vacances.',
       description:
-        'Pas de tableau, pas de calculatrice. DuoSpend additionne chaque dépense, applique la répartition choisie, et affiche en permanence qui doit combien à qui — sur chaque projet.',
+        'Ajoutez les frais du quotidien ou d’un projet commun en quelques gestes.',
       featured: true,
     },
     {
-      label: 'Par projet',
-      value: 'Un projet, un espace dédié.',
+      label: 'Soldes clairs',
+      value: 'Qui a payé quoi, qui doit quoi.',
+      description:
+        'DuoSpend calcule automatiquement qui a avancé de l’argent et combien il reste à équilibrer.',
     },
     {
-      label: 'Répartition',
-      value: 'Chacun sa part, définie à la dépense.',
+      label: 'Pensé pour deux',
+      value: 'Couple, colocation, amis ou proches.',
+      description:
+        'Un usage simple pour garder des comptes propres sans transformer l’app en outil de comptabilité.',
     },
     {
-      label: 'Local',
-      value:
-        'Vos données vous appartiennent. Pas de tracking, pas de SDK tiers.',
+      label: 'Sans tableur',
+      value: 'Plus de notes dispersées ni de calculs à la main.',
+      description: 'L’app garde le fil pour vous, projet après projet.',
     },
     {
-      label: 'Technologie',
-      value:
-        'Swift natif, sans dépendance externe. Support assuré directement par son auteur.',
+      label: 'Lecture rapide',
+      value: 'Une situation claire en quelques secondes.',
+      description:
+        'Une interface sobre pour comprendre l’équilibre des comptes sans fouiller.',
+    },
+    {
+      label: 'Prépublication',
+      value: 'L’app est en préparation.',
+      description:
+        'La page présente le produit et permet de rejoindre la liste des personnes intéressées.',
     },
   ],
   preview: {
@@ -1065,12 +976,13 @@ export const duoSpendContent: AppDetailContent = {
   faqSections: duoSpendFaqSections,
   pricing: {
     title: 'Tarifs',
-    intro: "Gratuit pour commencer. Un achat unique pour ne plus s'arrêter.",
+    intro:
+      'DuoSpend garde l’essentiel gratuit pour tester un vrai projet. Pro ajoute les projets illimités, les widgets et l’export PDF.',
     plans: [
       {
         name: 'Gratuit',
         price: '0 €',
-        description: 'Un projet. Toutes les fonctions. Gratuit.',
+        description: 'Pour gérer un premier projet partagé sans friction.',
         items: ['1 projet complet', 'Fonctions essentielles incluses'],
       },
       {
@@ -1124,9 +1036,9 @@ export const duoSpendContent: AppDetailContent = {
     secondaryTo: '/contact/',
   },
   seo: {
-    title: 'DuoSpend — app iPhone pour dépenses à deux',
+    title: 'DuoSpend — App de dépenses partagées pour couple et amis',
     description:
-      'DuoSpend calcule qui doit combien à qui, sur chaque projet commun. Hors ligne, sans compte, sans pub. Achat unique 6,99 €.',
+      'DuoSpend est une app pour suivre les dépenses partagées à deux : couple, colocation, amis, vacances ou frais du quotidien. Ajoutez une dépense, voyez qui doit quoi.',
     image: '/img/apps/duospend-vignette-apps.webp',
   },
 }
