@@ -62,10 +62,16 @@ export interface AppPricingPlan {
   items: string[]
 }
 
+export interface AppPricingBenefit {
+  title: string
+  description: string
+}
+
 export interface AppPricingContent {
   title: string
   intro: string
   plans: AppPricingPlan[]
+  premiumBenefits?: AppPricingBenefit[]
 }
 
 export interface AppDetailPoint {
@@ -89,6 +95,7 @@ export interface AppDetailContent {
   href: string
   intro: string
   summary: string
+  heroLines?: string[]
   overview: string[]
   showVisual: boolean
   capabilities?: string[]
@@ -125,6 +132,16 @@ export interface SoftwareApplicationSchemaInput {
   operatingSystem: string
   applicationCategory: string
   image?: string
+  offers?: Array<{
+    name: string
+    price: string
+    priceCurrency: string
+    description?: string
+  }>
+  author?: {
+    name: string
+    url: string
+  }
 }
 
 export interface BreadcrumbEntry {
@@ -135,15 +152,14 @@ export interface BreadcrumbEntry {
 export const appsIndexContent = {
   title: 'Applications iOS et macOS',
   intro: [
-    "Des applications iOS et macOS pensées pour aller à l'essentiel.",
-    'Chaque app est conçue de la même façon que mes sites : sobre, sans couche inutile. Pas de compte imposé, pas de tracking. Vos données vous appartiennent.',
-    "Certaines sont gratuites ou à achat unique, d'autres proposeront un abonnement optionnel. Dans tous les cas : un usage clair, une valeur réelle.",
+    'Des apps iOS et macOS conçues pour aller à l’essentiel : moins de bruit, moins de comptes, moins de réglages inutiles, plus de valeur concrète.',
+    'Chaque app part d’un usage précis et cherche à rester agréable dans la durée : simple à ouvrir, rapide à comprendre, utile sans prendre toute la place.',
   ],
   meta: '',
   seo: {
     title: 'Apps iOS et macOS sobres',
     description:
-      'DuoSpend, Meeting Mode et Siturem : apps natives Swift sans tracking ni SDK tiers. Certaines gratuites, certaines avec abonnement. Autres apps en préparation.',
+      'DuoSpend, FocusOne, Meeting Mode et Siturem : apps natives iOS et macOS sobres, utiles, sans compte imposé ni publicité.',
     image: '/img/apps/duospend-vignette-apps.webp',
   },
 }
@@ -155,7 +171,7 @@ export const appsIndexEntries: AppIndexEntry[] = [
     platform: 'iOS',
     stage: 'Prépublication',
     summary:
-      "Une app pour couple ou tous ceux qui ont des projets à deux. Qui doit combien à qui\u00a0? Un coup d'œil suffit.\nVoyage, mariage, emménagement — chaque projet a son solde.",
+      'App iOS pour suivre les dépenses partagées à deux : couple, colocation, amis, vacances ou frais du quotidien. Ajoutez une dépense, voyez qui doit quoi.',
     href: '/apps/duo-spend/',
     featured: true,
     preview: {
@@ -163,6 +179,23 @@ export const appsIndexEntries: AppIndexEntry[] = [
       alt: 'Vignette de l’app DuoSpend',
       available: true,
       label: 'Capture actuelle',
+      fit: 'contain',
+    },
+  },
+  {
+    slug: 'focus-one',
+    name: 'FocusOne',
+    platform: 'iOS',
+    stage: 'Prépublication',
+    summary:
+      'App iPhone minimaliste pour suivre une seule micro-habitude à la fois. Routine quotidienne, streak, rappels locaux et widgets, sans compte ni publicité.',
+    href: '/apps/focus-one/',
+    featured: true,
+    preview: {
+      src: '/img/apps/focus-one/00-onboarding.webp',
+      alt: 'Écran de création d’une routine dans FocusOne sur iPhone',
+      available: true,
+      label: 'Capture temporaire',
       fit: 'contain',
     },
   },
@@ -202,165 +235,105 @@ export const appsIndexEntries: AppIndexEntry[] = [
   },
 ]
 
-const duoSpendFaqSections: AppFaqSection[] = [
+const focusOneFaqSections: AppFaqSection[] = [
   {
-    title: 'Premiers pas',
+    title: 'Questions fréquentes',
     items: [
       {
-        question: "C'est quoi DuoSpend exactement ?",
+        question: 'FocusOne remplace-t-elle une app d’habitudes classique ?',
         answer:
-          "DuoSpend est une app iPhone pour gérer les dépenses d'un projet commun à deux. Mariage, voyage, emménagement, travaux, projet bébé - vous enregistrez vos dépenses, l'app calcule qui doit combien à qui. Rien de plus.",
+          'Pas exactement. FocusOne ne cherche pas à tout suivre. Elle sert à installer une seule routine à la fois, avec moins de friction.',
       },
       {
-        question: "Pour qui c'est fait ?",
+        question: 'Pourquoi une seule habitude active ?',
         answer:
-          "Pour les couples qui partagent des dépenses sur un projet précis. Pas pour les groupes d'amis, pas pour les entreprises - pour vous deux, dans un contexte défini.",
+          'Parce qu’une routine tenue vaut mieux que dix objectifs abandonnés. FocusOne privilégie la constance plutôt que l’accumulation.',
+      },
+      {
+        question: 'Que contient la version gratuite ?',
+        answer:
+          'La version gratuite permet de créer une habitude active, de la valider chaque jour, de suivre son streak, d’utiliser des rappels simples et les widgets de base.',
+      },
+      {
+        question: 'Que débloque Premium ?',
+        answer:
+          'Premium ajoute l’historique complet, les stats avancées, les widgets moyen et grand, les archives, les icônes premium, les couleurs supplémentaires, les durées d’engagement, les paliers célébrés et un joker mensuel.',
+      },
+      {
+        question: 'Combien coûte Premium ?',
+        answer:
+          'FocusOne Premium coûte 14,99 € par an ou 39,99 € en achat unique.',
+      },
+      {
+        question: 'Est-ce qu’il faut créer un compte ?',
+        answer: 'Non. FocusOne ne demande pas de compte pour fonctionner.',
+      },
+      {
+        question: 'Mes données restent-elles privées ?',
+        answer:
+          'Oui. Vos données restent sur votre iPhone et peuvent être synchronisées via iCloud si vous l’activez. La page de confidentialité détaille précisément le fonctionnement.',
+      },
+      {
+        question: 'Est-ce que FocusOne affiche de la publicité ?',
+        answer: 'Non. FocusOne ne repose pas sur la publicité.',
+      },
+    ],
+  },
+]
+
+const duoSpendFaqSections: AppFaqSection[] = [
+  {
+    title: 'Questions fréquentes',
+    items: [
+      {
+        question: 'À quoi sert DuoSpend ?',
+        answer:
+          'DuoSpend aide à suivre les dépenses partagées à deux. Vous ajoutez une dépense, indiquez qui a payé, choisissez la répartition, puis l’app affiche simplement qui doit quoi.',
+      },
+      {
+        question: 'Pour qui est-ce fait ?',
+        answer:
+          'Pour les couples, colocataires, amis ou proches qui partagent des frais sur un projet ou une période précise : voyage, mariage, travaux, emménagement, vacances ou dépenses du quotidien.',
+      },
+      {
+        question: 'Pourquoi ne pas utiliser un tableur ?',
+        answer:
+          'Un tableur fonctionne, mais il demande de tout tenir à la main. DuoSpend garde une lecture plus simple : dépenses, répartition et solde net au même endroit.',
+      },
+      {
+        question: 'Peut-on faire autre chose que du 50/50 ?',
+        answer:
+          'Oui. Chaque dépense peut être partagée à parts égales ou avec une répartition personnalisée, par exemple 60/40 ou 70/30.',
+      },
+      {
+        question: 'Que contient la version gratuite ?',
+        answer:
+          'La version gratuite permet de gérer un projet complet avec les fonctions essentielles : budget, dépenses, répartitions et solde clair.',
+      },
+      {
+        question: 'Que débloque DuoSpend Pro ?',
+        answer:
+          'DuoSpend Pro débloque les projets illimités, les widgets pour l’écran d’accueil et l’export PDF avec un achat unique.',
+      },
+      {
+        question: 'Combien coûte DuoSpend Pro ?',
+        answer:
+          'DuoSpend Pro coûte 6,99 € en achat unique. Il n’y a pas d’abonnement.',
       },
       {
         question: 'Faut-il créer un compte ?',
         answer:
-          'Non. Pas de compte, pas d’email, pas de mot de passe. Vous ouvrez l’app et vous commencez.',
+          'Non. DuoSpend ne demande pas de compte pour fonctionner.',
       },
       {
-        question: "L'app fonctionne-t-elle sans connexion ?",
+        question: 'Mes données restent-elles privées ?',
         answer:
-          'Oui. DuoSpend fonctionne entièrement hors ligne dans sa version actuelle. Vous n’avez pas besoin de Wi‑Fi ni de données mobiles.',
+          'Oui. Vos projets et dépenses restent sur votre iPhone dans la version actuelle. La page de confidentialité détaille précisément le fonctionnement.',
       },
       {
-        question: "L'app est-elle disponible sur Android ?",
+        question: 'Peut-on utiliser DuoSpend à deux sur deux iPhones ?',
         answer:
-          'Non. DuoSpend est une app iPhone uniquement, conçue avec les technologies Apple (Swift, SwiftUI). Une version Android n’est pas prévue.',
-      },
-    ],
-  },
-  {
-    title: 'Fonctionnement',
-    items: [
-      {
-        question: 'Comment fonctionne le calcul de la balance ?',
-        answer:
-          "Pour chaque dépense, l'app calcule la part théorique de chaque partenaire selon la répartition choisie (50/50 ou personnalisée). Elle compare cette part avec ce que chacun a réellement payé. L'écart cumulé donne la balance nette : une seule phrase, un seul montant.",
-      },
-      {
-        question: 'Peut-on avoir une répartition autre que 50/50 ?',
-        answer:
-          'Oui. Quand vous ajoutez une dépense, vous choisissez "50/50" ou une répartition personnalisée (ex. 70/30, 60/40). Chaque dépense peut avoir sa propre répartition.',
-      },
-      {
-        question: 'Peut-on avoir plusieurs projets en même temps ?',
-        answer:
-          'Oui. Chaque projet est indépendant, avec ses propres partenaires, son budget et son solde. Par exemple : un projet "Vacances été" et un projet "Travaux salon" en parallèle. Au-delà du premier projet, DuoSpend Pro est nécessaire.',
-      },
-      {
-        question: "L'app gère-t-elle plusieurs devises ?",
-        answer:
-          'Non, pas encore. DuoSpend fonctionne avec une seule devise (€ par défaut selon votre région). La gestion multi-devises est dans le backlog pour une version future.',
-      },
-      {
-        question: 'Peut-on exporter les données ?',
-        answer:
-          'Oui, avec DuoSpend Pro : générez un récapitulatif PDF de n’importe quel projet, avec la liste des dépenses et la balance finale.',
-      },
-    ],
-  },
-  {
-    title: 'DuoSpend Pro',
-    items: [
-      {
-        question: 'C’est quoi DuoSpend Pro ?',
-        answer:
-          'Un achat unique à 6,99 € qui débloque les projets illimités, les widgets pour l’écran d’accueil et l’export PDF. Pas d’abonnement, pas de renouvellement - vous payez une fois.',
-      },
-      {
-        question: 'Pourquoi ne pas tout laisser gratuit ?',
-        answer:
-          'DuoSpend est développée et maintenue par une seule personne. L’achat Pro permet de financer le développement continu sans dépendre de la publicité ou de la revente de données.',
-      },
-      {
-        question: 'La version gratuite est-elle vraiment utilisable ?',
-        answer:
-          'Oui. Avec un projet gratuit, vous avez accès à toutes les fonctionnalités essentielles : dépenses illimitées, balance en temps réel, répartitions personnalisées, budget de projet.',
-      },
-      {
-        question: "L'achat Pro est-il partageable avec ma famille ?",
-        answer:
-          'Oui, si le partage familial est activé sur votre compte Apple, DuoSpend Pro est automatiquement partagé avec votre groupe familial.',
-      },
-      {
-        question: "J'ai changé d'iPhone — comment récupérer mon achat ?",
-        answer:
-          'Ouvrez DuoSpend, allez dans Réglages et appuyez sur "Restaurer mes achats". L’App Store retrouve votre licence via votre identifiant Apple.',
-      },
-    ],
-  },
-  {
-    title: 'Widgets',
-    items: [
-      {
-        question:
-          'Comment ajouter un widget DuoSpend sur mon écran d’accueil ?',
-        answer:
-          'Maintenez votre doigt sur l’écran d’accueil → mode édition → appuyez sur + → cherchez "DuoSpend" → choisissez la taille (petit, moyen ou grand) → ajoutez. DuoSpend Pro est requis.',
-      },
-      {
-        question: 'Quels widgets sont disponibles ?',
-        answer:
-          'Trois tailles : petit (balance nette du projet), moyen (balance + barre de contribution), grand (balance + barre + dernières dépenses).',
-      },
-      {
-        question: 'Quel projet s’affiche dans le widget ?',
-        answer:
-          'Automatiquement le projet le plus récent. La possibilité de choisir le projet directement depuis le widget est prévue dans une prochaine version.',
-      },
-    ],
-  },
-  {
-    title: 'Confidentialité et données',
-    items: [
-      {
-        question: 'Mes données sont-elles envoyées sur un serveur ?',
-        answer:
-          'Non. DuoSpend ne dispose d’aucun serveur. Vos données vous appartiennent.',
-      },
-      {
-        question: "L'app contient-elle des trackers ou de la pub ?",
-        answer:
-          'Non. Pas de publicité, pas d’analytique, pas de SDK tiers. Votre vie privée est un invariant du produit, pas un argument marketing.',
-      },
-      {
-        question: 'Que se passe-t-il si je désinstalle l’app ?',
-        answer:
-          'Toutes vos données locales sont supprimées. Si vous souhaitez garder une trace, exportez vos projets en PDF (Pro) avant de désinstaller.',
-      },
-      {
-        question: 'Puis-je supprimer mes données sans désinstaller l’app ?',
-        answer:
-          'Oui. Réglages → Données → "Supprimer toutes les données". Cette action est irréversible.',
-      },
-      {
-        question: "Est-ce que l'app fonctionne avec iCloud ?",
-        answer:
-          'Pas en v1.0 - les données restent sur votre appareil. La synchronisation iCloud (même compte Apple, plusieurs appareils) est prévue pour la v1.1.',
-      },
-    ],
-  },
-  {
-    title: 'Synchronisation et avenir',
-    items: [
-      {
-        question: 'Peut-on utiliser l’app à deux sur deux iPhones différents ?',
-        answer:
-          'Pas encore en v1.0. La synchronisation entre deux iPhones sur le même compte Apple arrive en v1.1. Le partage entre deux comptes Apple différents (chacun son iPhone) est prévu pour la v2.0 - c’est la feature la plus demandée.',
-      },
-      {
-        question: 'Quelles fonctionnalités sont prévues ?',
-        answer:
-          'v1.1 : synchronisation iCloud (même compte Apple). v2.0 : partage entre deux comptes Apple (la vraie sync couple). Plus tard : catégories de dépenses, graphiques, recherche, templates de projets.',
-      },
-      {
-        question: 'Comment signaler un bug ou suggérer une fonctionnalité ?',
-        answer:
-          'Via la page support : beabot.fr/apps/duo-spend/. L’app est développée par une seule personne - les retours sont lus et pris en compte.',
+          'Pas encore dans la première version. DuoSpend démarre avec un suivi local sur un iPhone. La synchronisation iCloud et le partage entre deux comptes Apple sont prévus pour la suite.',
       },
     ],
   },
@@ -667,43 +640,290 @@ export const meetingModeContent: AppDetailContent = {
   },
 }
 
+export const focusOneContent: AppDetailContent = {
+  slug: 'focus-one',
+  name: 'FocusOne',
+  platform: 'iOS',
+  stage: 'Prépublication',
+  href: '/apps/focus-one/',
+  intro: 'Une seule habitude. Chaque jour.',
+  summary:
+    'L’app iPhone qui vous aide à installer une routine sans vous noyer dans les objectifs, les graphiques et les réglages.',
+  heroLines: [
+    'L’app iPhone qui vous aide à installer une routine sans vous noyer dans les objectifs, les graphiques et les réglages.',
+    'Choisissez une micro-habitude, cochez-la en un geste, gardez votre streak. Rien de plus que ce qu’il faut pour avancer avec régularité.',
+  ],
+  overview: [
+    'Beaucoup d’apps d’habitudes commencent avec une bonne intention, puis finissent par ressembler à des tableaux de bord : plusieurs routines à gérer, des graphiques partout, des objectifs empilés, des rappels qui s’accumulent.',
+    'À force de vouloir tout suivre, on finit parfois par ne plus rien tenir.',
+    'FocusOne prend le chemin inverse : une seule habitude active, une action claire, un retour immédiat.',
+    'Vous choisissez une routine simple — méditer, marcher, lire, boire de l’eau, écrire quelques lignes — puis vous la validez chaque jour en un geste. L’app vous aide à garder le fil sans prendre toute la place.',
+  ],
+  detailPoints: [
+    {
+      label: 'Une seule habitude active',
+      value: 'Moins de dispersion, plus de chances de tenir.',
+      description:
+        'FocusOne vous aide à concentrer votre énergie sur une routine à la fois.',
+      featured: true,
+    },
+    {
+      label: 'Un geste par jour',
+      value: 'Ouvrez, cochez, repartez.',
+      description: 'Le suivi reste rapide, même les jours chargés.',
+    },
+    {
+      label: 'Un streak motivant',
+      value: 'Un repère simple pour garder l’élan.',
+      description: 'Voyez les jours tenus et reprenez vite si besoin.',
+    },
+    {
+      label: 'Des rappels sobres',
+      value: 'Un ou deux rappels, pas une avalanche.',
+      description:
+        'De quoi ne pas oublier, sans transformer votre téléphone en machine à notifications.',
+    },
+    {
+      label: 'Une journée adaptée à votre rythme',
+      value: 'Votre journée ne s’arrête pas forcément à minuit.',
+      description:
+        'Définissez l’heure de début de journée pour que votre streak suive votre rythme réel.',
+    },
+    {
+      label: 'Des widgets utiles',
+      value: 'Votre routine visible d’un coup d’œil.',
+      description:
+        'Gardez un œil sur votre objectif depuis l’écran d’accueil ou l’écran verrouillé.',
+    },
+  ],
+  preview: {
+    src: '/img/apps/focus-one/03-aujourd-hui.webp',
+    alt: 'Écran principal FocusOne avec validation de la routine du jour',
+    available: true,
+    label: "Aperçu de l'app",
+    fit: 'contain',
+  },
+  showVisual: false,
+  gallery: [
+    {
+      src: '/img/apps/focus-one/02-creation.webp',
+      alt: 'Écran de création d’une routine dans FocusOne',
+      title: 'Créer une routine',
+      subtitle: 'Choisir un nom, une icône, une couleur et un rythme',
+    },
+    {
+      src: '/img/apps/focus-one/03-serie-active.webp',
+      alt: 'Écran principal FocusOne avec validation de la routine du jour',
+      title: 'Cocher sans friction',
+      subtitle: 'L’action essentielle reste visible dès l’ouverture',
+    },
+    {
+      src: '/img/apps/focus-one/04-streak.webp',
+      alt: 'Vue du streak et de la progression dans FocusOne',
+      title: 'Garder son streak',
+      subtitle: 'Série actuelle, record et progression en un coup d’œil',
+    },
+    {
+      src: '/img/apps/focus-one/07-stats.webp',
+      alt: 'Statistiques mensuelles et calendrier de progression dans FocusOne',
+      title: 'Suivre la régularité',
+      subtitle: 'Calendrier, historique et repères sans tableau de bord lourd',
+    },
+    {
+      src: '/img/apps/focus-one/08-widget.webp',
+      alt: 'Widget iOS FocusOne affichant la routine active',
+      title: 'Voir sans ouvrir',
+      subtitle: 'Widget iOS pour garder la routine et le streak visibles',
+    },
+    {
+      src: '/img/apps/focus-one/step-1.webp',
+      alt: 'Écran FocusOne célébrant un palier de streak atteint',
+      title: 'Célébrer les paliers',
+      subtitle: 'Des moments visuels sobres quand la série avance',
+    },
+  ],
+  faq: focusOneFaqSections.flatMap((section) => section.items),
+  faqSections: focusOneFaqSections,
+  pricing: {
+    title: 'Tarifs',
+    intro:
+      'FocusOne garde son cœur simple et gratuit. Premium ajoute de la profondeur quand vous voulez suivre votre progression dans le temps.',
+    plans: [
+      {
+        name: 'Gratuit',
+        price: '0 €',
+        description: 'Pour commencer une routine sans friction.',
+        items: [
+          'Une habitude active',
+          'Validation quotidienne',
+          'Streak actuel',
+          'Rappels simples',
+          'Widgets de base',
+          'Statistiques essentielles',
+        ],
+      },
+      {
+        name: 'Premium',
+        price: '14,99 € / an ou 39,99 € en achat unique',
+        description:
+          'Pour garder l’historique, personnaliser l’app et accompagner vos routines sur la durée.',
+        items: [
+          'Historique complet au-delà de 30 jours',
+          'Stats avancées',
+          'Widgets moyen et grand',
+          'Archives et routine suivante',
+          'Icônes, couleurs et durées d’engagement',
+          'Paliers de streak célébrés',
+          'Joker mensuel pour protéger votre série',
+        ],
+      },
+    ],
+    premiumBenefits: [
+      {
+        title: 'Stats avancées',
+        description:
+          'Des vues plus riches pour comprendre votre progression sans complexifier l’app.',
+      },
+      {
+        title: 'Historique complet',
+        description:
+          'Gardez vos mois passés au-delà de la fenêtre gratuite de 30 jours.',
+      },
+      {
+        title: 'Widgets avancés',
+        description:
+          'Débloquez les formats moyen et grand pour suivre votre routine d’un coup d’œil.',
+      },
+      {
+        title: 'Archives',
+        description:
+          'Terminez une routine, archivez-la, puis passez à la suivante.',
+      },
+      {
+        title: 'Icônes premium',
+        description:
+          'Plus de symboles pour reconnaître vos routines plus vite.',
+      },
+      {
+        title: 'Durées d’engagement',
+        description: 'Cadrez une routine sur 7, 10, 15 ou 30 jours.',
+      },
+      {
+        title: 'Couleurs étendues',
+        description: 'Personnalisez l’app sans alourdir l’expérience.',
+      },
+      {
+        title: 'Paliers célébrés',
+        description:
+          'Des moments visuels à 7, 14, 30, 60, 100, 200 et 365 jours.',
+      },
+      {
+        title: 'Protection de série',
+        description: 'Un joker mensuel quand la vie s’en mêle.',
+      },
+    ],
+  },
+  legal: {
+    fr: {
+      title: 'Politique de confidentialité',
+      paragraphs: [
+        'FocusOne ne collecte aucune donnée personnelle identifiable.',
+        'Votre habitude active et vos check-ins journaliers sont stockés localement sur votre iPhone via Core Data. Si la synchronisation iCloud est activée sur votre appareil, ces données sont également synchronisées sur vos autres appareils Apple via iCloud — sans passer par un serveur tiers.',
+        'Quelques préférences sont conservées localement dans les réglages système de l’iPhone : état d’onboarding, préférences de notifications, état de l’abonnement et date de début de la période d’essai. Ces données restent sur l’appareil.',
+        'Lorsque vous utilisez les widgets de l’écran d’accueil, un snapshot réduit de vos données est partagé entre l’app et l’extension widget via un App Group local géré par iOS.',
+        'Si vous activez les rappels quotidiens, FocusOne programme des notifications locales sur votre iPhone. Aucune notification distante n’est utilisée.',
+        'Si vous souscrivez à FocusOne Premium — abonnement annuel ou accès à vie — la transaction est gérée par Apple via l’App Store. FocusOne ne reçoit ni ne stocke vos informations de paiement. Seul l’état de l’achat est conservé localement.',
+        'FocusOne n’intègre aucun système de tracking, aucune publicité et aucun SDK tiers comme Firebase, Amplitude ou Mixpanel.',
+        'Pour supprimer vos données, désactivez la synchronisation iCloud pour FocusOne dans Réglages → [votre nom] → iCloud, puis supprimez l’app de votre iPhone.',
+        'FocusOne n’est pas destinée aux enfants de moins de 13 ans.',
+        'Pour toute question, la page FocusOne reste le point de contact.',
+      ],
+    },
+    en: {
+      title: 'Privacy Policy',
+      paragraphs: [
+        'FocusOne does not collect any personally identifiable information.',
+        'Your active habit and daily check-ins are stored locally on your iPhone using Core Data. If iCloud is enabled on your device, this data is also synced to your other Apple devices via iCloud — without going through any third-party server.',
+        'A few preferences are kept locally in iPhone system storage: onboarding state, notification preferences, subscription status, and trial start date. This data stays on the device.',
+        'When you use the home screen widgets, a limited snapshot of your data is shared between the app and the widget extension through a local App Group managed by iOS.',
+        'If you enable daily reminders, FocusOne schedules local notifications on your iPhone. No remote push notifications are used.',
+        'If you subscribe to FocusOne Premium — yearly subscription or lifetime access — Apple handles the transaction through the App Store. FocusOne does not receive or store payment information. Only the purchase state is kept locally.',
+        'FocusOne includes no tracking, no advertising, and no third-party SDKs such as Firebase, Amplitude, or Mixpanel.',
+        'To delete your data, disable iCloud sync for FocusOne in Settings → [your name] → iCloud, then delete the app from your iPhone.',
+        'FocusOne is not intended for children under 13.',
+        'For any question, the FocusOne page remains the contact point.',
+      ],
+    },
+  },
+  cta: {
+    title: 'Soyez le premier à savoir.',
+    description:
+      "FocusOne arrive bientôt. Laissez votre adresse — je vous préviens dès l'ouverture.",
+    secondaryLabel: 'Une question ? Contactez-moi',
+    secondaryTo: '/contact/',
+  },
+  seo: {
+    title: 'FocusOne — App iPhone pour suivre une seule habitude',
+    description:
+      'FocusOne est une app iPhone minimaliste pour installer une seule micro-habitude à la fois : routine quotidienne, streak, widgets et rappels sobres.',
+    image: '/img/apps/focus-one/03-aujourd-hui.webp',
+  },
+}
+
 export const duoSpendContent: AppDetailContent = {
   slug: 'duo-spend',
   name: 'DuoSpend',
   platform: 'iOS',
   stage: 'Prépublication',
   href: '/apps/duo-spend/',
-  intro: 'Conçue sans tracking, sans compte imposé, sans SDK tiers.',
-  summary: 'Gérez vos dépenses communes à deux, avec un suivi simple et clair.',
+  intro: 'Gérez vos dépenses à deux simplement',
+  summary:
+    'DuoSpend vous aide à suivre les dépenses partagées sans tableur, sans calcul mental et sans discussion interminable.',
+  heroLines: [
+    'DuoSpend vous aide à suivre les dépenses partagées sans tableur, sans calcul mental et sans discussion interminable.',
+    'Ajoutez une dépense, indiquez qui a payé, voyez l’équilibre. Chacun sait où il en est.',
+  ],
   overview: [
-    'Vous organisez un voyage, un mariage, des travaux ou un emménagement. L’un avance les frais, l’autre rembourse — mais le solde n’est jamais évident à suivre.',
-    'DuoSpend est conçue pour deux. Créez un projet, ajoutez vos dépenses, choisissez qui paie quoi et en quelle proportion. L’app calcule le solde net en temps réel, sans tracking, sans compte imposé, sans SDK tiers.',
+    'Les petites dépenses partagées s’accumulent vite : courses, restaurant, essence, abonnement, week-end, vacances, frais de colocation ou projet de couple.',
+    'Au début, tout semble évident. Puis on oublie qui a payé quoi, on reporte les calculs, on garde une note dans un coin, ou on finit dans un tableur que personne n’a envie de tenir.',
+    'DuoSpend simplifie ce suivi : chaque dépense est ajoutée en quelques secondes, les soldes restent lisibles, et chacun sait ce qu’il doit ou ce qu’il a avancé.',
   ],
   detailPoints: [
     {
-      label: 'Un solde',
-      value: 'Un seul chiffre. Qui rembourse qui.',
+      label: 'Dépenses partagées',
+      value: 'Courses, sorties, trajets, abonnements, vacances.',
       description:
-        'Pas de tableau, pas de calculatrice. DuoSpend additionne chaque dépense, applique la répartition choisie, et affiche en permanence qui doit combien à qui — sur chaque projet.',
+        'Ajoutez les frais du quotidien ou d’un projet commun en quelques gestes.',
       featured: true,
     },
     {
-      label: 'Par projet',
-      value: 'Un projet, un espace dédié.',
+      label: 'Soldes clairs',
+      value: 'Qui a payé quoi, qui doit quoi.',
+      description:
+        'DuoSpend calcule automatiquement qui a avancé de l’argent et combien il reste à équilibrer.',
     },
     {
-      label: 'Répartition',
-      value: 'Chacun sa part, définie à la dépense.',
+      label: 'Pensé pour deux',
+      value: 'Couple, colocation, amis ou proches.',
+      description:
+        'Un usage simple pour garder des comptes propres sans transformer l’app en outil de comptabilité.',
     },
     {
-      label: 'Local',
-      value:
-        'Vos données vous appartiennent. Pas de tracking, pas de SDK tiers.',
+      label: 'Sans tableur',
+      value: 'Plus de notes dispersées ni de calculs à la main.',
+      description: 'L’app garde le fil pour vous, projet après projet.',
     },
     {
-      label: 'Technologie',
-      value:
-        'Swift natif, sans dépendance externe. Support assuré directement par son auteur.',
+      label: 'Lecture rapide',
+      value: 'Une situation claire en quelques secondes.',
+      description:
+        'Une interface sobre pour comprendre l’équilibre des comptes sans fouiller.',
+    },
+    {
+      label: 'Prépublication',
+      value: 'L’app est en préparation.',
+      description:
+        'La page présente le produit et permet de rejoindre la liste des personnes intéressées.',
     },
   ],
   preview: {
@@ -756,12 +976,13 @@ export const duoSpendContent: AppDetailContent = {
   faqSections: duoSpendFaqSections,
   pricing: {
     title: 'Tarifs',
-    intro: "Gratuit pour commencer. Un achat unique pour ne plus s'arrêter.",
+    intro:
+      'DuoSpend garde l’essentiel gratuit pour tester un vrai projet. Pro ajoute les projets illimités, les widgets et l’export PDF.',
     plans: [
       {
         name: 'Gratuit',
         price: '0 €',
-        description: 'Un projet. Toutes les fonctions. Gratuit.',
+        description: 'Pour gérer un premier projet partagé sans friction.',
         items: ['1 projet complet', 'Fonctions essentielles incluses'],
       },
       {
@@ -815,9 +1036,9 @@ export const duoSpendContent: AppDetailContent = {
     secondaryTo: '/contact/',
   },
   seo: {
-    title: 'DuoSpend — app iPhone pour dépenses à deux',
+    title: 'DuoSpend — App de dépenses partagées pour couple et amis',
     description:
-      'DuoSpend calcule qui doit combien à qui, sur chaque projet commun. Hors ligne, sans compte, sans pub. Achat unique 6,99 €.',
+      'DuoSpend est une app pour suivre les dépenses partagées à deux : couple, colocation, amis, vacances ou frais du quotidien. Ajoutez une dépense, voyez qui doit quoi.',
     image: '/img/apps/duospend-vignette-apps.webp',
   },
 }
@@ -1028,6 +1249,8 @@ export const buildSoftwareApplicationSchema = ({
   operatingSystem,
   applicationCategory,
   image,
+  offers,
+  author,
 }: SoftwareApplicationSchemaInput) => ({
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -1037,6 +1260,26 @@ export const buildSoftwareApplicationSchema = ({
   operatingSystem,
   applicationCategory,
   ...(image ? { image } : {}),
+  ...(offers?.length
+    ? {
+        offers: offers.map((offer) => ({
+          '@type': 'Offer',
+          name: offer.name,
+          price: offer.price,
+          priceCurrency: offer.priceCurrency,
+          ...(offer.description ? { description: offer.description } : {}),
+        })),
+      }
+    : {}),
+  ...(author
+    ? {
+        author: {
+          '@type': 'Person',
+          name: author.name,
+          url: author.url,
+        },
+      }
+    : {}),
 })
 
 export const buildFaqSchema = (items: AppFaqItem[]) => ({

@@ -5,12 +5,12 @@
 
       <section class="app-hero">
         <div class="app-hero__content">
-          <p class="app-meta">{{ duoSpendContent.stage }}</p>
-          <h1>{{ duoSpendContent.name }} — {{ duoSpendContent.intro }}</h1>
+          <p class="app-meta">{{ focusOneContent.stage }}</p>
+          <h1>{{ focusOneContent.name }} — {{ focusOneContent.intro }}</h1>
           <div class="app-hero__text">
             <p
-              v-for="line in duoSpendContent.heroLines ?? [
-                duoSpendContent.summary,
+              v-for="line in focusOneContent.heroLines ?? [
+                focusOneContent.summary,
               ]"
               :key="line"
               class="app-intro"
@@ -35,18 +35,18 @@
         <div class="app-hero__visual">
           <div class="app-mockup app-mockup--dark">
             <div class="app-mockup__bar" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
+              <span />
+              <span />
+              <span />
             </div>
             <div
               class="app-mockup__screen app-mockup__screen--image"
               role="img"
-              :aria-label="duoSpendContent.preview.alt"
+              :aria-label="focusOneContent.preview.alt"
             >
               <img
-                :src="duoSpendContent.preview.src"
-                :alt="duoSpendContent.preview.alt"
+                :src="focusOneContent.preview.src"
+                :alt="focusOneContent.preview.alt"
                 width="1206"
                 height="2622"
                 loading="eager"
@@ -57,10 +57,10 @@
         </div>
       </section>
 
-      <section class="app-surface" aria-labelledby="duo-overview-title">
+      <section class="app-surface" aria-labelledby="focus-overview-title">
         <div class="app-surface__copy">
-          <h2 id="duo-overview-title">Le problème</h2>
-          <p v-for="paragraph in duoSpendContent.overview" :key="paragraph">
+          <h2 id="focus-overview-title">Le problème</h2>
+          <p v-for="paragraph in focusOneContent.overview" :key="paragraph">
             {{ paragraph }}
           </p>
         </div>
@@ -70,11 +70,15 @@
           <dl class="app-surface__list app-surface__list--cards">
             <div>
               <dt>Usage</dt>
-              <dd>Dépenses partagées à deux</dd>
+              <dd>Micro-habitude quotidienne</dd>
             </div>
             <div>
               <dt>Principe</dt>
-              <dd>Qui a payé quoi, qui doit quoi</dd>
+              <dd>Une seule habitude active</dd>
+            </div>
+            <div>
+              <dt>Stockage</dt>
+              <dd>Local sur iPhone + iCloud si activé</dd>
             </div>
             <div>
               <dt>Compte</dt>
@@ -84,48 +88,18 @@
         </div>
       </section>
 
-      <section
-        v-if="duoSpendContent.showVisual"
-        class="app-section"
-        aria-labelledby="duo-capture-title"
-      >
+      <section class="app-section" aria-labelledby="focus-details-title">
         <div class="section-heading">
-          <h2 id="duo-capture-title">Visuel</h2>
-          <p>Aperçu du produit en attente du visuel final.</p>
-        </div>
-
-        <div class="app-capture app-capture--image">
-          <div class="app-capture__bar" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div
-            class="app-capture__screen app-capture__screen--image"
-            role="img"
-            :aria-label="duoSpendContent.preview.alt"
-          >
-            <img
-              :src="duoSpendContent.preview.src"
-              :alt="duoSpendContent.preview.alt"
-              width="1206"
-              height="2622"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-        </div>
-      </section>
-
-      <section class="app-section" aria-labelledby="duo-details-title">
-        <div class="section-heading">
-          <h2 id="duo-details-title">Points clés</h2>
-          <p>Les repères pour garder des comptes clairs, sans tableur.</p>
+          <h2 id="focus-details-title">Points clés</h2>
+          <p>
+            Les repères de base pour tenir une routine sans y penser toute la
+            journée.
+          </p>
         </div>
 
         <div class="detail-grid">
           <article
-            v-for="point in duoSpendContent.detailPoints"
+            v-for="point in focusOneContent.detailPoints"
             :key="point.label"
             class="detail-card"
             :class="{ 'detail-card--featured': point.featured }"
@@ -140,19 +114,19 @@
       </section>
 
       <section
-        v-if="duoSpendContent.gallery?.length"
+        v-if="focusOneContent.gallery?.length"
         class="app-section"
-        aria-labelledby="duo-gallery-title"
+        aria-labelledby="focus-gallery-title"
       >
         <div class="section-heading">
-          <h2 id="duo-gallery-title">L'app en images</h2>
-          <p>Les principaux écrans de DuoSpend.</p>
+          <h2 id="focus-gallery-title">L'app en images</h2>
+          <p>Les principaux écrans de FocusOne.</p>
         </div>
 
         <div class="gallery-grid">
           <figure
-            v-for="(image, index) in duoSpendContent.gallery"
-            :key="image.src"
+            v-for="(image, index) in focusOneContent.gallery"
+            :key="`${image.src}-${image.title}`"
             class="gallery-card gallery-card--clickable"
             role="button"
             tabindex="0"
@@ -178,33 +152,30 @@
           </figure>
         </div>
 
-        <AppGalleryLightbox
-          ref="lightbox"
-          :images="duoSpendContent.gallery"
-        />
+        <AppGalleryLightbox ref="lightbox" :images="focusOneContent.gallery" />
       </section>
 
       <section
-        v-if="duoSpendContent.pricing"
+        v-if="focusOneContent.pricing"
         class="app-section"
-        aria-labelledby="duo-pricing-title"
+        aria-labelledby="focus-pricing-title"
       >
         <div class="section-heading">
-          <h2 id="duo-pricing-title">{{ duoSpendContent.pricing.title }}</h2>
-          <p>{{ duoSpendContent.pricing.intro }}</p>
+          <h2 id="focus-pricing-title">{{ focusOneContent.pricing.title }}</h2>
+          <p>{{ focusOneContent.pricing.intro }}</p>
         </div>
 
         <div class="pricing-grid">
           <article
-            v-for="plan in duoSpendContent.pricing.plans"
+            v-for="plan in focusOneContent.pricing.plans"
             :key="plan.name"
             class="pricing-card"
             :class="{
-              'pricing-card--featured': plan.name === 'DuoSpend Pro',
+              'pricing-card--featured': plan.name === 'Premium',
             }"
           >
-            <div v-if="plan.name === 'DuoSpend Pro'" class="pricing-card__badge">
-              Recommandé
+            <div v-if="plan.name === 'Premium'" class="pricing-card__badge">
+              Premium
             </div>
             <p class="pricing-card__name">{{ plan.name }}</p>
             <p class="pricing-card__price">{{ plan.price }}</p>
@@ -214,18 +185,44 @@
             </ul>
           </article>
         </div>
+
+        <div
+          v-if="focusOneContent.pricing?.premiumBenefits?.length"
+          class="premium-benefits"
+          aria-labelledby="focus-premium-benefits-title"
+        >
+          <div class="section-heading section-heading--compact">
+            <h3 id="focus-premium-benefits-title">Ce que débloque Premium</h3>
+          </div>
+
+          <div class="premium-benefits__grid">
+            <article
+              v-for="benefit in focusOneContent.pricing?.premiumBenefits"
+              :key="benefit.title"
+              class="premium-benefit-card"
+            >
+              <p class="premium-benefit-card__title">{{ benefit.title }}</p>
+              <p class="premium-benefit-card__description">
+                {{ benefit.description }}
+              </p>
+            </article>
+          </div>
+        </div>
       </section>
 
-      <section class="app-section app-section--faq" aria-labelledby="duo-faq-title">
+      <section
+        class="app-section app-section--faq"
+        aria-labelledby="focus-faq-title"
+      >
         <div class="faq-wrapper">
           <div class="section-heading">
-            <h2 id="duo-faq-title">FAQ</h2>
+            <h2 id="focus-faq-title">FAQ</h2>
             <p>Questions fréquentes.</p>
           </div>
 
           <AppFaqList
-            :items="duoSpendContent.faq"
-            :sections="duoSpendContent.faqSections"
+            :items="focusOneContent.faq"
+            :sections="focusOneContent.faqSections"
           />
         </div>
       </section>
@@ -233,37 +230,45 @@
       <section
         id="privacy"
         class="app-section app-section--legal"
-        aria-labelledby="duo-legal-title"
+        aria-labelledby="focus-legal-title"
       >
         <details ref="privacyDetails" class="legal-disclosure">
           <summary class="legal-disclosure__summary">
             <div class="legal-disclosure__header">
-              <h2 id="duo-legal-title" class="legal-disclosure__title">Confidentialité</h2>
-              <p class="legal-disclosure__meta">Politique de confidentialité — FR / EN</p>
+              <h2 id="focus-legal-title" class="legal-disclosure__title">
+                Confidentialité
+              </h2>
+              <p class="legal-disclosure__meta">
+                Politique de confidentialité — FR / EN
+              </p>
             </div>
-            <span class="legal-disclosure__toggle" aria-hidden="true"></span>
+            <span class="legal-disclosure__toggle" aria-hidden="true" />
           </summary>
 
           <div class="legal-disclosure__body">
             <AppLegalTabs
-              base-id="duo-spend-legal"
-              :content="duoSpendContent.legal"
+              base-id="focus-one-legal"
+              :content="focusOneContent.legal"
               label="Confidentialité"
             />
           </div>
         </details>
       </section>
 
-      <section class="app-cta" id="release-form" aria-labelledby="duo-cta-title">
+      <section
+        id="release-form"
+        class="app-cta"
+        aria-labelledby="focus-cta-title"
+      >
         <div class="app-cta__heading">
-          <h2 id="duo-cta-title">{{ duoSpendContent.cta.title }}</h2>
-          <p>{{ duoSpendContent.cta.description }}</p>
+          <h2 id="focus-cta-title">{{ focusOneContent.cta.title }}</h2>
+          <p>{{ focusOneContent.cta.description }}</p>
         </div>
 
-        <AppReleaseInterestForm :app-name="duoSpendContent.name" />
+        <AppReleaseInterestForm :app-name="focusOneContent.name" />
 
-        <AppLink :to="duoSpendContent.cta.secondaryTo" class="app-cta__link">
-          {{ duoSpendContent.cta.secondaryLabel }}
+        <AppLink :to="focusOneContent.cta.secondaryTo" class="app-cta__link">
+          {{ focusOneContent.cta.secondaryLabel }}
         </AppLink>
       </section>
     </div>
@@ -283,38 +288,57 @@ import {
   buildBreadcrumbSchema,
   buildFaqSchema,
   buildSoftwareApplicationSchema,
-  duoSpendContent,
+  focusOneContent,
 } from '~/data/apps'
 import { absoluteUrl, canonicalUrl } from '~/utils/seo-url'
 
 const config = useRuntimeConfig()
 const route = useRoute()
-const pageUrl = canonicalUrl(config.public.siteUrl, '/apps/duo-spend')
-const ogImage = absoluteUrl(config.public.siteUrl, duoSpendContent.seo.image)
+const pageUrl = canonicalUrl(config.public.siteUrl, '/apps/focus-one')
+const ogImage = absoluteUrl(config.public.siteUrl, focusOneContent.seo.image)
 const privacyDetails = ref<HTMLDetailsElement | null>(null)
 const lightbox = ref<InstanceType<typeof AppGalleryLightbox> | null>(null)
 
 const breadcrumbItems = [
   { label: 'Accueil', to: '/' },
   { label: 'Apps', to: '/apps/' },
-  { label: 'DuoSpend' },
+  { label: 'FocusOne' },
 ]
 
 const breadcrumbSchema = buildBreadcrumbSchema(config.public.siteUrl, [
   { name: 'Accueil', path: '/' },
   { name: 'Apps', path: '/apps/' },
-  { name: 'DuoSpend', path: '/apps/duo-spend/' },
+  { name: 'FocusOne', path: '/apps/focus-one/' },
 ])
 
-const faqSchema = buildFaqSchema(duoSpendContent.faq)
+const faqSchema = buildFaqSchema(focusOneContent.faq)
 const softwareApplicationSchema = buildSoftwareApplicationSchema({
-  name: duoSpendContent.name,
+  name: focusOneContent.name,
   description:
-    'DuoSpend est une app iOS pour suivre les dépenses partagées à deux, savoir qui a payé quoi et équilibrer les comptes simplement.',
+    'FocusOne est une app iPhone minimaliste pour installer une micro-habitude quotidienne à la fois, avec streak, rappels sobres, widgets et synchronisation iCloud.',
   url: pageUrl,
   operatingSystem: 'iOS',
-  applicationCategory: 'FinanceApplication',
+  applicationCategory: 'ProductivityApplication',
   image: ogImage,
+  offers: [
+    {
+      name: 'FocusOne gratuit',
+      price: '0',
+      priceCurrency: 'EUR',
+    },
+    {
+      name: 'FocusOne Premium annuel',
+      price: '14.99',
+      priceCurrency: 'EUR',
+      description: 'Abonnement annuel FocusOne Premium.',
+    },
+    {
+      name: 'FocusOne Premium achat unique',
+      price: '39.99',
+      priceCurrency: 'EUR',
+      description: 'Achat unique FocusOne Premium.',
+    },
+  ],
   author: {
     name: 'Benoît Abot',
     url: canonicalUrl(config.public.siteUrl, '/'),
@@ -357,19 +381,19 @@ watch(
 )
 
 useSeoMeta({
-  title: duoSpendContent.seo.title,
-  description: duoSpendContent.seo.description,
-  ogTitle: 'DuoSpend — Les dépenses partagées, enfin claires',
+  title: focusOneContent.seo.title,
+  description: focusOneContent.seo.description,
+  ogTitle: 'FocusOne — une seule habitude, chaque jour',
   ogDescription:
-    'Une app simple pour savoir qui a payé quoi, équilibrer les comptes et éviter les calculs à la main.',
+    'Une app iPhone minimaliste pour installer une seule micro-habitude à la fois, garder votre streak et avancer sans distraction.',
   ogType: 'website',
   ogSiteName: 'BeAbot',
   ogUrl: pageUrl,
   ogImage,
   ogImageWidth: 1200,
   ogImageHeight: 630,
-  twitterTitle: duoSpendContent.seo.title,
-  twitterDescription: duoSpendContent.seo.description,
+  twitterTitle: focusOneContent.seo.title,
+  twitterDescription: focusOneContent.seo.description,
   twitterCard: 'summary_large_image',
   twitterImage: ogImage,
 })
@@ -648,7 +672,7 @@ useHead({
   gap: 0.75rem;
 
   @media (min-width: 700px) {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -709,33 +733,6 @@ useHead({
   margin-bottom: 1.5rem;
   padding-bottom: 1.25rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.app-capture {
-  padding: 1rem;
-  border-radius: 1.45rem;
-  background: linear-gradient(
-    145deg,
-    rgba(243, 244, 246, 0.95),
-    rgba(255, 255, 255, 0.96)
-  );
-  box-shadow: 0 18px 34px rgba(15, 23, 42, 0.05);
-}
-
-.app-capture__screen {
-  min-height: 18rem;
-  border-radius: 1.15rem;
-  display: grid;
-  place-items: center;
-  background: rgba(255, 255, 255, 0.82);
-}
-
-.app-capture__screen--image {
-  padding: 1rem;
-}
-
-.app-capture__screen--image img {
-  max-width: 100%;
 }
 
 .gallery-grid {
@@ -883,7 +880,9 @@ useHead({
   border-radius: 999px;
   background: $vert;
   transform: translate(-50%, -50%);
-  transition: transform 0.14s ease, opacity 0.14s ease;
+  transition:
+    transform 0.14s ease,
+    opacity 0.14s ease;
 }
 
 .legal-disclosure__toggle::after {
@@ -911,8 +910,11 @@ useHead({
   grid-template-columns: 1fr;
 
   @media (min-width: 700px) {
-    grid-template-columns: 1.5fr 1fr 1fr;
-    grid-auto-rows: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 980px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -927,9 +929,18 @@ useHead({
 
 .detail-card--featured {
   @media (min-width: 700px) {
-    grid-row: span 2;
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(0, 0.55fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 0.75rem 1.25rem;
     background: rgba(255, 255, 255, 0.98);
     border: 1px solid rgba(13, 199, 99, 0.15);
+  }
+
+  .detail-card__description {
+    @media (min-width: 700px) {
+      margin-top: 0;
+    }
   }
 }
 
@@ -960,20 +971,22 @@ useHead({
 
 .pricing-grid {
   display: grid;
-  gap: 0.75rem;
+  gap: 1rem;
 
   @media (min-width: 820px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
   }
 }
 
 .pricing-card {
   display: grid;
   gap: 0.65rem;
-  padding: 1.05rem;
+  padding: clamp(1.1rem, 2.4vw, 1.35rem);
   border-radius: 1.15rem;
   background: rgba(255, 255, 255, 0.94);
   position: relative;
+  align-content: start;
 }
 
 .pricing-card--featured {
@@ -1007,9 +1020,10 @@ useHead({
 .pricing-card__price {
   margin: 0;
   color: $gris1;
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-size: clamp(1.55rem, 3.4vw, 2.15rem);
   font-weight: 800;
   letter-spacing: -0.04em;
+  line-height: 1.05;
 }
 
 .pricing-card__summary {
@@ -1038,6 +1052,56 @@ useHead({
   position: absolute;
   left: 0;
   color: $vert;
+}
+
+.premium-benefits {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: clamp(1rem, 3vw, 1.35rem);
+}
+
+.section-heading--compact h3 {
+  margin: 0;
+  color: $gris1;
+  font-size: clamp(1.2rem, 2.6vw, 1.55rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.premium-benefits__grid {
+  display: grid;
+  gap: 0.7rem;
+
+  @media (min-width: 620px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 980px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.premium-benefit-card {
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.95rem 1rem;
+  border-radius: 1rem;
+  background: rgba(243, 244, 246, 0.76);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+.premium-benefit-card__title {
+  margin: 0;
+  color: $gris1;
+  font-weight: 750;
+  line-height: 1.25;
+}
+
+.premium-benefit-card__description {
+  margin: 0;
+  color: $gris2;
+  font-size: 0.86rem;
+  line-height: 1.5;
 }
 
 .app-cta {
