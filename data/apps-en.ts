@@ -41,7 +41,35 @@ export const appsIndexEnEntries: AppIndexEntry[] = appsIndexEntries.map((entry) 
   image:
     entry.slug === 'focus-one'
       ? '/img/apps/focus-one/00-onboarding_en.webp'
+      : entry.slug === 'duo-spend'
+        ? '/img/apps/duospend-vignette-apps_en.webp'
+        : entry.slug === 'meeting-mode'
+          ? '/img/apps/meeting-mode_vignette-apps_en.webp'
+          : entry.slug === 'siturem'
+            ? '/img/siturem/siturem-landing_en.webp'
       : entry.image,
+  preview:
+    entry.slug === 'focus-one'
+      ? {
+          ...entry.preview,
+          src: '/img/apps/focus-one/00-onboarding_en.webp',
+        }
+      : entry.slug === 'duo-spend'
+        ? {
+            ...entry.preview,
+            src: '/img/apps/duospend-vignette-apps_en.webp',
+          }
+        : entry.slug === 'meeting-mode'
+          ? {
+              ...entry.preview,
+              src: '/img/apps/meeting-mode_vignette-apps_en.webp',
+            }
+          : entry.slug === 'siturem'
+            ? {
+                ...entry.preview,
+                src: '/img/siturem/siturem-landing_en.webp',
+              }
+      : entry.preview,
   stage: 'Pre-release',
   summary: enSummaryBySlug[entry.slug] ?? entry.summary,
   href: `/en/apps/${entry.slug}/`,
