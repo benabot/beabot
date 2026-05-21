@@ -630,7 +630,7 @@ export const meetingModeContent: AppDetailContent = {
     description:
       "Meeting Mode arrive bientôt. Laissez votre adresse — je vous préviens dès l'ouverture.",
     secondaryLabel: 'Une question ? Contactez-moi',
-    secondaryTo: '/contact/',
+    secondaryTo: '/contact/?app=meeting-mode&type=support',
   },
   seo: {
     title: 'Meeting Mode — app macOS pour réunions',
@@ -860,7 +860,7 @@ export const focusOneContent: AppDetailContent = {
     description:
       "FocusOne arrive bientôt. Laissez votre adresse — je vous préviens dès l'ouverture.",
     secondaryLabel: 'Une question ? Contactez-moi',
-    secondaryTo: '/contact/',
+    secondaryTo: '/contact/?app=focus-one&type=support',
   },
   seo: {
     title: 'FocusOne — App iPhone pour suivre une seule habitude',
@@ -1033,7 +1033,7 @@ export const duoSpendContent: AppDetailContent = {
     description:
       "DuoSpend arrive bientôt. Laissez votre adresse — je vous préviens dès l'ouverture.",
     secondaryLabel: 'Une question ? Contactez-moi',
-    secondaryTo: '/contact/',
+    secondaryTo: '/contact/?app=duo-spend&type=support',
   },
   seo: {
     title: 'DuoSpend — App de dépenses partagées pour couple et amis',
@@ -1213,7 +1213,7 @@ export const situremContent: AppDetailContent = {
     description:
       "Siturem est en prépublication. Laissez votre adresse — je vous préviens dès l'ouverture.",
     secondaryLabel: 'Une question ? Contactez-moi',
-    secondaryTo: '/contact/',
+    secondaryTo: '/contact/?app=siturem&type=support',
   },
   seo: {
     title: 'Siturem — timer iOS pour méditer',

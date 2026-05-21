@@ -2,6 +2,9 @@
   <main class="app-page">
     <div class="app-shell">
       <AppBreadcrumb :items="breadcrumbItems" />
+      <p class="app-locale-switch">
+        <AppLink to="/en/apps/siturem/">English version</AppLink>
+      </p>
 
       <section class="app-hero">
         <div class="app-hero__content">
@@ -24,10 +27,10 @@
               Être informé
             </AppLink>
             <NuxtLink
-              to="/contact/"
+              to="/contact/?app=siturem&type=support"
               class="app-secondary-action app-detail__contact-cta"
             >
-              Une question ? Contactez-moi
+              Contacter le support
             </NuxtLink>
           </div>
         </div>
@@ -206,6 +209,14 @@
         </div>
       </section>
 
+      <AppSupportSection
+        app-name="Siturem"
+        app-slug="siturem"
+        locale="fr"
+        os-label-fr="iOS ou iPadOS"
+        os-label-en="iOS or iPadOS"
+      />
+
       <section
         id="privacy"
         class="app-section app-section--legal"
@@ -256,13 +267,6 @@
         </div>
 
         <AppReleaseInterestForm :app-name="situremContent.name" />
-
-        <AppLink
-          :to="situremContent.cta.secondaryTo"
-          class="app-cta__link"
-        >
-          {{ situremContent.cta.secondaryLabel }}
-        </AppLink>
       </section>
     </div>
   </main>
@@ -276,6 +280,7 @@ import AppGalleryLightbox from '~/components/apps/AppGalleryLightbox.vue'
 import AppFaqList from '~/components/apps/AppFaqList.vue'
 import AppLegalTabs from '~/components/apps/AppLegalTabs.vue'
 import AppReleaseInterestForm from '~/components/apps/AppReleaseInterestForm.vue'
+import AppSupportSection from '~/components/apps/AppSupportSection.vue'
 
 import {
   buildBreadcrumbSchema,
@@ -370,6 +375,21 @@ useHead({
       rel: 'canonical',
       href: pageUrl,
     },
+    {
+      rel: 'alternate',
+      hreflang: 'fr',
+      href: pageUrl,
+    },
+    {
+      rel: 'alternate',
+      hreflang: 'en',
+      href: canonicalUrl(config.public.siteUrl, '/en/apps/siturem'),
+    },
+    {
+      rel: 'alternate',
+      hreflang: 'x-default',
+      href: canonicalUrl(config.public.siteUrl, '/en/apps/siturem'),
+    },
   ],
   script: [
     {
@@ -402,6 +422,18 @@ useHead({
 .app-shell {
   width: min(100%, 76rem);
   margin: 0 auto;
+}
+
+.app-locale-switch {
+  margin: 0 0 1rem;
+  color: $gris3;
+  font-size: 0.85rem;
+}
+
+.app-locale-switch a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
 }
 
 .app-hero {

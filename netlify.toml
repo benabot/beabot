@@ -93,6 +93,18 @@
   status = 301
   force = true
 
+[[redirects]]
+  from = "/en"
+  to = "/en/apps/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/"
+  to = "/en/apps/"
+  status = 301
+  force = true
+
 # Serve direct /404 requests with the generated error page and a real HTTP 404.
 [[redirects]]
   from = "/404"

@@ -1,24 +1,24 @@
 <template>
   <main class="app-page">
     <div class="app-shell">
-      <AppBreadcrumb :items="breadcrumbItems" />
+      <AppBreadcrumb :items="breadcrumbItems" aria-label="Breadcrumb" />
       <p class="app-locale-switch">
-        <AppLink to="/en/apps/meeting-mode/">English version</AppLink>
+        <AppLink to="/apps/meeting-mode/">Version française</AppLink>
       </p>
 
       <section class="app-hero">
         <div class="app-hero__content">
-          <p class="app-meta">{{ meetingModeContent.stage }}</p>
-          <h1>{{ meetingModeContent.name }} — {{ meetingModeContent.summary }}</h1>
-          <p class="app-intro">{{ meetingModeContent.intro }}</p>
-          <p class="app-summary">{{ meetingModeContent.summary }}</p>
+          <p class="app-meta">{{ meetingModeEnContent.stage }}</p>
+          <h1>{{ meetingModeEnContent.name }} — {{ meetingModeEnContent.summary }}</h1>
+          <p class="app-intro">{{ meetingModeEnContent.intro }}</p>
+          <p class="app-summary">{{ meetingModeEnContent.summary }}</p>
 
           <div class="app-actions">
             <AppLink to="#release-form" class="app-primary-action">
-              Être informé
+              Get release updates
             </AppLink>
-            <NuxtLink to="/contact/?app=meeting-mode&type=support" class="app-secondary-action app-detail__contact-cta">
-              Contacter le support
+            <NuxtLink to="/en/contact/?app=meeting-mode&type=support" class="app-secondary-action app-detail__contact-cta">
+              Contact support
             </NuxtLink>
           </div>
         </div>
@@ -33,11 +33,11 @@
             <div
               class="app-mockup__screen app-mockup__screen--image"
               role="img"
-              :aria-label="meetingModeContent.preview.alt"
+              :aria-label="meetingModeEnContent.preview.alt"
             >
               <img
-                :src="meetingModeContent.preview.src"
-                :alt="meetingModeContent.preview.alt"
+                :src="meetingModeEnContent.preview.src"
+                :alt="meetingModeEnContent.preview.alt"
                 width="1280"
                 height="800"
                 loading="eager"
@@ -50,19 +50,19 @@
 
       <section class="app-surface" aria-labelledby="meeting-overview-title">
         <div class="app-surface__copy">
-          <h2 id="meeting-overview-title">Ce que fait Meeting Mode</h2>
-          <p class="app-surface__lead">Avec un preset, Meeting Mode peut :</p>
+          <h2 id="meeting-overview-title">What Meeting Mode does</h2>
+          <p class="app-surface__lead">With one preset, Meeting Mode can:</p>
           <ul class="app-capabilities">
-            <li v-for="item in meetingModeContent.capabilities" :key="item">
+            <li v-for="item in meetingModeEnContent.capabilities" :key="item">
               {{ item }}
             </li>
           </ul>
         </div>
 
         <div class="app-surface__status">
-          <p class="app-surface__eyebrow">Pour qui</p>
+          <p class="app-surface__eyebrow">Who it is for</p>
           <ul class="app-surface__cases">
-            <li v-for="item in meetingModeContent.useCases" :key="item">
+            <li v-for="item in meetingModeEnContent.useCases" :key="item">
               {{ item }}
             </li>
           </ul>
@@ -70,21 +70,21 @@
       </section>
 
       <section
-        v-if="meetingModeContent.beforeAfter"
+        v-if="meetingModeEnContent.beforeAfter"
         class="app-section"
         aria-labelledby="meeting-before-after-title"
       >
         <div class="section-heading">
-          <h2 id="meeting-before-after-title">En pratique</h2>
-          <p>{{ meetingModeContent.beforeAfter.caption }}</p>
+          <h2 id="meeting-before-after-title">In practice</h2>
+          <p>{{ meetingModeEnContent.beforeAfter.caption }}</p>
         </div>
 
         <div class="before-after-grid">
           <figure class="before-after-card">
             <div class="before-after-card__media">
               <img
-                :src="meetingModeContent.beforeAfter.before.src"
-                :alt="meetingModeContent.beforeAfter.before.alt"
+                :src="meetingModeEnContent.beforeAfter.before.src"
+                :alt="meetingModeEnContent.beforeAfter.before.alt"
                 width="2858"
                 height="1726"
                 loading="lazy"
@@ -92,15 +92,15 @@
               />
             </div>
             <figcaption class="before-after-card__label before-after-card__label--before">
-              {{ meetingModeContent.beforeAfter.before.label }}
+              {{ meetingModeEnContent.beforeAfter.before.label }}
             </figcaption>
           </figure>
 
           <figure class="before-after-card">
             <div class="before-after-card__media">
               <img
-                :src="meetingModeContent.beforeAfter.after.src"
-                :alt="meetingModeContent.beforeAfter.after.alt"
+                :src="meetingModeEnContent.beforeAfter.after.src"
+                :alt="meetingModeEnContent.beforeAfter.after.alt"
                 width="2870"
                 height="1808"
                 loading="lazy"
@@ -108,7 +108,7 @@
               />
             </div>
             <figcaption class="before-after-card__label before-after-card__label--after">
-              {{ meetingModeContent.beforeAfter.after.label }}
+              {{ meetingModeEnContent.beforeAfter.after.label }}
             </figcaption>
           </figure>
         </div>
@@ -116,13 +116,13 @@
 
       <section class="app-section" aria-labelledby="meeting-details-title">
         <div class="section-heading">
-          <h2 id="meeting-details-title">Points clés</h2>
-          <p>Quatre repères pour comprendre le flux de l’app.</p>
+          <h2 id="meeting-details-title">Key points</h2>
+          <p>Four markers to understand the app flow.</p>
         </div>
 
         <div class="detail-grid">
           <article
-            v-for="point in meetingModeContent.detailPoints"
+            v-for="point in meetingModeEnContent.detailPoints"
             :key="point.label"
             class="detail-card"
             :class="{ 'detail-card--featured': point.featured }"
@@ -137,23 +137,23 @@
       </section>
 
       <section
-        v-if="meetingModeContent.gallery?.length"
+        v-if="meetingModeEnContent.gallery?.length"
         class="app-section"
         aria-labelledby="meeting-gallery-title"
       >
         <div class="section-heading">
-          <h2 id="meeting-gallery-title">L'app en images</h2>
-          <p>Les principaux écrans de Meeting Mode.</p>
+          <h2 id="meeting-gallery-title">App screenshots</h2>
+          <p>Main Meeting Mode screens.</p>
         </div>
 
         <div class="gallery-grid">
           <figure
-            v-for="(image, index) in meetingModeContent.gallery"
+            v-for="(image, index) in meetingModeEnContent.gallery"
             :key="image.src"
             class="gallery-card gallery-card--clickable"
             role="button"
             tabindex="0"
-            :aria-label="`Agrandir : ${image.title || image.alt}`"
+            :aria-label="`Expand: ${image.title || image.alt}`"
             @click="openLightbox(index)"
             @keydown.enter.prevent="openLightbox(index)"
             @keydown.space.prevent="openLightbox(index)"
@@ -177,7 +177,7 @@
 
         <AppGalleryLightbox
           ref="lightbox"
-          :images="meetingModeContent.gallery"
+          :images="meetingModeEnContent.gallery"
         />
       </section>
 
@@ -185,18 +185,18 @@
         <div class="faq-wrapper">
           <div class="section-heading">
             <h2 id="meeting-faq-title">FAQ</h2>
-            <p>Questions fréquentes sur le fonctionnement.</p>
+            <p>Frequently asked questions about behavior and limits.</p>
           </div>
 
-          <AppFaqList :items="meetingModeContent.faq" />
+          <AppFaqList :items="meetingModeEnContent.faq" />
         </div>
       </section>
 
       <AppSupportSection
         app-name="Meeting Mode"
         app-slug="meeting-mode"
-        locale="fr"
-        os-label-fr="macOS"
+        locale="en"
+        os-label-fr="iOS, iPadOS ou macOS"
         os-label-en="macOS"
       />
 
@@ -208,16 +208,16 @@
         <details ref="privacyDetails" class="legal-disclosure">
           <summary class="legal-disclosure__summary">
             <div class="legal-disclosure__header">
-              <h2 id="meeting-legal-title" class="legal-disclosure__title">Confidentialité</h2>
-              <p class="legal-disclosure__meta">Politique de confidentialité — FR</p>
+              <h2 id="meeting-legal-title" class="legal-disclosure__title">Privacy</h2>
+              <p class="legal-disclosure__meta">Privacy policy — EN</p>
             </div>
             <span class="legal-disclosure__toggle" aria-hidden="true"></span>
           </summary>
 
           <div class="legal-disclosure__body">
             <AppLegalSingleLocale
-              :title="meetingModeContent.legal.fr.title"
-              :paragraphs="meetingModeContent.legal.fr.paragraphs"
+              :title="meetingModeEnContent.legal.en.title"
+              :paragraphs="meetingModeEnContent.legal.en.paragraphs"
             />
           </div>
         </details>
@@ -225,11 +225,11 @@
 
       <section class="app-cta" id="release-form" aria-labelledby="meeting-cta-title">
         <div class="app-cta__heading">
-          <h2 id="meeting-cta-title">{{ meetingModeContent.cta.title }}</h2>
-          <p>{{ meetingModeContent.cta.description }}</p>
+          <h2 id="meeting-cta-title">{{ meetingModeEnContent.cta.title }}</h2>
+          <p>{{ meetingModeEnContent.cta.description }}</p>
         </div>
 
-        <AppReleaseInterestForm :app-name="meetingModeContent.name" />
+        <AppReleaseInterestForm :app-name="meetingModeEnContent.name" locale="en" />
       </section>
     </div>
   </main>
@@ -249,33 +249,33 @@ import {
   buildBreadcrumbSchema,
   buildFaqSchema,
   buildSoftwareApplicationSchema,
-  meetingModeContent,
 } from '~/data/apps'
+import { meetingModeEnContent } from '~/data/apps-en'
 import { absoluteUrl, canonicalUrl } from '~/utils/seo-url'
 
 const config = useRuntimeConfig()
 const route = useRoute()
-const pageUrl = canonicalUrl(config.public.siteUrl, '/apps/meeting-mode')
-const ogImage = absoluteUrl(config.public.siteUrl, meetingModeContent.seo.image)
+const pageUrl = canonicalUrl(config.public.siteUrl, '/en/apps/meeting-mode')
+const ogImage = absoluteUrl(config.public.siteUrl, meetingModeEnContent.seo.image)
 const privacyDetails = ref<HTMLDetailsElement | null>(null)
 const lightbox = ref<InstanceType<typeof AppGalleryLightbox> | null>(null)
 
 const breadcrumbItems = [
-  { label: 'Accueil', to: '/' },
-  { label: 'Apps', to: '/apps/' },
+  { label: 'Home', to: '/' },
+  { label: 'Apps', to: '/en/apps/' },
   { label: 'Meeting Mode' },
 ]
 
 const breadcrumbSchema = buildBreadcrumbSchema(config.public.siteUrl, [
-  { name: 'Accueil', path: '/' },
-  { name: 'Apps', path: '/apps/' },
-  { name: 'Meeting Mode', path: '/apps/meeting-mode/' },
+  { name: 'Home', path: '/' },
+  { name: 'Apps', path: '/en/apps/' },
+  { name: 'Meeting Mode', path: '/en/apps/meeting-mode/' },
 ])
 
-const faqSchema = buildFaqSchema(meetingModeContent.faq)
+const faqSchema = buildFaqSchema(meetingModeEnContent.faq)
 const softwareApplicationSchema = buildSoftwareApplicationSchema({
-  name: meetingModeContent.name,
-  description: meetingModeContent.seo.description,
+  name: meetingModeEnContent.name,
+  description: meetingModeEnContent.seo.description,
   url: pageUrl,
   operatingSystem: 'macOS',
   applicationCategory: 'ProductivityApplication',
@@ -318,23 +318,26 @@ watch(
 )
 
 useSeoMeta({
-  title: meetingModeContent.seo.title,
-  description: meetingModeContent.seo.description,
-  ogTitle: meetingModeContent.seo.title,
-  ogDescription: meetingModeContent.seo.description,
+  title: meetingModeEnContent.seo.title,
+  description: meetingModeEnContent.seo.description,
+  ogTitle: meetingModeEnContent.seo.title,
+  ogDescription: meetingModeEnContent.seo.description,
   ogType: 'website',
   ogSiteName: 'BeAbot',
   ogUrl: pageUrl,
   ogImage,
   ogImageWidth: 1200,
   ogImageHeight: 630,
-  twitterTitle: meetingModeContent.seo.title,
-  twitterDescription: meetingModeContent.seo.description,
+  twitterTitle: meetingModeEnContent.seo.title,
+  twitterDescription: meetingModeEnContent.seo.description,
   twitterCard: 'summary_large_image',
   twitterImage: ogImage,
 })
 
 useHead({
+  htmlAttrs: {
+    lang: 'en',
+  },
   link: [
     {
       rel: 'canonical',
@@ -343,17 +346,17 @@ useHead({
     {
       rel: 'alternate',
       hreflang: 'fr',
-      href: pageUrl,
+      href: canonicalUrl(config.public.siteUrl, '/apps/meeting-mode'),
     },
     {
       rel: 'alternate',
       hreflang: 'en',
-      href: canonicalUrl(config.public.siteUrl, '/en/apps/meeting-mode'),
+      href: pageUrl,
     },
     {
       rel: 'alternate',
       hreflang: 'x-default',
-      href: canonicalUrl(config.public.siteUrl, '/en/apps/meeting-mode'),
+      href: pageUrl,
     },
   ],
   script: [

@@ -1,25 +1,37 @@
 <template>
   <main class="app-page">
     <div class="app-shell">
-      <AppBreadcrumb :items="breadcrumbItems" />
+      <AppBreadcrumb :items="breadcrumbItems" aria-label="Breadcrumb" />
       <p class="app-locale-switch">
-        <AppLink to="/en/apps/meeting-mode/">English version</AppLink>
+        <AppLink to="/apps/duo-spend/">Version française</AppLink>
       </p>
 
       <section class="app-hero">
         <div class="app-hero__content">
-          <p class="app-meta">{{ meetingModeContent.stage }}</p>
-          <h1>{{ meetingModeContent.name }} — {{ meetingModeContent.summary }}</h1>
-          <p class="app-intro">{{ meetingModeContent.intro }}</p>
-          <p class="app-summary">{{ meetingModeContent.summary }}</p>
+          <p class="app-meta">{{ duoSpendEnContent.stage }}</p>
+          <h1>{{ duoSpendEnContent.name }} — {{ duoSpendEnContent.intro }}</h1>
+          <div class="app-hero__text">
+            <p
+              v-for="line in duoSpendEnContent.heroLines ?? [
+                duoSpendEnContent.summary,
+              ]"
+              :key="line"
+              class="app-intro"
+            >
+              {{ line }}
+            </p>
+          </div>
 
           <div class="app-actions">
             <AppLink to="#release-form" class="app-primary-action">
-              Être informé
+              Get release updates
             </AppLink>
-            <NuxtLink to="/contact/?app=meeting-mode&type=support" class="app-secondary-action app-detail__contact-cta">
-              Contacter le support
-            </NuxtLink>
+            <AppLink
+              to="#privacy"
+              class="app-secondary-action app-detail__contact-cta"
+            >
+              View privacy
+            </AppLink>
           </div>
         </div>
 
@@ -33,13 +45,13 @@
             <div
               class="app-mockup__screen app-mockup__screen--image"
               role="img"
-              :aria-label="meetingModeContent.preview.alt"
+              :aria-label="duoSpendEnContent.preview.alt"
             >
               <img
-                :src="meetingModeContent.preview.src"
-                :alt="meetingModeContent.preview.alt"
-                width="1280"
-                height="800"
+                :src="duoSpendEnContent.preview.src"
+                :alt="duoSpendEnContent.preview.alt"
+                width="1206"
+                height="2622"
                 loading="eager"
                 decoding="async"
               />
@@ -48,81 +60,75 @@
         </div>
       </section>
 
-      <section class="app-surface" aria-labelledby="meeting-overview-title">
+      <section class="app-surface" aria-labelledby="duo-overview-title">
         <div class="app-surface__copy">
-          <h2 id="meeting-overview-title">Ce que fait Meeting Mode</h2>
-          <p class="app-surface__lead">Avec un preset, Meeting Mode peut :</p>
-          <ul class="app-capabilities">
-            <li v-for="item in meetingModeContent.capabilities" :key="item">
-              {{ item }}
-            </li>
-          </ul>
+          <h2 id="duo-overview-title">The problem</h2>
+          <p v-for="paragraph in duoSpendEnContent.overview" :key="paragraph">
+            {{ paragraph }}
+          </p>
         </div>
 
         <div class="app-surface__status">
-          <p class="app-surface__eyebrow">Pour qui</p>
-          <ul class="app-surface__cases">
-            <li v-for="item in meetingModeContent.useCases" :key="item">
-              {{ item }}
-            </li>
-          </ul>
+          <p class="app-surface__eyebrow">At a glance</p>
+          <dl class="app-surface__list app-surface__list--cards">
+            <div>
+              <dt>Use case</dt>
+              <dd>Shared expenses for two people</dd>
+            </div>
+            <div>
+              <dt>Principle</dt>
+              <dd>Who paid what, who owes what</dd>
+            </div>
+            <div>
+              <dt>Account</dt>
+              <dd>No account required</dd>
+            </div>
+          </dl>
         </div>
       </section>
 
       <section
-        v-if="meetingModeContent.beforeAfter"
+        v-if="duoSpendEnContent.showVisual"
         class="app-section"
-        aria-labelledby="meeting-before-after-title"
+        aria-labelledby="duo-capture-title"
       >
         <div class="section-heading">
-          <h2 id="meeting-before-after-title">En pratique</h2>
-          <p>{{ meetingModeContent.beforeAfter.caption }}</p>
+          <h2 id="duo-capture-title">Visuel</h2>
+          <p>Product preview pending the final visual.</p>
         </div>
 
-        <div class="before-after-grid">
-          <figure class="before-after-card">
-            <div class="before-after-card__media">
-              <img
-                :src="meetingModeContent.beforeAfter.before.src"
-                :alt="meetingModeContent.beforeAfter.before.alt"
-                width="2858"
-                height="1726"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <figcaption class="before-after-card__label before-after-card__label--before">
-              {{ meetingModeContent.beforeAfter.before.label }}
-            </figcaption>
-          </figure>
-
-          <figure class="before-after-card">
-            <div class="before-after-card__media">
-              <img
-                :src="meetingModeContent.beforeAfter.after.src"
-                :alt="meetingModeContent.beforeAfter.after.alt"
-                width="2870"
-                height="1808"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <figcaption class="before-after-card__label before-after-card__label--after">
-              {{ meetingModeContent.beforeAfter.after.label }}
-            </figcaption>
-          </figure>
+        <div class="app-capture app-capture--image">
+          <div class="app-capture__bar" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div
+            class="app-capture__screen app-capture__screen--image"
+            role="img"
+            :aria-label="duoSpendEnContent.preview.alt"
+          >
+            <img
+              :src="duoSpendEnContent.preview.src"
+              :alt="duoSpendEnContent.preview.alt"
+              width="1206"
+              height="2622"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
         </div>
       </section>
 
-      <section class="app-section" aria-labelledby="meeting-details-title">
+      <section class="app-section" aria-labelledby="duo-details-title">
         <div class="section-heading">
-          <h2 id="meeting-details-title">Points clés</h2>
-          <p>Quatre repères pour comprendre le flux de l’app.</p>
+          <h2 id="duo-details-title">Key points</h2>
+          <p>Markers to keep balances clear, without spreadsheets.</p>
         </div>
 
         <div class="detail-grid">
           <article
-            v-for="point in meetingModeContent.detailPoints"
+            v-for="point in duoSpendEnContent.detailPoints"
             :key="point.label"
             class="detail-card"
             :class="{ 'detail-card--featured': point.featured }"
@@ -137,23 +143,23 @@
       </section>
 
       <section
-        v-if="meetingModeContent.gallery?.length"
+        v-if="duoSpendEnContent.gallery?.length"
         class="app-section"
-        aria-labelledby="meeting-gallery-title"
+        aria-labelledby="duo-gallery-title"
       >
         <div class="section-heading">
-          <h2 id="meeting-gallery-title">L'app en images</h2>
-          <p>Les principaux écrans de Meeting Mode.</p>
+          <h2 id="duo-gallery-title">App screenshots</h2>
+          <p>Main DuoSpend screens.</p>
         </div>
 
         <div class="gallery-grid">
           <figure
-            v-for="(image, index) in meetingModeContent.gallery"
+            v-for="(image, index) in duoSpendEnContent.gallery"
             :key="image.src"
             class="gallery-card gallery-card--clickable"
             role="button"
             tabindex="0"
-            :aria-label="`Agrandir : ${image.title || image.alt}`"
+            :aria-label="`Expand: ${image.title || image.alt}`"
             @click="openLightbox(index)"
             @keydown.enter.prevent="openLightbox(index)"
             @keydown.space.prevent="openLightbox(index)"
@@ -162,8 +168,8 @@
               <img
                 :src="image.src"
                 :alt="image.alt"
-                width="1280"
-                height="800"
+                width="1206"
+                height="2622"
                 loading="lazy"
                 decoding="async"
               />
@@ -177,59 +183,94 @@
 
         <AppGalleryLightbox
           ref="lightbox"
-          :images="meetingModeContent.gallery"
+          :images="duoSpendEnContent.gallery"
         />
       </section>
 
-      <section class="app-section" aria-labelledby="meeting-faq-title">
+      <section
+        v-if="duoSpendEnContent.pricing"
+        class="app-section"
+        aria-labelledby="duo-pricing-title"
+      >
+        <div class="section-heading">
+          <h2 id="duo-pricing-title">{{ duoSpendEnContent.pricing.title }}</h2>
+          <p>{{ duoSpendEnContent.pricing.intro }}</p>
+        </div>
+
+        <div class="pricing-grid">
+          <article
+            v-for="plan in duoSpendEnContent.pricing.plans"
+            :key="plan.name"
+            class="pricing-card"
+            :class="{
+              'pricing-card--featured': plan.name === 'DuoSpend Pro',
+            }"
+          >
+            <div v-if="plan.name === 'DuoSpend Pro'" class="pricing-card__badge">
+              Recommended
+            </div>
+            <p class="pricing-card__name">{{ plan.name }}</p>
+            <p class="pricing-card__price">{{ plan.price }}</p>
+            <p class="pricing-card__summary">{{ plan.description }}</p>
+            <ul class="pricing-card__list">
+              <li v-for="item in plan.items" :key="item">{{ item }}</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="app-section app-section--faq" aria-labelledby="duo-faq-title">
         <div class="faq-wrapper">
           <div class="section-heading">
-            <h2 id="meeting-faq-title">FAQ</h2>
-            <p>Questions fréquentes sur le fonctionnement.</p>
+            <h2 id="duo-faq-title">FAQ</h2>
+            <p>Frequently asked questions.</p>
           </div>
 
-          <AppFaqList :items="meetingModeContent.faq" />
+          <AppFaqList
+            :items="duoSpendEnContent.faq"
+            :sections="duoSpendEnContent.faqSections"
+          />
         </div>
       </section>
 
       <AppSupportSection
-        app-name="Meeting Mode"
-        app-slug="meeting-mode"
-        locale="fr"
-        os-label-fr="macOS"
-        os-label-en="macOS"
+        app-name="DuoSpend"
+        app-slug="duo-spend"
+        locale="en"
+        os-label-fr="iOS, iPadOS ou macOS"
+        os-label-en="iOS or iPadOS"
       />
 
       <section
         id="privacy"
         class="app-section app-section--legal"
-        aria-labelledby="meeting-legal-title"
+        aria-labelledby="duo-legal-title"
       >
         <details ref="privacyDetails" class="legal-disclosure">
           <summary class="legal-disclosure__summary">
             <div class="legal-disclosure__header">
-              <h2 id="meeting-legal-title" class="legal-disclosure__title">Confidentialité</h2>
-              <p class="legal-disclosure__meta">Politique de confidentialité — FR</p>
+              <h2 id="duo-legal-title" class="legal-disclosure__title">Privacy</h2>
+              <p class="legal-disclosure__meta">Privacy policy — EN</p>
             </div>
             <span class="legal-disclosure__toggle" aria-hidden="true"></span>
           </summary>
 
           <div class="legal-disclosure__body">
             <AppLegalSingleLocale
-              :title="meetingModeContent.legal.fr.title"
-              :paragraphs="meetingModeContent.legal.fr.paragraphs"
+              :title="duoSpendEnContent.legal.en.title"
+              :paragraphs="duoSpendEnContent.legal.en.paragraphs"
             />
           </div>
         </details>
       </section>
 
-      <section class="app-cta" id="release-form" aria-labelledby="meeting-cta-title">
+      <section class="app-cta" id="release-form" aria-labelledby="duo-cta-title">
         <div class="app-cta__heading">
-          <h2 id="meeting-cta-title">{{ meetingModeContent.cta.title }}</h2>
-          <p>{{ meetingModeContent.cta.description }}</p>
+          <h2 id="duo-cta-title">{{ duoSpendEnContent.cta.title }}</h2>
+          <p>{{ duoSpendEnContent.cta.description }}</p>
         </div>
 
-        <AppReleaseInterestForm :app-name="meetingModeContent.name" />
+        <AppReleaseInterestForm :app-name="duoSpendEnContent.name" locale="en" />
       </section>
     </div>
   </main>
@@ -249,37 +290,42 @@ import {
   buildBreadcrumbSchema,
   buildFaqSchema,
   buildSoftwareApplicationSchema,
-  meetingModeContent,
 } from '~/data/apps'
+import { duoSpendEnContent } from '~/data/apps-en'
 import { absoluteUrl, canonicalUrl } from '~/utils/seo-url'
 
 const config = useRuntimeConfig()
 const route = useRoute()
-const pageUrl = canonicalUrl(config.public.siteUrl, '/apps/meeting-mode')
-const ogImage = absoluteUrl(config.public.siteUrl, meetingModeContent.seo.image)
+const pageUrl = canonicalUrl(config.public.siteUrl, '/en/apps/duo-spend')
+const ogImage = absoluteUrl(config.public.siteUrl, duoSpendEnContent.seo.image)
 const privacyDetails = ref<HTMLDetailsElement | null>(null)
 const lightbox = ref<InstanceType<typeof AppGalleryLightbox> | null>(null)
 
 const breadcrumbItems = [
-  { label: 'Accueil', to: '/' },
-  { label: 'Apps', to: '/apps/' },
-  { label: 'Meeting Mode' },
+  { label: 'Home', to: '/' },
+  { label: 'Apps', to: '/en/apps/' },
+  { label: 'DuoSpend' },
 ]
 
 const breadcrumbSchema = buildBreadcrumbSchema(config.public.siteUrl, [
-  { name: 'Accueil', path: '/' },
-  { name: 'Apps', path: '/apps/' },
-  { name: 'Meeting Mode', path: '/apps/meeting-mode/' },
+  { name: 'Home', path: '/' },
+  { name: 'Apps', path: '/en/apps/' },
+  { name: 'DuoSpend', path: '/en/apps/duo-spend/' },
 ])
 
-const faqSchema = buildFaqSchema(meetingModeContent.faq)
+const faqSchema = buildFaqSchema(duoSpendEnContent.faq)
 const softwareApplicationSchema = buildSoftwareApplicationSchema({
-  name: meetingModeContent.name,
-  description: meetingModeContent.seo.description,
+  name: duoSpendEnContent.name,
+  description:
+    'DuoSpend is an iOS app to track shared expenses between two people, understand who paid what, and keep balances simple.',
   url: pageUrl,
-  operatingSystem: 'macOS',
-  applicationCategory: 'ProductivityApplication',
+  operatingSystem: 'iOS',
+  applicationCategory: 'FinanceApplication',
   image: ogImage,
+  author: {
+    name: 'Benoît Abot',
+    url: canonicalUrl(config.public.siteUrl, '/'),
+  },
 })
 
 function openLightbox(index: number) {
@@ -318,23 +364,27 @@ watch(
 )
 
 useSeoMeta({
-  title: meetingModeContent.seo.title,
-  description: meetingModeContent.seo.description,
-  ogTitle: meetingModeContent.seo.title,
-  ogDescription: meetingModeContent.seo.description,
+  title: duoSpendEnContent.seo.title,
+  description: duoSpendEnContent.seo.description,
+  ogTitle: 'DuoSpend — shared expenses made clear',
+  ogDescription:
+    'A focused app to understand who paid what, balance expenses, and avoid manual calculations.',
   ogType: 'website',
   ogSiteName: 'BeAbot',
   ogUrl: pageUrl,
   ogImage,
   ogImageWidth: 1200,
   ogImageHeight: 630,
-  twitterTitle: meetingModeContent.seo.title,
-  twitterDescription: meetingModeContent.seo.description,
+  twitterTitle: duoSpendEnContent.seo.title,
+  twitterDescription: duoSpendEnContent.seo.description,
   twitterCard: 'summary_large_image',
   twitterImage: ogImage,
 })
 
 useHead({
+  htmlAttrs: {
+    lang: 'en',
+  },
   link: [
     {
       rel: 'canonical',
@@ -343,17 +393,17 @@ useHead({
     {
       rel: 'alternate',
       hreflang: 'fr',
-      href: pageUrl,
+      href: canonicalUrl(config.public.siteUrl, '/apps/duo-spend'),
     },
     {
       rel: 'alternate',
       hreflang: 'en',
-      href: canonicalUrl(config.public.siteUrl, '/en/apps/meeting-mode'),
+      href: pageUrl,
     },
     {
       rel: 'alternate',
       hreflang: 'x-default',
-      href: canonicalUrl(config.public.siteUrl, '/en/apps/meeting-mode'),
+      href: pageUrl,
     },
   ],
   script: [
@@ -374,8 +424,8 @@ useHead({
 </script>
 
 <style lang="scss" scoped>
-@use "~/assets/css/vars/_colors.scss" as *;
-@use "~/assets/css/vars/_typo.scss" as *;
+@use '~/assets/css/vars/_colors.scss' as *;
+@use '~/assets/css/vars/_typo.scss' as *;
 .app-page {
   padding: clamp(2rem, 5vw, 3.5rem) 5% 5rem;
 
@@ -422,6 +472,12 @@ useHead({
   align-items: center;
 }
 
+.app-hero__text {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 0.95rem;
+}
+
 .app-meta {
   margin: 0 0 0.8rem;
   color: $vert;
@@ -453,7 +509,7 @@ useHead({
 
 .app-intro,
 .app-summary {
-  margin: 0.9rem 0 0;
+  margin: 0;
   max-width: 36rem;
   color: $gris2;
   line-height: 1.65;
@@ -604,12 +660,6 @@ useHead({
   line-height: 1.65;
 }
 
-.app-surface__lead {
-  margin-top: 0.1rem;
-  color: $gris1;
-  font-weight: 600;
-}
-
 .app-surface__status {
   padding: 1rem;
   border-radius: 1.15rem;
@@ -625,126 +675,45 @@ useHead({
   text-transform: uppercase;
 }
 
-.app-capabilities,
-.app-surface__cases {
+.app-surface__list {
   display: grid;
+  gap: 0.9rem;
   margin: 0;
-  padding: 0;
-  list-style: none;
 }
 
-.app-capabilities {
-  gap: 0.55rem;
-}
-
-.app-surface__cases {
-  gap: 0.7rem;
-}
-
-.app-capabilities li,
-.app-surface__cases li {
-  position: relative;
-  padding: 0.5rem 0.75rem 0.5rem 1.75rem;
-  color: $gris2;
-  line-height: 1.55;
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: 0.5rem;
-}
-
-.app-surface__cases li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 0.35rem;
-  height: 0.35rem;
-  border-radius: 999px;
-  background: $vert;
-  transform: translateY(-50%);
-}
-
-.app-capabilities li::before {
-  content: '';
-  position: absolute;
-  left: 0.75rem;
-  top: 50%;
-  width: 0.375rem;
-  height: 0.375rem;
-  border-radius: 999px;
-  background: $vert;
-  transform: translateY(-50%);
-}
-
-.before-after-grid {
-  display: grid;
+.app-surface__list--cards {
   gap: 0.75rem;
-  grid-template-columns: 1fr;
 
   @media (min-width: 700px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-.before-after-card {
-  margin: 0;
-  border-radius: 1.15rem;
-  overflow: hidden;
+.app-surface__list--cards div {
+  padding: 0.85rem 0.9rem;
+  border-radius: 0.95rem;
   background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.06);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+.app-surface__list div {
   display: grid;
-  grid-template-rows: 1fr auto;
+  gap: 0.2rem;
 }
 
-.before-after-card__media {
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-}
-
-.before-after-card__media img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top left;
-}
-
-.before-after-card__label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 0.85rem 0.65rem;
-  font-size: 0.8rem;
+.app-surface__list dt {
+  color: $gris3;
+  font-size: 0.74rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  border-top: 1px solid rgba(0, 0, 0, 0.04);
-
-  &::before {
-    content: '';
-    display: inline-block;
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 999px;
-    flex-shrink: 0;
-  }
 }
 
-.before-after-card__label--before {
-  color: $gris2;
-  background: rgba(255, 255, 255, 0.96);
-
-  &::before {
-    background: $gris3;
-  }
-}
-
-.before-after-card__label--after {
-  color: $vert;
-  background: rgba(255, 255, 255, 0.96);
-
-  &::before {
-    background: $vert;
-  }
+.app-surface__list dd {
+  margin: 0;
+  color: $gris1;
+  font-weight: 600;
+  line-height: 1.45;
 }
 
 .app-section {
@@ -763,6 +732,47 @@ useHead({
   max-width: 40rem;
   color: $gris2;
   line-height: 1.6;
+}
+
+.faq-wrapper {
+  padding: clamp(1.5rem, 3.5vw, 2.25rem) clamp(1.25rem, 3vw, 2rem);
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(0, 0, 0, 0.055);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+}
+
+.faq-wrapper .section-heading {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.app-capture {
+  padding: 1rem;
+  border-radius: 1.45rem;
+  background: linear-gradient(
+    145deg,
+    rgba(243, 244, 246, 0.95),
+    rgba(255, 255, 255, 0.96)
+  );
+  box-shadow: 0 18px 34px rgba(15, 23, 42, 0.05);
+}
+
+.app-capture__screen {
+  min-height: 18rem;
+  border-radius: 1.15rem;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.app-capture__screen--image {
+  padding: 1rem;
+}
+
+.app-capture__screen--image img {
+  max-width: 100%;
 }
 
 .gallery-grid {
@@ -802,7 +812,7 @@ useHead({
 }
 
 .gallery-card__media {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 9 / 19.5;
   overflow: hidden;
 }
 
@@ -843,6 +853,93 @@ useHead({
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.legal-disclosure {
+  margin: 0;
+  border-radius: 1.35rem;
+  background: rgba(243, 244, 246, 0.82);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  overflow: hidden;
+}
+
+.legal-disclosure__summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.15rem 1.25rem;
+  cursor: pointer;
+  list-style: none;
+  transition: background-color 0.14s ease;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.54);
+  }
+}
+
+.legal-disclosure__header {
+  display: grid;
+  gap: 0.22rem;
+}
+
+.legal-disclosure__title {
+  margin: 0;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 700;
+  color: $gris1;
+}
+
+.legal-disclosure__meta {
+  margin: 0;
+  color: $gris3;
+  font-size: 0.78rem;
+}
+
+.legal-disclosure__toggle {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: rgba(13, 217, 79, 0.12);
+  border: 1px solid rgba(13, 217, 79, 0.2);
+}
+
+.legal-disclosure__toggle::before,
+.legal-disclosure__toggle::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0.8rem;
+  height: 1.5px;
+  border-radius: 999px;
+  background: $vert;
+  transform: translate(-50%, -50%);
+  transition: transform 0.14s ease, opacity 0.14s ease;
+}
+
+.legal-disclosure__toggle::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.legal-disclosure[open] .legal-disclosure__toggle::after {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(90deg) scaleX(0.35);
+}
+
+.legal-disclosure[open] .legal-disclosure__toggle {
+  background: rgba(13, 217, 79, 0.18);
+  transform: translateY(-1px);
+}
+
+.legal-disclosure__body {
+  padding: 0 1.25rem 1.25rem;
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 .detail-grid {
@@ -898,79 +995,86 @@ useHead({
   line-height: 1.65;
 }
 
-.faq-wrapper {
-  padding: clamp(1.5rem, 3.5vw, 2.25rem) clamp(1.25rem, 3vw, 2rem);
-  border-radius: 1.5rem;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(0, 0, 0, 0.055);
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
-}
-
-.faq-wrapper .section-heading {
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.legal-disclosure {
-  margin: 0;
-  border-radius: 1.35rem;
-  background: rgba(243, 244, 246, 0.82);
-  border: 1px solid rgba(15, 23, 42, 0.05);
-  overflow: hidden;
-}
-
-.legal-disclosure__summary {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 1.15rem;
-  cursor: pointer;
-  list-style: none;
-
-  &::-webkit-details-marker {
-    display: none;
-  }
-
-  &::after {
-    content: '+';
-    margin-left: auto;
-    color: $vert;
-    font-size: 1.15rem;
-    font-weight: 700;
-    line-height: 1;
-  }
-}
-
-details[open] .legal-disclosure__summary::after {
-  content: '−';
-}
-
-.legal-disclosure__header {
+.pricing-grid {
   display: grid;
-  gap: 0.25rem;
+  gap: 0.75rem;
+
+  @media (min-width: 820px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
-.legal-disclosure__title {
-  margin: 0;
-  font-size: clamp(1rem, 2vw, 1.2rem);
+.pricing-card {
+  display: grid;
+  gap: 0.65rem;
+  padding: 1.05rem;
+  border-radius: 1.15rem;
+  background: rgba(255, 255, 255, 0.94);
+  position: relative;
+}
+
+.pricing-card--featured {
+  border: 1.5px solid rgba(13, 199, 99, 0.7);
+  background: rgba(13, 199, 99, 0.04);
+}
+
+.pricing-card__badge {
+  position: absolute;
+  top: -0.55rem;
+  right: 1rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: $vert;
+  color: white;
+  font-size: 0.62rem;
   font-weight: 700;
-  color: $gris1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.legal-disclosure__meta {
+.pricing-card__name {
   margin: 0;
-  color: $gris3;
-  font-size: 0.78rem;
+  color: $vert;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.legal-disclosure__toggle {
-  display: none;
+.pricing-card__price {
+  margin: 0;
+  color: $gris1;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
 }
 
-.legal-disclosure__body {
-  padding: 0 1.25rem 1.25rem;
-  border-top: 1px solid rgba(15, 23, 42, 0.06);
+.pricing-card__summary {
+  margin: 0;
+  color: $gris2;
+  line-height: 1.65;
+}
+
+.pricing-card__list {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pricing-card__list li {
+  position: relative;
+  padding-left: 1rem;
+  color: $gris2;
+  line-height: 1.6;
+}
+
+.pricing-card__list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: $vert;
 }
 
 .app-cta {

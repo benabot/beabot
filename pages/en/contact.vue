@@ -6,12 +6,12 @@
       <div class="contact-aside">
         <p class="kicker">Contact</p>
 
-        <h1>Parlons de votre projet</h1>
+        <h1>Let’s talk about your project</h1>
 
         <p>
-          Une question sur l'éco-conception ?<br />
-          Un site WordPress ou JavaScript à créer, refondre ou optimiser ?<br />
-          Écrivez-moi, <strong>je vous répondrai rapidement</strong>.
+          Need help with an app, eco-design question, or web project?<br />
+          Building, redesigning, or improving a WordPress or JavaScript site?<br />
+          Send a message and <strong>I will reply quickly</strong>.
         </p>
 
         <p v-if="supportContext" class="support-context" aria-live="polite">
@@ -25,14 +25,13 @@
             <li>Aucune exploitation commerciale de vos données</li>
           </ul> -->
           <p>
-            Un premier échange suffit pour cadrer une mission : objectifs,
-            contraintes, budget, délais, audit éventuel et choix techniques.
+            One short exchange is enough to frame a mission: goals, constraints,
+            budget, timeline, optional audit, and technical direction.
           </p>
         </div>
 
         <p class="contact-geo">
-          Basé à Lille · Missions possibles à Compiègne, Amiens, Paris, en
-          Hauts-de-France et en remote
+          Based in Lille · Available in France and remote
         </p>
 
         <div class="contact-links">
@@ -42,7 +41,7 @@
             @click="copyEmail"
             :disabled="copied"
           >
-            {{ copied ? 'Email copié ✓' : 'Copier mon email' }}
+            {{ copied ? 'Email copied ✓' : 'Copy my email' }}
           </button>
 
           <a
@@ -56,7 +55,7 @@
         </div>
 
         <p v-if="sent" class="notice" aria-live="polite">
-          ✓ Message envoyé ! Je vous recontacte très vite.
+          ✓ Message sent! I will get back to you shortly.
         </p>
         <p v-if="error" class="error" aria-live="assertive">{{ error }}</p>
       </div>
@@ -69,7 +68,7 @@
           method="POST"
           data-netlify="true"
           netlify-honeypot="bot-field"
-          action="/contact/"
+          action="/en/contact/"
           @submit.prevent="onSubmit"
         >
           <input type="hidden" name="form-name" value="contact" />
@@ -79,12 +78,12 @@
           <!-- Honeypot -->
           <p class="hp">
             <label
-              >Ne pas remplir : <input name="bot-field" v-model="form.botField"
+              >Do not fill this field: <input name="bot-field" v-model="form.botField"
             /></label>
           </p>
 
           <label>
-            Votre nom
+            Last name
             <input
               name="name"
               v-model="form.name"
@@ -94,7 +93,7 @@
           </label>
 
           <label>
-            Votre prénom
+            First name
             <input
               name="prenom"
               v-model="form.prenom"
@@ -104,7 +103,7 @@
           </label>
 
           <label>
-            Votre Email
+            Email
             <input
               type="email"
               name="email"
@@ -115,7 +114,7 @@
           </label>
 
           <label>
-            Votre message (décrivez votre projet ou posez votre question)
+            Your message (describe your project or support request)
             <textarea
               name="message"
               v-model="form.message"
@@ -132,26 +131,25 @@
               required
             />
             <span>
-              J'accepte les
+              I agree to the
               <AppLink
                 to="/mentions-legales/"
                 target="_blank"
                 rel="noopener noreferrer"
-                >mentions légales</AppLink
+                >legal notice</AppLink
               >
               <small class="privacy-note-inline">
-                Vos coordonnées sont utilisées uniquement pour répondre à votre
-                demande. Aucune newsletter, aucun partage à des tiers.
+                Your contact data is only used to answer your request. No newsletter and no sharing with third parties.
               </small>
             </span>
           </label>
 
           <button type="submit" :disabled="loading">
-            {{ loading ? 'Envoi…' : 'Envoyer ma demande →' }}
+            {{ loading ? 'Sending…' : 'Send message →' }}
           </button>
 
           <p class="form-note">
-            Vous recevrez une réponse sous 2 jours ouvrés.
+            You will receive an answer within 2 business days.
           </p>
         </form>
       </div>
@@ -193,7 +191,7 @@ function encode(data) {
 
 const config = useRuntimeConfig()
 const route = useRoute()
-const contactCanonicalUrl = canonicalUrl(config.public.siteUrl, '/contact')
+const contactCanonicalUrl = canonicalUrl(config.public.siteUrl, '/en/contact')
 const supportAppSlug = computed(() =>
   typeof route.query.app === 'string' ? route.query.app : '',
 )
@@ -209,28 +207,31 @@ const supportContext = computed(() => {
   if (supportType.value !== 'support' || !supportAppName.value) {
     return ''
   }
-  return `Vous contactez le support pour ${supportAppName.value}. Décrivez le problème rencontré, le modèle de votre appareil, la version du système et la version de l’app.`
+  return `You are contacting support for ${supportAppName.value}. Please describe the issue, your device model, your system version, and the app version.`
 })
 
 // SEO meta tags - useSeoMeta pour un remplacement propre des meta globales
 useSeoMeta({
-  title: 'Contact — Développeur web éco-conception',
+  title: 'Contact — Web developer and app support',
   description:
-    'Contactez Benoît Abot, développeur web freelance à Lille : missions WordPress, JavaScript, audit et éco-conception en remote ou Hauts-de-France.',
-  ogTitle: 'Contact — Benoît Abot, développeur éco-conception',
+    'Contact Benoît Abot for app support and eco-designed web projects: WordPress, JavaScript, audits, and remote collaboration.',
+  ogTitle: 'Contact — Benoît Abot',
   ogDescription:
-    'Contactez Benoît Abot, développeur web freelance à Lille : missions WordPress, JavaScript, audit et éco-conception en remote ou Hauts-de-France.',
+    'Contact Benoît Abot for app support and eco-designed web projects: WordPress, JavaScript, audits, and remote collaboration.',
   ogType: 'website',
   ogUrl: contactCanonicalUrl,
   ogImageWidth: 1200,
   ogImageHeight: 630,
   twitterTitle: 'Contact — Benoît Abot',
   twitterDescription:
-    'Développeur web freelance à Lille : missions WordPress, JavaScript, audit et éco-conception.',
+    'App support and eco-designed web projects: WordPress, JavaScript, and audits.',
   twitterCard: 'summary_large_image',
 })
 
 useHead({
+  htmlAttrs: {
+    lang: 'en',
+  },
   link: [
     {
       rel: 'canonical',
@@ -239,17 +240,17 @@ useHead({
     {
       rel: 'alternate',
       hreflang: 'fr',
-      href: contactCanonicalUrl,
+      href: canonicalUrl(config.public.siteUrl, '/contact'),
     },
     {
       rel: 'alternate',
       hreflang: 'en',
-      href: canonicalUrl(config.public.siteUrl, '/en/contact'),
+      href: contactCanonicalUrl,
     },
     {
       rel: 'alternate',
       hreflang: 'x-default',
-      href: canonicalUrl(config.public.siteUrl, '/en/contact'),
+      href: contactCanonicalUrl,
     },
   ],
   script: [
@@ -260,12 +261,12 @@ useHead({
         '@type': 'ContactPage',
         name: 'Contact — Benoît Abot',
         url: contactCanonicalUrl,
-        description: 'Formulaire de contact pour projets web éco-conçus.',
+        description: 'Contact form for app support and eco-designed web projects.',
         mainEntity: {
           '@type': 'Person',
           name: 'Benoît Abot',
           email: 'hello@beabot.fr',
-          url: `${config.public.siteUrl}/portfolio/`,
+          url: `${config.public.siteUrl}/en/apps/`,
         },
       }),
     },
@@ -302,7 +303,7 @@ async function onSubmit() {
       ...(supportType.value ? { type: supportType.value } : {}),
     })
 
-    const res = await fetch('/contact', {
+    const res = await fetch('/en/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body,
@@ -317,10 +318,10 @@ async function onSubmit() {
       form.botField = ''
       form.optin = false
     } else {
-      error.value = "Erreur lors de l'envoi. Réessayez plus tard."
+      error.value = 'Error while sending. Please try again later.'
     }
   } catch (e) {
-    error.value = 'Réseau indisponible. Vérifiez votre connexion.'
+    error.value = 'Network unavailable. Please check your connection.'
   } finally {
     loading.value = false
   }

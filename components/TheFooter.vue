@@ -6,39 +6,35 @@
 
         <nav id="footer--nav">
           <ul>
-            <li><AppLink to="/" no-prefetch>Accueil</AppLink></li>
-            <li><AppLink to="/services/" no-prefetch>Services</AppLink></li>
-            <li><AppLink to="/portfolio/" no-prefetch>Portfolio</AppLink></li>
-            <li><AppLink to="/greenlight/" no-prefetch>Greenlight</AppLink></li>
+            <li><AppLink :to="footerLinks.home" no-prefetch>{{ footerLabels.home }}</AppLink></li>
+            <li><AppLink :to="footerLinks.services" no-prefetch>{{ footerLabels.services }}</AppLink></li>
+            <li><AppLink :to="footerLinks.portfolio" no-prefetch>{{ footerLabels.portfolio }}</AppLink></li>
+            <li><AppLink :to="footerLinks.greenlight" no-prefetch>{{ footerLabels.greenlight }}</AppLink></li>
             <li>
-              <AppLink to="/eco-conception/" no-prefetch
-                >Éco-conception</AppLink
-              >
+              <AppLink :to="footerLinks.eco" no-prefetch>{{ footerLabels.eco }}</AppLink>
             </li>
             <li>
               <AppLink
-                to="/apps/"
+                :to="footerLinks.apps"
                 no-prefetch
                 class="footer-link"
                 :class="{ 'footer-link--active': isAppsActive }"
                 :aria-current="isAppsActive ? 'page' : undefined"
-                >Apps</AppLink
+                >{{ footerLabels.apps }}</AppLink
               >
             </li>
             <li>
-              <AppLink to="/eco-conception/faq-eco-conception/" no-prefetch
-                >FAQ Éco-conception</AppLink
-              >
+              <AppLink :to="footerLinks.faq" no-prefetch>{{ footerLabels.faq }}</AppLink>
             </li>
           </ul>
         </nav>
       </div>
       <div class="item b h3 text-black">
-        <p class="h3 text-black">Échangeons</p>
+        <p class="h3 text-black">{{ footerLabels.talk }}</p>
       </div>
       <div class="item c">
-        <AppLink to="/contact/" no-prefetch aria-label="beAbot - Contact">
-          Formulaire de contact
+        <AppLink :to="footerLinks.contact" no-prefetch :aria-label="footerAriaContact">
+          {{ footerLabels.contactForm }}
         </AppLink>
         <a href="https://twitter.com/AbotBenoit" target="_blank" class="twit"
           >@BenoitAbot</a
@@ -55,7 +51,7 @@
         <a href="/rss.xml" class="rss">RSS</a>
       </div>
       <div class="item d">
-        <a href="/mentions-legales/">Mentions légales</a>
+        <a :href="footerLinks.legal">{{ footerLabels.legalNotice }}</a>
         · beAbot {{ annee }}
       </div>
     </div>
@@ -67,12 +63,57 @@ import { computed, ref } from 'vue'
 
 const annee = ref(new Date().getFullYear())
 const route = useRoute()
+const isEnglishRoute = computed(() => route.path.startsWith('/en/'))
+
+const footerLabels = computed(() =>
+  isEnglishRoute.value
+    ? {
+        home: 'Home',
+        services: 'Services',
+        portfolio: 'Portfolio',
+        greenlight: 'Greenlight',
+        eco: 'Eco-design',
+        apps: 'Apps',
+        faq: 'Eco-design FAQ',
+        talk: 'Let’s talk',
+        contactForm: 'Contact form',
+        legalNotice: 'Legal notice',
+      }
+    : {
+        home: 'Accueil',
+        services: 'Services',
+        portfolio: 'Portfolio',
+        greenlight: 'Greenlight',
+        eco: 'Éco-conception',
+        apps: 'Apps',
+        faq: 'FAQ Éco-conception',
+        talk: 'Échangeons',
+        contactForm: 'Formulaire de contact',
+        legalNotice: 'Mentions légales',
+      },
+)
+
+const footerLinks = computed(() => ({
+  home: '/',
+  services: '/services/',
+  portfolio: '/portfolio/',
+  greenlight: '/greenlight/',
+  eco: '/eco-conception/',
+  apps: isEnglishRoute.value ? '/en/apps/' : '/apps/',
+  faq: '/eco-conception/faq-eco-conception/',
+  contact: isEnglishRoute.value ? '/en/contact/' : '/contact/',
+  legal: isEnglishRoute.value ? '/en/legal/' : '/mentions-legales/',
+}))
+
+const footerAriaContact = computed(() =>
+  isEnglishRoute.value ? 'beAbot - Contact form' : 'beAbot - Contact',
+)
 
 const isAppsActive = computed(() => {
   return (
-    route.path === '/apps/' ||
-    route.path === '/apps' ||
-    route.path.startsWith('/apps/')
+    route.path === footerLinks.value.apps ||
+    route.path === footerLinks.value.apps.slice(0, -1) ||
+    route.path.startsWith(footerLinks.value.apps)
   )
 })
 </script>

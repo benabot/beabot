@@ -258,6 +258,7 @@ import { canonicalUrl } from '~/utils/seo-url'
 
 const config = useRuntimeConfig()
 const mentionsCanonicalUrl = canonicalUrl(config.public.siteUrl, '/mentions-legales')
+const mentionsEnglishUrl = canonicalUrl(config.public.siteUrl, '/en/legal')
 
 useHead({
   title: 'Mentions légales et confidentialité',
@@ -266,6 +267,21 @@ useHead({
     {
       hid: 'canonical',
       rel: 'canonical',
+      href: mentionsCanonicalUrl,
+    },
+    {
+      rel: 'alternate',
+      hreflang: 'fr',
+      href: mentionsCanonicalUrl,
+    },
+    {
+      rel: 'alternate',
+      hreflang: 'en',
+      href: mentionsEnglishUrl,
+    },
+    {
+      rel: 'alternate',
+      hreflang: 'x-default',
       href: mentionsCanonicalUrl,
     },
   ],
@@ -294,6 +310,8 @@ p {
 section {
   text-align: center;
   align-items: flex-start;
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
 }
 h1,
 h2 {

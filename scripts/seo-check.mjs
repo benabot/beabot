@@ -8,6 +8,7 @@ const siteUrl = (process.env.NUXT_PUBLIC_SITE_URL || '').replace(/\/+$/, '')
 const sitemapPath = path.join(rootDir, '.output', 'public', 'sitemap.xml')
 const robotsPath = path.join(rootDir, '.output', 'public', 'robots.txt')
 const publicDir = path.join(rootDir, '.output', 'public')
+const netlifyConfigPath = path.join(rootDir, 'netlify.toml')
 
 const errors = []
 
@@ -162,6 +163,7 @@ if (!siteUrl) {
 
 ensure(fs.existsSync(sitemapPath), `Missing sitemap: ${sitemapPath}`)
 ensure(fs.existsSync(robotsPath), `Missing robots.txt: ${robotsPath}`)
+ensure(fs.existsSync(netlifyConfigPath), `Missing netlify.toml: ${netlifyConfigPath}`)
 
 let locs = []
 if (fs.existsSync(sitemapPath)) {
@@ -170,6 +172,24 @@ if (fs.existsSync(sitemapPath)) {
   ensure(locs.length > 0, 'No <loc> entries found in sitemap.xml.')
   ensure(!sitemapXml.includes(`${siteUrl}/404/`), 'sitemap.xml must not include /404/.')
   ensure(!sitemapXml.includes(`${siteUrl}/404`), 'sitemap.xml must not include /404.')
+}
+
+const requiredEnglishRoutes = [
+  '/en/apps/',
+  '/en/contact/',
+  '/en/apps/duo-spend/',
+  '/en/apps/focus-one/',
+  '/en/apps/meeting-mode/',
+  '/en/apps/siturem/',
+]
+
+if (siteUrl && locs.length) {
+  for (const route of requiredEnglishRoutes) {
+    ensure(
+      locs.includes(`${siteUrl}${route}`),
+      `Missing required English route in sitemap: ${route}`,
+    )
+  }
 }
 
 if (siteUrl && locs.length) {
@@ -198,11 +218,29 @@ if (siteUrl && fs.existsSync(robotsPath)) {
   ensure(sitemapLine === expected, `robots.txt sitemap mismatch: expected "${expected}"`)
 }
 
+if (fs.existsSync(netlifyConfigPath)) {
+  const netlifyToml = fs.readFileSync(netlifyConfigPath, 'utf8')
+  ensure(
+    netlifyToml.includes('from = "/en"\n  to = "/en/apps/"\n  status = 301\n  force = true'),
+    'netlify.toml missing redirect block for /en -> /en/apps/',
+  )
+  ensure(
+    netlifyToml.includes('from = "/en/"\n  to = "/en/apps/"\n  status = 301\n  force = true'),
+    'netlify.toml missing redirect block for /en/ -> /en/apps/',
+  )
+}
+
 if (process.env.SEO_CHECK_HTML === '1' && siteUrl && locs.length) {
   const checkedPaths = new Set([
     '/',
     '/apps/',
+    '/en/apps/',
     '/contact/',
+    '/en/contact/',
+    '/en/apps/duo-spend/',
+    '/en/apps/focus-one/',
+    '/en/apps/meeting-mode/',
+    '/en/apps/siturem/',
     '/eco-conception/',
     '/eco-conception/audit-eco-conception/',
     '/eco-conception/comment-reduire-le-poids-d-un-site-web/',

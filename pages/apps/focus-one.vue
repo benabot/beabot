@@ -2,6 +2,9 @@
   <main class="app-page">
     <div class="app-shell">
       <AppBreadcrumb :items="breadcrumbItems" />
+      <p class="app-locale-switch">
+        <AppLink to="/en/apps/focus-one/">English version</AppLink>
+      </p>
 
       <section class="app-hero">
         <div class="app-hero__content">
@@ -227,6 +230,14 @@
         </div>
       </section>
 
+      <AppSupportSection
+        app-name="FocusOne"
+        app-slug="focus-one"
+        locale="fr"
+        os-label-fr="iOS ou iPadOS"
+        os-label-en="iOS or iPadOS"
+      />
+
       <section
         id="privacy"
         class="app-section app-section--legal"
@@ -239,17 +250,16 @@
                 Confidentialité
               </h2>
               <p class="legal-disclosure__meta">
-                Politique de confidentialité — FR / EN
+                Politique de confidentialité — FR
               </p>
             </div>
             <span class="legal-disclosure__toggle" aria-hidden="true" />
           </summary>
 
           <div class="legal-disclosure__body">
-            <AppLegalTabs
-              base-id="focus-one-legal"
-              :content="focusOneContent.legal"
-              label="Confidentialité"
+            <AppLegalSingleLocale
+              :title="focusOneContent.legal.fr.title"
+              :paragraphs="focusOneContent.legal.fr.paragraphs"
             />
           </div>
         </details>
@@ -266,10 +276,6 @@
         </div>
 
         <AppReleaseInterestForm :app-name="focusOneContent.name" />
-
-        <AppLink :to="focusOneContent.cta.secondaryTo" class="app-cta__link">
-          {{ focusOneContent.cta.secondaryLabel }}
-        </AppLink>
       </section>
     </div>
   </main>
@@ -281,8 +287,9 @@ import { nextTick, onMounted, ref, watch } from 'vue'
 import AppBreadcrumb from '~/components/apps/AppBreadcrumb.vue'
 import AppGalleryLightbox from '~/components/apps/AppGalleryLightbox.vue'
 import AppFaqList from '~/components/apps/AppFaqList.vue'
-import AppLegalTabs from '~/components/apps/AppLegalTabs.vue'
+import AppLegalSingleLocale from '~/components/apps/AppLegalSingleLocale.vue'
 import AppReleaseInterestForm from '~/components/apps/AppReleaseInterestForm.vue'
+import AppSupportSection from '~/components/apps/AppSupportSection.vue'
 
 import {
   buildBreadcrumbSchema,
@@ -404,6 +411,21 @@ useHead({
       rel: 'canonical',
       href: pageUrl,
     },
+    {
+      rel: 'alternate',
+      hreflang: 'fr',
+      href: pageUrl,
+    },
+    {
+      rel: 'alternate',
+      hreflang: 'en',
+      href: canonicalUrl(config.public.siteUrl, '/en/apps/focus-one'),
+    },
+    {
+      rel: 'alternate',
+      hreflang: 'x-default',
+      href: canonicalUrl(config.public.siteUrl, '/en/apps/focus-one'),
+    },
   ],
   script: [
     {
@@ -436,6 +458,18 @@ useHead({
 .app-shell {
   width: min(100%, 76rem);
   margin: 0 auto;
+}
+
+.app-locale-switch {
+  margin: 0 0 1rem;
+  color: $gris3;
+  font-size: 0.85rem;
+}
+
+.app-locale-switch a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
 }
 
 .app-hero {
