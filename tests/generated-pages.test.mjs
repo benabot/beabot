@@ -15,8 +15,13 @@ import {
 const pages = [
   { route: '/', expectedUrl: `${siteUrl}/` },
   { route: '/apps/', expectedUrl: `${siteUrl}/apps/` },
+  { route: '/en/apps/', expectedUrl: `${siteUrl}/en/apps/` },
   { route: '/apps/duo-spend/', expectedUrl: `${siteUrl}/apps/duo-spend/` },
+  { route: '/en/apps/duo-spend/', expectedUrl: `${siteUrl}/en/apps/duo-spend/` },
   { route: '/apps/focus-one/', expectedUrl: `${siteUrl}/apps/focus-one/` },
+  { route: '/en/apps/focus-one/', expectedUrl: `${siteUrl}/en/apps/focus-one/` },
+  { route: '/en/apps/meeting-mode/', expectedUrl: `${siteUrl}/en/apps/meeting-mode/` },
+  { route: '/en/apps/siturem/', expectedUrl: `${siteUrl}/en/apps/siturem/` },
   { route: '/mentions-legales/', expectedUrl: `${siteUrl}/mentions-legales/` },
   { route: '/eco-conception/', expectedUrl: `${siteUrl}/eco-conception/` },
   {
@@ -41,11 +46,13 @@ const pages = [
   { route: '/portfolio/', expectedUrl: `${siteUrl}/portfolio/` },
   { route: '/services/', expectedUrl: `${siteUrl}/services/` },
   { route: '/contact/', expectedUrl: `${siteUrl}/contact/` },
+  { route: '/en/contact/', expectedUrl: `${siteUrl}/en/contact/` },
 ]
 
 for (const page of pages) {
   test(`generated page ${page.route} exposes minimal SEO tags`, (t) => {
     const html = readGeneratedHtml(t, page.route)
+    if (!html) return
 
     assertSeoTags(html, page.expectedUrl)
     assertInternalUrlsUseTrailingSlash(html, page.route)
@@ -77,6 +84,14 @@ for (const page of pages) {
         structuredDataNodes.some((node) => nodeHasType(node, 'ContactPage')),
         'Expected contact page JSON-LD to expose ContactPage',
       )
+    }
+
+    if (page.route === '/en/contact/') {
+      assert.ok(
+        structuredDataNodes.some((node) => nodeHasType(node, 'ContactPage')),
+        'Expected EN contact page JSON-LD to expose ContactPage',
+      )
+      assert.match(html, /lang=\"en\"/)
     }
 
     if (page.route === '/apps/focus-one/') {
@@ -165,6 +180,64 @@ for (const page of pages) {
         'DuoSpend est une app iOS pour suivre les dépenses partagées à deux, savoir qui a payé quoi et équilibrer les comptes simplement.',
       )
       assert.equal(appNode.author?.name, 'Benoît Abot')
+    }
+
+    if (page.route === '/en/apps/focus-one/') {
+      assert.match(
+        getTitle(html),
+        /^FocusOne — iPhone app to build one habit at a time \| BeAbot$/,
+      )
+      assert.match(html, /id=\"support\"/)
+      assert.match(
+        html,
+        /\/en\/contact\/\?app=focus-one(?:&|&amp;)type=support/,
+      )
+      assert.ok(
+        html.includes('hreflang=\"fr\" href=\"https://beabot.fr/apps/focus-one/\"'),
+      )
+      assert.ok(
+        html.includes('hreflang=\"en\" href=\"https://beabot.fr/en/apps/focus-one/\"'),
+      )
+      assert.match(html, /lang=\"en\"/)
+    }
+
+    if (page.route === '/en/apps/duo-spend/') {
+      assert.match(
+        getTitle(html),
+        /^DuoSpend — shared expenses app for couples and roommates \| BeAbot$/,
+      )
+      assert.match(html, /id=\"support\"/)
+      assert.match(
+        html,
+        /\/en\/contact\/\?app=duo-spend(?:&|&amp;)type=support/,
+      )
+      assert.match(html, /lang=\"en\"/)
+    }
+
+    if (page.route === '/en/apps/meeting-mode/') {
+      assert.match(
+        getTitle(html),
+        /^Meeting Mode — macOS app for meetings and screen sharing \| BeAbot$/,
+      )
+      assert.match(html, /id=\"support\"/)
+      assert.match(
+        html,
+        /\/en\/contact\/\?app=meeting-mode(?:&|&amp;)type=support/,
+      )
+      assert.match(html, /lang=\"en\"/)
+    }
+
+    if (page.route === '/en/apps/siturem/') {
+      assert.match(
+        getTitle(html),
+        /^Siturem — iOS meditation timer for advanced practitioners \| BeAbot$/,
+      )
+      assert.match(html, /id=\"support\"/)
+      assert.match(
+        html,
+        /\/en\/contact\/\?app=siturem(?:&|&amp;)type=support/,
+      )
+      assert.match(html, /lang=\"en\"/)
     }
 
     if (page.route === '/apps/') {

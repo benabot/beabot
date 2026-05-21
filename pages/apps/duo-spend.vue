@@ -2,6 +2,9 @@
   <main class="app-page">
     <div class="app-shell">
       <AppBreadcrumb :items="breadcrumbItems" />
+      <p class="app-locale-switch">
+        <AppLink to="/en/apps/duo-spend/">English version</AppLink>
+      </p>
 
       <section class="app-hero">
         <div class="app-hero__content">
@@ -230,6 +233,14 @@
         </div>
       </section>
 
+      <AppSupportSection
+        app-name="DuoSpend"
+        app-slug="duo-spend"
+        locale="fr"
+        os-label-fr="iOS ou iPadOS"
+        os-label-en="iOS or iPadOS"
+      />
+
       <section
         id="privacy"
         class="app-section app-section--legal"
@@ -239,16 +250,15 @@
           <summary class="legal-disclosure__summary">
             <div class="legal-disclosure__header">
               <h2 id="duo-legal-title" class="legal-disclosure__title">Confidentialité</h2>
-              <p class="legal-disclosure__meta">Politique de confidentialité — FR / EN</p>
+              <p class="legal-disclosure__meta">Politique de confidentialité — FR</p>
             </div>
             <span class="legal-disclosure__toggle" aria-hidden="true"></span>
           </summary>
 
           <div class="legal-disclosure__body">
-            <AppLegalTabs
-              base-id="duo-spend-legal"
-              :content="duoSpendContent.legal"
-              label="Confidentialité"
+            <AppLegalSingleLocale
+              :title="duoSpendContent.legal.fr.title"
+              :paragraphs="duoSpendContent.legal.fr.paragraphs"
             />
           </div>
         </details>
@@ -276,8 +286,9 @@ import { nextTick, onMounted, ref, watch } from 'vue'
 import AppBreadcrumb from '~/components/apps/AppBreadcrumb.vue'
 import AppGalleryLightbox from '~/components/apps/AppGalleryLightbox.vue'
 import AppFaqList from '~/components/apps/AppFaqList.vue'
-import AppLegalTabs from '~/components/apps/AppLegalTabs.vue'
+import AppLegalSingleLocale from '~/components/apps/AppLegalSingleLocale.vue'
 import AppReleaseInterestForm from '~/components/apps/AppReleaseInterestForm.vue'
+import AppSupportSection from '~/components/apps/AppSupportSection.vue'
 
 import {
   buildBreadcrumbSchema,
@@ -380,6 +391,21 @@ useHead({
       rel: 'canonical',
       href: pageUrl,
     },
+    {
+      rel: 'alternate',
+      hreflang: 'fr',
+      href: pageUrl,
+    },
+    {
+      rel: 'alternate',
+      hreflang: 'en',
+      href: canonicalUrl(config.public.siteUrl, '/en/apps/duo-spend'),
+    },
+    {
+      rel: 'alternate',
+      hreflang: 'x-default',
+      href: canonicalUrl(config.public.siteUrl, '/en/apps/duo-spend'),
+    },
   ],
   script: [
     {
@@ -412,6 +438,18 @@ useHead({
 .app-shell {
   width: min(100%, 76rem);
   margin: 0 auto;
+}
+
+.app-locale-switch {
+  margin: 0 0 1rem;
+  color: $gris3;
+  font-size: 0.85rem;
+}
+
+.app-locale-switch a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
 }
 
 .app-hero {

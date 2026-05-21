@@ -1036,6 +1036,65 @@ export const useTags = () => {
 
 **Pages Apps (26 mars 2026)** — Landing `/apps/` + pages détail Meeting Mode / DuoSpend.
 
+### Apps — internationalisation légère et support App Store
+
+#### Décisions
+
+- [x] Ne pas utiliser `@nuxtjs/i18n`.
+- [x] Créer des routes explicites sous `/en/`.
+- [x] Créer `/en/contact/`.
+- [x] Conserver `/apps/{slug}/#support` pour les pages françaises existantes.
+- [x] Créer `/en/apps/{slug}/#support` pour les pages anglaises.
+- [x] Utiliser une politique de confidentialité locale unique par page app standard.
+- [x] Conserver les onglets de confidentialité multilingues uniquement pour Siturem.
+- [x] Aligner les sections support avec la FAQ et le bouton contact.
+
+#### Implémentation
+
+- [x] Auditer `pages/apps`, `components/apps` et `data/apps.ts`.
+- [x] Identifier les slugs réels des apps.
+- [x] Ajouter les contenus anglais dans la structure de données existante.
+- [x] Créer `/en/apps/`.
+- [x] Créer les pages `/en/apps/{slug}/`.
+- [x] Créer `/en/contact/`.
+- [x] Vérifier ou ajouter `id="support"` sur toutes les pages apps FR.
+- [x] Ajouter `id="support"` sur toutes les pages apps EN.
+- [x] Harmoniser les boutons contact FR avec `/contact/?app={slug}&type=support`.
+- [x] Harmoniser les boutons contact EN avec `/en/contact/?app={slug}&type=support`.
+- [x] Remplacer les onglets de confidentialité par un affichage local unique pour les apps standard.
+- [x] Conserver les onglets FR/EN/ES/DE pour Siturem.
+- [x] Ajouter canonical et hreflang FR/EN/x-default.
+- [x] Ajouter ou adapter le JSON-LD `SoftwareApplication`.
+- [x] Vérifier le sitemap.
+
+#### Validation
+
+- [x] `npm test`
+- [x] `npm run generate`
+- [x] `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs`
+- [x] Vérifier les redirections `/en` et `/en/` vers `/en/apps/`.
+- [x] Vérifier `/apps/{slug}/#support`.
+- [x] Vérifier `/en/apps/{slug}/#support`.
+- [x] Vérifier `/apps/{slug}/#privacy`.
+- [x] Vérifier `/en/apps/{slug}/#privacy`.
+- [x] Vérifier `/contact/?app={slug}&type=support`.
+- [x] Vérifier `/en/contact/?app={slug}&type=support`.
+
+#### Validation effectuée
+
+- [x] `npm test`
+- [x] `npm run generate`
+- [x] `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs`
+
+#### Notes
+
+- Siturem conserve les onglets FR/EN/ES/DE sur les pages FR et EN.
+- Les autres apps affichent désormais une politique locale unique (FR sur `/apps/*`, EN sur `/en/apps/*`).
+- Correctif bloquant: redirections Netlify `/en` et `/en/` ajoutées vers `/en/apps/` pour éviter l'index de dossier.
+- Correctif bloquant: JSON-LD EN `SoftwareApplication.author.url` aligné sur `https://beabot.fr/` (pas `/en/`).
+- Correctif bloquant: pages contact FR/EN sans réécriture d'URL au chargement; la navigation support utilise des liens `href` standards.
+- Correctif contenu EN: labels galerie Focus One vérifiés/corrigés (`alt`, `figcaption`, `aria-label`) et harmonisés côté pages EN.
+
 - \[x\] Recomposition de la landing `/apps/` (hero, grille, CTA, cartes)
 
 - \[x\] Intégration des images DuoSpend dans les cartes et la page détail

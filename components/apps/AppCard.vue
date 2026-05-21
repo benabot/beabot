@@ -54,7 +54,7 @@
       <h3 class="app-card__title">{{ props.app.name }}</h3>
       <p class="app-card__summary">{{ props.app.summary }}</p>
       <AppLink :to="props.app.href" class="app-card__link">
-        Découvrir {{ props.app.name }}
+        {{ locale === 'fr' ? 'Découvrir' : 'Explore' }} {{ props.app.name }}
       </AppLink>
     </div>
   </article>
@@ -67,11 +67,15 @@ const props = withDefaults(
   defineProps<{
     app: AppIndexEntry
     variant?: 'featured' | 'compact'
+    locale?: 'fr' | 'en'
   }>(),
   {
     variant: 'compact',
+    locale: 'fr',
   },
 )
+
+const locale = props.locale
 </script>
 
 <style lang="scss" scoped>

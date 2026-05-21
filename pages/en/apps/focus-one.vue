@@ -1,19 +1,19 @@
 <template>
   <main class="app-page">
     <div class="app-shell">
-      <AppBreadcrumb :items="breadcrumbItems" />
+      <AppBreadcrumb :items="breadcrumbItems" aria-label="Breadcrumb" />
       <p class="app-locale-switch">
-        <AppLink to="/en/apps/focus-one/">English version</AppLink>
+        <AppLink to="/apps/focus-one/">Version française</AppLink>
       </p>
 
       <section class="app-hero">
         <div class="app-hero__content">
-          <p class="app-meta">{{ focusOneContent.stage }}</p>
-          <h1>{{ focusOneContent.name }} — {{ focusOneContent.intro }}</h1>
+          <p class="app-meta">{{ focusOneEnContent.stage }}</p>
+          <h1>{{ focusOneEnContent.name }} — {{ focusOneEnContent.intro }}</h1>
           <div class="app-hero__text">
             <p
-              v-for="line in focusOneContent.heroLines ?? [
-                focusOneContent.summary,
+              v-for="line in focusOneEnContent.heroLines ?? [
+                focusOneEnContent.summary,
               ]"
               :key="line"
               class="app-intro"
@@ -24,13 +24,13 @@
 
           <div class="app-actions">
             <AppLink to="#release-form" class="app-primary-action">
-              Être informé
+              Get release updates
             </AppLink>
             <AppLink
               to="#privacy"
               class="app-secondary-action app-detail__contact-cta"
             >
-              Voir la confidentialité
+              View privacy
             </AppLink>
           </div>
         </div>
@@ -45,11 +45,11 @@
             <div
               class="app-mockup__screen app-mockup__screen--image"
               role="img"
-              :aria-label="focusOneContent.preview.alt"
+              :aria-label="focusOneEnContent.preview.alt"
             >
               <img
-                :src="focusOneContent.preview.src"
-                :alt="focusOneContent.preview.alt"
+                :src="focusOneEnContent.preview.src"
+                :alt="focusOneEnContent.preview.alt"
                 width="1206"
                 height="2622"
                 loading="eager"
@@ -62,30 +62,30 @@
 
       <section class="app-surface" aria-labelledby="focus-overview-title">
         <div class="app-surface__copy">
-          <h2 id="focus-overview-title">Le problème</h2>
-          <p v-for="paragraph in focusOneContent.overview" :key="paragraph">
+          <h2 id="focus-overview-title">The problem</h2>
+          <p v-for="paragraph in focusOneEnContent.overview" :key="paragraph">
             {{ paragraph }}
           </p>
         </div>
 
         <div class="app-surface__status">
-          <p class="app-surface__eyebrow">Repères</p>
+          <p class="app-surface__eyebrow">At a glance</p>
           <dl class="app-surface__list app-surface__list--cards">
             <div>
-              <dt>Usage</dt>
-              <dd>Micro-habitude quotidienne</dd>
+              <dt>Use case</dt>
+              <dd>Daily micro-habit</dd>
             </div>
             <div>
-              <dt>Principe</dt>
-              <dd>Une seule habitude active</dd>
+              <dt>Principle</dt>
+              <dd>One active habit</dd>
             </div>
             <div>
-              <dt>Stockage</dt>
-              <dd>Local sur iPhone + iCloud si activé</dd>
+              <dt>Storage</dt>
+              <dd>Local on iPhone + iCloud if enabled</dd>
             </div>
             <div>
-              <dt>Compte</dt>
-              <dd>Aucun compte requis</dd>
+              <dt>Account</dt>
+              <dd>No account required</dd>
             </div>
           </dl>
         </div>
@@ -93,16 +93,15 @@
 
       <section class="app-section" aria-labelledby="focus-details-title">
         <div class="section-heading">
-          <h2 id="focus-details-title">Points clés</h2>
+          <h2 id="focus-details-title">Key points</h2>
           <p>
-            Les repères de base pour tenir une routine sans y penser toute la
-            journée.
+            Core markers to keep your routine on track without mental overload.
           </p>
         </div>
 
         <div class="detail-grid">
           <article
-            v-for="point in focusOneContent.detailPoints"
+            v-for="point in focusOneEnContent.detailPoints"
             :key="point.label"
             class="detail-card"
             :class="{ 'detail-card--featured': point.featured }"
@@ -117,23 +116,23 @@
       </section>
 
       <section
-        v-if="focusOneContent.gallery?.length"
+        v-if="focusOneEnContent.gallery?.length"
         class="app-section"
         aria-labelledby="focus-gallery-title"
       >
         <div class="section-heading">
-          <h2 id="focus-gallery-title">L'app en images</h2>
-          <p>Les principaux écrans de FocusOne.</p>
+          <h2 id="focus-gallery-title">App screenshots</h2>
+          <p>Main FocusOne screens.</p>
         </div>
 
         <div class="gallery-grid">
           <figure
-            v-for="(image, index) in focusOneContent.gallery"
+            v-for="(image, index) in focusOneEnContent.gallery"
             :key="`${image.src}-${image.title}`"
             class="gallery-card gallery-card--clickable"
             role="button"
             tabindex="0"
-            :aria-label="`Agrandir : ${image.title || image.alt}`"
+            :aria-label="`Expand: ${image.title || image.alt}`"
             @click="openLightbox(index)"
             @keydown.enter.prevent="openLightbox(index)"
             @keydown.space.prevent="openLightbox(index)"
@@ -155,22 +154,22 @@
           </figure>
         </div>
 
-        <AppGalleryLightbox ref="lightbox" :images="focusOneContent.gallery" />
+        <AppGalleryLightbox ref="lightbox" :images="focusOneEnContent.gallery" />
       </section>
 
       <section
-        v-if="focusOneContent.pricing"
+        v-if="focusOneEnContent.pricing"
         class="app-section"
         aria-labelledby="focus-pricing-title"
       >
         <div class="section-heading">
-          <h2 id="focus-pricing-title">{{ focusOneContent.pricing.title }}</h2>
-          <p>{{ focusOneContent.pricing.intro }}</p>
+          <h2 id="focus-pricing-title">{{ focusOneEnContent.pricing.title }}</h2>
+          <p>{{ focusOneEnContent.pricing.intro }}</p>
         </div>
 
         <div class="pricing-grid">
           <article
-            v-for="plan in focusOneContent.pricing.plans"
+            v-for="plan in focusOneEnContent.pricing.plans"
             :key="plan.name"
             class="pricing-card"
             :class="{
@@ -190,17 +189,17 @@
         </div>
 
         <div
-          v-if="focusOneContent.pricing?.premiumBenefits?.length"
+          v-if="focusOneEnContent.pricing?.premiumBenefits?.length"
           class="premium-benefits"
           aria-labelledby="focus-premium-benefits-title"
         >
           <div class="section-heading section-heading--compact">
-            <h3 id="focus-premium-benefits-title">Ce que débloque Premium</h3>
+            <h3 id="focus-premium-benefits-title">What Premium unlocks</h3>
           </div>
 
           <div class="premium-benefits__grid">
             <article
-              v-for="benefit in focusOneContent.pricing?.premiumBenefits"
+              v-for="benefit in focusOneEnContent.pricing?.premiumBenefits"
               :key="benefit.title"
               class="premium-benefit-card"
             >
@@ -220,12 +219,12 @@
         <div class="faq-wrapper">
           <div class="section-heading">
             <h2 id="focus-faq-title">FAQ</h2>
-            <p>Questions fréquentes.</p>
+            <p>Frequently asked questions.</p>
           </div>
 
           <AppFaqList
-            :items="focusOneContent.faq"
-            :sections="focusOneContent.faqSections"
+            :items="focusOneEnContent.faq"
+            :sections="focusOneEnContent.faqSections"
           />
         </div>
       </section>
@@ -233,8 +232,8 @@
       <AppSupportSection
         app-name="FocusOne"
         app-slug="focus-one"
-        locale="fr"
-        os-label-fr="iOS ou iPadOS"
+        locale="en"
+        os-label-fr="iOS, iPadOS ou macOS"
         os-label-en="iOS or iPadOS"
       />
 
@@ -247,10 +246,10 @@
           <summary class="legal-disclosure__summary">
             <div class="legal-disclosure__header">
               <h2 id="focus-legal-title" class="legal-disclosure__title">
-                Confidentialité
+                Privacy
               </h2>
               <p class="legal-disclosure__meta">
-                Politique de confidentialité — FR
+                Privacy policy — EN
               </p>
             </div>
             <span class="legal-disclosure__toggle" aria-hidden="true" />
@@ -258,8 +257,8 @@
 
           <div class="legal-disclosure__body">
             <AppLegalSingleLocale
-              :title="focusOneContent.legal.fr.title"
-              :paragraphs="focusOneContent.legal.fr.paragraphs"
+              :title="focusOneEnContent.legal.en.title"
+              :paragraphs="focusOneEnContent.legal.en.paragraphs"
             />
           </div>
         </details>
@@ -271,14 +270,14 @@
         aria-labelledby="focus-cta-title"
       >
         <div class="app-cta__heading">
-          <h2 id="focus-cta-title">{{ focusOneContent.cta.title }}</h2>
-          <p>{{ focusOneContent.cta.description }}</p>
+          <h2 id="focus-cta-title">{{ focusOneEnContent.cta.title }}</h2>
+          <p>{{ focusOneEnContent.cta.description }}</p>
         </div>
 
-        <AppReleaseInterestForm :app-name="focusOneContent.name" />
+        <AppReleaseInterestForm :app-name="focusOneEnContent.name" locale="en" />
 
-        <AppLink :to="focusOneContent.cta.secondaryTo" class="app-cta__link">
-          {{ focusOneContent.cta.secondaryLabel }}
+        <AppLink :to="focusOneEnContent.cta.secondaryTo" class="app-cta__link">
+          {{ focusOneEnContent.cta.secondaryLabel }}
         </AppLink>
       </section>
     </div>
@@ -299,34 +298,34 @@ import {
   buildBreadcrumbSchema,
   buildFaqSchema,
   buildSoftwareApplicationSchema,
-  focusOneContent,
 } from '~/data/apps'
+import { focusOneEnContent } from '~/data/apps-en'
 import { absoluteUrl, canonicalUrl } from '~/utils/seo-url'
 
 const config = useRuntimeConfig()
 const route = useRoute()
-const pageUrl = canonicalUrl(config.public.siteUrl, '/apps/focus-one')
-const ogImage = absoluteUrl(config.public.siteUrl, focusOneContent.seo.image)
+const pageUrl = canonicalUrl(config.public.siteUrl, '/en/apps/focus-one')
+const ogImage = absoluteUrl(config.public.siteUrl, focusOneEnContent.seo.image)
 const privacyDetails = ref<HTMLDetailsElement | null>(null)
 const lightbox = ref<InstanceType<typeof AppGalleryLightbox> | null>(null)
 
 const breadcrumbItems = [
-  { label: 'Accueil', to: '/' },
-  { label: 'Apps', to: '/apps/' },
+  { label: 'Home', to: '/' },
+  { label: 'Apps', to: '/en/apps/' },
   { label: 'FocusOne' },
 ]
 
 const breadcrumbSchema = buildBreadcrumbSchema(config.public.siteUrl, [
-  { name: 'Accueil', path: '/' },
-  { name: 'Apps', path: '/apps/' },
-  { name: 'FocusOne', path: '/apps/focus-one/' },
+  { name: 'Home', path: '/' },
+  { name: 'Apps', path: '/en/apps/' },
+  { name: 'FocusOne', path: '/en/apps/focus-one/' },
 ])
 
-const faqSchema = buildFaqSchema(focusOneContent.faq)
+const faqSchema = buildFaqSchema(focusOneEnContent.faq)
 const softwareApplicationSchema = buildSoftwareApplicationSchema({
-  name: focusOneContent.name,
+  name: focusOneEnContent.name,
   description:
-    'FocusOne est une app iPhone minimaliste pour installer une micro-habitude quotidienne à la fois, avec streak, rappels sobres, widgets et synchronisation iCloud.',
+    'FocusOne is a minimal iPhone app designed to build one daily micro-habit at a time, with streaks, useful widgets, and lightweight reminders.',
   url: pageUrl,
   operatingSystem: 'iOS',
   applicationCategory: 'ProductivityApplication',
@@ -392,24 +391,27 @@ watch(
 )
 
 useSeoMeta({
-  title: focusOneContent.seo.title,
-  description: focusOneContent.seo.description,
-  ogTitle: 'FocusOne — une seule habitude, chaque jour',
+  title: focusOneEnContent.seo.title,
+  description: focusOneEnContent.seo.description,
+  ogTitle: 'FocusOne — one habit, every day',
   ogDescription:
-    'Une app iPhone minimaliste pour installer une seule micro-habitude à la fois, garder votre streak et avancer sans distraction.',
+    'A minimal iPhone app to install one micro-habit at a time, keep your streak, and move forward without distraction.',
   ogType: 'website',
   ogSiteName: 'BeAbot',
   ogUrl: pageUrl,
   ogImage,
   ogImageWidth: 1200,
   ogImageHeight: 630,
-  twitterTitle: focusOneContent.seo.title,
-  twitterDescription: focusOneContent.seo.description,
+  twitterTitle: focusOneEnContent.seo.title,
+  twitterDescription: focusOneEnContent.seo.description,
   twitterCard: 'summary_large_image',
   twitterImage: ogImage,
 })
 
 useHead({
+  htmlAttrs: {
+    lang: 'en',
+  },
   link: [
     {
       rel: 'canonical',
@@ -418,17 +420,17 @@ useHead({
     {
       rel: 'alternate',
       hreflang: 'fr',
-      href: pageUrl,
+      href: canonicalUrl(config.public.siteUrl, '/apps/focus-one'),
     },
     {
       rel: 'alternate',
       hreflang: 'en',
-      href: canonicalUrl(config.public.siteUrl, '/en/apps/focus-one'),
+      href: pageUrl,
     },
     {
       rel: 'alternate',
       hreflang: 'x-default',
-      href: canonicalUrl(config.public.siteUrl, '/en/apps/focus-one'),
+      href: pageUrl,
     },
   ],
   script: [

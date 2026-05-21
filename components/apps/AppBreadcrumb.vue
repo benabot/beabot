@@ -1,5 +1,5 @@
 <template>
-  <nav class="app-breadcrumb" aria-label="Fil d’Ariane">
+  <nav class="app-breadcrumb" :aria-label="ariaLabel || 'Fil d’Ariane'">
     <ol>
       <li v-for="(item, index) in items" :key="`${item.label}-${index}`">
         <AppLink
@@ -25,6 +25,7 @@ export interface AppBreadcrumbItem {
 
 defineProps<{
   items: AppBreadcrumbItem[]
+  ariaLabel?: string
 }>()
 </script>
 

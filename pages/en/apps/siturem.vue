@@ -1,135 +1,135 @@
 <template>
   <main class="app-page">
     <div class="app-shell">
-      <AppBreadcrumb :items="breadcrumbItems" />
+      <AppBreadcrumb :items="breadcrumbItems" aria-label="Breadcrumb" />
       <p class="app-locale-switch">
-        <AppLink to="/en/apps/meeting-mode/">English version</AppLink>
+        <AppLink to="/apps/siturem/">Version française</AppLink>
       </p>
 
       <section class="app-hero">
         <div class="app-hero__content">
-          <p class="app-meta">{{ meetingModeContent.stage }}</p>
-          <h1>{{ meetingModeContent.name }} — {{ meetingModeContent.summary }}</h1>
-          <p class="app-intro">{{ meetingModeContent.intro }}</p>
-          <p class="app-summary">{{ meetingModeContent.summary }}</p>
+          <p class="app-meta">
+            {{ situremEnContent.stage }}
+          </p>
+          <h1>{{ situremEnContent.name }}</h1>
+          <p class="app-intro">
+            {{ situremEnContent.intro }}
+          </p>
+          <p class="app-summary">
+            {{ situremEnContent.summary }}
+          </p>
 
           <div class="app-actions">
-            <AppLink to="#release-form" class="app-primary-action">
-              Être informé
+            <AppLink
+              to="#release-form"
+              class="app-primary-action"
+            >
+              Get release updates
             </AppLink>
-            <NuxtLink to="/contact/?app=meeting-mode&type=support" class="app-secondary-action app-detail__contact-cta">
-              Une question ? Contactez-moi
+            <NuxtLink
+              to="/en/contact/?app=siturem&type=support"
+              class="app-secondary-action app-detail__contact-cta"
+            >
+              Need help? Contact support
             </NuxtLink>
           </div>
         </div>
 
         <div class="app-hero__visual">
           <div class="app-mockup app-mockup--dark">
-            <div class="app-mockup__bar" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
+            <div
+              class="app-mockup__bar"
+              aria-hidden="true"
+            >
+              <span />
+              <span />
+              <span />
             </div>
             <div
               class="app-mockup__screen app-mockup__screen--image"
               role="img"
-              :aria-label="meetingModeContent.preview.alt"
+              :aria-label="situremEnContent.preview.alt"
             >
               <img
-                :src="meetingModeContent.preview.src"
-                :alt="meetingModeContent.preview.alt"
-                width="1280"
-                height="800"
+                :src="situremEnContent.preview.src"
+                :alt="situremEnContent.preview.alt"
+                width="1206"
+                height="2622"
                 loading="eager"
                 decoding="async"
-              />
+              >
             </div>
           </div>
         </div>
       </section>
 
-      <section class="app-surface" aria-labelledby="meeting-overview-title">
+      <section
+        class="app-surface"
+        aria-labelledby="siturem-overview-title"
+      >
         <div class="app-surface__copy">
-          <h2 id="meeting-overview-title">Ce que fait Meeting Mode</h2>
-          <p class="app-surface__lead">Avec un preset, Meeting Mode peut :</p>
-          <ul class="app-capabilities">
-            <li v-for="item in meetingModeContent.capabilities" :key="item">
-              {{ item }}
-            </li>
-          </ul>
+          <h2 id="siturem-overview-title">
+            The problem
+          </h2>
+          <p
+            v-for="paragraph in situremEnContent.overview"
+            :key="paragraph"
+          >
+            {{ paragraph }}
+          </p>
         </div>
 
         <div class="app-surface__status">
-          <p class="app-surface__eyebrow">Pour qui</p>
-          <ul class="app-surface__cases">
-            <li v-for="item in meetingModeContent.useCases" :key="item">
-              {{ item }}
-            </li>
-          </ul>
+          <p class="app-surface__eyebrow">
+            At a glance
+          </p>
+          <dl class="app-surface__list app-surface__list--cards">
+            <div>
+              <dt>Use case</dt>
+              <dd>Autonomous meditation practice</dd>
+            </div>
+            <div>
+              <dt>Structure</dt>
+              <dd>3 fixed phases</dd>
+            </div>
+            <div>
+              <dt>Data</dt>
+              <dd>Local + optional HealthKit</dd>
+            </div>
+          </dl>
         </div>
       </section>
 
       <section
-        v-if="meetingModeContent.beforeAfter"
         class="app-section"
-        aria-labelledby="meeting-before-after-title"
+        aria-labelledby="siturem-details-title"
       >
         <div class="section-heading">
-          <h2 id="meeting-before-after-title">En pratique</h2>
-          <p>{{ meetingModeContent.beforeAfter.caption }}</p>
-        </div>
-
-        <div class="before-after-grid">
-          <figure class="before-after-card">
-            <div class="before-after-card__media">
-              <img
-                :src="meetingModeContent.beforeAfter.before.src"
-                :alt="meetingModeContent.beforeAfter.before.alt"
-                width="2858"
-                height="1726"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <figcaption class="before-after-card__label before-after-card__label--before">
-              {{ meetingModeContent.beforeAfter.before.label }}
-            </figcaption>
-          </figure>
-
-          <figure class="before-after-card">
-            <div class="before-after-card__media">
-              <img
-                :src="meetingModeContent.beforeAfter.after.src"
-                :alt="meetingModeContent.beforeAfter.after.alt"
-                width="2870"
-                height="1808"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <figcaption class="before-after-card__label before-after-card__label--after">
-              {{ meetingModeContent.beforeAfter.after.label }}
-            </figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section class="app-section" aria-labelledby="meeting-details-title">
-        <div class="section-heading">
-          <h2 id="meeting-details-title">Points clés</h2>
-          <p>Quatre repères pour comprendre le flux de l’app.</p>
+          <h2 id="siturem-details-title">
+            Key points
+          </h2>
+          <p>
+            Useful markers to understand the product without turning it into a feature catalog.
+          </p>
         </div>
 
         <div class="detail-grid">
           <article
-            v-for="point in meetingModeContent.detailPoints"
+            v-for="point in situremEnContent.detailPoints"
             :key="point.label"
             class="detail-card"
             :class="{ 'detail-card--featured': point.featured }"
           >
-            <p class="detail-card__label">{{ point.label }}</p>
-            <p class="detail-card__value">{{ point.value }}</p>
-            <p v-if="point.description" class="detail-card__description">
+            <p class="detail-card__label">
+              {{ point.label }}
+            </p>
+            <p class="detail-card__value">
+              {{ point.value }}
+            </p>
+            <p
+              v-if="point.description"
+              class="detail-card__description"
+            >
               {{ point.description }}
             </p>
           </article>
@@ -137,23 +137,27 @@
       </section>
 
       <section
-        v-if="meetingModeContent.gallery?.length"
+        v-if="situremEnContent.gallery?.length"
         class="app-section"
-        aria-labelledby="meeting-gallery-title"
+        aria-labelledby="siturem-gallery-title"
       >
         <div class="section-heading">
-          <h2 id="meeting-gallery-title">L'app en images</h2>
-          <p>Les principaux écrans de Meeting Mode.</p>
+          <h2 id="siturem-gallery-title">
+            App screenshots
+          </h2>
+          <p>
+            A few screens showing how Siturem emphasizes structure and then gets out of the way.
+          </p>
         </div>
 
         <div class="gallery-grid">
           <figure
-            v-for="(image, index) in meetingModeContent.gallery"
+            v-for="(image, index) in situremEnContent.gallery"
             :key="image.src"
             class="gallery-card gallery-card--clickable"
             role="button"
             tabindex="0"
-            :aria-label="`Agrandir : ${image.title || image.alt}`"
+            :aria-label="`Expand: ${image.title || image.alt}`"
             @click="openLightbox(index)"
             @keydown.enter.prevent="openLightbox(index)"
             @keydown.space.prevent="openLightbox(index)"
@@ -162,11 +166,11 @@
               <img
                 :src="image.src"
                 :alt="image.alt"
-                width="1280"
-                height="800"
+                width="1206"
+                height="2622"
                 loading="lazy"
                 decoding="async"
-              />
+              >
             </div>
             <figcaption class="gallery-card__caption">
               <span class="gallery-card__title">{{ image.title }}</span>
@@ -177,62 +181,96 @@
 
         <AppGalleryLightbox
           ref="lightbox"
-          :images="meetingModeContent.gallery"
+          :images="situremEnContent.gallery"
         />
       </section>
 
-      <section class="app-section" aria-labelledby="meeting-faq-title">
+      <section
+        class="app-section app-section--faq"
+        aria-labelledby="siturem-faq-title"
+      >
         <div class="faq-wrapper">
           <div class="section-heading">
-            <h2 id="meeting-faq-title">FAQ</h2>
-            <p>Questions fréquentes sur le fonctionnement.</p>
+            <h2 id="siturem-faq-title">
+              FAQ
+            </h2>
+            <p>
+              Frequently asked questions about usage, positioning, and release status.
+            </p>
           </div>
 
-          <AppFaqList :items="meetingModeContent.faq" />
+          <AppFaqList
+            :items="situremEnContent.faq"
+            :sections="situremEnContent.faqSections"
+          />
         </div>
       </section>
 
       <AppSupportSection
-        app-name="Meeting Mode"
-        app-slug="meeting-mode"
-        locale="fr"
-        os-label-fr="macOS"
-        os-label-en="macOS"
+        app-name="Siturem"
+        app-slug="siturem"
+        locale="en"
+        os-label-fr="iOS, iPadOS ou macOS"
+        os-label-en="iOS or iPadOS"
       />
 
       <section
         id="privacy"
         class="app-section app-section--legal"
-        aria-labelledby="meeting-legal-title"
+        aria-labelledby="siturem-legal-title"
       >
-        <details ref="privacyDetails" class="legal-disclosure">
+        <details
+          ref="privacyDetails"
+          class="legal-disclosure"
+        >
           <summary class="legal-disclosure__summary">
             <div class="legal-disclosure__header">
-              <h2 id="meeting-legal-title" class="legal-disclosure__title">Confidentialité</h2>
-              <p class="legal-disclosure__meta">Politique de confidentialité — FR</p>
+              <h2
+                id="siturem-legal-title"
+                class="legal-disclosure__title"
+              >
+                Privacy
+              </h2>
+              <p class="legal-disclosure__meta">
+                Privacy policy — FR / EN / ES / DE
+              </p>
             </div>
-            <span class="legal-disclosure__toggle" aria-hidden="true"></span>
+            <span
+              class="legal-disclosure__toggle"
+              aria-hidden="true"
+            />
           </summary>
 
           <div class="legal-disclosure__body">
-            <AppLegalSingleLocale
-              :title="meetingModeContent.legal.fr.title"
-              :paragraphs="meetingModeContent.legal.fr.paragraphs"
+            <AppLegalTabs
+              base-id="siturem-legal"
+              :content="situremEnContent.legal"
+              label="Privacy"
+              initial-locale="en"
             />
           </div>
         </details>
       </section>
 
-      <section class="app-cta" id="release-form" aria-labelledby="meeting-cta-title">
+      <section
+        id="release-form"
+        class="app-cta"
+        aria-labelledby="siturem-cta-title"
+      >
         <div class="app-cta__heading">
-          <h2 id="meeting-cta-title">{{ meetingModeContent.cta.title }}</h2>
-          <p>{{ meetingModeContent.cta.description }}</p>
+          <h2 id="siturem-cta-title">
+            {{ situremEnContent.cta.title }}
+          </h2>
+          <p>{{ situremEnContent.cta.description }}</p>
         </div>
 
-        <AppReleaseInterestForm :app-name="meetingModeContent.name" />
+        <AppReleaseInterestForm :app-name="situremEnContent.name" locale="en" />
 
-        <AppLink :to="meetingModeContent.cta.secondaryTo" class="app-cta__link">
-          {{ meetingModeContent.cta.secondaryLabel }}
+        <AppLink
+          :to="situremEnContent.cta.secondaryTo"
+          class="app-cta__link"
+        >
+          {{ situremEnContent.cta.secondaryLabel }}
         </AppLink>
       </section>
     </div>
@@ -245,7 +283,7 @@ import { nextTick, onMounted, ref, watch } from 'vue'
 import AppBreadcrumb from '~/components/apps/AppBreadcrumb.vue'
 import AppGalleryLightbox from '~/components/apps/AppGalleryLightbox.vue'
 import AppFaqList from '~/components/apps/AppFaqList.vue'
-import AppLegalSingleLocale from '~/components/apps/AppLegalSingleLocale.vue'
+import AppLegalTabs from '~/components/apps/AppLegalTabs.vue'
 import AppReleaseInterestForm from '~/components/apps/AppReleaseInterestForm.vue'
 import AppSupportSection from '~/components/apps/AppSupportSection.vue'
 
@@ -253,36 +291,36 @@ import {
   buildBreadcrumbSchema,
   buildFaqSchema,
   buildSoftwareApplicationSchema,
-  meetingModeContent,
 } from '~/data/apps'
+import { situremEnContent } from '~/data/apps-en'
 import { absoluteUrl, canonicalUrl } from '~/utils/seo-url'
 
 const config = useRuntimeConfig()
 const route = useRoute()
-const pageUrl = canonicalUrl(config.public.siteUrl, '/apps/meeting-mode')
-const ogImage = absoluteUrl(config.public.siteUrl, meetingModeContent.seo.image)
+const pageUrl = canonicalUrl(config.public.siteUrl, '/en/apps/siturem')
+const ogImage = absoluteUrl(config.public.siteUrl, situremEnContent.seo.image)
 const privacyDetails = ref<HTMLDetailsElement | null>(null)
 const lightbox = ref<InstanceType<typeof AppGalleryLightbox> | null>(null)
 
 const breadcrumbItems = [
-  { label: 'Accueil', to: '/' },
-  { label: 'Apps', to: '/apps/' },
-  { label: 'Meeting Mode' },
+  { label: 'Home', to: '/' },
+  { label: 'Apps', to: '/en/apps/' },
+  { label: 'Siturem' },
 ]
 
 const breadcrumbSchema = buildBreadcrumbSchema(config.public.siteUrl, [
-  { name: 'Accueil', path: '/' },
-  { name: 'Apps', path: '/apps/' },
-  { name: 'Meeting Mode', path: '/apps/meeting-mode/' },
+  { name: 'Home', path: '/' },
+  { name: 'Apps', path: '/en/apps/' },
+  { name: 'Siturem', path: '/en/apps/siturem/' },
 ])
 
-const faqSchema = buildFaqSchema(meetingModeContent.faq)
+const faqSchema = buildFaqSchema(situremEnContent.faq)
 const softwareApplicationSchema = buildSoftwareApplicationSchema({
-  name: meetingModeContent.name,
-  description: meetingModeContent.seo.description,
+  name: situremEnContent.name,
+  description: situremEnContent.seo.description,
   url: pageUrl,
-  operatingSystem: 'macOS',
-  applicationCategory: 'ProductivityApplication',
+  operatingSystem: 'iOS',
+  applicationCategory: 'HealthApplication',
   image: ogImage,
 })
 
@@ -322,23 +360,24 @@ watch(
 )
 
 useSeoMeta({
-  title: meetingModeContent.seo.title,
-  description: meetingModeContent.seo.description,
-  ogTitle: meetingModeContent.seo.title,
-  ogDescription: meetingModeContent.seo.description,
+  title: situremEnContent.seo.title,
+  description: situremEnContent.seo.description,
+  ogTitle: situremEnContent.seo.title,
+  ogDescription: situremEnContent.seo.description,
   ogType: 'website',
   ogSiteName: 'BeAbot',
   ogUrl: pageUrl,
   ogImage,
-  ogImageWidth: 1200,
-  ogImageHeight: 630,
-  twitterTitle: meetingModeContent.seo.title,
-  twitterDescription: meetingModeContent.seo.description,
+  twitterTitle: situremEnContent.seo.title,
+  twitterDescription: situremEnContent.seo.description,
   twitterCard: 'summary_large_image',
   twitterImage: ogImage,
 })
 
 useHead({
+  htmlAttrs: {
+    lang: 'en',
+  },
   link: [
     {
       rel: 'canonical',
@@ -347,17 +386,17 @@ useHead({
     {
       rel: 'alternate',
       hreflang: 'fr',
-      href: pageUrl,
+      href: canonicalUrl(config.public.siteUrl, '/apps/siturem'),
     },
     {
       rel: 'alternate',
       hreflang: 'en',
-      href: canonicalUrl(config.public.siteUrl, '/en/apps/meeting-mode'),
+      href: pageUrl,
     },
     {
       rel: 'alternate',
       hreflang: 'x-default',
-      href: canonicalUrl(config.public.siteUrl, '/en/apps/meeting-mode'),
+      href: pageUrl,
     },
   ],
   script: [
@@ -608,12 +647,6 @@ useHead({
   line-height: 1.65;
 }
 
-.app-surface__lead {
-  margin-top: 0.1rem;
-  color: $gris1;
-  font-weight: 600;
-}
-
 .app-surface__status {
   padding: 1rem;
   border-radius: 1.15rem;
@@ -629,126 +662,45 @@ useHead({
   text-transform: uppercase;
 }
 
-.app-capabilities,
-.app-surface__cases {
+.app-surface__list {
   display: grid;
+  gap: 0.9rem;
   margin: 0;
-  padding: 0;
-  list-style: none;
 }
 
-.app-capabilities {
-  gap: 0.55rem;
-}
-
-.app-surface__cases {
-  gap: 0.7rem;
-}
-
-.app-capabilities li,
-.app-surface__cases li {
-  position: relative;
-  padding: 0.5rem 0.75rem 0.5rem 1.75rem;
-  color: $gris2;
-  line-height: 1.55;
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: 0.5rem;
-}
-
-.app-surface__cases li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 0.35rem;
-  height: 0.35rem;
-  border-radius: 999px;
-  background: $vert;
-  transform: translateY(-50%);
-}
-
-.app-capabilities li::before {
-  content: '';
-  position: absolute;
-  left: 0.75rem;
-  top: 50%;
-  width: 0.375rem;
-  height: 0.375rem;
-  border-radius: 999px;
-  background: $vert;
-  transform: translateY(-50%);
-}
-
-.before-after-grid {
-  display: grid;
+.app-surface__list--cards {
   gap: 0.75rem;
-  grid-template-columns: 1fr;
 
   @media (min-width: 700px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-.before-after-card {
-  margin: 0;
-  border-radius: 1.15rem;
-  overflow: hidden;
+.app-surface__list--cards div {
+  padding: 0.85rem 0.9rem;
+  border-radius: 0.95rem;
   background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.06);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+.app-surface__list div {
   display: grid;
-  grid-template-rows: 1fr auto;
+  gap: 0.2rem;
 }
 
-.before-after-card__media {
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-}
-
-.before-after-card__media img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top left;
-}
-
-.before-after-card__label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 0.85rem 0.65rem;
-  font-size: 0.8rem;
+.app-surface__list dt {
+  color: $gris3;
+  font-size: 0.74rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  border-top: 1px solid rgba(0, 0, 0, 0.04);
-
-  &::before {
-    content: '';
-    display: inline-block;
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 999px;
-    flex-shrink: 0;
-  }
 }
 
-.before-after-card__label--before {
-  color: $gris2;
-  background: rgba(255, 255, 255, 0.96);
-
-  &::before {
-    background: $gris3;
-  }
-}
-
-.before-after-card__label--after {
-  color: $vert;
-  background: rgba(255, 255, 255, 0.96);
-
-  &::before {
-    background: $vert;
-  }
+.app-surface__list dd {
+  margin: 0;
+  color: $gris1;
+  font-weight: 600;
+  line-height: 1.45;
 }
 
 .app-section {
@@ -767,6 +719,47 @@ useHead({
   max-width: 40rem;
   color: $gris2;
   line-height: 1.6;
+}
+
+.faq-wrapper {
+  padding: clamp(1.5rem, 3.5vw, 2.25rem) clamp(1.25rem, 3vw, 2rem);
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(0, 0, 0, 0.055);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+}
+
+.faq-wrapper .section-heading {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.app-capture {
+  padding: 1rem;
+  border-radius: 1.45rem;
+  background: linear-gradient(
+    145deg,
+    rgba(243, 244, 246, 0.95),
+    rgba(255, 255, 255, 0.96)
+  );
+  box-shadow: 0 18px 34px rgba(15, 23, 42, 0.05);
+}
+
+.app-capture__screen {
+  min-height: 18rem;
+  border-radius: 1.15rem;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.app-capture__screen--image {
+  padding: 1rem;
+}
+
+.app-capture__screen--image img {
+  max-width: 100%;
 }
 
 .gallery-grid {
@@ -806,7 +799,7 @@ useHead({
 }
 
 .gallery-card__media {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 9 / 19.5;
   overflow: hidden;
 }
 
@@ -822,64 +815,51 @@ useHead({
 .gallery-card__caption {
   display: grid;
   gap: 0.1rem;
-  padding: 0.5rem 0.65rem 0.55rem;
-  background: rgba(255, 255, 255, 0.96);
-  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  padding: 0.7rem 0.8rem 0.85rem;
 }
 
 .gallery-card__title {
-  display: block;
-  margin: 0;
   color: $gris1;
-  font-size: 0.74rem;
   font-weight: 700;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .gallery-card__subtitle {
-  display: block;
-  margin: 0;
   color: $gris3;
-  font-size: 0.68rem;
-  line-height: 1.35;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 0.92rem;
+  line-height: 1.45;
 }
 
 .detail-grid {
   display: grid;
-  gap: 0.75rem;
-  grid-template-columns: 1fr;
+  gap: 0.85rem;
 
   @media (min-width: 700px) {
-    grid-template-columns: 1.5fr 1fr 1fr;
-    grid-auto-rows: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 980px) {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
 
 .detail-card {
   display: grid;
-  gap: 0.45rem;
-  padding: 1.1rem 1.15rem;
-  border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.92);
   align-content: start;
+  gap: 0.45rem;
+  min-height: 100%;
+  padding: 1rem;
+  border-radius: 1.15rem;
+  background: rgba(243, 244, 246, 0.72);
 }
 
 .detail-card--featured {
-  @media (min-width: 700px) {
-    grid-row: span 2;
-    background: rgba(255, 255, 255, 0.98);
-    border: 1px solid rgba(13, 199, 99, 0.15);
-  }
+  background: rgba(4, 217, 79, 0.08);
+  border: 1px solid rgba(4, 217, 79, 0.16);
 }
 
 .detail-card__label {
   margin: 0;
-  color: $vert;
+  color: $gris3;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -891,96 +871,87 @@ useHead({
   color: $gris1;
   font-size: 1.05rem;
   font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -0.02em;
+  line-height: 1.35;
 }
 
 .detail-card__description {
-  margin: 0.35rem 0 0;
+  margin: 0;
   color: $gris2;
-  font-size: 0.88rem;
-  line-height: 1.65;
-}
-
-.faq-wrapper {
-  padding: clamp(1.5rem, 3.5vw, 2.25rem) clamp(1.25rem, 3vw, 2rem);
-  border-radius: 1.5rem;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(0, 0, 0, 0.055);
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
-}
-
-.faq-wrapper .section-heading {
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  line-height: 1.6;
 }
 
 .legal-disclosure {
-  margin: 0;
-  border-radius: 1.35rem;
-  background: rgba(243, 244, 246, 0.82);
-  border: 1px solid rgba(15, 23, 42, 0.05);
   overflow: hidden;
+  border-radius: 1.35rem;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(243, 244, 246, 0.72);
+}
+
+.legal-disclosure__summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.legal-disclosure__summary::-webkit-details-marker {
+  display: none;
+}
+
+.legal-disclosure__header {
+  display: grid;
+  gap: 0.3rem;
 }
 
 .legal-disclosure__summary {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 1rem;
-  padding: 1rem 1.15rem;
-  cursor: pointer;
-  list-style: none;
-
-  &::-webkit-details-marker {
-    display: none;
-  }
-
-  &::after {
-    content: '+';
-    margin-left: auto;
-    color: $vert;
-    font-size: 1.15rem;
-    font-weight: 700;
-    line-height: 1;
-  }
-}
-
-details[open] .legal-disclosure__summary::after {
-  content: '−';
-}
-
-.legal-disclosure__header {
-  display: grid;
-  gap: 0.25rem;
+  padding: 1.15rem 1.15rem 1rem;
 }
 
 .legal-disclosure__title {
   margin: 0;
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  font-weight: 700;
   color: $gris1;
+  font-size: 1.12rem;
+  letter-spacing: -0.02em;
 }
 
 .legal-disclosure__meta {
   margin: 0;
   color: $gris3;
-  font-size: 0.78rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
 }
 
 .legal-disclosure__toggle {
-  display: none;
+  width: 1rem;
+  height: 1rem;
+  border-right: 2px solid $gris3;
+  border-bottom: 2px solid $gris3;
+  transform: rotate(45deg);
+  transition: transform 0.18s ease;
+}
+
+.legal-disclosure[open] .legal-disclosure__toggle {
+  transform: rotate(225deg);
 }
 
 .legal-disclosure__body {
-  padding: 0 1.25rem 1.25rem;
-  border-top: 1px solid rgba(15, 23, 42, 0.06);
+  padding: 0 1rem 1rem;
 }
 
 .app-cta {
   display: grid;
   gap: 1rem;
-  margin-top: clamp(2rem, 5vw, 3rem);
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+  padding: clamp(1.35rem, 3vw, 1.8rem);
+  border-radius: 1.5rem;
+  background: linear-gradient(
+    145deg,
+    rgba(15, 23, 42, 0.96),
+    rgba(31, 41, 55, 0.94)
+  );
+  color: white;
 }
 
 .app-cta__heading {
@@ -988,19 +959,18 @@ details[open] .legal-disclosure__summary::after {
   gap: 0.45rem;
 }
 
-.app-cta__heading h2 {
+.app-cta__heading h2,
+.app-cta__heading p {
   margin: 0;
-  color: $gris1;
+}
+
+.app-cta__heading h2 {
+  color: white;
 }
 
 .app-cta__heading p {
-  margin: 0;
-  color: $gris2;
-  line-height: 1.6;
-  max-width: 34rem;
-}
-
-.app-cta__link {
-  width: fit-content;
+  max-width: 40rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.65;
 }
 </style>

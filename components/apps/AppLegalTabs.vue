@@ -51,7 +51,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 import type { AppLegalTabsContent } from '~/data/apps'
 
@@ -59,6 +59,7 @@ const props = defineProps<{
   baseId: string
   content: AppLegalTabsContent
   label?: string
+  initialLocale?: 'fr' | 'en' | 'es' | 'de'
 }>()
 
 const activeIndex = ref(0)
@@ -94,6 +95,20 @@ const tabs = computed(() => [
       ]
     : []),
 ])
+
+const localeIndex = computed(() => {
+  const wanted = props.initialLocale ?? 'fr'
+  const found = tabs.value.findIndex((tab) => tab.key === wanted)
+  return found >= 0 ? found : 0
+})
+
+watch(
+  localeIndex,
+  (value) => {
+    activeIndex.value = value
+  },
+  { immediate: true },
+)
 
 function setTabRef(element: Element | null, index: number) {
   tabRefs.value[index] = element as HTMLButtonElement | null

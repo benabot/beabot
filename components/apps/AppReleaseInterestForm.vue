@@ -20,25 +20,39 @@
     </p>
 
     <div class="release-form__intro">
-      <p class="release-form__eyebrow">Prépublication</p>
-      <h3>Être informé de la sortie de l'app</h3>
-      <p>Recevez un message quand {{ appName }} sera disponible.</p>
+      <p class="release-form__eyebrow">
+        {{ locale === 'fr' ? 'Prépublication' : 'Pre-release' }}
+      </p>
+      <h3>
+        {{
+          locale === 'fr'
+            ? "Être informé de la sortie de l'app"
+            : 'Get notified at launch'
+        }}
+      </h3>
+      <p>
+        {{
+          locale === 'fr'
+            ? `Recevez un message quand ${appName} sera disponible.`
+            : `Receive an email when ${appName} becomes available.`
+        }}
+      </p>
     </div>
 
     <div class="release-form__controls">
       <label class="release-form__field">
-        <span>Nom <small>optionnel</small></span>
+        <span>{{ locale === 'fr' ? 'Nom' : 'Name' }} <small>{{ locale === 'fr' ? 'optionnel' : 'optional' }}</small></span>
         <input
           v-model="name"
           type="text"
           name="name"
           autocomplete="name"
-          placeholder="Votre nom"
+          :placeholder="locale === 'fr' ? 'Votre nom' : 'Your name'"
         />
       </label>
 
       <label class="release-form__field">
-        <span>Adresse e-mail <small>obligatoire</small></span>
+        <span>{{ locale === 'fr' ? 'Adresse e-mail' : 'Email address' }} <small>{{ locale === 'fr' ? 'obligatoire' : 'required' }}</small></span>
         <input
           v-model="email"
           type="email"
@@ -46,27 +60,30 @@
           required
           autocomplete="email"
           inputmode="email"
-          placeholder="vous@exemple.fr"
+          :placeholder="locale === 'fr' ? 'vous@exemple.fr' : 'you@example.com'"
         />
       </label>
 
       <label class="release-form__consent">
         <input v-model="consent" type="checkbox" name="consent" required />
         <span>
-          J'accepte d'être recontacté uniquement pour la sortie de
-          {{ appName }}.
+          {{
+            locale === 'fr'
+              ? `J'accepte d'être recontacté uniquement pour la sortie de ${appName}.`
+              : `I agree to be contacted only for the release of ${appName}.`
+          }}
           <AppLink
             to="/mentions-legales/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Mentions légales
+            {{ locale === 'fr' ? 'Mentions légales' : 'Legal notice' }}
           </AppLink>
         </span>
       </label>
 
       <button type="submit" :disabled="loading">
-        {{ loading ? 'Envoi…' : 'Envoyer' }}
+        {{ loading ? (locale === 'fr' ? 'Envoi…' : 'Sending…') : (locale === 'fr' ? 'Envoyer' : 'Send') }}
       </button>
     </div>
 
@@ -76,7 +93,11 @@
       class="release-form__success"
       aria-live="polite"
     >
-      Demande enregistrée pour {{ appName }}.
+      {{
+        locale === 'fr'
+          ? `Demande enregistrée pour ${appName}.`
+          : `Request saved for ${appName}.`
+      }}
     </p>
     <p
       v-else-if="error"
@@ -94,7 +115,9 @@ import { computed, ref } from 'vue'
 
 const props = defineProps<{
   appName: string
+  locale?: 'fr' | 'en'
 }>()
+const locale = computed(() => props.locale ?? 'fr')
 
 const route = useRoute()
 const actionPath = computed(() => route.path || '/')
@@ -133,12 +156,18 @@ async function onSubmit() {
   sent.value = false
 
   if (!email.value.trim()) {
-    error.value = 'Indiquez votre adresse e-mail pour être prévenu.'
+    error.value =
+      locale.value === 'fr'
+        ? 'Indiquez votre adresse e-mail pour être prévenu.'
+        : 'Please provide your email address.'
     return
   }
 
   if (!consent.value) {
-    error.value = "Confirmez l'accord de contact avant l'envoi."
+    error.value =
+      locale.value === 'fr'
+        ? "Confirmez l'accord de contact avant l'envoi."
+        : 'Please confirm contact consent before sending.'
     return
   }
 
@@ -170,7 +199,10 @@ async function onSubmit() {
     botField.value = ''
     consent.value = false
   } catch {
-    error.value = 'Impossible d’envoyer la demande pour le moment.'
+    error.value =
+      locale.value === 'fr'
+        ? 'Impossible d’envoyer la demande pour le moment.'
+        : 'Unable to send request right now.'
   } finally {
     loading.value = false
   }
