@@ -38,6 +38,10 @@ const enSummaryBySlug: Record<string, string> = {
 
 export const appsIndexEnEntries: AppIndexEntry[] = appsIndexEntries.map((entry) => ({
   ...entry,
+  image:
+    entry.slug === 'focus-one'
+      ? '/img/apps/focus-one/00-onboarding_en.webp'
+      : entry.image,
   stage: 'Pre-release',
   summary: enSummaryBySlug[entry.slug] ?? entry.summary,
   href: `/en/apps/${entry.slug}/`,
