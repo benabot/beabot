@@ -1094,6 +1094,8 @@ export const useTags = () => {
 - Correctif bloquant: JSON-LD EN `SoftwareApplication.author.url` aligné sur `https://beabot.fr/` (pas `/en/`).
 - Correctif bloquant: pages contact FR/EN sans réécriture d'URL au chargement; la navigation support utilise des liens `href` standards.
 - Correctif contenu EN: labels galerie Focus One vérifiés/corrigés (`alt`, `figcaption`, `aria-label`) et harmonisés côté pages EN.
+- Ajustement UX: sur `/apps/` et `/en/apps/`, les visuels des cartes apps sont cliquables et pointent vers la page app correspondante.
+- Ajustement contenu EN: captions galerie traduits en anglais pour `/en/apps/meeting-mode/`, `/en/apps/duo-spend/` et `/en/apps/siturem/`.
 
 - \[x\] Recomposition de la landing `/apps/` (hero, grille, CTA, cartes)
 

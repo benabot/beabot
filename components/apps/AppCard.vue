@@ -1,49 +1,55 @@
 <template>
   <article class="app-card" :class="`app-card--${props.variant}`">
     <figure class="app-card__visual">
-      <div
-        class="app-card__media"
-        :class="{
-          'app-card__media--placeholder': !props.app.preview.available,
-          'app-card__media--contain': props.app.preview.fit === 'contain',
-        }"
+      <AppLink
+        :to="props.app.href"
+        class="app-card__media-link"
+        :aria-label="`${locale === 'fr' ? 'Voir la page de' : 'View page for'} ${props.app.name}`"
       >
-        <img
-          v-if="props.app.preview.available && props.app.preview.src"
-          :src="props.app.preview.src"
-          :alt="props.app.preview.alt"
-          width="1206"
-          height="2622"
-          loading="lazy"
-          decoding="async"
-        />
         <div
-          v-else
-          class="app-card__placeholder"
-          role="img"
-          :aria-label="props.app.preview.alt"
+          class="app-card__media"
+          :class="{
+            'app-card__media--placeholder': !props.app.preview.available,
+            'app-card__media--contain': props.app.preview.fit === 'contain',
+          }"
         >
-          <svg
-            class="app-card__placeholder-svg"
-            viewBox="0 0 160 120"
-            width="160"
-            height="120"
-            aria-hidden="true"
-            focusable="false"
+          <img
+            v-if="props.app.preview.available && props.app.preview.src"
+            :src="props.app.preview.src"
+            :alt="props.app.preview.alt"
+            width="1206"
+            height="2622"
+            loading="lazy"
+            decoding="async"
+          />
+          <div
+            v-else
+            class="app-card__placeholder"
+            role="img"
+            :aria-label="props.app.preview.alt"
           >
-            <rect width="160" height="120" rx="16" fill="#f0ede9" />
-            <rect x="18" y="18" width="124" height="8" rx="4" fill="#d3cec5" />
-            <rect x="18" y="32" width="88" height="6" rx="3" fill="#e0dbd1" />
-            <rect x="18" y="44" width="64" height="6" rx="3" fill="#e0dbd1" />
-            <rect x="43" y="58" width="74" height="42" rx="12" fill="#1f2937" />
-            <rect x="52" y="66" width="56" height="26" rx="7" fill="#18212f" />
-            <rect x="58" y="72" width="18" height="6" rx="3" fill="#0dc763" />
-            <rect x="58" y="82" width="34" height="4" rx="2" fill="#7f8a96" />
-            <rect x="73" y="100" width="14" height="4" rx="2" fill="#d3cec5" />
-            <rect x="67" y="104" width="26" height="3" rx="1.5" fill="#c7c1b7" />
-          </svg>
+            <svg
+              class="app-card__placeholder-svg"
+              viewBox="0 0 160 120"
+              width="160"
+              height="120"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect width="160" height="120" rx="16" fill="#f0ede9" />
+              <rect x="18" y="18" width="124" height="8" rx="4" fill="#d3cec5" />
+              <rect x="18" y="32" width="88" height="6" rx="3" fill="#e0dbd1" />
+              <rect x="18" y="44" width="64" height="6" rx="3" fill="#e0dbd1" />
+              <rect x="43" y="58" width="74" height="42" rx="12" fill="#1f2937" />
+              <rect x="52" y="66" width="56" height="26" rx="7" fill="#18212f" />
+              <rect x="58" y="72" width="18" height="6" rx="3" fill="#0dc763" />
+              <rect x="58" y="82" width="34" height="4" rx="2" fill="#7f8a96" />
+              <rect x="73" y="100" width="14" height="4" rx="2" fill="#d3cec5" />
+              <rect x="67" y="104" width="26" height="3" rx="1.5" fill="#c7c1b7" />
+            </svg>
+          </div>
         </div>
-      </div>
+      </AppLink>
     </figure>
 
     <div class="app-card__body">
@@ -96,6 +102,16 @@ const locale = props.locale
 .app-card__visual {
   display: grid;
   margin: 0;
+}
+
+.app-card__media-link {
+  display: block;
+  border-radius: 1.25rem;
+}
+
+.app-card__media-link:focus-visible {
+  outline: 2px solid $vert;
+  outline-offset: 3px;
 }
 
 .app-card__media {

@@ -288,6 +288,38 @@ export const meetingModeEnContent: AppDetailContent = {
       value: 'Presets and session state are stored locally. No mandatory cloud, no mandatory account.',
     },
   ],
+  gallery: [
+    {
+      src: '/img/apps/meeting-mode_avant.webp',
+      alt: 'Standard macOS desktop before launching a Meeting Mode session',
+      title: 'Before',
+      subtitle: 'Standard desktop',
+    },
+    {
+      src: '/img/apps/meeting-mode_preset_1.webp',
+      alt: 'Preset setup screen in Meeting Mode',
+      title: 'Preset',
+      subtitle: 'Session configuration',
+    },
+    {
+      src: '/img/apps/meeting-mode_actif.webp',
+      alt: 'Active Meeting Mode session on macOS',
+      title: 'Active session',
+      subtitle: 'Clean screen overlay',
+    },
+    {
+      src: '/img/apps/meeting-mode_reglages.webp',
+      alt: 'Meeting Mode settings',
+      title: 'Settings',
+      subtitle: 'Local preferences',
+    },
+    {
+      src: '/img/apps/meeting-mode_apres.webp',
+      alt: 'Desktop after Meeting Mode restore',
+      title: 'After',
+      subtitle: 'Session restore',
+    },
+  ],
   beforeAfter: meetingModeContent.beforeAfter
     ? {
         ...meetingModeContent.beforeAfter,
@@ -614,6 +646,44 @@ export const duoSpendEnContent: AppDetailContent = {
       description: 'This page presents the product and lets you join the release list.',
     },
   ],
+  gallery: [
+    {
+      src: '/img/apps/duospend-resume.webp',
+      alt: 'DuoSpend summary screen',
+      title: 'Summary',
+      subtitle: 'Project overview at a glance',
+    },
+    {
+      src: '/img/apps/duospend-depense1.webp',
+      alt: 'First expense entry in DuoSpend',
+      title: 'Expense #1',
+      subtitle: 'Quick entry and split setup',
+    },
+    {
+      src: '/img/apps/duospend-depense2.webp',
+      alt: 'Second expense entry in DuoSpend',
+      title: 'Expense #2',
+      subtitle: 'Balance update in real time',
+    },
+    {
+      src: '/img/apps/duospend-ajout-depense.webp',
+      alt: 'Add expense screen in DuoSpend',
+      title: 'Add expense',
+      subtitle: 'Fast input flow',
+    },
+    {
+      src: '/img/apps/duospend-export-pdf.webp',
+      alt: 'PDF export screen in DuoSpend',
+      title: 'PDF export',
+      subtitle: 'Shareable recap',
+    },
+    {
+      src: '/img/apps/duospend-nouveau-projet.webp',
+      alt: 'New project creation screen in DuoSpend',
+      title: 'New project',
+      subtitle: 'Start a shared budget in seconds',
+    },
+  ],
   faqSections: duoSpendFaqSectionsEn,
   faq: duoSpendFaqSectionsEn.flatMap((section) => section.items),
   pricing: duoSpendContent.pricing
@@ -691,6 +761,38 @@ export const situremEnContent: AppDetailContent = {
     {
       label: 'Data',
       value: 'Local-first approach, no mandatory account, optional HealthKit integration.',
+    },
+  ],
+  gallery: [
+    {
+      src: '/img/siturem/siturem-meditation-screen.webp',
+      alt: 'Meditation session running in Siturem',
+      title: 'Session',
+      subtitle: 'The timer fades behind practice',
+    },
+    {
+      src: '/img/siturem/siturem-interface.webp',
+      alt: 'Session settings screen in Siturem',
+      title: 'Settings',
+      subtitle: 'Duration, ambiance, gong, and reminders',
+    },
+    {
+      src: '/img/siturem/siturem-intro-1.webp',
+      alt: 'First intro step in Siturem',
+      title: 'Introduction',
+      subtitle: 'Enter the session with minimal friction',
+    },
+    {
+      src: '/img/siturem/siturem-intro-2.webp',
+      alt: 'Second intro step in Siturem',
+      title: 'Structure',
+      subtitle: 'A stable frame without overload',
+    },
+    {
+      src: '/img/siturem/siturem-intro-3.webp',
+      alt: 'Third intro step in Siturem',
+      title: 'Return',
+      subtitle: 'Exit practice progressively',
     },
   ],
   faqSections: situremFaqSectionsEn,
