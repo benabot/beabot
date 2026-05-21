@@ -275,10 +275,6 @@
         </div>
 
         <AppReleaseInterestForm :app-name="focusOneEnContent.name" locale="en" />
-
-        <AppLink :to="focusOneEnContent.cta.secondaryTo" class="app-cta__link">
-          {{ focusOneEnContent.cta.secondaryLabel }}
-        </AppLink>
       </section>
     </div>
   </main>

@@ -1096,6 +1096,8 @@ export const useTags = () => {
 - Correctif contenu EN: labels galerie Focus One vérifiés/corrigés (`alt`, `figcaption`, `aria-label`) et harmonisés côté pages EN.
 - Ajustement UX: sur `/apps/` et `/en/apps/`, les visuels des cartes apps sont cliquables et pointent vers la page app correspondante.
 - Ajustement contenu EN: captions galerie traduits en anglais pour `/en/apps/meeting-mode/`, `/en/apps/duo-spend/` et `/en/apps/siturem/`.
+- Ajustement UX: suppression du second lien support sous le formulaire final sur les pages apps FR/EN (section `#support` conservée).
+- Ajustement i18n léger: footer avec libellés EN sur `/en/*`, en conservant le footer FR inchangé ailleurs.
 
 - \[x\] Recomposition de la landing `/apps/` (hero, grille, CTA, cartes)
 

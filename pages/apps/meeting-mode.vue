@@ -18,7 +18,7 @@
               Être informé
             </AppLink>
             <NuxtLink to="/contact/?app=meeting-mode&type=support" class="app-secondary-action app-detail__contact-cta">
-              Une question ? Contactez-moi
+              Contacter le support
             </NuxtLink>
           </div>
         </div>
@@ -230,10 +230,6 @@
         </div>
 
         <AppReleaseInterestForm :app-name="meetingModeContent.name" />
-
-        <AppLink :to="meetingModeContent.cta.secondaryTo" class="app-cta__link">
-          {{ meetingModeContent.cta.secondaryLabel }}
-        </AppLink>
       </section>
     </div>
   </main>

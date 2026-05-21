@@ -271,10 +271,6 @@
         </div>
 
         <AppReleaseInterestForm :app-name="duoSpendEnContent.name" locale="en" />
-
-        <AppLink :to="duoSpendEnContent.cta.secondaryTo" class="app-cta__link">
-          {{ duoSpendEnContent.cta.secondaryLabel }}
-        </AppLink>
       </section>
     </div>
   </main>

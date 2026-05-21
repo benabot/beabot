@@ -18,7 +18,7 @@
               Get release updates
             </AppLink>
             <NuxtLink to="/en/contact/?app=meeting-mode&type=support" class="app-secondary-action app-detail__contact-cta">
-              Need help? Contact support
+              Contact support
             </NuxtLink>
           </div>
         </div>
@@ -230,10 +230,6 @@
         </div>
 
         <AppReleaseInterestForm :app-name="meetingModeEnContent.name" locale="en" />
-
-        <AppLink :to="meetingModeEnContent.cta.secondaryTo" class="app-cta__link">
-          {{ meetingModeEnContent.cta.secondaryLabel }}
-        </AppLink>
       </section>
     </div>
   </main>

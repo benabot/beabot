@@ -30,7 +30,7 @@
               to="/contact/?app=siturem&type=support"
               class="app-secondary-action app-detail__contact-cta"
             >
-              Une question ? Contactez-moi
+              Contacter le support
             </NuxtLink>
           </div>
         </div>
@@ -267,13 +267,6 @@
         </div>
 
         <AppReleaseInterestForm :app-name="situremContent.name" />
-
-        <AppLink
-          :to="situremContent.cta.secondaryTo"
-          class="app-cta__link"
-        >
-          {{ situremContent.cta.secondaryLabel }}
-        </AppLink>
       </section>
     </div>
   </main>
