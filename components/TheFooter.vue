@@ -102,7 +102,7 @@ const footerLinks = computed(() => ({
   apps: isEnglishRoute.value ? '/en/apps/' : '/apps/',
   faq: '/eco-conception/faq-eco-conception/',
   contact: isEnglishRoute.value ? '/en/contact/' : '/contact/',
-  legal: '/mentions-legales/',
+  legal: isEnglishRoute.value ? '/en/legal/' : '/mentions-legales/',
 }))
 
 const footerAriaContact = computed(() =>
