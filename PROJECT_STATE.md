@@ -21,6 +21,28 @@
 
 ## 🧭 BACKLOG FINAL AVANT MASTER
 
+### Apps positioning v2 — 23 mai 2026
+
+Branche : `feature/apps-positioning-v2`
+
+- Périmètre :
+  - uniformisation des pages apps existantes (`/apps/`, `/en/apps/`, produits FR/EN) sans création de routes ;
+  - priorité éditoriale sur `FocusOne` FR/EN, avec renforcement du positionnement \"one promise / one tap\".
+- Changements livrés :
+  - hubs FR/EN repositionnés comme vitrine produit avec manifeste, principes communs, CTA de démarrage, et metadata mises à jour ;
+  - `FocusOne` FR/EN clarifiés avec sections dédiées (pourquoi une seule habitude, boucle, usages, privé par défaut, phrase de prudence) ;
+  - ajustements légers de cohérence sur DuoSpend/Siturem via `data/apps.ts` et `data/apps-en.ts` ;
+  - canonical/hreflang vérifiés et alignés sur hubs + FocusOne ;
+  - JSON-LD existant conservé (`CollectionPage` hubs, `SoftwareApplication` produits).
+- Validation locale :
+  - `npm test` : OK ;
+  - `npm run generate` : OK, 92 routes prerendered ;
+  - warning non bloquant inchangé : sourcemap `nuxt:module-preload-polyfill`.
+- Contraintes respectées :
+  - aucune route créée/supprimée ;
+  - aucun slug modifié ;
+  - aucun script tiers ajouté.
+
 1. **`fix/seo-technical-cleanup`** — État : fait, mergé dans `dev`. Objet : canonical homepage, meta descriptions critiques, `/404/` sitemap/statut, `twitter:card` simple. Commit connu : `ea6d884 fix: corriger les métadonnées SEO techniques critiques`.
 2. **`fix/seo-title-description-patterns`** — État : fait, mergé dans `dev`. Objet : pattern `Titre | BeAbot`, entités HTML, descriptions ciblées. Commit connu : `3a17826 fix: uniformiser titles et descriptions SEO`.
 3. **`fix/internal-url-trailing-slashes`** — État : fait, mergé dans `dev`. Objet : URLs internes HTML avec slash final, exceptions fichiers statiques/assets/ancres/query/liens externes, sitemap, RSS et JSON Feed. Diagnostic validé : 26 `index.html`, 13 articles, 3 pages apps, sitemap 24 routes publiques, feeds 13 articles, pas de `/404/` dans sitemap.

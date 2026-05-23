@@ -11,6 +11,23 @@
 9. [x] **`docs/pre-master-final-check`** — fait localement ; validation finale de `dev` avant merge manuel vers `master`, sans modification de code applicatif
 10. [x] **`fix/mobile-nav-close-on-link-click`** — fait localement ; fermeture du menu mobile au clic sur un lien interne avant merge master, sans rouvrir SEO, JSON-LD, URLs, dépendances, CSS natif ou warnings Nuxt/Vite
 
+## Phase 31 — Apps positioning v2 (23 mai 2026)
+
+> Branche : `feature/apps-positioning-v2`
+
+- [x] Relire `AGENTS.md`, `BRANCHING_STRATEGY.md`, `docs/apps-positioning-plan.md` et `PROJECT_STATE.md`
+- [x] Créer la branche depuis `dev` et vérifier `git status` + `git branch --show-current`
+- [x] Auditer les routes apps existantes et les fichiers partagés (`data/apps.ts`, `data/apps-en.ts`, composants apps, SEO)
+- [x] Repositionner `/apps/` comme hub produit FR : manifeste, principes communs, CTA final, et metadata SEO
+- [x] Repositionner `/en/apps/` comme hub produit EN : manifeste adapté, principes communs, CTA final, et metadata SEO
+- [x] Renforcer `/apps/focus-one/` : H1, angle \"compteur privé\", sections \"Pourquoi une seule habitude ?\", \"La boucle\", \"Pour quels usages ?\", \"Privé par défaut\", phrase de prudence
+- [x] Renforcer `/en/apps/focus-one/` : H1, angle \"private streak counter\", sections \"Why only one habit?\", \"The loop\", \"Use cases\", \"Private by default\", safety sentence
+- [x] Harmoniser légèrement les positionnements DuoSpend/Siturem dans les données FR/EN sans refonte complète
+- [x] Vérifier et ajuster `useSeoMeta` + canonical + hreflang sur les hubs et FocusOne
+- [x] Conserver les routes/slugs existants sans créer de nouvelles pages
+- [x] Valider `npm test` (OK)
+- [x] Valider `npm run generate` (OK, 92 routes prerendered)
+
 ## Phase 30 — Navigation mobile : fermeture au clic lien (12 mai 2026)
 
 > Branche : `fix/mobile-nav-close-on-link-click`

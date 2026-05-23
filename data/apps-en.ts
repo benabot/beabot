@@ -13,67 +13,86 @@ import {
 
 export const appsIndexEnContent = {
   title: 'iOS and macOS apps',
+  heroTitle: 'Quiet apps for one clear job.',
+  heroSubtitle:
+    'FocusOne, DuoSpend and Siturem are Apple-native apps built to reduce one precise friction: keeping a promise, settling an expense, starting a session.',
+  manifestoTitle:
+    'An app should not demand more attention than the problem it solves.',
+  manifestoBody:
+    'Each BeAbot app starts from a simple moment: a shared expense to clarify, a session to begin, a promise to keep. The product should answer quickly, stay readable, store little data and avoid artificial engagement mechanics.',
+  principles: [
+    'a deliberately limited scope',
+    'no mandatory account',
+    'no social feed',
+    'no aggressive gamification',
+    'a preference for local-first data',
+    'an interface designed to disappear after the action',
+  ],
+  ctaTitle: 'Looking for a simple app for one specific moment?',
+  ctaBody: "Start with the one that matches today's friction.",
   intro: [
     'Native iOS and macOS apps built to stay focused: less noise, fewer accounts, fewer unnecessary settings, more practical value.',
     'Each app starts from one clear use case and aims to stay useful over time: easy to open, quick to understand, and lightweight to use.',
   ],
   seo: {
-    title: 'Focused iOS and macOS apps',
+    title: 'Private, focused iPhone apps — BeAbot Apps',
     description:
-      'DuoSpend, FocusOne, Meeting Mode, and Siturem: focused native iOS and macOS apps with no mandatory account and no ads.',
+      'Discover BeAbot apps: FocusOne, DuoSpend and Siturem. Quiet iOS apps built to do one thing clearly, without unnecessary accounts, feeds or dashboards.',
     image: '/img/apps/duospend-vignette-apps.webp',
   },
 }
 
 const enSummaryBySlug: Record<string, string> = {
   'duo-spend':
-    'iOS app to track shared expenses between two people: couples, roommates, friends, trips, or daily costs. Add an expense and instantly see who owes what.',
+    'Who owes what? DuoSpend clarifies shared project expenses for two people, especially couples.',
   'focus-one':
-    'Minimal iPhone app to build one micro-habit at a time. Daily routine, streaks, local reminders, and widgets, with no account and no ads.',
+    'Private streak counter for one personal promise at a time. One promise. One tap a day.',
   'meeting-mode':
     'Prepare your Mac for meetings in one click. Open what matters, hide the rest.',
   siturem:
-    'Meditation timer for advanced practitioners. A stable structure for consistent sessions, with minimal friction and no distractions.',
+    'A structured session, without the noise. Meditation for autonomous practitioners, with a stable frame and minimal friction.',
 }
 
-export const appsIndexEnEntries: AppIndexEntry[] = appsIndexEntries.map((entry) => ({
-  ...entry,
-  image:
-    entry.slug === 'focus-one'
-      ? '/img/apps/focus-one/00-onboarding_en.webp'
-      : entry.slug === 'duo-spend'
-        ? '/img/apps/duospend-vignette-apps_en.webp'
-        : entry.slug === 'meeting-mode'
-          ? '/img/apps/meeting-mode_vignette-apps_en.webp'
-          : entry.slug === 'siturem'
-            ? '/img/siturem/siturem-landing_en.webp'
-      : entry.image,
-  preview:
-    entry.slug === 'focus-one'
-      ? {
-          ...entry.preview,
-          src: '/img/apps/focus-one/00-onboarding_en.webp',
-        }
-      : entry.slug === 'duo-spend'
+export const appsIndexEnEntries: AppIndexEntry[] = appsIndexEntries.map(
+  (entry) => ({
+    ...entry,
+    image:
+      entry.slug === 'focus-one'
+        ? '/img/apps/focus-one/00-onboarding_en.webp'
+        : entry.slug === 'duo-spend'
+          ? '/img/apps/duospend-vignette-apps_en.webp'
+          : entry.slug === 'meeting-mode'
+            ? '/img/apps/meeting-mode_vignette-apps_en.webp'
+            : entry.slug === 'siturem'
+              ? '/img/siturem/siturem-landing_en.webp'
+              : entry.image,
+    preview:
+      entry.slug === 'focus-one'
         ? {
             ...entry.preview,
-            src: '/img/apps/duospend-vignette-apps_en.webp',
+            src: '/img/apps/focus-one/00-onboarding_en.webp',
           }
-        : entry.slug === 'meeting-mode'
+        : entry.slug === 'duo-spend'
           ? {
               ...entry.preview,
-              src: '/img/apps/meeting-mode_vignette-apps_en.webp',
+              src: '/img/apps/duospend-vignette-apps_en.webp',
             }
-          : entry.slug === 'siturem'
+          : entry.slug === 'meeting-mode'
             ? {
                 ...entry.preview,
-                src: '/img/siturem/siturem-landing_en.webp',
+                src: '/img/apps/meeting-mode_vignette-apps_en.webp',
               }
-      : entry.preview,
-  stage: 'Pre-release',
-  summary: enSummaryBySlug[entry.slug] ?? entry.summary,
-  href: `/en/apps/${entry.slug}/`,
-}))
+            : entry.slug === 'siturem'
+              ? {
+                  ...entry.preview,
+                  src: '/img/siturem/siturem-landing_en.webp',
+                }
+              : entry.preview,
+    stage: 'Pre-release',
+    summary: enSummaryBySlug[entry.slug] ?? entry.summary,
+    href: `/en/apps/${entry.slug}/`,
+  }),
+)
 
 const focusOneFaqSectionsEn: AppFaqSection[] = [
   {
@@ -251,7 +270,9 @@ export const meetingModeEnContent: AppDetailContent = {
   intro:
     'Meeting Mode prepares your Mac for a meeting, demo, interview, or screen share in one click: open what is needed, hide what is not, show a clean screen, then offer a clear restore flow.',
   summary: 'Prepare, present, restore from the menu bar.',
-  overview: ['Meeting Mode stays focused on a short, reliable, understandable flow.'],
+  overview: [
+    'Meeting Mode stays focused on a short, reliable, understandable flow.',
+  ],
   capabilities: [
     'open the apps, links, and files included in your preset',
     'hide visible apps that are outside the session scope',
@@ -269,7 +290,8 @@ export const meetingModeEnContent: AppDetailContent = {
   detailPoints: [
     {
       label: 'A true one-click flow',
-      value: 'Select a preset, launch the session, and the essentials are executed immediately.',
+      value:
+        'Select a preset, launch the session, and the essentials are executed immediately.',
       description:
         'No repeated setup. A preset stores your apps, links, and files. Start Session opens them, hides the rest, and shows a clean screen in one action.',
       featured: true,
@@ -281,11 +303,13 @@ export const meetingModeEnContent: AppDetailContent = {
     },
     {
       label: 'Clear restore, no magic',
-      value: 'Meeting Mode attempts to restore only what it actually changed during the session.',
+      value:
+        'Meeting Mode attempts to restore only what it actually changed during the session.',
     },
     {
       label: 'Local first',
-      value: 'Presets and session state are stored locally. No mandatory cloud, no mandatory account.',
+      value:
+        'Presets and session state are stored locally. No mandatory cloud, no mandatory account.',
     },
   ],
   gallery: [
@@ -325,7 +349,8 @@ export const meetingModeEnContent: AppDetailContent = {
         ...meetingModeContent.beforeAfter,
         before: { ...meetingModeContent.beforeAfter.before, label: 'Before' },
         after: { ...meetingModeContent.beforeAfter.after, label: 'After' },
-        caption: 'In one click, Meeting Mode opens what you need and hides the rest. Your screen is ready to share.',
+        caption:
+          'In one click, Meeting Mode opens what you need and hides the rest. Your screen is ready to share.',
       }
     : undefined,
   faq: [
@@ -373,7 +398,8 @@ export const meetingModeEnContent: AppDetailContent = {
       answer: 'No. Planned usage does not require an account.',
     },
     {
-      question: 'Does it need sensitive permissions such as Accessibility or Screen Recording?',
+      question:
+        'Does it need sensitive permissions such as Accessibility or Screen Recording?',
       answer:
         'In the documented project state, the main flow does not rely on mandatory Accessibility, Automation, or Screen Recording permissions.',
     },
@@ -399,7 +425,8 @@ export const meetingModeEnContent: AppDetailContent = {
   cta: {
     ...meetingModeContent.cta,
     title: 'Be the first to know.',
-    description: 'Meeting Mode is coming soon. Leave your email and I will let you know at launch.',
+    description:
+      'Meeting Mode is coming soon. Leave your email and I will let you know at launch.',
     secondaryLabel: 'Need help? Contact support',
     secondaryTo: '/en/contact/?app=meeting-mode&type=support',
   },
@@ -415,12 +442,12 @@ export const focusOneEnContent: AppDetailContent = {
   ...focusOneContent,
   href: '/en/apps/focus-one/',
   stage: 'Pre-release',
-  intro: 'One habit. Every day.',
+  intro: 'One promise. One tap a day.',
   summary:
-    'The iPhone app that helps you build one routine at a time without drowning in dashboards, goals, and settings.',
+    'FocusOne is a private streak counter for one daily commitment. Pick one habit, mark it done, and keep your streak visible without accounts, feeds or noisy dashboards.',
   heroLines: [
-    'The iPhone app that helps you build one routine at a time without drowning in dashboards, goals, and settings.',
-    'Choose one micro-habit, check it off in one tap, keep your streak. Nothing more than what helps you stay consistent.',
+    'FocusOne is a private counter for keeping one personal promise, one day at a time.',
+    'Choose one habit, mark it done, and keep your streak visible without accounts, feeds, or noisy dashboards.',
   ],
   overview: [
     'Many habit apps start simple, then become dashboards: many routines, many charts, stacked goals, and notification overload.',
@@ -432,7 +459,8 @@ export const focusOneEnContent: AppDetailContent = {
     {
       label: 'One active habit',
       value: 'Less distraction, higher consistency.',
-      description: 'FocusOne helps you direct your energy to one routine at a time.',
+      description:
+        'FocusOne helps you direct your energy to one routine at a time.',
       featured: true,
     },
     {
@@ -448,7 +476,8 @@ export const focusOneEnContent: AppDetailContent = {
     {
       label: 'Light reminders',
       value: 'One or two reminders, not a notification storm.',
-      description: 'Enough not to forget, without turning your phone into noise.',
+      description:
+        'Enough not to forget, without turning your phone into noise.',
     },
     {
       label: 'Day boundary adapted to your rhythm',
@@ -553,11 +582,13 @@ export const focusOneEnContent: AppDetailContent = {
           },
           {
             title: 'Advanced widgets',
-            description: 'Unlock medium and large widgets for better visibility.',
+            description:
+              'Unlock medium and large widgets for better visibility.',
           },
           {
             title: 'Archives',
-            description: 'Complete one routine, archive it, then move to the next.',
+            description:
+              'Complete one routine, archive it, then move to the next.',
           },
           {
             title: 'Premium icons',
@@ -573,7 +604,8 @@ export const focusOneEnContent: AppDetailContent = {
           },
           {
             title: 'Milestones',
-            description: 'Visual moments at 7, 14, 30, 60, 100, 200, and 365 days.',
+            description:
+              'Visual moments at 7, 14, 30, 60, 100, 200, and 365 days.',
           },
           {
             title: 'Streak protection',
@@ -585,14 +617,15 @@ export const focusOneEnContent: AppDetailContent = {
   cta: {
     ...focusOneContent.cta,
     title: 'Be the first to know.',
-    description: 'FocusOne is coming soon. Leave your email and I will let you know at launch.',
+    description:
+      'FocusOne is coming soon. Leave your email and I will let you know at launch.',
     secondaryLabel: 'Need help? Contact support',
     secondaryTo: '/en/contact/?app=focus-one&type=support',
   },
   seo: {
-    title: 'FocusOne — iPhone app to build one habit at a time',
+    title: 'FocusOne — Private Habit & Streak Tracker',
     description:
-      'FocusOne is a minimal iPhone app built for one daily micro-habit: streaks, useful widgets, and lightweight reminders.',
+      'FocusOne helps you keep one personal promise at a time. Pick a habit, mark it done every day and track your streak without accounts, feeds or noisy dashboards.',
     image: focusOneContent.seo.image,
   },
 }
@@ -601,9 +634,9 @@ export const duoSpendEnContent: AppDetailContent = {
   ...duoSpendContent,
   href: '/en/apps/duo-spend/',
   stage: 'Pre-release',
-  intro: 'Track shared expenses together, clearly',
+  intro: 'Who owes what?',
   summary:
-    'DuoSpend helps you track shared expenses without spreadsheets, mental math, or endless conversations.',
+    'Shared project expenses for couples, with clear balances and no spreadsheet overhead.',
   heroLines: [
     'DuoSpend helps you track shared expenses without spreadsheets, mental math, or endless conversations.',
     'Add an expense, set who paid, and see the balance instantly. Everyone stays aligned.',
@@ -623,12 +656,14 @@ export const duoSpendEnContent: AppDetailContent = {
     {
       label: 'Clear balances',
       value: 'Who paid what, who owes what.',
-      description: 'DuoSpend computes who advanced money and what remains to settle.',
+      description:
+        'DuoSpend computes who advanced money and what remains to settle.',
     },
     {
       label: 'Made for two',
       value: 'Couples, roommates, friends, or family.',
-      description: 'A lightweight flow to keep accounts clear without accounting complexity.',
+      description:
+        'A lightweight flow to keep accounts clear without accounting complexity.',
     },
     {
       label: 'No spreadsheet',
@@ -643,7 +678,8 @@ export const duoSpendEnContent: AppDetailContent = {
     {
       label: 'Pre-release',
       value: 'The app is currently in preparation.',
-      description: 'This page presents the product and lets you join the release list.',
+      description:
+        'This page presents the product and lets you join the release list.',
     },
   ],
   gallery: [
@@ -716,7 +752,8 @@ export const duoSpendEnContent: AppDetailContent = {
   cta: {
     ...duoSpendContent.cta,
     title: 'Be the first to know.',
-    description: 'DuoSpend is coming soon. Leave your email and I will let you know at launch.',
+    description:
+      'DuoSpend is coming soon. Leave your email and I will let you know at launch.',
     secondaryLabel: 'Need help? Contact support',
     secondaryTo: '/en/contact/?app=duo-spend&type=support',
   },
@@ -732,9 +769,9 @@ export const situremEnContent: AppDetailContent = {
   ...situremContent,
   href: '/en/apps/siturem/',
   stage: 'Pre-release',
-  intro: 'Designed for a stable, regular, distraction-free practice frame.',
+  intro: 'A structured session, without the noise.',
   summary:
-    'An iOS meditation timer for advanced practitioners, with a clear session structure and lightweight tracking.',
+    'Structured meditation for autonomous practitioners, with a stable frame and minimal options.',
   overview: [
     'Most meditation apps prioritize guided content, programs, frequent notifications, and gamification. For autonomous practitioners, that often adds noise.',
     'Siturem takes the opposite path: a ready-to-use three-phase session, limited options, minimal friction, and no content overload.',
@@ -752,15 +789,18 @@ export const situremEnContent: AppDetailContent = {
     },
     {
       label: 'Guidance options',
-      value: 'Silent, structured, or light guidance with gong and subtle reminders.',
+      value:
+        'Silent, structured, or light guidance with gong and subtle reminders.',
     },
     {
       label: 'Tracking',
-      value: 'Total time, 7/30-day history, and discreet streak without aggressive gamification.',
+      value:
+        'Total time, 7/30-day history, and discreet streak without aggressive gamification.',
     },
     {
       label: 'Data',
-      value: 'Local-first approach, no mandatory account, optional HealthKit integration.',
+      value:
+        'Local-first approach, no mandatory account, optional HealthKit integration.',
     },
   ],
   gallery: [
@@ -800,7 +840,8 @@ export const situremEnContent: AppDetailContent = {
   cta: {
     ...situremContent.cta,
     title: 'Be the first to know.',
-    description: 'Siturem is in pre-release. Leave your email and I will let you know at launch.',
+    description:
+      'Siturem is in pre-release. Leave your email and I will let you know at launch.',
     secondaryLabel: 'Need help? Contact support',
     secondaryTo: '/en/contact/?app=siturem&type=support',
   },

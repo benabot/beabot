@@ -6,27 +6,38 @@
       <section class="apps-hero">
         <div class="apps-hero__left">
           <p class="apps-hero__eyebrow">Apps</p>
-          <h1>
-            DuoSpend, FocusOne, and Meeting Mode —
-            <span class="apps-hero__platform">iOS</span> and
-            <span class="apps-hero__platform">macOS</span>
-          </h1>
+          <h1>{{ appsIndexEnContent.heroTitle }}</h1>
         </div>
         <div class="apps-hero__intro">
-          <p
-            v-for="(line, i) in appsIndexEnContent.intro"
-            :key="i"
-            class="apps-hero__intro-p"
-          >
-            {{ line }}
+          <p class="apps-hero__intro-p">
+            {{ appsIndexEnContent.heroSubtitle }}
           </p>
         </div>
       </section>
 
+      <section class="apps-manifesto" aria-labelledby="apps-manifesto-title">
+        <h2 id="apps-manifesto-title" class="apps-manifesto__title">
+          {{ appsIndexEnContent.manifestoTitle }}
+        </h2>
+        <p class="apps-manifesto__body">
+          {{ appsIndexEnContent.manifestoBody }}
+        </p>
+        <ul class="apps-manifesto__list">
+          <li
+            v-for="principle in appsIndexEnContent.principles"
+            :key="principle"
+          >
+            {{ principle }}
+          </li>
+        </ul>
+      </section>
+
       <section class="apps-section" aria-labelledby="apps-featured-title">
         <div class="apps-section__heading">
-          <h2 id="apps-featured-title" class="apps-section__title">Featured</h2>
-          <p>Two apps in pre-release.</p>
+          <h2 id="apps-featured-title" class="apps-section__title">
+            Core apps
+          </h2>
+          <p>Start from the friction you want to reduce today.</p>
         </div>
 
         <div class="apps-featured-grid">
@@ -60,6 +71,24 @@
           />
         </div>
       </section>
+
+      <section class="apps-final-cta" aria-labelledby="apps-final-cta-title">
+        <h2 id="apps-final-cta-title" class="apps-final-cta__title">
+          {{ appsIndexEnContent.ctaTitle }}
+        </h2>
+        <p class="apps-final-cta__body">{{ appsIndexEnContent.ctaBody }}</p>
+        <div class="apps-final-cta__links">
+          <AppLink to="/en/apps/focus-one/" class="apps-final-cta__link">
+            FocusOne
+          </AppLink>
+          <AppLink to="/en/apps/duo-spend/" class="apps-final-cta__link">
+            DuoSpend
+          </AppLink>
+          <AppLink to="/en/apps/siturem/" class="apps-final-cta__link">
+            Siturem
+          </AppLink>
+        </div>
+      </section>
     </div>
   </main>
 </template>
@@ -73,10 +102,7 @@ import {
   buildBreadcrumbSchema,
   buildItemListSchema,
 } from '~/data/apps'
-import {
-  appsIndexEnContent,
-  appsIndexEnEntries,
-} from '~/data/apps-en'
+import { appsIndexEnContent, appsIndexEnEntries } from '~/data/apps-en'
 import { absoluteUrl, canonicalUrl } from '~/utils/seo-url'
 
 const config = useRuntimeConfig()
@@ -142,7 +168,7 @@ useHead({
     {
       rel: 'alternate',
       hreflang: 'x-default',
-      href: pageUrl,
+      href: canonicalUrl(config.public.siteUrl, '/apps'),
     },
   ],
   script: [
@@ -239,6 +265,39 @@ useHead({
   }
 }
 
+.apps-manifesto {
+  display: grid;
+  gap: 0.85rem;
+  margin-bottom: clamp(1.9rem, 4vw, 2.9rem);
+  padding: clamp(1.05rem, 2.6vw, 1.45rem);
+  border-radius: 1rem;
+  background: rgba(243, 244, 246, 0.75);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+.apps-manifesto__title {
+  margin: 0;
+  color: $gris1;
+  font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.apps-manifesto__body {
+  margin: 0;
+  color: $gris2;
+  line-height: 1.7;
+}
+
+.apps-manifesto__list {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 0.35rem;
+  color: $gris2;
+  line-height: 1.6;
+}
+
 .apps-hero__meta {
   margin: 0.7rem 0 0;
   color: $gris3;
@@ -295,5 +354,50 @@ useHead({
   @media (min-width: 760px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+}
+
+.apps-final-cta {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: clamp(2.4rem, 5vw, 3.5rem);
+  padding-top: clamp(1.2rem, 3vw, 1.8rem);
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.apps-final-cta__title {
+  margin: 0;
+  color: $gris1;
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.apps-final-cta__body {
+  margin: 0;
+  color: $gris2;
+  line-height: 1.65;
+}
+
+.apps-final-cta__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.apps-final-cta__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.65rem;
+  padding: 0.62rem 0.92rem;
+  border-radius: 999px;
+  background: rgba(243, 244, 246, 0.9);
+  color: $gris2;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.apps-final-cta__link:focus-visible {
+  outline: 2px solid $vert;
+  outline-offset: 3px;
 }
 </style>

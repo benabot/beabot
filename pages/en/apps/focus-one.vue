@@ -9,7 +9,8 @@
       <section class="app-hero">
         <div class="app-hero__content">
           <p class="app-meta">{{ focusOneEnContent.stage }}</p>
-          <h1>{{ focusOneEnContent.name }} — {{ focusOneEnContent.intro }}</h1>
+          <h1>One promise. One tap a day.</h1>
+          <p class="app-summary">{{ focusOneEnContent.summary }}</p>
           <div class="app-hero__text">
             <p
               v-for="line in focusOneEnContent.heroLines ?? [
@@ -115,6 +116,52 @@
         </div>
       </section>
 
+      <section class="app-section" aria-labelledby="focus-why-title">
+        <div class="section-heading">
+          <h2 id="focus-why-title">Why only one habit?</h2>
+          <p>
+            Most habit apps make it easy to track too many goals. FocusOne takes
+            the opposite path: one active habit, less dispersion, one clear
+            action for today.
+          </p>
+        </div>
+      </section>
+
+      <section class="app-section" aria-labelledby="focus-loop-title">
+        <div class="section-heading">
+          <h2 id="focus-loop-title">The loop</h2>
+          <p class="focus-loop-copy">
+            Open. Tap "Done". See your streak. Close.
+          </p>
+        </div>
+      </section>
+
+      <section class="app-section" aria-labelledby="focus-use-cases-title">
+        <div class="section-heading">
+          <h2 id="focus-use-cases-title">Use cases</h2>
+        </div>
+        <ul class="focus-list">
+          <li v-for="item in focusUseCases" :key="item">{{ item }}</li>
+        </ul>
+      </section>
+
+      <section class="app-section" aria-labelledby="focus-private-title">
+        <div class="section-heading">
+          <h2 id="focus-private-title">Private by default</h2>
+          <p>
+            No social feed, no public ranking, no external pressure. Your streak
+            stays yours.
+          </p>
+        </div>
+        <ul class="focus-list">
+          <li v-for="item in focusAvoids" :key="item">{{ item }}</li>
+        </ul>
+        <p class="focus-safety">
+          FocusOne is a personal tracking tool. It does not replace medical,
+          psychological or therapeutic support.
+        </p>
+      </section>
+
       <section
         v-if="focusOneEnContent.gallery?.length"
         class="app-section"
@@ -154,7 +201,10 @@
           </figure>
         </div>
 
-        <AppGalleryLightbox ref="lightbox" :images="focusOneEnContent.gallery" />
+        <AppGalleryLightbox
+          ref="lightbox"
+          :images="focusOneEnContent.gallery"
+        />
       </section>
 
       <section
@@ -163,7 +213,9 @@
         aria-labelledby="focus-pricing-title"
       >
         <div class="section-heading">
-          <h2 id="focus-pricing-title">{{ focusOneEnContent.pricing.title }}</h2>
+          <h2 id="focus-pricing-title">
+            {{ focusOneEnContent.pricing.title }}
+          </h2>
           <p>{{ focusOneEnContent.pricing.intro }}</p>
         </div>
 
@@ -248,9 +300,7 @@
               <h2 id="focus-legal-title" class="legal-disclosure__title">
                 Privacy
               </h2>
-              <p class="legal-disclosure__meta">
-                Privacy policy — EN
-              </p>
+              <p class="legal-disclosure__meta">Privacy policy — EN</p>
             </div>
             <span class="legal-disclosure__toggle" aria-hidden="true" />
           </summary>
@@ -274,7 +324,10 @@
           <p>{{ focusOneEnContent.cta.description }}</p>
         </div>
 
-        <AppReleaseInterestForm :app-name="focusOneEnContent.name" locale="en" />
+        <AppReleaseInterestForm
+          :app-name="focusOneEnContent.name"
+          locale="en"
+        />
       </section>
     </div>
   </main>
@@ -321,28 +374,28 @@ const faqSchema = buildFaqSchema(focusOneEnContent.faq)
 const softwareApplicationSchema = buildSoftwareApplicationSchema({
   name: focusOneEnContent.name,
   description:
-    'FocusOne is a minimal iPhone app designed to build one daily micro-habit at a time, with streaks, useful widgets, and lightweight reminders.',
+    'FocusOne is a private counter for keeping one personal promise, one day at a time.',
   url: pageUrl,
   operatingSystem: 'iOS',
   applicationCategory: 'ProductivityApplication',
   image: ogImage,
   offers: [
     {
-      name: 'FocusOne gratuit',
+      name: 'FocusOne Free',
       price: '0',
       priceCurrency: 'EUR',
     },
     {
-      name: 'FocusOne Premium annuel',
+      name: 'FocusOne Premium yearly',
       price: '14.99',
       priceCurrency: 'EUR',
-      description: 'Abonnement annuel FocusOne Premium.',
+      description: 'FocusOne Premium yearly subscription.',
     },
     {
-      name: 'FocusOne Premium achat unique',
+      name: 'FocusOne Premium one-time',
       price: '39.99',
       priceCurrency: 'EUR',
-      description: 'Achat unique FocusOne Premium.',
+      description: 'FocusOne Premium one-time purchase.',
     },
   ],
   author: {
@@ -350,6 +403,24 @@ const softwareApplicationSchema = buildSoftwareApplicationSchema({
     url: canonicalUrl(config.public.siteUrl, '/'),
   },
 })
+
+const focusUseCases = [
+  'sobriety',
+  'reading',
+  'sport',
+  'meditation',
+  'writing',
+  'no social media',
+  'sleep',
+  'quitting smoking',
+]
+
+const focusAvoids = [
+  'no mandatory account',
+  'no social feed',
+  'no unnecessary dashboard',
+  'no aggressive gamification',
+]
 
 function openLightbox(index: number) {
   lightbox.value?.open(index)
@@ -389,9 +460,8 @@ watch(
 useSeoMeta({
   title: focusOneEnContent.seo.title,
   description: focusOneEnContent.seo.description,
-  ogTitle: 'FocusOne — one habit, every day',
-  ogDescription:
-    'A minimal iPhone app to install one micro-habit at a time, keep your streak, and move forward without distraction.',
+  ogTitle: focusOneEnContent.seo.title,
+  ogDescription: focusOneEnContent.seo.description,
   ogType: 'website',
   ogSiteName: 'BeAbot',
   ogUrl: pageUrl,
@@ -426,7 +496,7 @@ useHead({
     {
       rel: 'alternate',
       hreflang: 'x-default',
-      href: pageUrl,
+      href: canonicalUrl(config.public.siteUrl, '/apps/focus-one'),
     },
   ],
   script: [
@@ -1138,6 +1208,23 @@ useHead({
   color: $gris2;
   font-size: 0.86rem;
   line-height: 1.5;
+}
+
+.focus-loop-copy,
+.focus-safety {
+  margin: 0;
+  max-width: 42rem;
+  color: $gris2;
+  line-height: 1.65;
+}
+
+.focus-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.4rem;
+  color: $gris2;
+  line-height: 1.6;
 }
 
 .app-cta {
