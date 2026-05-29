@@ -21,12 +21,18 @@ const avoidedTerms = [
   /\bbooster\b/iu,
   /transformer votre vie/iu,
   /change your life/iu,
+  /projets plus discrets/iu,
+  /apps sobres/iu,
+  /des apps simples/iu,
   /apps simples/iu,
   /simple apps/iu,
   /apps principales/iu,
   /apps secondaires/iu,
   /core apps/iu,
+  /other apps/iu,
   /mini-?saas/iu,
+  /Voir la confidentialité/iu,
+  /View privacy/iu,
 ]
 
 const stopWords = new Set([

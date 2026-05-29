@@ -25,6 +25,28 @@
 
 Branche : `feature/apps-positioning-v2`
 
+#### Dernier passage marketing et CTA — 29 mai 2026
+
+- Périmètre :
+  - amélioration finale de la vitrine `/apps/` et `/en/apps/` avant merge `dev` ;
+  - renforcement des CTA héros FocusOne et DuoSpend FR/EN ;
+  - conservation des sections finales `Support` et `Confidentialité` / `Privacy` sur les pages produit.
+- Changements livrés :
+  - hubs FR/EN repositionnés autour de l'idée `garder le fil` / `keeping track`, avec ligne de preuves, sections par usage et CTA final orienté besoin ;
+  - FocusOne et DuoSpend mis en avant dans le hero et dans les cartes du quotidien, avec promesses plus concrètes ;
+  - CTA héros FocusOne/DuoSpend reliés au formulaire Netlify existant `#release-form`, sans nouvelle intégration ;
+  - CTA secondaires héros reliés aux galeries d'images, plus de lien confidentialité depuis le hero ;
+  - `check:copy` renforcé contre `friction`, `projets plus discrets`, `apps sobres`, `des apps simples`, `Voir la confidentialité` et `View privacy`.
+- Validation locale :
+  - `npm run check:copy` : OK, 22 warnings de diagnostic restants sur textes légaux/répétitions structurelles ;
+  - `npm run generate` : OK, 92 routes prerendered ;
+  - `npm test` : OK, 49 pre-build checks et 33 tests Node sur l'HTML généré ;
+  - `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK ;
+  - contrôle navigateur local desktop/mobile sur les six routes prioritaires : H1 attendus, CTA héros corrects, pas de wording interdit, pas de débordement horizontal.
+- Notes :
+  - le warning sourcemap `nuxt:module-preload-polyfill` reste inchangé et non bloquant ;
+  - le hub mobile laisse désormais apparaître le début de la section `À utiliser au quotidien`.
+
 #### Suivi éditorial et UX — 29 mai 2026
 
 - Périmètre :

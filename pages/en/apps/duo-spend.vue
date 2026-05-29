@@ -24,13 +24,13 @@
 
           <div class="app-actions">
             <AppLink to="#release-form" class="app-primary-action">
-              Get release updates
+              Get launch updates
             </AppLink>
             <AppLink
-              to="#privacy"
+              to="#duo-gallery-title"
               class="app-secondary-action app-detail__contact-cta"
             >
-              View privacy
+              View the app
             </AppLink>
           </div>
         </div>

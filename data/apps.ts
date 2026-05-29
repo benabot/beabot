@@ -20,6 +20,7 @@ export interface AppIndexEntry {
   name: string
   platform: string
   stage: string
+  tagline?: string
   summary: string
   href: string
   preview: AppPreview
@@ -151,12 +152,17 @@ export interface BreadcrumbEntry {
 
 export const appsIndexContent = {
   title: 'Applications iOS et macOS',
-  heroTitle: 'Des apps sobres pour tenir, partager, pratiquer.',
+  heroTitle: 'Des apps utiles pour garder le fil.',
   heroSubtitle:
-    'FocusOne aide à tenir une promesse personnelle. DuoSpend clarifie les dépenses à deux. Siturem et Meeting Mode restent plus discrets, mais suivent la même idée : peu d’écrans, peu de bruit, une action claire.',
-  manifestoTitle: 'Une app utile doit aider vite, puis se faire oublier.',
+    'Une habitude à tenir, des dépenses à clarifier, une séance à lancer, une réunion à préparer. Chaque app BeAbot part d’un usage concret et va droit au but : ouvrir, agir, continuer sa journée.',
+  proofLine: [
+    'Sans compte inutile',
+    'Sans réseau social',
+    'Sans tableau de bord envahissant',
+  ],
+  manifestoTitle: 'Ouvrir. Faire. Fermer.',
   manifestoBody:
-    "Chaque app BeAbot part d'un usage concret : cocher l'engagement du jour, équilibrer une dépense, préparer une séance ou une réunion. L'interface doit rester lisible, les données limitées, et l'action principale toujours évidente.",
+    'Ces apps ne cherchent pas à vous retenir. Elles doivent rendre une action plus claire, puis disparaître.',
   principles: [
     'une action principale claire',
     'peu d’écrans',
@@ -165,9 +171,9 @@ export const appsIndexContent = {
     'pas de gamification agressive',
     'des données limitées à l’usage réel',
   ],
-  ctaTitle: 'Commencez par l’app qui correspond à votre usage du moment.',
+  ctaTitle: 'Choisissez ce que vous voulez garder au clair.',
   ctaBody:
-    'Tenir une habitude, équilibrer une dépense, lancer une séance ou préparer une réunion : chaque app garde un périmètre clair.',
+    'Une routine, une dépense, une séance : partez du besoin le plus concret.',
   intro: [
     'Des apps iOS et macOS conçues pour aller à l’essentiel : moins de bruit, moins de comptes, moins de réglages inutiles, plus de valeur concrète.',
     'Chaque app part d’un usage précis et cherche à rester agréable dans la durée : simple à ouvrir, rapide à comprendre, utile sans prendre toute la place.',
@@ -187,8 +193,9 @@ export const appsIndexEntries: AppIndexEntry[] = [
     name: 'FocusOne',
     platform: 'iOS',
     stage: 'Prépublication',
+    tagline: 'Une habitude à ne pas lâcher.',
     summary:
-      'Un compteur privé pour tenir une seule promesse personnelle : choisir une habitude, la cocher aujourd’hui, garder la série visible.',
+      'Un compteur privé pour choisir une seule routine, la cocher aujourd’hui et garder la série visible.',
     href: '/apps/focus-one/',
     featured: true,
     preview: {
@@ -204,8 +211,9 @@ export const appsIndexEntries: AppIndexEntry[] = [
     name: 'DuoSpend',
     platform: 'iOS',
     stage: 'Prépublication',
+    tagline: 'Les comptes à deux, sans tableur.',
     summary:
-      "DuoSpend clarifie les dépenses d'un projet à deux : chacun ajoute ce qu'il a payé, l'app montre ce qu'il reste à équilibrer.",
+      'Ajoutez les dépenses d’un projet commun, voyez qui a payé quoi, équilibrez simplement.',
     href: '/apps/duo-spend/',
     featured: true,
     preview: {
@@ -221,8 +229,9 @@ export const appsIndexEntries: AppIndexEntry[] = [
     name: 'Siturem',
     platform: 'iOS',
     stage: 'Prépublication',
+    tagline: 'Un cadre stable pour méditer.',
     summary:
-      'Une séance structurée, sans bruit autour. Siturem apporte un cadre stable pour pratiquer sans catalogue ni distraction.',
+      'Lancez une séance structurée avec un cadre clair, peu de réglages et une sortie progressive.',
     href: '/apps/siturem/',
     featured: false,
     preview: {
@@ -238,8 +247,9 @@ export const appsIndexEntries: AppIndexEntry[] = [
     name: 'Meeting Mode',
     platform: 'macOS',
     stage: 'Prépublication',
+    tagline: 'Préparer le Mac avant une réunion.',
     summary:
-      'Préparez votre Mac avant une réunion en un clic. Ouvrez ce qu’il faut, masquez le reste.',
+      'Ouvrez ce qu’il faut, masquez le reste, revenez à votre espace habituel après l’appel.',
     href: '/apps/meeting-mode/',
     featured: false,
     preview: {
@@ -664,10 +674,10 @@ export const focusOneContent: AppDetailContent = {
   href: '/apps/focus-one/',
   intro: 'Une seule promesse à tenir.',
   summary:
-    'Choisissez une habitude, cochez-la chaque jour, gardez votre série visible. FocusOne reste volontairement sobre : un engagement actif, un rappel possible, aucun réseau social.',
+    'Choisissez une habitude, cochez-la aujourd’hui, gardez votre série visible. FocusOne vous aide à tenir une seule chose à la fois, sans compte, sans réseau social, sans écran inutile.',
   heroLines: [
-    'Choisissez une habitude, cochez-la chaque jour, gardez votre série visible.',
-    'Un engagement actif, un rappel possible, aucun réseau social.',
+    'Choisissez une habitude, cochez-la aujourd’hui, gardez votre série visible.',
+    'Une seule chose à la fois, sans compte, sans réseau social, sans écran inutile.',
   ],
   overview: [
     'Beaucoup d’apps d’habitudes commencent avec une bonne intention, puis finissent par ressembler à des tableaux de bord : plusieurs routines à gérer, des graphiques partout, des objectifs empilés, des rappels qui s’accumulent.',

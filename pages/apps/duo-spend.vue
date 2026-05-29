@@ -27,10 +27,10 @@
               Être informé
             </AppLink>
             <AppLink
-              to="#privacy"
+              to="#duo-gallery-title"
               class="app-secondary-action app-detail__contact-cta"
             >
-              Voir la confidentialité
+              Voir l’app en images
             </AppLink>
           </div>
         </div>

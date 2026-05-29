@@ -1,5 +1,8 @@
 <template>
-  <article class="app-card" :class="`app-card--${props.variant}`">
+  <article
+    class="app-card"
+    :class="[`app-card--${props.variant}`, `app-card--${props.app.slug}`]"
+  >
     <figure class="app-card__visual">
       <AppLink
         :to="props.app.href"
@@ -53,11 +56,17 @@
     </figure>
 
     <div class="app-card__body">
-      <div class="app-card__chips" aria-label="Statut de l'app">
+      <div
+        class="app-card__chips"
+        :aria-label="statusLabel"
+      >
         <span class="app-card__chip">{{ props.app.stage }}</span>
         <span class="app-card__chip">{{ props.app.platform }}</span>
       </div>
       <h3 class="app-card__title">{{ props.app.name }}</h3>
+      <p v-if="props.app.tagline" class="app-card__tagline">
+        {{ props.app.tagline }}
+      </p>
       <p class="app-card__summary">{{ props.app.summary }}</p>
       <AppLink :to="props.app.href" class="app-card__link">
         {{ locale === 'fr' ? 'Découvrir' : 'Explore' }} {{ props.app.name }}
@@ -82,6 +91,10 @@ const props = withDefaults(
 )
 
 const locale = props.locale
+const statusLabel =
+  locale === 'fr'
+    ? `Statut de ${props.app.name}`
+    : `Status for ${props.app.name}`
 </script>
 
 <style lang="scss" scoped>
@@ -89,6 +102,7 @@ const locale = props.locale
 .app-card {
   display: grid;
   gap: 1rem;
+  align-content: start;
 }
 
 .app-card--featured {
@@ -107,11 +121,18 @@ const locale = props.locale
 .app-card__media-link {
   display: block;
   border-radius: 1.25rem;
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease;
 }
 
 .app-card__media-link:focus-visible {
   outline: 2px solid $vert;
   outline-offset: 3px;
+}
+
+.app-card__media-link:hover {
+  transform: translateY(-2px);
 }
 
 .app-card__media {
@@ -121,6 +142,7 @@ const locale = props.locale
   aspect-ratio: var(--app-card-ratio);
   position: relative;
   box-shadow: 0 16px 34px rgba(15, 23, 42, 0.06);
+  transition: box-shadow 0.16s ease;
 
   img {
     display: block;
@@ -128,6 +150,10 @@ const locale = props.locale
     height: 100%;
     object-fit: cover;
   }
+}
+
+.app-card__media-link:hover .app-card__media {
+  box-shadow: 0 20px 38px rgba(15, 23, 42, 0.1);
 }
 
 .app-card__media--placeholder {
@@ -146,6 +172,18 @@ const locale = props.locale
     object-position: center;
     padding: 0.9rem;
   }
+}
+
+.app-card--focus-one .app-card__media--contain {
+  background:
+    radial-gradient(circle at 50% 12%, rgba(13, 199, 99, 0.18), transparent 34%),
+    linear-gradient(180deg, #f8f9f6, #edf3ec);
+}
+
+.app-card--duo-spend .app-card__media--contain {
+  background:
+    radial-gradient(circle at 50% 12%, rgba(4, 57, 217, 0.14), transparent 34%),
+    linear-gradient(180deg, #f7f8fb, #eceff6);
 }
 
 .app-card__placeholder {
@@ -195,6 +233,14 @@ const locale = props.locale
   color: $gris1;
 }
 
+.app-card__tagline {
+  margin: 0;
+  color: $gris1;
+  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
 .app-card__summary {
   margin: 0;
   color: $gris2;
@@ -210,6 +256,10 @@ const locale = props.locale
   align-items: center;
   gap: 0.38rem;
   text-decoration: none;
+}
+
+.app-card__link:hover {
+  color: $gris1;
 }
 
 .app-card__link::after {

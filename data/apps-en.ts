@@ -13,13 +13,17 @@ import {
 
 export const appsIndexEnContent = {
   title: 'iOS and macOS apps',
-  heroTitle: 'Focused apps for keeping, sharing, practicing.',
+  heroTitle: 'Useful apps for keeping track.',
   heroSubtitle:
-    'FocusOne helps you keep one personal promise. DuoSpend clarifies shared expenses. Siturem and Meeting Mode are quieter projects built around the same idea: fewer screens, less noise, one clear action.',
-  manifestoTitle:
-    'A useful app should help quickly, then get out of the way.',
+    'A habit to keep, shared expenses to clarify, a session to start, a meeting to prepare. Each BeAbot app starts from a concrete use and gets straight to the point: open, act, move on.',
+  proofLine: [
+    'No unnecessary account',
+    'No social feed',
+    'No noisy dashboard',
+  ],
+  manifestoTitle: 'Open. Act. Move on.',
   manifestoBody:
-    'Each BeAbot app starts from a concrete use: marking today’s commitment, balancing an expense, starting a session or preparing a meeting. The interface should stay readable, the data limited, and the main action obvious.',
+    'These apps are not built to keep you scrolling. They make one action clearer, then get out of the way.',
   principles: [
     'one clear main action',
     'fewer screens',
@@ -28,9 +32,9 @@ export const appsIndexEnContent = {
     'no aggressive gamification',
     'data limited to the real use',
   ],
-  ctaTitle: 'Start with the app that matches what you want to handle today.',
+  ctaTitle: 'Choose what you want to keep clear.',
   ctaBody:
-    'Keep a habit, balance an expense, start a session, or prepare a meeting: each app keeps one clear scope.',
+    'A routine, an expense, a session: start from the concrete thing in front of you.',
   intro: [
     'Native iOS and macOS apps built to stay focused: less noise, fewer accounts, fewer unnecessary settings, more practical value.',
     'Each app starts from one clear use case and aims to stay useful over time: easy to open, quick to understand, and lightweight to use.',
@@ -45,13 +49,20 @@ export const appsIndexEnContent = {
 
 const enSummaryBySlug: Record<string, string> = {
   'duo-spend':
-    'DuoSpend clarifies expenses for a shared project: each person adds what they paid, the app shows what remains to be balanced.',
+    'Add the expenses for a shared project, see who paid what, and settle the balance simply.',
   'focus-one':
-    'A private streak counter for one personal promise: choose a habit, mark today as done, keep the streak visible.',
+    'A private counter to choose one routine, mark it done today and keep the streak visible.',
   'meeting-mode':
-    'Prepare your Mac for meetings in one click. Open what matters, hide the rest.',
+    'Open what matters, hide the rest, and return to your usual workspace after the call.',
   siturem:
-    'A structured session, without the noise. Meditation for autonomous practitioners, with a stable frame and few settings.',
+    'Start a structured session with a clear frame, few settings, and a progressive return.',
+}
+
+const enTaglineBySlug: Record<string, string> = {
+  'duo-spend': 'Shared expenses, without a spreadsheet.',
+  'focus-one': 'One habit you do not want to drop.',
+  'meeting-mode': 'Prepare your Mac before a meeting.',
+  siturem: 'A stable frame for meditation.',
 }
 
 export const appsIndexEnEntries: AppIndexEntry[] = appsIndexEntries.map(
@@ -90,6 +101,7 @@ export const appsIndexEnEntries: AppIndexEntry[] = appsIndexEntries.map(
                 }
               : entry.preview,
     stage: 'Pre-release',
+    tagline: enTaglineBySlug[entry.slug] ?? entry.tagline,
     summary: enSummaryBySlug[entry.slug] ?? entry.summary,
     href: `/en/apps/${entry.slug}/`,
   }),
@@ -445,10 +457,10 @@ export const focusOneEnContent: AppDetailContent = {
   stage: 'Pre-release',
   intro: 'One promise to keep.',
   summary:
-    'Choose one habit, mark it done each day, and keep your streak visible. FocusOne stays deliberately focused: one active commitment, an optional reminder, no social feed.',
+    'Choose one habit, mark it done today, and keep your streak visible. FocusOne helps you keep one thing at a time, with no account, no social feed, and no unnecessary screen.',
   heroLines: [
-    'Choose one habit, mark it done each day, and keep your streak visible.',
-    'One active commitment, an optional reminder, no social feed.',
+    'Choose one habit, mark it done today, and keep your streak visible.',
+    'One thing at a time, with no account, no social feed, and no unnecessary screen.',
   ],
   overview: [
     'Many habit apps start simple, then become dashboards: many routines, many charts, stacked goals, and notification overload.',

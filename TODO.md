@@ -15,6 +15,19 @@
 
 > Branche : `feature/apps-positioning-v2`
 
+### Dernier passage marketing et CTA — 29 mai 2026
+
+- [x] Appliquer Frontend Review : hub encore trop proche d'une grille portfolio, CTA FocusOne/DuoSpend trop faibles, liens confidentialité dans les héros à retirer
+- [x] Appliquer Frontend Skill : thèse visuelle, structure par usages, ligne de preuves, présence renforcée des captures FocusOne/DuoSpend
+- [x] Repositionner `/apps/` avec le H1 `Des apps utiles pour garder le fil.`, preuve courte, sections `À utiliser au quotidien`, `Ouvrir. Faire. Fermer.` et `Pour pratiquer ou préparer`
+- [x] Repositionner `/en/apps/` avec `Useful apps for keeping track.` et la même logique adaptée en anglais
+- [x] Remplacer les CTA héros FocusOne FR/EN par `Être informé` / `Get launch updates` vers le formulaire existant `#release-form`
+- [x] Remplacer les CTA héros DuoSpend FR/EN par `Être informé` / `Get launch updates` et `Voir l’app en images` / `View the app`
+- [x] Ne pas modifier les sections finales `Support` et `Confidentialité` / `Privacy` ni leurs ancres
+- [x] Renforcer `scripts/check-copy-quality.mjs` contre `friction`, `projets plus discrets`, `apps sobres`, `des apps simples`, `Voir la confidentialité` et `View privacy`
+- [x] Valider `npm run check:copy`, `npm run generate`, `npm test`, `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs`
+- [x] Contrôler en navigateur local desktop/mobile les six routes apps prioritaires
+
 ### Suivi éditorial et UX — 29 mai 2026
 
 - [x] Reconstruire le contexte depuis le dépôt local, vérifier la branche et constater l'absence de `docs/apps-positioning-plan.md`

@@ -13,14 +13,14 @@
           <p class="app-summary">{{ focusOneContent.summary }}</p>
 
           <div class="app-actions">
-            <AppLink to="#focus-gallery-title" class="app-primary-action">
-              Voir les captures
+            <AppLink to="#release-form" class="app-primary-action">
+              Être informé
             </AppLink>
             <AppLink
-              to="#focus-pricing-title"
+              to="#focus-gallery-title"
               class="app-secondary-action app-detail__contact-cta"
             >
-              Découvrir les tarifs
+              Voir l’app en images
             </AppLink>
           </div>
         </div>
