@@ -15,6 +15,16 @@
 
 > Branche : `feature/apps-positioning-v2`
 
+### Suivi éditorial et UX — 29 mai 2026
+
+- [x] Reconstruire le contexte depuis le dépôt local, vérifier la branche et constater l'absence de `docs/apps-positioning-plan.md`
+- [x] Retirer le wording public `friction` et les labels `apps principales` / `Core apps`
+- [x] Repositionner `/apps/` et `/en/apps/` autour de FocusOne, DuoSpend, Siturem et Meeting Mode, avec FocusOne puis DuoSpend en première lecture
+- [x] Corriger FocusOne FR/EN : H1 avec nom de l'app, CTA hero vers captures/tarifs, fil narratif plus concret, sobriété non mise en avant
+- [x] Corriger DuoSpend FR/EN : chapô orienté projet de couple, titre de section moins négatif, positionnement sans banque connectée ni tableur
+- [x] Ajouter `npm run check:copy` comme diagnostic local non bloquant, sans dépendance front ni ajout au bundle Nuxt
+- [x] Valider `npm run check:copy`, `npm test`, `npm run generate`, `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` et contrôle navigateur local des routes apps
+
 - [x] Relire `AGENTS.md`, `BRANCHING_STRATEGY.md`, `docs/apps-positioning-plan.md` et `PROJECT_STATE.md`
 - [x] Créer la branche depuis `dev` et vérifier `git status` + `git branch --show-current`
 - [x] Auditer les routes apps existantes et les fichiers partagés (`data/apps.ts`, `data/apps-en.ts`, composants apps, SEO)

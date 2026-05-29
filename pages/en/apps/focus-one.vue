@@ -9,29 +9,18 @@
       <section class="app-hero">
         <div class="app-hero__content">
           <p class="app-meta">{{ focusOneEnContent.stage }}</p>
-          <h1>One promise. One tap a day.</h1>
+          <h1>FocusOne, one promise to keep.</h1>
           <p class="app-summary">{{ focusOneEnContent.summary }}</p>
-          <div class="app-hero__text">
-            <p
-              v-for="line in focusOneEnContent.heroLines ?? [
-                focusOneEnContent.summary,
-              ]"
-              :key="line"
-              class="app-intro"
-            >
-              {{ line }}
-            </p>
-          </div>
 
           <div class="app-actions">
-            <AppLink to="#release-form" class="app-primary-action">
-              Get release updates
+            <AppLink to="#focus-gallery-title" class="app-primary-action">
+              View screenshots
             </AppLink>
             <AppLink
-              to="#privacy"
+              to="#focus-pricing-title"
               class="app-secondary-action app-detail__contact-cta"
             >
-              View privacy
+              See pricing
             </AppLink>
           </div>
         </div>
@@ -63,7 +52,7 @@
 
       <section class="app-surface" aria-labelledby="focus-overview-title">
         <div class="app-surface__copy">
-          <h2 id="focus-overview-title">The problem</h2>
+          <h2 id="focus-overview-title">Pick one thing</h2>
           <p v-for="paragraph in focusOneEnContent.overview" :key="paragraph">
             {{ paragraph }}
           </p>
@@ -94,9 +83,10 @@
 
       <section class="app-section" aria-labelledby="focus-details-title">
         <div class="section-heading">
-          <h2 id="focus-details-title">Key points</h2>
+          <h2 id="focus-details-title">Keep it visible</h2>
           <p>
-            Core markers to keep your routine on track without mental overload.
+            Core markers stay available without turning the app into a
+            dashboard.
           </p>
         </div>
 
@@ -129,9 +119,9 @@
 
       <section class="app-section" aria-labelledby="focus-loop-title">
         <div class="section-heading">
-          <h2 id="focus-loop-title">The loop</h2>
+          <h2 id="focus-loop-title">Mark today as done</h2>
           <p class="focus-loop-copy">
-            Open. Tap "Done". See your streak. Close.
+            Open. Mark today as done. See your streak. Close.
           </p>
         </div>
       </section>
@@ -168,8 +158,8 @@
         aria-labelledby="focus-gallery-title"
       >
         <div class="section-heading">
-          <h2 id="focus-gallery-title">App screenshots</h2>
-          <p>Main FocusOne screens.</p>
+          <h2 id="focus-gallery-title">Watch the streak build</h2>
+          <p>Main FocusOne screens, from habit setup to streak tracking.</p>
         </div>
 
         <div class="gallery-grid">
@@ -213,9 +203,7 @@
         aria-labelledby="focus-pricing-title"
       >
         <div class="section-heading">
-          <h2 id="focus-pricing-title">
-            {{ focusOneEnContent.pricing.title }}
-          </h2>
+          <h2 id="focus-pricing-title">Premium for more comfort</h2>
           <p>{{ focusOneEnContent.pricing.intro }}</p>
         </div>
 
@@ -405,14 +393,13 @@ const softwareApplicationSchema = buildSoftwareApplicationSchema({
 })
 
 const focusUseCases = [
-  'sobriety',
   'reading',
   'sport',
   'meditation',
   'writing',
-  'no social media',
   'sleep',
-  'quitting smoking',
+  'no social media',
+  'personal routine',
 ]
 
 const focusAvoids = [

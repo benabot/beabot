@@ -151,23 +151,23 @@ export interface BreadcrumbEntry {
 
 export const appsIndexContent = {
   title: 'Applications iOS et macOS',
-  heroTitle: 'Des apps sobres pour une seule chose à la fois.',
+  heroTitle: 'Des apps sobres pour tenir, partager, pratiquer.',
   heroSubtitle:
-    'FocusOne, DuoSpend et Siturem sont des applications natives Apple conçues pour réduire une friction précise : tenir une promesse, clarifier une dépense, lancer une séance.',
-  manifestoTitle:
-    "Une app ne devrait pas réclamer plus d'attention que le problème qu'elle résout.",
+    'FocusOne aide à tenir une promesse personnelle. DuoSpend clarifie les dépenses à deux. Siturem et Meeting Mode restent plus discrets, mais suivent la même idée : peu d’écrans, peu de bruit, une action claire.',
+  manifestoTitle: 'Une app utile doit aider vite, puis se faire oublier.',
   manifestoBody:
-    "Chaque app BeAbot part d'un moment simple : une dépense à équilibrer, une séance à commencer, une promesse à tenir. Le produit doit répondre vite, rester lisible, stocker peu de données et éviter les mécanismes d'engagement artificiel.",
+    "Chaque app BeAbot part d'un usage concret : cocher l'engagement du jour, équilibrer une dépense, préparer une séance ou une réunion. L'interface doit rester lisible, les données limitées, et l'action principale toujours évidente.",
   principles: [
-    'un périmètre volontairement limité',
-    'pas de compte obligatoire',
+    'une action principale claire',
+    'peu d’écrans',
+    "pas de compte obligatoire quand ce n'est pas nécessaire",
     'pas de réseau social',
     'pas de gamification agressive',
-    'une préférence pour le stockage local',
-    "une interface pensée pour disparaître après l'action",
+    'des données limitées à l’usage réel',
   ],
-  ctaTitle: 'Vous cherchez une app simple pour un moment précis ?',
-  ctaBody: 'Commencez par celle qui correspond à votre friction du jour.',
+  ctaTitle: 'Commencez par l’app qui correspond à votre usage du moment.',
+  ctaBody:
+    'Tenir une habitude, équilibrer une dépense, lancer une séance ou préparer une réunion : chaque app garde un périmètre clair.',
   intro: [
     'Des apps iOS et macOS conçues pour aller à l’essentiel : moins de bruit, moins de comptes, moins de réglages inutiles, plus de valeur concrète.',
     'Chaque app part d’un usage précis et cherche à rester agréable dans la durée : simple à ouvrir, rapide à comprendre, utile sans prendre toute la place.',
@@ -176,19 +176,36 @@ export const appsIndexContent = {
   seo: {
     title: 'Applications iPhone sobres et privées — BeAbot Apps',
     description:
-      'Découvrez les apps BeAbot : FocusOne, DuoSpend et Siturem. Des applications iOS sobres, privées et conçues pour faire une chose clairement, sans compte inutile ni distraction.',
+      'Découvrez les apps BeAbot : FocusOne, DuoSpend et Siturem. Des apps iOS sobres pour tenir une habitude, clarifier une dépense ou lancer une séance.',
     image: '/img/apps/duospend-vignette-apps.webp',
   },
 }
 
 export const appsIndexEntries: AppIndexEntry[] = [
   {
+    slug: 'focus-one',
+    name: 'FocusOne',
+    platform: 'iOS',
+    stage: 'Prépublication',
+    summary:
+      'Un compteur privé pour tenir une seule promesse personnelle : choisir une habitude, la cocher aujourd’hui, garder la série visible.',
+    href: '/apps/focus-one/',
+    featured: true,
+    preview: {
+      src: '/img/apps/focus-one/00-onboarding.webp',
+      alt: 'Écran de création d’une routine dans FocusOne sur iPhone',
+      available: true,
+      label: 'Capture temporaire',
+      fit: 'contain',
+    },
+  },
+  {
     slug: 'duo-spend',
     name: 'DuoSpend',
     platform: 'iOS',
     stage: 'Prépublication',
     summary:
-      "Qui doit combien à qui ? DuoSpend clarifie les dépenses partagées d'un projet à deux, sans tableur et sans friction relationnelle.",
+      "DuoSpend clarifie les dépenses d'un projet à deux : chacun ajoute ce qu'il a payé, l'app montre ce qu'il reste à équilibrer.",
     href: '/apps/duo-spend/',
     featured: true,
     preview: {
@@ -200,20 +217,20 @@ export const appsIndexEntries: AppIndexEntry[] = [
     },
   },
   {
-    slug: 'focus-one',
-    name: 'FocusOne',
+    slug: 'siturem',
+    name: 'Siturem',
     platform: 'iOS',
     stage: 'Prépublication',
     summary:
-      'Compteur privé pour tenir une seule promesse personnelle, un jour à la fois. Une promesse, un tap, une série à protéger.',
-    href: '/apps/focus-one/',
+      'Une séance structurée, sans bruit autour. Siturem apporte un cadre stable pour pratiquer sans catalogue ni distraction.',
+    href: '/apps/siturem/',
     featured: false,
     preview: {
-      src: '/img/apps/focus-one/00-onboarding.webp',
-      alt: 'Écran de création d’une routine dans FocusOne sur iPhone',
+      src: '/img/siturem/siturem-landing.webp',
+      alt: 'Aperçu de Siturem sur iPhone',
       available: true,
-      label: 'Capture temporaire',
-      fit: 'contain',
+      label: 'Capture actuelle',
+      fit: 'cover',
     },
   },
   {
@@ -222,29 +239,12 @@ export const appsIndexEntries: AppIndexEntry[] = [
     platform: 'macOS',
     stage: 'Prépublication',
     summary:
-      'Préparez votre Mac avant une réunion en un clic. Ouvrez le bon, masquez le reste.',
+      'Préparez votre Mac avant une réunion en un clic. Ouvrez ce qu’il faut, masquez le reste.',
     href: '/apps/meeting-mode/',
-    featured: true,
+    featured: false,
     preview: {
       src: '/img/apps/meeting-mode_vignette-apps.webp',
       alt: 'Aperçu de Meeting Mode sur macOS',
-      available: true,
-      label: 'Capture actuelle',
-      fit: 'cover',
-    },
-  },
-  {
-    slug: 'siturem',
-    name: 'Siturem',
-    platform: 'iOS',
-    stage: 'Prépublication',
-    summary:
-      'Une séance structurée, sans bruit autour. Siturem apporte un cadre stable pour pratiquer sans catalogue ni distraction.',
-    href: '/apps/siturem/',
-    featured: true,
-    preview: {
-      src: '/img/siturem/siturem-landing.webp',
-      alt: 'Aperçu de Siturem sur iPhone',
       available: true,
       label: 'Capture actuelle',
       fit: 'cover',
@@ -259,7 +259,7 @@ const focusOneFaqSections: AppFaqSection[] = [
       {
         question: 'FocusOne remplace-t-elle une app d’habitudes classique ?',
         answer:
-          'Pas exactement. FocusOne ne cherche pas à tout suivre. Elle sert à installer une seule routine à la fois, avec moins de friction.',
+          'Pas exactement. FocusOne ne cherche pas à tout suivre. Elle sert à installer une seule routine à la fois, avec un geste quotidien clair.',
       },
       {
         question: 'Pourquoi une seule habitude active ?',
@@ -664,10 +664,10 @@ export const focusOneContent: AppDetailContent = {
   href: '/apps/focus-one/',
   intro: 'Une seule promesse à tenir.',
   summary:
-    "FocusOne est un compteur privé pour garder visible l'engagement du jour : une habitude, un tap, une série.",
+    'Choisissez une habitude, cochez-la chaque jour, gardez votre série visible. FocusOne reste volontairement sobre : un engagement actif, un rappel possible, aucun réseau social.',
   heroLines: [
-    'FocusOne est un compteur privé pour tenir une seule promesse personnelle, un jour à la fois.',
-    'Choisissez une habitude, cochez-la en un geste, gardez votre série visible sans compte, sans réseau social et sans tableau de bord inutile.',
+    'Choisissez une habitude, cochez-la chaque jour, gardez votre série visible.',
+    'Un engagement actif, un rappel possible, aucun réseau social.',
   ],
   overview: [
     'Beaucoup d’apps d’habitudes commencent avec une bonne intention, puis finissent par ressembler à des tableaux de bord : plusieurs routines à gérer, des graphiques partout, des objectifs empilés, des rappels qui s’accumulent.',
@@ -730,7 +730,7 @@ export const focusOneContent: AppDetailContent = {
     {
       src: '/img/apps/focus-one/03-serie-active.webp',
       alt: 'Écran principal FocusOne avec validation de la routine du jour',
-      title: 'Cocher sans friction',
+      title: 'Cocher aujourd’hui',
       subtitle: 'L’action essentielle reste visible dès l’ouverture',
     },
     {
@@ -768,7 +768,7 @@ export const focusOneContent: AppDetailContent = {
       {
         name: 'Gratuit',
         price: '0 €',
-        description: 'Pour commencer une routine sans friction.',
+        description: 'Pour commencer une routine avec un geste clair.',
         items: [
           'Une habitude active',
           'Validation quotidienne',
@@ -894,22 +894,22 @@ export const duoSpendContent: AppDetailContent = {
   href: '/apps/duo-spend/',
   intro: 'Qui doit combien à qui ?',
   summary:
-    "DuoSpend clarifie les dépenses partagées d'un projet à deux : couple, voyage, mariage, travaux ou emménagement.",
+    "DuoSpend aide les couples à suivre les dépenses d'un projet commun : voyage, emménagement, mariage, travaux. Chacun ajoute ce qu’il a payé, l’app calcule ce qu’il reste à équilibrer.",
   heroLines: [
-    'DuoSpend vous aide à suivre les dépenses partagées sans tableur, sans calcul mental et sans discussion interminable.',
-    'Ajoutez une dépense, indiquez qui a payé, voyez l’équilibre. Chacun sait où il en est.',
+    "DuoSpend aide les couples à suivre les dépenses d'un projet commun : voyage, emménagement, mariage, travaux.",
+    "Chacun ajoute ce qu’il a payé, l’app calcule ce qu’il reste à équilibrer, sans banque connectée et sans tableur.",
   ],
   overview: [
-    'Les petites dépenses partagées s’accumulent vite : courses, restaurant, essence, abonnement, week-end, vacances, frais de colocation ou projet de couple.',
+    'Les dépenses d’un projet à deux s’accumulent vite : voyage, emménagement, mariage, travaux, week-end ou vacances.',
     'Au début, tout semble évident. Puis on oublie qui a payé quoi, on reporte les calculs, on garde une note dans un coin, ou on finit dans un tableur que personne n’a envie de tenir.',
     'DuoSpend simplifie ce suivi : chaque dépense est ajoutée en quelques secondes, les soldes restent lisibles, et chacun sait ce qu’il doit ou ce qu’il a avancé.',
   ],
   detailPoints: [
     {
       label: 'Dépenses partagées',
-      value: 'Courses, sorties, trajets, abonnements, vacances.',
+      value: 'Voyage, mariage, travaux, emménagement.',
       description:
-        'Ajoutez les frais du quotidien ou d’un projet commun en quelques gestes.',
+        'Ajoutez les frais d’un projet commun en quelques gestes.',
       featured: true,
     },
     {
@@ -998,7 +998,7 @@ export const duoSpendContent: AppDetailContent = {
       {
         name: 'Gratuit',
         price: '0 €',
-        description: 'Pour gérer un premier projet partagé sans friction.',
+        description: 'Pour gérer un premier projet partagé clairement.',
         items: ['1 projet complet', 'Fonctions essentielles incluses'],
       },
       {
@@ -1052,9 +1052,9 @@ export const duoSpendContent: AppDetailContent = {
     secondaryTo: '/contact/?app=duo-spend&type=support',
   },
   seo: {
-    title: 'DuoSpend — App de dépenses partagées pour couple et amis',
+    title: 'DuoSpend — App de dépenses partagées pour couples',
     description:
-      'DuoSpend est une app pour suivre les dépenses partagées à deux : couple, colocation, amis, vacances ou frais du quotidien. Ajoutez une dépense, voyez qui doit quoi.',
+      'DuoSpend aide les couples à suivre les dépenses d’un projet commun : voyage, emménagement, mariage ou travaux, sans banque connectée ni tableur.',
     image: '/img/apps/duospend-vignette-apps.webp',
   },
 }
@@ -1070,7 +1070,7 @@ export const situremContent: AppDetailContent = {
     'Méditation structurée pour pratiquants autonomes, sans catalogue de contenus ni promesse bien-être excessive.',
   overview: [
     "La plupart des apps de méditation misent sur le contenu guidé, les programmes, les notifications et la gamification. Pour un pratiquant déjà autonome, cela crée souvent plus de bruit que d'aide.",
-    "Siturem prend la direction inverse : une séance prête à l'emploi, structurée en trois temps, avec peu d'options, peu de friction et aucune surcharge éditoriale. L'app ne cherche pas à enseigner la méditation. Elle sert à installer un cadre fiable et à s'effacer derrière la pratique.",
+    "Siturem prend la direction inverse : une séance prête à l'emploi, structurée en trois temps, avec peu d'options et aucune surcharge éditoriale. L'app ne cherche pas à enseigner la méditation. Elle sert à installer un cadre fiable et à s'effacer derrière la pratique.",
   ],
   detailPoints: [
     {
@@ -1125,7 +1125,7 @@ export const situremContent: AppDetailContent = {
       src: '/img/siturem/siturem-intro-1.webp',
       alt: 'Première étape d’introduction dans Siturem',
       title: 'Introduction',
-      subtitle: 'Entrer dans la séance sans friction',
+      subtitle: 'Entrer dans la séance sans bruit',
     },
     {
       src: '/img/siturem/siturem-intro-2.webp',

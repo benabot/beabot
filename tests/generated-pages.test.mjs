@@ -97,16 +97,16 @@ for (const page of pages) {
     if (page.route === '/apps/focus-one/') {
       assert.match(
         getTitle(html),
-        /^FocusOne — App iPhone pour suivre une seule habitude \| BeAbot$/,
+        /^FocusOne — compteur privé d’habitude et de série \| BeAbot$/,
       )
       assert.equal(
         getMetaContent(html, 'name', 'description'),
-        'FocusOne est une app iPhone minimaliste pour installer une seule micro-habitude à la fois : routine quotidienne, streak, widgets et rappels sobres.',
+        'FocusOne vous aide à tenir une seule promesse personnelle à la fois. Choisissez une habitude, cochez-la chaque jour et suivez votre série sans compte ni réseau social.',
       )
-      assert.match(html, /L’app iPhone qui vous aide à installer une routine/)
+      assert.match(html, /FocusOne, une seule promesse à tenir/)
       assert.match(html, /À force de vouloir tout suivre/)
       assert.match(html, /Votre journée ne s’arrête pas forcément à minuit/)
-      assert.match(html, /Ce que débloque Premium/)
+      assert.match(html, /Premium pour plus de confort/)
       assert.match(html, /Joker mensuel pour protéger votre série/)
       assert.match(html, /14,99 € \/ an ou 39,99 € en achat unique/)
       assert.match(html, /\/img\/apps\/focus-one\/02-creation\.webp/)
@@ -153,14 +153,14 @@ for (const page of pages) {
     if (page.route === '/apps/duo-spend/') {
       assert.match(
         getTitle(html),
-        /^DuoSpend — App de dépenses partagées pour couple et amis \| BeAbot$/,
+        /^DuoSpend — App de dépenses partagées pour couples \| BeAbot$/,
       )
       assert.equal(
         getMetaContent(html, 'name', 'description'),
-        'DuoSpend est une app pour suivre les dépenses partagées à deux : couple, colocation, amis, vacances ou frais du quotidien. Ajoutez une dépense, voyez qui doit quoi.',
+        'DuoSpend aide les couples à suivre les dépenses d’un projet commun : voyage, emménagement, mariage ou travaux, sans banque connectée ni tableur.',
       )
-      assert.match(html, /DuoSpend — Gérez vos dépenses à deux simplement/)
-      assert.match(html, /sans tableur, sans calcul mental/)
+      assert.match(html, /DuoSpend — Qui doit combien à qui/)
+      assert.match(html, /sans banque connectée et sans tableur/)
       assert.match(html, /qui a payé quoi/)
       assert.match(html, /Dépenses partagées/)
       assert.match(html, /DuoSpend Pro/)
@@ -185,8 +185,9 @@ for (const page of pages) {
     if (page.route === '/en/apps/focus-one/') {
       assert.match(
         getTitle(html),
-        /^FocusOne — iPhone app to build one habit at a time \| BeAbot$/,
+        /^FocusOne — Private Habit and Streak Tracker \| BeAbot$/,
       )
+      assert.match(html, /FocusOne, one promise to keep/)
       assert.match(html, /id=\"support\"/)
       assert.match(
         html,
@@ -204,8 +205,9 @@ for (const page of pages) {
     if (page.route === '/en/apps/duo-spend/') {
       assert.match(
         getTitle(html),
-        /^DuoSpend — shared expenses app for couples and roommates \| BeAbot$/,
+        /^DuoSpend — Shared expenses app for couples \| BeAbot$/,
       )
+      assert.match(html, /For projects you share as a couple/)
       assert.match(html, /id=\"support\"/)
       assert.match(
         html,
@@ -241,12 +243,12 @@ for (const page of pages) {
     }
 
     if (page.route === '/apps/') {
-      assert.match(html, /À la une/)
-      assert.match(html, /Deux apps en prépublication/)
-      assert.match(html, /Autres apps/)
+      assert.match(html, /Des apps sobres pour tenir, partager, pratiquer/)
+      assert.match(html, /Deux usages immédiats/)
+      assert.match(html, /Siturem et Meeting Mode/)
       assert.match(
         html,
-        /App iPhone minimaliste pour suivre une seule micro-habitude à la fois\. Routine quotidienne, streak, rappels locaux et widgets, sans compte ni publicité\./,
+        /Un compteur privé pour tenir une seule promesse personnelle/,
       )
     }
 

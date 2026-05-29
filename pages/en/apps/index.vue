@@ -15,6 +15,29 @@
         </div>
       </section>
 
+      <section class="apps-section" aria-labelledby="apps-featured-title">
+        <div class="apps-section__heading">
+          <h2 id="apps-featured-title" class="apps-section__title">
+            Two immediate uses
+          </h2>
+          <p>
+            FocusOne for keeping a habit. DuoSpend for clarifying expenses in a
+            shared project.
+          </p>
+        </div>
+
+        <div class="apps-featured-grid">
+          <AppCard
+            v-for="app in featuredApps"
+            :key="app.slug"
+            :app="app"
+            variant="featured"
+            locale="en"
+            class="apps-featured-grid__item"
+          />
+        </div>
+      </section>
+
       <section class="apps-manifesto" aria-labelledby="apps-manifesto-title">
         <h2 id="apps-manifesto-title" class="apps-manifesto__title">
           {{ appsIndexEnContent.manifestoTitle }}
@@ -32,32 +55,19 @@
         </ul>
       </section>
 
-      <section class="apps-section" aria-labelledby="apps-featured-title">
-        <div class="apps-section__heading">
-          <h2 id="apps-featured-title" class="apps-section__title">
-            Core apps
-          </h2>
-          <p>Start from the friction you want to reduce today.</p>
-        </div>
-
-        <div class="apps-featured-grid">
-          <AppCard
-            v-for="app in featuredApps"
-            :key="app.slug"
-            :app="app"
-            variant="featured"
-            locale="en"
-            class="apps-featured-grid__item"
-          />
-        </div>
-      </section>
-
       <section
         class="apps-section apps-section--secondary"
         aria-labelledby="apps-other-title"
       >
         <div class="apps-section__heading">
-          <h2 id="apps-other-title" class="apps-section__title">Other apps</h2>
+          <h2 id="apps-other-title" class="apps-section__title">
+            Siturem and Meeting Mode
+          </h2>
+          <p>
+            Two quieter projects built around the same principle: start a
+            session, prepare a meeting, then let the use come before the
+            interface.
+          </p>
         </div>
 
         <div class="apps-secondary-grid">
@@ -268,11 +278,14 @@ useHead({
 .apps-manifesto {
   display: grid;
   gap: 0.85rem;
-  margin-bottom: clamp(1.9rem, 4vw, 2.9rem);
+  margin: clamp(2.4rem, 5vw, 3.8rem) 0;
   padding: clamp(1.05rem, 2.6vw, 1.45rem);
-  border-radius: 1rem;
-  background: rgba(243, 244, 246, 0.75);
-  border: 1px solid rgba(15, 23, 42, 0.05);
+  border-block: 1px solid rgba(15, 23, 42, 0.08);
+  background: linear-gradient(
+    90deg,
+    rgba(243, 244, 246, 0.82),
+    rgba(255, 255, 255, 0)
+  );
 }
 
 .apps-manifesto__title {
@@ -343,7 +356,7 @@ useHead({
 
 .apps-featured-grid {
   @media (min-width: 900px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
     align-items: stretch;
   }
 }

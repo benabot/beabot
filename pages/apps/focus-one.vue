@@ -9,29 +9,18 @@
       <section class="app-hero">
         <div class="app-hero__content">
           <p class="app-meta">{{ focusOneContent.stage }}</p>
-          <h1>Une seule promesse à tenir.</h1>
+          <h1>FocusOne, une seule promesse à tenir.</h1>
           <p class="app-summary">{{ focusOneContent.summary }}</p>
-          <div class="app-hero__text">
-            <p
-              v-for="line in focusOneContent.heroLines ?? [
-                focusOneContent.summary,
-              ]"
-              :key="line"
-              class="app-intro"
-            >
-              {{ line }}
-            </p>
-          </div>
 
           <div class="app-actions">
-            <AppLink to="#release-form" class="app-primary-action">
-              Être informé
+            <AppLink to="#focus-gallery-title" class="app-primary-action">
+              Voir les captures
             </AppLink>
             <AppLink
-              to="#privacy"
+              to="#focus-pricing-title"
               class="app-secondary-action app-detail__contact-cta"
             >
-              Voir la confidentialité
+              Découvrir les tarifs
             </AppLink>
           </div>
         </div>
@@ -63,7 +52,7 @@
 
       <section class="app-surface" aria-labelledby="focus-overview-title">
         <div class="app-surface__copy">
-          <h2 id="focus-overview-title">Le problème</h2>
+          <h2 id="focus-overview-title">Choisir une seule chose</h2>
           <p v-for="paragraph in focusOneContent.overview" :key="paragraph">
             {{ paragraph }}
           </p>
@@ -94,10 +83,10 @@
 
       <section class="app-section" aria-labelledby="focus-details-title">
         <div class="section-heading">
-          <h2 id="focus-details-title">Points clés</h2>
+          <h2 id="focus-details-title">La rendre visible</h2>
           <p>
-            Les repères de base pour tenir une routine sans y penser toute la
-            journée.
+            Les repères de base restent accessibles sans transformer l’app en
+            tableau de bord.
           </p>
         </div>
 
@@ -123,16 +112,16 @@
           <p>
             Les apps d'habitudes échouent souvent parce qu'elles ajoutent trop
             d'objectifs. FocusOne prend le chemin inverse : une seule habitude
-            active, pour réduire la dispersion.
+            active, pour garder l’action du jour au premier plan.
           </p>
         </div>
       </section>
 
       <section class="app-section" aria-labelledby="focus-loop-title">
         <div class="section-heading">
-          <h2 id="focus-loop-title">La boucle</h2>
+          <h2 id="focus-loop-title">La cocher aujourd’hui</h2>
           <p class="focus-loop-copy">
-            Ouvrir. Taper "Fait". Voir la série. Fermer.
+            Ouvrir. Cocher aujourd’hui. Voir la série. Fermer.
           </p>
         </div>
       </section>
@@ -169,8 +158,8 @@
         aria-labelledby="focus-gallery-title"
       >
         <div class="section-heading">
-          <h2 id="focus-gallery-title">L'app en images</h2>
-          <p>Les principaux écrans de FocusOne.</p>
+          <h2 id="focus-gallery-title">Voir la série se construire</h2>
+          <p>Les principaux écrans de FocusOne, de la routine au streak.</p>
         </div>
 
         <div class="gallery-grid">
@@ -211,7 +200,7 @@
         aria-labelledby="focus-pricing-title"
       >
         <div class="section-heading">
-          <h2 id="focus-pricing-title">{{ focusOneContent.pricing.title }}</h2>
+          <h2 id="focus-pricing-title">Premium pour plus de confort</h2>
           <p>{{ focusOneContent.pricing.intro }}</p>
         </div>
 
@@ -400,14 +389,13 @@ const softwareApplicationSchema = buildSoftwareApplicationSchema({
 })
 
 const focusUseCases = [
-  'sobriété',
   'lecture',
   'sport',
   'méditation',
   'écriture',
-  'no social media',
   'sommeil',
-  'arrêt tabac',
+  'no social media',
+  'routine personnelle',
 ]
 
 const focusAvoids = [

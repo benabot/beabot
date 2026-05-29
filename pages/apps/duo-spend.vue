@@ -62,7 +62,9 @@
 
       <section class="app-surface" aria-labelledby="duo-overview-title">
         <div class="app-surface__copy">
-          <h2 id="duo-overview-title">Le problème</h2>
+          <h2 id="duo-overview-title">
+            Pour les projets qu’on partage à deux
+          </h2>
           <p v-for="paragraph in duoSpendContent.overview" :key="paragraph">
             {{ paragraph }}
           </p>
@@ -73,7 +75,7 @@
           <dl class="app-surface__list app-surface__list--cards">
             <div>
               <dt>Usage</dt>
-              <dd>Dépenses partagées à deux</dd>
+              <dd>Projet de couple</dd>
             </div>
             <div>
               <dt>Principe</dt>

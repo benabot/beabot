@@ -25,6 +25,27 @@
 
 Branche : `feature/apps-positioning-v2`
 
+#### Suivi éditorial et UX — 29 mai 2026
+
+- Périmètre :
+  - correction éditoriale des hubs apps FR/EN, FocusOne FR/EN et DuoSpend FR/EN ;
+  - conservation des sections finales `Support` et `Confidentialité` / `Privacy` sur FocusOne et DuoSpend ;
+  - ajout d'un diagnostic local `npm run check:copy`, non bloquant et sans dépendance front.
+- Changements livrés :
+  - wording public `friction`, `apps principales`, `Core apps` et titres `Le problème` / `The problem` retirés des pages concernées ;
+  - `/apps/` et `/en/apps/` réordonnées autour de FocusOne, DuoSpend, Siturem puis Meeting Mode, avec FocusOne et DuoSpend plus visibles ;
+  - FocusOne FR/EN recentré sur une promesse à tenir, avec CTA hero vers captures et tarifs ;
+  - DuoSpend FR/EN recentré sur les projets de couple : voyage, emménagement, mariage, travaux, sans banque connectée ni tableur.
+- Validation locale :
+  - `npm run check:copy` : OK, warnings de diagnostic restants sur textes légaux/répétitions structurelles ;
+  - `npm test` : OK, 49 pre-build checks et 33 tests Node après génération ;
+  - `npm run generate` : OK, 92 routes prerendered ;
+  - `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK ;
+  - contrôle navigateur local sur `/apps/`, `/en/apps/`, FocusOne FR/EN et DuoSpend FR/EN : H1 attendus, aucun wording `friction`, pas de titres `Le problème` / `The problem`, pas d'erreur console.
+- Notes :
+  - `docs/apps-positioning-plan.md` est absent du dépôt local ; aucun fichier de remplacement exact trouvé ;
+  - `textlens` n'a pas été ajouté : Context7 ne retourne pas de bibliothèque TextLens identifiable, seulement des outils voisins comme `textlint`.
+
 - Périmètre :
   - uniformisation des pages apps existantes (`/apps/`, `/en/apps/`, produits FR/EN) sans création de routes ;
   - priorité éditoriale sur `FocusOne` FR/EN, avec renforcement du positionnement \"one promise / one tap\".

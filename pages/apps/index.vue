@@ -13,24 +13,15 @@
         </div>
       </section>
 
-      <section class="apps-manifesto" aria-labelledby="apps-manifesto-title">
-        <h2 id="apps-manifesto-title" class="apps-manifesto__title">
-          {{ appsIndexContent.manifestoTitle }}
-        </h2>
-        <p class="apps-manifesto__body">{{ appsIndexContent.manifestoBody }}</p>
-        <ul class="apps-manifesto__list">
-          <li v-for="principle in appsIndexContent.principles" :key="principle">
-            {{ principle }}
-          </li>
-        </ul>
-      </section>
-
       <section class="apps-section" aria-labelledby="apps-featured-title">
         <div class="apps-section__heading">
           <h2 id="apps-featured-title" class="apps-section__title">
-            Apps principales
+            Deux usages immédiats
           </h2>
-          <p>Commencez par la friction que vous voulez résoudre aujourd'hui.</p>
+          <p>
+            FocusOne pour tenir une habitude. DuoSpend pour clarifier les
+            dépenses d’un projet à deux.
+          </p>
         </div>
 
         <div class="apps-featured-grid">
@@ -44,12 +35,31 @@
         </div>
       </section>
 
+      <section class="apps-manifesto" aria-labelledby="apps-manifesto-title">
+        <h2 id="apps-manifesto-title" class="apps-manifesto__title">
+          {{ appsIndexContent.manifestoTitle }}
+        </h2>
+        <p class="apps-manifesto__body">{{ appsIndexContent.manifestoBody }}</p>
+        <ul class="apps-manifesto__list">
+          <li v-for="principle in appsIndexContent.principles" :key="principle">
+            {{ principle }}
+          </li>
+        </ul>
+      </section>
+
       <section
         class="apps-section apps-section--secondary"
         aria-labelledby="apps-other-title"
       >
         <div class="apps-section__heading">
-          <h2 id="apps-other-title" class="apps-section__title">Autres apps</h2>
+          <h2 id="apps-other-title" class="apps-section__title">
+            Siturem et Meeting Mode
+          </h2>
+          <p>
+            Deux projets plus discrets, construits autour du même principe :
+            lancer une séance, préparer une réunion, puis laisser l’usage passer
+            devant l’interface.
+          </p>
         </div>
 
         <div class="apps-secondary-grid">
@@ -257,11 +267,14 @@ useHead({
 .apps-manifesto {
   display: grid;
   gap: 0.85rem;
-  margin-bottom: clamp(1.9rem, 4vw, 2.9rem);
+  margin: clamp(2.4rem, 5vw, 3.8rem) 0;
   padding: clamp(1.05rem, 2.6vw, 1.45rem);
-  border-radius: 1rem;
-  background: rgba(243, 244, 246, 0.75);
-  border: 1px solid rgba(15, 23, 42, 0.05);
+  border-block: 1px solid rgba(15, 23, 42, 0.08);
+  background: linear-gradient(
+    90deg,
+    rgba(243, 244, 246, 0.82),
+    rgba(255, 255, 255, 0)
+  );
 }
 
 .apps-manifesto__title {
@@ -332,7 +345,7 @@ useHead({
 
 .apps-featured-grid {
   @media (min-width: 900px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
     align-items: stretch;
   }
 }

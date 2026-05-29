@@ -13,23 +13,24 @@ import {
 
 export const appsIndexEnContent = {
   title: 'iOS and macOS apps',
-  heroTitle: 'Quiet apps for one clear job.',
+  heroTitle: 'Focused apps for keeping, sharing, practicing.',
   heroSubtitle:
-    'FocusOne, DuoSpend and Siturem are Apple-native apps built to reduce one precise friction: keeping a promise, settling an expense, starting a session.',
+    'FocusOne helps you keep one personal promise. DuoSpend clarifies shared expenses. Siturem and Meeting Mode are quieter projects built around the same idea: fewer screens, less noise, one clear action.',
   manifestoTitle:
-    'An app should not demand more attention than the problem it solves.',
+    'A useful app should help quickly, then get out of the way.',
   manifestoBody:
-    'Each BeAbot app starts from a simple moment: a shared expense to clarify, a session to begin, a promise to keep. The product should answer quickly, stay readable, store little data and avoid artificial engagement mechanics.',
+    'Each BeAbot app starts from a concrete use: marking today’s commitment, balancing an expense, starting a session or preparing a meeting. The interface should stay readable, the data limited, and the main action obvious.',
   principles: [
-    'a deliberately limited scope',
-    'no mandatory account',
+    'one clear main action',
+    'fewer screens',
+    'no mandatory account when it is not needed',
     'no social feed',
     'no aggressive gamification',
-    'a preference for local-first data',
-    'an interface designed to disappear after the action',
+    'data limited to the real use',
   ],
-  ctaTitle: 'Looking for a simple app for one specific moment?',
-  ctaBody: "Start with the one that matches today's friction.",
+  ctaTitle: 'Start with the app that matches what you want to handle today.',
+  ctaBody:
+    'Keep a habit, balance an expense, start a session, or prepare a meeting: each app keeps one clear scope.',
   intro: [
     'Native iOS and macOS apps built to stay focused: less noise, fewer accounts, fewer unnecessary settings, more practical value.',
     'Each app starts from one clear use case and aims to stay useful over time: easy to open, quick to understand, and lightweight to use.',
@@ -44,13 +45,13 @@ export const appsIndexEnContent = {
 
 const enSummaryBySlug: Record<string, string> = {
   'duo-spend':
-    'Who owes what? DuoSpend clarifies shared project expenses for two people, especially couples.',
+    'DuoSpend clarifies expenses for a shared project: each person adds what they paid, the app shows what remains to be balanced.',
   'focus-one':
-    'Private streak counter for one personal promise at a time. One promise. One tap a day.',
+    'A private streak counter for one personal promise: choose a habit, mark today as done, keep the streak visible.',
   'meeting-mode':
     'Prepare your Mac for meetings in one click. Open what matters, hide the rest.',
   siturem:
-    'A structured session, without the noise. Meditation for autonomous practitioners, with a stable frame and minimal friction.',
+    'A structured session, without the noise. Meditation for autonomous practitioners, with a stable frame and few settings.',
 }
 
 export const appsIndexEnEntries: AppIndexEntry[] = appsIndexEntries.map(
@@ -101,7 +102,7 @@ const focusOneFaqSectionsEn: AppFaqSection[] = [
       {
         question: 'Is FocusOne a full habits app replacement?',
         answer:
-          'Not exactly. FocusOne does not try to track everything. It helps you build one routine at a time with less friction.',
+          'Not exactly. FocusOne does not try to track everything. It helps you build one routine at a time with one clear daily gesture.',
       },
       {
         question: 'Why only one active habit?',
@@ -442,12 +443,12 @@ export const focusOneEnContent: AppDetailContent = {
   ...focusOneContent,
   href: '/en/apps/focus-one/',
   stage: 'Pre-release',
-  intro: 'One promise. One tap a day.',
+  intro: 'One promise to keep.',
   summary:
-    'FocusOne is a private streak counter for one daily commitment. Pick one habit, mark it done, and keep your streak visible without accounts, feeds or noisy dashboards.',
+    'Choose one habit, mark it done each day, and keep your streak visible. FocusOne stays deliberately focused: one active commitment, an optional reminder, no social feed.',
   heroLines: [
-    'FocusOne is a private counter for keeping one personal promise, one day at a time.',
-    'Choose one habit, mark it done, and keep your streak visible without accounts, feeds, or noisy dashboards.',
+    'Choose one habit, mark it done each day, and keep your streak visible.',
+    'One active commitment, an optional reminder, no social feed.',
   ],
   overview: [
     'Many habit apps start simple, then become dashboards: many routines, many charts, stacked goals, and notification overload.',
@@ -505,7 +506,7 @@ export const focusOneEnContent: AppDetailContent = {
     {
       src: '/img/apps/focus-one/03-serie-active_en.webp',
       alt: 'FocusOne main screen with daily check-in',
-      title: 'Check in without friction',
+      title: 'Mark today as done',
       subtitle: 'The key action is visible right away',
     },
     {
@@ -545,7 +546,7 @@ export const focusOneEnContent: AppDetailContent = {
           {
             name: 'Free',
             price: '€0',
-            description: 'Start a routine with no friction.',
+            description: 'Start a routine with one clear gesture.',
             items: [
               'One active habit',
               'Daily check-in',
@@ -623,7 +624,7 @@ export const focusOneEnContent: AppDetailContent = {
     secondaryTo: '/en/contact/?app=focus-one&type=support',
   },
   seo: {
-    title: 'FocusOne — Private Habit & Streak Tracker',
+    title: 'FocusOne — Private Habit and Streak Tracker',
     description:
       'FocusOne helps you keep one personal promise at a time. Pick a habit, mark it done every day and track your streak without accounts, feeds or noisy dashboards.',
     image: focusOneContent.seo.image,
@@ -636,21 +637,21 @@ export const duoSpendEnContent: AppDetailContent = {
   stage: 'Pre-release',
   intro: 'Who owes what?',
   summary:
-    'Shared project expenses for couples, with clear balances and no spreadsheet overhead.',
+    'DuoSpend helps couples track expenses for a shared project: a trip, a move, a wedding or home improvements. Each person adds what they paid, and the app shows what remains to be balanced.',
   heroLines: [
-    'DuoSpend helps you track shared expenses without spreadsheets, mental math, or endless conversations.',
-    'Add an expense, set who paid, and see the balance instantly. Everyone stays aligned.',
+    'DuoSpend helps couples track expenses for a shared project: a trip, a move, a wedding or home improvements.',
+    'Each person adds what they paid, and the app shows what remains to be balanced, without a connected bank or spreadsheet.',
   ],
   overview: [
-    'Shared costs add up quickly: groceries, restaurants, fuel, subscriptions, trips, moving, or project expenses.',
+    'Shared project expenses add up quickly: a trip, a move, a wedding, home improvements, a weekend or holidays.',
     'At first everything seems obvious, then who-paid-what gets fuzzy and manual calculations pile up.',
     'DuoSpend keeps the flow simple: add expenses in seconds and keep balances readable at all times.',
   ],
   detailPoints: [
     {
       label: 'Shared expenses',
-      value: 'Groceries, outings, transport, subscriptions, trips.',
-      description: 'Add everyday or project expenses in a few taps.',
+      value: 'Trip, wedding, home improvements, move.',
+      description: 'Add shared project expenses in a few taps.',
       featured: true,
     },
     {
@@ -661,9 +662,9 @@ export const duoSpendEnContent: AppDetailContent = {
     },
     {
       label: 'Made for two',
-      value: 'Couples, roommates, friends, or family.',
+      value: 'Couples and shared projects.',
       description:
-        'A lightweight flow to keep accounts clear without accounting complexity.',
+        'A lightweight flow to keep balances clear without accounting complexity.',
     },
     {
       label: 'No spreadsheet',
@@ -732,7 +733,7 @@ export const duoSpendEnContent: AppDetailContent = {
           {
             name: 'Free',
             price: '€0',
-            description: 'Track your first shared project with no friction.',
+            description: 'Track your first shared project clearly.',
             items: ['1 full project', 'Essential features included'],
           },
           {
@@ -758,9 +759,9 @@ export const duoSpendEnContent: AppDetailContent = {
     secondaryTo: '/en/contact/?app=duo-spend&type=support',
   },
   seo: {
-    title: 'DuoSpend — shared expenses app for couples and roommates',
+    title: 'DuoSpend — Shared expenses app for couples',
     description:
-      'DuoSpend is an iOS app to track shared expenses between two people and keep balances clear without spreadsheets.',
+      'DuoSpend helps couples track expenses for a trip, move, wedding or home project, with clear balances and no connected bank or spreadsheet.',
     image: duoSpendContent.seo.image,
   },
 }
@@ -774,7 +775,7 @@ export const situremEnContent: AppDetailContent = {
     'Structured meditation for autonomous practitioners, with a stable frame and minimal options.',
   overview: [
     'Most meditation apps prioritize guided content, programs, frequent notifications, and gamification. For autonomous practitioners, that often adds noise.',
-    'Siturem takes the opposite path: a ready-to-use three-phase session, limited options, minimal friction, and no content overload.',
+    'Siturem takes the opposite path: a ready-to-use three-phase session, limited options, and no content overload.',
   ],
   detailPoints: [
     {
@@ -820,7 +821,7 @@ export const situremEnContent: AppDetailContent = {
       src: '/img/siturem/siturem-intro-1.webp',
       alt: 'First intro step in Siturem',
       title: 'Introduction',
-      subtitle: 'Enter the session with minimal friction',
+      subtitle: 'Enter the session without extra noise',
     },
     {
       src: '/img/siturem/siturem-intro-2.webp',

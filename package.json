@@ -12,6 +12,7 @@
     "test": "node scripts/pre-build-check.js && npm run test:content && npm run test:node",
     "test:content": "node scripts/check-content-queries.mjs",
     "test:node": "node --test tests/*.test.mjs",
+    "check:copy": "node scripts/check-copy-quality.mjs",
     "prebuild": "npm run test",
     "pregenerate": "npm run test",
     "lint:js": "eslint .",
