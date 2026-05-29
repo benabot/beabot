@@ -154,7 +154,7 @@ export const appsIndexContent = {
   title: 'Applications iOS et macOS',
   heroTitle: 'Des apps utiles pour garder le fil.',
   heroSubtitle:
-    'Une habitude à tenir, des dépenses à clarifier, une séance à lancer, une réunion à préparer. Chaque app BeAbot part d’un usage concret et va droit au but : ouvrir, agir, continuer sa journée.',
+    'Une habitude à tenir. Des dépenses à clarifier. Une séance à lancer. Une réunion à préparer. Des apps courtes, directes, pensées pour faire une chose sans vous retenir.',
   proofLine: [
     'Sans compte inutile',
     'Sans réseau social',
@@ -162,7 +162,7 @@ export const appsIndexContent = {
   ],
   manifestoTitle: 'Ouvrir. Faire. Fermer.',
   manifestoBody:
-    'Ces apps ne cherchent pas à vous retenir. Elles doivent rendre une action plus claire, puis disparaître.',
+    'Ces apps ne cherchent pas à vous retenir. Elles rendent une action plus claire, puis disparaissent.',
   principles: [
     'une action principale claire',
     'peu d’écrans',
@@ -171,9 +171,8 @@ export const appsIndexContent = {
     'pas de gamification agressive',
     'des données limitées à l’usage réel',
   ],
-  ctaTitle: 'Choisissez ce que vous voulez garder au clair.',
-  ctaBody:
-    'Une routine, une dépense, une séance : partez du besoin le plus concret.',
+  ctaTitle: 'Chaque app a sa page dédiée.',
+  ctaBody: 'Vous y trouverez les captures, les tarifs et les informations pratiques.',
   intro: [
     'Des apps iOS et macOS conçues pour aller à l’essentiel : moins de bruit, moins de comptes, moins de réglages inutiles, plus de valeur concrète.',
     'Chaque app part d’un usage précis et cherche à rester agréable dans la durée : simple à ouvrir, rapide à comprendre, utile sans prendre toute la place.',
@@ -193,7 +192,7 @@ export const appsIndexEntries: AppIndexEntry[] = [
     name: 'FocusOne',
     platform: 'iOS',
     stage: 'Prépublication',
-    tagline: 'Une habitude à ne pas lâcher.',
+    tagline: 'Tenir une habitude.',
     summary:
       'Un compteur privé pour choisir une seule routine, la cocher aujourd’hui et garder la série visible.',
     href: '/apps/focus-one/',
@@ -211,7 +210,7 @@ export const appsIndexEntries: AppIndexEntry[] = [
     name: 'DuoSpend',
     platform: 'iOS',
     stage: 'Prépublication',
-    tagline: 'Les comptes à deux, sans tableur.',
+    tagline: 'Clarifier les dépenses à deux.',
     summary:
       'Ajoutez les dépenses d’un projet commun, voyez qui a payé quoi, équilibrez simplement.',
     href: '/apps/duo-spend/',
@@ -882,9 +881,9 @@ export const focusOneContent: AppDetailContent = {
     },
   },
   cta: {
-    title: 'Soyez le premier à savoir.',
+    title: 'Informations pratiques',
     description:
-      "FocusOne arrive bientôt. Laissez votre adresse — je vous préviens dès l'ouverture.",
+      'Retrouvez sur cette page les captures, les tarifs, le support et la confidentialité.',
     secondaryLabel: 'Une question ? Contactez-moi',
     secondaryTo: '/contact/?app=focus-one&type=support',
   },
@@ -949,7 +948,7 @@ export const duoSpendContent: AppDetailContent = {
       label: 'Prépublication',
       value: 'L’app est en préparation.',
       description:
-        'La page présente le produit et permet de rejoindre la liste des personnes intéressées.',
+        'La page présente le produit, les captures, les tarifs et les informations pratiques.',
     },
   ],
   preview: {
@@ -1055,9 +1054,9 @@ export const duoSpendContent: AppDetailContent = {
     },
   },
   cta: {
-    title: 'Soyez le premier à savoir.',
+    title: 'Informations pratiques',
     description:
-      "DuoSpend arrive bientôt. Laissez votre adresse — je vous préviens dès l'ouverture.",
+      'Retrouvez sur cette page les captures, les tarifs, le support et la confidentialité.',
     secondaryLabel: 'Une question ? Contactez-moi',
     secondaryTo: '/contact/?app=duo-spend&type=support',
   },

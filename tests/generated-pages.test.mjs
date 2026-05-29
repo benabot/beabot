@@ -104,8 +104,9 @@ for (const page of pages) {
         'FocusOne vous aide à tenir une seule promesse personnelle à la fois. Choisissez une habitude, cochez-la chaque jour et suivez votre série sans compte ni réseau social.',
       )
       assert.match(html, /FocusOne, une seule promesse à tenir/)
-      assert.match(html, /Être informé/)
-      assert.match(html, /Voir l’app en images/)
+      assert.match(html, /Voir comment ça marche/)
+      assert.match(html, /Voir les tarifs/)
+      assert.doesNotMatch(html, /Être informé|#release-form|release-form/)
       assert.doesNotMatch(html, /Voir la confidentialité/)
       assert.match(html, /À force de vouloir tout suivre/)
       assert.match(html, /Votre journée ne s’arrête pas forcément à minuit/)
@@ -163,8 +164,9 @@ for (const page of pages) {
         'DuoSpend aide les couples à suivre les dépenses d’un projet commun : voyage, emménagement, mariage ou travaux, sans banque connectée ni tableur.',
       )
       assert.match(html, /DuoSpend — Qui doit combien à qui/)
-      assert.match(html, /Être informé/)
-      assert.match(html, /Voir l’app en images/)
+      assert.match(html, /Voir comment ça marche/)
+      assert.match(html, /Voir les tarifs/)
+      assert.doesNotMatch(html, /Être informé|#release-form|release-form/)
       assert.doesNotMatch(html, /Voir la confidentialité/)
       assert.match(html, /sans banque connectée et sans tableur/)
       assert.match(html, /qui a payé quoi/)
@@ -194,8 +196,9 @@ for (const page of pages) {
         /^FocusOne — Private Habit and Streak Tracker \| BeAbot$/,
       )
       assert.match(html, /FocusOne, one promise to keep/)
-      assert.match(html, /Get launch updates/)
-      assert.match(html, /View the app/)
+      assert.match(html, /See how it works/)
+      assert.match(html, /See pricing/)
+      assert.doesNotMatch(html, /Get launch updates|#release-form|release-form/)
       assert.doesNotMatch(html, /View privacy/)
       assert.match(html, /id=\"support\"/)
       assert.match(
@@ -216,8 +219,9 @@ for (const page of pages) {
         getTitle(html),
         /^DuoSpend — Shared expenses app for couples \| BeAbot$/,
       )
-      assert.match(html, /Get launch updates/)
-      assert.match(html, /View the app/)
+      assert.match(html, /See how it works/)
+      assert.match(html, /See pricing/)
+      assert.doesNotMatch(html, /Get launch updates|#release-form|release-form/)
       assert.doesNotMatch(html, /View privacy/)
       assert.match(html, /For projects you share as a couple/)
       assert.match(html, /id=\"support\"/)
@@ -257,10 +261,10 @@ for (const page of pages) {
     if (page.route === '/apps/') {
       assert.match(html, /Des apps utiles pour garder le fil/)
       assert.match(html, /Sans compte inutile/)
-      assert.match(html, /À utiliser au quotidien/)
-      assert.match(html, /Pour pratiquer ou préparer/)
+      assert.match(html, /Deux usages très concrets/)
+      assert.match(html, /Pratiquer, préparer/)
       assert.match(html, /Ouvrir\. Faire\. Fermer/)
-      assert.match(html, /Choisissez ce que vous voulez garder au clair/)
+      assert.match(html, /Chaque app a sa page dédiée/)
       assert.match(
         html,
         /Un compteur privé pour choisir une seule routine/,
@@ -270,10 +274,10 @@ for (const page of pages) {
     if (page.route === '/en/apps/') {
       assert.match(html, /Useful apps for keeping track/)
       assert.match(html, /No unnecessary account/)
-      assert.match(html, /For everyday follow-through/)
-      assert.match(html, /For practice or preparation/)
+      assert.match(html, /Two concrete uses/)
+      assert.match(html, /Practice, prepare/)
       assert.match(html, /Open\. Act\. Move on/)
-      assert.match(html, /Choose what you want to keep clear/)
+      assert.match(html, /Each app has its own page/)
     }
 
     if (page.route === '/portfolio/') {

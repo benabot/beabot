@@ -25,6 +25,28 @@
 
 Branche : `feature/apps-positioning-v2`
 
+#### Correction directionnelle — 29 mai 2026
+
+- Périmètre :
+  - simplification forte de `/apps/` et `/en/apps/` après revue visuelle ;
+  - retrait des CTA de lancement FocusOne/DuoSpend FR/EN ;
+  - conservation stricte des sections finales `Support` et `Confidentialité` / `Privacy` sur FocusOne et DuoSpend.
+- Changements livrés :
+  - hubs FR/EN allégés : plus de composition hero massive, moins de cartes, structure plus éditoriale (`Deux usages très concrets`, manifeste court, liens finaux discrets) ;
+  - `AppCard` simplifié : métadonnées sobres, titre d'usage, image produit comme preuve, moins de surfaces et d'ombres ;
+  - CTA héros FocusOne/DuoSpend remplacés par `Voir comment ça marche` / `Voir les tarifs` et `See how it works` / `See pricing` ;
+  - sections `#release-form` FocusOne/DuoSpend FR/EN supprimées, sans modifier les ancres `#support` et `#privacy` ;
+  - `check:copy` renforcé contre les CTA de lancement, `#release-form`, `formulaire de lancement`, `liste d’attente`, `projets plus discrets` et `friction`.
+- Validation locale :
+  - `npm run check:copy` : OK, warnings de diagnostic restants sur textes longs/répétitions historiques ;
+  - `npm test` : OK avant génération puis OK après génération, 33 tests Node sur l'HTML généré ;
+  - `npm run generate` : OK, 92 routes prerendered ;
+  - `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK ;
+  - contrôle navigateur local desktop/mobile sur `/apps/` et contrôle HTML généré des six routes prioritaires : nouveaux CTA présents, aucun `#release-form` sur FocusOne/DuoSpend FR/EN.
+- Notes :
+  - le warning sourcemap `nuxt:module-preload-polyfill` reste inchangé et non bloquant ;
+  - `docs/apps-positioning-plan.md` reste absent du dépôt local.
+
 #### Dernier passage marketing et CTA — 29 mai 2026
 
 - Périmètre :

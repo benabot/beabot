@@ -23,14 +23,14 @@
           </div>
 
           <div class="app-actions">
-            <AppLink to="#release-form" class="app-primary-action">
-              Get launch updates
+            <AppLink to="#duo-overview-title" class="app-primary-action">
+              See how it works
             </AppLink>
             <AppLink
-              to="#duo-gallery-title"
+              to="#duo-pricing-title"
               class="app-secondary-action app-detail__contact-cta"
             >
-              View the app
+              See pricing
             </AppLink>
           </div>
         </div>
@@ -264,14 +264,6 @@
         </details>
       </section>
 
-      <section class="app-cta" id="release-form" aria-labelledby="duo-cta-title">
-        <div class="app-cta__heading">
-          <h2 id="duo-cta-title">{{ duoSpendEnContent.cta.title }}</h2>
-          <p>{{ duoSpendEnContent.cta.description }}</p>
-        </div>
-
-        <AppReleaseInterestForm :app-name="duoSpendEnContent.name" locale="en" />
-      </section>
     </div>
   </main>
 </template>
@@ -283,7 +275,6 @@ import AppBreadcrumb from '~/components/apps/AppBreadcrumb.vue'
 import AppGalleryLightbox from '~/components/apps/AppGalleryLightbox.vue'
 import AppFaqList from '~/components/apps/AppFaqList.vue'
 import AppLegalSingleLocale from '~/components/apps/AppLegalSingleLocale.vue'
-import AppReleaseInterestForm from '~/components/apps/AppReleaseInterestForm.vue'
 import AppSupportSection from '~/components/apps/AppSupportSection.vue'
 
 import {
@@ -690,10 +681,8 @@ useHead({
 }
 
 .app-surface__list--cards div {
-  padding: 0.85rem 0.9rem;
-  border-radius: 0.95rem;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(15, 23, 42, 0.05);
+  padding: 0.75rem 0;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .app-surface__list div {
@@ -956,17 +945,15 @@ useHead({
 .detail-card {
   display: grid;
   gap: 0.45rem;
-  padding: 1.1rem 1.15rem;
-  border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.92);
+  padding: 0.95rem 0;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
   align-content: start;
 }
 
 .detail-card--featured {
   @media (min-width: 700px) {
     grid-row: span 2;
-    background: rgba(255, 255, 255, 0.98);
-    border: 1px solid rgba(13, 199, 99, 0.15);
+    border-top-color: rgba(13, 199, 99, 0.35);
   }
 }
 
@@ -1007,21 +994,19 @@ useHead({
 .pricing-card {
   display: grid;
   gap: 0.65rem;
-  padding: 1.05rem;
-  border-radius: 1.15rem;
-  background: rgba(255, 255, 255, 0.94);
+  padding: 1rem 0 0;
+  border-top: 1px solid rgba(15, 23, 42, 0.1);
   position: relative;
 }
 
 .pricing-card--featured {
-  border: 1.5px solid rgba(13, 199, 99, 0.7);
-  background: rgba(13, 199, 99, 0.04);
+  border-top: 2px solid rgba(13, 199, 99, 0.65);
 }
 
 .pricing-card__badge {
   position: absolute;
-  top: -0.55rem;
-  right: 1rem;
+  top: -0.7rem;
+  right: 0;
   padding: 0.2rem 0.65rem;
   border-radius: 999px;
   background: $vert;

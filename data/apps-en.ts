@@ -15,7 +15,7 @@ export const appsIndexEnContent = {
   title: 'iOS and macOS apps',
   heroTitle: 'Useful apps for keeping track.',
   heroSubtitle:
-    'A habit to keep, shared expenses to clarify, a session to start, a meeting to prepare. Each BeAbot app starts from a concrete use and gets straight to the point: open, act, move on.',
+    'A habit to keep. Shared expenses to clarify. A session to start. A meeting to prepare. Short, direct apps built to do one thing without holding your attention.',
   proofLine: [
     'No unnecessary account',
     'No social feed',
@@ -32,9 +32,8 @@ export const appsIndexEnContent = {
     'no aggressive gamification',
     'data limited to the real use',
   ],
-  ctaTitle: 'Choose what you want to keep clear.',
-  ctaBody:
-    'A routine, an expense, a session: start from the concrete thing in front of you.',
+  ctaTitle: 'Each app has its own page.',
+  ctaBody: 'You will find screenshots, pricing and practical information there.',
   intro: [
     'Native iOS and macOS apps built to stay focused: less noise, fewer accounts, fewer unnecessary settings, more practical value.',
     'Each app starts from one clear use case and aims to stay useful over time: easy to open, quick to understand, and lightweight to use.',
@@ -59,8 +58,8 @@ const enSummaryBySlug: Record<string, string> = {
 }
 
 const enTaglineBySlug: Record<string, string> = {
-  'duo-spend': 'Shared expenses, without a spreadsheet.',
-  'focus-one': 'One habit you do not want to drop.',
+  'duo-spend': 'Clarify shared expenses.',
+  'focus-one': 'Keep one habit.',
   'meeting-mode': 'Prepare your Mac before a meeting.',
   siturem: 'A stable frame for meditation.',
 }
@@ -629,9 +628,9 @@ export const focusOneEnContent: AppDetailContent = {
     : undefined,
   cta: {
     ...focusOneContent.cta,
-    title: 'Be the first to know.',
+    title: 'Practical information',
     description:
-      'FocusOne is coming soon. Leave your email and I will let you know at launch.',
+      'Screenshots, pricing, support and privacy details are gathered on this page.',
     secondaryLabel: 'Need help? Contact support',
     secondaryTo: '/en/contact/?app=focus-one&type=support',
   },
@@ -692,7 +691,7 @@ export const duoSpendEnContent: AppDetailContent = {
       label: 'Pre-release',
       value: 'The app is currently in preparation.',
       description:
-        'This page presents the product and lets you join the release list.',
+        'This page presents the product, screenshots, pricing and practical information.',
     },
   ],
   gallery: [
@@ -764,9 +763,9 @@ export const duoSpendEnContent: AppDetailContent = {
     : undefined,
   cta: {
     ...duoSpendContent.cta,
-    title: 'Be the first to know.',
+    title: 'Practical information',
     description:
-      'DuoSpend is coming soon. Leave your email and I will let you know at launch.',
+      'Screenshots, pricing, support and privacy details are gathered on this page.',
     secondaryLabel: 'Need help? Contact support',
     secondaryTo: '/en/contact/?app=duo-spend&type=support',
   },

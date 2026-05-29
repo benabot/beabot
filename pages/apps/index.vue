@@ -11,50 +11,21 @@
             <p class="apps-hero__intro-p">
               {{ appsIndexContent.heroSubtitle }}
             </p>
-            <ul class="apps-hero__proof" aria-label="Principes produit">
-              <li
-                v-for="proof in appsIndexContent.proofLine"
-                :key="proof"
-              >
-                {{ proof }}
-              </li>
-            </ul>
+            <p class="apps-hero__proof">
+              {{ appsIndexContent.proofLine.join(' · ') }}
+            </p>
           </div>
-        </div>
-
-        <div
-          class="apps-hero__visual"
-          aria-label="Aperçu des apps FocusOne et DuoSpend"
-        >
-          <AppLink
-            v-for="app in featuredApps"
-            :key="app.slug"
-            :to="app.href"
-            class="apps-hero__shot"
-            :class="`apps-hero__shot--${app.slug}`"
-            :aria-label="`Voir ${app.name}`"
-          >
-            <img
-              :src="app.preview.src"
-              :alt="app.preview.alt"
-              width="1206"
-              height="2622"
-              loading="eager"
-              decoding="async"
-            />
-            <span>{{ app.name }}</span>
-          </AppLink>
         </div>
       </section>
 
       <section class="apps-section" aria-labelledby="apps-featured-title">
         <div class="apps-section__heading">
           <h2 id="apps-featured-title" class="apps-section__title">
-            À utiliser au quotidien
+            Deux usages très concrets
           </h2>
           <p>
-            Deux apps pensées pour les petits suivis qu’on remet trop vite à
-            plus tard.
+            Les deux apps les plus directes : tenir une habitude, clarifier des
+            dépenses à deux.
           </p>
         </div>
 
@@ -82,7 +53,7 @@
       >
         <div class="apps-section__heading">
           <h2 id="apps-other-title" class="apps-section__title">
-            Pour pratiquer ou préparer
+            Pratiquer, préparer
           </h2>
           <p>
             Même logique pour la méditation et les réunions : un cadre clair,
@@ -108,13 +79,16 @@
         <p class="apps-final-cta__body">{{ appsIndexContent.ctaBody }}</p>
         <div class="apps-final-cta__links">
           <AppLink to="/apps/focus-one/" class="apps-final-cta__link">
-            Tenir une habitude
+            FocusOne
           </AppLink>
           <AppLink to="/apps/duo-spend/" class="apps-final-cta__link">
-            Clarifier des dépenses
+            DuoSpend
           </AppLink>
           <AppLink to="/apps/siturem/" class="apps-final-cta__link">
-            Lancer une séance
+            Siturem
+          </AppLink>
+          <AppLink to="/apps/meeting-mode/" class="apps-final-cta__link">
+            Meeting Mode
           </AppLink>
         </div>
       </section>
@@ -227,19 +201,12 @@ useHead({
 }
 
 .apps-shell {
-  width: min(100%, 78rem);
+  width: min(100%, 68rem);
   margin: 0 auto;
 }
 
 .apps-hero {
-  display: grid;
-  gap: clamp(1.7rem, 4vw, 3rem);
-  padding: clamp(0.25rem, 2vw, 1rem) 0 clamp(2.2rem, 5vw, 3.6rem);
-
-  @media (min-width: 900px) {
-    grid-template-columns: minmax(0, 1.08fr) minmax(20rem, 0.72fr);
-    align-items: end;
-  }
+  padding: clamp(0.25rem, 2vw, 1rem) 0 clamp(2.6rem, 6vw, 4.2rem);
 }
 
 .apps-hero__copy {
@@ -265,9 +232,10 @@ useHead({
 }
 
 .apps-hero h1 {
-  font-size: clamp(3.2rem, 6vw, 5.25rem);
-  line-height: 0.94;
-  letter-spacing: -0.035em;
+  max-width: 11ch;
+  font-size: clamp(3rem, 6vw, 5.2rem);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
 }
 
 .apps-hero__platform {
@@ -275,8 +243,8 @@ useHead({
 }
 
 .apps-hero__intro {
-  max-width: 38rem;
-  margin: 1.5rem 0 0;
+  max-width: 41rem;
+  margin: 1.35rem 0 0;
   color: $gris2;
 }
 
@@ -296,78 +264,10 @@ useHead({
 }
 
 .apps-hero__proof {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
   margin: 1rem 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.apps-hero__proof li {
-  display: inline-flex;
-  min-height: 2rem;
-  align-items: center;
-  padding: 0.32rem 0.68rem;
-  border-radius: 999px;
-  background: rgba(243, 244, 246, 0.95);
-  color: $gris2;
-  font-size: 0.82rem;
+  color: $gris3;
+  font-size: 0.88rem;
   font-weight: 700;
-}
-
-.apps-hero__visual {
-  display: grid;
-  grid-template-columns: 0.88fr 1fr;
-  gap: clamp(0.7rem, 2vw, 1rem);
-  align-items: end;
-  max-width: 30rem;
-
-  @media (max-width: 899px) {
-    max-width: 24rem;
-  }
-}
-
-.apps-hero__shot {
-  display: grid;
-  gap: 0.55rem;
-  color: $gris1;
-  font-weight: 800;
-  text-decoration: none;
-  transition: transform 0.16s ease;
-}
-
-.apps-hero__shot:hover {
-  transform: translateY(-2px);
-}
-
-.apps-hero__shot:focus-visible {
-  outline: 2px solid $vert;
-  outline-offset: 4px;
-  border-radius: 1.15rem;
-}
-
-.apps-hero__shot img {
-  display: block;
-  width: 100%;
-  height: clamp(11rem, 38vw, 24rem);
-  object-fit: contain;
-  padding: clamp(0.55rem, 1.6vw, 0.9rem);
-  border-radius: 1.25rem;
-  background:
-    radial-gradient(circle at 50% 8%, rgba(13, 199, 99, 0.17), transparent 35%),
-    linear-gradient(180deg, #f8f9f6, #edf3ec);
-  box-shadow: 0 18px 38px rgba(15, 23, 42, 0.08);
-}
-
-.apps-hero__shot--duo-spend {
-  margin-bottom: clamp(1.2rem, 4vw, 2.6rem);
-}
-
-.apps-hero__shot--duo-spend img {
-  background:
-    radial-gradient(circle at 50% 8%, rgba(4, 57, 217, 0.13), transparent 35%),
-    linear-gradient(180deg, #f7f8fb, #eceff6);
 }
 
 .apps-manifesto {
@@ -431,13 +331,12 @@ useHead({
 .apps-featured-grid,
 .apps-secondary-grid {
   display: grid;
-  gap: clamp(1.35rem, 2.8vw, 2.1rem);
+  gap: clamp(0.85rem, 2vw, 1.25rem);
 }
 
 .apps-featured-grid {
   @media (min-width: 900px) {
-    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
-    align-items: stretch;
+    grid-template-columns: 1fr;
   }
 }
 
@@ -474,29 +373,22 @@ useHead({
 .apps-final-cta__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.65rem;
+  gap: 0.55rem 1rem;
 }
 
 .apps-final-cta__link {
   display: inline-flex;
   align-items: center;
-  min-height: 2.65rem;
-  padding: 0.62rem 0.92rem;
-  border-radius: 999px;
-  background: rgba(243, 244, 246, 0.9);
-  color: $gris2;
-  text-decoration: none;
+  min-height: 1.9rem;
+  color: $vert;
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
   font-weight: 700;
-  transition:
-    background 0.16s ease,
-    color 0.16s ease,
-    transform 0.16s ease;
+  transition: color 0.16s ease;
 }
 
 .apps-final-cta__link:hover {
-  background: $gris1;
-  color: #fff;
-  transform: translateY(-1px);
+  color: $gris1;
 }
 
 .apps-final-cta__link:focus-visible {

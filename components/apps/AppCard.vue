@@ -56,17 +56,12 @@
     </figure>
 
     <div class="app-card__body">
-      <div
-        class="app-card__chips"
-        :aria-label="statusLabel"
-      >
-        <span class="app-card__chip">{{ props.app.stage }}</span>
-        <span class="app-card__chip">{{ props.app.platform }}</span>
-      </div>
-      <h3 class="app-card__title">{{ props.app.name }}</h3>
-      <p v-if="props.app.tagline" class="app-card__tagline">
-        {{ props.app.tagline }}
+      <p class="app-card__meta">
+        {{ props.app.name }} · {{ props.app.platform }} · {{ props.app.stage }}
       </p>
+      <h3 class="app-card__title">
+        {{ props.app.tagline || props.app.name }}
+      </h3>
       <p class="app-card__summary">{{ props.app.summary }}</p>
       <AppLink :to="props.app.href" class="app-card__link">
         {{ locale === 'fr' ? 'Découvrir' : 'Explore' }} {{ props.app.name }}
@@ -91,22 +86,18 @@ const props = withDefaults(
 )
 
 const locale = props.locale
-const statusLabel =
-  locale === 'fr'
-    ? `Statut de ${props.app.name}`
-    : `Status for ${props.app.name}`
 </script>
 
 <style lang="scss" scoped>
 @use "~/assets/css/vars/_colors.scss" as *;
 .app-card {
   display: grid;
-  gap: 1rem;
+  gap: 0.95rem;
   align-content: start;
 }
 
 .app-card--featured {
-  --app-card-ratio: 4 / 5;
+  --app-card-ratio: 5 / 4;
 }
 
 .app-card--compact {
@@ -120,10 +111,8 @@ const statusLabel =
 
 .app-card__media-link {
   display: block;
-  border-radius: 1.25rem;
-  transition:
-    transform 0.16s ease,
-    box-shadow 0.16s ease;
+  border-radius: 0.9rem;
+  transition: opacity 0.16s ease;
 }
 
 .app-card__media-link:focus-visible {
@@ -132,17 +121,16 @@ const statusLabel =
 }
 
 .app-card__media-link:hover {
-  transform: translateY(-2px);
+  opacity: 0.94;
 }
 
 .app-card__media {
   overflow: hidden;
-  border-radius: 1.25rem;
-  background: rgba(243, 244, 246, 0.92);
+  border-radius: 0.9rem;
+  background: rgba(247, 248, 249, 0.92);
   aspect-ratio: var(--app-card-ratio);
   position: relative;
-  box-shadow: 0 16px 34px rgba(15, 23, 42, 0.06);
-  transition: box-shadow 0.16s ease;
+  border: 1px solid rgba(15, 23, 42, 0.06);
 
   img {
     display: block;
@@ -150,10 +138,6 @@ const statusLabel =
     height: 100%;
     object-fit: cover;
   }
-}
-
-.app-card__media-link:hover .app-card__media {
-  box-shadow: 0 20px 38px rgba(15, 23, 42, 0.1);
 }
 
 .app-card__media--placeholder {
@@ -165,25 +149,21 @@ const statusLabel =
 }
 
 .app-card__media--contain {
-  background: linear-gradient(180deg, #f8f6f1, #f0ece6);
+  background: #f8f6f1;
 
   img {
     object-fit: contain;
     object-position: center;
-    padding: 0.9rem;
+    padding: 0.75rem;
   }
 }
 
 .app-card--focus-one .app-card__media--contain {
-  background:
-    radial-gradient(circle at 50% 12%, rgba(13, 199, 99, 0.18), transparent 34%),
-    linear-gradient(180deg, #f8f9f6, #edf3ec);
+  background: #f6f9f5;
 }
 
 .app-card--duo-spend .app-card__media--contain {
-  background:
-    radial-gradient(circle at 50% 12%, rgba(4, 57, 217, 0.14), transparent 34%),
-    linear-gradient(180deg, #f7f8fb, #eceff6);
+  background: #f7f8fb;
 }
 
 .app-card__placeholder {
@@ -202,50 +182,32 @@ const statusLabel =
 
 .app-card__body {
   display: grid;
-  gap: 0.68rem;
+  gap: 0.55rem;
   max-width: 38rem;
+  padding-top: 0.15rem;
 }
 
-.app-card__chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-}
-
-.app-card__chip {
-  display: inline-flex;
-  align-items: center;
-  min-height: 1.6rem;
-  padding: 0.2rem 0.6rem;
-  border-radius: 999px;
-  background: rgba(243, 244, 246, 0.95);
+.app-card__meta {
+  margin: 0;
   color: $gris3;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  line-height: 1.3;
   text-transform: uppercase;
 }
 
 .app-card__title {
   margin: 0;
-  font-size: clamp(1.7rem, 3vw, 2.3rem);
-  line-height: 0.98;
+  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+  line-height: 1.08;
   color: $gris1;
-}
-
-.app-card__tagline {
-  margin: 0;
-  color: $gris1;
-  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
-  font-weight: 700;
-  line-height: 1.3;
 }
 
 .app-card__summary {
   margin: 0;
   color: $gris2;
   line-height: 1.55;
-  max-width: 36ch;
+  max-width: 40ch;
 }
 
 .app-card__link {
@@ -275,11 +237,18 @@ const statusLabel =
   border-radius: 0.35rem;
 }
 
-.app-card--featured .app-card__summary {
-  max-width: 34ch;
-}
+@media (min-width: 760px) {
+  .app-card--featured,
+  .app-card--compact {
+    grid-template-columns: minmax(8rem, 0.72fr) minmax(0, 1fr);
+    align-items: center;
+    padding-block: 1rem;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+  }
 
-.app-card--compact .app-card__title {
-  font-size: clamp(1.55rem, 2.7vw, 2rem);
+  .app-card--featured {
+    grid-template-columns: minmax(10rem, 0.86fr) minmax(0, 1fr);
+    padding-block: clamp(0.8rem, 2vw, 1.35rem);
+  }
 }
 </style>

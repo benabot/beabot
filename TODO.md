@@ -15,6 +15,21 @@
 
 > Branche : `feature/apps-positioning-v2`
 
+### Correction directionnelle : simplification apps — 29 mai 2026
+
+- [x] Appliquer Frontend Review : identifier la dérive trop lourde, trop template SaaS, trop `cards partout`
+- [x] Appliquer Frontend Skill : revenir à une page BeAbot plus éditoriale, respirante et premium sans nouvelle surcouche
+- [x] Simplifier `/apps/` : hero texte seul, ligne de preuves, section `Deux usages très concrets`, manifeste court, section `Pratiquer, préparer`, liens finaux discrets
+- [x] Simplifier `/en/apps/` avec la même logique adaptée
+- [x] Simplifier `AppCard` : moins d'ombres, moins de badges, titre par usage, image produit comme preuve
+- [x] Remplacer les CTA héros FocusOne/DuoSpend FR/EN par `Voir comment ça marche` / `Voir les tarifs` et `See how it works` / `See pricing`
+- [x] Supprimer les sections `#release-form` FocusOne/DuoSpend FR/EN et les imports `AppReleaseInterestForm`
+- [x] Préserver les sections finales `Support` et `Confidentialité` / `Privacy` et leurs ancres
+- [x] Alléger les repères, points clés et tarifs des pages FocusOne/DuoSpend sans ajouter de nouvelle section
+- [x] Renforcer `scripts/check-copy-quality.mjs` contre `Être informé`, `Get launch updates`, `#release-form`, `release-form`, `formulaire de lancement`, `liste d’attente`, `projets plus discrets` et `friction`
+- [x] Valider `npm run check:copy`, `npm test`, `npm run generate`, `npm test` post-génération et `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs`
+- [x] Contrôler en navigateur local `/apps/` desktop/mobile et vérifier les six routes générées prioritaires
+
 ### Dernier passage marketing et CTA — 29 mai 2026
 
 - [x] Appliquer Frontend Review : hub encore trop proche d'une grille portfolio, CTA FocusOne/DuoSpend trop faibles, liens confidentialité dans les héros à retirer

@@ -31,6 +31,12 @@ const avoidedTerms = [
   /core apps/iu,
   /other apps/iu,
   /mini-?saas/iu,
+  /Être informé/iu,
+  /Get launch updates/iu,
+  /#release-form/iu,
+  /release-form/iu,
+  /formulaire de lancement/iu,
+  /liste d[’']attente/iu,
   /Voir la confidentialité/iu,
   /View privacy/iu,
 ]
