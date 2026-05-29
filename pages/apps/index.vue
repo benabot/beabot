@@ -7,14 +7,51 @@
         <div class="apps-hero__copy">
           <p class="apps-hero__eyebrow">Apps</p>
           <h1>{{ appsIndexContent.heroTitle }}</h1>
-          <div class="apps-hero__intro">
-            <p class="apps-hero__intro-p">
-              {{ appsIndexContent.heroSubtitle }}
-            </p>
-            <p class="apps-hero__proof">
-              {{ appsIndexContent.proofLine.join(' · ') }}
-            </p>
+          <p class="apps-hero__intro">{{ appsIndexContent.heroSubtitle }}</p>
+          <p class="apps-hero__proof">{{ appsIndexContent.proofLine.join(' · ') }}</p>
+          <div class="apps-hero__actions">
+            <AppLink to="/apps/focus-one/" class="apps-hero__action">
+              Découvrir FocusOne
+            </AppLink>
+            <AppLink to="/apps/duo-spend/" class="apps-hero__action apps-hero__action--soft">
+              Voir DuoSpend
+            </AppLink>
           </div>
+        </div>
+
+        <div class="apps-hero__visual" aria-label="Aperçu de FocusOne et DuoSpend">
+          <AppLink
+            v-if="focusOneApp?.preview.src"
+            :to="focusOneApp.href"
+            class="apps-hero-shot apps-hero-shot--focus"
+            aria-label="Voir FocusOne"
+          >
+            <img
+              :src="focusOneApp.preview.src"
+              :alt="focusOneApp.preview.alt"
+              width="1206"
+              height="2622"
+              loading="eager"
+              decoding="async"
+            />
+            <span>FocusOne</span>
+          </AppLink>
+          <AppLink
+            v-if="duoSpendApp?.preview.src"
+            :to="duoSpendApp.href"
+            class="apps-hero-shot apps-hero-shot--duo"
+            aria-label="Voir DuoSpend"
+          >
+            <img
+              :src="duoSpendApp.preview.src"
+              :alt="duoSpendApp.preview.alt"
+              width="1206"
+              height="2622"
+              loading="lazy"
+              decoding="async"
+            />
+            <span>DuoSpend</span>
+          </AppLink>
         </div>
       </section>
 
@@ -29,14 +66,64 @@
           </p>
         </div>
 
-        <div class="apps-featured-grid">
-          <AppCard
-            v-for="app in featuredApps"
-            :key="app.slug"
-            :app="app"
-            variant="featured"
-            class="apps-featured-grid__item"
-          />
+        <div class="apps-feature-stack">
+          <article class="apps-feature-row apps-feature-row--focus">
+            <AppLink
+              v-if="focusOneApp?.preview.src"
+              :to="focusOneApp.href"
+              class="apps-feature-row__media"
+              aria-label="Découvrir FocusOne"
+            >
+              <img
+                :src="focusOneApp.preview.src"
+                :alt="focusOneApp.preview.alt"
+                width="1206"
+                height="2622"
+                loading="lazy"
+                decoding="async"
+              />
+            </AppLink>
+            <div class="apps-feature-row__body">
+              <p class="apps-feature-row__name">FocusOne</p>
+              <h3>Tenir une habitude.</h3>
+              <p>
+                Un compteur privé pour choisir une seule routine, la cocher
+                aujourd’hui et garder la série visible.
+              </p>
+              <AppLink to="/apps/focus-one/" class="apps-feature-row__link">
+                Découvrir FocusOne
+              </AppLink>
+            </div>
+          </article>
+
+          <article class="apps-feature-row apps-feature-row--duo">
+            <AppLink
+              v-if="duoSpendApp?.preview.src"
+              :to="duoSpendApp.href"
+              class="apps-feature-row__media"
+              aria-label="Découvrir DuoSpend"
+            >
+              <img
+                :src="duoSpendApp.preview.src"
+                :alt="duoSpendApp.preview.alt"
+                width="1206"
+                height="2622"
+                loading="lazy"
+                decoding="async"
+              />
+            </AppLink>
+            <div class="apps-feature-row__body">
+              <p class="apps-feature-row__name">DuoSpend</p>
+              <h3>Clarifier les dépenses à deux.</h3>
+              <p>
+                Ajoutez les dépenses d’un projet commun, voyez qui a payé quoi,
+                équilibrez simplement.
+              </p>
+              <AppLink to="/apps/duo-spend/" class="apps-feature-row__link">
+                Découvrir DuoSpend
+              </AppLink>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -61,34 +148,79 @@
           </p>
         </div>
 
-        <div class="apps-secondary-grid">
-          <AppCard
-            v-for="app in otherApps"
-            :key="app.slug"
-            :app="app"
-            variant="compact"
-            class="apps-secondary-grid__item"
-          />
+        <div class="apps-compact-grid">
+          <article class="apps-compact-item">
+            <AppLink
+              v-if="situremApp?.preview.src"
+              :to="situremApp.href"
+              class="apps-compact-item__media"
+              aria-label="Découvrir Siturem"
+            >
+              <img
+                :src="situremApp.preview.src"
+                :alt="situremApp.preview.alt"
+                width="1206"
+                height="2622"
+                loading="lazy"
+                decoding="async"
+              />
+            </AppLink>
+            <div class="apps-compact-item__body">
+              <p class="apps-compact-item__name">Siturem</p>
+              <h3>Un cadre stable pour méditer.</h3>
+              <AppLink to="/apps/siturem/" class="apps-compact-item__link">
+                Découvrir Siturem
+              </AppLink>
+            </div>
+          </article>
+
+          <article class="apps-compact-item">
+            <AppLink
+              v-if="meetingModeApp?.preview.src"
+              :to="meetingModeApp.href"
+              class="apps-compact-item__media"
+              aria-label="Découvrir Meeting Mode"
+            >
+              <img
+                :src="meetingModeApp.preview.src"
+                :alt="meetingModeApp.preview.alt"
+                width="1206"
+                height="2622"
+                loading="lazy"
+                decoding="async"
+              />
+            </AppLink>
+            <div class="apps-compact-item__body">
+              <p class="apps-compact-item__name">Meeting Mode</p>
+              <h3>Préparer le Mac avant une réunion.</h3>
+              <AppLink to="/apps/meeting-mode/" class="apps-compact-item__link">
+                Découvrir Meeting Mode
+              </AppLink>
+            </div>
+          </article>
         </div>
       </section>
 
       <section class="apps-final-cta" aria-labelledby="apps-final-cta-title">
         <h2 id="apps-final-cta-title" class="apps-final-cta__title">
-          {{ appsIndexContent.ctaTitle }}
+          Quelle app correspond à votre besoin ?
         </h2>
-        <p class="apps-final-cta__body">{{ appsIndexContent.ctaBody }}</p>
+        <p class="apps-final-cta__body">
+          Chaque page présente les captures, les tarifs et les informations
+          pratiques.
+        </p>
         <div class="apps-final-cta__links">
           <AppLink to="/apps/focus-one/" class="apps-final-cta__link">
-            FocusOne
+            Tenir une habitude
           </AppLink>
           <AppLink to="/apps/duo-spend/" class="apps-final-cta__link">
-            DuoSpend
+            Clarifier des dépenses
           </AppLink>
           <AppLink to="/apps/siturem/" class="apps-final-cta__link">
-            Siturem
+            Lancer une séance
           </AppLink>
           <AppLink to="/apps/meeting-mode/" class="apps-final-cta__link">
-            Meeting Mode
+            Préparer une réunion
           </AppLink>
         </div>
       </section>
@@ -98,7 +230,6 @@
 
 <script setup lang="ts">
 import AppBreadcrumb from '~/components/apps/AppBreadcrumb.vue'
-import AppCard from '~/components/apps/AppCard.vue'
 
 import {
   appsIndexContent,
@@ -112,8 +243,11 @@ import { absoluteUrl, canonicalUrl } from '~/utils/seo-url'
 const config = useRuntimeConfig()
 const pageUrl = canonicalUrl(config.public.siteUrl, '/apps')
 const ogImage = absoluteUrl(config.public.siteUrl, appsIndexContent.seo.image)
-const featuredApps = appsIndexEntries.filter((app) => app.featured)
-const otherApps = appsIndexEntries.filter((app) => !app.featured)
+
+const focusOneApp = appsIndexEntries.find((app) => app.slug === 'focus-one')
+const duoSpendApp = appsIndexEntries.find((app) => app.slug === 'duo-spend')
+const situremApp = appsIndexEntries.find((app) => app.slug === 'siturem')
+const meetingModeApp = appsIndexEntries.find((app) => app.slug === 'meeting-mode')
 
 const breadcrumbItems = [{ label: 'Accueil', to: '/' }, { label: 'Apps' }]
 
@@ -192,6 +326,7 @@ useHead({
 <style lang="scss" scoped>
 @use '~/assets/css/vars/_colors.scss' as *;
 @use '~/assets/css/vars/_typo.scss' as *;
+
 .apps-index {
   padding: clamp(2rem, 5vw, 3.5rem) 5% 5rem;
 
@@ -201,12 +336,19 @@ useHead({
 }
 
 .apps-shell {
-  width: min(100%, 68rem);
+  width: min(100%, 70rem);
   margin: 0 auto;
 }
 
 .apps-hero {
-  padding: clamp(0.25rem, 2vw, 1rem) 0 clamp(2.6rem, 6vw, 4.2rem);
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2rem);
+  padding: clamp(0.25rem, 2vw, 1rem) 0 clamp(2.4rem, 5vw, 3.6rem);
+
+  @media (min-width: 980px) {
+    grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.85fr);
+    align-items: end;
+  }
 }
 
 .apps-hero__copy {
@@ -228,39 +370,19 @@ useHead({
 
 .apps-hero h1 {
   margin: 0;
-  color: $gris1;
-}
-
-.apps-hero h1 {
   max-width: 11ch;
   font-size: clamp(3rem, 6vw, 5.2rem);
   line-height: 0.98;
   letter-spacing: -0.025em;
-}
-
-.apps-hero__platform {
-  color: #05d94f;
+  color: $gris1;
 }
 
 .apps-hero__intro {
-  max-width: 41rem;
   margin: 1.35rem 0 0;
-  color: $gris2;
-}
-
-.apps-hero__intro-p {
-  margin: 0 0 1rem;
-  line-height: 1.75;
-
-  &:first-child {
-    font-size: 1.05rem;
-    font-weight: 500;
-    color: $gris1;
-  }
-
-  &:last-child {
-    margin-bottom: 0;
-  }
+  max-width: 41rem;
+  color: $gris1;
+  line-height: 1.72;
+  font-size: clamp(1.02rem, 1.4vw, 1.16rem);
 }
 
 .apps-hero__proof {
@@ -270,34 +392,81 @@ useHead({
   font-weight: 700;
 }
 
-.apps-manifesto {
-  display: grid;
-  gap: 0.72rem;
-  margin: clamp(2.4rem, 5vw, 3.8rem) 0;
-  padding: clamp(1.35rem, 3vw, 2rem) 0;
-  border-block: 1px solid rgba(15, 23, 42, 0.08);
+.apps-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.3rem;
 }
 
-.apps-manifesto__title {
-  margin: 0;
+.apps-hero__action {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.45rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 0.7rem;
+  border: 1px solid rgba(13, 199, 99, 0.22);
+  background: rgba(13, 199, 99, 0.08);
   color: $gris1;
-  font-size: clamp(1.65rem, 3.4vw, 2.4rem);
-  line-height: 1.25;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    border-color 0.16s ease,
+    background 0.16s ease;
 }
 
-.apps-manifesto__body {
-  margin: 0;
-  color: $gris2;
-  line-height: 1.7;
+.apps-hero__action:hover {
+  background: rgba(13, 199, 99, 0.14);
 }
 
-.apps-hero__meta {
-  margin: 0.7rem 0 0;
-  color: $gris3;
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+.apps-hero__action--soft {
+  border-color: rgba(15, 23, 42, 0.12);
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.apps-hero__visual {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 0.25rem;
+  padding: 0.9rem;
+  border-radius: 1rem;
+  background:
+    linear-gradient(140deg, rgba(247, 250, 248, 0.92), rgba(247, 248, 251, 0.92));
+  border: 1px solid rgba(15, 23, 42, 0.08);
+
+  @media (min-width: 980px) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    align-items: end;
+  }
+}
+
+.apps-hero-shot {
+  display: grid;
+  gap: 0.45rem;
+  color: $gris1;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.apps-hero-shot img {
+  display: block;
+  width: 100%;
+  height: clamp(10rem, 28vw, 15.8rem);
+  border-radius: 0.85rem;
+  object-fit: contain;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.apps-hero-shot--focus img {
+  background: #f5f9f4;
+}
+
+.apps-hero-shot--duo img {
+  background: #f6f8fc;
 }
 
 .apps-section {
@@ -306,7 +475,7 @@ useHead({
 }
 
 .apps-section + .apps-section {
-  margin-top: clamp(2.25rem, 5vw, 3.5rem);
+  margin-top: clamp(2.1rem, 5vw, 3.3rem);
 }
 
 .apps-section__heading {
@@ -328,24 +497,186 @@ useHead({
   line-height: 1.55;
 }
 
-.apps-featured-grid,
-.apps-secondary-grid {
+.apps-feature-stack {
   display: grid;
-  gap: clamp(0.85rem, 2vw, 1.25rem);
+  gap: 1rem;
 }
 
-.apps-featured-grid {
-  @media (min-width: 900px) {
-    grid-template-columns: 1fr;
+.apps-feature-row {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1rem, 2vw, 1.25rem);
+  border-radius: 1rem;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.apps-feature-row--focus {
+  background: linear-gradient(170deg, rgba(246, 251, 246, 0.95), rgba(255, 255, 255, 0.95));
+}
+
+.apps-feature-row--duo {
+  background: linear-gradient(170deg, rgba(245, 248, 255, 0.92), rgba(255, 255, 255, 0.95));
+}
+
+@media (min-width: 900px) {
+  .apps-feature-row {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+    align-items: center;
+  }
+
+  .apps-feature-row--duo .apps-feature-row__media {
+    order: 2;
+  }
+
+  .apps-feature-row--duo .apps-feature-row__body {
+    order: 1;
   }
 }
 
-.apps-secondary-grid {
-  gap: clamp(1rem, 2vw, 1.4rem);
+.apps-feature-row__media {
+  display: grid;
+  align-self: start;
+  border-radius: 0.85rem;
+  overflow: hidden;
+  border: 1px solid rgba(15, 23, 42, 0.07);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.apps-feature-row__media img {
+  display: block;
+  width: 100%;
+  height: clamp(12rem, 38vw, 17rem);
+  object-fit: contain;
+  padding: 0.45rem;
+}
+
+.apps-feature-row__body {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.apps-feature-row__name {
+  margin: 0;
+  color: $gris3;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.apps-feature-row h3 {
+  margin: 0;
+  color: $gris1;
+  font-size: clamp(1.45rem, 2.4vw, 2rem);
+  line-height: 1.08;
+}
+
+.apps-feature-row p {
+  margin: 0;
+  color: $gris2;
+  line-height: 1.62;
+  max-width: 34ch;
+}
+
+.apps-feature-row__link {
+  width: fit-content;
+  color: $vert;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.apps-feature-row__link:hover {
+  color: $gris1;
+}
+
+.apps-manifesto {
+  display: grid;
+  gap: 0.72rem;
+  margin: clamp(2.4rem, 5vw, 3.6rem) 0;
+  padding: clamp(1.2rem, 3vw, 1.9rem) 0;
+  border-block: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.apps-manifesto__title {
+  margin: 0;
+  color: $gris1;
+  font-size: clamp(1.65rem, 3.4vw, 2.4rem);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.apps-manifesto__body {
+  margin: 0;
+  color: $gris2;
+  line-height: 1.7;
+}
+
+.apps-compact-grid {
+  display: grid;
+  gap: 0.85rem;
 
   @media (min-width: 760px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+}
+
+.apps-compact-item {
+  display: grid;
+  gap: 0.7rem;
+  grid-template-columns: minmax(6.4rem, 0.42fr) minmax(0, 1fr);
+  align-items: center;
+  padding: 0.75rem;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.apps-compact-item__media {
+  display: grid;
+  border-radius: 0.7rem;
+  overflow: hidden;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #f5f7fa;
+}
+
+.apps-compact-item__media img {
+  width: 100%;
+  height: clamp(6.8rem, 16vw, 8rem);
+  object-fit: contain;
+  padding: 0.35rem;
+}
+
+.apps-compact-item__body {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.apps-compact-item__name {
+  margin: 0;
+  color: $gris3;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.apps-compact-item h3 {
+  margin: 0;
+  color: $gris1;
+  font-size: 1.06rem;
+  line-height: 1.25;
+}
+
+.apps-compact-item__link {
+  width: fit-content;
+  color: $vert;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.apps-compact-item__link:hover {
+  color: $gris1;
 }
 
 .apps-final-cta {
@@ -373,25 +704,33 @@ useHead({
 .apps-final-cta__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem 1rem;
+  gap: 0.55rem;
 }
 
 .apps-final-cta__link {
   display: inline-flex;
   align-items: center;
-  min-height: 1.9rem;
-  color: $vert;
-  text-decoration: underline;
-  text-underline-offset: 0.22em;
+  min-height: 2.2rem;
+  padding: 0.36rem 0.7rem;
+  border-radius: 0.62rem;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  color: $gris2;
+  text-decoration: none;
   font-weight: 700;
-  transition: color 0.16s ease;
+  transition:
+    border-color 0.16s ease,
+    color 0.16s ease;
 }
 
 .apps-final-cta__link:hover {
+  border-color: rgba(13, 199, 99, 0.34);
   color: $gris1;
 }
 
-.apps-final-cta__link:focus-visible {
+.apps-final-cta__link:focus-visible,
+.apps-hero__action:focus-visible,
+.apps-feature-row__link:focus-visible,
+.apps-compact-item__link:focus-visible {
   outline: 2px solid $vert;
   outline-offset: 3px;
 }

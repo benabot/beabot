@@ -681,8 +681,10 @@ useHead({
 }
 
 .app-surface__list--cards div {
-  padding: 0.75rem 0;
-  border-top: 1px solid rgba(15, 23, 42, 0.08);
+  padding: 0.72rem 0.78rem;
+  border-radius: 0.8rem;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(247, 249, 250, 0.82);
 }
 
 .app-surface__list div {

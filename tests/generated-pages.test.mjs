@@ -264,7 +264,10 @@ for (const page of pages) {
       assert.match(html, /Deux usages très concrets/)
       assert.match(html, /Pratiquer, préparer/)
       assert.match(html, /Ouvrir\. Faire\. Fermer/)
-      assert.match(html, /Chaque app a sa page dédiée/)
+      assert.match(
+        html,
+        /Chaque app a sa page dédiée|Quelle app correspond à votre besoin/,
+      )
       assert.match(
         html,
         /Un compteur privé pour choisir une seule routine/,
@@ -277,7 +280,10 @@ for (const page of pages) {
       assert.match(html, /Two concrete uses/)
       assert.match(html, /Practice, prepare/)
       assert.match(html, /Open\. Act\. Move on/)
-      assert.match(html, /Each app has its own page/)
+      assert.match(
+        html,
+        /Each app has its own page|Which app matches your need/,
+      )
     }
 
     if (page.route === '/portfolio/') {
