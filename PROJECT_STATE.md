@@ -1,6 +1,6 @@
 # 📊 ÉTAT DU PROJET - BeAbot
 
-> **Récapitulatif de l'état du projet au 12 mai 2026**
+> **Récapitulatif de l'état du projet au 30 mai 2026**
 
 ---
 
@@ -24,6 +24,18 @@
 ### Apps positioning v2 — 23 mai 2026
 
 Branche : `feature/apps-positioning-v2`
+
+#### Décisions finales de positionnement apps — 30 mai 2026
+
+- Décisions de référence :
+  - `/apps/` et `/en/apps/` conservent un hero typographique sans images ;
+  - FocusOne et DuoSpend (FR/EN) utilisent un seul CTA hero vers le fonctionnement : `Voir comment ça marche` / `See how it works` ;
+  - aucun formulaire de lancement : pas de `#release-form`, pas de wording `Être informé` / `Get launch updates` ;
+  - les sections tarifs restent en cartes sur FocusOne et DuoSpend ;
+  - les sections finales `Support` et `Confidentialité` / `Privacy` restent intouchables, avec leurs ancres publiques ;
+  - parité FR/EN maintenue sur structure, intention éditoriale et CTA.
+- Clarification :
+  - cette décision finale remplace la direction intermédiaire du 29 mai liée aux CTA `Être informé` / `Get launch updates`.
 
 #### Correction directionnelle — 29 mai 2026
 

@@ -15,6 +15,16 @@
 
 > Branche : `feature/apps-positioning-v2`
 
+### Décision finale : cadrage figé avant merge `dev` — 30 mai 2026
+
+- [x] Fixer `/apps/` et `/en/apps/` avec un hero typographique sans images
+- [x] Fixer FocusOne/DuoSpend FR/EN avec un seul CTA hero orienté fonctionnement : `Voir comment ça marche` / `See how it works`
+- [x] Retirer toute mécanique lancement : pas de `#release-form`, pas de `release-form`, pas de CTA `Être informé` / `Get launch updates`
+- [x] Conserver les sections tarifs en cards sur FocusOne et DuoSpend
+- [x] Conserver intouchables les sections finales `Support` et `Confidentialité` / `Privacy` avec leurs ancres publiques
+- [x] Maintenir la parité FR/EN (structure, ton produit, CTA)
+- [x] Documenter que cette décision finale remplace la direction intermédiaire des CTA `Être informé` du 29 mai
+
 ### Correction directionnelle : simplification apps — 29 mai 2026
 
 - [x] Appliquer Frontend Review : identifier la dérive trop lourde, trop template SaaS, trop `cards partout`
