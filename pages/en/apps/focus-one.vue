@@ -16,12 +16,6 @@
             <AppLink to="#focus-overview-title" class="app-primary-action">
               See how it works
             </AppLink>
-            <AppLink
-              to="#focus-pricing-title"
-              class="app-secondary-action app-detail__contact-cta"
-            >
-              See pricing
-            </AppLink>
           </div>
         </div>
 
@@ -50,7 +44,10 @@
         </div>
       </section>
 
-      <section class="app-surface" aria-labelledby="focus-overview-title">
+      <section
+        class="app-surface app-surface--lead"
+        aria-labelledby="focus-overview-title"
+      >
         <div class="app-surface__copy">
           <h2 id="focus-overview-title">Pick one thing</h2>
           <p v-for="paragraph in focusOneEnContent.overview" :key="paragraph">
@@ -81,7 +78,10 @@
         </div>
       </section>
 
-      <section class="app-section" aria-labelledby="focus-details-title">
+      <section
+        class="app-section app-section--tone"
+        aria-labelledby="focus-details-title"
+      >
         <div class="section-heading">
           <h2 id="focus-details-title">Keep it visible</h2>
           <p>
@@ -117,7 +117,10 @@
         </div>
       </section>
 
-      <section class="app-section" aria-labelledby="focus-loop-title">
+      <section
+        class="app-section app-section--stripe"
+        aria-labelledby="focus-loop-title"
+      >
         <div class="section-heading">
           <h2 id="focus-loop-title">Mark today as done</h2>
           <p class="focus-loop-copy">
@@ -126,7 +129,10 @@
         </div>
       </section>
 
-      <section class="app-section" aria-labelledby="focus-use-cases-title">
+      <section
+        class="app-section app-section--compact"
+        aria-labelledby="focus-use-cases-title"
+      >
         <div class="section-heading">
           <h2 id="focus-use-cases-title">Use cases</h2>
         </div>
@@ -135,7 +141,10 @@
         </ul>
       </section>
 
-      <section class="app-section" aria-labelledby="focus-private-title">
+      <section
+        class="app-section app-section--tone"
+        aria-labelledby="focus-private-title"
+      >
         <div class="section-heading">
           <h2 id="focus-private-title">Private by default</h2>
           <p>
@@ -154,7 +163,7 @@
 
       <section
         v-if="focusOneEnContent.gallery?.length"
-        class="app-section"
+        class="app-section app-section--media"
         aria-labelledby="focus-gallery-title"
       >
         <div class="section-heading">
@@ -199,7 +208,7 @@
 
       <section
         v-if="focusOneEnContent.pricing"
-        class="app-section"
+        class="app-section app-section--pricing"
         aria-labelledby="focus-pricing-title"
       >
         <div class="section-heading">
@@ -585,13 +594,12 @@ useHead({
 
 .app-actions {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 0.75rem;
   margin-top: 1.35rem;
 }
 
 .app-primary-action,
-.app-secondary-action,
 .app-cta__link {
   display: inline-flex;
   align-items: center;
@@ -613,7 +621,11 @@ useHead({
   color: white;
 }
 
-.app-secondary-action,
+.app-primary-action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+}
+
 .app-cta__link {
   background: rgba(243, 244, 246, 0.9);
   color: $gris2;
@@ -627,7 +639,6 @@ useHead({
 }
 
 .app-primary-action:focus-visible,
-.app-secondary-action:focus-visible,
 .app-cta__link:focus-visible {
   outline: 2px solid $vert;
   outline-offset: 3px;
@@ -704,6 +715,10 @@ useHead({
   padding: clamp(1.25rem, 3vw, 1.75rem);
   border-radius: 1.5rem;
   background: rgba(243, 244, 246, 0.88);
+}
+
+.app-surface--lead {
+  border: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 @media (min-width: 900px) {
@@ -784,6 +799,29 @@ useHead({
   display: grid;
   gap: 1rem;
   margin-top: clamp(2rem, 5vw, 3rem);
+}
+
+.app-section--tone {
+  padding: clamp(1.05rem, 2.5vw, 1.35rem);
+  border-radius: 1.15rem;
+  background: rgba(245, 247, 248, 0.72);
+}
+
+.app-section--stripe {
+  padding: clamp(1rem, 2.4vw, 1.25rem) 0;
+  border-block: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.app-section--compact {
+  margin-top: clamp(1.6rem, 4vw, 2.3rem);
+}
+
+.app-section--media {
+  padding-top: clamp(0.35rem, 1vw, 0.7rem);
+}
+
+.app-section--pricing {
+  padding-top: clamp(0.45rem, 1.2vw, 0.85rem);
 }
 
 .section-heading {

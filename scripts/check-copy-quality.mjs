@@ -39,6 +39,8 @@ const avoidedTerms = [
   /liste d[’']attente/iu,
   /Voir la confidentialité/iu,
   /View privacy/iu,
+  /Voir les tarifs/iu,
+  /See pricing/iu,
 ]
 
 const stopWords = new Set([

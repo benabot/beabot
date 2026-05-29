@@ -26,12 +26,6 @@
             <AppLink to="#duo-overview-title" class="app-primary-action">
               Voir comment ça marche
             </AppLink>
-            <AppLink
-              to="#duo-pricing-title"
-              class="app-secondary-action app-detail__contact-cta"
-            >
-              Voir les tarifs
-            </AppLink>
           </div>
         </div>
 
@@ -60,7 +54,10 @@
         </div>
       </section>
 
-      <section class="app-surface" aria-labelledby="duo-overview-title">
+      <section
+        class="app-surface app-surface--lead"
+        aria-labelledby="duo-overview-title"
+      >
         <div class="app-surface__copy">
           <h2 id="duo-overview-title">
             Pour les projets qu’on partage à deux
@@ -91,7 +88,7 @@
 
       <section
         v-if="duoSpendContent.showVisual"
-        class="app-section"
+        class="app-section app-section--media"
         aria-labelledby="duo-capture-title"
       >
         <div class="section-heading">
@@ -122,7 +119,10 @@
         </div>
       </section>
 
-      <section class="app-section" aria-labelledby="duo-details-title">
+      <section
+        class="app-section app-section--tone"
+        aria-labelledby="duo-details-title"
+      >
         <div class="section-heading">
           <h2 id="duo-details-title">Points clés</h2>
           <p>Les repères pour garder des comptes clairs, sans tableur.</p>
@@ -146,7 +146,7 @@
 
       <section
         v-if="duoSpendContent.gallery?.length"
-        class="app-section"
+        class="app-section app-section--media"
         aria-labelledby="duo-gallery-title"
       >
         <div class="section-heading">
@@ -191,7 +191,7 @@
 
       <section
         v-if="duoSpendContent.pricing"
-        class="app-section"
+        class="app-section app-section--pricing"
         aria-labelledby="duo-pricing-title"
       >
         <div class="section-heading">
@@ -511,13 +511,12 @@ useHead({
 
 .app-actions {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 0.75rem;
   margin-top: 1.35rem;
 }
 
 .app-primary-action,
-.app-secondary-action,
 .app-cta__link {
   display: inline-flex;
   align-items: center;
@@ -539,7 +538,11 @@ useHead({
   color: white;
 }
 
-.app-secondary-action,
+.app-primary-action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+}
+
 .app-cta__link {
   background: rgba(243, 244, 246, 0.9);
   color: $gris2;
@@ -553,7 +556,6 @@ useHead({
 }
 
 .app-primary-action:focus-visible,
-.app-secondary-action:focus-visible,
 .app-cta__link:focus-visible {
   outline: 2px solid $vert;
   outline-offset: 3px;
@@ -630,6 +632,10 @@ useHead({
   padding: clamp(1.25rem, 3vw, 1.75rem);
   border-radius: 1.5rem;
   background: rgba(243, 244, 246, 0.88);
+}
+
+.app-surface--lead {
+  border: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 @media (min-width: 900px) {
@@ -710,6 +716,20 @@ useHead({
   display: grid;
   gap: 1rem;
   margin-top: clamp(2rem, 5vw, 3rem);
+}
+
+.app-section--tone {
+  padding: clamp(1.05rem, 2.5vw, 1.35rem);
+  border-radius: 1.15rem;
+  background: rgba(245, 247, 248, 0.72);
+}
+
+.app-section--media {
+  padding-top: clamp(0.35rem, 1vw, 0.7rem);
+}
+
+.app-section--pricing {
+  padding-top: clamp(0.45rem, 1.2vw, 0.85rem);
 }
 
 .section-heading {

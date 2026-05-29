@@ -18,41 +18,6 @@
             </AppLink>
           </div>
         </div>
-
-        <div class="apps-hero__visual" aria-label="Aperçu de FocusOne et DuoSpend">
-          <AppLink
-            v-if="focusOneApp?.preview.src"
-            :to="focusOneApp.href"
-            class="apps-hero-shot apps-hero-shot--focus"
-            aria-label="Voir FocusOne"
-          >
-            <img
-              :src="focusOneApp.preview.src"
-              :alt="focusOneApp.preview.alt"
-              width="1206"
-              height="2622"
-              loading="eager"
-              decoding="async"
-            />
-            <span>FocusOne</span>
-          </AppLink>
-          <AppLink
-            v-if="duoSpendApp?.preview.src"
-            :to="duoSpendApp.href"
-            class="apps-hero-shot apps-hero-shot--duo"
-            aria-label="Voir DuoSpend"
-          >
-            <img
-              :src="duoSpendApp.preview.src"
-              :alt="duoSpendApp.preview.alt"
-              width="1206"
-              height="2622"
-              loading="lazy"
-              decoding="async"
-            />
-            <span>DuoSpend</span>
-          </AppLink>
-        </div>
       </section>
 
       <section class="apps-section" aria-labelledby="apps-featured-title">
@@ -131,7 +96,17 @@
         <h2 id="apps-manifesto-title" class="apps-manifesto__title">
           {{ appsIndexContent.manifestoTitle }}
         </h2>
-        <p class="apps-manifesto__body">{{ appsIndexContent.manifestoBody }}</p>
+        <p class="apps-manifesto__body">
+          Une app BeAbot doit rester courte dans votre journée. Vous l’ouvrez
+          pour une action précise : cocher une habitude, ajouter une dépense,
+          lancer une séance, préparer votre Mac. L’action est faite, l’app peut
+          disparaître.
+        </p>
+        <ol class="apps-manifesto__steps">
+          <li>Ouvrir pour une action claire.</li>
+          <li>Faire sans chercher dans les menus.</li>
+          <li>Fermer sans être retenu.</li>
+        </ol>
       </section>
 
       <section
@@ -203,7 +178,7 @@
 
       <section class="apps-final-cta" aria-labelledby="apps-final-cta-title">
         <h2 id="apps-final-cta-title" class="apps-final-cta__title">
-          Quelle app correspond à votre besoin ?
+          Chaque app a sa page dédiée.
         </h2>
         <p class="apps-final-cta__body">
           Chaque page présente les captures, les tarifs et les informations
@@ -341,18 +316,18 @@ useHead({
 }
 
 .apps-hero {
-  display: grid;
-  gap: clamp(1.5rem, 3vw, 2rem);
-  padding: clamp(0.25rem, 2vw, 1rem) 0 clamp(2.4rem, 5vw, 3.6rem);
-
-  @media (min-width: 980px) {
-    grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.85fr);
-    align-items: end;
-  }
+  padding:
+    clamp(1.2rem, 3vw, 1.8rem)
+    clamp(1rem, 3vw, 1.6rem)
+    clamp(2.2rem, 5vw, 3.2rem);
+  border-radius: 1rem;
+  background: linear-gradient(160deg, rgba(248, 251, 249, 0.92), rgba(252, 252, 253, 0.92));
+  border: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .apps-hero__copy {
   min-width: 0;
+  max-width: 52rem;
 }
 
 .apps-hero__eyebrow {
@@ -370,7 +345,7 @@ useHead({
 
 .apps-hero h1 {
   margin: 0;
-  max-width: 11ch;
+  max-width: 14ch;
   font-size: clamp(3rem, 6vw, 5.2rem);
   line-height: 0.98;
   letter-spacing: -0.025em;
@@ -422,51 +397,6 @@ useHead({
 .apps-hero__action--soft {
   border-color: rgba(15, 23, 42, 0.12);
   background: rgba(255, 255, 255, 0.88);
-}
-
-.apps-hero__visual {
-  display: grid;
-  gap: 0.7rem;
-  margin-top: 0.25rem;
-  padding: 0.9rem;
-  border-radius: 1rem;
-  background:
-    linear-gradient(140deg, rgba(247, 250, 248, 0.92), rgba(247, 248, 251, 0.92));
-  border: 1px solid rgba(15, 23, 42, 0.08);
-
-  @media (min-width: 980px) {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
-    align-items: end;
-  }
-}
-
-.apps-hero-shot {
-  display: grid;
-  gap: 0.45rem;
-  color: $gris1;
-  font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  text-decoration: none;
-}
-
-.apps-hero-shot img {
-  display: block;
-  width: 100%;
-  height: clamp(10rem, 28vw, 15.8rem);
-  border-radius: 0.85rem;
-  object-fit: contain;
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  background: rgba(255, 255, 255, 0.9);
-}
-
-.apps-hero-shot--focus img {
-  background: #f5f9f4;
-}
-
-.apps-hero-shot--duo img {
-  background: #f6f8fc;
 }
 
 .apps-section {
@@ -607,8 +537,24 @@ useHead({
 
 .apps-manifesto__body {
   margin: 0;
+  max-width: 60ch;
   color: $gris2;
   line-height: 1.7;
+}
+
+.apps-manifesto__steps {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0.2rem 0 0;
+  padding: 0 0 0 1.2rem;
+  color: $gris2;
+  line-height: 1.6;
+
+  @media (min-width: 820px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    padding-left: 1rem;
+  }
 }
 
 .apps-compact-grid {
