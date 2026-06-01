@@ -294,10 +294,9 @@ for (const page of pages) {
       assert.match(html, /Deux usages très concrets/)
       assert.match(html, /Pratiquer, préparer/)
       assert.match(html, /Ouvrir\. Faire\. Fermer/)
-      assert.match(
-        html,
-        /Chaque app a sa page dédiée|Quelle app correspond à votre besoin/,
-      )
+      assert.match(html, /Par quoi commencer/)
+      assert.match(html, /Découvrir Siturem/)
+      assert.match(html, /Découvrir Meeting Mode/)
       assert.match(
         html,
         /Un compteur privé pour choisir une seule routine/,
@@ -310,10 +309,9 @@ for (const page of pages) {
       assert.match(html, /Two concrete uses/)
       assert.match(html, /Practice, prepare/)
       assert.match(html, /Open\. Act\. Move on/)
-      assert.match(
-        html,
-        /Each app has its own page|Which app matches your need/,
-      )
+      assert.match(html, /Where should you start/)
+      assert.match(html, /Discover Siturem/)
+      assert.match(html, /Discover Meeting Mode/)
     }
 
     if (page.route === '/portfolio/') {

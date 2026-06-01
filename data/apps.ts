@@ -171,8 +171,9 @@ export const appsIndexContent = {
     'pas de gamification agressive',
     'des données limitées à l’usage réel',
   ],
-  ctaTitle: 'Chaque app a sa page dédiée.',
-  ctaBody: 'Vous y trouverez les captures, les tarifs et les informations pratiques.',
+  ctaTitle: 'Par quoi commencer ?',
+  ctaBody:
+    'Chaque app répond à un moment précis. Choisissez celle qui correspond à ce que vous voulez suivre, clarifier ou préparer maintenant.',
   intro: [
     'Des apps iOS et macOS conçues pour aller à l’essentiel : moins de bruit, moins de comptes, moins de réglages inutiles, plus de valeur concrète.',
     'Chaque app part d’un usage précis et cherche à rester agréable dans la durée : simple à ouvrir, rapide à comprendre, utile sans prendre toute la place.',
@@ -472,16 +473,22 @@ export const meetingModeContent: AppDetailContent = {
       label: 'Pensé pour le partage d’écran',
       value:
         'L’objectif n’est pas la productivité générale. L’objectif est de rendre l’écran propre, lisible et présentable avant un partage.',
+      description:
+        'La session prépare le contexte attendu et retire ce qui gêne la lecture.',
     },
     {
       label: 'Restore clair, sans magie',
       value:
         'Meeting Mode tente de restaurer uniquement ce qu’il a réellement modifié pendant la session.',
+      description:
+        'Le retour reste compréhensible : l’app ne promet pas de reconstruire un bureau qu’elle n’a pas touché.',
     },
     {
       label: 'Local d’abord',
       value:
         'Les presets et l’état de session sont stockés localement. Pas de cloud imposé, pas de compte, pas de couche inutile.',
+      description:
+        'Les informations utiles restent sur le Mac pour garder le flux simple.',
     },
   ],
   preview: {
@@ -687,9 +694,9 @@ export const focusOneContent: AppDetailContent = {
   detailPoints: [
     {
       label: 'Une seule habitude active',
-      value: 'Moins de dispersion, plus de chances de tenir.',
+      value: 'Choisir une routine, la cocher aujourd’hui, garder la série visible.',
       description:
-        'FocusOne vous aide à concentrer votre énergie sur une routine à la fois.',
+        'La première décision est volontairement simple : une seule chose à tenir, assez visible pour revenir demain sans rouvrir tout un tableau de bord.',
       featured: true,
     },
     {
@@ -916,9 +923,9 @@ export const duoSpendContent: AppDetailContent = {
   detailPoints: [
     {
       label: 'Dépenses partagées',
-      value: 'Voyage, mariage, travaux, emménagement.',
+      value: 'Un projet commun, deux personnes, un solde lisible.',
       description:
-        'Ajoutez les frais d’un projet commun en quelques gestes.',
+        'Chaque paiement rejoint le même fil : voyage, mariage, travaux ou emménagement. L’app garde qui a payé quoi et ce qu’il reste à équilibrer.',
       featured: true,
     },
     {
@@ -1092,21 +1099,29 @@ export const situremContent: AppDetailContent = {
     {
       label: 'Durée minimale',
       value: '6 minutes pour préserver la cohérence de la séance.',
+      description:
+        'Le cadre évite les sessions trop courtes qui cassent l’entrée, la pratique et le retour.',
     },
     {
       label: 'Accompagnement',
       value:
         'Silencieux, structuré ou guidé léger, avec gong et rappels discrets.',
+      description:
+        'Les réglages servent la séance, sans transformer Siturem en catalogue de contenus.',
     },
     {
       label: 'Suivi',
       value:
         'Temps total, historique 7 / 30 jours et streak discret, sans gamification agressive.',
+      description:
+        'Quelques repères suffisent pour revoir sa régularité sans ajouter de pression.',
     },
     {
       label: 'Données',
       value:
         'Approche locale, sans compte imposé. Intégration HealthKit optionnelle.',
+      description:
+        'Les données restent limitées à l’usage réel et aux intégrations activées.',
     },
   ],
   preview: {

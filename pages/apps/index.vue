@@ -178,24 +178,40 @@
 
       <section class="apps-final-cta" aria-labelledby="apps-final-cta-title">
         <h2 id="apps-final-cta-title" class="apps-final-cta__title">
-          Chaque app a sa page dédiée.
+          Par quoi commencer ?
         </h2>
         <p class="apps-final-cta__body">
-          Chaque page présente les captures, les tarifs et les informations
-          pratiques.
+          Chaque app répond à un moment précis. Choisissez celle qui correspond
+          à ce que vous voulez suivre, clarifier ou préparer maintenant.
         </p>
         <div class="apps-final-cta__links">
-          <AppLink to="/apps/focus-one/" class="apps-final-cta__link">
-            Tenir une habitude
+          <AppLink
+            to="/apps/focus-one/"
+            class="apps-final-cta__link apps-final-cta__link--focus"
+          >
+            <span class="apps-final-cta__intent">Tenir une habitude</span>
+            <span class="apps-final-cta__action">Découvrir FocusOne</span>
           </AppLink>
-          <AppLink to="/apps/duo-spend/" class="apps-final-cta__link">
-            Clarifier des dépenses
+          <AppLink
+            to="/apps/duo-spend/"
+            class="apps-final-cta__link apps-final-cta__link--duo"
+          >
+            <span class="apps-final-cta__intent">Clarifier des dépenses</span>
+            <span class="apps-final-cta__action">Découvrir DuoSpend</span>
           </AppLink>
-          <AppLink to="/apps/siturem/" class="apps-final-cta__link">
-            Lancer une séance
+          <AppLink
+            to="/apps/siturem/"
+            class="apps-final-cta__link apps-final-cta__link--siturem"
+          >
+            <span class="apps-final-cta__intent">Lancer une séance</span>
+            <span class="apps-final-cta__action">Découvrir Siturem</span>
           </AppLink>
-          <AppLink to="/apps/meeting-mode/" class="apps-final-cta__link">
-            Préparer une réunion
+          <AppLink
+            to="/apps/meeting-mode/"
+            class="apps-final-cta__link apps-final-cta__link--meeting"
+          >
+            <span class="apps-final-cta__intent">Préparer une réunion</span>
+            <span class="apps-final-cta__action">Découvrir Meeting Mode</span>
           </AppLink>
         </div>
       </section>
@@ -627,10 +643,11 @@ useHead({
 
 .apps-final-cta {
   display: grid;
-  gap: 0.75rem;
+  gap: 1rem;
   margin-top: clamp(2.4rem, 5vw, 3.5rem);
-  padding-top: clamp(1.2rem, 3vw, 1.8rem);
-  border-top: 1px solid rgba(15, 23, 42, 0.08);
+  padding: clamp(1.25rem, 3vw, 1.8rem);
+  border-radius: 1.15rem;
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .apps-final-cta__title {
@@ -648,28 +665,77 @@ useHead({
 }
 
 .apps-final-cta__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem;
+  display: grid;
+  gap: 0.65rem;
+
+  @media (min-width: 720px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 .apps-final-cta__link {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2.2rem;
-  padding: 0.36rem 0.7rem;
-  border-radius: 0.62rem;
-  border: 1px solid rgba(15, 23, 42, 0.08);
+  --selector-accent: #0dc763;
+
+  display: grid;
+  gap: 0.28rem;
+  min-height: 4.4rem;
+  padding: 0.78rem 0.85rem;
+  border-radius: 0.82rem;
+  border: 1px solid color-mix(in srgb, var(--selector-accent) 26%, transparent);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--selector-accent) 10%, #fff), rgba(255, 255, 255, 0.88));
   color: $gris2;
   text-decoration: none;
-  font-weight: 700;
   transition:
+    transform 0.16s ease,
     border-color 0.16s ease,
     color 0.16s ease;
+
+  &::before {
+    content: '';
+    width: 1.7rem;
+    height: 0.18rem;
+    border-radius: 999px;
+    background: var(--selector-accent);
+  }
+}
+
+.apps-final-cta__link--focus {
+  --selector-accent: #d99a21;
+}
+
+.apps-final-cta__link--duo {
+  --selector-accent: #5b6fe6;
+}
+
+.apps-final-cta__link--siturem {
+  --selector-accent: #174239;
+}
+
+.apps-final-cta__link--meeting {
+  --selector-accent: #2561d9;
+}
+
+.apps-final-cta__intent,
+.apps-final-cta__action {
+  display: block;
+}
+
+.apps-final-cta__intent {
+  color: $gris1;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.apps-final-cta__action {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: $gris2;
 }
 
 .apps-final-cta__link:hover {
-  border-color: rgba(13, 199, 99, 0.34);
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--selector-accent) 42%, transparent);
   color: $gris1;
 }
 

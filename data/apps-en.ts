@@ -32,8 +32,9 @@ export const appsIndexEnContent = {
     'no aggressive gamification',
     'data limited to the real use',
   ],
-  ctaTitle: 'Each app has its own page.',
-  ctaBody: 'You will find screenshots, pricing and practical information there.',
+  ctaTitle: 'Where should you start?',
+  ctaBody:
+    'Each app answers one specific moment. Choose the one that matches what you want to track, clarify or prepare now.',
   intro: [
     'Native iOS and macOS apps built to stay focused: less noise, fewer accounts, fewer unnecessary settings, more practical value.',
     'Each app starts from one clear use case and aims to stay useful over time: easy to open, quick to understand, and lightweight to use.',
@@ -312,16 +313,22 @@ export const meetingModeEnContent: AppDetailContent = {
       label: 'Built for screen sharing',
       value:
         'The goal is not generic productivity. The goal is a clean, readable, presentation-ready screen.',
+      description:
+        'The session prepares the expected context and removes what gets in the way.',
     },
     {
       label: 'Clear restore, no magic',
       value:
         'Meeting Mode attempts to restore only what it actually changed during the session.',
+      description:
+        'The return stays understandable: the app does not promise to rebuild a desktop it did not touch.',
     },
     {
       label: 'Local first',
       value:
         'Presets and session state are stored locally. No mandatory cloud, no mandatory account.',
+      description:
+        'Useful information stays on the Mac to keep the flow simple.',
     },
   ],
   gallery: [
@@ -470,9 +477,9 @@ export const focusOneEnContent: AppDetailContent = {
   detailPoints: [
     {
       label: 'One active habit',
-      value: 'Less distraction, higher consistency.',
+      value: 'Pick one routine, mark today, keep the streak visible.',
       description:
-        'FocusOne helps you direct your energy to one routine at a time.',
+        'The first decision stays intentionally simple: one thing to keep, visible enough to come back tomorrow without opening a full dashboard.',
       featured: true,
     },
     {
@@ -661,8 +668,9 @@ export const duoSpendEnContent: AppDetailContent = {
   detailPoints: [
     {
       label: 'Shared expenses',
-      value: 'Trip, wedding, home improvements, move.',
-      description: 'Add shared project expenses in a few taps.',
+      value: 'One shared project, two people, one readable balance.',
+      description:
+        'Each payment joins the same thread: a trip, a wedding, home improvements or a move. The app keeps who paid what and what remains to settle.',
       featured: true,
     },
     {
@@ -798,21 +806,29 @@ export const situremEnContent: AppDetailContent = {
     {
       label: 'Minimum duration',
       value: '6 minutes to keep session coherence.',
+      description:
+        'The frame avoids sessions that are too short to preserve entry, practice, and return.',
     },
     {
       label: 'Guidance options',
       value:
         'Silent, structured, or light guidance with gong and subtle reminders.',
+      description:
+        'Settings support the session without turning Siturem into a content catalog.',
     },
     {
       label: 'Tracking',
       value:
         'Total time, 7/30-day history, and discreet streak without aggressive gamification.',
+      description:
+        'A few markers are enough to review consistency without adding pressure.',
     },
     {
       label: 'Data',
       value:
         'Local-first approach, no mandatory account, optional HealthKit integration.',
+      description:
+        'Data stays limited to the real use and the integrations you enable.',
     },
   ],
   gallery: [

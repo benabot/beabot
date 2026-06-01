@@ -291,6 +291,7 @@ main.app-page .app-hero {
   position: relative;
   margin-top: 0.75rem;
   padding: clamp(1.35rem, 4vw, 2.5rem);
+  padding-bottom: clamp(1.25rem, 3vw, 2.25rem);
   border: 1px solid var(--apps-accent-border);
   border-radius: 1.6rem;
   background:
@@ -338,6 +339,28 @@ main.app-page--meeting-mode .app-mockup__screen {
 
 main.app-page .app-section {
   margin-top: clamp(2.4rem, 6vw, 4rem);
+}
+
+main.app-page .app-hero + .app-surface {
+  margin-top: clamp(1rem, 2.6vw, 1.7rem);
+}
+
+@media (min-width: 700px) {
+  main.app-page--siturem .detail-card--featured,
+  main.app-page--meeting-mode .detail-card--featured {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+@media (min-width: 980px) {
+  main.app-page--siturem .detail-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  main.app-page--meeting-mode .detail-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 main.app-page .app-section--stripe {
