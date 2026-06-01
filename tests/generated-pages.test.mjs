@@ -20,7 +20,9 @@ const pages = [
   { route: '/en/apps/duo-spend/', expectedUrl: `${siteUrl}/en/apps/duo-spend/` },
   { route: '/apps/focus-one/', expectedUrl: `${siteUrl}/apps/focus-one/` },
   { route: '/en/apps/focus-one/', expectedUrl: `${siteUrl}/en/apps/focus-one/` },
+  { route: '/apps/meeting-mode/', expectedUrl: `${siteUrl}/apps/meeting-mode/` },
   { route: '/en/apps/meeting-mode/', expectedUrl: `${siteUrl}/en/apps/meeting-mode/` },
+  { route: '/apps/siturem/', expectedUrl: `${siteUrl}/apps/siturem/` },
   { route: '/en/apps/siturem/', expectedUrl: `${siteUrl}/en/apps/siturem/` },
   { route: '/mentions-legales/', expectedUrl: `${siteUrl}/mentions-legales/` },
   { route: '/eco-conception/', expectedUrl: `${siteUrl}/eco-conception/` },
@@ -105,7 +107,6 @@ for (const page of pages) {
       )
       assert.match(html, /FocusOne, une seule promesse à tenir/)
       assert.match(html, /Voir comment ça marche/)
-      assert.match(html, /Voir les tarifs/)
       assert.doesNotMatch(html, /Être informé|#release-form|release-form/)
       assert.doesNotMatch(html, /Voir la confidentialité/)
       assert.match(html, /À force de vouloir tout suivre/)
@@ -165,7 +166,6 @@ for (const page of pages) {
       )
       assert.match(html, /DuoSpend — Qui doit combien à qui/)
       assert.match(html, /Voir comment ça marche/)
-      assert.match(html, /Voir les tarifs/)
       assert.doesNotMatch(html, /Être informé|#release-form|release-form/)
       assert.doesNotMatch(html, /Voir la confidentialité/)
       assert.match(html, /sans banque connectée et sans tableur/)
@@ -197,7 +197,6 @@ for (const page of pages) {
       )
       assert.match(html, /FocusOne, one promise to keep/)
       assert.match(html, /See how it works/)
-      assert.match(html, /See pricing/)
       assert.doesNotMatch(html, /Get launch updates|#release-form|release-form/)
       assert.doesNotMatch(html, /View privacy/)
       assert.match(html, /id=\"support\"/)
@@ -220,7 +219,6 @@ for (const page of pages) {
         /^DuoSpend — Shared expenses app for couples \| BeAbot$/,
       )
       assert.match(html, /See how it works/)
-      assert.match(html, /See pricing/)
       assert.doesNotMatch(html, /Get launch updates|#release-form|release-form/)
       assert.doesNotMatch(html, /View privacy/)
       assert.match(html, /For projects you share as a couple/)
@@ -232,11 +230,27 @@ for (const page of pages) {
       assert.match(html, /lang=\"en\"/)
     }
 
+    if (page.route === '/apps/meeting-mode/') {
+      assert.match(
+        getTitle(html),
+        /^Meeting Mode — app macOS pour réunions \| BeAbot$/,
+      )
+      assert.match(html, /Voir comment ça marche/)
+      assert.doesNotMatch(html, /Être informé|#release-form|release-form/)
+      assert.match(html, /id=\"support\"/)
+      assert.match(
+        html,
+        /\/contact\/\?app=meeting-mode(?:&|&amp;)type=support/,
+      )
+    }
+
     if (page.route === '/en/apps/meeting-mode/') {
       assert.match(
         getTitle(html),
         /^Meeting Mode — macOS app for meetings and screen sharing \| BeAbot$/,
       )
+      assert.match(html, /See how it works/)
+      assert.doesNotMatch(html, /Get launch updates|#release-form|release-form/)
       assert.match(html, /id=\"support\"/)
       assert.match(
         html,
@@ -245,11 +259,27 @@ for (const page of pages) {
       assert.match(html, /lang=\"en\"/)
     }
 
+    if (page.route === '/apps/siturem/') {
+      assert.match(
+        getTitle(html),
+        /^Siturem — timer iOS pour méditer \| BeAbot$/,
+      )
+      assert.match(html, /Voir comment ça marche/)
+      assert.doesNotMatch(html, /Être informé|#release-form|release-form/)
+      assert.match(html, /id=\"support\"/)
+      assert.match(
+        html,
+        /\/contact\/\?app=siturem(?:&|&amp;)type=support/,
+      )
+    }
+
     if (page.route === '/en/apps/siturem/') {
       assert.match(
         getTitle(html),
         /^Siturem — iOS meditation timer for advanced practitioners \| BeAbot$/,
       )
+      assert.match(html, /See how it works/)
+      assert.doesNotMatch(html, /Get launch updates|#release-form|release-form/)
       assert.match(html, /id=\"support\"/)
       assert.match(
         html,

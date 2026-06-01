@@ -1,5 +1,5 @@
 <template>
-  <main class="app-page">
+  <main class="app-page app-page--focus-one">
     <div class="app-shell">
       <AppBreadcrumb :items="breadcrumbItems" aria-label="Breadcrumb" />
       <p class="app-locale-switch">

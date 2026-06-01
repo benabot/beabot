@@ -37,6 +37,17 @@ Branche : `feature/apps-positioning-v2`
 - Clarification :
   - cette décision finale remplace la direction intermédiaire du 29 mai liée aux CTA `Être informé` / `Get launch updates`.
 
+#### Direction visuelle apps — 1er juin 2026
+
+- Décision :
+  - direction visuelle renforcée sur les 10 routes apps FR/EN, inspirée par la clarté de Cotypist sans copie ni surcouche lourde ;
+  - hubs `/apps/` et `/en/apps/` conservés en hero typographique sans images, avec rythme plus éditorial et app accents par produit ;
+  - pages FocusOne, DuoSpend, Siturem et Meeting Mode alignées sur une base visuelle commune : fonds légers, sections mieux scandées, images produit comme preuves, FAQ plus lisible ;
+  - CTA héros produits limités à `Voir comment ça marche` / `See how it works` ;
+  - aucun `#release-form`, aucun CTA `Être informé` / `Get launch updates`, aucune mécanique de liste d'attente ;
+  - tarifs FocusOne et DuoSpend conservés en cards ;
+  - sections finales `Support` et `Confidentialité` / `Privacy` non modifiées, ancres publiques préservées.
+
 #### Correction directionnelle — 29 mai 2026
 
 - Périmètre :

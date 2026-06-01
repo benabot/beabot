@@ -14,6 +14,10 @@ const files = [
   'pages/en/apps/focus-one.vue',
   'pages/apps/duo-spend.vue',
   'pages/en/apps/duo-spend.vue',
+  'pages/apps/siturem.vue',
+  'pages/en/apps/siturem.vue',
+  'pages/apps/meeting-mode.vue',
+  'pages/en/apps/meeting-mode.vue',
 ]
 
 const avoidedTerms = [

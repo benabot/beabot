@@ -269,7 +269,7 @@ const situremFaqSectionsEn: AppFaqSection[] = [
       {
         question: 'Is Siturem already published?',
         answer:
-          'Not yet. This page presents the product, principles, and privacy policy. You can leave your email to be notified at release.',
+          'Not yet. This page presents the product, principles, support, and privacy policy.',
       },
     ],
   },
@@ -436,9 +436,9 @@ export const meetingModeEnContent: AppDetailContent = {
   ],
   cta: {
     ...meetingModeContent.cta,
-    title: 'Be the first to know.',
+    title: 'Practical information',
     description:
-      'Meeting Mode is coming soon. Leave your email and I will let you know at launch.',
+      'Screenshots, support and privacy details are gathered on this page.',
     secondaryLabel: 'Need help? Contact support',
     secondaryTo: '/en/contact/?app=meeting-mode&type=support',
   },
@@ -851,9 +851,9 @@ export const situremEnContent: AppDetailContent = {
   faq: situremFaqSectionsEn.flatMap((section) => section.items),
   cta: {
     ...situremContent.cta,
-    title: 'Be the first to know.',
+    title: 'Practical information',
     description:
-      'Siturem is in pre-release. Leave your email and I will let you know at launch.',
+      'Screenshots, support and privacy details are gathered on this page.',
     secondaryLabel: 'Need help? Contact support',
     secondaryTo: '/en/contact/?app=siturem&type=support',
   },

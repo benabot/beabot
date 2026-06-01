@@ -427,7 +427,7 @@ const situremFaqSections: AppFaqSection[] = [
       {
         question: 'Siturem est-elle déjà publiée ?',
         answer:
-          'Pas encore. La page présente le produit, ses principes et sa politique de confidentialité. Vous pouvez laisser votre adresse pour être prévenu à l’ouverture.',
+          'Pas encore. La page présente le produit, ses principes, le support et sa politique de confidentialité.',
       },
     ],
   },
@@ -651,9 +651,9 @@ export const meetingModeContent: AppDetailContent = {
     },
   },
   cta: {
-    title: 'Soyez le premier à savoir.',
+    title: 'Informations pratiques',
     description:
-      "Meeting Mode arrive bientôt. Laissez votre adresse — je vous préviens dès l'ouverture.",
+      'Retrouvez sur cette page les captures, le support et la confidentialité.',
     secondaryLabel: 'Une question ? Contactez-moi',
     secondaryTo: '/contact/?app=meeting-mode&type=support',
   },
@@ -1234,9 +1234,9 @@ export const situremContent: AppDetailContent = {
     },
   },
   cta: {
-    title: 'Soyez le premier à savoir.',
+    title: 'Informations pratiques',
     description:
-      "Siturem est en prépublication. Laissez votre adresse — je vous préviens dès l'ouverture.",
+      'Retrouvez sur cette page les captures, le support et la confidentialité.',
     secondaryLabel: 'Une question ? Contactez-moi',
     secondaryTo: '/contact/?app=siturem&type=support',
   },

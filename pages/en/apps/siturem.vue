@@ -1,5 +1,5 @@
 <template>
-  <main class="app-page">
+  <main class="app-page app-page--siturem">
     <div class="app-shell">
       <AppBreadcrumb :items="breadcrumbItems" aria-label="Breadcrumb" />
       <p class="app-locale-switch">
@@ -21,17 +21,11 @@
 
           <div class="app-actions">
             <AppLink
-              to="#release-form"
+              to="#siturem-overview-title"
               class="app-primary-action"
             >
-              Get release updates
+              See how it works
             </AppLink>
-            <NuxtLink
-              to="/en/contact/?app=siturem&type=support"
-              class="app-secondary-action app-detail__contact-cta"
-            >
-              Contact support
-            </NuxtLink>
           </div>
         </div>
 
@@ -252,20 +246,6 @@
         </details>
       </section>
 
-      <section
-        id="release-form"
-        class="app-cta"
-        aria-labelledby="siturem-cta-title"
-      >
-        <div class="app-cta__heading">
-          <h2 id="siturem-cta-title">
-            {{ situremEnContent.cta.title }}
-          </h2>
-          <p>{{ situremEnContent.cta.description }}</p>
-        </div>
-
-        <AppReleaseInterestForm :app-name="situremEnContent.name" locale="en" />
-      </section>
     </div>
   </main>
 </template>
@@ -277,7 +257,6 @@ import AppBreadcrumb from '~/components/apps/AppBreadcrumb.vue'
 import AppGalleryLightbox from '~/components/apps/AppGalleryLightbox.vue'
 import AppFaqList from '~/components/apps/AppFaqList.vue'
 import AppLegalTabs from '~/components/apps/AppLegalTabs.vue'
-import AppReleaseInterestForm from '~/components/apps/AppReleaseInterestForm.vue'
 import AppSupportSection from '~/components/apps/AppSupportSection.vue'
 
 import {

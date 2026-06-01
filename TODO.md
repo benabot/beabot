@@ -25,6 +25,16 @@
 - [x] Maintenir la parité FR/EN (structure, ton produit, CTA)
 - [x] Documenter que cette décision finale remplace la direction intermédiaire des CTA `Être informé` du 29 mai
 
+### Direction visuelle Cotypist apps — 1er juin 2026
+
+- [x] Appliquer une direction visuelle plus forte sur les 10 routes apps FR/EN sans nouvelle dépendance front, carrousel, vidéo, script tiers ou animation lourde
+- [x] Garder les hubs `/apps/` et `/en/apps/` en hero typographique sans images
+- [x] Renforcer le rythme éditorial, les espacements, les contrastes doux et les accents couleur par app
+- [x] Supprimer les usages publics de `#release-form`, `Être informé` et `Get launch updates` sur Siturem et Meeting Mode
+- [x] Aligner les CTA héros produits sur `Voir comment ça marche` / `See how it works`
+- [x] Conserver les tarifs FocusOne/DuoSpend en cards
+- [x] Préserver les sections finales `Support` et `Confidentialité` / `Privacy` et leurs ancres publiques
+
 ### Correction directionnelle : simplification apps — 29 mai 2026
 
 - [x] Appliquer Frontend Review : identifier la dérive trop lourde, trop template SaaS, trop `cards partout`
