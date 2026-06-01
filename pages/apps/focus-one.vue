@@ -55,27 +55,15 @@
           </p>
         </div>
 
-        <div class="app-surface__status">
-          <p class="app-surface__eyebrow">Repères</p>
-          <dl class="app-surface__list app-surface__list--cards">
-            <div>
-              <dt>Usage</dt>
-              <dd>Micro-habitude quotidienne</dd>
-            </div>
-            <div>
-              <dt>Principe</dt>
-              <dd>Une seule habitude active</dd>
-            </div>
-            <div>
-              <dt>Stockage</dt>
-              <dd>Local sur iPhone + iCloud si activé</dd>
-            </div>
-            <div>
-              <dt>Compte</dt>
-              <dd>Aucun compte requis</dd>
-            </div>
-          </dl>
-        </div>
+        <aside class="app-brief" aria-label="En bref">
+          <p class="app-brief__eyebrow">En bref</p>
+          <ul class="app-brief__list">
+            <li>Pour une routine personnelle à garder visible.</li>
+            <li>Un seul engagement actif, sans pile d’objectifs.</li>
+            <li>Un suivi privé sur iPhone, avec iCloud si vous l’activez.</li>
+            <li>Aucun compte requis pour commencer.</li>
+          </ul>
+        </aside>
       </section>
 
       <section
@@ -106,7 +94,10 @@
         </div>
       </section>
 
-      <section class="app-section" aria-labelledby="focus-why-title">
+      <section
+        class="app-section focus-rhythm"
+        aria-labelledby="focus-why-title"
+      >
         <div class="section-heading">
           <h2 id="focus-why-title">Pourquoi une seule habitude ?</h2>
           <p>
@@ -115,50 +106,67 @@
             active, pour garder l’action du jour au premier plan.
           </p>
         </div>
-      </section>
 
-      <section
-        class="app-section app-section--stripe"
-        aria-labelledby="focus-loop-title"
-      >
-        <div class="section-heading">
-          <h2 id="focus-loop-title">La cocher aujourd’hui</h2>
-          <p class="focus-loop-copy">
-            Ouvrir. Cocher aujourd’hui. Voir la série. Fermer.
-          </p>
+        <div class="focus-steps" aria-label="Boucle FocusOne">
+          <article class="focus-step-card">
+            <span class="focus-step-card__index">01</span>
+            <h3>Choisir</h3>
+            <p>
+              Une routine simple, assez précise pour savoir quoi faire
+              aujourd’hui.
+            </p>
+          </article>
+          <article class="focus-step-card">
+            <span class="focus-step-card__index">02</span>
+            <h3>Cocher</h3>
+            <p>
+              Un geste rapide quand c’est fait, sans relancer toute une app
+              d’objectifs.
+            </p>
+          </article>
+          <article class="focus-step-card">
+            <span class="focus-step-card__index">03</span>
+            <h3>Revenir</h3>
+            <p>La série reste visible pour garder l’élan le lendemain.</p>
+          </article>
         </div>
       </section>
 
       <section
-        class="app-section app-section--compact"
+        class="app-section focus-personal"
         aria-labelledby="focus-use-cases-title"
       >
-        <div class="section-heading">
-          <h2 id="focus-use-cases-title">Pour quels usages ?</h2>
+        <div class="focus-personal__intro">
+          <div class="section-heading">
+            <h2 id="focus-use-cases-title">Des routines personnelles</h2>
+            <p>
+              FocusOne convient aux petits engagements que l’on veut garder pour
+              soi, sans fil social ni classement.
+            </p>
+          </div>
         </div>
-        <ul class="focus-list">
-          <li v-for="item in focusUseCases" :key="item">{{ item }}</li>
-        </ul>
-      </section>
-
-      <section
-        class="app-section app-section--tone"
-        aria-labelledby="focus-private-title"
-      >
-        <div class="section-heading">
-          <h2 id="focus-private-title">Privé par défaut</h2>
-          <p>
-            Pas de réseau social, pas de classement, pas de pression publique.
-            Votre série reste votre affaire.
-          </p>
+        <div class="focus-personal__grid">
+          <div class="focus-personal__panel">
+            <h3>À suivre</h3>
+            <ul class="focus-list">
+              <li v-for="item in focusUseCases" :key="item">{{ item }}</li>
+            </ul>
+          </div>
+          <div class="focus-personal__panel focus-personal__panel--quiet">
+            <h3 id="focus-private-title">À éviter</h3>
+            <p>
+              Pas de réseau social, pas de classement, pas de pression publique.
+              Votre série reste votre affaire.
+            </p>
+            <ul class="focus-list">
+              <li v-for="item in focusAvoids" :key="item">{{ item }}</li>
+            </ul>
+            <p class="focus-safety">
+              FocusOne est un outil personnel de suivi. Il ne remplace pas un
+              accompagnement médical, psychologique ou thérapeutique.
+            </p>
+          </div>
         </div>
-        <ul class="focus-list">
-          <li v-for="item in focusAvoids" :key="item">{{ item }}</li>
-        </ul>
-        <p class="focus-safety">
-          FocusOne est un outil personnel de suivi. Il ne remplace pas un
-          accompagnement médical, psychologique ou thérapeutique.
-        </p>
       </section>
 
       <section
@@ -275,6 +283,8 @@
         </div>
       </section>
 
+      <div class="app-final-separator" aria-hidden="true"></div>
+
       <AppSupportSection
         app-name="FocusOne"
         app-slug="focus-one"
@@ -309,7 +319,6 @@
           </div>
         </details>
       </section>
-
     </div>
   </main>
 </template>

@@ -1,5 +1,5 @@
-@use "~/assets/css/vars/_colors.scss" as *;
-@use "~/assets/css/vars/_typo.scss" as *;
+@use '~/assets/css/vars/_colors.scss' as *;
+@use '~/assets/css/vars/_typo.scss' as *;
 
 main.apps-index,
 main.app-page {
@@ -13,8 +13,16 @@ main.app-page {
   --apps-ink: var(--color-gray-1);
   --apps-muted: var(--color-gray-2);
   background:
-    radial-gradient(circle at 18% 0%, rgba(242, 168, 29, 0.14), transparent 28rem),
-    radial-gradient(circle at 88% 10%, rgba(37, 97, 217, 0.11), transparent 30rem),
+    radial-gradient(
+      circle at 18% 0%,
+      rgba(242, 168, 29, 0.14),
+      transparent 28rem
+    ),
+    radial-gradient(
+      circle at 88% 10%,
+      rgba(37, 97, 217, 0.11),
+      transparent 30rem
+    ),
     linear-gradient(180deg, #fbfcfb 0%, #f4f7f5 44%, #ffffff 100%);
 }
 
@@ -42,8 +50,16 @@ main.apps-index .apps-hero {
   border: 1px solid rgba(13, 199, 99, 0.2);
   border-radius: 1.4rem;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(244, 252, 247, 0.86)),
-    radial-gradient(circle at 92% 12%, rgba(37, 97, 217, 0.14), transparent 17rem);
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.96),
+      rgba(244, 252, 247, 0.86)
+    ),
+    radial-gradient(
+      circle at 92% 12%,
+      rgba(37, 97, 217, 0.14),
+      transparent 17rem
+    );
   box-shadow: 0 24px 70px rgba(15, 23, 42, 0.06);
 }
 
@@ -55,8 +71,11 @@ main.apps-index .apps-hero::after {
   width: clamp(4.5rem, 12vw, 8rem);
   aspect-ratio: 1;
   border-radius: 2rem;
-  background:
-    linear-gradient(135deg, rgba(13, 199, 99, 0.22), rgba(37, 97, 217, 0.16));
+  background: linear-gradient(
+    135deg,
+    rgba(13, 199, 99, 0.22),
+    rgba(37, 97, 217, 0.16)
+  );
   box-shadow: 0 22px 44px rgba(13, 199, 99, 0.12);
   transform: rotate(8deg);
   opacity: 0.58;
@@ -113,8 +132,11 @@ main.apps-index .apps-hero__action,
 main.app-page .app-primary-action,
 main.app-page .app-cta__link {
   border: 1px solid var(--apps-accent-border);
-  background:
-    linear-gradient(135deg, var(--apps-accent-strong), color-mix(in srgb, var(--apps-accent-strong) 82%, var(--color-blue-1)));
+  background: linear-gradient(
+    135deg,
+    var(--apps-accent-strong),
+    color-mix(in srgb, var(--apps-accent-strong) 82%, var(--color-blue-1))
+  );
   color: #fff;
   box-shadow: 0 14px 30px var(--apps-accent-shadow);
 }
@@ -122,8 +144,11 @@ main.app-page .app-cta__link {
 main.apps-index .apps-hero__action:hover,
 main.app-page .app-primary-action:hover,
 main.app-page .app-cta__link:hover {
-  background:
-    linear-gradient(135deg, color-mix(in srgb, var(--apps-accent-strong) 86%, #000), var(--apps-accent-strong));
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--apps-accent-strong) 86%, #000),
+    var(--apps-accent-strong)
+  );
 }
 
 main.apps-index .apps-hero__action--soft {
@@ -158,8 +183,11 @@ main.apps-index .apps-compact-item {
   position: relative;
   overflow: hidden;
   border: 1px solid var(--app-row-border, rgba(15, 23, 42, 0.08));
-  background:
-    linear-gradient(145deg, var(--app-row-bg, rgba(255, 255, 255, 0.94)), rgba(255, 255, 255, 0.86));
+  background: linear-gradient(
+    145deg,
+    var(--app-row-bg, rgba(255, 255, 255, 0.94)),
+    rgba(255, 255, 255, 0.86)
+  );
   box-shadow: 0 18px 44px var(--app-row-shadow, rgba(15, 23, 42, 0.05));
 }
 
@@ -206,8 +234,11 @@ main.app-page .app-section--tone,
 main.app-page .faq-wrapper {
   border: 1px solid rgba(15, 23, 42, 0.07);
   border-radius: 1.35rem;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.92), var(--apps-accent-wash));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.92),
+    var(--apps-accent-wash)
+  );
   box-shadow: 0 18px 50px rgba(15, 23, 42, 0.045);
 }
 
@@ -295,8 +326,16 @@ main.app-page .app-hero {
   border: 1px solid var(--apps-accent-border);
   border-radius: 1.6rem;
   background:
-    radial-gradient(circle at 88% 20%, var(--apps-accent-soft), transparent 17rem),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(247, 249, 250, 0.82));
+    radial-gradient(
+      circle at 88% 20%,
+      var(--apps-accent-soft),
+      transparent 17rem
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.94),
+      rgba(247, 249, 250, 0.82)
+    );
   box-shadow: 0 26px 70px rgba(15, 23, 42, 0.06);
 }
 
@@ -320,7 +359,11 @@ main.app-page .app-mockup {
   position: relative;
   background:
     linear-gradient(180deg, #111827, #0f172a),
-    radial-gradient(circle at 50% 0%, var(--apps-accent-soft), transparent 16rem);
+    radial-gradient(
+      circle at 50% 0%,
+      var(--apps-accent-soft),
+      transparent 16rem
+    );
 }
 
 main.app-page .app-mockup::before {
@@ -367,7 +410,11 @@ main.app-page .app-section--stripe {
   padding: clamp(1.35rem, 3vw, 2rem);
   border: 1px solid var(--apps-accent-border);
   border-radius: 1.25rem;
-  background: linear-gradient(135deg, var(--apps-accent-wash), rgba(255, 255, 255, 0.86));
+  background: linear-gradient(
+    135deg,
+    var(--apps-accent-wash),
+    rgba(255, 255, 255, 0.86)
+  );
 }
 
 main.app-page .app-surface__status,
@@ -391,9 +438,239 @@ main.app-page .pricing-card {
 main.app-page .detail-card--featured,
 main.app-page .pricing-card--featured {
   border-color: var(--apps-accent-border);
-  background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.95), var(--apps-accent-wash));
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.95),
+    var(--apps-accent-wash)
+  );
   box-shadow: 0 18px 38px var(--apps-accent-shadow);
+}
+
+main.app-page--focus-one .app-brief,
+main.app-page--duo-spend .app-brief {
+  align-self: stretch;
+  padding: clamp(1.05rem, 2.4vw, 1.4rem);
+  border: 1px solid var(--apps-accent-border);
+  border-radius: 1.15rem;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.94),
+    var(--apps-accent-wash)
+  );
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.045);
+}
+
+main.app-page--focus-one .app-brief__eyebrow,
+main.app-page--duo-spend .app-brief__eyebrow {
+  margin: 0 0 0.85rem;
+  color: var(--apps-accent-strong);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+main.app-page--focus-one .app-brief__list,
+main.app-page--duo-spend .app-brief__list {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+main.app-page--focus-one .app-brief__list li,
+main.app-page--duo-spend .app-brief__list li {
+  position: relative;
+  padding-left: 1.35rem;
+  color: var(--apps-ink);
+  line-height: 1.5;
+}
+
+main.app-page--focus-one .app-brief__list li::before,
+main.app-page--duo-spend .app-brief__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 999px;
+  background: var(--apps-accent-strong);
+  box-shadow: 0 0 0 0.28rem var(--apps-accent-soft);
+}
+
+main.app-page--focus-one .detail-grid,
+main.app-page--duo-spend .detail-grid {
+  gap: 0.9rem;
+}
+
+main.app-page--focus-one .detail-card,
+main.app-page--duo-spend .detail-card {
+  min-height: 100%;
+  padding: clamp(1rem, 2.4vw, 1.3rem);
+  border: 1px solid rgba(15, 23, 42, 0.075);
+  border-left: 0.24rem solid var(--apps-accent-border);
+  border-radius: 1rem;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.92),
+    rgba(255, 255, 255, 0.78)
+  );
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.035);
+}
+
+main.app-page--focus-one .detail-card--featured,
+main.app-page--duo-spend .detail-card--featured {
+  grid-column: auto;
+  grid-row: auto;
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: 0.45rem;
+  border-color: var(--apps-accent-border);
+  border-left-color: var(--apps-accent-strong);
+}
+
+main.app-page--focus-one
+  .detail-grid
+  .detail-card--featured
+  .detail-card__description,
+main.app-page--duo-spend
+  .detail-grid
+  .detail-card--featured
+  .detail-card__description {
+  margin-top: 0.35rem;
+}
+
+main.app-page--focus-one .detail-card__value,
+main.app-page--duo-spend .detail-card__value {
+  font-size: clamp(1rem, 1.6vw, 1.12rem);
+}
+
+main.app-page--focus-one .focus-rhythm,
+main.app-page--focus-one .focus-personal {
+  padding: clamp(1.2rem, 3vw, 1.8rem);
+  border: 1px solid rgba(15, 23, 42, 0.07);
+  border-radius: 1.25rem;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.9),
+    var(--apps-accent-wash)
+  );
+}
+
+main.app-page--focus-one .focus-rhythm .section-heading,
+main.app-page--focus-one .focus-personal .section-heading {
+  max-width: 45rem;
+}
+
+main.app-page--focus-one .focus-steps,
+main.app-page--focus-one .focus-personal__grid {
+  display: grid;
+  gap: 0.9rem;
+}
+
+@media (min-width: 760px) {
+  main.app-page--focus-one .focus-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  main.app-page--focus-one .focus-personal__grid {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    align-items: stretch;
+  }
+}
+
+main.app-page--focus-one .focus-step-card,
+main.app-page--focus-one .focus-personal__panel {
+  display: grid;
+  gap: 0.55rem;
+  min-height: 100%;
+  padding: clamp(1rem, 2.3vw, 1.35rem);
+  border: 1px solid rgba(15, 23, 42, 0.07);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.035);
+}
+
+main.app-page--focus-one .focus-step-card__index {
+  color: var(--apps-accent-strong);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+main.app-page--focus-one .focus-step-card h3,
+main.app-page--focus-one .focus-personal__panel h3 {
+  margin: 0;
+  color: var(--apps-ink);
+  font-size: clamp(1.08rem, 2vw, 1.3rem);
+}
+
+main.app-page--focus-one .focus-step-card p,
+main.app-page--focus-one .focus-personal__panel p {
+  margin: 0;
+  color: var(--apps-muted);
+  line-height: 1.6;
+}
+
+main.app-page--focus-one .focus-personal__panel--quiet {
+  border-color: var(--apps-accent-border);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.92),
+    var(--apps-accent-wash)
+  );
+}
+
+main.app-page--focus-one .premium-benefits {
+  gap: 1rem;
+  margin-top: clamp(1.35rem, 3.5vw, 2rem);
+  padding: clamp(1rem, 2.6vw, 1.45rem);
+  border: 1px solid var(--apps-accent-border);
+  border-radius: 1.15rem;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.9),
+    var(--apps-accent-wash)
+  );
+}
+
+main.app-page--focus-one .premium-benefits__grid {
+  gap: 0.9rem;
+}
+
+main.app-page--focus-one .premium-benefit-card {
+  position: relative;
+  gap: 0.45rem;
+  min-height: 100%;
+  padding: clamp(0.95rem, 2vw, 1.2rem) clamp(0.95rem, 2vw, 1.15rem)
+    clamp(0.95rem, 2vw, 1.15rem) 2.45rem;
+  border: 1px solid rgba(15, 23, 42, 0.075);
+  border-radius: 0.95rem;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.035);
+}
+
+main.app-page--focus-one .premium-benefit-card::before {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  top: 1.12rem;
+  width: 0.58rem;
+  height: 0.58rem;
+  border-radius: 999px;
+  background: var(--apps-accent-strong);
+  box-shadow: 0 0 0 0.28rem var(--apps-accent-soft);
+}
+
+main.app-page--focus-one .premium-benefit-card__description {
+  line-height: 1.58;
+}
+
+main.app-page--focus-one .app-final-separator,
+main.app-page--duo-spend .app-final-separator {
+  margin-top: clamp(2rem, 5vw, 3.2rem);
+  border-top: 1px solid rgba(15, 23, 42, 0.11);
 }
 
 main.app-page .pricing-card__badge {
@@ -411,8 +688,11 @@ main.app-page .app-surface__cases li::before {
 main.app-page .gallery-card,
 main.app-page .before-after-card {
   overflow: hidden;
-  background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.9), var(--apps-accent-wash));
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.9),
+    var(--apps-accent-wash)
+  );
 }
 
 main.app-page .gallery-card__media,

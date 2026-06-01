@@ -65,23 +65,15 @@
           </p>
         </div>
 
-        <div class="app-surface__status">
-          <p class="app-surface__eyebrow">At a glance</p>
-          <dl class="app-surface__list app-surface__list--cards">
-            <div>
-              <dt>Use case</dt>
-              <dd>Shared couple project</dd>
-            </div>
-            <div>
-              <dt>Principle</dt>
-              <dd>Who paid what, who owes what</dd>
-            </div>
-            <div>
-              <dt>Account</dt>
-              <dd>No account required</dd>
-            </div>
-          </dl>
-        </div>
+        <aside class="app-brief" aria-label="At a glance">
+          <p class="app-brief__eyebrow">At a glance</p>
+          <ul class="app-brief__list">
+            <li>For expenses on a shared project.</li>
+            <li>Each person adds what they paid.</li>
+            <li>The balance stays readable without a spreadsheet.</li>
+            <li>No connected bank, no required account.</li>
+          </ul>
+        </aside>
       </section>
 
       <section
@@ -206,7 +198,10 @@
               'pricing-card--featured': plan.name === 'DuoSpend Pro',
             }"
           >
-            <div v-if="plan.name === 'DuoSpend Pro'" class="pricing-card__badge">
+            <div
+              v-if="plan.name === 'DuoSpend Pro'"
+              class="pricing-card__badge"
+            >
               Recommended
             </div>
             <p class="pricing-card__name">{{ plan.name }}</p>
@@ -219,7 +214,10 @@
         </div>
       </section>
 
-      <section class="app-section app-section--faq" aria-labelledby="duo-faq-title">
+      <section
+        class="app-section app-section--faq"
+        aria-labelledby="duo-faq-title"
+      >
         <div class="faq-wrapper">
           <div class="section-heading">
             <h2 id="duo-faq-title">FAQ</h2>
@@ -232,6 +230,8 @@
           />
         </div>
       </section>
+
+      <div class="app-final-separator" aria-hidden="true"></div>
 
       <AppSupportSection
         app-name="DuoSpend"
@@ -249,7 +249,9 @@
         <details ref="privacyDetails" class="legal-disclosure">
           <summary class="legal-disclosure__summary">
             <div class="legal-disclosure__header">
-              <h2 id="duo-legal-title" class="legal-disclosure__title">Privacy</h2>
+              <h2 id="duo-legal-title" class="legal-disclosure__title">
+                Privacy
+              </h2>
               <p class="legal-disclosure__meta">Privacy policy — EN</p>
             </div>
             <span class="legal-disclosure__toggle" aria-hidden="true"></span>
@@ -263,7 +265,6 @@
           </div>
         </details>
       </section>
-
     </div>
   </main>
 </template>
@@ -931,7 +932,9 @@ useHead({
   border-radius: 999px;
   background: $vert;
   transform: translate(-50%, -50%);
-  transition: transform 0.14s ease, opacity 0.14s ease;
+  transition:
+    transform 0.14s ease,
+    opacity 0.14s ease;
 }
 
 .legal-disclosure__toggle::after {

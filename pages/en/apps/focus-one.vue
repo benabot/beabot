@@ -55,27 +55,15 @@
           </p>
         </div>
 
-        <div class="app-surface__status">
-          <p class="app-surface__eyebrow">At a glance</p>
-          <dl class="app-surface__list app-surface__list--cards">
-            <div>
-              <dt>Use case</dt>
-              <dd>Daily micro-habit</dd>
-            </div>
-            <div>
-              <dt>Principle</dt>
-              <dd>One active habit</dd>
-            </div>
-            <div>
-              <dt>Storage</dt>
-              <dd>Local on iPhone + iCloud if enabled</dd>
-            </div>
-            <div>
-              <dt>Account</dt>
-              <dd>No account required</dd>
-            </div>
-          </dl>
-        </div>
+        <aside class="app-brief" aria-label="At a glance">
+          <p class="app-brief__eyebrow">At a glance</p>
+          <ul class="app-brief__list">
+            <li>For one personal routine you want to keep visible.</li>
+            <li>One active commitment, not a stack of goals.</li>
+            <li>Private tracking on iPhone, with iCloud if you enable it.</li>
+            <li>No account required to start.</li>
+          </ul>
+        </aside>
       </section>
 
       <section
@@ -106,7 +94,10 @@
         </div>
       </section>
 
-      <section class="app-section" aria-labelledby="focus-why-title">
+      <section
+        class="app-section focus-rhythm"
+        aria-labelledby="focus-why-title"
+      >
         <div class="section-heading">
           <h2 id="focus-why-title">Why only one habit?</h2>
           <p>
@@ -115,50 +106,63 @@
             action for today.
           </p>
         </div>
-      </section>
 
-      <section
-        class="app-section app-section--stripe"
-        aria-labelledby="focus-loop-title"
-      >
-        <div class="section-heading">
-          <h2 id="focus-loop-title">Mark today as done</h2>
-          <p class="focus-loop-copy">
-            Open. Mark today as done. See your streak. Close.
-          </p>
+        <div class="focus-steps" aria-label="FocusOne loop">
+          <article class="focus-step-card">
+            <span class="focus-step-card__index">01</span>
+            <h3>Pick</h3>
+            <p>One simple routine, clear enough to know what counts today.</p>
+          </article>
+          <article class="focus-step-card">
+            <span class="focus-step-card__index">02</span>
+            <h3>Mark</h3>
+            <p>
+              A quick check when it is done, without reopening a goal dashboard.
+            </p>
+          </article>
+          <article class="focus-step-card">
+            <span class="focus-step-card__index">03</span>
+            <h3>Return</h3>
+            <p>Your streak stays visible so tomorrow starts with context.</p>
+          </article>
         </div>
       </section>
 
       <section
-        class="app-section app-section--compact"
+        class="app-section focus-personal"
         aria-labelledby="focus-use-cases-title"
       >
-        <div class="section-heading">
-          <h2 id="focus-use-cases-title">Use cases</h2>
+        <div class="focus-personal__intro">
+          <div class="section-heading">
+            <h2 id="focus-use-cases-title">Personal routines</h2>
+            <p>
+              FocusOne fits small commitments you want to keep for yourself,
+              without a social feed or ranking.
+            </p>
+          </div>
         </div>
-        <ul class="focus-list">
-          <li v-for="item in focusUseCases" :key="item">{{ item }}</li>
-        </ul>
-      </section>
-
-      <section
-        class="app-section app-section--tone"
-        aria-labelledby="focus-private-title"
-      >
-        <div class="section-heading">
-          <h2 id="focus-private-title">Private by default</h2>
-          <p>
-            No social feed, no public ranking, no external pressure. Your streak
-            stays yours.
-          </p>
+        <div class="focus-personal__grid">
+          <div class="focus-personal__panel">
+            <h3>To track</h3>
+            <ul class="focus-list">
+              <li v-for="item in focusUseCases" :key="item">{{ item }}</li>
+            </ul>
+          </div>
+          <div class="focus-personal__panel focus-personal__panel--quiet">
+            <h3 id="focus-private-title">To avoid</h3>
+            <p>
+              No social feed, no public ranking, no external pressure. Your
+              streak stays yours.
+            </p>
+            <ul class="focus-list">
+              <li v-for="item in focusAvoids" :key="item">{{ item }}</li>
+            </ul>
+            <p class="focus-safety">
+              FocusOne is a personal tracking tool. It does not replace medical,
+              psychological or therapeutic support.
+            </p>
+          </div>
         </div>
-        <ul class="focus-list">
-          <li v-for="item in focusAvoids" :key="item">{{ item }}</li>
-        </ul>
-        <p class="focus-safety">
-          FocusOne is a personal tracking tool. It does not replace medical,
-          psychological or therapeutic support.
-        </p>
       </section>
 
       <section
@@ -278,6 +282,8 @@
         </div>
       </section>
 
+      <div class="app-final-separator" aria-hidden="true"></div>
+
       <AppSupportSection
         app-name="FocusOne"
         app-slug="focus-one"
@@ -310,7 +316,6 @@
           </div>
         </details>
       </section>
-
     </div>
   </main>
 </template>

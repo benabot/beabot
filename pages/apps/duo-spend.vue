@@ -59,31 +59,21 @@
         aria-labelledby="duo-overview-title"
       >
         <div class="app-surface__copy">
-          <h2 id="duo-overview-title">
-            Pour les projets qu’on partage à deux
-          </h2>
+          <h2 id="duo-overview-title">Pour les projets qu’on partage à deux</h2>
           <p v-for="paragraph in duoSpendContent.overview" :key="paragraph">
             {{ paragraph }}
           </p>
         </div>
 
-        <div class="app-surface__status">
-          <p class="app-surface__eyebrow">Repères</p>
-          <dl class="app-surface__list app-surface__list--cards">
-            <div>
-              <dt>Usage</dt>
-              <dd>Projet de couple</dd>
-            </div>
-            <div>
-              <dt>Principe</dt>
-              <dd>Qui a payé quoi, qui doit quoi</dd>
-            </div>
-            <div>
-              <dt>Compte</dt>
-              <dd>Aucun compte requis</dd>
-            </div>
-          </dl>
-        </div>
+        <aside class="app-brief" aria-label="En bref">
+          <p class="app-brief__eyebrow">En bref</p>
+          <ul class="app-brief__list">
+            <li>Pour les dépenses d’un projet à deux.</li>
+            <li>Chacun ajoute ce qu’il a payé.</li>
+            <li>L’équilibre reste visible sans tableur.</li>
+            <li>Aucune banque connectée, aucun compte requis.</li>
+          </ul>
+        </aside>
       </section>
 
       <section
@@ -183,10 +173,7 @@
           </figure>
         </div>
 
-        <AppGalleryLightbox
-          ref="lightbox"
-          :images="duoSpendContent.gallery"
-        />
+        <AppGalleryLightbox ref="lightbox" :images="duoSpendContent.gallery" />
       </section>
 
       <section
@@ -208,7 +195,10 @@
               'pricing-card--featured': plan.name === 'DuoSpend Pro',
             }"
           >
-            <div v-if="plan.name === 'DuoSpend Pro'" class="pricing-card__badge">
+            <div
+              v-if="plan.name === 'DuoSpend Pro'"
+              class="pricing-card__badge"
+            >
               Recommandé
             </div>
             <p class="pricing-card__name">{{ plan.name }}</p>
@@ -221,7 +211,10 @@
         </div>
       </section>
 
-      <section class="app-section app-section--faq" aria-labelledby="duo-faq-title">
+      <section
+        class="app-section app-section--faq"
+        aria-labelledby="duo-faq-title"
+      >
         <div class="faq-wrapper">
           <div class="section-heading">
             <h2 id="duo-faq-title">FAQ</h2>
@@ -234,6 +227,8 @@
           />
         </div>
       </section>
+
+      <div class="app-final-separator" aria-hidden="true"></div>
 
       <AppSupportSection
         app-name="DuoSpend"
@@ -251,8 +246,12 @@
         <details ref="privacyDetails" class="legal-disclosure">
           <summary class="legal-disclosure__summary">
             <div class="legal-disclosure__header">
-              <h2 id="duo-legal-title" class="legal-disclosure__title">Confidentialité</h2>
-              <p class="legal-disclosure__meta">Politique de confidentialité — FR</p>
+              <h2 id="duo-legal-title" class="legal-disclosure__title">
+                Confidentialité
+              </h2>
+              <p class="legal-disclosure__meta">
+                Politique de confidentialité — FR
+              </p>
             </div>
             <span class="legal-disclosure__toggle" aria-hidden="true"></span>
           </summary>
@@ -265,7 +264,6 @@
           </div>
         </details>
       </section>
-
     </div>
   </main>
 </template>
@@ -930,7 +928,9 @@ useHead({
   border-radius: 999px;
   background: $vert;
   transform: translate(-50%, -50%);
-  transition: transform 0.14s ease, opacity 0.14s ease;
+  transition:
+    transform 0.14s ease,
+    opacity 0.14s ease;
 }
 
 .legal-disclosure__toggle::after {
