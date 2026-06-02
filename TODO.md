@@ -15,6 +15,17 @@
 
 > Branche : `feature/apps-positioning-v2`
 
+### Refonte design apps finalisée avant merge `dev` — 2 juin 2026
+
+- [x] Acter le commit final de référence : `4fdff1c fix: refine focusone duospend product sections`
+- [x] Documenter que `/apps/` et `/en/apps/` sont redessinés selon la référence Cotypist : design rythmé, fond dégradé léger, cards premium claires et cohérence FR/EN
+- [x] Documenter que les hubs `/apps/` et `/en/apps/` sont verrouillés pour l'instant
+- [x] Documenter que toutes les pages `/apps/*/` et leurs équivalents EN gardent un seul CTA principal : `Voir comment ça marche` / `See how it works`
+- [x] Documenter que les tarifs FocusOne et DuoSpend restent en cards
+- [x] Documenter le séparateur visuel avant les blocs finaux `Support` et `Confidentialité` / `Privacy`
+- [x] Documenter la suppression définitive des formulaires d'intérêt, de `#release-form`, des CTA `Être informé` / `Get launch updates` et de toute logique de liste d'attente
+- [x] Poser le garde-fou : toute future correction sur `/apps/`, `/en/apps/` ou `/apps/*/` doit maintenir cette cohérence visuelle
+
 ### Décision finale : cadrage figé avant merge `dev` — 30 mai 2026
 
 - [x] Fixer `/apps/` et `/en/apps/` avec un hero typographique sans images

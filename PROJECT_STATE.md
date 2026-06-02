@@ -1,21 +1,22 @@
 # 📊 ÉTAT DU PROJET - BeAbot
 
-> **Récapitulatif de l'état du projet au 30 mai 2026**
+> **Récapitulatif de l'état du projet au 2 juin 2026**
 
 ---
 
 ## 🔜 PROCHAINES ÉTAPES (ordonnées)
 
-0. **Merge manuel `fix/mobile-nav-close-on-link-click` -> `dev`** — Correction mobile locale à valider puis merge/push par Benoît.
-1. **Merge manuel `dev` -> `master`** — Après intégration du correctif mobile dans `dev`, Benoît garde le merge et le push.
-2. **Validation preview/production après merge** — Vérifier pages principales, navigation mobile, sitemap, RSS, JSON Feed, canonical homepage et statut HTTP réel de `/404/` sur Netlify.
-3. **Warnings Nuxt/Vite** — Warning sourcemap `nuxt:module-preload-polyfill` documenté et non bloquant ; circular chunk non reproduit. Rouvrir un lot uniquement sur preuve d'impact.
-4. **Migration CSS native** — Suivre les lots CSS-2 à CSS-8 proposés dans `migration-css-native-audit.md`, sans refactor massif.
-5. **Recherche UI / composant orphelin** — Si `AppSearchInput.vue` doit redevenir visible, choisir une page hôte et faire une vérification UX dédiée ; sinon documenter son statut orphelin dans un lot séparé.
-6. **Lint global repo-wide** — `npm run lint:js` fonctionne avec la flat config Nuxt ESLint v1, mais `npm run lint` reste bloqué par `lint:prettier` sur des formatages historiques et `docs/migration/nuxt4/archive/audit-unused-depcheck.json` non JSON ; à traiter séparément.
-7. **Audit sécurité npm** — `npm audit --audit-level=moderate` signalait 11 vulnérabilités lors de l'audit Nuxt 4 ; ne pas lancer `npm audit fix` sans lot dédié.
-8. **DIR-* app directory** — Ne pas déplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dédié uniquement si une incompatibilité réelle apparaît.
-9. **SCSS-6** — Reporté après audit CSS natif. La sortie complète de SCSS demande plusieurs lots progressifs : couleurs simples, typo, spacing, breakpoints, couleurs dérivées, réduction des imports Sass, puis décision de suppression Sass.
+0. **Merge manuel `feature/apps-positioning-v2` -> `dev`** — Refonte finale des pages apps prête à intégrer après validation locale.
+1. **Merge manuel `fix/mobile-nav-close-on-link-click` -> `dev`** — Correction mobile locale à valider puis merge/push par Benoît.
+2. **Merge manuel `dev` -> `master`** — Après intégration du correctif mobile dans `dev`, Benoît garde le merge et le push.
+3. **Validation preview/production après merge** — Vérifier pages principales, navigation mobile, sitemap, RSS, JSON Feed, canonical homepage et statut HTTP réel de `/404/` sur Netlify.
+4. **Warnings Nuxt/Vite** — Warning sourcemap `nuxt:module-preload-polyfill` documenté et non bloquant ; circular chunk non reproduit. Rouvrir un lot uniquement sur preuve d'impact.
+5. **Migration CSS native** — Suivre les lots CSS-2 à CSS-8 proposés dans `migration-css-native-audit.md`, sans refactor massif.
+6. **Recherche UI / composant orphelin** — Si `AppSearchInput.vue` doit redevenir visible, choisir une page hôte et faire une vérification UX dédiée ; sinon documenter son statut orphelin dans un lot séparé.
+7. **Lint global repo-wide** — `npm run lint:js` fonctionne avec la flat config Nuxt ESLint v1, mais `npm run lint` reste bloqué par `lint:prettier` sur des formatages historiques et `docs/migration/nuxt4/archive/audit-unused-depcheck.json` non JSON ; à traiter séparément.
+8. **Audit sécurité npm** — `npm audit --audit-level=moderate` signalait 11 vulnérabilités lors de l'audit Nuxt 4 ; ne pas lancer `npm audit fix` sans lot dédié.
+9. **DIR-* app directory** — Ne pas déplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dédié uniquement si une incompatibilité réelle apparaît.
+10. **SCSS-6** — Reporté après audit CSS natif. La sortie complète de SCSS demande plusieurs lots progressifs : couleurs simples, typo, spacing, breakpoints, couleurs dérivées, réduction des imports Sass, puis décision de suppression Sass.
 
 ---
 
@@ -24,6 +25,23 @@
 ### Apps positioning v2 — 23 mai 2026
 
 Branche : `feature/apps-positioning-v2`
+
+#### Refonte design apps finalisée — 2 juin 2026
+
+- Commit final de référence : `4fdff1c fix: refine focusone duospend product sections`.
+- Périmètre acté :
+  - les hubs `/apps/` et `/en/apps/` sont redessinés et verrouillés pour l'instant ;
+  - toutes les pages produits `/apps/*/` et leurs équivalents EN sont alignées sur la même direction visuelle ;
+  - référence Cotypist retenue comme niveau de clarté et de rythme, sans copie ni ajout de dépendance.
+- Décisions visuelles finales :
+  - design plus rythmé, sections mieux scandées, fond dégradé léger et cohérence FR/EN ;
+  - cards premium claires pour les usages, preuves produit, tarifs et contenus structurants ;
+  - un seul CTA principal par page produit : `Voir comment ça marche` / `See how it works` ;
+  - tarifs présentés en cards sur FocusOne et DuoSpend ;
+  - séparateur visuel maintenu avant les blocs finaux `Support` et `Confidentialité` / `Privacy` ;
+  - suppression confirmée des formulaires d'intérêt, de `#release-form`, des CTA `Être informé` / `Get launch updates` et de toute logique de liste d'attente.
+- Garde-fou :
+  - toute future correction sur `/apps/`, `/en/apps/` ou `/apps/*/` devra maintenir cette cohérence visuelle : rythme Cotypist, fond dégradé, cards premium claires, CTA unique, tarifs en cards, séparateur avant Support/Confidentialité, aucun formulaire d'intérêt.
 
 #### Décisions finales de positionnement apps — 30 mai 2026
 
