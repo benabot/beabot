@@ -11,6 +11,92 @@
 9. [x] **`docs/pre-master-final-check`** — fait localement ; validation finale de `dev` avant merge manuel vers `master`, sans modification de code applicatif
 10. [x] **`fix/mobile-nav-close-on-link-click`** — fait localement ; fermeture du menu mobile au clic sur un lien interne avant merge master, sans rouvrir SEO, JSON-LD, URLs, dépendances, CSS natif ou warnings Nuxt/Vite
 
+## Phase 31 — Apps positioning v2 (23 mai 2026)
+
+> Branche : `feature/apps-positioning-v2`
+
+### Refonte design apps finalisée avant merge `dev` — 2 juin 2026
+
+- [x] Acter le commit final de référence : `4fdff1c fix: refine focusone duospend product sections`
+- [x] Documenter que `/apps/` et `/en/apps/` sont redessinés selon la référence Cotypist : design rythmé, fond dégradé léger, cards premium claires et cohérence FR/EN
+- [x] Documenter que les hubs `/apps/` et `/en/apps/` sont verrouillés pour l'instant
+- [x] Documenter que toutes les pages `/apps/*/` et leurs équivalents EN gardent un seul CTA principal : `Voir comment ça marche` / `See how it works`
+- [x] Documenter que les tarifs FocusOne et DuoSpend restent en cards
+- [x] Documenter le séparateur visuel avant les blocs finaux `Support` et `Confidentialité` / `Privacy`
+- [x] Documenter la suppression définitive des formulaires d'intérêt, de `#release-form`, des CTA `Être informé` / `Get launch updates` et de toute logique de liste d'attente
+- [x] Poser le garde-fou : toute future correction sur `/apps/`, `/en/apps/` ou `/apps/*/` doit maintenir cette cohérence visuelle
+
+### Décision finale : cadrage figé avant merge `dev` — 30 mai 2026
+
+- [x] Fixer `/apps/` et `/en/apps/` avec un hero typographique sans images
+- [x] Fixer FocusOne/DuoSpend FR/EN avec un seul CTA hero orienté fonctionnement : `Voir comment ça marche` / `See how it works`
+- [x] Retirer toute mécanique lancement : pas de `#release-form`, pas de `release-form`, pas de CTA `Être informé` / `Get launch updates`
+- [x] Conserver les sections tarifs en cards sur FocusOne et DuoSpend
+- [x] Conserver intouchables les sections finales `Support` et `Confidentialité` / `Privacy` avec leurs ancres publiques
+- [x] Maintenir la parité FR/EN (structure, ton produit, CTA)
+- [x] Documenter que cette décision finale remplace la direction intermédiaire des CTA `Être informé` du 29 mai
+
+### Direction visuelle Cotypist apps — 1er juin 2026
+
+- [x] Appliquer une direction visuelle plus forte sur les 10 routes apps FR/EN sans nouvelle dépendance front, carrousel, vidéo, script tiers ou animation lourde
+- [x] Garder les hubs `/apps/` et `/en/apps/` en hero typographique sans images
+- [x] Renforcer le rythme éditorial, les espacements, les contrastes doux et les accents couleur par app
+- [x] Supprimer les usages publics de `#release-form`, `Être informé` et `Get launch updates` sur Siturem et Meeting Mode
+- [x] Aligner les CTA héros produits sur `Voir comment ça marche` / `See how it works`
+- [x] Conserver les tarifs FocusOne/DuoSpend en cards
+- [x] Préserver les sections finales `Support` et `Confidentialité` / `Privacy` et leurs ancres publiques
+
+### Correction directionnelle : simplification apps — 29 mai 2026
+
+- [x] Appliquer Frontend Review : identifier la dérive trop lourde, trop template SaaS, trop `cards partout`
+- [x] Appliquer Frontend Skill : revenir à une page BeAbot plus éditoriale, respirante et premium sans nouvelle surcouche
+- [x] Simplifier `/apps/` : hero texte seul, ligne de preuves, section `Deux usages très concrets`, manifeste court, section `Pratiquer, préparer`, liens finaux discrets
+- [x] Simplifier `/en/apps/` avec la même logique adaptée
+- [x] Simplifier `AppCard` : moins d'ombres, moins de badges, titre par usage, image produit comme preuve
+- [x] Remplacer les CTA héros FocusOne/DuoSpend FR/EN par `Voir comment ça marche` / `Voir les tarifs` et `See how it works` / `See pricing`
+- [x] Supprimer les sections `#release-form` FocusOne/DuoSpend FR/EN et les imports `AppReleaseInterestForm`
+- [x] Préserver les sections finales `Support` et `Confidentialité` / `Privacy` et leurs ancres
+- [x] Alléger les repères, points clés et tarifs des pages FocusOne/DuoSpend sans ajouter de nouvelle section
+- [x] Renforcer `scripts/check-copy-quality.mjs` contre `Être informé`, `Get launch updates`, `#release-form`, `release-form`, `formulaire de lancement`, `liste d’attente`, `projets plus discrets` et `friction`
+- [x] Valider `npm run check:copy`, `npm test`, `npm run generate`, `npm test` post-génération et `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs`
+- [x] Contrôler en navigateur local `/apps/` desktop/mobile et vérifier les six routes générées prioritaires
+
+### Dernier passage marketing et CTA — 29 mai 2026
+
+- [x] Appliquer Frontend Review : hub encore trop proche d'une grille portfolio, CTA FocusOne/DuoSpend trop faibles, liens confidentialité dans les héros à retirer
+- [x] Appliquer Frontend Skill : thèse visuelle, structure par usages, ligne de preuves, présence renforcée des captures FocusOne/DuoSpend
+- [x] Repositionner `/apps/` avec le H1 `Des apps utiles pour garder le fil.`, preuve courte, sections `À utiliser au quotidien`, `Ouvrir. Faire. Fermer.` et `Pour pratiquer ou préparer`
+- [x] Repositionner `/en/apps/` avec `Useful apps for keeping track.` et la même logique adaptée en anglais
+- [x] Remplacer les CTA héros FocusOne FR/EN par `Être informé` / `Get launch updates` vers le formulaire existant `#release-form`
+- [x] Remplacer les CTA héros DuoSpend FR/EN par `Être informé` / `Get launch updates` et `Voir l’app en images` / `View the app`
+- [x] Ne pas modifier les sections finales `Support` et `Confidentialité` / `Privacy` ni leurs ancres
+- [x] Renforcer `scripts/check-copy-quality.mjs` contre `friction`, `projets plus discrets`, `apps sobres`, `des apps simples`, `Voir la confidentialité` et `View privacy`
+- [x] Valider `npm run check:copy`, `npm run generate`, `npm test`, `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs`
+- [x] Contrôler en navigateur local desktop/mobile les six routes apps prioritaires
+
+### Suivi éditorial et UX — 29 mai 2026
+
+- [x] Reconstruire le contexte depuis le dépôt local, vérifier la branche et constater l'absence de `docs/apps-positioning-plan.md`
+- [x] Retirer le wording public `friction` et les labels `apps principales` / `Core apps`
+- [x] Repositionner `/apps/` et `/en/apps/` autour de FocusOne, DuoSpend, Siturem et Meeting Mode, avec FocusOne puis DuoSpend en première lecture
+- [x] Corriger FocusOne FR/EN : H1 avec nom de l'app, CTA hero vers captures/tarifs, fil narratif plus concret, sobriété non mise en avant
+- [x] Corriger DuoSpend FR/EN : chapô orienté projet de couple, titre de section moins négatif, positionnement sans banque connectée ni tableur
+- [x] Ajouter `npm run check:copy` comme diagnostic local non bloquant, sans dépendance front ni ajout au bundle Nuxt
+- [x] Valider `npm run check:copy`, `npm test`, `npm run generate`, `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` et contrôle navigateur local des routes apps
+
+- [x] Relire `AGENTS.md`, `BRANCHING_STRATEGY.md`, `docs/apps-positioning-plan.md` et `PROJECT_STATE.md`
+- [x] Créer la branche depuis `dev` et vérifier `git status` + `git branch --show-current`
+- [x] Auditer les routes apps existantes et les fichiers partagés (`data/apps.ts`, `data/apps-en.ts`, composants apps, SEO)
+- [x] Repositionner `/apps/` comme hub produit FR : manifeste, principes communs, CTA final, et metadata SEO
+- [x] Repositionner `/en/apps/` comme hub produit EN : manifeste adapté, principes communs, CTA final, et metadata SEO
+- [x] Renforcer `/apps/focus-one/` : H1, angle \"compteur privé\", sections \"Pourquoi une seule habitude ?\", \"La boucle\", \"Pour quels usages ?\", \"Privé par défaut\", phrase de prudence
+- [x] Renforcer `/en/apps/focus-one/` : H1, angle \"private streak counter\", sections \"Why only one habit?\", \"The loop\", \"Use cases\", \"Private by default\", safety sentence
+- [x] Harmoniser légèrement les positionnements DuoSpend/Siturem dans les données FR/EN sans refonte complète
+- [x] Vérifier et ajuster `useSeoMeta` + canonical + hreflang sur les hubs et FocusOne
+- [x] Conserver les routes/slugs existants sans créer de nouvelles pages
+- [x] Valider `npm test` (OK)
+- [x] Valider `npm run generate` (OK, 92 routes prerendered)
+
 ## Phase 30 — Navigation mobile : fermeture au clic lien (12 mai 2026)
 
 > Branche : `fix/mobile-nav-close-on-link-click`
