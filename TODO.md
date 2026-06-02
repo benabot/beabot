@@ -25,6 +25,7 @@
 - [x] Documenter le séparateur visuel avant les blocs finaux `Support` et `Confidentialité` / `Privacy`
 - [x] Documenter la suppression définitive des formulaires d'intérêt, de `#release-form`, des CTA `Être informé` / `Get launch updates` et de toute logique de liste d'attente
 - [x] Poser le garde-fou : toute future correction sur `/apps/`, `/en/apps/` ou `/apps/*/` doit maintenir cette cohérence visuelle
+- [x] Localiser les visuels DuoSpend EN : `/en/apps/duo-spend/` utilise les captures `public/img/apps/duo-spend/en/`, avec `duospend-en-intro-2.webp` en hero ; `/en/apps/` utilise `duospend-en-hero.webp` pour la card DuoSpend, sans modifier les images françaises
 
 ### Décision finale : cadrage figé avant merge `dev` — 30 mai 2026
 

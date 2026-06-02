@@ -43,7 +43,7 @@ export const appsIndexEnContent = {
     title: 'Private, focused iPhone apps — BeAbot Apps',
     description:
       'Discover BeAbot apps: FocusOne, DuoSpend and Siturem. Quiet iOS apps built to do one thing clearly, without unnecessary accounts, feeds or dashboards.',
-    image: '/img/apps/duospend-vignette-apps.webp',
+    image: '/img/apps/duo-spend/en/duospend-en-hero.webp',
   },
 }
 
@@ -72,7 +72,7 @@ export const appsIndexEnEntries: AppIndexEntry[] = appsIndexEntries.map(
       entry.slug === 'focus-one'
         ? '/img/apps/focus-one/00-onboarding_en.webp'
         : entry.slug === 'duo-spend'
-          ? '/img/apps/duospend-vignette-apps_en.webp'
+          ? '/img/apps/duo-spend/en/duospend-en-hero.webp'
           : entry.slug === 'meeting-mode'
             ? '/img/apps/meeting-mode_vignette-apps_en.webp'
             : entry.slug === 'siturem'
@@ -87,7 +87,8 @@ export const appsIndexEnEntries: AppIndexEntry[] = appsIndexEntries.map(
         : entry.slug === 'duo-spend'
           ? {
               ...entry.preview,
-              src: '/img/apps/duospend-vignette-apps_en.webp',
+              src: '/img/apps/duo-spend/en/duospend-en-hero.webp',
+              alt: 'DuoSpend welcome screen on iPhone',
             }
           : entry.slug === 'meeting-mode'
             ? {
@@ -665,6 +666,11 @@ export const duoSpendEnContent: AppDetailContent = {
     'At first everything seems obvious, then who-paid-what gets fuzzy and manual calculations pile up.',
     'DuoSpend keeps the flow simple: add expenses in seconds and keep balances readable at all times.',
   ],
+  preview: {
+    ...duoSpendContent.preview,
+    src: '/img/apps/duo-spend/en/duospend-en-intro-2.webp',
+    alt: 'DuoSpend onboarding screen explaining shared expense tracking',
+  },
   detailPoints: [
     {
       label: 'Shared expenses',
@@ -704,40 +710,40 @@ export const duoSpendEnContent: AppDetailContent = {
   ],
   gallery: [
     {
-      src: '/img/apps/duospend-resume.webp',
-      alt: 'DuoSpend summary screen',
-      title: 'Summary',
-      subtitle: 'Project overview at a glance',
+      src: '/img/apps/duo-spend/en/duospend-en-intro-2.webp',
+      alt: 'DuoSpend onboarding screen with the promise to manage shared expenses together',
+      title: 'Better managed together',
+      subtitle: 'The product promise before starting',
     },
     {
-      src: '/img/apps/duospend-depense1.webp',
-      alt: 'First expense entry in DuoSpend',
-      title: 'Expense #1',
-      subtitle: 'Quick entry and split setup',
+      src: '/img/apps/duo-spend/en/duospend-en-add-expense.webp',
+      alt: 'DuoSpend new expense form with amount, title, payer, and custom split',
+      title: 'Add an expense',
+      subtitle: 'Amount, payer, and split in one flow',
     },
     {
-      src: '/img/apps/duospend-depense2.webp',
-      alt: 'Second expense entry in DuoSpend',
-      title: 'Expense #2',
-      subtitle: 'Balance update in real time',
+      src: '/img/apps/duo-spend/en/duospend-en-balance.webp',
+      alt: 'DuoSpend Italy Trip balance showing who owes money and the project expenses',
+      title: 'Track the balance',
+      subtitle: 'Who paid, who owes, and what remains',
     },
     {
-      src: '/img/apps/duospend-ajout-depense.webp',
-      alt: 'Add expense screen in DuoSpend',
-      title: 'Add expense',
-      subtitle: 'Fast input flow',
+      src: '/img/apps/duo-spend/en/duospend-en-project-list.webp',
+      alt: 'DuoSpend project list with shared budgets for trips, renovations, and events',
+      title: 'Shared projects',
+      subtitle: 'Several projects with clear balances',
     },
     {
-      src: '/img/apps/duospend-export-pdf.webp',
-      alt: 'PDF export screen in DuoSpend',
+      src: '/img/apps/duo-spend/en/duospend-en-export-pdf.webp',
+      alt: 'DuoSpend PDF export sheet for sharing a project recap',
       title: 'PDF export',
       subtitle: 'Shareable recap',
     },
     {
-      src: '/img/apps/duospend-nouveau-projet.webp',
-      alt: 'New project creation screen in DuoSpend',
-      title: 'New project',
-      subtitle: 'Start a shared budget in seconds',
+      src: '/img/apps/duo-spend/en/duospend-en-settings-pro.webp',
+      alt: 'DuoSpend settings screen showing Pro access, PDF export, privacy, and support',
+      title: 'Pro and settings',
+      subtitle: 'Export, support, and local preferences',
     },
   ],
   faqSections: duoSpendFaqSectionsEn,
@@ -781,7 +787,7 @@ export const duoSpendEnContent: AppDetailContent = {
     title: 'DuoSpend — Shared expenses app for couples',
     description:
       'DuoSpend helps couples track expenses for a trip, move, wedding or home project, with clear balances and no connected bank or spreadsheet.',
-    image: duoSpendContent.seo.image,
+    image: '/img/apps/duo-spend/en/duospend-en-hero.webp',
   },
 }
 
