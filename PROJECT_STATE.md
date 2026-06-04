@@ -1,6 +1,6 @@
 # 📊 ÉTAT DU PROJET - BeAbot
 
-> **Récapitulatif de l'état du projet au 12 mai 2026**
+> **Récapitulatif de l'état du projet au 2 juin 2026**
 
 ---
 
@@ -20,6 +20,140 @@
 ---
 
 ## 🧭 BACKLOG FINAL AVANT MASTER
+
+### Apps positioning v2 — 23 mai 2026
+
+Branche : `feature/apps-positioning-v2`
+État : fusionnée dans `dev` le 2 juin 2026 via `99fe92b Merge branch 'feature/apps-positioning-v2' into dev`; la branche peut être supprimée localement après review.
+
+#### Refonte design apps finalisée — 2 juin 2026
+
+- Commit final de référence : `4fdff1c fix: refine focusone duospend product sections`.
+- Périmètre acté :
+  - les hubs `/apps/` et `/en/apps/` sont redessinés et verrouillés pour l'instant ;
+  - toutes les pages produits `/apps/*/` et leurs équivalents EN sont alignées sur la même direction visuelle ;
+  - référence Cotypist retenue comme niveau de clarté et de rythme, sans copie ni ajout de dépendance.
+- Décisions visuelles finales :
+  - design plus rythmé, sections mieux scandées, fond dégradé léger et cohérence FR/EN ;
+  - cards premium claires pour les usages, preuves produit, tarifs et contenus structurants ;
+  - un seul CTA principal par page produit : `Voir comment ça marche` / `See how it works` ;
+  - tarifs présentés en cards sur FocusOne et DuoSpend ;
+  - séparateur visuel maintenu avant les blocs finaux `Support` et `Confidentialité` / `Privacy` ;
+  - suppression confirmée des formulaires d'intérêt, de `#release-form`, des CTA `Être informé` / `Get launch updates` et de toute logique de liste d'attente.
+- Garde-fou :
+  - toute future correction sur `/apps/`, `/en/apps/` ou `/apps/*/` devra maintenir cette cohérence visuelle : rythme Cotypist, fond dégradé, cards premium claires, CTA unique, tarifs en cards, séparateur avant Support/Confidentialité, aucun formulaire d'intérêt.
+
+#### Assets anglais DuoSpend — 2 juin 2026
+
+- Les assets anglais DuoSpend sont disponibles sous `public/img/apps/duo-spend/en/`.
+- `/en/apps/duo-spend/` utilise désormais `duospend-en-intro-2.webp` en hero et une galerie composée uniquement de captures anglaises.
+- La card DuoSpend de `/en/apps/` utilise `duospend-en-hero.webp`; les routes françaises `/apps/` et `/apps/duo-spend/` conservent leurs images françaises.
+
+#### Décisions finales de positionnement apps — 30 mai 2026
+
+- Décisions de référence :
+  - `/apps/` et `/en/apps/` conservent un hero typographique sans images ;
+  - FocusOne et DuoSpend (FR/EN) utilisent un seul CTA hero vers le fonctionnement : `Voir comment ça marche` / `See how it works` ;
+  - aucun formulaire de lancement : pas de `#release-form`, pas de wording `Être informé` / `Get launch updates` ;
+  - les sections tarifs restent en cartes sur FocusOne et DuoSpend ;
+  - les sections finales `Support` et `Confidentialité` / `Privacy` restent intouchables, avec leurs ancres publiques ;
+  - parité FR/EN maintenue sur structure, intention éditoriale et CTA.
+- Clarification :
+  - cette décision finale remplace la direction intermédiaire du 29 mai liée aux CTA `Être informé` / `Get launch updates`.
+
+#### Direction visuelle apps — 1er juin 2026
+
+- Décision :
+  - direction visuelle renforcée sur les 10 routes apps FR/EN, inspirée par la clarté de Cotypist sans copie ni surcouche lourde ;
+  - hubs `/apps/` et `/en/apps/` conservés en hero typographique sans images, avec rythme plus éditorial et app accents par produit ;
+  - pages FocusOne, DuoSpend, Siturem et Meeting Mode alignées sur une base visuelle commune : fonds légers, sections mieux scandées, images produit comme preuves, FAQ plus lisible ;
+  - CTA héros produits limités à `Voir comment ça marche` / `See how it works` ;
+  - aucun `#release-form`, aucun CTA `Être informé` / `Get launch updates`, aucune mécanique de liste d'attente ;
+  - tarifs FocusOne et DuoSpend conservés en cards ;
+  - sections finales `Support` et `Confidentialité` / `Privacy` non modifiées, ancres publiques préservées.
+
+#### Correction directionnelle — 29 mai 2026
+
+- Périmètre :
+  - simplification forte de `/apps/` et `/en/apps/` après revue visuelle ;
+  - retrait des CTA de lancement FocusOne/DuoSpend FR/EN ;
+  - conservation stricte des sections finales `Support` et `Confidentialité` / `Privacy` sur FocusOne et DuoSpend.
+- Changements livrés :
+  - hubs FR/EN allégés : plus de composition hero massive, moins de cartes, structure plus éditoriale (`Deux usages très concrets`, manifeste court, liens finaux discrets) ;
+  - `AppCard` simplifié : métadonnées sobres, titre d'usage, image produit comme preuve, moins de surfaces et d'ombres ;
+  - CTA héros FocusOne/DuoSpend remplacés par `Voir comment ça marche` / `Voir les tarifs` et `See how it works` / `See pricing` ;
+  - sections `#release-form` FocusOne/DuoSpend FR/EN supprimées, sans modifier les ancres `#support` et `#privacy` ;
+  - `check:copy` renforcé contre les CTA de lancement, `#release-form`, `formulaire de lancement`, `liste d’attente`, `projets plus discrets` et `friction`.
+- Validation locale :
+  - `npm run check:copy` : OK, warnings de diagnostic restants sur textes longs/répétitions historiques ;
+  - `npm test` : OK avant génération puis OK après génération, 33 tests Node sur l'HTML généré ;
+  - `npm run generate` : OK, 92 routes prerendered ;
+  - `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK ;
+  - contrôle navigateur local desktop/mobile sur `/apps/` et contrôle HTML généré des six routes prioritaires : nouveaux CTA présents, aucun `#release-form` sur FocusOne/DuoSpend FR/EN.
+- Notes :
+  - le warning sourcemap `nuxt:module-preload-polyfill` reste inchangé et non bloquant ;
+  - `docs/apps-positioning-plan.md` reste absent du dépôt local.
+
+#### Dernier passage marketing et CTA — 29 mai 2026
+
+- Périmètre :
+  - amélioration finale de la vitrine `/apps/` et `/en/apps/` avant merge `dev` ;
+  - renforcement des CTA héros FocusOne et DuoSpend FR/EN ;
+  - conservation des sections finales `Support` et `Confidentialité` / `Privacy` sur les pages produit.
+- Changements livrés :
+  - hubs FR/EN repositionnés autour de l'idée `garder le fil` / `keeping track`, avec ligne de preuves, sections par usage et CTA final orienté besoin ;
+  - FocusOne et DuoSpend mis en avant dans le hero et dans les cartes du quotidien, avec promesses plus concrètes ;
+  - CTA héros FocusOne/DuoSpend reliés au formulaire Netlify existant `#release-form`, sans nouvelle intégration ;
+  - CTA secondaires héros reliés aux galeries d'images, plus de lien confidentialité depuis le hero ;
+  - `check:copy` renforcé contre `friction`, `projets plus discrets`, `apps sobres`, `des apps simples`, `Voir la confidentialité` et `View privacy`.
+- Validation locale :
+  - `npm run check:copy` : OK, 22 warnings de diagnostic restants sur textes légaux/répétitions structurelles ;
+  - `npm run generate` : OK, 92 routes prerendered ;
+  - `npm test` : OK, 49 pre-build checks et 33 tests Node sur l'HTML généré ;
+  - `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK ;
+  - contrôle navigateur local desktop/mobile sur les six routes prioritaires : H1 attendus, CTA héros corrects, pas de wording interdit, pas de débordement horizontal.
+- Notes :
+  - le warning sourcemap `nuxt:module-preload-polyfill` reste inchangé et non bloquant ;
+  - le hub mobile laisse désormais apparaître le début de la section `À utiliser au quotidien`.
+
+#### Suivi éditorial et UX — 29 mai 2026
+
+- Périmètre :
+  - correction éditoriale des hubs apps FR/EN, FocusOne FR/EN et DuoSpend FR/EN ;
+  - conservation des sections finales `Support` et `Confidentialité` / `Privacy` sur FocusOne et DuoSpend ;
+  - ajout d'un diagnostic local `npm run check:copy`, non bloquant et sans dépendance front.
+- Changements livrés :
+  - wording public `friction`, `apps principales`, `Core apps` et titres `Le problème` / `The problem` retirés des pages concernées ;
+  - `/apps/` et `/en/apps/` réordonnées autour de FocusOne, DuoSpend, Siturem puis Meeting Mode, avec FocusOne et DuoSpend plus visibles ;
+  - FocusOne FR/EN recentré sur une promesse à tenir, avec CTA hero vers captures et tarifs ;
+  - DuoSpend FR/EN recentré sur les projets de couple : voyage, emménagement, mariage, travaux, sans banque connectée ni tableur.
+- Validation locale :
+  - `npm run check:copy` : OK, warnings de diagnostic restants sur textes légaux/répétitions structurelles ;
+  - `npm test` : OK, 49 pre-build checks et 33 tests Node après génération ;
+  - `npm run generate` : OK, 92 routes prerendered ;
+  - `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` : OK ;
+  - contrôle navigateur local sur `/apps/`, `/en/apps/`, FocusOne FR/EN et DuoSpend FR/EN : H1 attendus, aucun wording `friction`, pas de titres `Le problème` / `The problem`, pas d'erreur console.
+- Notes :
+  - `docs/apps-positioning-plan.md` est absent du dépôt local ; aucun fichier de remplacement exact trouvé ;
+  - `textlens` n'a pas été ajouté : Context7 ne retourne pas de bibliothèque TextLens identifiable, seulement des outils voisins comme `textlint`.
+
+- Périmètre :
+  - uniformisation des pages apps existantes (`/apps/`, `/en/apps/`, produits FR/EN) sans création de routes ;
+  - priorité éditoriale sur `FocusOne` FR/EN, avec renforcement du positionnement \"one promise / one tap\".
+- Changements livrés :
+  - hubs FR/EN repositionnés comme vitrine produit avec manifeste, principes communs, CTA de démarrage, et metadata mises à jour ;
+  - `FocusOne` FR/EN clarifiés avec sections dédiées (pourquoi une seule habitude, boucle, usages, privé par défaut, phrase de prudence) ;
+  - ajustements légers de cohérence sur DuoSpend/Siturem via `data/apps.ts` et `data/apps-en.ts` ;
+  - canonical/hreflang vérifiés et alignés sur hubs + FocusOne ;
+  - JSON-LD existant conservé (`CollectionPage` hubs, `SoftwareApplication` produits).
+- Validation locale :
+  - `npm test` : OK ;
+  - `npm run generate` : OK, 92 routes prerendered ;
+  - warning non bloquant inchangé : sourcemap `nuxt:module-preload-polyfill`.
+- Contraintes respectées :
+  - aucune route créée/supprimée ;
+  - aucun slug modifié ;
+  - aucun script tiers ajouté.
 
 1. **`fix/seo-technical-cleanup`** — État : fait, mergé dans `dev`. Objet : canonical homepage, meta descriptions critiques, `/404/` sitemap/statut, `twitter:card` simple. Commit connu : `ea6d884 fix: corriger les métadonnées SEO techniques critiques`.
 2. **`fix/seo-title-description-patterns`** — État : fait, mergé dans `dev`. Objet : pattern `Titre | BeAbot`, entités HTML, descriptions ciblées. Commit connu : `3a17826 fix: uniformiser titles et descriptions SEO`.

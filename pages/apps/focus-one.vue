@@ -1,5 +1,5 @@
 <template>
-  <main class="app-page">
+  <main class="app-page app-page--focus-one">
     <div class="app-shell">
       <AppBreadcrumb :items="breadcrumbItems" />
       <p class="app-locale-switch">
@@ -9,28 +9,12 @@
       <section class="app-hero">
         <div class="app-hero__content">
           <p class="app-meta">{{ focusOneContent.stage }}</p>
-          <h1>{{ focusOneContent.name }} — {{ focusOneContent.intro }}</h1>
-          <div class="app-hero__text">
-            <p
-              v-for="line in focusOneContent.heroLines ?? [
-                focusOneContent.summary,
-              ]"
-              :key="line"
-              class="app-intro"
-            >
-              {{ line }}
-            </p>
-          </div>
+          <h1>FocusOne, une seule promesse à tenir.</h1>
+          <p class="app-summary">{{ focusOneContent.summary }}</p>
 
           <div class="app-actions">
-            <AppLink to="#release-form" class="app-primary-action">
-              Être informé
-            </AppLink>
-            <AppLink
-              to="#privacy"
-              class="app-secondary-action app-detail__contact-cta"
-            >
-              Voir la confidentialité
+            <AppLink to="#focus-overview-title" class="app-primary-action">
+              Voir comment ça marche
             </AppLink>
           </div>
         </div>
@@ -60,43 +44,37 @@
         </div>
       </section>
 
-      <section class="app-surface" aria-labelledby="focus-overview-title">
+      <section
+        class="app-surface app-surface--lead"
+        aria-labelledby="focus-overview-title"
+      >
         <div class="app-surface__copy">
-          <h2 id="focus-overview-title">Le problème</h2>
+          <h2 id="focus-overview-title">Choisir une seule chose</h2>
           <p v-for="paragraph in focusOneContent.overview" :key="paragraph">
             {{ paragraph }}
           </p>
         </div>
 
-        <div class="app-surface__status">
-          <p class="app-surface__eyebrow">Repères</p>
-          <dl class="app-surface__list app-surface__list--cards">
-            <div>
-              <dt>Usage</dt>
-              <dd>Micro-habitude quotidienne</dd>
-            </div>
-            <div>
-              <dt>Principe</dt>
-              <dd>Une seule habitude active</dd>
-            </div>
-            <div>
-              <dt>Stockage</dt>
-              <dd>Local sur iPhone + iCloud si activé</dd>
-            </div>
-            <div>
-              <dt>Compte</dt>
-              <dd>Aucun compte requis</dd>
-            </div>
-          </dl>
-        </div>
+        <aside class="app-brief" aria-label="En bref">
+          <p class="app-brief__eyebrow">En bref</p>
+          <ul class="app-brief__list">
+            <li>Pour une routine personnelle à garder visible.</li>
+            <li>Un seul engagement actif, sans pile d’objectifs.</li>
+            <li>Un suivi privé sur iPhone, avec iCloud si vous l’activez.</li>
+            <li>Aucun compte requis pour commencer.</li>
+          </ul>
+        </aside>
       </section>
 
-      <section class="app-section" aria-labelledby="focus-details-title">
+      <section
+        class="app-section app-section--tone"
+        aria-labelledby="focus-details-title"
+      >
         <div class="section-heading">
-          <h2 id="focus-details-title">Points clés</h2>
+          <h2 id="focus-details-title">La rendre visible</h2>
           <p>
-            Les repères de base pour tenir une routine sans y penser toute la
-            journée.
+            Les repères de base restent accessibles sans transformer l’app en
+            tableau de bord.
           </p>
         </div>
 
@@ -117,13 +95,88 @@
       </section>
 
       <section
+        class="app-section focus-rhythm"
+        aria-labelledby="focus-why-title"
+      >
+        <div class="section-heading">
+          <h2 id="focus-why-title">Pourquoi une seule habitude ?</h2>
+          <p>
+            Les apps d'habitudes échouent souvent parce qu'elles ajoutent trop
+            d'objectifs. FocusOne prend le chemin inverse : une seule habitude
+            active, pour garder l’action du jour au premier plan.
+          </p>
+        </div>
+
+        <div class="focus-steps" aria-label="Boucle FocusOne">
+          <article class="focus-step-card">
+            <span class="focus-step-card__index">01</span>
+            <h3>Choisir</h3>
+            <p>
+              Une routine simple, assez précise pour savoir quoi faire
+              aujourd’hui.
+            </p>
+          </article>
+          <article class="focus-step-card">
+            <span class="focus-step-card__index">02</span>
+            <h3>Cocher</h3>
+            <p>
+              Un geste rapide quand c’est fait, sans relancer toute une app
+              d’objectifs.
+            </p>
+          </article>
+          <article class="focus-step-card">
+            <span class="focus-step-card__index">03</span>
+            <h3>Revenir</h3>
+            <p>La série reste visible pour garder l’élan le lendemain.</p>
+          </article>
+        </div>
+      </section>
+
+      <section
+        class="app-section focus-personal"
+        aria-labelledby="focus-use-cases-title"
+      >
+        <div class="focus-personal__intro">
+          <div class="section-heading">
+            <h2 id="focus-use-cases-title">Des routines personnelles</h2>
+            <p>
+              FocusOne convient aux petits engagements que l’on veut garder pour
+              soi, sans fil social ni classement.
+            </p>
+          </div>
+        </div>
+        <div class="focus-personal__grid">
+          <div class="focus-personal__panel">
+            <h3>À suivre</h3>
+            <ul class="focus-list">
+              <li v-for="item in focusUseCases" :key="item">{{ item }}</li>
+            </ul>
+          </div>
+          <div class="focus-personal__panel focus-personal__panel--quiet">
+            <h3 id="focus-private-title">À éviter</h3>
+            <p>
+              Pas de réseau social, pas de classement, pas de pression publique.
+              Votre série reste votre affaire.
+            </p>
+            <ul class="focus-list">
+              <li v-for="item in focusAvoids" :key="item">{{ item }}</li>
+            </ul>
+            <p class="focus-safety">
+              FocusOne est un outil personnel de suivi. Il ne remplace pas un
+              accompagnement médical, psychologique ou thérapeutique.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
         v-if="focusOneContent.gallery?.length"
-        class="app-section"
+        class="app-section app-section--media"
         aria-labelledby="focus-gallery-title"
       >
         <div class="section-heading">
-          <h2 id="focus-gallery-title">L'app en images</h2>
-          <p>Les principaux écrans de FocusOne.</p>
+          <h2 id="focus-gallery-title">Voir la série se construire</h2>
+          <p>Les principaux écrans de FocusOne, de la routine au streak.</p>
         </div>
 
         <div class="gallery-grid">
@@ -160,11 +213,11 @@
 
       <section
         v-if="focusOneContent.pricing"
-        class="app-section"
+        class="app-section app-section--pricing"
         aria-labelledby="focus-pricing-title"
       >
         <div class="section-heading">
-          <h2 id="focus-pricing-title">{{ focusOneContent.pricing.title }}</h2>
+          <h2 id="focus-pricing-title">Premium pour plus de confort</h2>
           <p>{{ focusOneContent.pricing.intro }}</p>
         </div>
 
@@ -230,6 +283,8 @@
         </div>
       </section>
 
+      <div class="app-final-separator" aria-hidden="true"></div>
+
       <AppSupportSection
         app-name="FocusOne"
         app-slug="focus-one"
@@ -264,19 +319,6 @@
           </div>
         </details>
       </section>
-
-      <section
-        id="release-form"
-        class="app-cta"
-        aria-labelledby="focus-cta-title"
-      >
-        <div class="app-cta__heading">
-          <h2 id="focus-cta-title">{{ focusOneContent.cta.title }}</h2>
-          <p>{{ focusOneContent.cta.description }}</p>
-        </div>
-
-        <AppReleaseInterestForm :app-name="focusOneContent.name" />
-      </section>
     </div>
   </main>
 </template>
@@ -288,7 +330,6 @@ import AppBreadcrumb from '~/components/apps/AppBreadcrumb.vue'
 import AppGalleryLightbox from '~/components/apps/AppGalleryLightbox.vue'
 import AppFaqList from '~/components/apps/AppFaqList.vue'
 import AppLegalSingleLocale from '~/components/apps/AppLegalSingleLocale.vue'
-import AppReleaseInterestForm from '~/components/apps/AppReleaseInterestForm.vue'
 import AppSupportSection from '~/components/apps/AppSupportSection.vue'
 
 import {
@@ -322,7 +363,7 @@ const faqSchema = buildFaqSchema(focusOneContent.faq)
 const softwareApplicationSchema = buildSoftwareApplicationSchema({
   name: focusOneContent.name,
   description:
-    'FocusOne est une app iPhone minimaliste pour installer une micro-habitude quotidienne à la fois, avec streak, rappels sobres, widgets et synchronisation iCloud.',
+    'FocusOne est un compteur privé pour tenir une seule promesse personnelle, un jour à la fois.',
   url: pageUrl,
   operatingSystem: 'iOS',
   applicationCategory: 'ProductivityApplication',
@@ -351,6 +392,23 @@ const softwareApplicationSchema = buildSoftwareApplicationSchema({
     url: canonicalUrl(config.public.siteUrl, '/'),
   },
 })
+
+const focusUseCases = [
+  'lecture',
+  'sport',
+  'méditation',
+  'écriture',
+  'sommeil',
+  'no social media',
+  'routine personnelle',
+]
+
+const focusAvoids = [
+  'pas de compte obligatoire',
+  'pas de réseau social',
+  'pas de tableau de bord inutile',
+  'pas de gamification agressive',
+]
 
 function openLightbox(index: number) {
   lightbox.value?.open(index)
@@ -390,9 +448,8 @@ watch(
 useSeoMeta({
   title: focusOneContent.seo.title,
   description: focusOneContent.seo.description,
-  ogTitle: 'FocusOne — une seule habitude, chaque jour',
-  ogDescription:
-    'Une app iPhone minimaliste pour installer une seule micro-habitude à la fois, garder votre streak et avancer sans distraction.',
+  ogTitle: focusOneContent.seo.title,
+  ogDescription: focusOneContent.seo.description,
   ogType: 'website',
   ogSiteName: 'BeAbot',
   ogUrl: pageUrl,
@@ -424,7 +481,7 @@ useHead({
     {
       rel: 'alternate',
       hreflang: 'x-default',
-      href: canonicalUrl(config.public.siteUrl, '/en/apps/focus-one'),
+      href: pageUrl,
     },
   ],
   script: [
@@ -542,13 +599,12 @@ useHead({
 
 .app-actions {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 0.75rem;
   margin-top: 1.35rem;
 }
 
 .app-primary-action,
-.app-secondary-action,
 .app-cta__link {
   display: inline-flex;
   align-items: center;
@@ -570,7 +626,11 @@ useHead({
   color: white;
 }
 
-.app-secondary-action,
+.app-primary-action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+}
+
 .app-cta__link {
   background: rgba(243, 244, 246, 0.9);
   color: $gris2;
@@ -584,7 +644,6 @@ useHead({
 }
 
 .app-primary-action:focus-visible,
-.app-secondary-action:focus-visible,
 .app-cta__link:focus-visible {
   outline: 2px solid $vert;
   outline-offset: 3px;
@@ -663,6 +722,10 @@ useHead({
   background: rgba(243, 244, 246, 0.88);
 }
 
+.app-surface--lead {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
 @media (min-width: 900px) {
   .app-surface {
     grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
@@ -711,10 +774,10 @@ useHead({
 }
 
 .app-surface__list--cards div {
-  padding: 0.85rem 0.9rem;
-  border-radius: 0.95rem;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(15, 23, 42, 0.05);
+  padding: 0.72rem 0.78rem;
+  border-radius: 0.8rem;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(247, 249, 250, 0.82);
 }
 
 .app-surface__list div {
@@ -741,6 +804,29 @@ useHead({
   display: grid;
   gap: 1rem;
   margin-top: clamp(2rem, 5vw, 3rem);
+}
+
+.app-section--tone {
+  padding: clamp(1.05rem, 2.5vw, 1.35rem);
+  border-radius: 1.15rem;
+  background: rgba(245, 247, 248, 0.72);
+}
+
+.app-section--stripe {
+  padding: clamp(1rem, 2.4vw, 1.25rem) 0;
+  border-block: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.app-section--compact {
+  margin-top: clamp(1.6rem, 4vw, 2.3rem);
+}
+
+.app-section--media {
+  padding-top: clamp(0.35rem, 1vw, 0.7rem);
+}
+
+.app-section--pricing {
+  padding-top: clamp(0.45rem, 1.2vw, 0.85rem);
 }
 
 .section-heading {
@@ -955,9 +1041,8 @@ useHead({
 .detail-card {
   display: grid;
   gap: 0.45rem;
-  padding: 1.1rem 1.15rem;
-  border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.92);
+  padding: 0.95rem 0;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
   align-content: start;
 }
 
@@ -967,8 +1052,7 @@ useHead({
     grid-template-columns: minmax(0, 0.55fr) minmax(0, 1fr);
     align-items: center;
     gap: 0.75rem 1.25rem;
-    background: rgba(255, 255, 255, 0.98);
-    border: 1px solid rgba(13, 199, 99, 0.15);
+    border-top-color: rgba(13, 199, 99, 0.35);
   }
 
   .detail-card__description {
@@ -1016,22 +1100,20 @@ useHead({
 .pricing-card {
   display: grid;
   gap: 0.65rem;
-  padding: clamp(1.1rem, 2.4vw, 1.35rem);
-  border-radius: 1.15rem;
-  background: rgba(255, 255, 255, 0.94);
+  padding: clamp(1rem, 2.2vw, 1.25rem) 0 0;
+  border-top: 1px solid rgba(15, 23, 42, 0.1);
   position: relative;
   align-content: start;
 }
 
 .pricing-card--featured {
-  border: 1.5px solid rgba(13, 199, 99, 0.7);
-  background: rgba(13, 199, 99, 0.04);
+  border-top: 2px solid rgba(13, 199, 99, 0.65);
 }
 
 .pricing-card__badge {
   position: absolute;
-  top: -0.55rem;
-  right: 1rem;
+  top: -0.7rem;
+  right: 0;
   padding: 0.2rem 0.65rem;
   border-radius: 999px;
   background: $vert;
@@ -1118,10 +1200,8 @@ useHead({
 .premium-benefit-card {
   display: grid;
   gap: 0.3rem;
-  padding: 0.95rem 1rem;
-  border-radius: 1rem;
-  background: rgba(243, 244, 246, 0.76);
-  border: 1px solid rgba(15, 23, 42, 0.05);
+  padding: 0.75rem 0 0;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .premium-benefit-card__title {
@@ -1136,6 +1216,23 @@ useHead({
   color: $gris2;
   font-size: 0.86rem;
   line-height: 1.5;
+}
+
+.focus-loop-copy,
+.focus-safety {
+  margin: 0;
+  max-width: 42rem;
+  color: $gris2;
+  line-height: 1.65;
+}
+
+.focus-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.4rem;
+  color: $gris2;
+  line-height: 1.6;
 }
 
 .app-cta {

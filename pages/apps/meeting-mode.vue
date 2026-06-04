@@ -1,5 +1,5 @@
 <template>
-  <main class="app-page">
+  <main class="app-page app-page--meeting-mode">
     <div class="app-shell">
       <AppBreadcrumb :items="breadcrumbItems" />
       <p class="app-locale-switch">
@@ -14,12 +14,9 @@
           <p class="app-summary">{{ meetingModeContent.summary }}</p>
 
           <div class="app-actions">
-            <AppLink to="#release-form" class="app-primary-action">
-              Être informé
+            <AppLink to="#meeting-overview-title" class="app-primary-action">
+              Voir comment ça marche
             </AppLink>
-            <NuxtLink to="/contact/?app=meeting-mode&type=support" class="app-secondary-action app-detail__contact-cta">
-              Contacter le support
-            </NuxtLink>
           </div>
         </div>
 
@@ -223,14 +220,6 @@
         </details>
       </section>
 
-      <section class="app-cta" id="release-form" aria-labelledby="meeting-cta-title">
-        <div class="app-cta__heading">
-          <h2 id="meeting-cta-title">{{ meetingModeContent.cta.title }}</h2>
-          <p>{{ meetingModeContent.cta.description }}</p>
-        </div>
-
-        <AppReleaseInterestForm :app-name="meetingModeContent.name" />
-      </section>
     </div>
   </main>
 </template>
@@ -242,7 +231,6 @@ import AppBreadcrumb from '~/components/apps/AppBreadcrumb.vue'
 import AppGalleryLightbox from '~/components/apps/AppGalleryLightbox.vue'
 import AppFaqList from '~/components/apps/AppFaqList.vue'
 import AppLegalSingleLocale from '~/components/apps/AppLegalSingleLocale.vue'
-import AppReleaseInterestForm from '~/components/apps/AppReleaseInterestForm.vue'
 import AppSupportSection from '~/components/apps/AppSupportSection.vue'
 
 import {

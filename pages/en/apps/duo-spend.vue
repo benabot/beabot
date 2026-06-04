@@ -1,5 +1,5 @@
 <template>
-  <main class="app-page">
+  <main class="app-page app-page--duo-spend">
     <div class="app-shell">
       <AppBreadcrumb :items="breadcrumbItems" aria-label="Breadcrumb" />
       <p class="app-locale-switch">
@@ -23,14 +23,8 @@
           </div>
 
           <div class="app-actions">
-            <AppLink to="#release-form" class="app-primary-action">
-              Get release updates
-            </AppLink>
-            <AppLink
-              to="#privacy"
-              class="app-secondary-action app-detail__contact-cta"
-            >
-              View privacy
+            <AppLink to="#duo-overview-title" class="app-primary-action">
+              See how it works
             </AppLink>
           </div>
         </div>
@@ -60,36 +54,31 @@
         </div>
       </section>
 
-      <section class="app-surface" aria-labelledby="duo-overview-title">
+      <section
+        class="app-surface app-surface--lead"
+        aria-labelledby="duo-overview-title"
+      >
         <div class="app-surface__copy">
-          <h2 id="duo-overview-title">The problem</h2>
+          <h2 id="duo-overview-title">For projects you share as a couple</h2>
           <p v-for="paragraph in duoSpendEnContent.overview" :key="paragraph">
             {{ paragraph }}
           </p>
         </div>
 
-        <div class="app-surface__status">
-          <p class="app-surface__eyebrow">At a glance</p>
-          <dl class="app-surface__list app-surface__list--cards">
-            <div>
-              <dt>Use case</dt>
-              <dd>Shared expenses for two people</dd>
-            </div>
-            <div>
-              <dt>Principle</dt>
-              <dd>Who paid what, who owes what</dd>
-            </div>
-            <div>
-              <dt>Account</dt>
-              <dd>No account required</dd>
-            </div>
-          </dl>
-        </div>
+        <aside class="app-brief" aria-label="At a glance">
+          <p class="app-brief__eyebrow">At a glance</p>
+          <ul class="app-brief__list">
+            <li>For expenses on a shared project.</li>
+            <li>Each person adds what they paid.</li>
+            <li>The balance stays readable without a spreadsheet.</li>
+            <li>No connected bank, no required account.</li>
+          </ul>
+        </aside>
       </section>
 
       <section
         v-if="duoSpendEnContent.showVisual"
-        class="app-section"
+        class="app-section app-section--media"
         aria-labelledby="duo-capture-title"
       >
         <div class="section-heading">
@@ -120,7 +109,10 @@
         </div>
       </section>
 
-      <section class="app-section" aria-labelledby="duo-details-title">
+      <section
+        class="app-section app-section--tone"
+        aria-labelledby="duo-details-title"
+      >
         <div class="section-heading">
           <h2 id="duo-details-title">Key points</h2>
           <p>Markers to keep balances clear, without spreadsheets.</p>
@@ -144,7 +136,7 @@
 
       <section
         v-if="duoSpendEnContent.gallery?.length"
-        class="app-section"
+        class="app-section app-section--media"
         aria-labelledby="duo-gallery-title"
       >
         <div class="section-heading">
@@ -189,7 +181,7 @@
 
       <section
         v-if="duoSpendEnContent.pricing"
-        class="app-section"
+        class="app-section app-section--pricing"
         aria-labelledby="duo-pricing-title"
       >
         <div class="section-heading">
@@ -206,7 +198,10 @@
               'pricing-card--featured': plan.name === 'DuoSpend Pro',
             }"
           >
-            <div v-if="plan.name === 'DuoSpend Pro'" class="pricing-card__badge">
+            <div
+              v-if="plan.name === 'DuoSpend Pro'"
+              class="pricing-card__badge"
+            >
               Recommended
             </div>
             <p class="pricing-card__name">{{ plan.name }}</p>
@@ -219,7 +214,10 @@
         </div>
       </section>
 
-      <section class="app-section app-section--faq" aria-labelledby="duo-faq-title">
+      <section
+        class="app-section app-section--faq"
+        aria-labelledby="duo-faq-title"
+      >
         <div class="faq-wrapper">
           <div class="section-heading">
             <h2 id="duo-faq-title">FAQ</h2>
@@ -232,6 +230,8 @@
           />
         </div>
       </section>
+
+      <div class="app-final-separator" aria-hidden="true"></div>
 
       <AppSupportSection
         app-name="DuoSpend"
@@ -249,7 +249,9 @@
         <details ref="privacyDetails" class="legal-disclosure">
           <summary class="legal-disclosure__summary">
             <div class="legal-disclosure__header">
-              <h2 id="duo-legal-title" class="legal-disclosure__title">Privacy</h2>
+              <h2 id="duo-legal-title" class="legal-disclosure__title">
+                Privacy
+              </h2>
               <p class="legal-disclosure__meta">Privacy policy — EN</p>
             </div>
             <span class="legal-disclosure__toggle" aria-hidden="true"></span>
@@ -263,15 +265,6 @@
           </div>
         </details>
       </section>
-
-      <section class="app-cta" id="release-form" aria-labelledby="duo-cta-title">
-        <div class="app-cta__heading">
-          <h2 id="duo-cta-title">{{ duoSpendEnContent.cta.title }}</h2>
-          <p>{{ duoSpendEnContent.cta.description }}</p>
-        </div>
-
-        <AppReleaseInterestForm :app-name="duoSpendEnContent.name" locale="en" />
-      </section>
     </div>
   </main>
 </template>
@@ -283,7 +276,6 @@ import AppBreadcrumb from '~/components/apps/AppBreadcrumb.vue'
 import AppGalleryLightbox from '~/components/apps/AppGalleryLightbox.vue'
 import AppFaqList from '~/components/apps/AppFaqList.vue'
 import AppLegalSingleLocale from '~/components/apps/AppLegalSingleLocale.vue'
-import AppReleaseInterestForm from '~/components/apps/AppReleaseInterestForm.vue'
 import AppSupportSection from '~/components/apps/AppSupportSection.vue'
 
 import {
@@ -521,13 +513,12 @@ useHead({
 
 .app-actions {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 0.75rem;
   margin-top: 1.35rem;
 }
 
 .app-primary-action,
-.app-secondary-action,
 .app-cta__link {
   display: inline-flex;
   align-items: center;
@@ -549,7 +540,11 @@ useHead({
   color: white;
 }
 
-.app-secondary-action,
+.app-primary-action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+}
+
 .app-cta__link {
   background: rgba(243, 244, 246, 0.9);
   color: $gris2;
@@ -563,7 +558,6 @@ useHead({
 }
 
 .app-primary-action:focus-visible,
-.app-secondary-action:focus-visible,
 .app-cta__link:focus-visible {
   outline: 2px solid $vert;
   outline-offset: 3px;
@@ -642,6 +636,10 @@ useHead({
   background: rgba(243, 244, 246, 0.88);
 }
 
+.app-surface--lead {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
 @media (min-width: 900px) {
   .app-surface {
     grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
@@ -690,10 +688,10 @@ useHead({
 }
 
 .app-surface__list--cards div {
-  padding: 0.85rem 0.9rem;
-  border-radius: 0.95rem;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(15, 23, 42, 0.05);
+  padding: 0.72rem 0.78rem;
+  border-radius: 0.8rem;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(247, 249, 250, 0.82);
 }
 
 .app-surface__list div {
@@ -720,6 +718,20 @@ useHead({
   display: grid;
   gap: 1rem;
   margin-top: clamp(2rem, 5vw, 3rem);
+}
+
+.app-section--tone {
+  padding: clamp(1.05rem, 2.5vw, 1.35rem);
+  border-radius: 1.15rem;
+  background: rgba(245, 247, 248, 0.72);
+}
+
+.app-section--media {
+  padding-top: clamp(0.35rem, 1vw, 0.7rem);
+}
+
+.app-section--pricing {
+  padding-top: clamp(0.45rem, 1.2vw, 0.85rem);
 }
 
 .section-heading {
@@ -920,7 +932,9 @@ useHead({
   border-radius: 999px;
   background: $vert;
   transform: translate(-50%, -50%);
-  transition: transform 0.14s ease, opacity 0.14s ease;
+  transition:
+    transform 0.14s ease,
+    opacity 0.14s ease;
 }
 
 .legal-disclosure__toggle::after {
@@ -956,17 +970,15 @@ useHead({
 .detail-card {
   display: grid;
   gap: 0.45rem;
-  padding: 1.1rem 1.15rem;
-  border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.92);
+  padding: 0.95rem 0;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
   align-content: start;
 }
 
 .detail-card--featured {
   @media (min-width: 700px) {
     grid-row: span 2;
-    background: rgba(255, 255, 255, 0.98);
-    border: 1px solid rgba(13, 199, 99, 0.15);
+    border-top-color: rgba(13, 199, 99, 0.35);
   }
 }
 
@@ -1007,21 +1019,19 @@ useHead({
 .pricing-card {
   display: grid;
   gap: 0.65rem;
-  padding: 1.05rem;
-  border-radius: 1.15rem;
-  background: rgba(255, 255, 255, 0.94);
+  padding: 1rem 0 0;
+  border-top: 1px solid rgba(15, 23, 42, 0.1);
   position: relative;
 }
 
 .pricing-card--featured {
-  border: 1.5px solid rgba(13, 199, 99, 0.7);
-  background: rgba(13, 199, 99, 0.04);
+  border-top: 2px solid rgba(13, 199, 99, 0.65);
 }
 
 .pricing-card__badge {
   position: absolute;
-  top: -0.55rem;
-  right: 1rem;
+  top: -0.7rem;
+  right: 0;
   padding: 0.2rem 0.65rem;
   border-radius: 999px;
   background: $vert;
