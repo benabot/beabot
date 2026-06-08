@@ -94,6 +94,7 @@ export interface AppDetailContent {
   platform: string
   stage: string
   href: string
+  appStoreUrl?: string
   intro: string
   summary: string
   heroLines?: string[]
@@ -210,7 +211,7 @@ export const appsIndexEntries: AppIndexEntry[] = [
     slug: 'duo-spend',
     name: 'DuoSpend',
     platform: 'iOS',
-    stage: 'Prépublication',
+    stage: 'Disponible',
     tagline: 'Clarifier les dépenses à deux.',
     summary:
       'Ajoutez les dépenses d’un projet commun, voyez qui a payé quoi, équilibrez simplement.',
@@ -345,7 +346,7 @@ const duoSpendFaqSections: AppFaqSection[] = [
       {
         question: 'Combien coûte DuoSpend Pro ?',
         answer:
-          'DuoSpend Pro coûte 6,99 € en achat unique. Il n’y a pas d’abonnement.',
+          'DuoSpend Pro coûte 6,99 € en France, en achat unique. Le prix peut varier selon le pays dans l’App Store. Il n’y a pas d’abonnement.',
       },
       {
         question: 'Faut-il créer un compte ?',
@@ -906,14 +907,15 @@ export const duoSpendContent: AppDetailContent = {
   slug: 'duo-spend',
   name: 'DuoSpend',
   platform: 'iOS',
-  stage: 'Prépublication',
+  stage: 'Disponible sur l’App Store',
   href: '/apps/duo-spend/',
+  appStoreUrl: 'https://apps.apple.com/us/app/duospend/id6769080529',
   intro: 'Qui doit combien à qui ?',
   summary:
     "DuoSpend aide les couples à suivre les dépenses d'un projet commun : voyage, emménagement, mariage, travaux. Chacun ajoute ce qu’il a payé, l’app calcule ce qu’il reste à équilibrer.",
   heroLines: [
     "DuoSpend aide les couples à suivre les dépenses d'un projet commun : voyage, emménagement, mariage, travaux.",
-    "Chacun ajoute ce qu’il a payé, l’app calcule ce qu’il reste à équilibrer, sans banque connectée et sans tableur.",
+    'Chacun ajoute ce qu’il a payé, l’app calcule ce qu’il reste à équilibrer, sans banque connectée et sans tableur.',
   ],
   overview: [
     'Les dépenses d’un projet à deux s’accumulent vite : voyage, emménagement, mariage, travaux, week-end ou vacances.',
@@ -952,10 +954,10 @@ export const duoSpendContent: AppDetailContent = {
         'Une interface sobre pour comprendre l’équilibre des comptes sans fouiller.',
     },
     {
-      label: 'Prépublication',
-      value: 'L’app est en préparation.',
+      label: 'Disponible',
+      value: 'L’app est publiée sur l’App Store.',
       description:
-        'La page présente le produit, les captures, les tarifs et les informations pratiques.',
+        'DuoSpend est gratuite au téléchargement, avec DuoSpend Pro en achat intégré unique.',
     },
   ],
   preview: {
@@ -1008,19 +1010,19 @@ export const duoSpendContent: AppDetailContent = {
   faqSections: duoSpendFaqSections,
   pricing: {
     title: 'Tarifs',
-    intro:
-      'DuoSpend garde l’essentiel gratuit pour tester un vrai projet. Pro ajoute les projets illimités, les widgets et l’export PDF.',
+    intro: 'Gratuit au téléchargement · DuoSpend Pro : 6,99 € en France.',
     plans: [
       {
         name: 'Gratuit',
-        price: '0 €',
-        description: 'Pour gérer un premier projet partagé clairement.',
+        price: 'Gratuit',
+        description: 'Téléchargez DuoSpend et gérez un premier projet partagé.',
         items: ['1 projet complet', 'Fonctions essentielles incluses'],
       },
       {
         name: 'DuoSpend Pro',
-        price: '6,99 €',
-        description: 'Achat unique, à vie. Aucun abonnement.',
+        price: '6,99 € en France',
+        description:
+          'Achat intégré unique via l’App Store. Prix localisé selon le pays.',
         items: [
           'Projets illimités',
           "Widgets pour l'écran d'accueil",

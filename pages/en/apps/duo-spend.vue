@@ -23,7 +23,16 @@
           </div>
 
           <div class="app-actions">
-            <AppLink to="#duo-overview-title" class="app-primary-action">
+            <a
+              v-if="duoSpendEnContent.appStoreUrl"
+              :href="duoSpendEnContent.appStoreUrl"
+              class="app-primary-action"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Download on the App Store
+            </a>
+            <AppLink to="#duo-overview-title" class="app-cta__link">
               See how it works
             </AppLink>
           </div>
@@ -314,6 +323,14 @@ const softwareApplicationSchema = buildSoftwareApplicationSchema({
   operatingSystem: 'iOS',
   applicationCategory: 'FinanceApplication',
   image: ogImage,
+  offers: [
+    {
+      name: 'DuoSpend',
+      price: '0',
+      priceCurrency: 'USD',
+      description: 'Free download on the App Store.',
+    },
+  ],
   author: {
     name: 'Benoît Abot',
     url: canonicalUrl(config.public.siteUrl, '/'),
@@ -513,7 +530,7 @@ useHead({
 
 .app-actions {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 0.75rem;
   margin-top: 1.35rem;
 }

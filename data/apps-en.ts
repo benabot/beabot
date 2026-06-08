@@ -101,7 +101,8 @@ export const appsIndexEnEntries: AppIndexEntry[] = appsIndexEntries.map(
                   src: '/img/siturem/siturem-landing_en.webp',
                 }
               : entry.preview,
-    stage: 'Pre-release',
+    stage:
+      entry.slug === 'duo-spend' ? 'Available on the App Store' : 'Pre-release',
     tagline: enTaglineBySlug[entry.slug] ?? entry.tagline,
     summary: enSummaryBySlug[entry.slug] ?? entry.summary,
     href: `/en/apps/${entry.slug}/`,
@@ -189,7 +190,8 @@ const duoSpendFaqSectionsEn: AppFaqSection[] = [
       },
       {
         question: 'How much is DuoSpend Pro?',
-        answer: 'DuoSpend Pro costs €6.99 one-time. No subscription.',
+        answer:
+          'DuoSpend Pro is a one-time in-app purchase. It is $5.99 in the US and €6.99 in France; pricing is localized by country. No subscription.',
       },
       {
         question: 'Do I need an account?',
@@ -653,7 +655,7 @@ export const focusOneEnContent: AppDetailContent = {
 export const duoSpendEnContent: AppDetailContent = {
   ...duoSpendContent,
   href: '/en/apps/duo-spend/',
-  stage: 'Pre-release',
+  stage: 'Available on the App Store',
   intro: 'Who owes what?',
   summary:
     'DuoSpend helps couples track expenses for a shared project: a trip, a move, a wedding or home improvements. Each person adds what they paid, and the app shows what remains to be balanced.',
@@ -702,10 +704,10 @@ export const duoSpendEnContent: AppDetailContent = {
       description: 'A focused interface for quick financial clarity.',
     },
     {
-      label: 'Pre-release',
-      value: 'The app is currently in preparation.',
+      label: 'Available',
+      value: 'The app is published on the App Store.',
       description:
-        'This page presents the product, screenshots, pricing and practical information.',
+        'DuoSpend is free to download, with DuoSpend Pro available as a one-time in-app purchase.',
     },
   ],
   gallery: [
@@ -753,18 +755,20 @@ export const duoSpendEnContent: AppDetailContent = {
         ...duoSpendContent.pricing,
         title: 'Pricing',
         intro:
-          'DuoSpend keeps essential features free for one real project. Pro unlocks unlimited projects, widgets, and PDF export.',
+          'Free to download · DuoSpend Pro: $5.99 in the US / €6.99 in France.',
         plans: [
           {
             name: 'Free',
-            price: '€0',
-            description: 'Track your first shared project clearly.',
+            price: 'Free',
+            description:
+              'Download DuoSpend and track your first shared project.',
             items: ['1 full project', 'Essential features included'],
           },
           {
             name: 'DuoSpend Pro',
-            price: '€6.99',
-            description: 'One-time purchase. Lifetime access. No subscription.',
+            price: '$5.99 US / €6.99 France',
+            description:
+              'One-time in-app purchase through the App Store. Pricing is localized by country.',
             items: [
               'Unlimited projects',
               'Home screen widgets',

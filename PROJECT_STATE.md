@@ -49,6 +49,12 @@ Branche : `feature/apps-positioning-v2`
 - `/en/apps/duo-spend/` utilise désormais `duospend-en-intro-2.webp` en hero et une galerie composée uniquement de captures anglaises.
 - La card DuoSpend de `/en/apps/` utilise `duospend-en-hero.webp`; les routes françaises `/apps/` et `/apps/duo-spend/` conservent leurs images françaises.
 
+#### Lien App Store DuoSpend — 8 juin 2026
+
+- DuoSpend est publiée sur l’App Store : `https://apps.apple.com/us/app/duospend/id6769080529`.
+- `/apps/duo-spend/` et `/en/apps/duo-spend/` affichent le CTA standard `Download on the App Store` dans le hero.
+- Les prix visibles indiquent le téléchargement gratuit et DuoSpend Pro comme achat intégré localisé ; le JSON-LD `SoftwareApplication` ne déclare que l’offre gratuite de téléchargement.
+
 #### Décisions finales de positionnement apps — 30 mai 2026
 
 - Décisions de référence :

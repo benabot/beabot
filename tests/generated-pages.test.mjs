@@ -165,13 +165,24 @@ for (const page of pages) {
         'DuoSpend aide les couples à suivre les dépenses d’un projet commun : voyage, emménagement, mariage ou travaux, sans banque connectée ni tableur.',
       )
       assert.match(html, /DuoSpend — Qui doit combien à qui/)
+      assert.match(html, /Download on the App Store/)
       assert.match(html, /Voir comment ça marche/)
       assert.doesNotMatch(html, /Être informé|#release-form|release-form/)
       assert.doesNotMatch(html, /Voir la confidentialité/)
+      assert.doesNotMatch(
+        html,
+        /bientôt disponible|en soumission|TestFlight|précommande|lancement prochain|disponible bientôt/i,
+      )
       assert.match(html, /sans banque connectée et sans tableur/)
       assert.match(html, /qui a payé quoi/)
       assert.match(html, /Dépenses partagées/)
       assert.match(html, /DuoSpend Pro/)
+      assert.match(html, /Gratuit au téléchargement · DuoSpend Pro : 6,99 €/)
+      assert.match(html, /6,99 € en France/)
+      assert.match(
+        html,
+        /https:\/\/apps\.apple\.com\/us\/app\/duospend\/id6769080529/,
+      )
       assert.doesNotMatch(
         html,
         /DuoSpend — Conçue sans tracking|sans SDK tiers\.<\/h1>|StoreKit|Core Data|CloudKit/,
@@ -183,6 +194,20 @@ for (const page of pages) {
       assert.ok(appNode, 'Expected DuoSpend JSON-LD SoftwareApplication')
       assert.equal(appNode.applicationCategory, 'FinanceApplication')
       assert.equal(appNode.operatingSystem, 'iOS')
+      assert.deepEqual(
+        appNode.offers?.map((offer) => ({
+          name: offer.name,
+          price: offer.price,
+          priceCurrency: offer.priceCurrency,
+        })),
+        [
+          {
+            name: 'DuoSpend',
+            price: '0',
+            priceCurrency: 'EUR',
+          },
+        ],
+      )
       assert.equal(
         appNode.description,
         'DuoSpend est une app iOS pour suivre les dépenses partagées à deux, savoir qui a payé quoi et équilibrer les comptes simplement.',
@@ -219,15 +244,48 @@ for (const page of pages) {
         /^DuoSpend — Shared expenses app for couples \| BeAbot$/,
       )
       assert.match(html, /See how it works/)
+      assert.match(html, /Download on the App Store/)
       assert.doesNotMatch(html, /Get launch updates|#release-form|release-form/)
       assert.doesNotMatch(html, /View privacy/)
+      assert.doesNotMatch(
+        html,
+        /coming soon|available soon|in review|TestFlight|pre-order|launching soon/i,
+      )
       assert.match(html, /For projects you share as a couple/)
+      assert.match(
+        html,
+        /Free to download · DuoSpend Pro: \$5\.99 in the US \/ €6\.99 in France/,
+      )
+      assert.match(html, /\$5\.99 US \/ €6\.99 France/)
+      assert.match(
+        html,
+        /https:\/\/apps\.apple\.com\/us\/app\/duospend\/id6769080529/,
+      )
       assert.match(html, /id=\"support\"/)
       assert.match(
         html,
         /\/en\/contact\/\?app=duo-spend(?:&|&amp;)type=support/,
       )
       assert.match(html, /lang=\"en\"/)
+
+      const appNode = structuredDataNodes.find((node) =>
+        nodeHasType(node, 'SoftwareApplication'),
+      )
+      assert.ok(appNode, 'Expected DuoSpend EN JSON-LD SoftwareApplication')
+      assert.deepEqual(
+        appNode.offers?.map((offer) => ({
+          name: offer.name,
+          price: offer.price,
+          priceCurrency: offer.priceCurrency,
+        })),
+        [
+          {
+            name: 'DuoSpend',
+            price: '0',
+            priceCurrency: 'USD',
+          },
+        ],
+      )
     }
 
     if (page.route === '/apps/meeting-mode/') {
