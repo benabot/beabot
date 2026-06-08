@@ -346,7 +346,7 @@ const duoSpendFaqSections: AppFaqSection[] = [
       {
         question: 'Combien coûte DuoSpend Pro ?',
         answer:
-          'DuoSpend Pro coûte 6,99 € en France, en achat unique. Le prix peut varier selon le pays dans l’App Store. Il n’y a pas d’abonnement.',
+          'DuoSpend Pro coûte 6,99 € dans la zone euro, en achat unique. Le prix peut varier selon le pays dans l’App Store. Il n’y a pas d’abonnement.',
       },
       {
         question: 'Faut-il créer un compte ?',
@@ -695,7 +695,8 @@ export const focusOneContent: AppDetailContent = {
   detailPoints: [
     {
       label: 'Une seule habitude active',
-      value: 'Choisir une routine, la cocher aujourd’hui, garder la série visible.',
+      value:
+        'Choisir une routine, la cocher aujourd’hui, garder la série visible.',
       description:
         'La première décision est volontairement simple : une seule chose à tenir, assez visible pour revenir demain sans rouvrir tout un tableau de bord.',
       featured: true,
@@ -1010,7 +1011,7 @@ export const duoSpendContent: AppDetailContent = {
   faqSections: duoSpendFaqSections,
   pricing: {
     title: 'Tarifs',
-    intro: 'Gratuit au téléchargement · DuoSpend Pro : 6,99 € en France.',
+    intro: 'Gratuit au téléchargement · DuoSpend Pro : 6,99 €.',
     plans: [
       {
         name: 'Gratuit',
@@ -1020,7 +1021,7 @@ export const duoSpendContent: AppDetailContent = {
       },
       {
         name: 'DuoSpend Pro',
-        price: '6,99 € en France',
+        price: '6,99 €',
         description:
           'Achat intégré unique via l’App Store. Prix localisé selon le pays.',
         items: [

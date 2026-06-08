@@ -105,3 +105,6 @@ node_modules
 
 # Nuxt Content local data
 .data/
+
+# App Store badge source files not used by the static site
+public/Download-on-the-App-Store/**/*.eps

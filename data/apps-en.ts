@@ -16,11 +16,7 @@ export const appsIndexEnContent = {
   heroTitle: 'Useful apps for keeping track.',
   heroSubtitle:
     'A habit to keep. Shared expenses to clarify. A session to start. A meeting to prepare. Short, direct apps built to do one thing without holding your attention.',
-  proofLine: [
-    'No unnecessary account',
-    'No social feed',
-    'No noisy dashboard',
-  ],
+  proofLine: ['No unnecessary account', 'No social feed', 'No noisy dashboard'],
   manifestoTitle: 'Open. Act. Move on.',
   manifestoBody:
     'These apps are not built to keep you scrolling. They make one action clearer, then get out of the way.',
@@ -191,7 +187,7 @@ const duoSpendFaqSectionsEn: AppFaqSection[] = [
       {
         question: 'How much is DuoSpend Pro?',
         answer:
-          'DuoSpend Pro is a one-time in-app purchase. It is $5.99 in the US and €6.99 in France; pricing is localized by country. No subscription.',
+          'DuoSpend Pro is a one-time in-app purchase. It is $5.99 in the US and €6.99 in the euro area; pricing is localized by country. No subscription.',
       },
       {
         question: 'Do I need an account?',
@@ -755,7 +751,7 @@ export const duoSpendEnContent: AppDetailContent = {
         ...duoSpendContent.pricing,
         title: 'Pricing',
         intro:
-          'Free to download · DuoSpend Pro: $5.99 in the US / €6.99 in France.',
+          'Free to download · DuoSpend Pro: $5.99 in the US / €6.99 in the euro area.',
         plans: [
           {
             name: 'Free',
@@ -766,7 +762,7 @@ export const duoSpendEnContent: AppDetailContent = {
           },
           {
             name: 'DuoSpend Pro',
-            price: '$5.99 US / €6.99 France',
+            price: '$5.99',
             description:
               'One-time in-app purchase through the App Store. Pricing is localized by country.',
             items: [

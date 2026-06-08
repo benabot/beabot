@@ -14,7 +14,7 @@
 5. **Recherche UI / composant orphelin** — Si `AppSearchInput.vue` doit redevenir visible, choisir une page hôte et faire une vérification UX dédiée ; sinon documenter son statut orphelin dans un lot séparé.
 6. **Lint global repo-wide** — `npm run lint:js` fonctionne avec la flat config Nuxt ESLint v1, mais `npm run lint` reste bloqué par `lint:prettier` sur des formatages historiques et `docs/migration/nuxt4/archive/audit-unused-depcheck.json` non JSON ; à traiter séparément.
 7. **Audit sécurité npm** — `npm audit --audit-level=moderate` signalait 11 vulnérabilités lors de l'audit Nuxt 4 ; ne pas lancer `npm audit fix` sans lot dédié.
-8. **DIR-* app directory** — Ne pas déplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dédié uniquement si une incompatibilité réelle apparaît.
+8. **DIR-\* app directory** — Ne pas déplacer vers `app/` tant que Nuxt 4 fonctionne avec l'arborescence actuelle ; garder un lot dédié uniquement si une incompatibilité réelle apparaît.
 9. **SCSS-6** — Reporté après audit CSS natif. La sortie complète de SCSS demande plusieurs lots progressifs : couleurs simples, typo, spacing, breakpoints, couleurs dérivées, réduction des imports Sass, puis décision de suppression Sass.
 
 ---
@@ -52,7 +52,7 @@ Branche : `feature/apps-positioning-v2`
 #### Lien App Store DuoSpend — 8 juin 2026
 
 - DuoSpend est publiée sur l’App Store : `https://apps.apple.com/us/app/duospend/id6769080529`.
-- `/apps/duo-spend/` et `/en/apps/duo-spend/` affichent le CTA standard `Download on the App Store` dans le hero.
+- `/apps/duo-spend/` et `/en/apps/duo-spend/` affichent les badges officiels Apple FR/US dans le hero et dans un CTA sombre placé avant les tarifs.
 - Les prix visibles indiquent le téléchargement gratuit et DuoSpend Pro comme achat intégré localisé ; le JSON-LD `SoftwareApplication` ne déclare que l’offre gratuite de téléchargement.
 
 #### Décisions finales de positionnement apps — 30 mai 2026
@@ -469,6 +469,7 @@ SiteURLStackBranchÉtat**Production**<https://beabot.fr>Nuxt 3.14master✅ Stabl
 Branche : `fix/netlify-eco-conception-runtime`
 
 Dernière décision :
+
 - FIX-NETLIFY-RUNTIME réalisé le 10 mai 2026.
 - Résultat : correctif ciblé prêt pour merge manuel vers `dev`.
 - Version Nuxt : `4.4.2`.
@@ -535,6 +536,7 @@ Dernière décision :
   - vérifier `/eco-conception/` sur la preview.
 
 Contraintes maintenues :
+
 - Aucun déplacement vers `app/` dans FIX-NETLIFY-RUNTIME.
 - Aucun changement CSS/design fait dans FIX-NETLIFY-RUNTIME.
 - Aucune correction globale lint ou Prettier faite dans FIX-NETLIFY-RUNTIME.

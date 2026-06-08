@@ -26,11 +26,17 @@
             <a
               v-if="duoSpendContent.appStoreUrl"
               :href="duoSpendContent.appStoreUrl"
-              class="app-primary-action"
+              class="app-store-badge-link"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Download on the App Store
+              <img
+                src="/Download-on-the-App-Store/FR/Download_on_App_Store/Black_lockup/SVG/Download_on_the_App_Store_Badge_FR_RGB_blk_100517.svg"
+                alt="Télécharger dans l’App Store"
+                width="127"
+                height="40"
+                class="app-store-badge"
+              />
             </a>
             <AppLink to="#duo-overview-title" class="app-cta__link">
               Voir comment ça marche
@@ -183,6 +189,35 @@
         </div>
 
         <AppGalleryLightbox ref="lightbox" :images="duoSpendContent.gallery" />
+      </section>
+
+      <section
+        v-if="duoSpendContent.appStoreUrl"
+        class="app-download-cta"
+        aria-labelledby="duo-download-title"
+      >
+        <div class="app-download-cta__copy">
+          <h2 id="duo-download-title">Essayez DuoSpend gratuitement</h2>
+          <p>
+            Téléchargez l’app, créez un premier projet partagé, puis passez à
+            DuoSpend Pro si vous avez besoin de projets illimités, de widgets et
+            de l’export PDF.
+          </p>
+        </div>
+        <a
+          :href="duoSpendContent.appStoreUrl"
+          class="app-store-badge-link app-store-badge-link--dark"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="/Download-on-the-App-Store/FR/Download_on_App_Store/White_lockup/SVG/Download_on_the_App_Store_Badge_FR_RGB_wht_100217.svg"
+            alt="Télécharger dans l’App Store"
+            width="127"
+            height="40"
+            class="app-store-badge"
+          />
+        </a>
       </section>
 
       <section
@@ -531,7 +566,7 @@ useHead({
   margin-top: 1.35rem;
 }
 
-.app-primary-action,
+.app-store-badge-link,
 .app-cta__link {
   display: inline-flex;
   align-items: center;
@@ -548,14 +583,26 @@ useHead({
     color 0.14s ease;
 }
 
-.app-primary-action {
-  background: $vert;
-  color: white;
+.app-store-badge-link {
+  padding: 0;
+  border-radius: 0.6rem;
+  background: transparent;
 }
 
-.app-primary-action:hover {
+.app-store-badge-link:hover {
   transform: translateY(-1px);
   box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+}
+
+.app-store-badge-link--dark:hover {
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.22);
+}
+
+.app-store-badge {
+  display: block;
+  width: auto;
+  height: 2.9rem;
+  max-width: 100%;
 }
 
 .app-cta__link {
@@ -570,7 +617,7 @@ useHead({
   box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
 }
 
-.app-primary-action:focus-visible,
+.app-store-badge-link:focus-visible,
 .app-cta__link:focus-visible {
   outline: 2px solid $vert;
   outline-offset: 3px;
@@ -745,6 +792,41 @@ useHead({
 
 .app-section--pricing {
   padding-top: clamp(0.45rem, 1.2vw, 0.85rem);
+}
+
+.app-download-cta {
+  display: grid;
+  gap: 1.1rem;
+  align-items: center;
+  margin-top: clamp(2rem, 5vw, 3rem);
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border-radius: 1.35rem;
+  background: linear-gradient(135deg, #111827, #0f172a);
+  color: white;
+
+  @media (min-width: 760px) {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}
+
+.app-download-cta__copy {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.app-download-cta h2 {
+  margin: 0;
+  color: white;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.app-download-cta p {
+  margin: 0;
+  max-width: 44rem;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.6;
 }
 
 .section-heading {

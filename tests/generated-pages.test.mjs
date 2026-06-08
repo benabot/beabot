@@ -17,11 +17,23 @@ const pages = [
   { route: '/apps/', expectedUrl: `${siteUrl}/apps/` },
   { route: '/en/apps/', expectedUrl: `${siteUrl}/en/apps/` },
   { route: '/apps/duo-spend/', expectedUrl: `${siteUrl}/apps/duo-spend/` },
-  { route: '/en/apps/duo-spend/', expectedUrl: `${siteUrl}/en/apps/duo-spend/` },
+  {
+    route: '/en/apps/duo-spend/',
+    expectedUrl: `${siteUrl}/en/apps/duo-spend/`,
+  },
   { route: '/apps/focus-one/', expectedUrl: `${siteUrl}/apps/focus-one/` },
-  { route: '/en/apps/focus-one/', expectedUrl: `${siteUrl}/en/apps/focus-one/` },
-  { route: '/apps/meeting-mode/', expectedUrl: `${siteUrl}/apps/meeting-mode/` },
-  { route: '/en/apps/meeting-mode/', expectedUrl: `${siteUrl}/en/apps/meeting-mode/` },
+  {
+    route: '/en/apps/focus-one/',
+    expectedUrl: `${siteUrl}/en/apps/focus-one/`,
+  },
+  {
+    route: '/apps/meeting-mode/',
+    expectedUrl: `${siteUrl}/apps/meeting-mode/`,
+  },
+  {
+    route: '/en/apps/meeting-mode/',
+    expectedUrl: `${siteUrl}/en/apps/meeting-mode/`,
+  },
   { route: '/apps/siturem/', expectedUrl: `${siteUrl}/apps/siturem/` },
   { route: '/en/apps/siturem/', expectedUrl: `${siteUrl}/en/apps/siturem/` },
   { route: '/mentions-legales/', expectedUrl: `${siteUrl}/mentions-legales/` },
@@ -165,8 +177,17 @@ for (const page of pages) {
         'DuoSpend aide les couples à suivre les dépenses d’un projet commun : voyage, emménagement, mariage ou travaux, sans banque connectée ni tableur.',
       )
       assert.match(html, /DuoSpend — Qui doit combien à qui/)
-      assert.match(html, /Download on the App Store/)
+      assert.match(
+        html,
+        /\/Download-on-the-App-Store\/FR\/Download_on_App_Store\/Black_lockup\/SVG\/Download_on_the_App_Store_Badge_FR_RGB_blk_100517\.svg/,
+      )
+      assert.match(html, /alt=\"Télécharger dans l’App Store\"/)
       assert.match(html, /Voir comment ça marche/)
+      assert.match(html, /Essayez DuoSpend gratuitement/)
+      assert.match(
+        html,
+        /\/Download-on-the-App-Store\/FR\/Download_on_App_Store\/White_lockup\/SVG\/Download_on_the_App_Store_Badge_FR_RGB_wht_100217\.svg/,
+      )
       assert.doesNotMatch(html, /Être informé|#release-form|release-form/)
       assert.doesNotMatch(html, /Voir la confidentialité/)
       assert.doesNotMatch(
@@ -178,7 +199,8 @@ for (const page of pages) {
       assert.match(html, /Dépenses partagées/)
       assert.match(html, /DuoSpend Pro/)
       assert.match(html, /Gratuit au téléchargement · DuoSpend Pro : 6,99 €/)
-      assert.match(html, /6,99 € en France/)
+      assert.match(html, /Prix localisé selon le pays/)
+      assert.doesNotMatch(html, /6,99 € en France/)
       assert.match(
         html,
         /https:\/\/apps\.apple\.com\/us\/app\/duospend\/id6769080529/,
@@ -230,10 +252,14 @@ for (const page of pages) {
         /\/en\/contact\/\?app=focus-one(?:&|&amp;)type=support/,
       )
       assert.ok(
-        html.includes('hreflang=\"fr\" href=\"https://beabot.fr/apps/focus-one/\"'),
+        html.includes(
+          'hreflang=\"fr\" href=\"https://beabot.fr/apps/focus-one/\"',
+        ),
       )
       assert.ok(
-        html.includes('hreflang=\"en\" href=\"https://beabot.fr/en/apps/focus-one/\"'),
+        html.includes(
+          'hreflang=\"en\" href=\"https://beabot.fr/en/apps/focus-one/\"',
+        ),
       )
       assert.match(html, /lang=\"en\"/)
     }
@@ -244,7 +270,16 @@ for (const page of pages) {
         /^DuoSpend — Shared expenses app for couples \| BeAbot$/,
       )
       assert.match(html, /See how it works/)
-      assert.match(html, /Download on the App Store/)
+      assert.match(
+        html,
+        /\/Download-on-the-App-Store\/US\/Download_on_App_Store\/Black_lockup\/SVG\/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917\.svg/,
+      )
+      assert.match(html, /alt=\"Download on the App Store\"/)
+      assert.match(html, /Try DuoSpend for free/)
+      assert.match(
+        html,
+        /\/Download-on-the-App-Store\/US\/Download_on_App_Store\/White_lockup\/SVG\/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917\.svg/,
+      )
       assert.doesNotMatch(html, /Get launch updates|#release-form|release-form/)
       assert.doesNotMatch(html, /View privacy/)
       assert.doesNotMatch(
@@ -254,9 +289,10 @@ for (const page of pages) {
       assert.match(html, /For projects you share as a couple/)
       assert.match(
         html,
-        /Free to download · DuoSpend Pro: \$5\.99 in the US \/ €6\.99 in France/,
+        /Free to download · DuoSpend Pro: \$5\.99 in the US \/ €6\.99 in the euro area\./,
       )
-      assert.match(html, /\$5\.99 US \/ €6\.99 France/)
+      assert.match(html, /One-time in-app purchase through the App Store/)
+      assert.doesNotMatch(html, /€6\.99 France|\$5\.99 US \/ €6\.99 France/)
       assert.match(
         html,
         /https:\/\/apps\.apple\.com\/us\/app\/duospend\/id6769080529/,
@@ -296,10 +332,7 @@ for (const page of pages) {
       assert.match(html, /Voir comment ça marche/)
       assert.doesNotMatch(html, /Être informé|#release-form|release-form/)
       assert.match(html, /id=\"support\"/)
-      assert.match(
-        html,
-        /\/contact\/\?app=meeting-mode(?:&|&amp;)type=support/,
-      )
+      assert.match(html, /\/contact\/\?app=meeting-mode(?:&|&amp;)type=support/)
     }
 
     if (page.route === '/en/apps/meeting-mode/') {
@@ -325,10 +358,7 @@ for (const page of pages) {
       assert.match(html, /Voir comment ça marche/)
       assert.doesNotMatch(html, /Être informé|#release-form|release-form/)
       assert.match(html, /id=\"support\"/)
-      assert.match(
-        html,
-        /\/contact\/\?app=siturem(?:&|&amp;)type=support/,
-      )
+      assert.match(html, /\/contact\/\?app=siturem(?:&|&amp;)type=support/)
     }
 
     if (page.route === '/en/apps/siturem/') {
@@ -339,10 +369,7 @@ for (const page of pages) {
       assert.match(html, /See how it works/)
       assert.doesNotMatch(html, /Get launch updates|#release-form|release-form/)
       assert.match(html, /id=\"support\"/)
-      assert.match(
-        html,
-        /\/en\/contact\/\?app=siturem(?:&|&amp;)type=support/,
-      )
+      assert.match(html, /\/en\/contact\/\?app=siturem(?:&|&amp;)type=support/)
       assert.match(html, /lang=\"en\"/)
     }
 
@@ -355,10 +382,7 @@ for (const page of pages) {
       assert.match(html, /Par quoi commencer/)
       assert.match(html, /Découvrir Siturem/)
       assert.match(html, /Découvrir Meeting Mode/)
-      assert.match(
-        html,
-        /Un compteur privé pour choisir une seule routine/,
-      )
+      assert.match(html, /Un compteur privé pour choisir une seule routine/)
     }
 
     if (page.route === '/en/apps/') {

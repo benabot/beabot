@@ -27,6 +27,7 @@
 - [x] Poser le garde-fou : toute future correction sur `/apps/`, `/en/apps/` ou `/apps/*/` doit maintenir cette cohérence visuelle
 - [x] Localiser les visuels DuoSpend EN : `/en/apps/duo-spend/` utilise les captures `public/img/apps/duo-spend/en/`, avec `duospend-en-intro-2.webp` en hero ; `/en/apps/` utilise `duospend-en-hero.webp` pour la card DuoSpend, sans modifier les images françaises
 - [x] Ajouter le lien App Store officiel DuoSpend dans les héros FR/EN avec le CTA standard `Download on the App Store`, clarifier les prix visibles et limiter le JSON-LD à l’offre gratuite de téléchargement
+- [x] Remplacer le CTA texte DuoSpend par les badges officiels Apple FR/US, ajouter un CTA sombre avant les tarifs et corriger les formulations de prix localisées
 
 ### Décision finale : cadrage figé avant merge `dev` — 30 mai 2026
 
