@@ -182,7 +182,7 @@ const duoSpendFaqSectionsEn: AppFaqSection[] = [
       {
         question: 'What does DuoSpend Pro unlock?',
         answer:
-          'DuoSpend Pro unlocks unlimited projects, home screen widgets, and PDF export with a one-time purchase.',
+          'DuoSpend Pro unlocks unlimited projects, Home Screen widgets and PDF export with a one-time purchase. DuoSpend Pro also supports Apple Family Sharing.',
       },
       {
         question: 'How much is DuoSpend Pro?',
@@ -201,7 +201,12 @@ const duoSpendFaqSectionsEn: AppFaqSection[] = [
       {
         question: 'Can two people use DuoSpend on two iPhones?',
         answer:
-          'Not in the first version. DuoSpend starts as local tracking on one iPhone. Optional iCloud sync and shared usage are planned later.',
+          'Yes. You can share a project with your partner using a DuoSpend file. Your partner can import it on their iPhone, then import a newer version of the file later to update the project. Transfers remain manual: DuoSpend does not automatically sync projects between the two iPhones.',
+      },
+      {
+        question: 'Can DuoSpend Pro be shared with my family?',
+        answer:
+          'Yes. DuoSpend Pro is a one-time purchase that supports Apple Family Sharing. The purchase can be shared with eligible members of your Family Sharing group according to your Apple settings.',
       },
     ],
   },
@@ -769,6 +774,7 @@ export const duoSpendEnContent: AppDetailContent = {
               'Unlimited projects',
               'Home screen widgets',
               'PDF export',
+              'Apple Family Sharing',
               'No subscription',
             ],
           },
