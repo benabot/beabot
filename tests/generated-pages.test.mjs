@@ -200,6 +200,20 @@ for (const page of pages) {
       assert.match(html, /DuoSpend Pro/)
       assert.match(html, /Gratuit au téléchargement · DuoSpend Pro : 6,99 €/)
       assert.match(html, /Prix localisé selon le pays/)
+      assert.match(html, /Peut-on utiliser DuoSpend à deux sur deux iPhones ?/)
+      assert.match(html, /DuoSpend Pro peut-il être partagé en famille ?/)
+      assert.match(html, /Le transfert reste manuel/)
+      assert.match(html, /Partage familial Apple/)
+      assert.match(
+        html,
+        /DuoSpend ne synchronise pas automatiquement les projets entre les appareils dans cette version\./,
+      )
+      assert.match(html, /id="support"/)
+      assert.match(html, /id="privacy"/)
+      assert.doesNotMatch(
+        html,
+        /Pas encore dans la première version|synchronisation iCloud optionnelle est prévue/,
+      )
       assert.doesNotMatch(html, /6,99 € en France/)
       assert.match(
         html,
@@ -292,12 +306,25 @@ for (const page of pages) {
         /Free to download · DuoSpend Pro: \$5\.99 in the US \/ €6\.99 in the euro area\./,
       )
       assert.match(html, /One-time in-app purchase through the App Store/)
+      assert.match(html, /Can two people use DuoSpend on two iPhones\?/)
+      assert.match(html, /Can DuoSpend Pro be shared with my family\?/)
+      assert.match(html, /Transfers remain manual/)
+      assert.match(html, /Apple Family Sharing/)
+      assert.match(
+        html,
+        /DuoSpend does not automatically sync projects between devices in this version\./,
+      )
+      assert.doesNotMatch(
+        html,
+        /Not in the first version|Optional iCloud sync is planned/,
+      )
       assert.doesNotMatch(html, /€6\.99 France|\$5\.99 US \/ €6\.99 France/)
       assert.match(
         html,
         /https:\/\/apps\.apple\.com\/us\/app\/duospend\/id6769080529/,
       )
       assert.match(html, /id=\"support\"/)
+      assert.match(html, /id=\"privacy\"/)
       assert.match(
         html,
         /\/en\/contact\/\?app=duo-spend(?:&|&amp;)type=support/,

@@ -23,6 +23,12 @@
 
 ### Apps positioning v2 — 23 mai 2026
 
+#### DuoSpend v1.0.3 — contenu FR/EN (10 août 2026)
+
+- Les pages `/apps/duo-spend/` et `/en/apps/duo-spend/` reflètent l’import/export manuel de projets au format DuoSpend : un fichier peut créer un projet sur un autre iPhone, puis une version plus récente peut être réimportée pour le mettre à jour.
+- Cette fonction reste un transfert manuel par fichier, sans synchronisation automatique entre appareils ni serveur DuoSpend pour les projets.
+- DuoSpend Pro indique désormais la compatibilité avec le partage familial Apple dans les contenus et cards tarifaires FR/EN ; les politiques de confidentialité précisent le rôle d’Apple pour l’achat et l’absence de stockage des informations de paiement par DuoSpend.
+
 Branche : `feature/apps-positioning-v2`
 État : fusionnée dans `dev` le 2 juin 2026 via `99fe92b Merge branch 'feature/apps-positioning-v2' into dev`; la branche peut être supprimée localement après review.
 

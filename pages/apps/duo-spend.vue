@@ -199,9 +199,10 @@
         <div class="app-download-cta__copy">
           <h2 id="duo-download-title">Essayez DuoSpend gratuitement</h2>
           <p>
-            Téléchargez l’app, créez un premier projet partagé, puis passez à
-            DuoSpend Pro si vous avez besoin de projets illimités, de widgets et
-            de l’export PDF.
+            Téléchargez l’app, créez un premier projet partagé. DuoSpend Pro
+            débloque les projets illimités, les widgets pour l’écran d’accueil
+            et l’export PDF, avec un achat unique. DuoSpend Pro est également
+            compatible avec le partage familial Apple.
           </p>
         </div>
         <a

@@ -341,7 +341,7 @@ const duoSpendFaqSections: AppFaqSection[] = [
       {
         question: 'Que débloque DuoSpend Pro ?',
         answer:
-          'DuoSpend Pro débloque les projets illimités, les widgets pour l’écran d’accueil et l’export PDF avec un achat unique.',
+          'DuoSpend Pro débloque les projets illimités, les widgets pour l’écran d’accueil et l’export PDF, avec un achat unique. DuoSpend Pro est également compatible avec le partage familial Apple.',
       },
       {
         question: 'Combien coûte DuoSpend Pro ?',
@@ -360,7 +360,12 @@ const duoSpendFaqSections: AppFaqSection[] = [
       {
         question: 'Peut-on utiliser DuoSpend à deux sur deux iPhones ?',
         answer:
-          'Pas encore dans la première version. DuoSpend démarre avec un suivi local sur un iPhone. La synchronisation iCloud et le partage entre deux comptes Apple sont prévus pour la suite.',
+          'Oui. Vous pouvez partager un projet avec votre partenaire à l’aide d’un fichier DuoSpend. Le partenaire peut l’importer sur son iPhone, puis importer une nouvelle version du fichier pour mettre à jour le projet. Le transfert reste manuel : DuoSpend ne synchronise pas automatiquement les deux iPhone.',
+      },
+      {
+        question: 'DuoSpend Pro peut-il être partagé en famille ?',
+        answer:
+          'Oui. DuoSpend Pro est un achat unique compatible avec le partage familial Apple. L’achat peut être partagé avec les membres éligibles de votre groupe familial selon vos réglages Apple.',
       },
     ],
   },
@@ -1028,6 +1033,7 @@ export const duoSpendContent: AppDetailContent = {
           'Projets illimités',
           "Widgets pour l'écran d'accueil",
           'Export PDF',
+          'Partage familial Apple',
           'Aucun abonnement',
         ],
       },
@@ -1038,11 +1044,12 @@ export const duoSpendContent: AppDetailContent = {
       title: 'Politique de confidentialité',
       paragraphs: [
         'DuoSpend ne collecte aucune donnée personnelle identifiable.',
-        'Dans la version actuelle, les projets que vous créez et les dépenses que vous enregistrez sont stockés localement sur votre iPhone avec SwiftData. Une synchronisation iCloud optionnelle est prévue dans une prochaine version ; cette politique sera mise à jour en conséquence.',
+        'Dans la version actuelle, les projets et dépenses sont stockés localement sur votre iPhone avec SwiftData. Lorsque vous partagez un projet, DuoSpend crée un fichier que vous choisissez vous-même d’enregistrer ou d’envoyer via les services proposés par iOS. DuoSpend n’envoie pas vos projets vers un serveur.',
+        'DuoSpend ne synchronise pas automatiquement les projets entre les appareils dans cette version.',
         'Lorsque vous utilisez les widgets de l’écran d’accueil, une copie réduite des données peut être partagée entre l’app et l’extension widget via un App Group local géré par iOS.',
-        'Si vous achetez DuoSpend Pro, la transaction est gérée par Apple via l’App Store. DuoSpend ne reçoit ni ne stocke vos informations de paiement. Seul l’état de l’achat est conservé localement.',
+        'Si vous achetez DuoSpend Pro, la transaction est gérée par Apple via l’App Store. DuoSpend Pro peut être partagé avec les membres éligibles de votre groupe familial Apple lorsque le partage familial est activé. DuoSpend ne reçoit ni ne stocke vos informations de paiement. Seul l’état de l’achat est conservé localement.',
         'DuoSpend n’intègre aucun système de tracking, aucune publicité et aucun SDK tiers comme Firebase, Amplitude ou Mixpanel.',
-        'La version actuelle fonctionne hors ligne. Une synchronisation iCloud optionnelle est prévue dans une prochaine version.',
+        'La version actuelle fonctionne hors ligne.',
         'Vous pouvez supprimer toutes vos données depuis Réglages → Données → Supprimer toutes les données. L’action est irréversible.',
         'DuoSpend n’est pas destinée aux enfants de moins de 13 ans.',
         'Pour toute question, la page DuoSpend reste le point de contact.',
@@ -1052,11 +1059,12 @@ export const duoSpendContent: AppDetailContent = {
       title: 'Privacy policy',
       paragraphs: [
         'DuoSpend does not collect any personally identifiable information.',
-        'In the current version, projects and expenses are stored locally on your iPhone with SwiftData. Optional iCloud sync is planned for a future version; this policy will be updated accordingly.',
+        'In the current version, projects and expenses are stored locally on your iPhone using SwiftData. When you share a project, DuoSpend creates a file that you choose to save or send using the services provided by iOS. DuoSpend does not upload your projects to a server.',
+        'DuoSpend does not automatically sync projects between devices in this version.',
         'When you use the home screen widgets, a limited copy of your data may be shared between the app and the widget extension through a local App Group managed by iOS.',
-        'If you purchase DuoSpend Pro, Apple handles the transaction through the App Store. DuoSpend does not receive or store payment information. Only the purchase state is kept locally.',
+        'If you purchase DuoSpend Pro, the transaction is handled by Apple through the App Store. DuoSpend Pro can be shared with eligible members of your Apple Family Sharing group when Family Sharing is enabled. DuoSpend does not receive or store your payment information. Only the purchase state is kept locally.',
         'DuoSpend includes no tracking, no advertising, and no third-party SDKs such as Firebase, Amplitude, or Mixpanel.',
-        'The current version works fully offline. Optional iCloud sync is planned for a future version.',
+        'The current version works fully offline.',
         'You can delete all your data from Settings → Data → Delete all data. This action is irreversible.',
         'DuoSpend is not intended for children under 13.',
         'For any question, the DuoSpend page remains the contact point.',

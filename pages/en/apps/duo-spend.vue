@@ -202,9 +202,10 @@
         <div class="app-download-cta__copy">
           <h2 id="duo-download-title">Try DuoSpend for free</h2>
           <p>
-            Download the app, create your first shared project, then upgrade to
-            DuoSpend Pro if you need unlimited projects, widgets, and PDF
-            export.
+            Download the app and create your first shared project. DuoSpend Pro
+            unlocks unlimited projects, Home Screen widgets and PDF export with
+            a one-time purchase. DuoSpend Pro also supports Apple Family
+            Sharing.
           </p>
         </div>
         <a

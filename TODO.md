@@ -1,5 +1,13 @@
 ## Backlog final avant master (11 mai 2026)
 
+## DuoSpend v1.0.3 — pages FR/EN (10 août 2026)
+
+- [x] Mettre à jour les FAQ FR/EN : import/export manuel de projets par fichier DuoSpend, réimport d’un fichier plus récent pour mettre à jour un projet et absence de synchronisation automatique.
+- [x] Ajouter le partage familial Apple à DuoSpend Pro, dans sa présentation et dans les cards tarifaires FR/EN.
+- [x] Adapter les politiques de confidentialité FR/EN : stockage SwiftData local, fichier enregistré ou envoyé via iOS, aucun serveur DuoSpend pour les projets et achats Pro gérés par Apple avec partage familial éligible.
+- [x] Préserver le hero, les CTA, les cards, les ancres `#support` et `#privacy`, le séparateur et les métadonnées/JSON-LD non contradictoires.
+- [x] Valider `npm run check:copy`, `npm test`, `npm run generate` et le HTML généré des deux routes DuoSpend.
+
 1. [x] **`fix/seo-technical-cleanup`** — fait, mergé dans `dev` ; canonical homepage, meta descriptions critiques, `/404/` sitemap/statut, `twitter:card` simple ; commit `ea6d884 fix: corriger les métadonnées SEO techniques critiques`
 2. [x] **`fix/seo-title-description-patterns`** — fait, mergé dans `dev` ; pattern `Titre | BeAbot`, entités HTML, descriptions ciblées ; commit `3a17826 fix: uniformiser titles et descriptions SEO`
 3. [x] **`fix/internal-url-trailing-slashes`** — fait, mergé dans `dev` ; URLs internes HTML normalisées avec slash final, sans casser fichiers statiques, ancres, query strings, liens externes, `mailto:`, `tel:`, sitemap, RSS et JSON Feed ; diagnostic 68 routes OK : 26 `index.html`, 13 articles, 3 pages apps, sitemap 24 routes publiques, feeds 13 articles, pas de `/404/` dans sitemap
