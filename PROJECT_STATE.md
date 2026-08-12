@@ -1,6 +1,6 @@
 # 📊 ÉTAT DU PROJET - BeAbot
 
-> **Récapitulatif de l'état du projet au 2 juin 2026**
+> **Récapitulatif de l'état du projet au 12 août 2026**
 
 ---
 
@@ -22,6 +22,18 @@
 ## 🧭 BACKLOG FINAL AVANT MASTER
 
 ### Apps positioning v2 — 23 mai 2026
+
+#### FocusOne — publication App Store FR/EN (12 août 2026)
+
+- FocusOne est disponible sur l’App Store : `https://apps.apple.com/app/focusone/id6769842298`.
+- `/apps/focus-one/` et `/en/apps/focus-one/` affichent les badges officiels Apple FR/US dans le hero et dans un CTA sombre placé immédiatement après les cards Gratuit/Premium.
+- Les listings `/apps/` et `/en/apps/` ainsi que les statuts des pages produit ne présentent plus FocusOne comme une prépublication.
+- Le CTA récapitule le périmètre gratuit et les fonctions Premium déjà documentées, avec le modèle réel : 14,99 € par an ou 39,99 € en achat unique.
+- Le JSON-LD `SoftwareApplication` précise que l’offre gratuite correspond au téléchargement sur l’App Store ; les autres métadonnées SEO restent inchangées car elles ne contenaient aucune information de prépublication.
+- Validation locale : `npm run check:copy`, `npm test`, `npm run generate`, check SEO, contrôle SCSS, tests HTML ciblés et contrôle navigateur FR/EN desktop/mobile.
+
+Branche : `feature/focus-one-app-store`
+Commit d’implémentation : `48b447e feat: publish FocusOne App Store pages`
 
 #### DuoSpend v1.0.3 — contenu FR/EN (10 août 2026)
 
