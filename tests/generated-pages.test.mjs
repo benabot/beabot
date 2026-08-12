@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import test from 'node:test'
 
 import {
@@ -62,6 +63,18 @@ const pages = [
   { route: '/contact/', expectedUrl: `${siteUrl}/contact/` },
   { route: '/en/contact/', expectedUrl: `${siteUrl}/en/contact/` },
 ]
+
+test('shared App Store badge links explicitly use a pointer cursor', () => {
+  const mainStyles = readFileSync(
+    new URL('../assets/css/main.scss', import.meta.url),
+    'utf8',
+  )
+
+  assert.match(
+    mainStyles,
+    /\.app-store-badge-link\s*\{[^}]*cursor:\s*pointer;/s,
+  )
+})
 
 for (const page of pages) {
   test(`generated page ${page.route} exposes minimal SEO tags`, (t) => {
