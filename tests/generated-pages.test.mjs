@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import test from 'node:test'
 
 import {
@@ -63,6 +64,18 @@ const pages = [
   { route: '/en/contact/', expectedUrl: `${siteUrl}/en/contact/` },
 ]
 
+test('shared App Store badge links explicitly use a pointer cursor', () => {
+  const mainStyles = readFileSync(
+    new URL('../assets/css/main.scss', import.meta.url),
+    'utf8',
+  )
+
+  assert.match(
+    mainStyles,
+    /\.app-store-badge-link\s*\{[^}]*cursor:\s*pointer;/s,
+  )
+})
+
 for (const page of pages) {
   test(`generated page ${page.route} exposes minimal SEO tags`, (t) => {
     const html = readGeneratedHtml(t, page.route)
@@ -118,8 +131,31 @@ for (const page of pages) {
         'FocusOne vous aide à tenir une seule promesse personnelle à la fois. Choisissez une habitude, cochez-la chaque jour et suivez votre série sans compte ni réseau social.',
       )
       assert.match(html, /FocusOne, une seule promesse à tenir/)
+      assert.match(html, /Disponible sur l’App Store/)
+      assert.match(
+        html,
+        /\/Download-on-the-App-Store\/FR\/Download_on_App_Store\/Black_lockup\/SVG\/Download_on_the_App_Store_Badge_FR_RGB_blk_100517\.svg/,
+      )
+      assert.match(html, /alt="Télécharger dans l’App Store"/)
       assert.match(html, /Voir comment ça marche/)
+      assert.match(html, /Essayez FocusOne gratuitement/)
+      assert.match(
+        html,
+        /\/Download-on-the-App-Store\/FR\/Download_on_App_Store\/White_lockup\/SVG\/Download_on_the_App_Store_Badge_FR_RGB_wht_100217\.svg/,
+      )
+      assert.match(
+        html,
+        /https:\/\/apps\.apple\.com\/app\/focusone\/id6769842298/,
+      )
+      assert.ok(
+        html.indexOf('focus-pricing-title') <
+          html.indexOf('focus-download-title') &&
+          html.indexOf('focus-download-title') <
+            html.indexOf('focus-faq-title'),
+        'Expected the FocusOne download CTA after pricing and before FAQ',
+      )
       assert.doesNotMatch(html, /Être informé|#release-form|release-form/)
+      assert.doesNotMatch(html, /Prépublication/)
       assert.doesNotMatch(html, /Voir la confidentialité/)
       assert.match(html, /À force de vouloir tout suivre/)
       assert.match(html, /Votre journée ne s’arrête pas forcément à minuit/)
@@ -257,8 +293,31 @@ for (const page of pages) {
         /^FocusOne — Private Habit and Streak Tracker \| BeAbot$/,
       )
       assert.match(html, /FocusOne, one promise to keep/)
+      assert.match(html, /Available on the App Store/)
+      assert.match(
+        html,
+        /\/Download-on-the-App-Store\/US\/Download_on_App_Store\/Black_lockup\/SVG\/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917\.svg/,
+      )
+      assert.match(html, /alt="Download on the App Store"/)
       assert.match(html, /See how it works/)
+      assert.match(html, /Try FocusOne for free/)
+      assert.match(
+        html,
+        /\/Download-on-the-App-Store\/US\/Download_on_App_Store\/White_lockup\/SVG\/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917\.svg/,
+      )
+      assert.match(
+        html,
+        /https:\/\/apps\.apple\.com\/app\/focusone\/id6769842298/,
+      )
+      assert.ok(
+        html.indexOf('focus-pricing-title') <
+          html.indexOf('focus-download-title') &&
+          html.indexOf('focus-download-title') <
+            html.indexOf('focus-faq-title'),
+        'Expected the FocusOne EN download CTA after pricing and before FAQ',
+      )
       assert.doesNotMatch(html, /Get launch updates|#release-form|release-form/)
+      assert.doesNotMatch(html, /Pre-release/)
       assert.doesNotMatch(html, /View privacy/)
       assert.match(html, /id=\"support\"/)
       assert.match(

@@ -98,7 +98,9 @@ export const appsIndexEnEntries: AppIndexEntry[] = appsIndexEntries.map(
                 }
               : entry.preview,
     stage:
-      entry.slug === 'duo-spend' ? 'Available on the App Store' : 'Pre-release',
+      entry.slug === 'duo-spend' || entry.slug === 'focus-one'
+        ? 'Available on the App Store'
+        : 'Pre-release',
     tagline: enTaglineBySlug[entry.slug] ?? entry.tagline,
     summary: enSummaryBySlug[entry.slug] ?? entry.summary,
     href: `/en/apps/${entry.slug}/`,
@@ -464,7 +466,7 @@ export const meetingModeEnContent: AppDetailContent = {
 export const focusOneEnContent: AppDetailContent = {
   ...focusOneContent,
   href: '/en/apps/focus-one/',
-  stage: 'Pre-release',
+  stage: 'Available on the App Store',
   intro: 'One promise to keep.',
   summary:
     'Choose one habit, mark it done today, and keep your streak visible. FocusOne helps you keep one thing at a time, with no account, no social feed, and no unnecessary screen.',
