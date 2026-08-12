@@ -1,5 +1,14 @@
 ## Backlog final avant master (11 mai 2026)
 
+## FocusOne — publication App Store FR/EN (12 août 2026)
+
+- [x] Remplacer les statuts de prépublication FocusOne par sa disponibilité App Store dans les données, les listings et les pages produit FR/EN.
+- [x] Centraliser l’URL officielle `https://apps.apple.com/app/focusone/id6769842298` dans les données FocusOne.
+- [x] Ajouter les badges officiels Apple FR/US dans les héros, avec les dimensions et le responsive du pattern DuoSpend.
+- [x] Ajouter après les cards Gratuit/Premium un CTA sombre FR/EN fidèle au modèle économique documenté : cœur gratuit, Premium à 14,99 € par an ou 39,99 € en achat unique.
+- [x] Conserver les métadonnées SEO existantes et préciser dans le JSON-LD que l’offre gratuite correspond au téléchargement App Store.
+- [x] Valider les pages FR/EN avec les tests HTML ciblés, `npm run check:copy`, `npm test`, `npm run generate`, le check SEO, le contrôle SCSS et un contrôle navigateur desktop/mobile.
+
 ## DuoSpend v1.0.3 — pages FR/EN (10 août 2026)
 
 - [x] Mettre à jour les FAQ FR/EN : import/export manuel de projets par fichier DuoSpend, réimport d’un fichier plus récent pour mettre à jour un projet et absence de synchronisation automatique.
