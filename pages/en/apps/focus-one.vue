@@ -13,7 +13,22 @@
           <p class="app-summary">{{ focusOneEnContent.summary }}</p>
 
           <div class="app-actions">
-            <AppLink to="#focus-overview-title" class="app-primary-action">
+            <a
+              v-if="focusOneEnContent.appStoreUrl"
+              :href="focusOneEnContent.appStoreUrl"
+              class="app-store-badge-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="/Download-on-the-App-Store/US/Download_on_App_Store/Black_lockup/SVG/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
+                alt="Download on the App Store"
+                width="120"
+                height="40"
+                class="app-store-badge"
+              />
+            </a>
+            <AppLink to="#focus-overview-title" class="app-cta__link">
               See how it works
             </AppLink>
           </div>
@@ -241,6 +256,37 @@
           </article>
         </div>
 
+        <section
+          v-if="focusOneEnContent.appStoreUrl"
+          class="app-download-cta"
+          aria-labelledby="focus-download-title"
+        >
+          <div class="app-download-cta__copy">
+            <h2 id="focus-download-title">Try FocusOne for free</h2>
+            <p>
+              Download FocusOne from the App Store and start for free with one
+              active habit, daily tracking, simple reminders, basic widgets, and
+              essential stats. Premium unlocks full history, advanced stats,
+              medium and large widgets, archives, and personalization, with a
+              €14.99 yearly subscription or a €39.99 one-time purchase.
+            </p>
+          </div>
+          <a
+            :href="focusOneEnContent.appStoreUrl"
+            class="app-store-badge-link app-store-badge-link--dark"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="/Download-on-the-App-Store/US/Download_on_App_Store/White_lockup/SVG/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg"
+              alt="Download on the App Store"
+              width="120"
+              height="40"
+              class="app-store-badge"
+            />
+          </a>
+        </section>
+
         <div
           v-if="focusOneEnContent.pricing?.premiumBenefits?.length"
           class="premium-benefits"
@@ -370,6 +416,7 @@ const softwareApplicationSchema = buildSoftwareApplicationSchema({
       name: 'FocusOne Free',
       price: '0',
       priceCurrency: 'EUR',
+      description: 'Free download on the App Store.',
     },
     {
       name: 'FocusOne Premium yearly',
@@ -599,12 +646,12 @@ useHead({
 
 .app-actions {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 0.75rem;
   margin-top: 1.35rem;
 }
 
-.app-primary-action,
+.app-store-badge-link,
 .app-cta__link {
   display: inline-flex;
   align-items: center;
@@ -621,14 +668,26 @@ useHead({
     color 0.14s ease;
 }
 
-.app-primary-action {
-  background: $vert;
-  color: white;
+.app-store-badge-link {
+  padding: 0;
+  border-radius: 0.6rem;
+  background: transparent;
 }
 
-.app-primary-action:hover {
+.app-store-badge-link:hover {
   transform: translateY(-1px);
   box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+}
+
+.app-store-badge-link--dark:hover {
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.22);
+}
+
+.app-store-badge {
+  display: block;
+  width: auto;
+  height: 2.9rem;
+  max-width: 100%;
 }
 
 .app-cta__link {
@@ -643,7 +702,7 @@ useHead({
   box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
 }
 
-.app-primary-action:focus-visible,
+.app-store-badge-link:focus-visible,
 .app-cta__link:focus-visible {
   outline: 2px solid $vert;
   outline-offset: 3px;
@@ -827,6 +886,41 @@ useHead({
 
 .app-section--pricing {
   padding-top: clamp(0.45rem, 1.2vw, 0.85rem);
+}
+
+.app-download-cta {
+  display: grid;
+  gap: 1.1rem;
+  align-items: center;
+  margin-top: clamp(2rem, 5vw, 3rem);
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border-radius: 1.35rem;
+  background: linear-gradient(135deg, #111827, #0f172a);
+  color: white;
+
+  @media (min-width: 760px) {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}
+
+.app-download-cta__copy {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.app-download-cta h2 {
+  margin: 0;
+  color: white;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.app-download-cta p {
+  margin: 0;
+  max-width: 44rem;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.6;
 }
 
 .section-heading {

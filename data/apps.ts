@@ -193,7 +193,7 @@ export const appsIndexEntries: AppIndexEntry[] = [
     slug: 'focus-one',
     name: 'FocusOne',
     platform: 'iOS',
-    stage: 'Prépublication',
+    stage: 'Disponible',
     tagline: 'Tenir une habitude.',
     summary:
       'Un compteur privé pour choisir une seule routine, la cocher aujourd’hui et garder la série visible.',
@@ -682,8 +682,9 @@ export const focusOneContent: AppDetailContent = {
   slug: 'focus-one',
   name: 'FocusOne',
   platform: 'iOS',
-  stage: 'Prépublication',
+  stage: 'Disponible sur l’App Store',
   href: '/apps/focus-one/',
+  appStoreUrl: 'https://apps.apple.com/app/focusone/id6769842298',
   intro: 'Une seule promesse à tenir.',
   summary:
     'Choisissez une habitude, cochez-la aujourd’hui, gardez votre série visible. FocusOne vous aide à tenir une seule chose à la fois, sans compte, sans réseau social, sans écran inutile.',
