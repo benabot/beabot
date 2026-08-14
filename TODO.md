@@ -1,5 +1,12 @@
 ## Backlog final avant master (11 mai 2026)
 
+## Greenlight — données structurées produit (14 août 2026)
+
+- [x] Conserver uniquement l’Offer Greenlight-free gratuite dans le Product JSON-LD et supprimer la représentation premium précommandable.
+- [x] Réduire `additionalProperty` aux métriques techniques HTTP requests, Page weight, DOM size et EcoIndex.
+- [x] Ajouter les contrôles générés Product/Offer, absence de `PreOrder`, FAQPage et BreadcrumbList.
+- [x] Valider `npm test`, `npm run generate` et le HTML généré de `/greenlight/`.
+
 ## DuoSpend — Releases & Roadmap FR/EN (14 août 2026)
 
 - [x] Ajouter les routes statiques `/apps/duo-spend/releases/`, `/apps/duo-spend/roadmap/` et leurs équivalents anglais.

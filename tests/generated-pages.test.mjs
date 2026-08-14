@@ -84,6 +84,11 @@ const pages = [
   { route: '/portfolio/', expectedUrl: `${siteUrl}/portfolio/` },
   { route: '/services/', expectedUrl: `${siteUrl}/services/` },
   { route: '/contact/', expectedUrl: `${siteUrl}/contact/` },
+  {
+    route: '/greenlight/',
+    expectedUrl: `${siteUrl}/greenlight/`,
+    required: true,
+  },
   { route: '/en/contact/', expectedUrl: `${siteUrl}/en/contact/` },
 ]
 
@@ -173,6 +178,62 @@ for (const page of pages) {
       assert.ok(
         structuredDataNodes.some((node) => nodeHasType(node, 'ContactPage')),
         'Expected contact page JSON-LD to expose ContactPage',
+      )
+    }
+
+    if (page.route === '/greenlight/') {
+      const productNode = structuredDataNodes.find((node) =>
+        nodeHasType(node, 'Product'),
+      )
+
+      assert.ok(productNode, 'Expected Greenlight JSON-LD Product')
+      assert.deepEqual(productNode?.offers, [
+        {
+          '@type': 'Offer',
+          name: 'Greenlight-free',
+          price: '0',
+          priceCurrency: 'EUR',
+          availability: 'https://schema.org/InStock',
+          url: `${siteUrl}/greenlight/`,
+          description:
+            'Version légère, propre, personnalisable avec Gutenberg, pour démarrer simplement.',
+        },
+      ])
+      assert.doesNotMatch(
+        JSON.stringify(productNode),
+        /Greenlight premium|PreOrder/,
+        'Greenlight premium must not be represented in Product JSON-LD',
+      )
+      assert.deepEqual(productNode?.additionalProperty, [
+        {
+          '@type': 'PropertyValue',
+          name: 'HTTP requests',
+          value: '6',
+        },
+        {
+          '@type': 'PropertyValue',
+          name: 'Page weight',
+          value: '< 115 ko',
+        },
+        {
+          '@type': 'PropertyValue',
+          name: 'DOM size',
+          value: '148',
+        },
+        {
+          '@type': 'PropertyValue',
+          name: 'EcoIndex',
+          value: 'A',
+        },
+      ])
+      assert.doesNotMatch(html, /PreOrder/)
+      assert.ok(
+        structuredDataNodes.some((node) => nodeHasType(node, 'FAQPage')),
+        'Expected Greenlight FAQPage JSON-LD',
+      )
+      assert.ok(
+        structuredDataNodes.some((node) => nodeHasType(node, 'BreadcrumbList')),
+        'Expected Greenlight BreadcrumbList JSON-LD',
       )
     }
 

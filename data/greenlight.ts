@@ -220,7 +220,8 @@ export const buildGreenlightProductSchema = (
   '@context': 'https://schema.org',
   '@type': 'Product',
   name: 'Greenlight',
-  description: greenlightPageContent.hero.subtitle,
+  description:
+    'Greenlight est un thème WordPress sobre et rapide : 6 requêtes HTTP, moins de 115 ko, DOM 148 et EcoIndex A sur la base gratuite.',
   category: 'WordPress Theme',
   url: pageUrl,
   ...(image ? { image } : {}),
@@ -244,27 +245,27 @@ export const buildGreenlightProductSchema = (
       description:
         'Version légère, propre, personnalisable avec Gutenberg, pour démarrer simplement.',
     },
-    {
-      '@type': 'Offer',
-      name: 'Greenlight premium',
-      availability: 'https://schema.org/PreOrder',
-      url: `${siteUrl}/contact/`,
-      description:
-        'Version premium avec SEO natif avancé et personnalisation avancée.',
-    },
   ],
   additionalProperty: [
     {
       '@type': 'PropertyValue',
-      name: 'Greenlight-free',
-      value:
-        'Version légère, propre, personnalisable avec Gutenberg, pour démarrer simplement.',
+      name: 'HTTP requests',
+      value: '6',
     },
     {
       '@type': 'PropertyValue',
-      name: 'Greenlight',
-      value:
-        'Version premium avec SEO natif avancé et personnalisation avancée.',
+      name: 'Page weight',
+      value: '< 115 ko',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'DOM size',
+      value: '148',
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'EcoIndex',
+      value: 'A',
     },
   ],
 })
