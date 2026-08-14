@@ -1,19 +1,19 @@
 <template>
   <main class="app-page app-page--duo-spend">
     <div class="app-shell">
-      <AppBreadcrumb :items="breadcrumbItems" />
+      <AppBreadcrumb :items="breadcrumbItems" aria-label="Breadcrumb" />
       <p class="app-locale-switch">
-        <AppLink to="/en/apps/duo-spend/">English version</AppLink>
+        <AppLink to="/apps/duo-spend/">Version française</AppLink>
       </p>
 
       <section class="app-hero">
         <div class="app-hero__content">
-          <p class="app-meta">{{ duoSpendContent.stage }}</p>
-          <h1>{{ duoSpendContent.name }} — {{ duoSpendContent.intro }}</h1>
+          <p class="app-meta">{{ duoSpendEnContent.stage }}</p>
+          <h1>{{ duoSpendEnContent.name }} — {{ duoSpendEnContent.intro }}</h1>
           <div class="app-hero__text">
             <p
-              v-for="line in duoSpendContent.heroLines ?? [
-                duoSpendContent.summary,
+              v-for="line in duoSpendEnContent.heroLines ?? [
+                duoSpendEnContent.summary,
               ]"
               :key="line"
               class="app-intro"
@@ -24,22 +24,22 @@
 
           <div class="app-actions">
             <a
-              v-if="duoSpendContent.appStoreUrl"
-              :href="duoSpendContent.appStoreUrl"
+              v-if="duoSpendEnContent.appStoreUrl"
+              :href="duoSpendEnContent.appStoreUrl"
               class="app-store-badge-link"
               target="_blank"
               rel="noopener noreferrer"
             >
               <img
-                src="/Download-on-the-App-Store/FR/Download_on_App_Store/Black_lockup/SVG/Download_on_the_App_Store_Badge_FR_RGB_blk_100517.svg"
-                alt="Télécharger dans l’App Store"
-                width="127"
+                src="/Download-on-the-App-Store/US/Download_on_App_Store/Black_lockup/SVG/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
+                alt="Download on the App Store"
+                width="120"
                 height="40"
                 class="app-store-badge"
               />
             </a>
             <AppLink to="#duo-overview-title" class="app-cta__link">
-              Voir comment ça marche
+              See how it works
             </AppLink>
           </div>
         </div>
@@ -54,11 +54,11 @@
             <div
               class="app-mockup__screen app-mockup__screen--image"
               role="img"
-              :aria-label="duoSpendContent.preview.alt"
+              :aria-label="duoSpendEnContent.preview.alt"
             >
               <img
-                :src="duoSpendContent.preview.src"
-                :alt="duoSpendContent.preview.alt"
+                :src="duoSpendEnContent.preview.src"
+                :alt="duoSpendEnContent.preview.alt"
                 width="1206"
                 height="2622"
                 loading="eager"
@@ -74,31 +74,46 @@
         aria-labelledby="duo-overview-title"
       >
         <div class="app-surface__copy">
-          <h2 id="duo-overview-title">Pour les projets qu’on partage à deux</h2>
-          <p v-for="paragraph in duoSpendContent.overview" :key="paragraph">
+          <h2 id="duo-overview-title">For projects you share as a couple</h2>
+          <p v-for="paragraph in duoSpendEnContent.overview" :key="paragraph">
             {{ paragraph }}
           </p>
         </div>
 
-        <aside class="app-brief" aria-label="En bref">
-          <p class="app-brief__eyebrow">En bref</p>
+        <aside class="app-brief" aria-label="At a glance">
+          <p class="app-brief__eyebrow">At a glance</p>
           <ul class="app-brief__list">
-            <li>Pour les dépenses d’un projet à deux.</li>
-            <li>Chacun ajoute ce qu’il a payé.</li>
-            <li>L’équilibre reste visible sans tableur.</li>
-            <li>Aucune banque connectée, aucun compte requis.</li>
+            <li>For expenses on a shared project.</li>
+            <li>Each person adds what they paid.</li>
+            <li>The balance stays readable without a spreadsheet.</li>
+            <li>No connected bank, no required account.</li>
           </ul>
         </aside>
       </section>
 
+      <nav class="app-actions" aria-label="Follow DuoSpend updates">
+        <AppLink
+          to="/en/apps/duo-spend/releases/"
+          class="app-cta__link"
+        >
+          Release notes
+        </AppLink>
+        <AppLink
+          to="/en/apps/duo-spend/roadmap/"
+          class="app-cta__link"
+        >
+          Roadmap
+        </AppLink>
+      </nav>
+
       <section
-        v-if="duoSpendContent.showVisual"
+        v-if="duoSpendEnContent.showVisual"
         class="app-section app-section--media"
         aria-labelledby="duo-capture-title"
       >
         <div class="section-heading">
           <h2 id="duo-capture-title">Visuel</h2>
-          <p>Aperçu du produit en attente du visuel final.</p>
+          <p>Product preview pending the final visual.</p>
         </div>
 
         <div class="app-capture app-capture--image">
@@ -110,11 +125,11 @@
           <div
             class="app-capture__screen app-capture__screen--image"
             role="img"
-            :aria-label="duoSpendContent.preview.alt"
+            :aria-label="duoSpendEnContent.preview.alt"
           >
             <img
-              :src="duoSpendContent.preview.src"
-              :alt="duoSpendContent.preview.alt"
+              :src="duoSpendEnContent.preview.src"
+              :alt="duoSpendEnContent.preview.alt"
               width="1206"
               height="2622"
               loading="lazy"
@@ -129,13 +144,13 @@
         aria-labelledby="duo-details-title"
       >
         <div class="section-heading">
-          <h2 id="duo-details-title">Points clés</h2>
-          <p>Les repères pour garder des comptes clairs, sans tableur.</p>
+          <h2 id="duo-details-title">Key points</h2>
+          <p>Markers to keep balances clear, without spreadsheets.</p>
         </div>
 
         <div class="detail-grid">
           <article
-            v-for="point in duoSpendContent.detailPoints"
+            v-for="point in duoSpendEnContent.detailPoints"
             :key="point.label"
             class="detail-card"
             :class="{ 'detail-card--featured': point.featured }"
@@ -150,23 +165,23 @@
       </section>
 
       <section
-        v-if="duoSpendContent.gallery?.length"
+        v-if="duoSpendEnContent.gallery?.length"
         class="app-section app-section--media"
         aria-labelledby="duo-gallery-title"
       >
         <div class="section-heading">
-          <h2 id="duo-gallery-title">L'app en images</h2>
-          <p>Les principaux écrans de DuoSpend.</p>
+          <h2 id="duo-gallery-title">App screenshots</h2>
+          <p>Main DuoSpend screens.</p>
         </div>
 
         <div class="gallery-grid">
           <figure
-            v-for="(image, index) in duoSpendContent.gallery"
+            v-for="(image, index) in duoSpendEnContent.gallery"
             :key="image.src"
             class="gallery-card gallery-card--clickable"
             role="button"
             tabindex="0"
-            :aria-label="`Agrandir : ${image.title || image.alt}`"
+            :aria-label="`Expand: ${image.title || image.alt}`"
             @click="openLightbox(index)"
             @keydown.enter.prevent="openLightbox(index)"
             @keydown.space.prevent="openLightbox(index)"
@@ -188,33 +203,36 @@
           </figure>
         </div>
 
-        <AppGalleryLightbox ref="lightbox" :images="duoSpendContent.gallery" />
+        <AppGalleryLightbox
+          ref="lightbox"
+          :images="duoSpendEnContent.gallery"
+        />
       </section>
 
       <section
-        v-if="duoSpendContent.appStoreUrl"
+        v-if="duoSpendEnContent.appStoreUrl"
         class="app-download-cta"
         aria-labelledby="duo-download-title"
       >
         <div class="app-download-cta__copy">
-          <h2 id="duo-download-title">Essayez DuoSpend gratuitement</h2>
+          <h2 id="duo-download-title">Try DuoSpend for free</h2>
           <p>
-            Téléchargez l’app, créez un premier projet partagé. DuoSpend Pro
-            débloque les projets illimités, les widgets pour l’écran d’accueil
-            et l’export PDF, avec un achat unique. DuoSpend Pro est également
-            compatible avec le partage familial Apple.
+            Download the app and create your first shared project. DuoSpend Pro
+            unlocks unlimited projects, Home Screen widgets and PDF export with
+            a one-time purchase. DuoSpend Pro also supports Apple Family
+            Sharing.
           </p>
         </div>
         <a
-          :href="duoSpendContent.appStoreUrl"
+          :href="duoSpendEnContent.appStoreUrl"
           class="app-store-badge-link app-store-badge-link--dark"
           target="_blank"
           rel="noopener noreferrer"
         >
           <img
-            src="/Download-on-the-App-Store/FR/Download_on_App_Store/White_lockup/SVG/Download_on_the_App_Store_Badge_FR_RGB_wht_100217.svg"
-            alt="Télécharger dans l’App Store"
-            width="127"
+            src="/Download-on-the-App-Store/US/Download_on_App_Store/White_lockup/SVG/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg"
+            alt="Download on the App Store"
+            width="120"
             height="40"
             class="app-store-badge"
           />
@@ -222,18 +240,18 @@
       </section>
 
       <section
-        v-if="duoSpendContent.pricing"
+        v-if="duoSpendEnContent.pricing"
         class="app-section app-section--pricing"
         aria-labelledby="duo-pricing-title"
       >
         <div class="section-heading">
-          <h2 id="duo-pricing-title">{{ duoSpendContent.pricing.title }}</h2>
-          <p>{{ duoSpendContent.pricing.intro }}</p>
+          <h2 id="duo-pricing-title">{{ duoSpendEnContent.pricing.title }}</h2>
+          <p>{{ duoSpendEnContent.pricing.intro }}</p>
         </div>
 
         <div class="pricing-grid">
           <article
-            v-for="plan in duoSpendContent.pricing.plans"
+            v-for="plan in duoSpendEnContent.pricing.plans"
             :key="plan.name"
             class="pricing-card"
             :class="{
@@ -244,7 +262,7 @@
               v-if="plan.name === 'DuoSpend Pro'"
               class="pricing-card__badge"
             >
-              Recommandé
+              Recommended
             </div>
             <p class="pricing-card__name">{{ plan.name }}</p>
             <p class="pricing-card__price">{{ plan.price }}</p>
@@ -263,12 +281,12 @@
         <div class="faq-wrapper">
           <div class="section-heading">
             <h2 id="duo-faq-title">FAQ</h2>
-            <p>Questions fréquentes.</p>
+            <p>Frequently asked questions.</p>
           </div>
 
           <AppFaqList
-            :items="duoSpendContent.faq"
-            :sections="duoSpendContent.faqSections"
+            :items="duoSpendEnContent.faq"
+            :sections="duoSpendEnContent.faqSections"
           />
         </div>
       </section>
@@ -278,8 +296,8 @@
       <AppSupportSection
         app-name="DuoSpend"
         app-slug="duo-spend"
-        locale="fr"
-        os-label-fr="iOS ou iPadOS"
+        locale="en"
+        os-label-fr="iOS, iPadOS ou macOS"
         os-label-en="iOS or iPadOS"
       />
 
@@ -292,19 +310,17 @@
           <summary class="legal-disclosure__summary">
             <div class="legal-disclosure__header">
               <h2 id="duo-legal-title" class="legal-disclosure__title">
-                Confidentialité
+                Privacy
               </h2>
-              <p class="legal-disclosure__meta">
-                Politique de confidentialité — FR
-              </p>
+              <p class="legal-disclosure__meta">Privacy policy — EN</p>
             </div>
             <span class="legal-disclosure__toggle" aria-hidden="true"></span>
           </summary>
 
           <div class="legal-disclosure__body">
             <AppLegalSingleLocale
-              :title="duoSpendContent.legal.fr.title"
-              :paragraphs="duoSpendContent.legal.fr.paragraphs"
+              :title="duoSpendEnContent.legal.en.title"
+              :paragraphs="duoSpendEnContent.legal.en.paragraphs"
             />
           </div>
         </details>
@@ -326,34 +342,34 @@ import {
   buildBreadcrumbSchema,
   buildFaqSchema,
   buildSoftwareApplicationSchema,
-  duoSpendContent,
 } from '~/data/apps'
+import { duoSpendEnContent } from '~/data/apps-en'
 import { absoluteUrl, canonicalUrl } from '~/utils/seo-url'
 
 const config = useRuntimeConfig()
 const route = useRoute()
-const pageUrl = canonicalUrl(config.public.siteUrl, '/apps/duo-spend')
-const ogImage = absoluteUrl(config.public.siteUrl, duoSpendContent.seo.image)
+const pageUrl = canonicalUrl(config.public.siteUrl, '/en/apps/duo-spend')
+const ogImage = absoluteUrl(config.public.siteUrl, duoSpendEnContent.seo.image)
 const privacyDetails = ref<HTMLDetailsElement | null>(null)
 const lightbox = ref<InstanceType<typeof AppGalleryLightbox> | null>(null)
 
 const breadcrumbItems = [
-  { label: 'Accueil', to: '/' },
-  { label: 'Apps', to: '/apps/' },
+  { label: 'Home', to: '/' },
+  { label: 'Apps', to: '/en/apps/' },
   { label: 'DuoSpend' },
 ]
 
 const breadcrumbSchema = buildBreadcrumbSchema(config.public.siteUrl, [
-  { name: 'Accueil', path: '/' },
-  { name: 'Apps', path: '/apps/' },
-  { name: 'DuoSpend', path: '/apps/duo-spend/' },
+  { name: 'Home', path: '/' },
+  { name: 'Apps', path: '/en/apps/' },
+  { name: 'DuoSpend', path: '/en/apps/duo-spend/' },
 ])
 
-const faqSchema = buildFaqSchema(duoSpendContent.faq)
+const faqSchema = buildFaqSchema(duoSpendEnContent.faq)
 const softwareApplicationSchema = buildSoftwareApplicationSchema({
-  name: duoSpendContent.name,
+  name: duoSpendEnContent.name,
   description:
-    'DuoSpend est une app iOS pour suivre les dépenses partagées à deux, savoir qui a payé quoi et équilibrer les comptes simplement.',
+    'DuoSpend is an iOS app to track shared expenses between two people, understand who paid what, and keep balances simple.',
   url: pageUrl,
   operatingSystem: 'iOS',
   applicationCategory: 'FinanceApplication',
@@ -362,8 +378,8 @@ const softwareApplicationSchema = buildSoftwareApplicationSchema({
     {
       name: 'DuoSpend',
       price: '0',
-      priceCurrency: 'EUR',
-      description: 'Téléchargement gratuit sur l’App Store.',
+      priceCurrency: 'USD',
+      description: 'Free download on the App Store.',
     },
   ],
   author: {
@@ -408,24 +424,27 @@ watch(
 )
 
 useSeoMeta({
-  title: duoSpendContent.seo.title,
-  description: duoSpendContent.seo.description,
-  ogTitle: 'DuoSpend — Les dépenses partagées, enfin claires',
+  title: duoSpendEnContent.seo.title,
+  description: duoSpendEnContent.seo.description,
+  ogTitle: 'DuoSpend — shared expenses made clear',
   ogDescription:
-    'Une app simple pour savoir qui a payé quoi, équilibrer les comptes et éviter les calculs à la main.',
+    'A focused app to understand who paid what, balance expenses, and avoid manual calculations.',
   ogType: 'website',
   ogSiteName: 'BeAbot',
   ogUrl: pageUrl,
   ogImage,
   ogImageWidth: 1200,
   ogImageHeight: 630,
-  twitterTitle: duoSpendContent.seo.title,
-  twitterDescription: duoSpendContent.seo.description,
+  twitterTitle: duoSpendEnContent.seo.title,
+  twitterDescription: duoSpendEnContent.seo.description,
   twitterCard: 'summary_large_image',
   twitterImage: ogImage,
 })
 
 useHead({
+  htmlAttrs: {
+    lang: 'en',
+  },
   link: [
     {
       rel: 'canonical',
@@ -434,17 +453,17 @@ useHead({
     {
       rel: 'alternate',
       hreflang: 'fr',
-      href: pageUrl,
+      href: canonicalUrl(config.public.siteUrl, '/apps/duo-spend'),
     },
     {
       rel: 'alternate',
       hreflang: 'en',
-      href: canonicalUrl(config.public.siteUrl, '/en/apps/duo-spend'),
+      href: pageUrl,
     },
     {
       rel: 'alternate',
       hreflang: 'x-default',
-      href: canonicalUrl(config.public.siteUrl, '/en/apps/duo-spend'),
+      href: pageUrl,
     },
   ],
   script: [

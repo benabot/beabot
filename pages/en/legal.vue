@@ -31,11 +31,15 @@
       is protected by intellectual property rights. Any reproduction or reuse requires prior authorization.
     </p>
 
-    <h2>Personal Data and Contact Form</h2>
+    <h2>Personal Data and Forms</h2>
     <p>
       Data submitted through the contact form (name, email address, message) is used only to reply
       to your request. It is not used for commercial prospecting and is not sold to third parties.
-      Data is retained only for the time necessary to process the request.
+      Data submitted through the DuoSpend idea form (idea, optional usefulness details, and optional
+      email address) is used only to review the suggestion and, when an address is provided, to reply.
+      These forms are processed by Netlify as part of the website hosting service. The data is not used
+      for newsletters or commercial prospecting, is not sold to third parties, and is retained only for
+      the limited time necessary to process the request or suggestion.
     </p>
 
     <h2>Contact</h2>

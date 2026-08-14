@@ -7,7 +7,7 @@
 <body>
   <!--
     This static HTML file is used by Netlify to detect the form structure.
-    The actual form is in pages/contact.vue and works via JavaScript.
+    The visible forms are implemented in Vue pages and components.
     Do not delete this file - it's required for Netlify Forms to work.
   -->
   <form
@@ -27,6 +27,25 @@
     <label>Nom <input type="text" name="name" /></label>
     <label>Email <input type="email" name="email" /></label>
     <label>Message <textarea name="message"></textarea></label>
+
+    <button type="submit">Envoyer</button>
+  </form>
+
+  <form
+    name="duospend-idea"
+    method="POST"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+    hidden
+  >
+    <input type="hidden" name="form-name" value="duospend-idea" />
+    <input type="hidden" name="app" value="duo-spend" />
+    <input type="hidden" name="locale" />
+
+    <label>Ne pas remplir : <input name="bot-field" /></label>
+    <label>Idée <textarea name="idea" required></textarea></label>
+    <label>Utilité <textarea name="usefulness"></textarea></label>
+    <label>Email <input type="email" name="email" /></label>
 
     <button type="submit">Envoyer</button>
   </form>

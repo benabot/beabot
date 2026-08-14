@@ -183,11 +183,27 @@ const requiredEnglishRoutes = [
   '/en/apps/siturem/',
 ]
 
+const requiredDuoSpendRoutes = [
+  '/apps/duo-spend/releases/',
+  '/apps/duo-spend/roadmap/',
+  '/en/apps/duo-spend/releases/',
+  '/en/apps/duo-spend/roadmap/',
+]
+
 if (siteUrl && locs.length) {
   for (const route of requiredEnglishRoutes) {
     ensure(
       locs.includes(`${siteUrl}${route}`),
       `Missing required English route in sitemap: ${route}`,
+    )
+  }
+}
+
+if (siteUrl && locs.length) {
+  for (const route of requiredDuoSpendRoutes) {
+    ensure(
+      locs.includes(`${siteUrl}${route}`),
+      `Missing required DuoSpend route in sitemap: ${route}`,
     )
   }
 }
@@ -238,6 +254,7 @@ if (process.env.SEO_CHECK_HTML === '1' && siteUrl && locs.length) {
     '/contact/',
     '/en/contact/',
     '/en/apps/duo-spend/',
+    ...requiredDuoSpendRoutes,
     '/en/apps/focus-one/',
     '/en/apps/meeting-mode/',
     '/en/apps/siturem/',

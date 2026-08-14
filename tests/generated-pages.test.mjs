@@ -1,15 +1,18 @@
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import test from 'node:test'
 
 import {
   assertSeoTags,
   assertInternalUrlsUseTrailingSlash,
+  findTag,
+  getAttr,
   getMetaContent,
   getStructuredDataNodes,
   getTitle,
   nodeHasType,
   readGeneratedHtml,
+  readGeneratedText,
   siteUrl,
 } from './helpers/generated-site.mjs'
 
@@ -21,6 +24,26 @@ const pages = [
   {
     route: '/en/apps/duo-spend/',
     expectedUrl: `${siteUrl}/en/apps/duo-spend/`,
+  },
+  {
+    route: '/apps/duo-spend/releases/',
+    expectedUrl: `${siteUrl}/apps/duo-spend/releases/`,
+    required: true,
+  },
+  {
+    route: '/apps/duo-spend/roadmap/',
+    expectedUrl: `${siteUrl}/apps/duo-spend/roadmap/`,
+    required: true,
+  },
+  {
+    route: '/en/apps/duo-spend/releases/',
+    expectedUrl: `${siteUrl}/en/apps/duo-spend/releases/`,
+    required: true,
+  },
+  {
+    route: '/en/apps/duo-spend/roadmap/',
+    expectedUrl: `${siteUrl}/en/apps/duo-spend/roadmap/`,
+    required: true,
   },
   { route: '/apps/focus-one/', expectedUrl: `${siteUrl}/apps/focus-one/` },
   {
@@ -76,9 +99,49 @@ test('shared App Store badge links explicitly use a pointer cursor', () => {
   )
 })
 
+test('DuoSpend idea form uses a native Netlify POST contract', () => {
+  const componentUrl = new URL(
+    '../components/apps/AppIdeaSuggestionForm.vue',
+    import.meta.url,
+  )
+  assert.ok(existsSync(componentUrl), 'Expected the shared idea form component')
+
+  const source = existsSync(componentUrl)
+    ? readFileSync(componentUrl, 'utf8')
+    : ''
+  assert.match(source, /name="duospend-idea"/)
+  assert.match(source, /method="POST"/)
+  assert.match(source, /data-netlify="true"/)
+  assert.match(source, /netlify-honeypot="bot-field"/)
+  assert.doesNotMatch(source, /@submit|fetch\(|onSubmit|preventDefault/)
+
+  const detectorUrl = new URL('../public/contact-form.html', import.meta.url)
+  const detector = readFileSync(detectorUrl, 'utf8')
+  assert.match(detector, /<form[\s\S]*name="duospend-idea"[\s\S]*<\/form>/)
+  assert.match(detector, /name="idea"/)
+  assert.match(detector, /name="usefulness"/)
+  assert.match(detector, /name="email"/)
+})
+
+test('generated sitemap includes every DuoSpend updates route', (t) => {
+  const sitemap = readGeneratedText(t, 'sitemap.xml')
+  if (!sitemap) return
+
+  for (const route of [
+    '/apps/duo-spend/releases/',
+    '/apps/duo-spend/roadmap/',
+    '/en/apps/duo-spend/releases/',
+    '/en/apps/duo-spend/roadmap/',
+  ]) {
+    assert.match(sitemap, new RegExp(`<loc>${siteUrl}${route}</loc>`))
+  }
+})
+
 for (const page of pages) {
   test(`generated page ${page.route} exposes minimal SEO tags`, (t) => {
-    const html = readGeneratedHtml(t, page.route)
+    const html = readGeneratedHtml(t, page.route, {
+      required: page.required,
+    })
     if (!html) return
 
     assertSeoTags(html, page.expectedUrl)
@@ -238,7 +301,8 @@ for (const page of pages) {
       assert.match(html, /Prix localisé selon le pays/)
       assert.match(html, /Peut-on utiliser DuoSpend à deux sur deux iPhones ?/)
       assert.match(html, /DuoSpend Pro peut-il être partagé en famille ?/)
-      assert.match(html, /Le transfert reste manuel/)
+      assert.match(html, /version 1\.0\.3, soumise à l’App Store/)
+      assert.match(html, /Le transfert restera manuel/)
       assert.match(html, /Partage familial Apple/)
       assert.match(
         html,
@@ -285,6 +349,8 @@ for (const page of pages) {
         'DuoSpend est une app iOS pour suivre les dépenses partagées à deux, savoir qui a payé quoi et équilibrer les comptes simplement.',
       )
       assert.equal(appNode.author?.name, 'Benoît Abot')
+      assert.match(html, /href="\/apps\/duo-spend\/releases\/"/)
+      assert.match(html, /href="\/apps\/duo-spend\/roadmap\/"/)
     }
 
     if (page.route === '/en/apps/focus-one/') {
@@ -367,7 +433,8 @@ for (const page of pages) {
       assert.match(html, /One-time in-app purchase through the App Store/)
       assert.match(html, /Can two people use DuoSpend on two iPhones\?/)
       assert.match(html, /Can DuoSpend Pro be shared with my family\?/)
-      assert.match(html, /Transfers remain manual/)
+      assert.match(html, /Version 1\.0\.3, submitted to the App Store/)
+      assert.match(html, /Transfers will remain manual/)
       assert.match(html, /Apple Family Sharing/)
       assert.match(
         html,
@@ -408,6 +475,107 @@ for (const page of pages) {
           },
         ],
       )
+      assert.match(html, /href="\/en\/apps\/duo-spend\/releases\/"/)
+      assert.match(html, /href="\/en\/apps\/duo-spend\/roadmap\/"/)
+    }
+
+    if (page.route === '/apps/duo-spend/releases/') {
+      assert.equal(
+        getTitle(html),
+        'Notes de version de DuoSpend — Nouveautés et améliorations | BeAbot',
+      )
+      assert.equal(
+        getMetaContent(html, 'name', 'description'),
+        'Découvrez les nouvelles fonctionnalités, améliorations et corrections apportées à DuoSpend au fil des versions.',
+      )
+      assert.equal((html.match(/<h1\b/gi) || []).length, 1)
+      assert.match(html, /<h1[^>]*>Notes de version<\/h1>/)
+      assert.match(html, /1\.0\.3 — Partager un projet plus simplement/)
+      assert.match(html, /Soumise à l’App Store/)
+      assert.match(html, /1\.0\.2 — Des dépenses plus faciles à comprendre/)
+      assert.match(html, /Pas encore une synchronisation/)
+      assert.match(html, /fichier \.duospend/)
+      assert.match(html, /href="\/apps\/duo-spend\/"/)
+      assert.match(html, /href="\/apps\/duo-spend\/roadmap\/"/)
+      assert.ok(
+        structuredDataNodes.some((node) => nodeHasType(node, 'BreadcrumbList')),
+      )
+      assert.doesNotMatch(html, /CloudKit|StoreKit|GitHub|TestFlight/)
+      assert.ok(
+        html.includes(
+          'hreflang="en" href="https://beabot.fr/en/apps/duo-spend/releases/"',
+        ),
+      )
+    }
+
+    if (page.route === '/en/apps/duo-spend/releases/') {
+      assert.equal(
+        getTitle(html),
+        'DuoSpend Release Notes — What’s New | BeAbot',
+      )
+      assert.equal(
+        getMetaContent(html, 'name', 'description'),
+        'Discover the new features, improvements and fixes added to DuoSpend with each release.',
+      )
+      assert.equal((html.match(/<h1\b/gi) || []).length, 1)
+      assert.match(html, /<h1[^>]*>Release notes<\/h1>/)
+      assert.match(html, /1\.0\.3 — Share a project more easily/)
+      assert.match(html, /Submitted to the App Store/)
+      assert.match(html, /Not synchronization yet/)
+      assert.match(html, /href="\/en\/apps\/duo-spend\/"/)
+      assert.match(html, /href="\/en\/apps\/duo-spend\/roadmap\/"/)
+      assert.match(html, /lang="en"/)
+      assert.doesNotMatch(html, /CloudKit|StoreKit|GitHub|TestFlight/)
+    }
+
+    if (page.route === '/apps/duo-spend/roadmap/') {
+      assert.equal(
+        getTitle(html),
+        'Roadmap DuoSpend — Les prochaines nouveautés | BeAbot',
+      )
+      assert.equal(
+        getMetaContent(html, 'name', 'description'),
+        'Découvrez les fonctionnalités prévues et les pistes étudiées pour les prochaines versions de DuoSpend, et proposez vos idées.',
+      )
+      assert.equal((html.match(/<h1\b/gi) || []).length, 1)
+      assert.match(html, /<h1[^>]*>Ce qui arrive ensuite<\/h1>/)
+      assert.match(html, /id="proposer-une-idee"/)
+      assert.match(html, /DuoSpend 1\.1\.0 — Plus personnel, toujours simple/)
+      assert.match(html, /Prévu/)
+      assert.match(html, /Envisagé/)
+      assert.match(html, /Exploratoire/)
+      assert.match(html, /Une vraie collaboration entre deux iPhone/)
+      assert.match(html, /href="\/apps\/duo-spend\/releases\/"/)
+
+      const formTag = findTag(html, 'form', 'name', 'duospend-idea')
+      const ideaTag = findTag(html, 'textarea', 'name', 'idea')
+      const emailTag = findTag(html, 'input', 'name', 'email')
+      assert.match(formTag, /method="post"/i)
+      assert.equal(getAttr(formTag, 'data-netlify'), 'true')
+      assert.equal(getAttr(formTag, 'netlify-honeypot'), 'bot-field')
+      assert.match(ideaTag, /\brequired(?:="")?\b/)
+      assert.doesNotMatch(emailTag, /\brequired\b/)
+    }
+
+    if (page.route === '/en/apps/duo-spend/roadmap/') {
+      assert.equal(
+        getTitle(html),
+        'DuoSpend Roadmap — What’s Next | BeAbot',
+      )
+      assert.equal(
+        getMetaContent(html, 'name', 'description'),
+        'Explore planned features and ideas being considered for future DuoSpend updates, and share your own suggestion.',
+      )
+      assert.equal((html.match(/<h1\b/gi) || []).length, 1)
+      assert.match(html, /<h1[^>]*>What’s next<\/h1>/)
+      assert.match(html, /id="proposer-une-idee"/)
+      assert.match(html, /DuoSpend 1\.1\.0 — More personal, still simple/)
+      assert.match(html, /Planned/)
+      assert.match(html, /Under consideration/)
+      assert.match(html, /Exploratory/)
+      assert.match(html, /True collaboration between two iPhones/)
+      assert.match(html, /href="\/en\/apps\/duo-spend\/releases\/"/)
+      assert.match(html, /lang="en"/)
     }
 
     if (page.route === '/apps/meeting-mode/') {
