@@ -18,10 +18,13 @@ export function htmlPathForRoute(route) {
   return join(publicDir, route.replace(/^\/|\/$/g, ''), 'index.html')
 }
 
-export function readGeneratedHtml(t, route) {
+export function readGeneratedHtml(t, route, options = {}) {
   ensureGeneratedSite(t)
   const filePath = htmlPathForRoute(route)
   if (!existsSync(filePath)) {
+    if (options.required) {
+      assert.fail(`Missing generated HTML for ${route}: ${filePath}`)
+    }
     t.skip(`Missing generated HTML for ${route}: ${filePath}`)
     return ''
   }

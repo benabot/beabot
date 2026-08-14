@@ -1,5 +1,18 @@
 ## Backlog final avant master (11 mai 2026)
 
+## DuoSpend — Releases & Roadmap FR/EN (14 août 2026)
+
+- [x] Ajouter les routes statiques `/apps/duo-spend/releases/`, `/apps/duo-spend/roadmap/` et leurs équivalents anglais.
+- [x] Centraliser l’état public : 1.0.2 disponible, 1.0.3 soumise à l’App Store et en attente, 1.1.0 prochaine version.
+- [x] Publier des notes de version et une roadmap cohérentes en FR/EN, avec maillage depuis les pages produit.
+- [x] Ajouter un formulaire « Proposer une idée » en POST HTML Netlify natif, sans JavaScript de soumission, et son blueprint statique.
+- [x] Étendre strictement les mentions légales FR/EN au traitement de ce formulaire.
+- [x] Ajouter canonicals, hreflang FR/EN/x-default, Open Graph, Twitter Cards et `BreadcrumbList` sur les quatre routes.
+- [x] Valider `npm run check:copy`, `npm test`, `npm run generate`, le contrôle SEO avec HTML, les quatre sorties générées et le sitemap.
+- [x] Contrôler avec Playwright les quatre routes en desktop/mobile : navigation, ancre, overflow, focus, console et validation HTML native du formulaire vide.
+- [x] Exécuter les lints sans corriger la dette hors périmètre : baseline `lint:js` inchangée après retrait des quatre erreurs nouvelles des wrappers ; Prettier reste bloqué par le JSON historique invalide de l’audit depcheck.
+- [x] Terminer avec `git diff --check`, un commit atomique et un état Git propre, sans merge ni push.
+
 ## FocusOne — publication App Store FR/EN (12 août 2026)
 
 - [x] Remplacer les statuts de prépublication FocusOne par sa disponibilité App Store dans les données, les listings et les pages produit FR/EN.

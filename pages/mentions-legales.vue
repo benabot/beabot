@@ -149,8 +149,10 @@ USA<br />
       <br/>
       Les données transmises via le formulaire de contact (nom, adresse email, message) sont utilisées exclusivement pour répondre à la demande de l’utilisateur. Elles ne sont ni stockées à des fins commerciales, ni transmises à des tiers, ni utilisées pour de la prospection.
       <br/>
-Les données sont conservées uniquement le temps nécessaire au traitement de la demande.
-<br/>
+      Les données transmises via le formulaire « Proposer une idée » de DuoSpend (idée, utilité facultative et adresse e-mail facultative) servent uniquement à étudier la suggestion et, si une adresse est fournie, à y répondre. Ces formulaires sont traités par Netlify dans le cadre de l’hébergement du site. Les données ne sont ni utilisées pour une newsletter ou de la prospection, ni vendues à des tiers.
+      <br/>
+      Les données sont conservées uniquement pendant une durée limitée, nécessaire au traitement de la demande ou de la suggestion.
+      <br/>
       L'utilisateur
       fournit ces informations en toute connaissance de cause, notamment
       lorsqu'il procède par lui-même à leur saisie. Il est alors précisé à

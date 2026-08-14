@@ -2,10 +2,13 @@ import type {
   AppDetailContent,
   AppFaqSection,
   AppIndexEntry,
+  DuoSpendReleasesContent,
+  DuoSpendRoadmapContent,
 } from '~/data/apps'
 import {
   appsIndexEntries,
   duoSpendContent,
+  duoSpendReleaseState,
   focusOneContent,
   meetingModeContent,
   situremContent,
@@ -203,7 +206,7 @@ const duoSpendFaqSectionsEn: AppFaqSection[] = [
       {
         question: 'Can two people use DuoSpend on two iPhones?',
         answer:
-          'Yes. You can share a project with your partner using a DuoSpend file. Your partner can import it on their iPhone, then import a newer version of the file later to update the project. Transfers remain manual: DuoSpend does not automatically sync projects between the two iPhones.',
+          `Version ${duoSpendReleaseState.submittedVersion}, submitted to the App Store, adds project sharing through a DuoSpend file. Your partner will be able to import it on their iPhone, then import a newer version later to update the project. Transfers will remain manual: DuoSpend will not automatically sync projects between the two iPhones.`,
       },
       {
         question: 'Can DuoSpend Pro be shared with my family?',
@@ -652,6 +655,206 @@ export const focusOneEnContent: AppDetailContent = {
     description:
       'FocusOne helps you keep one personal promise at a time. Pick a habit, mark it done every day and track your streak without accounts, feeds or noisy dashboards.',
     image: focusOneContent.seo.image,
+  },
+}
+
+export const duoSpendReleasesEnContent: DuoSpendReleasesContent = {
+  heroTitle: 'Release notes',
+  heroIntro:
+    'DuoSpend evolves in small steps, with the same priority: keeping shared expense tracking simple, private, and easy to understand.',
+  roadmapLabel: 'See what’s next',
+  versions: [
+    {
+      version: duoSpendReleaseState.submittedVersion,
+      title: '1.0.3 — Share a project more easily',
+      status: 'Submitted to the App Store',
+      summary:
+        'This submitted release will add the option to send a project to your partner as a .duospend file.',
+      points: [
+        'Share a project from DuoSpend.',
+        'Import a received project on another iPhone.',
+        'Manually update an existing project by importing a newer file.',
+        'Each transfer remains deliberate and occasional: no permanent synchronization runs in the background.',
+        'DuoSpend data remain managed locally on the device.',
+      ],
+      callout: {
+        title: 'Not synchronization yet',
+        text: 'File sharing is designed for occasional project transfers. Collaboration between the two iPhones remains an idea for a later release.',
+      },
+    },
+    {
+      version: duoSpendReleaseState.availableVersion,
+      title: '1.0.2 — Expenses that are easier to understand',
+      status: 'Available on the App Store',
+      summary:
+        'This release clarifies the difference between the person who paid upfront and the share ultimately covered by each partner.',
+      points: [
+        'Clearer “Paid by” and “Share owed” labels.',
+        'Direct display of the amount one partner owes the other for relevant expenses.',
+        'Custom splits are easier to read.',
+        'Calculations and displays are more thoroughly verified.',
+      ],
+    },
+    {
+      version: '1.0.1',
+      title: '1.0.1 — Readability and polish',
+      summary:
+        'An update focused on visual consistency and easier project reading on iPhone.',
+      points: [
+        'More readable project cards.',
+        'More consistent colors for both partners.',
+        'Improved presentation of contributions and expenses on iPhone.',
+        'Visual fixes and finishing touches.',
+      ],
+    },
+    {
+      version: '1.0',
+      title: '1.0 — The first version of DuoSpend',
+      summary:
+        'The first release established the essentials: create a shared project, set its budget, record expenses for both partners, and understand who paid what and what remains to settle.',
+      points: [
+        'Budget-based projects for two partners.',
+        'Expenses split equally or with a custom ratio.',
+        'A clear couple balance, with no connected bank.',
+        'Data stored locally on the iPhone.',
+        'A one-time DuoSpend Pro purchase for unlimited projects, widgets, and PDF export.',
+      ],
+    },
+  ],
+  productLabel: 'Discover DuoSpend',
+  finalRoadmapLabel: 'See upcoming improvements',
+  seo: {
+    title: 'DuoSpend Release Notes — What’s New',
+    description:
+      'Discover the new features, improvements and fixes added to DuoSpend with each release.',
+    image: '/img/apps/duo-spend/en/duospend-en-hero.webp',
+  },
+}
+
+export const duoSpendRoadmapEnContent: DuoSpendRoadmapContent = {
+  heroTitle: 'What’s next',
+  heroIntro:
+    'DuoSpend evolves without piling on features. Every update should make shared expenses easier to understand, more pleasant to track, or simpler to share.',
+  heroNote:
+    'This roadmap reflects the current direction. Its order and content may change as feedback and development constraints evolve.',
+  ideaLabel: 'Share an idea',
+  releasesLabel: 'Read the release notes',
+  next: {
+    title: `DuoSpend ${duoSpendReleaseState.nextVersion} — More personal, still simple`,
+    intro:
+      'The next major DuoSpend update will focus on your couple and your projects: make them easier to recognize, quicker to start, and simpler to manage once complete.',
+    items: [
+      {
+        title: 'Make your duo feel like yours',
+        description:
+          'Choose more freely how each partner is identified in DuoSpend, including personalized colors and visual cues.',
+        status: 'Planned',
+      },
+      {
+        title: 'Projects you can recognize instantly',
+        description:
+          'Personalize projects with colors, icons, and styles that fit their purpose.',
+        status: 'Planned',
+      },
+      {
+        title: 'Projects ready to start',
+        description:
+          'Trips, renovations, moving, weddings… templates will make common projects quicker to create.',
+        status: 'Planned',
+      },
+      {
+        title: 'Finish without deleting',
+        description:
+          'Archive completed projects to preserve their history without cluttering active projects.',
+        status: 'Planned',
+      },
+      {
+        title: 'Positive feedback, without competition',
+        description:
+          'DuoSpend may highlight useful moments with restrained feedback, without scores, rankings, or competition between partners.',
+        status: 'Planned',
+      },
+      {
+        title: 'More personalization for DuoSpend Pro',
+        description:
+          'Additional personalization options are also planned for DuoSpend Pro.',
+        status: 'Planned',
+      },
+    ],
+  },
+  after: {
+    title: 'Find and understand expenses more easily',
+    intro:
+      'Later releases should make projects easier to read without turning DuoSpend into a complex accounting tool.',
+    items: [
+      {
+        title: 'Expense categories',
+        description:
+          'Classify expenses more easily and recognize their purpose at a glance.',
+        status: 'Planned',
+      },
+      {
+        title: 'Search and filters',
+        description: 'Find an expense faster in long-running projects.',
+        status: 'Planned',
+      },
+      {
+        title: 'Useful statistics',
+        description:
+          'Understand how a budget is used without adding unnecessary charts.',
+        status: 'Under consideration',
+      },
+      {
+        title: 'More complete exports',
+        description:
+          'Create a richer summary when you need to keep or share a project history.',
+        status: 'Under consideration',
+      },
+      {
+        title: 'Currencies',
+        description:
+          'Simple tools are being considered for travel projects that use several currencies.',
+        status: 'Exploratory',
+      },
+      {
+        title: 'Budget alerts',
+        description:
+          'A warning before reaching a budget limit is among the planned improvements.',
+        status: 'Planned',
+      },
+    ],
+  },
+  later: {
+    title: 'True collaboration between two iPhones',
+    paragraphs: [
+      'Today, DuoSpend remains local-first and sharing a project requires deliberately sending a file to the other person.',
+      'In the longer term, the goal is to explore true collaboration between two iPhones so both partners can work on the same project more naturally.',
+      'This is a more complex evolution and is not announced for DuoSpend 1.1.',
+    ],
+  },
+  principles: {
+    title: 'What will remain at the heart of DuoSpend',
+    items: [
+      'An app designed for two people.',
+      'No connection to your bank.',
+      'No advertising.',
+      'No advertising tracking.',
+      'Project data stored locally on the iPhone.',
+      'A one-time purchase for DuoSpend Pro, with no subscription.',
+    ],
+  },
+  suggestion: {
+    title: 'Have an idea for DuoSpend?',
+    text: 'DuoSpend is independently developed, and concrete feedback is valuable. If a feature is missing or something could be simpler, you can suggest it here.',
+    note: 'A suggestion does not guarantee that it will be added. It helps clarify real needs and guide future releases.',
+  },
+  productLabel: 'Discover DuoSpend',
+  finalReleasesLabel: 'Read the release notes',
+  seo: {
+    title: 'DuoSpend Roadmap — What’s Next',
+    description:
+      'Explore planned features and ideas being considered for future DuoSpend updates, and share your own suggestion.',
+    image: '/img/apps/duo-spend/en/duospend-en-hero.webp',
   },
 }
 

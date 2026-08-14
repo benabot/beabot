@@ -1,6 +1,6 @@
 # 📊 ÉTAT DU PROJET - BeAbot
 
-> **Récapitulatif de l'état du projet au 12 août 2026**
+> **Récapitulatif de l'état du projet au 14 août 2026**
 
 ---
 
@@ -20,6 +20,16 @@
 ---
 
 ## 🧭 BACKLOG FINAL AVANT MASTER
+
+### DuoSpend — Releases & Roadmap FR/EN (14 août 2026)
+
+- Quatre pages statiques documentent les notes de version et la roadmap en français et en anglais, avec canonicals, alternates FR/EN/x-default, Open Graph, Twitter Cards et un `BreadcrumbList` par route.
+- État public centralisé : DuoSpend 1.0.2 est disponible ; la version 1.0.3 (build 4, information interne uniquement) est soumise à l’App Store et en attente ; la version suivante est 1.1.0.
+- La 1.0.3 présente le transfert manuel de projets par fichier `.duospend`, sans le décrire comme une synchronisation automatique.
+- La roadmap distingue la personnalisation prévue pour la 1.1, les améliorations suivantes et l’exploration ultérieure d’une collaboration entre deux iPhone.
+- Les suggestions passent par un POST HTML Netlify natif `duospend-idea`, avec validation HTML et confirmation standard Netlify, sans `fetch`, compte, newsletter ni script tiers.
+- Les mentions légales FR/EN couvrent l’idée, l’utilité et l’e-mail facultatifs, la finalité de réponse, la conservation limitée et le traitement via l’hébergement Netlify.
+- Validation locale : copy check, 42 tests Node, génération SSG, SEO HTML et sitemap passent ; les quatre pages passent le contrôle Playwright desktop/mobile sans overflow ni erreur console. Les échecs lint restants correspondent au baseline historique documenté.
 
 ### Apps positioning v2 — 23 mai 2026
 
