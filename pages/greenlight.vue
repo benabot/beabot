@@ -628,40 +628,7 @@ const baseProductSchema = buildGreenlightProductSchema(
   pageUrl,
   ogImage,
 )
-const productSchema = {
-  ...baseProductSchema,
-  description: seo.description,
-  image: ogImage,
-  additionalProperty: [
-    ...(baseProductSchema.additionalProperty ?? []),
-    {
-      '@type': 'PropertyValue',
-      name: 'Greenlight-free',
-      value:
-        'Thème WordPress Gutenberg extrêmement léger, 6 requêtes HTTP, moins de 115 ko, DOM 148, EcoIndex A.',
-    },
-    {
-      '@type': 'PropertyValue',
-      name: 'HTTP requests',
-      value: '6',
-    },
-    {
-      '@type': 'PropertyValue',
-      name: 'Page weight',
-      value: '< 115 ko',
-    },
-    {
-      '@type': 'PropertyValue',
-      name: 'DOM size',
-      value: '148',
-    },
-    {
-      '@type': 'PropertyValue',
-      name: 'EcoIndex',
-      value: 'A',
-    },
-  ],
-}
+const productSchema = baseProductSchema
 
 useSeoMeta({
   title: seo.title,

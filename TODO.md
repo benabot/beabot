@@ -1,14 +1,36 @@
-## Backlog final avant master (11 mai 2026)
+## Backlog
 
-## DuoSpend — Releases & Roadmap FR/EN (14 août 2026)
+## Portfolio — jeu de raffinage de microdatas (17 août 2026)
+
+- [x] Ajouter « Jeu de raffinage de microdatas » directement après « La petite boucle » depuis la source centralisée `data/portfolio.ts`.
+- [x] Réutiliser l’image existante `/img/raffinage.webp`, le lien projet et le mécanisme `githubLink` existant, sans métrique ni style spécifique.
+- [x] Conserver les tags portfolio `WebDesign` et `Javascript`, avec la description « Jeu en JavaScript sur les nombres premiers ».
+- [x] Ajouter un test de non-régression sur les données, le HTML généré, les liens, l’image, les tags et l’ordre des cartes.
+- [x] Valider les tests ciblés et complets, la génération SSG, le contrôle SEO, le rendu desktop/mobile et `git diff --check`.
+
+## Contact — lien CV (17 août 2026)
+
+- [x] Ajouter sur `/contact/` un lien textuel discret « Télécharger mon CV » vers `/cv.pdf`, dans la zone existante avec l’email et LinkedIn.
+- [x] Ouvrir le PDF dans un nouvel onglet avec `target="_blank"` et `rel="nofollow noopener noreferrer"`, sans JavaScript ni attribut `download`.
+- [x] Réutiliser le style `contact-link` existant et garantir un focus clavier visible avec une règle locale minimale, sans nouveau composant ni dépendance.
+- [x] Ajouter le test HTML généré et valider `npm test`, `npm run generate`, le PDF statique, le contrôle SEO et `git diff --check`.
+
+## Greenlight — données structurées produit (14 août 2026)
+
+- [x] Conserver uniquement l’Offer Greenlight-free gratuite dans le Product JSON-LD et supprimer la représentation premium précommandable.
+- [x] Réduire `additionalProperty` aux métriques techniques HTTP requests, Page weight, DOM size et EcoIndex.
+- [x] Ajouter les contrôles générés Product/Offer, absence de `PreOrder`, FAQPage et BreadcrumbList.
+- [x] Valider `npm test`, `npm run generate` et le HTML généré de `/greenlight/`.
+
+## DuoSpend — Releases & Roadmap FR/EN (mise à jour 17 août 2026)
 
 - [x] Ajouter les routes statiques `/apps/duo-spend/releases/`, `/apps/duo-spend/roadmap/` et leurs équivalents anglais.
-- [x] Centraliser l’état public : 1.0.2 disponible, 1.0.3 soumise à l’App Store et en attente, 1.1.0 prochaine version.
+- [x] Afficher la v1.0.3 comme disponible sur l’App Store dans les notes de version FR/EN et retirer entièrement le statut App Store de la v1.0.2.
 - [x] Publier des notes de version et une roadmap cohérentes en FR/EN, avec maillage depuis les pages produit.
 - [x] Ajouter un formulaire « Proposer une idée » en POST HTML Netlify natif, sans JavaScript de soumission, et son blueprint statique.
 - [x] Étendre strictement les mentions légales FR/EN au traitement de ce formulaire.
 - [x] Ajouter canonicals, hreflang FR/EN/x-default, Open Graph, Twitter Cards et `BreadcrumbList` sur les quatre routes.
-- [x] Valider `npm run check:copy`, `npm test`, `npm run generate`, le contrôle SEO avec HTML, les quatre sorties générées et le sitemap.
+- [x] Valider `npm run check:copy`, `npm test`, `npm run generate`, le contrôle SEO avec HTML, les sorties générées FR/EN et le sitemap.
 - [x] Contrôler avec Playwright les quatre routes en desktop/mobile : navigation, ancre, overflow, focus, console et validation HTML native du formulaire vide.
 - [x] Exécuter les lints sans corriger la dette hors périmètre : baseline `lint:js` inchangée après retrait des quatre erreurs nouvelles des wrappers ; Prettier reste bloqué par le JSON historique invalide de l’audit depcheck.
 - [x] Terminer avec `git diff --check`, un commit atomique et un état Git propre, sans merge ni push.
@@ -335,7 +357,7 @@
 
 ## Phase 17 — SEO & Repositionnement freelance (26 avril 2026)
 
-> Basé sur `audit-seo-2026-04-26.md` + `audit-contenu-positionnement-2026-04-26.md`  
+> Basé sur `audit-seo-2026-04-26.md` + `audit-contenu-positionnement-2026-04-26.md`
 > Branche : `fix/seo-meta` pour les corrections techniques, `content/repositionnement-freelance` pour le contenu
 
 ---

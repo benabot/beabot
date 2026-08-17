@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import { existsSync, readFileSync } from 'node:fs'
 import test from 'node:test'
 
+import { projects } from '../data/portfolio.ts'
 import {
   assertSeoTags,
   assertInternalUrlsUseTrailingSlash,
@@ -15,6 +16,52 @@ import {
   readGeneratedText,
   siteUrl,
 } from './helpers/generated-site.mjs'
+
+test('portfolio exposes the microdata refining game directly after La petite boucle', (t) => {
+  const petiteBoucleIndex = projects.findIndex(
+    (project) => project.title === 'La petite boucle',
+  )
+  const project = projects[petiteBoucleIndex + 1]
+
+  assert.notEqual(petiteBoucleIndex, -1)
+  assert.equal(project?.title, 'Jeu de raffinage de microdatas')
+  assert.equal(project?.subtitle, 'Jeu en JavaScript sur les nombres premiers')
+  assert.equal(project?.url, 'https://raffinage-microdatas.netlify.app/')
+  assert.equal(project?.githubLink, 'https://github.com/benabot/raffinage')
+  assert.equal(project?.image, '/img/raffinage.webp')
+  assert.deepEqual(project?.tags, ['WebDesign', 'Javascript'])
+
+  const html = readGeneratedHtml(t, '/portfolio/', { required: true })
+  const projectLink = findTag(
+    html,
+    'a',
+    'href',
+    'https://raffinage-microdatas.netlify.app/',
+  )
+  const githubLink = findTag(
+    html,
+    'a',
+    'href',
+    'https://github.com/benabot/raffinage',
+  )
+  const image = findTag(html, 'img', 'src', '/img/raffinage.webp')
+  const projectTitles = Array.from(
+    html.matchAll(/<h3\b[^>]*class="project-title"[^>]*>([^<]+)<\/h3>/gi),
+    (match) => match[1],
+  )
+  const renderedPetiteBoucleIndex = projectTitles.indexOf('La petite boucle')
+
+  assert.match(html, /Jeu de raffinage de microdatas/)
+  assert.match(html, /Jeu en JavaScript sur les nombres premiers/)
+  assert.ok(projectLink, 'Expected the project link in generated HTML')
+  assert.ok(githubLink, 'Expected the GitHub link in generated HTML')
+  assert.equal(getAttr(projectLink, 'target'), '_blank')
+  assert.equal(getAttr(githubLink, 'target'), '_blank')
+  assert.ok(image, 'Expected the project image in generated HTML')
+  assert.equal(projectTitles[renderedPetiteBoucleIndex + 1], project.title)
+  assert.match(html, />Webdesign</)
+  assert.match(html, />Javascript</)
+})
 
 const pages = [
   { route: '/', expectedUrl: `${siteUrl}/` },
@@ -84,8 +131,23 @@ const pages = [
   { route: '/portfolio/', expectedUrl: `${siteUrl}/portfolio/` },
   { route: '/services/', expectedUrl: `${siteUrl}/services/` },
   { route: '/contact/', expectedUrl: `${siteUrl}/contact/` },
+  {
+    route: '/greenlight/',
+    expectedUrl: `${siteUrl}/greenlight/`,
+    required: true,
+  },
   { route: '/en/contact/', expectedUrl: `${siteUrl}/en/contact/` },
 ]
+
+const getReleaseSection = (html, title, nextTitle) => {
+  const start = html.indexOf(title)
+  const end = html.indexOf(nextTitle, start)
+
+  assert.notEqual(start, -1, `Expected release title: ${title}`)
+  assert.notEqual(end, -1, `Expected following release title: ${nextTitle}`)
+
+  return html.slice(start, end)
+}
 
 test('shared App Store badge links explicitly use a pointer cursor', () => {
   const mainStyles = readFileSync(
@@ -96,6 +158,18 @@ test('shared App Store badge links explicitly use a pointer cursor', () => {
   assert.match(
     mainStyles,
     /\.app-store-badge-link\s*\{[^}]*cursor:\s*pointer;/s,
+  )
+})
+
+test('contact text links preserve a visible keyboard focus', () => {
+  const contactSource = readFileSync(
+    new URL('../pages/contact.vue', import.meta.url),
+    'utf8',
+  )
+
+  assert.match(
+    contactSource,
+    /\.contact-link:focus-visible\s*\{[^}]*outline:\s*2px solid #0dc763;[^}]*outline-offset:\s*3px;/s,
   )
 })
 
@@ -173,6 +247,72 @@ for (const page of pages) {
       assert.ok(
         structuredDataNodes.some((node) => nodeHasType(node, 'ContactPage')),
         'Expected contact page JSON-LD to expose ContactPage',
+      )
+
+      const cvLink = findTag(html, 'a', 'href', '/cv.pdf')
+      const cvLinkRel = new Set(getAttr(cvLink, 'rel').split(/\s+/))
+
+      assert.equal(getAttr(cvLink, 'target'), '_blank')
+      assert.ok(cvLinkRel.has('nofollow'))
+      assert.ok(cvLinkRel.has('noopener'))
+      assert.ok(cvLinkRel.has('noreferrer'))
+      assert.doesNotMatch(cvLink, /\bdownload(?:=|\s|>)/i)
+      assert.match(html, />\s*Télécharger mon CV\s*<\/a>/)
+    }
+
+    if (page.route === '/greenlight/') {
+      const productNode = structuredDataNodes.find((node) =>
+        nodeHasType(node, 'Product'),
+      )
+
+      assert.ok(productNode, 'Expected Greenlight JSON-LD Product')
+      assert.deepEqual(productNode?.offers, [
+        {
+          '@type': 'Offer',
+          name: 'Greenlight-free',
+          price: '0',
+          priceCurrency: 'EUR',
+          availability: 'https://schema.org/InStock',
+          url: `${siteUrl}/greenlight/`,
+          description:
+            'Version légère, propre, personnalisable avec Gutenberg, pour démarrer simplement.',
+        },
+      ])
+      assert.doesNotMatch(
+        JSON.stringify(productNode),
+        /Greenlight premium|PreOrder/,
+        'Greenlight premium must not be represented in Product JSON-LD',
+      )
+      assert.deepEqual(productNode?.additionalProperty, [
+        {
+          '@type': 'PropertyValue',
+          name: 'HTTP requests',
+          value: '6',
+        },
+        {
+          '@type': 'PropertyValue',
+          name: 'Page weight',
+          value: '< 115 ko',
+        },
+        {
+          '@type': 'PropertyValue',
+          name: 'DOM size',
+          value: '148',
+        },
+        {
+          '@type': 'PropertyValue',
+          name: 'EcoIndex',
+          value: 'A',
+        },
+      ])
+      assert.doesNotMatch(html, /PreOrder/)
+      assert.ok(
+        structuredDataNodes.some((node) => nodeHasType(node, 'FAQPage')),
+        'Expected Greenlight FAQPage JSON-LD',
+      )
+      assert.ok(
+        structuredDataNodes.some((node) => nodeHasType(node, 'BreadcrumbList')),
+        'Expected Greenlight BreadcrumbList JSON-LD',
       )
     }
 
@@ -491,8 +631,21 @@ for (const page of pages) {
       assert.equal((html.match(/<h1\b/gi) || []).length, 1)
       assert.match(html, /<h1[^>]*>Notes de version<\/h1>/)
       assert.match(html, /1\.0\.3 — Partager un projet plus simplement/)
-      assert.match(html, /Soumise à l’App Store/)
       assert.match(html, /1\.0\.2 — Des dépenses plus faciles à comprendre/)
+      const version103 = getReleaseSection(
+        html,
+        '1.0.3 — Partager un projet plus simplement',
+        '1.0.2 — Des dépenses plus faciles à comprendre',
+      )
+      const version102 = getReleaseSection(
+        html,
+        '1.0.2 — Des dépenses plus faciles à comprendre',
+        '1.0.1 — Lisibilité et finitions',
+      )
+      assert.match(version103, /Disponible sur l’App Store/)
+      assert.doesNotMatch(version103, /Soumise à l’App Store/)
+      assert.doesNotMatch(version102, /release-status|App Store/)
+      assert.doesNotMatch(html, /Soumise à l’App Store/)
       assert.match(html, /Pas encore une synchronisation/)
       assert.match(html, /fichier \.duospend/)
       assert.match(html, /href="\/apps\/duo-spend\/"/)
@@ -520,7 +673,21 @@ for (const page of pages) {
       assert.equal((html.match(/<h1\b/gi) || []).length, 1)
       assert.match(html, /<h1[^>]*>Release notes<\/h1>/)
       assert.match(html, /1\.0\.3 — Share a project more easily/)
-      assert.match(html, /Submitted to the App Store/)
+      assert.match(html, /1\.0\.2 — Expenses that are easier to understand/)
+      const version103 = getReleaseSection(
+        html,
+        '1.0.3 — Share a project more easily',
+        '1.0.2 — Expenses that are easier to understand',
+      )
+      const version102 = getReleaseSection(
+        html,
+        '1.0.2 — Expenses that are easier to understand',
+        '1.0.1 — Readability and polish',
+      )
+      assert.match(version103, /Available on the App Store/)
+      assert.doesNotMatch(version103, /Submitted to the App Store/)
+      assert.doesNotMatch(version102, /release-status|App Store/)
+      assert.doesNotMatch(html, /Submitted to the App Store/)
       assert.match(html, /Not synchronization yet/)
       assert.match(html, /href="\/en\/apps\/duo-spend\/"/)
       assert.match(html, /href="\/en\/apps\/duo-spend\/roadmap\/"/)

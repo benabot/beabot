@@ -21,15 +21,30 @@
 
 ## 🧭 BACKLOG FINAL AVANT MASTER
 
-### DuoSpend — Releases & Roadmap FR/EN (14 août 2026)
+### Portfolio — jeu de raffinage de microdatas (17 août 2026)
+
+- `/portfolio/` présente désormais « Jeu de raffinage de microdatas » directement après « La petite boucle », sans réordonner les autres réalisations.
+- Le projet est piloté par `data/portfolio.ts` et réutilise la carte existante, l’image statique `/img/raffinage.webp` et le champ `githubLink`, sans CSS, dépendance, métrique ni donnée client ajoutés.
+- La description visible est « Jeu en JavaScript sur les nombres premiers » et les tags suivent les conventions existantes du portfolio.
+- Validation locale : cycle TDD ciblé, 49 garde-fous pré-build, 45 tests Node, génération SSG de 104 routes, contrôle du HTML et de l’image statique, check SEO, contrôle navigateur desktop/mobile sans overflow ni erreur console et `git diff --check` passent.
+
+### Contact — lien CV (17 août 2026)
+
+- La page française `/contact/` propose désormais « Télécharger mon CV » dans la ligne de liens discrète de la colonne gauche, entre la copie de l’email et LinkedIn.
+- Le lien HTML natif cible `/cv.pdf`, soit `https://beabot.fr/cv.pdf`, avec `target="_blank"` et `rel="nofollow noopener noreferrer"`, sans JavaScript ni attribut `download`.
+- Le style textuel `contact-link` existant est réutilisé avec une règle locale minimale pour rendre le focus clavier visible, sans nouveau composant ni dépendance ; le formulaire et le positionnement général de la page restent inchangés.
+- Validation locale : tests ciblés TDD, 49 garde-fous pré-build, 44 tests Node, génération SSG de 104 routes, contrôle du HTML généré, PDF statique identique à la source, contrôle SEO HTML, vérification navigateur desktop/mobile et `git diff --check` passent.
+
+### DuoSpend — Releases & Roadmap FR/EN (mise à jour 17 août 2026)
 
 - Quatre pages statiques documentent les notes de version et la roadmap en français et en anglais, avec canonicals, alternates FR/EN/x-default, Open Graph, Twitter Cards et un `BreadcrumbList` par route.
-- État public centralisé : DuoSpend 1.0.2 est disponible ; la version 1.0.3 (build 4, information interne uniquement) est soumise à l’App Store et en attente ; la version suivante est 1.1.0.
+- Dans les notes de version FR/EN, le badge de la version 1.0.3 indique désormais sa disponibilité sur l’App Store ; la version 1.0.2 conserve son contenu sans badge ni mention de statut App Store.
+- Cette correction reste limitée aux notes de version : les pages produit DuoSpend et la roadmap ne sont pas modifiées ; la version suivante présentée dans la roadmap reste la 1.1.0.
 - La 1.0.3 présente le transfert manuel de projets par fichier `.duospend`, sans le décrire comme une synchronisation automatique.
 - La roadmap distingue la personnalisation prévue pour la 1.1, les améliorations suivantes et l’exploration ultérieure d’une collaboration entre deux iPhone.
 - Les suggestions passent par un POST HTML Netlify natif `duospend-idea`, avec validation HTML et confirmation standard Netlify, sans `fetch`, compte, newsletter ni script tiers.
 - Les mentions légales FR/EN couvrent l’idée, l’utilité et l’e-mail facultatifs, la finalité de réponse, la conservation limitée et le traitement via l’hébergement Netlify.
-- Validation locale : copy check, 42 tests Node, génération SSG, SEO HTML et sitemap passent ; les quatre pages passent le contrôle Playwright desktop/mobile sans overflow ni erreur console. Les échecs lint restants correspondent au baseline historique documenté.
+- Validation locale de la mise à jour : copy check, 49 garde-fous pré-build, 43 tests Node, génération SSG de 104 routes, contrôle SEO HTML, vérification ciblée des deux pages générées et `git diff --check` passent. Les échecs lint restants correspondent au baseline historique documenté.
 
 ### Apps positioning v2 — 23 mai 2026
 
