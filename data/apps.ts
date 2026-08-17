@@ -400,7 +400,7 @@ export const duoSpendReleasesContent: DuoSpendReleasesContent = {
     {
       version: duoSpendReleaseState.submittedVersion,
       title: '1.0.3 — Partager un projet plus simplement',
-      status: 'Soumise à l’App Store',
+      status: 'Disponible sur l’App Store',
       summary:
         'Cette version soumise ajoutera la transmission d’un projet à votre partenaire sous la forme d’un fichier .duospend.',
       points: [
@@ -418,7 +418,6 @@ export const duoSpendReleasesContent: DuoSpendReleasesContent = {
     {
       version: duoSpendReleaseState.availableVersion,
       title: '1.0.2 — Des dépenses plus faciles à comprendre',
-      status: 'Disponible sur l’App Store',
       summary:
         'Cette version clarifie la différence entre la personne qui avance l’argent et la part réellement supportée par chacun.',
       points: [

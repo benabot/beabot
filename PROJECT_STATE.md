@@ -21,15 +21,16 @@
 
 ## 🧭 BACKLOG FINAL AVANT MASTER
 
-### DuoSpend — Releases & Roadmap FR/EN (14 août 2026)
+### DuoSpend — Releases & Roadmap FR/EN (mise à jour 17 août 2026)
 
 - Quatre pages statiques documentent les notes de version et la roadmap en français et en anglais, avec canonicals, alternates FR/EN/x-default, Open Graph, Twitter Cards et un `BreadcrumbList` par route.
-- État public centralisé : DuoSpend 1.0.2 est disponible ; la version 1.0.3 (build 4, information interne uniquement) est soumise à l’App Store et en attente ; la version suivante est 1.1.0.
+- Dans les notes de version FR/EN, le badge de la version 1.0.3 indique désormais sa disponibilité sur l’App Store ; la version 1.0.2 conserve son contenu sans badge ni mention de statut App Store.
+- Cette correction reste limitée aux notes de version : les pages produit DuoSpend et la roadmap ne sont pas modifiées ; la version suivante présentée dans la roadmap reste la 1.1.0.
 - La 1.0.3 présente le transfert manuel de projets par fichier `.duospend`, sans le décrire comme une synchronisation automatique.
 - La roadmap distingue la personnalisation prévue pour la 1.1, les améliorations suivantes et l’exploration ultérieure d’une collaboration entre deux iPhone.
 - Les suggestions passent par un POST HTML Netlify natif `duospend-idea`, avec validation HTML et confirmation standard Netlify, sans `fetch`, compte, newsletter ni script tiers.
 - Les mentions légales FR/EN couvrent l’idée, l’utilité et l’e-mail facultatifs, la finalité de réponse, la conservation limitée et le traitement via l’hébergement Netlify.
-- Validation locale : copy check, 42 tests Node, génération SSG, SEO HTML et sitemap passent ; les quatre pages passent le contrôle Playwright desktop/mobile sans overflow ni erreur console. Les échecs lint restants correspondent au baseline historique documenté.
+- Validation locale de la mise à jour : copy check, 49 garde-fous pré-build, 43 tests Node, génération SSG de 104 routes, contrôle SEO HTML, vérification ciblée des deux pages générées et `git diff --check` passent. Les échecs lint restants correspondent au baseline historique documenté.
 
 ### Apps positioning v2 — 23 mai 2026
 

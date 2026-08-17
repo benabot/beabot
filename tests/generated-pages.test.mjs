@@ -92,6 +92,16 @@ const pages = [
   { route: '/en/contact/', expectedUrl: `${siteUrl}/en/contact/` },
 ]
 
+const getReleaseSection = (html, title, nextTitle) => {
+  const start = html.indexOf(title)
+  const end = html.indexOf(nextTitle, start)
+
+  assert.notEqual(start, -1, `Expected release title: ${title}`)
+  assert.notEqual(end, -1, `Expected following release title: ${nextTitle}`)
+
+  return html.slice(start, end)
+}
+
 test('shared App Store badge links explicitly use a pointer cursor', () => {
   const mainStyles = readFileSync(
     new URL('../assets/css/main.scss', import.meta.url),
@@ -552,8 +562,21 @@ for (const page of pages) {
       assert.equal((html.match(/<h1\b/gi) || []).length, 1)
       assert.match(html, /<h1[^>]*>Notes de version<\/h1>/)
       assert.match(html, /1\.0\.3 — Partager un projet plus simplement/)
-      assert.match(html, /Soumise à l’App Store/)
       assert.match(html, /1\.0\.2 — Des dépenses plus faciles à comprendre/)
+      const version103 = getReleaseSection(
+        html,
+        '1.0.3 — Partager un projet plus simplement',
+        '1.0.2 — Des dépenses plus faciles à comprendre',
+      )
+      const version102 = getReleaseSection(
+        html,
+        '1.0.2 — Des dépenses plus faciles à comprendre',
+        '1.0.1 — Lisibilité et finitions',
+      )
+      assert.match(version103, /Disponible sur l’App Store/)
+      assert.doesNotMatch(version103, /Soumise à l’App Store/)
+      assert.doesNotMatch(version102, /release-status|App Store/)
+      assert.doesNotMatch(html, /Soumise à l’App Store/)
       assert.match(html, /Pas encore une synchronisation/)
       assert.match(html, /fichier \.duospend/)
       assert.match(html, /href="\/apps\/duo-spend\/"/)
@@ -581,7 +604,21 @@ for (const page of pages) {
       assert.equal((html.match(/<h1\b/gi) || []).length, 1)
       assert.match(html, /<h1[^>]*>Release notes<\/h1>/)
       assert.match(html, /1\.0\.3 — Share a project more easily/)
-      assert.match(html, /Submitted to the App Store/)
+      assert.match(html, /1\.0\.2 — Expenses that are easier to understand/)
+      const version103 = getReleaseSection(
+        html,
+        '1.0.3 — Share a project more easily',
+        '1.0.2 — Expenses that are easier to understand',
+      )
+      const version102 = getReleaseSection(
+        html,
+        '1.0.2 — Expenses that are easier to understand',
+        '1.0.1 — Readability and polish',
+      )
+      assert.match(version103, /Available on the App Store/)
+      assert.doesNotMatch(version103, /Submitted to the App Store/)
+      assert.doesNotMatch(version102, /release-status|App Store/)
+      assert.doesNotMatch(html, /Submitted to the App Store/)
       assert.match(html, /Not synchronization yet/)
       assert.match(html, /href="\/en\/apps\/duo-spend\/"/)
       assert.match(html, /href="\/en\/apps\/duo-spend\/roadmap\/"/)
