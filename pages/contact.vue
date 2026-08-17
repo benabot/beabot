@@ -47,6 +47,15 @@
 
           <a
             class="contact-link"
+            href="/cv.pdf"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+          >
+            Télécharger mon CV
+          </a>
+
+          <a
+            class="contact-link"
             href="https://www.linkedin.com/in/benoit-abot/"
             target="_blank"
             rel="noopener noreferrer"
@@ -485,6 +494,11 @@ h1 {
   text-decoration: underline;
   text-underline-offset: 3px;
   font-weight: 700;
+}
+
+.contact-link:focus-visible {
+  outline: 2px solid #0dc763;
+  outline-offset: 3px;
 }
 
 /* Messages */

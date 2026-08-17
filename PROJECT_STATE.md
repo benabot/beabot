@@ -21,6 +21,13 @@
 
 ## 🧭 BACKLOG FINAL AVANT MASTER
 
+### Contact — lien CV (17 août 2026)
+
+- La page française `/contact/` propose désormais « Télécharger mon CV » dans la ligne de liens discrète de la colonne gauche, entre la copie de l’email et LinkedIn.
+- Le lien HTML natif cible `/cv.pdf`, soit `https://beabot.fr/cv.pdf`, avec `target="_blank"` et `rel="nofollow noopener noreferrer"`, sans JavaScript ni attribut `download`.
+- Le style textuel `contact-link` existant est réutilisé avec une règle locale minimale pour rendre le focus clavier visible, sans nouveau composant ni dépendance ; le formulaire et le positionnement général de la page restent inchangés.
+- Validation locale : tests ciblés TDD, 49 garde-fous pré-build, 44 tests Node, génération SSG de 104 routes, contrôle du HTML généré, PDF statique identique à la source, contrôle SEO HTML, vérification navigateur desktop/mobile et `git diff --check` passent.
+
 ### DuoSpend — Releases & Roadmap FR/EN (mise à jour 17 août 2026)
 
 - Quatre pages statiques documentent les notes de version et la roadmap en français et en anglais, avec canonicals, alternates FR/EN/x-default, Open Graph, Twitter Cards et un `BreadcrumbList` par route.

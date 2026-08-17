@@ -114,6 +114,18 @@ test('shared App Store badge links explicitly use a pointer cursor', () => {
   )
 })
 
+test('contact text links preserve a visible keyboard focus', () => {
+  const contactSource = readFileSync(
+    new URL('../pages/contact.vue', import.meta.url),
+    'utf8',
+  )
+
+  assert.match(
+    contactSource,
+    /\.contact-link:focus-visible\s*\{[^}]*outline:\s*2px solid #0dc763;[^}]*outline-offset:\s*3px;/s,
+  )
+})
+
 test('DuoSpend idea form uses a native Netlify POST contract', () => {
   const componentUrl = new URL(
     '../components/apps/AppIdeaSuggestionForm.vue',
@@ -189,6 +201,16 @@ for (const page of pages) {
         structuredDataNodes.some((node) => nodeHasType(node, 'ContactPage')),
         'Expected contact page JSON-LD to expose ContactPage',
       )
+
+      const cvLink = findTag(html, 'a', 'href', '/cv.pdf')
+      const cvLinkRel = new Set(getAttr(cvLink, 'rel').split(/\s+/))
+
+      assert.equal(getAttr(cvLink, 'target'), '_blank')
+      assert.ok(cvLinkRel.has('nofollow'))
+      assert.ok(cvLinkRel.has('noopener'))
+      assert.ok(cvLinkRel.has('noreferrer'))
+      assert.doesNotMatch(cvLink, /\bdownload(?:=|\s|>)/i)
+      assert.match(html, />\s*Télécharger mon CV\s*<\/a>/)
     }
 
     if (page.route === '/greenlight/') {

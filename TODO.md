@@ -1,5 +1,12 @@
 ## Backlog
 
+## Contact — lien CV (17 août 2026)
+
+- [x] Ajouter sur `/contact/` un lien textuel discret « Télécharger mon CV » vers `/cv.pdf`, dans la zone existante avec l’email et LinkedIn.
+- [x] Ouvrir le PDF dans un nouvel onglet avec `target="_blank"` et `rel="nofollow noopener noreferrer"`, sans JavaScript ni attribut `download`.
+- [x] Réutiliser le style `contact-link` existant et garantir un focus clavier visible avec une règle locale minimale, sans nouveau composant ni dépendance.
+- [x] Ajouter le test HTML généré et valider `npm test`, `npm run generate`, le PDF statique, le contrôle SEO et `git diff --check`.
+
 ## Greenlight — données structurées produit (14 août 2026)
 
 - [x] Conserver uniquement l’Offer Greenlight-free gratuite dans le Product JSON-LD et supprimer la représentation premium précommandable.
