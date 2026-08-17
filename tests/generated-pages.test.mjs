@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import { existsSync, readFileSync } from 'node:fs'
 import test from 'node:test'
 
+import { projects } from '../data/portfolio.ts'
 import {
   assertSeoTags,
   assertInternalUrlsUseTrailingSlash,
@@ -15,6 +16,52 @@ import {
   readGeneratedText,
   siteUrl,
 } from './helpers/generated-site.mjs'
+
+test('portfolio exposes the microdata refining game directly after La petite boucle', (t) => {
+  const petiteBoucleIndex = projects.findIndex(
+    (project) => project.title === 'La petite boucle',
+  )
+  const project = projects[petiteBoucleIndex + 1]
+
+  assert.notEqual(petiteBoucleIndex, -1)
+  assert.equal(project?.title, 'Jeu de raffinage de microdatas')
+  assert.equal(project?.subtitle, 'Jeu en JavaScript sur les nombres premiers')
+  assert.equal(project?.url, 'https://raffinage-microdatas.netlify.app/')
+  assert.equal(project?.githubLink, 'https://github.com/benabot/raffinage')
+  assert.equal(project?.image, '/img/raffinage.webp')
+  assert.deepEqual(project?.tags, ['WebDesign', 'Javascript'])
+
+  const html = readGeneratedHtml(t, '/portfolio/', { required: true })
+  const projectLink = findTag(
+    html,
+    'a',
+    'href',
+    'https://raffinage-microdatas.netlify.app/',
+  )
+  const githubLink = findTag(
+    html,
+    'a',
+    'href',
+    'https://github.com/benabot/raffinage',
+  )
+  const image = findTag(html, 'img', 'src', '/img/raffinage.webp')
+  const projectTitles = Array.from(
+    html.matchAll(/<h3\b[^>]*class="project-title"[^>]*>([^<]+)<\/h3>/gi),
+    (match) => match[1],
+  )
+  const renderedPetiteBoucleIndex = projectTitles.indexOf('La petite boucle')
+
+  assert.match(html, /Jeu de raffinage de microdatas/)
+  assert.match(html, /Jeu en JavaScript sur les nombres premiers/)
+  assert.ok(projectLink, 'Expected the project link in generated HTML')
+  assert.ok(githubLink, 'Expected the GitHub link in generated HTML')
+  assert.equal(getAttr(projectLink, 'target'), '_blank')
+  assert.equal(getAttr(githubLink, 'target'), '_blank')
+  assert.ok(image, 'Expected the project image in generated HTML')
+  assert.equal(projectTitles[renderedPetiteBoucleIndex + 1], project.title)
+  assert.match(html, />Webdesign</)
+  assert.match(html, />Javascript</)
+})
 
 const pages = [
   { route: '/', expectedUrl: `${siteUrl}/` },

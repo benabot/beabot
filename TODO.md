@@ -1,5 +1,13 @@
 ## Backlog
 
+## Portfolio — jeu de raffinage de microdatas (17 août 2026)
+
+- [x] Ajouter « Jeu de raffinage de microdatas » directement après « La petite boucle » depuis la source centralisée `data/portfolio.ts`.
+- [x] Réutiliser l’image existante `/img/raffinage.webp`, le lien projet et le mécanisme `githubLink` existant, sans métrique ni style spécifique.
+- [x] Conserver les tags portfolio `WebDesign` et `Javascript`, avec la description « Jeu en JavaScript sur les nombres premiers ».
+- [x] Ajouter un test de non-régression sur les données, le HTML généré, les liens, l’image, les tags et l’ordre des cartes.
+- [x] Valider les tests ciblés et complets, la génération SSG, le contrôle SEO, le rendu desktop/mobile et `git diff --check`.
+
 ## Contact — lien CV (17 août 2026)
 
 - [x] Ajouter sur `/contact/` un lien textuel discret « Télécharger mon CV » vers `/cv.pdf`, dans la zone existante avec l’email et LinkedIn.

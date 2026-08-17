@@ -21,6 +21,13 @@
 
 ## 🧭 BACKLOG FINAL AVANT MASTER
 
+### Portfolio — jeu de raffinage de microdatas (17 août 2026)
+
+- `/portfolio/` présente désormais « Jeu de raffinage de microdatas » directement après « La petite boucle », sans réordonner les autres réalisations.
+- Le projet est piloté par `data/portfolio.ts` et réutilise la carte existante, l’image statique `/img/raffinage.webp` et le champ `githubLink`, sans CSS, dépendance, métrique ni donnée client ajoutés.
+- La description visible est « Jeu en JavaScript sur les nombres premiers » et les tags suivent les conventions existantes du portfolio.
+- Validation locale : cycle TDD ciblé, 49 garde-fous pré-build, 45 tests Node, génération SSG de 104 routes, contrôle du HTML et de l’image statique, check SEO, contrôle navigateur desktop/mobile sans overflow ni erreur console et `git diff --check` passent.
+
 ### Contact — lien CV (17 août 2026)
 
 - La page française `/contact/` propose désormais « Télécharger mon CV » dans la ligne de liens discrète de la colonne gauche, entre la copie de l’email et LinkedIn.
