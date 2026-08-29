@@ -1,5 +1,15 @@
 ## Backlog
 
+## DuoSpend — 1.1.0 soumise et roadmap publique (29 août 2026)
+
+- [x] Ajouter DuoSpend 1.1.0 au-dessus de la 1.0.3 dans les notes de version FR/EN avec les statuts exacts `SOUMISE À L’APP STORE` et `SUBMITTED TO THE APP STORE`.
+- [x] Limiter le contenu public 1.1.0 aux nouveautés confirmées, sans templates, icônes alternatives de l’app, détails techniques ni indication de disponibilité publique.
+- [x] Conserver la 1.0.3 comme version disponible, le partage manuel `.duospend` et le partage familial Apple de l’achat DuoSpend Pro dans son historique, sans confondre achat, transfert de projet ou synchronisation et sans badge App Store sur la 1.0.2.
+- [x] Faire de v1.2 la prochaine étape fonctionnelle visible avec les six sujets planifiés, puis présenter v2.0 comme future collaboration CloudKit Sharing entre deux comptes Apple, sans date promise.
+- [x] Retirer des sections futures les fonctionnalités livrées dans la 1.1.0 et supprimer l’ancien bloc exploratoire devenu redondant avec v2.0.
+- [x] Adapter les tests générés par bloc de release et de roadmap, puis valider les tests ciblés et complets, la génération SSG, le SEO, le sitemap, les liens internes et `git diff --check`.
+- [x] Contrôler les quatre routes en desktop et mobile : hiérarchie, ordre, badges, listes, responsive, overflow, troncature, liens de langue et console.
+
 ## Portfolio — jeu de raffinage de microdatas (17 août 2026)
 
 - [x] Ajouter « Jeu de raffinage de microdatas » directement après « La petite boucle » depuis la source centralisée `data/portfolio.ts`.
