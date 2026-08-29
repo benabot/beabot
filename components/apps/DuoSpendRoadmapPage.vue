@@ -67,16 +67,6 @@
         </div>
       </section>
 
-      <section class="roadmap-section roadmap-section--later">
-        <p class="updates-eyebrow">
-          {{ isEnglish ? 'Later · Exploratory' : 'Plus tard · Exploratoire' }}
-        </p>
-        <h2>{{ content.later.title }}</h2>
-        <p v-for="paragraph in content.later.paragraphs" :key="paragraph">
-          {{ paragraph }}
-        </p>
-      </section>
-
       <section class="roadmap-section roadmap-section--principles">
         <h2>{{ content.principles.title }}</h2>
         <ul>
@@ -271,7 +261,6 @@ useHead({
 .updates-intro,
 .updates-note,
 .section-heading > p,
-.roadmap-section--later > p,
 .roadmap-card p {
   color: $gris2;
   line-height: 1.7;

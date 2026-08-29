@@ -1,6 +1,6 @@
 # 📊 ÉTAT DU PROJET - BeAbot
 
-> **Récapitulatif de l'état du projet au 14 août 2026**
+> **Récapitulatif de l'état du projet au 29 août 2026**
 
 ---
 
@@ -20,6 +20,16 @@
 ---
 
 ## 🧭 BACKLOG FINAL AVANT MASTER
+
+### DuoSpend — 1.1.0 soumise et roadmap publique (29 août 2026)
+
+- Les notes de version FR/EN présentent désormais DuoSpend 1.1.0 au-dessus de la 1.0.3, avec les statuts exacts `SOUMISE À L’APP STORE` et `SUBMITTED TO THE APP STORE` ; aucune formulation ne la présente comme déjà disponible.
+- La 1.1.0 récapitule uniquement les profils du couple, la personnalisation des projets, la vue d’ensemble du couple, l’archivage, les trois widgets, les micro-célébrations et les améliorations générales d’expérience et de stabilité.
+- La 1.0.3 reste disponible sur l’App Store et conserve deux mécanismes distincts : le transfert manuel de projets par fichier `.duospend`, sans synchronisation automatique, et le partage familial Apple de l’achat DuoSpend Pro, sans partage des projets ; la 1.0.2 reste sans statut App Store.
+- Les roadmaps FR/EN affichent v1.2 comme prochaine étape fonctionnelle pour les catégories et icônes de dépenses, statistiques et tendances, recherche et filtres, export PDF enrichi, conversion manuelle de devises et notification de budget à 80 %.
+- v2.0 reste l’étape future de collaboration via CloudKit Sharing entre deux comptes Apple, sans date annoncée et sans laisser entendre que cette collaboration existe dans la 1.1.0.
+- Les composants, styles, URLs, canonicals, hreflang, sitemap et trailing slash existants sont préservés ; seul l’ancien bloc exploratoire devenu redondant avec v2.0 est retiré.
+- Validation locale : cycle TDD ciblé, 49 garde-fous pré-build, 45 tests Node, génération SSG de 104 routes, contrôle SEO HTML, vérification des liens internes et contrôle navigateur des quatre pages en 1440×900 et 390×844 sans overflow, troncature ni erreur console.
 
 ### Portfolio — jeu de raffinage de microdatas (17 août 2026)
 

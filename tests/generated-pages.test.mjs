@@ -149,6 +149,11 @@ const getReleaseSection = (html, title, nextTitle) => {
   return html.slice(start, end)
 }
 
+const getReleaseStatus = (releaseSection) =>
+  releaseSection
+    .match(/<span[^>]*class="release-status"[^>]*>([^<]+)<\/span>/)?.[1]
+    ?.trim()
+
 test('shared App Store badge links explicitly use a pointer cursor', () => {
   const mainStyles = readFileSync(
     new URL('../assets/css/main.scss', import.meta.url),
@@ -630,8 +635,14 @@ for (const page of pages) {
       )
       assert.equal((html.match(/<h1\b/gi) || []).length, 1)
       assert.match(html, /<h1[^>]*>Notes de version<\/h1>/)
+      assert.match(html, /DuoSpend 1\.1\.0/)
       assert.match(html, /1\.0\.3 — Partager un projet plus simplement/)
       assert.match(html, /1\.0\.2 — Des dépenses plus faciles à comprendre/)
+      const version110 = getReleaseSection(
+        html,
+        'DuoSpend 1.1.0',
+        '1.0.3 — Partager un projet plus simplement',
+      )
       const version103 = getReleaseSection(
         html,
         '1.0.3 — Partager un projet plus simplement',
@@ -642,12 +653,28 @@ for (const page of pages) {
         '1.0.2 — Des dépenses plus faciles à comprendre',
         '1.0.1 — Lisibilité et finitions',
       )
+      assert.ok(
+        html.indexOf('DuoSpend 1.1.0') <
+          html.indexOf('1.0.3 — Partager un projet plus simplement'),
+      )
+      assert.equal(getReleaseStatus(version110), 'SOUMISE À L’APP STORE')
+      assert.match(version110, /Profils du couple avec prénoms et couleurs personnalisées/)
+      assert.match(version110, /Trois nouveaux widgets/)
+      assert.doesNotMatch(
+        version110,
+        /DISPONIBLE SUR L’APP STORE|maintenant disponible|publiée|\.duospend|partage familial Apple|synchronisation|CloudKit|TestFlight/i,
+      )
       assert.match(version103, /Disponible sur l’App Store/)
-      assert.doesNotMatch(version103, /Soumise à l’App Store/)
+      assert.match(version103, /fichier \.duospend/)
+      assert.match(
+        version103,
+        /DuoSpend Pro est également compatible avec le partage familial Apple/,
+      )
+      assert.match(version103, /un seul achat peut être partagé/)
+      assert.match(version103, /sans partager ni synchroniser les projets/)
+      assert.doesNotMatch(version103, /Soumise à l’App Store/i)
       assert.doesNotMatch(version102, /release-status|App Store/)
-      assert.doesNotMatch(html, /Soumise à l’App Store/)
       assert.match(html, /Pas encore une synchronisation/)
-      assert.match(html, /fichier \.duospend/)
       assert.match(html, /href="\/apps\/duo-spend\/"/)
       assert.match(html, /href="\/apps\/duo-spend\/roadmap\/"/)
       assert.ok(
@@ -672,8 +699,14 @@ for (const page of pages) {
       )
       assert.equal((html.match(/<h1\b/gi) || []).length, 1)
       assert.match(html, /<h1[^>]*>Release notes<\/h1>/)
+      assert.match(html, /DuoSpend 1\.1\.0/)
       assert.match(html, /1\.0\.3 — Share a project more easily/)
       assert.match(html, /1\.0\.2 — Expenses that are easier to understand/)
+      const version110 = getReleaseSection(
+        html,
+        'DuoSpend 1.1.0',
+        '1.0.3 — Share a project more easily',
+      )
       const version103 = getReleaseSection(
         html,
         '1.0.3 — Share a project more easily',
@@ -684,10 +717,27 @@ for (const page of pages) {
         '1.0.2 — Expenses that are easier to understand',
         '1.0.1 — Readability and polish',
       )
+      assert.ok(
+        html.indexOf('DuoSpend 1.1.0') <
+          html.indexOf('1.0.3 — Share a project more easily'),
+      )
+      assert.equal(getReleaseStatus(version110), 'SUBMITTED TO THE APP STORE')
+      assert.match(version110, /Couple profiles with names and customizable colors/)
+      assert.match(version110, /Three new widgets/)
+      assert.doesNotMatch(
+        version110,
+        /AVAILABLE ON THE APP STORE|released|now available|\.duospend|Apple Family Sharing|synchronization|CloudKit|TestFlight/i,
+      )
       assert.match(version103, /Available on the App Store/)
-      assert.doesNotMatch(version103, /Submitted to the App Store/)
+      assert.match(version103, /\.duospend file/)
+      assert.match(
+        version103,
+        /DuoSpend Pro also supports Apple Family Sharing/,
+      )
+      assert.match(version103, /one purchase can be shared/)
+      assert.match(version103, /without sharing or synchronizing projects/)
+      assert.doesNotMatch(version103, /Submitted to the App Store/i)
       assert.doesNotMatch(version102, /release-status|App Store/)
-      assert.doesNotMatch(html, /Submitted to the App Store/)
       assert.match(html, /Not synchronization yet/)
       assert.match(html, /href="\/en\/apps\/duo-spend\/"/)
       assert.match(html, /href="\/en\/apps\/duo-spend\/roadmap\/"/)
@@ -707,12 +757,39 @@ for (const page of pages) {
       assert.equal((html.match(/<h1\b/gi) || []).length, 1)
       assert.match(html, /<h1[^>]*>Ce qui arrive ensuite<\/h1>/)
       assert.match(html, /id="proposer-une-idee"/)
-      assert.match(html, /DuoSpend 1\.1\.0 — Plus personnel, toujours simple/)
+      assert.match(html, /Prochaine étape/)
+      assert.match(html, /v1\.2 — Statistiques avancées et confort Pro/)
+      assert.match(html, /v2\.0 — Collaboration réelle/)
       assert.match(html, /Prévu/)
-      assert.match(html, /Envisagé/)
-      assert.match(html, /Exploratoire/)
-      assert.match(html, /Une vraie collaboration entre deux iPhone/)
       assert.match(html, /href="\/apps\/duo-spend\/releases\/"/)
+
+      const version12 = getReleaseSection(
+        html,
+        'v1.2 — Statistiques avancées et confort Pro',
+        'v2.0 — Collaboration réelle',
+      )
+      const version20 = getReleaseSection(
+        html,
+        'v2.0 — Collaboration réelle',
+        'Ce qui restera au cœur de DuoSpend',
+      )
+      assert.match(version12, /Catégories et icônes de dépenses/)
+      assert.match(version12, /Statistiques avancées et tendances/)
+      assert.match(version12, /Recherche et filtres/)
+      assert.match(version12, /Export PDF enrichi/)
+      assert.match(version12, /Conversion manuelle de devises/)
+      assert.match(version12, /Notification de budget à 80 %/)
+      assert.doesNotMatch(version12, /CloudKit Sharing/)
+      assert.match(version20, /CloudKit Sharing/)
+      assert.match(version20, /deux comptes Apple/)
+      assert.doesNotMatch(
+        `${version12}${version20}`,
+        /profils? du couple|personnalisation des projets|thèmes et icônes pour (?:les )?projets|vue d’ensemble du couple|archiv|widgets?|micro-célébrations|demande d’avis contextuelle|liens publics|partage familial Apple|\.duospend/i,
+      )
+      assert.doesNotMatch(
+        `${version12}${version20}`,
+        /\b20\d{2}\b|trimestre|T[1-4]\b/,
+      )
 
       const formTag = findTag(html, 'form', 'name', 'duospend-idea')
       const ideaTag = findTag(html, 'textarea', 'name', 'idea')
@@ -736,13 +813,40 @@ for (const page of pages) {
       assert.equal((html.match(/<h1\b/gi) || []).length, 1)
       assert.match(html, /<h1[^>]*>What’s next<\/h1>/)
       assert.match(html, /id="proposer-une-idee"/)
-      assert.match(html, /DuoSpend 1\.1\.0 — More personal, still simple/)
+      assert.match(html, /Next step/)
+      assert.match(html, /v1\.2 — Advanced insights and Pro convenience/)
+      assert.match(html, /v2\.0 — Real collaboration/)
       assert.match(html, /Planned/)
-      assert.match(html, /Under consideration/)
-      assert.match(html, /Exploratory/)
-      assert.match(html, /True collaboration between two iPhones/)
       assert.match(html, /href="\/en\/apps\/duo-spend\/releases\/"/)
       assert.match(html, /lang="en"/)
+
+      const version12 = getReleaseSection(
+        html,
+        'v1.2 — Advanced insights and Pro convenience',
+        'v2.0 — Real collaboration',
+      )
+      const version20 = getReleaseSection(
+        html,
+        'v2.0 — Real collaboration',
+        'What will remain at the heart of DuoSpend',
+      )
+      assert.match(version12, /Expense categories and icons/)
+      assert.match(version12, /Advanced statistics and trends/)
+      assert.match(version12, /Search and filters/)
+      assert.match(version12, /Enhanced PDF export/)
+      assert.match(version12, /Manual currency conversion/)
+      assert.match(version12, /80% budget notification/)
+      assert.doesNotMatch(version12, /CloudKit Sharing/)
+      assert.match(version20, /CloudKit Sharing/)
+      assert.match(version20, /two Apple accounts/)
+      assert.doesNotMatch(
+        `${version12}${version20}`,
+        /couple profiles?|project customization|themes and icons for projects|Couple Overview|archiv|widgets?|micro-celebrations|contextual review prompt|public links|Apple Family Sharing|\.duospend/i,
+      )
+      assert.doesNotMatch(
+        `${version12}${version20}`,
+        /\b20\d{2}\b|quarter|Q[1-4]\b/i,
+      )
     }
 
     if (page.route === '/apps/meeting-mode/') {
