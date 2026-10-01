@@ -42,20 +42,6 @@ export const projects: Project[] = [
     stack: ['Vue.js', 'SQL'],
     githubLink: 'https://github.com/benabot/cycling-sim-game-game-code',
   },
-  {
-    id: 'siturem',
-    title: 'Siturem',
-    subtitle: 'Méditation timer pour pratiquants avancés',
-    image: '/img/siturem/siturem-landing.webp',
-    url: '/apps/siturem/',
-    featured: false,
-    tags: ['iOS', 'Swift'],
-    context:
-      'Application iOS de meditation avec minuterie pensée pour des pratiquants avancés.',
-    role: "Conception produit, design d'interface et développement iOS natif",
-    stack: ['Swift', 'SwiftUI'],
-    githubLink: 'https://github.com/benabot/siturem',
-  },
 
   // === APPS iOS (Swift) ===
   {
@@ -83,6 +69,20 @@ export const projects: Project[] = [
       'Un tap par jour pour suivre une habitude. Streak engine, widget Home Screen & Lock Screen, sync iCloud. Simple, sobre, local-first.',
     role: 'Conception, développement Swift',
     stack: ['Swift', 'SwiftUI', 'Core Data', 'CloudKit', 'WidgetKit'],
+  },
+  {
+    id: 'siturem',
+    title: 'Siturem',
+    subtitle: 'Méditation timer pour pratiquants avancés',
+    image: '/img/siturem/siturem-landing.webp',
+    url: '/apps/siturem/',
+    featured: false,
+    tags: ['iOS', 'Swift'],
+    context:
+      'Application iOS de meditation avec minuterie pensée pour des pratiquants avancés.',
+    role: "Conception produit, design d'interface et développement iOS natif",
+    stack: ['Swift', 'SwiftUI'],
+    githubLink: 'https://github.com/benabot/siturem',
   },
 
   // === PROJETS ÉCO-CONÇUS (featured) ===

@@ -1,5 +1,10 @@
 ## Backlog
 
+## Portfolio — ordre des applications (1 octobre 2026)
+
+- [x] Placer Siturem après DuoSpend et FocusOne dans la liste des réalisations.
+- [x] Valider les 45 tests, la génération statique et l’ordre dans le HTML généré du portfolio.
+
 ## DuoSpend — 1.1.0 soumise et roadmap publique (29 août 2026)
 
 - [x] Ajouter DuoSpend 1.1.0 au-dessus de la 1.0.3 dans les notes de version FR/EN avec les statuts exacts `SOUMISE À L’APP STORE` et `SUBMITTED TO THE APP STORE`.
