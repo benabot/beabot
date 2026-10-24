@@ -1,5 +1,10 @@
 ## Backlog
 
+## Fiche éco-conception — WSG Impact Ratings (24 octobre 2026)
+
+- [x] Mettre à jour `.codex/skills/eco-conception.md` avec les références W3C WSG/WSG-IR, la version consultée et son statut de brouillon.
+- [x] Intégrer les dimensions d’impact, le calcul du score et une méthode de priorisation fondée sur les constats locaux, avec preuves avant/après et limites des indicateurs.
+
 ## Portfolio — ordre des applications (1 octobre 2026)
 
 - [x] Placer Siturem après DuoSpend et FocusOne dans la liste des réalisations.
