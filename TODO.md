@@ -1,5 +1,12 @@
 ## Backlog
 
+## Instructions SEO — moteurs et assistants IA (24 octobre 2026)
+
+- [x] Enrichir les conventions SEO de `AGENTS.md` à partir de l’article DEV fourni, en vérifiant les limites des recommandations avec les documentations officielles Google et OpenAI.
+- [x] Documenter les faits explicites et cohérents, le HTML statique, le JSON-LD fidèle au contenu, la distinction recherche/entraînement et la validation fondée sur des preuves.
+- [x] Relier la fiche Vue/Nuxt aux consignes SEO centralisées, sans modifier le contenu public ni la politique de crawl.
+- [x] Valider les 45 tests, la génération des 104 routes, le contrôle SEO sur le HTML généré et `git diff --check`.
+
 ## Fiche éco-conception — WSG Impact Ratings (24 octobre 2026)
 
 - [x] Mettre à jour `.codex/skills/eco-conception.md` avec les références W3C WSG/WSG-IR, la version consultée et son statut de brouillon.

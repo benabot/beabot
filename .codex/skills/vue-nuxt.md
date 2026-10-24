@@ -40,6 +40,7 @@ Objectif prioritaire sur BeAbot : produire un site statique, SEO propre, accessi
 
 ## SEO et structure
 
+- appliquer les consignes de contenu, données structurées et exploration de la section « Conventions SEO » de `AGENTS.md`, y compris pour les assistants IA
 - conserver les trailing slashes selon la convention du projet
 - utiliser `AppLink` pour les liens internes
 - préserver canonical, Open Graph, Twitter Card, sitemap, robots.txt et JSON-LD
