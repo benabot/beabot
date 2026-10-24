@@ -318,6 +318,43 @@ Le CSS `height: auto` dans `article-content.scss` ne suffit pas sans dimensions 
 | Portfolio | ProfilePage + Person (knowsAbout) | ✅ |
 | Contact | useSeoMeta() spécifiques | ✅ |
 
+### Contenu compréhensible par les moteurs et assistants IA
+
+Consignes mises à jour le **24 octobre 2026**, à partir de [Designing Web Content for LLM Crawlers, Not Just Googlebot](https://dev.to/cathy_3c6121740b50c8a080f/designing-web-content-for-llm-crawlers-not-just-googlebot-nnd). Cet article est une piste éditoriale ; vérifier ses affirmations techniques avec les sources officielles ci-dessous.
+
+- Présenter les faits importants dans des phrases courtes, précises et autonomes : rôle d’une application, fonctionnalités, limites, prix, devise et périodicité. Distinguer clairement gratuit, abonnement et achat unique.
+- Conserver les noms de produits et d’offres cohérents entre données centralisées, pages FR/EN, FAQ et JSON-LD. Réutiliser les sources existantes dans `data/` ; ne pas créer une seconde configuration concurrente.
+- Rendre les informations essentielles présentes dans le HTML statique, avec titres explicites, paragraphes, listes ou tableaux adaptés. Ne pas les réserver aux images, à l’hydratation ou à une interaction client.
+- Rédiger des réponses FAQ utiles, factuelles et compréhensibles isolément. Dater les informations variables et appuyer les affirmations sur des preuves ou sources ; ne pas inventer de chiffres, comparatifs ou promesses de visibilité.
+- Garder les URLs canoniques stables, les liens internes accessibles et le sitemap cohérent avec les pages publiques canoniques. Lors d’un changement d’URL autorisé, vérifier liens et redirections plutôt que multiplier les pages équivalentes pour les robots.
+
+### Données structurées et limites des recommandations IA
+
+- Le JSON-LD doit décrire le contenu visible et actuel. Réutiliser les types et générateurs existants selon la page (`Article`, `Organization`, `Product`, `SoftwareApplication`, `FAQPage`, etc.) ; ne pas ajouter tous les types systématiquement ni déclarer une recherche `SearchAction` inexistante.
+- Une FAQ balisée ne garantit ni entraînement d’un modèle, ni citation, ni résultat enrichi. Au 24 octobre 2026, Google indique avoir retiré les résultats enrichis FAQ depuis le 7 mai 2026 : conserver la cohérence des FAQ existantes sans promettre cet affichage.
+- Pour les fonctionnalités IA de Google Search, les bonnes pratiques SEO habituelles restent applicables ; aucun balisage IA ni fichier texte supplémentaire n’est requis. `llms.txt` ou `links.txt` ne doivent pas être présentés comme des contrats universels d’autorisation, de refus ou de citation.
+- Évaluer un éventuel fichier destiné aux IA comme une expérimentation séparée : besoin, consommateur documenté et coût de maintenance. Ne pas l’ajouter automatiquement lors d’une tâche SEO ou éditoriale.
+
+### Exploration, recherche et entraînement
+
+- Vérifier séparément accès HTTP, règles `robots.txt`, directives d’indexation et éventuels blocages d’hébergement. Un `Disallow` limite l’exploration ; il ne garantit pas la désindexation et ne protège pas une ressource confidentielle.
+- Distinguer les usages des robots avant toute règle : par exemple, `OAI-SearchBot` sert à la recherche ChatGPT et `GPTBot` concerne l’entraînement ; leurs réglages sont indépendants. `ChatGPT-User` correspond à des actions utilisateur, auxquelles `robots.txt` peut ne pas s’appliquer.
+- Préserver les exclusions de crawl des CV et les conventions d’URL du projet. Une mise à jour de contenu ou d’instructions ne décide pas d’une nouvelle politique d’accès ou d’entraînement : modifier les règles seulement dans un périmètre qui l’autorise.
+
+### Validation d’un changement SEO ou éditorial
+
+- Vérifier dans le HTML généré les faits concernés, les titres, les liens, le canonical, `og:url`, les variantes FR/EN et le JSON-LD ; contrôler sa syntaxe et sa concordance avec le contenu visible.
+- Exécuter les contrôles adaptés : `npm test`, `npm run generate`, puis `NUXT_PUBLIC_SITE_URL=https://beabot.fr SEO_CHECK_HTML=1 node scripts/seo-check.mjs` pour une livraison touchant le site. Pour une modification documentaire seule, relire le diff et les liens ; la génération reste obligatoire avant merge selon les garde-fous du projet.
+- Distinguer validation locale et observation en production : indexation, passage réel des robots, trafic ou citations IA nécessitent des preuves datées issues des services ou journaux concernés. Ne pas déduire ces résultats d’un build réussi.
+
+Sources officielles à revérifier lors d’une évolution de politique ou de balisage :
+
+- [Google Search — AI features and your website](https://developers.google.com/search/docs/appearance/ai-features)
+- [Google Search — retrait des résultats enrichis FAQ, mai–juin 2026](https://developers.google.com/search/updates#june-2026)
+- [Google Search — portée et limites de robots.txt](https://developers.google.com/search/docs/crawling-indexing/robots/intro)
+- [OpenAI — Overview of crawlers](https://developers.openai.com/api/docs/bots)
+- [llms.txt — proposition et usages documentés](https://llmstxt.org/)
+
 ---
 
 ## 🎨 DESIGN SYSTEM
@@ -392,5 +429,5 @@ beabot/
 ---
 
 **📝 Maintenu par** : Codex
-**📅 Dernière MAJ** : 10 mai 2026
+**📅 Dernière MAJ** : 24 octobre 2026
 **🎯 Prochaine action** : validation locale finale puis merge manuel vers `dev` pour preview Netlify ; ne pas merger `master` avant validation preview
